@@ -1,12 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import InputField from "../components/InputField.astro";
+import InputFieldNumber from "../components/InputFieldNumber.astro";
 ---
 <Layout title="BMI Calculator">
     <div class="space-y-6">
-        <InputField name="height" type="number" placeholder="176" class="input-class" label="Height (cm)"/>
-        <InputField name="weight" type="number" placeholder="72" class="input-class" label="Weight (Kg)"/>
-        <div id="bmiResult" class="mt-4 text-neutral-300">Your BMI is:</div>
+        <InputFieldNumber name="height" placeholder="176" class="input-class" label="Height (cm)"/>
+        <InputFieldNumber name="weight" placeholder="72" class="input-class" label="Weight (Kg)"/>
+        <div class="mt-4">Your BMI is: <span id="bmi"></span></div>
+
+        <div>
+            <p class="text-sky-300">Underweight: <18.5</p>
+            <p class="text-green-300">Normal weight: 18.5–24.9</p>
+            <p class="text-yellow-300">Overweight: 25–29.9</p>
+            <p class="text-red-300">Obesity: 30 or higher</p>
+        </div>
+
     </div>
 </Layout>
 
@@ -14,14 +22,26 @@ import InputField from "../components/InputField.astro";
     document.getElementById('weight').addEventListener('input', calculateBMI);
     document.getElementById('height').addEventListener('input', calculateBMI);
 
+    const $bmi = document.getElementById('bmi');
+
     function calculateBMI() {
         const weight = document.getElementById('weight').value;
         const height = document.getElementById('height').value / 100;
-        let message = "Your BMI is: ";
         if (weight > 0 && height > 0) {
             const bmi = weight / (height * height);
-            message += bmi.toFixed(2)
+            $bmi.classList.remove('text-sky-300', 'text-green-300', 'text-yellow-300', 'text-red-300');
+
+            if (bmi < 18.5) {
+                $bmi.classList.add('text-sky-300');
+            } else if (bmi >= 18.5 && bmi < 25) {
+                $bmi.classList.add('text-green-300');
+            } else if (bmi >= 25 && bmi < 30) {
+                $bmi.classList.add('text-yellow-300');
+            } else {
+                $bmi.classList.add('text-red-300');
+            }
+
+            $bmi.textContent = `${bmi.toFixed(2)}`;
         }
-        document.getElementById('bmiResult').textContent = message;
     }
 </script>

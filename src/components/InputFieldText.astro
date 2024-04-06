@@ -1,0 +1,14 @@
+---
+const {label, name, placeholder} = Astro.props;
+---
+<div class="w-full flex flex-col">
+    <label for={name} class="block mb-2 text-left">{label}</label>
+    <input
+            type="text"
+            name={name}
+            id={name}
+            placeholder={placeholder}
+            aria-label={label}
+            class="w-3/4 p-2 outline-none caret-violet-400 placeholder-neutral-400 focus:ring-2 focus:ring-violet-400 bg-neutral-600 rounded-md transition-colors duration-200"
+    />
+</div>
