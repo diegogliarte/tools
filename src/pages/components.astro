@@ -3,12 +3,26 @@ import Layout from "../layouts/Layout.astro";
 import ToolLink from "../components/ToolLink.astro";
 import InputFieldNumber from "../components/InputFieldNumber.astro";
 import InputFieldText from "../components/InputFieldText.astro";
+import Slider from "../components/Slider.astro";
+import Toast from "../components/Toast.astro";
 ---
 
 <Layout title="Components">
-    <div class="flex flex-col gap-10 text-center items-center">
+    <div class="mt-16 space-y-24 text-center items-center">
         <ToolLink href="/components" text="Components"/>
-        <InputFieldText name="element-name1" placeholder="Type here" label="This is the label name!"/>
-        <InputFieldNumber name="element-name2" placeholder="0" label="Enter a number"/>
+        <InputFieldText name="input-field-text" placeholder="Type here" label="This is the label name!"/>
+        <InputFieldNumber name="input-field-number" placeholder="0" label="Enter a number"/>
+        <Slider name="slider"/>
+        <Toast message="This is a test message " />
     </div>
 </Layout>
+
+<script>
+    const $toast = document.getElementById('toast');
+
+    $toast.style.position = "relative";
+
+    setInterval(() => {
+        $toast.style.opacity = "1";
+    }, 1);
+</script>

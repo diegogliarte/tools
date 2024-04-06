@@ -3,25 +3,17 @@ const {label, name, placeholder} = Astro.props;
 ---
 <div class="w-full">
     <label for={name} class="block mb-2 text-left">{label}</label>
-    <div class="flex items-center">
+    <div class="flex items-center shadow shadow-neutral-800 rounded-md">
         <button type="button" id=`decrement-button-${name}`
-                class="sm:p-4 p-3 bg-violet-300 hover:bg-violet-400 rounded-s-md transition-colors duration-200">
-            <svg class="h-4 w-3 text-neutral-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                 fill="none" viewBox="0 0 18 2">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M1 1h16"/>
-            </svg>
+                class="p-2 w-12 h-full bg-violet-300 hover:bg-violet-400 rounded-s-md transition-colors duration-200">
+            <span class="text-neutral-900">-</span>
         </button>
         <input type="number" id={name} aria-describedby="helper-text-explanation"
-               class="w-full p-2 bg-neutral-600 placeholder-neutral-400 text-center outline-none"
+               class="p-2 w-full bg-neutral-600 placeholder-neutral-400 text-center outline-none"
                placeholder={placeholder} required/>
         <button type="button" id=`increment-button-${name}`
-                class="sm:p-4 p-3 bg-violet-300 hover:bg-violet-400 rounded-e-md transition-colors duration-200">
-            <svg class="h-4 w-3 text-neutral-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                 fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M9 1v16M1 9h16"/>
-            </svg>
+                class="p-2 w-12 bg-violet-300 hover:bg-violet-400 rounded-e-md transition-colors duration-200">
+            <span class="text-neutral-900">+</span>
         </button>
     </div>
 </div>
