@@ -1,0 +1,16 @@
+---
+const {label, name, placeholder, type, onInput} = Astro.props;
+---
+
+<div>
+    <label for={name} class="block font-medium mb-2 text-left">{label}</label>
+    <input
+            type={type}
+            name={name}
+            id={name}
+            placeholder={placeholder}
+            aria-label={label}
+            onInput={onInput}
+            class="p-3 outline-none caret-violet-400 placeholder-neutral-300 focus:ring-2 focus:ring-violet-400 bg-neutral-600 rounded-md transition-all duration-200"
+    />
+</div>

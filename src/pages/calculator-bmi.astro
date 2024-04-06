@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InputField from "../components/InputField.astro";
+---
+<Layout title="BMI Calculator">
+    <div class="space-y-6">
+        <InputField name="height" type="number" placeholder="176" class="input-class" label="Height (cm)"/>
+        <InputField name="weight" type="number" placeholder="72" class="input-class" label="Weight (Kg)"/>
+        <div id="bmiResult" class="mt-4 text-neutral-300">Your BMI is:</div>
+    </div>
+</Layout>
+
+<script>
+    document.getElementById('weight').addEventListener('input', calculateBMI);
+    document.getElementById('height').addEventListener('input', calculateBMI);
+
+    function calculateBMI() {
+        const weight = document.getElementById('weight').value;
+        const height = document.getElementById('height').value / 100;
+        let message = "Your BMI is: ";
+        if (weight > 0 && height > 0) {
+            const bmi = weight / (height * height);
+            message += bmi.toFixed(2)
+        }
+        document.getElementById('bmiResult').textContent = message;
+    }
+</script>

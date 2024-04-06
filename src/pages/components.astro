@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InputField from "../components/InputField.astro";
+import ToolLink from "../components/ToolLink.astro";
+---
+
+<Layout title="Components">
+    <div class="flex flex-col gap-10 text-center items-center">
+        <ToolLink href="/components" text="Components"/>
+        <InputField type="text" name="element-name1" placeholder="Type here" label="This is the label name!"/>
+        <InputField type="number" name="element-name2" placeholder="0" label="Enter a number"/>
+    </div>
+</Layout>
