@@ -3,7 +3,7 @@ const {label, name, placeholder} = Astro.props;
 ---
 <div class="w-full">
     <label for={name} class="block mb-2 text-left">{label}</label>
-    <div class="flex items-center w-3/4">
+    <div class="flex items-center">
         <button type="button" id=`decrement-button-${name}`
                 class="sm:p-4 p-3 bg-violet-300 hover:bg-violet-400 rounded-s-md transition-colors duration-200">
             <svg class="h-4 w-3 text-neutral-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ const {label, name, placeholder} = Astro.props;
     const input = document.getElementById(name);
     const decrementButton = document.getElementById(`decrement-button-${name}`);
     const incrementButton = document.getElementById(`increment-button-${name}`);
-
+    let intervalId;
 
     function updateValue(operation) {
         if (input.value === "") {
@@ -51,7 +51,9 @@ const {label, name, placeholder} = Astro.props;
     }
 
     function stopUpdatingValue() {
-        clearInterval(intervalId);
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
     }
 
     decrementButton.addEventListener('mousedown', () => startUpdatingValue('decrement'));

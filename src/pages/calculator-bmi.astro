@@ -3,18 +3,17 @@ import Layout from "../layouts/Layout.astro";
 import InputFieldNumber from "../components/InputFieldNumber.astro";
 ---
 <Layout title="BMI Calculator">
-    <div class="space-y-6">
+    <div class="space-y-6 flex flex-col items-center" >
         <InputFieldNumber name="height" placeholder="176" class="input-class" label="Height (cm)"/>
         <InputFieldNumber name="weight" placeholder="72" class="input-class" label="Weight (Kg)"/>
-        <div class="mt-4">Your BMI is: <span id="bmi"></span></div>
+        <div class="w-full">Your BMI is: <span id="bmi"></span></div>
 
-        <div>
+        <div class="!mt-32 leading-normal sm:text-base text-sm rounded-md bg-neutral-600 p-3 w-2/3 text-center">
             <p class="text-sky-300">Underweight: <18.5</p>
             <p class="text-green-300">Normal weight: 18.5–24.9</p>
             <p class="text-yellow-300">Overweight: 25–29.9</p>
-            <p class="text-red-300">Obesity: 30 or higher</p>
+            <p class="text-red-300">Obesity: >30</p>
         </div>
-
     </div>
 </Layout>
 
@@ -23,6 +22,7 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
     document.getElementById('height').addEventListener('input', calculateBMI);
 
     const $bmi = document.getElementById('bmi');
+    const $bmiRange = document.getElementById('bmi-range');
 
     function calculateBMI() {
         const weight = document.getElementById('weight').value;
@@ -42,6 +42,7 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
             }
 
             $bmi.textContent = `${bmi.toFixed(2)}`;
+            $bmiRange.value = bmi;
         }
     }
 </script>
