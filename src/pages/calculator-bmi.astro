@@ -25,7 +25,6 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
     $height.addEventListener('input', calculateBMI);
 
     const $bmi = document.getElementById('bmi')!;
-    const $bmiRange = document.getElementById('bmi-range') as HTMLInputElement;
 
     function calculateBMI() {
         const weight = parseInt($weight.value);
@@ -45,7 +44,6 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
             }
 
             $bmi.textContent = `${bmi.toFixed(2)}`;
-            $bmiRange.value = `${bmi}`;
         }
     }
 </script>

@@ -1,5 +1,5 @@
 ---
-const {label, name: id, placeholder} = Astro.props;
+const {label, id, placeholder} = Astro.props;
 ---
 <div class="w-full">
     <label for={id} class="block mb-2 text-left">{label}</label>
@@ -18,11 +18,13 @@ const {label, name: id, placeholder} = Astro.props;
     </div>
 </div>
 
-<script is:inline define:vars={{name: id}}>
+<script is:inline define:vars={{id: id}}>
     const input = document.getElementById(id);
     const decrementButton = document.getElementById(`decrement-button-${id}`);
     const incrementButton = document.getElementById(`increment-button-${id}`);
     let intervalId;
+
+    console.log(id, input, decrementButton, incrementButton)
 
     function updateValue(operation) {
         if (input.value === "") {
