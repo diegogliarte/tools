@@ -16,19 +16,20 @@ const {message} = Astro.props
 </div>
 
 <script>
-    const $toast = document.getElementById('toast');
-    let closeTimeout = null;
+    const $toast = document.getElementById('toast')!;
+
+    let closeTimeout: ReturnType<typeof setTimeout> | undefined = undefined;
 
     $toast.addEventListener('click', () => {
         clearTimeout(closeTimeout)
-        closeTimeout = null
+        closeTimeout = undefined
         closeToast()
     });
 
     $toast.addEventListener('mouseover', () => {
         if (closeTimeout) {
             clearTimeout(closeTimeout)
-            closeTimeout = null
+            closeTimeout = undefined
         }
     });
 
@@ -41,7 +42,7 @@ const {message} = Astro.props
     });
 
     $toast.addEventListener('transitionend', () => {
-        if ($toast.style.opacity === '1') {
+        if ($toast && $toast.style.opacity === '1') {
 
             $toast.style.pointerEvents = "auto";
             closeTimeout = setTimeout(() => {
@@ -51,8 +52,10 @@ const {message} = Astro.props
     });
 
     function closeToast() {
-        $toast.style.opacity = '0';
-        $toast.style.pointerEvents = "none";
+        if ($toast) {
+            $toast.style.opacity = '0';
+            $toast.style.pointerEvents = "none";
+        }
     }
 
 

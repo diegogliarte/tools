@@ -4,8 +4,8 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
 ---
 <Layout title="BMI Calculator">
     <div class="space-y-10 flex flex-col items-center" >
-        <InputFieldNumber name="height" placeholder="176" class="input-class" label="Height (cm)"/>
-        <InputFieldNumber name="weight" placeholder="72" class="input-class" label="Weight (Kg)"/>
+        <InputFieldNumber id="height" placeholder="176" class="input-class" label="Height (cm)"/>
+        <InputFieldNumber id="weight" placeholder="72" class="input-class" label="Weight (Kg)"/>
         <div class="w-full">Your BMI is: <span id="bmi"></span></div>
 
         <div class="!mt-16 leading-normal sm:text-base text-sm rounded-md bg-neutral-600 p-3 w-2/3 text-center">
@@ -18,15 +18,18 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
 </Layout>
 
 <script>
-    document.getElementById('weight').addEventListener('input', calculateBMI);
-    document.getElementById('height').addEventListener('input', calculateBMI);
+    const $weight = document.getElementById('weight') as HTMLInputElement;
+    const $height = document.getElementById('height') as HTMLInputElement;
 
-    const $bmi = document.getElementById('bmi');
-    const $bmiRange = document.getElementById('bmi-range');
+    $weight.addEventListener('input', calculateBMI);
+    $height.addEventListener('input', calculateBMI);
+
+    const $bmi = document.getElementById('bmi')!;
+    const $bmiRange = document.getElementById('bmi-range') as HTMLInputElement;
 
     function calculateBMI() {
-        const weight = document.getElementById('weight').value;
-        const height = document.getElementById('height').value / 100;
+        const weight = parseInt($weight.value);
+        const height = parseInt($height.value) / 100;
         if (weight > 0 && height > 0) {
             const bmi = weight / (height * height);
             $bmi.classList.remove('text-sky-300', 'text-green-300', 'text-yellow-300', 'text-red-300');
@@ -42,7 +45,7 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
             }
 
             $bmi.textContent = `${bmi.toFixed(2)}`;
-            $bmiRange.value = bmi;
+            $bmiRange.value = `${bmi}`;
         }
     }
 </script>

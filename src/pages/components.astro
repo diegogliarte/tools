@@ -11,14 +11,14 @@ import Toast from "../components/Toast.astro";
     <div class="mt-16 space-y-24 text-center items-center">
         <ToolLink href="/components" text="Components"/>
         <InputFieldText name="input-field-text" placeholder="Type here" label="This is the label name!"/>
-        <InputFieldNumber name="input-field-number" placeholder="0" label="Enter a number"/>
+        <InputFieldNumber id="input-field-number" placeholder="0" label="Enter a number"/>
         <Slider name="slider"/>
         <Toast message="This is a test message " />
     </div>
 </Layout>
 
 <script>
-    const $toast = document.getElementById('toast');
+    const $toast = document.getElementById('toast') as HTMLElement;
 
     $toast.style.position = "relative";
 
