@@ -1,7 +1,55 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import InputFieldText from "../components/InputFieldText.astro";
 ---
 
 <Layout title="Hasher">
-    Hasher
+    <div>
+        <InputFieldText name="password" placeholder="" label="Password to hash"/>
+
+        <div id="hash-md5" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">MD5</div>
+        <div id="hash-sha-1" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">SHA 1</div>
+        <div id="hash-sha-256" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">SHA 256</div>
+        <div id="hash-sha-3" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">SHA 3</div>
+
+    </div>
 </Layout>
+
+<script>
+
+    const $password = document.getElementById('password');
+    const $hashMd5 = document.getElementById('hash-md5');
+    const $hashSha1 = document.getElementById('hash-sha-1');
+    const $hashSha256 = document.getElementById('hash-sha-256');
+    const $hashSha3 = document.getElementById('hash-sha-3');
+
+    async function generateHash(algo, text) {
+        const queryParams = new URLSearchParams({ password: text }).toString();
+
+        console.log(`/api/${algo}?${queryParams}`)
+
+        const hash = await fetch(`/api/${algo}?${queryParams}`, {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(data => {
+                return data.hash;
+            })
+            .catch(error => {
+                console.error(`Error hashing password with ${algo}:`, error);
+                return `Error hashing with ${algo}`;
+            });
+
+        return hash
+    }
+
+    $password.addEventListener('input', async () => {
+        const password = $password.value;
+        if (password) {
+            $hashMd5.textContent = await generateHash('MD5', password);
+            // $hashSha1.textContent = await generateHash('SHA-1', password);
+            // $hashSha256.textContent = await generateHash('SHA-256', password);
+            // $hashSha3.textContent = await generateHash('SHA-512', password);
+        }
+    });
+</script>
