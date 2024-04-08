@@ -1,55 +1,73 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import InputFieldText from "../components/InputFieldText.astro";
+import Toast from "../components/Toast.astro";
 ---
 
 <Layout title="Hasher">
-    <div>
+    <div class="flex flex-col h-full w-1/2  sm:text-2xl text-base m-10">
+        <Toast message="Hash copied!"/>
         <InputFieldText name="password" placeholder="" label="Password to hash"/>
 
-        <div id="hash-md5" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">MD5</div>
-        <div id="hash-sha-1" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">SHA 1</div>
-        <div id="hash-sha-256" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">SHA 256</div>
-        <div id="hash-sha-3" class="h-0 mt-16 text-center break-all overflow-visible cursor-pointer">SHA 3</div>
-
+        <div class="flex flex-col mt-8 gap-8">
+            <div class="text-center break-all overflow-visible cursor-pointer">
+                <div>MD5</div>
+                <div id="hash-md5">asdasdasd</div>
+            </div>
+            <div class="text-center break-all overflow-visible cursor-pointer">
+                <div>SHA 1</div>
+                <div id="hash-sha-1" class=""></div>
+            </div>
+            <div class="text-center break-all overflow-visible cursor-pointer">
+                <div>SHA 256</div>
+                <div id="hash-sha-256" class=""></div>
+            </div>
+            <div class="text-center break-all overflow-visible cursor-pointer">
+                <div>SHA 3</div>
+                <div id="hash-sha-3" class=""></div>
+            </div>
+        </div>
     </div>
 </Layout>
 
+<script is:inline src="/md5.js"></script>
+
 <script>
+    const $password = document.getElementById('password') as HTMLInputElement;
+    const $hashMd5 = document.getElementById('hash-md5') as HTMLElement;
+    const $hashSha1 = document.getElementById('hash-sha-1') as HTMLElement;
+    const $hashSha256 = document.getElementById('hash-sha-256') as HTMLElement;
+    const $hashSha3 = document.getElementById('hash-sha-3') as HTMLElement;
+    const $toast = document.getElementById('toast') as HTMLElement;
 
-    const $password = document.getElementById('password');
-    const $hashMd5 = document.getElementById('hash-md5');
-    const $hashSha1 = document.getElementById('hash-sha-1');
-    const $hashSha256 = document.getElementById('hash-sha-256');
-    const $hashSha3 = document.getElementById('hash-sha-3');
 
-    async function generateHash(algo, text) {
-        const queryParams = new URLSearchParams({ password: text }).toString();
+    function copyToClipboard(e: Event) {
+        navigator.clipboard.writeText((e.target as HTMLElement).textContent || '');
+        if ($toast) {
+            $toast.style.opacity = "1";
+        }
+    }
 
-        console.log(`/api/${algo}?${queryParams}`)
-
-        const hash = await fetch(`/api/${algo}?${queryParams}`, {
-            method: 'GET',
-        })
-            .then(response => response.json())
-            .then(data => {
-                return data.hash;
-            })
-            .catch(error => {
-                console.error(`Error hashing password with ${algo}:`, error);
-                return `Error hashing with ${algo}`;
-            });
-
-        return hash
+    async function generateHash(algo: string, text: string) {
+        if (algo === 'MD5') {
+            return md5(text);
+        }
+        const hash = await crypto.subtle.digest(algo, new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
     $password.addEventListener('input', async () => {
         const password = $password.value;
         if (password) {
             $hashMd5.textContent = await generateHash('MD5', password);
-            // $hashSha1.textContent = await generateHash('SHA-1', password);
-            // $hashSha256.textContent = await generateHash('SHA-256', password);
-            // $hashSha3.textContent = await generateHash('SHA-512', password);
+            $hashSha1.textContent = await generateHash('SHA-1', password);
+            $hashSha256.textContent = await generateHash('SHA-256', password);
+            $hashSha3.textContent = await generateHash('SHA-512', password);
         }
     });
+
+    $hashMd5.addEventListener('click', copyToClipboard);
+    $hashSha1.addEventListener('click', copyToClipboard);
+    $hashSha256.addEventListener('click', copyToClipboard);
+    $hashSha3.addEventListener('click', copyToClipboard);
 </script>
