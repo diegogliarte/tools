@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InputFieldNumber from "../components/InputFieldNumber.astro";
+---
+<Layout title="Compound Interest Calculator">
+    <div class="space-y-10 flex flex-col items-center w-2/3 md:w-1/2 sm:text-xl text-sm">
+        <div class="flex flex-col items-center space-y-4">
+            <div class="flex gap-16">
+                <InputFieldNumber id="initial" label="Initial" placeholder="5000"/>
+                <InputFieldNumber id="monthly" label="Monthly" placeholder="200"/>
+            </div>
+            <div class="flex gap-16">
+                <InputFieldNumber id="years" label="Years" placeholder="5"/>
+                <InputFieldNumber id="months" label="Months" placeholder="0"/>
+
+            </div>
+            <div class="flex gap-16">
+                <InputFieldNumber id="interest-rate" label="Interest Rate" placeholder="8"/>
+            </div>
+
+        </div>
+        <div class="w-full flex flex-col">
+            <div class="text-sky-300">Contribution: <span id="total-contribution">0</span> €</div>
+            <div class="text-green-300">Total value: <span id="total-value">0</span> €</div>
+            <div class="text-amber-300">Earned: <span id="Earned">0</span >€</div>
+        </div>
+    </div>
+</Layout>
+
+<script>
+    const $initial = document.getElementById('initial') as HTMLInputElement;
+    const $monthly = document.getElementById('monthly') as HTMLInputElement;
+    const $years = document.getElementById('years') as HTMLInputElement;
+    const $months = document.getElementById('months') as HTMLInputElement;
+    const $interestRate = document.getElementById('interest-rate') as HTMLInputElement;
+    const $totalContribution = document.getElementById('total-contribution') as HTMLSpanElement;
+    const $totalValue = document.getElementById('total-value') as HTMLSpanElement;
+    const $earned = document.getElementById('Earned') as HTMLSpanElement;
+
+    const calculate = () => {
+        const initial = $initial.value ? parseFloat($initial.value) : 0;
+        const monthly = $monthly.value ? parseFloat($monthly.value) : 0;
+        const years = $years.value ? parseFloat($years.value) : 0;
+        const months = $months.value ? parseFloat($months.value) : 0;
+        const interestRate = $interestRate.value ? parseFloat($interestRate.value) / 100 : 0;
+
+        const totalMonths = years * 12 + months;
+        let total = initial;
+        for (let i = 0; i < totalMonths; i++) {
+            total += monthly;
+            total += total * interestRate / 12;
+        }
+        const earned = total - initial - monthly * totalMonths;
+        const contribution = initial + monthly * totalMonths;
+        $totalContribution.innerText = contribution.toFixed(2);
+        $totalValue.innerText = total.toFixed(2);
+        $earned.innerText = earned.toFixed(2);
+    }
+
+    $initial.addEventListener('input', calculate);
+    $monthly.addEventListener('input', calculate);
+    $years.addEventListener('input', calculate);
+    $months.addEventListener('input', calculate);
+    $interestRate.addEventListener('input', calculate);
+</script>
+

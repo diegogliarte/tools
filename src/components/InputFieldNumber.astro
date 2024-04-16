@@ -1,5 +1,5 @@
 ---
-const {label, id, placeholder} = Astro.props;
+let {label, id, placeholder} = Astro.props;
 ---
 <div class="w-full">
     <label for={id} class="block mb-2 text-left">{label}</label>
@@ -23,8 +23,6 @@ const {label, id, placeholder} = Astro.props;
     const decrementButton = document.getElementById(`decrement-button-${id}`);
     const incrementButton = document.getElementById(`increment-button-${id}`);
     let intervalId;
-
-    console.log(id, input, decrementButton, incrementButton)
 
     function updateValue(operation) {
         if (input.value === "") {
@@ -71,6 +69,10 @@ const {label, id, placeholder} = Astro.props;
     /* Firefox */
     input[type=number] {
         -moz-appearance: textfield;
+    }
+
+    input:after {
+        content: attr(placeholder);
     }
 
 </style>
