@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import InputFieldNumber from "../components/InputFieldNumber.astro";
 ---
 
 <Layout title="Running Calculator">
@@ -128,23 +127,39 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
         $paceSeconds.value = paceSecondsValue.toString();
     }
 
+    const updateTabIndex = () => {
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            if (input.closest('.locked')) {
+                input.setAttribute('tabindex', '-1');
+            } else {
+                input.removeAttribute('tabindex');
+            }
+        });
+    }
+
+    updateTabIndex();
+
 
     $selectTime.addEventListener('click', () => {
         $selectTime.parentElement!.classList.add('locked');
         $selectDistance.parentElement!.classList.remove('locked');
         $selectPace.parentElement!.classList.remove('locked');
+        updateTabIndex();
     });
 
     $selectDistance.addEventListener('click', () => {
         $selectTime.parentElement!.classList.remove('locked');
         $selectDistance.parentElement!.classList.add('locked');
         $selectPace.parentElement!.classList.remove('locked');
+        updateTabIndex();
     });
 
     $selectPace.addEventListener('click', () => {
         $selectTime.parentElement!.classList.remove('locked');
         $selectDistance.parentElement!.classList.remove('locked');
         $selectPace.parentElement!.classList.add('locked');
+        updateTabIndex();
     });
 
     $timeHours.addEventListener('input', calculate);
@@ -233,7 +248,6 @@ import InputFieldNumber from "../components/InputFieldNumber.astro";
             }
         }
     });
-
 
 
 </script>
