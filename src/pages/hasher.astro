@@ -12,19 +12,19 @@ import Toast from "../components/Toast.astro";
         <div class="flex flex-col mt-8 gap-8">
             <div class="text-center break-all overflow-visible cursor-pointer">
                 <div>MD5</div>
-                <div id="hash-md5"></div>
+                <div id="hash-md5" class="invisible"></div>
             </div>
             <div class="text-center break-all overflow-visible cursor-pointer">
                 <div>SHA 1</div>
-                <div id="hash-sha-1" class=""></div>
+                <div id="hash-sha-1" class="invisible"></div>
             </div>
             <div class="text-center break-all overflow-visible cursor-pointer">
                 <div>SHA 256</div>
-                <div id="hash-sha-256" class=""></div>
+                <div id="hash-sha-256" class="invisible"></div>
             </div>
             <div class="text-center break-all overflow-visible cursor-pointer">
                 <div>SHA 3</div>
-                <div id="hash-sha-3" class=""></div>
+                <div id="hash-sha-3" class="invisible"></div>
             </div>
         </div>
     </div>
@@ -39,7 +39,11 @@ import Toast from "../components/Toast.astro";
     const $hashSha256 = document.getElementById('hash-sha-256') as HTMLElement;
     const $hashSha3 = document.getElementById('hash-sha-3') as HTMLElement;
     const $toast = document.getElementById('toast') as HTMLElement;
-
+    const md5Length = 32;
+    const sha1Length = 40;
+    const sha256Length = 64;
+    const sha3Length = 128;
+    hideHashes();
 
     function copyToClipboard(e: Event) {
         navigator.clipboard.writeText((e.target as HTMLElement).textContent || '');
@@ -56,6 +60,17 @@ import Toast from "../components/Toast.astro";
         return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
+    function hideHashes() {
+        $hashMd5.textContent = '0'.repeat(md5Length);
+        $hashSha1.textContent = '0'.repeat(sha1Length);
+        $hashSha256.textContent = '0'.repeat(sha256Length);
+        $hashSha3.textContent = '0'.repeat(sha3Length);
+        $hashMd5.classList.add('invisible');
+        $hashSha1.classList.add('invisible');
+        $hashSha256.classList.add('invisible');
+        $hashSha3.classList.add('invisible');
+    }
+
     $password.addEventListener('input', async () => {
         const password = $password.value;
         if (password) {
@@ -63,6 +78,12 @@ import Toast from "../components/Toast.astro";
             $hashSha1.textContent = await generateHash('SHA-1', password);
             $hashSha256.textContent = await generateHash('SHA-256', password);
             $hashSha3.textContent = await generateHash('SHA-512', password);
+            $hashMd5.classList.remove('invisible');
+            $hashSha1.classList.remove('invisible');
+            $hashSha256.classList.remove('invisible');
+            $hashSha3.classList.remove('invisible');
+        } else {
+            hideHashes();
         }
     });
 
