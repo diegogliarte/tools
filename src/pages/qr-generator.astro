@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InputFieldText from "../components/InputFieldText.astro";
+---
+<Layout title="QR Generator">
+    <div class="space-y-10 flex flex-col items-center">
+        <InputFieldText name="qr-code" placeholder="" label="Text to encode"/>
+        <canvas id="qr" class="rounded-md cursor-pointer w-0 h-0"></canvas>
+    </div>
+</Layout>
+
+
+<script>
+    import QRCode from 'qrcode';
+
+    const $qrCode = document.getElementById('qr-code');
+    const $qr = document.getElementById('qr');
+    $qrCode.addEventListener('input', generateQR);
+
+    function generateQR() {
+        const text = document.querySelector('input[name="qr-code"]').value;
+        QRCode.toCanvas($qr, text, function (error) {
+            if (error) console.error(error)
+        })
+    }
+
+    $qr.addEventListener('click', function () {
+        if ($qrCode.value === '') return;
+        const link = document.createElement('a');
+        link.href = $qr.toDataURL('image/jpeg');
+        link.download = 'qr-code.jpg';
+        link.click();
+    });
+</script>
