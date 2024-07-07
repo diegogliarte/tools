@@ -13,12 +13,12 @@ import InputFieldText from "../components/InputFieldText.astro";
 <script>
     import QRCode from 'qrcode';
 
-    const $qrCode = document.getElementById('qr-code');
-    const $qr = document.getElementById('qr');
+    const $qrCode = document.getElementById('qr-code') as HTMLInputElement;
+    const $qr = document.getElementById('qr') as HTMLCanvasElement;
     $qrCode.addEventListener('input', generateQR);
 
     function generateQR() {
-        const text = document.querySelector('input[name="qr-code"]').value;
+        const text = $qrCode.value;
         QRCode.toCanvas($qr, text, function (error) {
             if (error) console.error(error)
         })

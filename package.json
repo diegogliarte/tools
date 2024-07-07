@@ -17,5 +17,8 @@
     "qrcode": "^1.5.3",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.4"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5"
   }
 }
