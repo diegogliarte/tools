@@ -1,0 +1,325 @@
+---
+export const prerender = false;
+import { fetchSlayerTasks } from "@lib/api/osrs";
+import InputFieldText from "@components/InputFieldText.astro";
+import InputFieldNumber from "@components/InputFieldNumber.astro";
+import InputCheckbox from "@components/InputCheckbox.astro";
+
+export const tool = {
+    title: "OSRS Slayer Task Chances",
+    description:
+        "Compare task chances across Slayer masters. Search monsters, toggle percentage/weight, and filter by requirements.",
+};
+
+const masters = await fetchSlayerTasks(); // parser should return cleaned quest/unlock names
+const monsters = Array.from(
+    new Set(Object.values(masters).flat().map((t) => t.name))
+).sort();
+const totals = Object.fromEntries(
+    Object.entries(masters).map(([m, tasks]) => [
+        m,
+        tasks.reduce((acc, t) => acc + t.weight, 0),
+    ])
+);
+
+const allTasks = Object.values(masters).flat();
+const allQuests = Array.from(new Set(allTasks.flatMap((t) => t.quest || []))).sort();
+const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).sort();
+---
+<section class="max-w-6xl mx-auto space-y-6">
+    <!-- Requirements -->
+    <div class="space-y-6">
+        <!-- Slayer/Combat side by side -->
+        <div class="flex gap-6">
+            <InputFieldNumber id="slayer-level" label="Slayer Level" placeholder="e.g. 85" />
+            <InputFieldNumber id="combat-level" label="Combat Level" placeholder="e.g. 100" />
+        </div>
+
+        <div>
+            <h3 class="font-semibold text-neutral-200 mb-2 flex items-center gap-2">
+                Quests
+                <button
+                        id="toggle-quests"
+                        class="px-2 py-0.5 text-xs rounded bg-neutral-700 hover:bg-neutral-600 cursor-pointer"
+                >
+                    Unselect All
+                </button>
+            </h3>
+            <div class="flex flex-wrap gap-3 max-h-32 overflow-y-auto">
+                {allQuests.map((q) => (
+                        <InputCheckbox id={`quest-${q}`} label={q} checked />
+                ))}
+            </div>
+        </div>
+
+        <div>
+            <h3 class="font-semibold text-neutral-200 mb-2 flex items-center gap-2">
+                Unlocks
+                <button
+                        id="toggle-unlocks"
+                        class="px-2 py-0.5 text-xs rounded bg-neutral-700 hover:bg-neutral-600 cursor-pointer"
+                >
+                    Select All
+                </button>
+            </h3>
+            <div class="flex flex-wrap gap-3 max-h-32 overflow-y-auto">
+                {allUnlocks.map((u) => (
+                        <InputCheckbox id={`unlock-${u}`} label={u} />
+                ))}
+            </div>
+        </div>
+
+        <!-- Search -->
+        <InputFieldText
+                id="monster-search"
+                label="Search Monsters"
+                placeholder="e.g. Abyssal demon"
+        />
+
+        <!-- Toggles -->
+        <div class="flex flex-wrap gap-4">
+            <InputCheckbox id="show-percent" label="Show Percent" checked />
+            <InputCheckbox id="show-weight" label="Show Weight" />
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+        <table id="slayer-table" class="w-full border-collapse text-sm text-left">
+            <thead class="bg-neutral-800 sticky top-0 z-10">
+            <tr>
+                <th class="p-2 cursor-pointer" data-sort="monster">Monster</th>
+                {Object.keys(masters).map((master) => (
+                        <th
+                                class="p-2 text-right capitalize cursor-pointer"
+                                data-sort={master}
+                        >
+                            {master}
+                        </th>
+                ))}
+            </tr>
+            </thead>
+            <tbody>
+            {monsters.map((monster) => (
+                    <tr class="odd:bg-neutral-900 even:bg-neutral-800/50">
+                        <td class="p-2 font-medium flex items-center gap-1">
+                            {(() => {
+                                const example = Object.values(masters)
+                                    .flat()
+                                    .find((t) => t.name === monster);
+                                return example?.is_boss ? "👑" : null;
+                            })()}
+                            {monster}
+                        </td>
+                        {Object.entries(masters).map(([master, tasks]) => {
+                            const found = tasks.find((t) => t.name === monster);
+                            return (
+                                    <td
+                                            class="p-2 text-right"
+                                            data-master={master}
+                                            data-monster={monster}
+                                            data-weight={found ? found.weight : ""}
+                                            data-total={totals[master]}
+                                            data-slayer={found?.slayer_level || ""}
+                                            data-combat={found?.combat_level || ""}
+                                            data-quests={found?.quest ? found.quest.join(",") : ""}
+                                            data-unlocks={found?.unlock ? found.unlock.join(",") : ""}
+                                    >
+                                        {found
+                                            ? ((found.weight / totals[master]) * 100).toFixed(2) + "%"
+                                            : <span class="text-neutral-600">-</span>}
+                                    </td>
+                            );
+                        })}
+                    </tr>
+            ))}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+    const $table = document.getElementById("slayer-table");
+    const $search = document.getElementById("monster-search");
+    const $slayerLevel = document.getElementById("slayer-level");
+    const $combatLevel = document.getElementById("combat-level");
+
+    const $toggleQuests = document.getElementById("toggle-quests");
+    const $toggleUnlocks = document.getElementById("toggle-unlocks");
+
+    const $showPercent = document.getElementById("show-percent");
+    const $showWeight = document.getElementById("show-weight");
+
+    let mode = "percent";
+    let sortDirections = {};
+
+    // Percent/weight toggle
+    function updateMode() {
+        mode = $showWeight.checked ? "weight" : "percent";
+        updateTable();
+    }
+    $showPercent.addEventListener("change", () => {
+        $showWeight.checked = !$showPercent.checked;
+        updateMode();
+    });
+    $showWeight.addEventListener("change", () => {
+        $showPercent.checked = !$showWeight.checked;
+        updateMode();
+    });
+
+    // Recalculate + handle requirements
+    function updateTable() {
+        const slayerReq = parseInt($slayerLevel.value) || 120;
+        const combatReq = parseInt($combatLevel.value) || 120;
+
+        const checkedQuests = Array.from(document.querySelectorAll("input[id^='quest-']:checked"))
+            .map((el) => el.id.replace("quest-", ""));
+        const checkedUnlocks = Array.from(document.querySelectorAll("input[id^='unlock-']:checked"))
+            .map((el) => el.id.replace("unlock-", ""));
+
+        // recalc totals per master considering locked tasks = weight 0
+        const totals = {};
+        $table.querySelectorAll("thead th[data-sort]").forEach((th) => {
+            const master = th.dataset.sort;
+            if (master === "monster") return;
+            let total = 0;
+            $table.querySelectorAll(`tbody td[data-master="${master}"]`).forEach((cell) => {
+                let weight = parseFloat(cell.dataset.weight) || 0;
+                let missing = [];
+                const slayer = parseInt(cell.dataset.slayer) || 0;
+                const combat = parseInt(cell.dataset.combat) || 0;
+                const quests = cell.dataset.quests ? cell.dataset.quests.split(",") : [];
+                const unlocks = cell.dataset.unlocks ? cell.dataset.unlocks.split(",") : [];
+
+                if (slayer && slayer > slayerReq) missing.push(`Slayer lvl ${slayer}`);
+                if (combat && combat > combatReq) missing.push(`Combat lvl ${combat}`);
+                quests.forEach((q) => {
+                    if (!checkedQuests.includes(q)) missing.push(`Quest ${q}`);
+                });
+                unlocks.forEach((u) => {
+                    if (!checkedUnlocks.includes(u)) missing.push(`Unlock ${u}`);
+                });
+
+                if (missing.length > 0) weight = 0;
+                total += weight;
+            });
+            totals[master] = total;
+        });
+
+        // update cells
+        $table.querySelectorAll("tbody td[data-master]").forEach((cell) => {
+            if (!cell.dataset.weight) {
+                cell.textContent = "-";
+                cell.className = "p-2 text-right text-neutral-600";
+                cell.removeAttribute("title");
+                return;
+            }
+
+            let weight = parseFloat(cell.dataset.weight) || 0;
+            const master = cell.dataset.master;
+            let missing = [];
+            const slayer = parseInt(cell.dataset.slayer) || 0;
+            const combat = parseInt(cell.dataset.combat) || 0;
+            const quests = cell.dataset.quests ? cell.dataset.quests.split(",") : [];
+            const unlocks = cell.dataset.unlocks ? cell.dataset.unlocks.split(",") : [];
+
+            if (slayer && slayer > slayerReq) missing.push(`Slayer lvl ${slayer}`);
+            if (combat && combat > combatReq) missing.push(`Combat lvl ${combat}`);
+            quests.forEach((q) => {
+                if (!checkedQuests.includes(q)) missing.push(`Quest ${q}`);
+            });
+            unlocks.forEach((u) => {
+                if (!checkedUnlocks.includes(u)) missing.push(`Unlock ${u}`);
+            });
+
+            if (missing.length > 0) {
+                weight = 0;
+                cell.className = "p-2 text-right text-red-500 cursor-help";
+                cell.title = "Missing: " + missing.join(", ");
+            } else {
+                cell.className = "p-2 text-right";
+                cell.removeAttribute("title");
+            }
+
+            if (mode === "percent") {
+                const percent = totals[master] ? ((weight / totals[master]) * 100).toFixed(2) : "0";
+                cell.textContent = percent + "%";
+            } else {
+                cell.textContent = weight;
+            }
+        });
+    }
+
+    $slayerLevel.addEventListener("input", updateTable);
+    $combatLevel.addEventListener("input", updateTable);
+    document.querySelectorAll("input[id^='quest-'], input[id^='unlock-']")
+        .forEach((el) => el.addEventListener("change", updateTable));
+
+    // Select/unselect all
+    $toggleQuests.addEventListener("click", () => {
+        const all = document.querySelectorAll("input[id^='quest-']");
+        const shouldUnselect = Array.from(all).some((el) => el.checked);
+        all.forEach((el) => (el.checked = !shouldUnselect));
+        $toggleQuests.textContent = shouldUnselect ? "Select All" : "Unselect All";
+        updateTable();
+    });
+    $toggleUnlocks.addEventListener("click", () => {
+        const all = document.querySelectorAll("input[id^='unlock-']");
+        const shouldUnselect = Array.from(all).some((el) => el.checked);
+        all.forEach((el) => (el.checked = !shouldUnselect));
+        $toggleUnlocks.textContent = shouldUnselect ? "Select All" : "Unselect All";
+        updateTable();
+    });
+
+    // Search
+    $search.addEventListener("input", () => {
+        const query = $search.value.toLowerCase();
+        $table.querySelectorAll("tbody tr").forEach((row) => {
+            const monster = row.querySelector("td")?.textContent.toLowerCase() || "";
+            row.style.display = monster.includes(query) ? "" : "none";
+        });
+    });
+
+    // Sorting toggle asc/desc
+    const headers = $table.querySelectorAll("thead th[data-sort]");
+    headers.forEach((th) => {
+        th.addEventListener("click", () => {
+            const sortKey = th.dataset.sort;
+            const rows = Array.from($table.querySelectorAll("tbody tr"));
+            const direction = sortDirections[sortKey] === "asc" ? "desc" : "asc";
+            sortDirections[sortKey] = direction;
+
+            if (sortKey === "monster") {
+                rows.sort((a, b) => {
+                    const nameA = a.querySelector("td").textContent.toLowerCase();
+                    const nameB = b.querySelector("td").textContent.toLowerCase();
+                    return direction === "asc" ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+                });
+            } else {
+                rows.sort((a, b) => {
+                    const aCell = a.querySelector(`td[data-master="${sortKey}"]`);
+                    const bCell = b.querySelector(`td[data-master="${sortKey}"]`);
+                    const parseVal = (cell) => {
+                        if (!cell.dataset.weight) return -1;
+                        const text = cell.textContent.replace("%", "");
+                        return parseFloat(text) || 0;
+                    };
+                    const aVal = parseVal(aCell);
+                    const bVal = parseVal(bCell);
+
+                    if (direction === "asc") {
+                        if (aVal < 0) return 1; // push "0" or "-" down
+                        if (bVal <= 0) return -1;
+                        return aVal - bVal;
+                    } else {
+                        return bVal - aVal;
+                    }
+                });
+            }
+
+            rows.forEach((row) => $table.querySelector("tbody").appendChild(row));
+        });
+    });
+
+    updateTable();
+</script>
