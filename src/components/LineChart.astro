@@ -12,6 +12,7 @@ interface Props {
     preset?: "number" | "currency" | "percent";
     locale?: string;
     currency?: string;
+    yZero?: boolean;
     }
 
 const {
@@ -21,6 +22,7 @@ const {
     preset = "number",
     locale = "en-US",
     currency = "USD",
+    yZero = false
     } = Astro.props;
 ---
 
@@ -41,7 +43,7 @@ const {
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
 
-<script type="module" define:vars={{ id, labels, datasets, preset, locale, currency }}>
+<script type="module" define:vars={{ id, labels, datasets, preset, locale, currency, yZero }}>
     function formatTick(value) {
         switch (preset) {
             case "currency":
@@ -96,6 +98,7 @@ const {
                             callback: (v) => formatTick(v),
                         },
                         grid: { color: "#404040" },
+                        beginAtZero: yZero,
                     },
                 },
             },

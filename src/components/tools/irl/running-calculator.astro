@@ -1,0 +1,294 @@
+---
+export const tool = {
+    title: "Running Calculator",
+    description: "Lock one parameter (time, distance, or pace) and calculate the other two",
+};
+---
+<section class="max-w-xs mx-auto space-y-4">
+    <div class="flex justify-between sm:gap-16 gap-8">
+        <span id="select-time" class="cursor-pointer">Time</span>
+        <div>
+            <label for=time-hours class="sr-only">Hours</label>
+            <input type="number" id=time-hours aria-describedby="helper-text-explanation"
+                   class="bg-transparent placeholder-neutral-400 text-center outline-none placeholder:underline"
+                   placeholder="h" required/>
+            <span class="text-violet-400 mx-2">:</span>
+            <label for=time-minutes class="sr-only">Minutes</label>
+            <input type="number" id=time-minutes aria-describedby="helper-text-explanation"
+                   class="bg-transparent placeholder-neutral-400 text-center outline-none placeholder:underline"
+                   placeholder="m" required/>
+            <span class="text-violet-400 mx-2">:</span>
+            <label for=time-seconds class="sr-only">Seconds</label>
+            <input type="number" id=time-seconds aria-describedby="helper-text-explanation"
+                   class="bg-transparent placeholder-neutral-400 text-center outline-none placeholder:underline"
+                   placeholder="s" required/>
+        </div>
+    </div>
+
+    <div class="flex justify-between">
+        <span id="select-distance" class="cursor-pointer">Distance</span>
+        <label for=distance class="sr-only">Distance</label>
+        <input type="number" id=distance aria-describedby="helper-text-explanation"
+               class="bg-transparent placeholder-neutral-400 text-right outline-none placeholder:underline"
+               placeholder="km" required/>
+
+    </div>
+
+    <div class="flex justify-between locked">
+        <span id="select-pace" class="cursor-pointer">Pace</span>
+        <div>
+            <label for=pace-hours class="sr-only">Hours</label>
+            <input type="number" id=pace-hours aria-describedby="helper-text-explanation"
+                   class="bg-transparent placeholder-neutral-400 text-center outline-none placeholder:underline"
+                   placeholder="h" required/>
+            <span class="text-violet-400 mx-2">:</span>
+            <label for=pace-minutes class="sr-only">Minutes</label>
+            <input type="number" id=pace-minutes aria-describedby="helper-text-explanation"
+                   class="bg-transparent placeholder-neutral-400 text-center outline-none placeholder:underline"
+                   placeholder="m" required/>
+            <span class="text-violet-400 mx-2">:</span>
+            <label for=pace-seconds class="sr-only">Seconds</label>
+            <input type="number" id=pace-seconds aria-describedby="helper-text-explanation"
+                   class="bg-transparent placeholder-neutral-400 text-center outline-none placeholder:underline"
+                   placeholder="s" required/>
+        </div>
+    </div>
+</section>
+
+<script>
+    const $timeHours = document.getElementById('time-hours') as HTMLInputElement;
+    const $timeMinutes = document.getElementById('time-minutes') as HTMLInputElement;
+    const $timeSeconds = document.getElementById('time-seconds') as HTMLInputElement;
+    const $distance = document.getElementById('distance') as HTMLInputElement;
+    const $paceHours = document.getElementById('pace-hours') as HTMLInputElement;
+    const $paceMinutes = document.getElementById('pace-minutes') as HTMLInputElement;
+    const $paceSeconds = document.getElementById('pace-seconds') as HTMLInputElement;
+    const $selectTime = document.getElementById('select-time') as HTMLSpanElement;
+    const $selectDistance = document.getElementById('select-distance') as HTMLSpanElement;
+    const $selectPace = document.getElementById('select-pace') as HTMLSpanElement;
+
+    const calculateDistance = () => {
+        const paceHours = $paceHours.value ? Number($paceHours.value) : 0;
+        const paceMinutes = $paceMinutes.value ? Number($paceMinutes.value) : 0;
+        const paceSeconds = $paceSeconds.value ? Number($paceSeconds.value) : 0;
+        const timeHours = $timeHours.value ? Number($timeHours.value) : 0;
+        const timeMinutes = $timeMinutes.value ? Number($timeMinutes.value) : 0;
+        const timeSeconds = $timeSeconds.value ? Number($timeSeconds.value) : 0;
+
+        const time = (timeHours) * 3600 + (timeMinutes) * 60 + timeSeconds;
+        const pace = (paceHours) * 3600 + (paceMinutes * 60 + paceSeconds);
+
+        if (pace === 0) {
+            return;
+        }
+
+        const distanceValue = time / pace;
+
+        $distance.value = distanceValue.toFixed(2).toString();
+    }
+
+    const calculateTime = () => {
+        const paceHours = $paceHours.value ? Number($paceHours.value) : 0;
+        const paceMinutes = $paceMinutes.value ? Number($paceMinutes.value) : 0;
+        const paceSeconds = $paceSeconds.value ? Number($paceSeconds.value) : 0;
+        const distance = $distance.value ? Number($distance.value) : 0;
+
+        const pace = (paceHours) * 3600 + (paceMinutes * 60) + paceSeconds;
+        const distanceValue = distance;
+        const time = pace * distanceValue;
+        const timeHoursValue = Math.floor(time / 3600);
+        const timeMinutesValue = Math.floor((time % 3600) / 60);
+        const timeSecondsValue = Math.floor(time % 60);
+
+        $timeHours.value = timeHoursValue.toString();
+        $timeMinutes.value = timeMinutesValue.toString();
+        $timeSeconds.value = timeSecondsValue.toString();
+    }
+
+    const calculatePace = () => {
+        const timeHours = $timeHours.value ? Number($timeHours.value) : 0;
+        const timeMinutes = $timeMinutes.value ? Number($timeMinutes.value) : 0;
+        const timeSeconds = $timeSeconds.value ? Number($timeSeconds.value) : 0;
+        const distance = $distance.value ? Number($distance.value) : 0;
+
+        const time = (timeHours) * 3600 + (timeMinutes) * 60 + timeSeconds;
+        const distanceValue = distance;
+
+        if (distanceValue === 0) {
+            return;
+        }
+
+        const pace = time / distanceValue;
+        const paceHoursValue = Math.floor(pace / 3600);
+        const paceMinutesValue = Math.floor((pace % 3600) / 60);
+        const paceSecondsValue = Math.floor(pace % 60);
+
+        $paceHours.value = paceHoursValue.toString();
+        $paceMinutes.value = paceMinutesValue.toString();
+        $paceSeconds.value = paceSecondsValue.toString();
+    }
+
+    const updateTabIndex = () => {
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            if (input.closest('.locked')) {
+                input.setAttribute('tabindex', '-1');
+            } else {
+                input.removeAttribute('tabindex');
+            }
+        });
+    }
+
+    updateTabIndex();
+
+
+    $selectTime.addEventListener('click', () => {
+        $selectTime.parentElement!.classList.add('locked');
+        $selectDistance.parentElement!.classList.remove('locked');
+        $selectPace.parentElement!.classList.remove('locked');
+        updateTabIndex();
+    });
+
+    $selectDistance.addEventListener('click', () => {
+        $selectTime.parentElement!.classList.remove('locked');
+        $selectDistance.parentElement!.classList.add('locked');
+        $selectPace.parentElement!.classList.remove('locked');
+        updateTabIndex();
+    });
+
+    $selectPace.addEventListener('click', () => {
+        $selectTime.parentElement!.classList.remove('locked');
+        $selectDistance.parentElement!.classList.remove('locked');
+        $selectPace.parentElement!.classList.add('locked');
+        updateTabIndex();
+    });
+
+    $timeHours.addEventListener('input', calculate);
+    $timeMinutes.addEventListener('input', calculate);
+    $timeSeconds.addEventListener('input', calculate);
+    $distance.addEventListener('input', calculate);
+    $paceHours.addEventListener('input', calculate);
+    $paceMinutes.addEventListener('input', calculate);
+    $paceSeconds.addEventListener('input', calculate);
+
+    function calculate() {
+        if ($selectTime.parentElement!.classList.contains('locked')) {
+            calculateTime();
+        } else if ($selectDistance.parentElement!.classList.contains('locked')) {
+            calculateDistance();
+        } else if ($selectPace.parentElement!.classList.contains('locked')) {
+            calculatePace();
+        }
+    }
+
+
+    $timeHours.addEventListener('input', () => {
+        if ($timeHours.value.length > 2) {
+            $timeHours.value = $timeHours.value.slice(0, 2);
+        }
+
+        if ($timeHours.value.length === 2) {
+            $timeMinutes.select();
+        }
+    });
+
+    $timeMinutes.addEventListener('input', () => {
+        if ($timeMinutes.value.length > 2) {
+            $timeMinutes.value = $timeMinutes.value.slice(0, 2);
+        }
+
+        if ($timeMinutes.value.length === 2) {
+            $timeSeconds.select();
+        }
+    });
+
+    $timeSeconds.addEventListener('input', () => {
+        if ($timeSeconds.value.length > 2) {
+            $timeSeconds.value = $timeSeconds.value.slice(0, 2);
+        }
+
+        if ($timeSeconds.value.length === 2) {
+            if ($selectDistance.parentElement!.classList.contains('locked')) {
+                $paceHours.select();
+            } else {
+                $distance.select();
+            }
+        }
+    });
+
+    $paceHours.addEventListener('input', () => {
+        if ($paceHours.value.length > 2) {
+            $paceHours.value = $paceHours.value.slice(0, 2);
+        }
+
+        if ($paceHours.value.length === 2) {
+            $paceMinutes.select();
+        }
+    });
+
+    $paceMinutes.addEventListener('input', () => {
+        if ($paceMinutes.value.length > 2) {
+            $paceMinutes.value = $paceMinutes.value.slice(0, 2);
+        }
+
+        if ($paceMinutes.value.length === 2) {
+            $paceSeconds.select();
+        }
+    });
+
+    $paceSeconds.addEventListener('input', () => {
+        if ($paceSeconds.value.length > 2) {
+            $paceSeconds.value = $paceSeconds.value.slice(0, 2);
+        }
+
+        if ($paceSeconds.value.length === 2) {
+            if ($selectTime.parentElement!.classList.contains('locked')) {
+                $distance.select();
+            } else {
+                $timeHours.select();
+            }
+        }
+    });
+
+
+</script>
+
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    input {
+        width: 2ch;
+        transition: color 0.2s ease, opacity 0.2s ease; /* smooth feedback */
+    }
+
+    #distance {
+        width: 5ch;
+    }
+
+    .locked {
+        pointer-events: none;
+        opacity: 0.5;
+        transition: opacity 0.2s ease; /* smooth fade when locking/unlocking */
+    }
+
+    /* Labels */
+    span.cursor-pointer {
+        transition: color 0.2s ease, opacity 0.2s ease;
+        color: rgb(229 229 229);
+    }
+
+    /* Hover effect when NOT locked */
+    span.cursor-pointer:hover:not(.locked) {
+        opacity: 0.75;
+    }
+</style>

@@ -31,10 +31,18 @@ if (segments.length > 1) {
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <meta name="generator" content={Astro.generator}/>
     <title>{title ? `${title} | Tools` : "Tools"}</title>
-        </head>
+    <!-- Standard favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Apple devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- ICO fallback for older browsers -->
+    <link rel="icon" href="/favicon.ico" />
+</head>
         <body class="min-h-screen flex flex-col">
         <main class="flex-1 space-y-6 px-6">
             {breadcrumbItems.length > 0 && (
