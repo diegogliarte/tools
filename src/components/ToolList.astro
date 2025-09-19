@@ -1,0 +1,18 @@
+---
+const { tools } = Astro.props as {
+  tools: { name: string; href: string; description?: string }[];
+};
+---
+<ul>
+  {tools.map((tool) => (
+      <li>
+        <a
+            href={tool.href.toLowerCase()}
+            class="group flex items-center gap-2 rounded-md px-2 py-1 text-neutral-300 hover:text-neutral-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60"
+        >
+            <span aria-hidden="true" class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-violet-400 group-focus:bg-violet-400 transition-colors"></span>
+          <span>{tool.name}</span>
+        </a>
+      </li>
+  ))}
+</ul>

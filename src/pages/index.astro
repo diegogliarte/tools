@@ -1,0 +1,26 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ToolList from "@components/ToolList.astro";
+import { discoverTools } from "@lib/discover-tools";
+
+const categories = discoverTools();
+---
+
+<Layout title="Home">
+	<div class="space-y-8 columns-1 sm:columns-2 lg:columns-3 gap-6">
+		{categories.map((category) => (
+			<section class="break-inside-avoid">
+				<h2 class="text-lg font-semibold mb-2">
+					<a
+						href={`/${category.title.toLowerCase()}`}
+						class="text-neutral-100 hover:text-violet-400 transition-colors"
+						aria-label={`View all ${category.title} tools`}
+					>
+						{category.title}
+					</a>
+				</h2>
+				<ToolList tools={category.tools} />
+			</section>
+		))}
+	</div>
+</Layout>

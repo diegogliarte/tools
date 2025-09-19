@@ -1,0 +1,36 @@
+---
+const { items } = Astro.props as {
+  items: { label: string; href?: string }[];
+};
+---
+
+<nav class="text-sm text-neutral-400">
+  <ol class="flex flex-wrap items-center gap-2">
+    {items.map((item, i) => {
+      const isLast = i === items.length - 1;
+      return (
+          <>
+            {item.href && !isLast ? (
+                <li>
+                  <a
+                      href={item.href}
+                      class="hover:text-violet-400 transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+            ) : (
+                <li
+                    class={isLast ? "text-neutral-100 font-medium" : "text-neutral-200"}
+                >
+                  {item.label}
+                </li>
+            )}
+            {i < items.length - 1 && (
+                <li class="text-neutral-600">/</li>
+            )}
+          </>
+      );
+    })}
+  </ol>
+</nav>

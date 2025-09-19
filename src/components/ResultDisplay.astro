@@ -1,0 +1,99 @@
+---
+interface Props {
+    id: string;
+    label?: string;
+    value?: string;
+    description?: string;
+    copiable?: boolean;
+    variant?: "box" | "field";
+    color?: "neutral" | "blue" | "green" | "yellow" | "red" | "violet";
+}
+
+const {
+    id,
+    label = "",
+    value = "—",
+    description = "",
+    copiable = false,
+    variant = "field",
+    color = "neutral",
+} = Astro.props;
+---
+
+{variant === "box" ? (
+<div
+        id={id}
+        data-color={color}
+        class="rounded-lg border p-4 text-left bg-neutral-900"
+>
+    {label && <p class="text-sm font-medium text-neutral-400">{label}</p>}
+    <p data-value class="text-xl font-bold">{value}</p>
+    {description && (
+    <p data-description class="text-sm">{description}</p>
+        )}
+        </div>
+        ) : (
+<div class="text-left">
+    {label && <p class="text-sm font-medium text-neutral-400">{label}</p>}
+    <p
+            id={id}
+            data-color={color}
+            class="font-mono text-xs break-all transition-colors cursor-pointer hover:text-violet-400"
+    >
+        {value}
+    </p>
+    {description && (
+            <p data-description class="text-xs text-neutral-400">{description}</p>
+    )}
+</div>
+        )}
+
+<script define:vars={{ id, copiable }}>
+    if (copiable) {
+        const el = document.getElementById(id);
+        el?.addEventListener("click", async () => {
+            const text = el.textContent.trim();
+            if (text === "—") return;
+            await window.copyToClipboard?.(text, "Copied to clipboard", "Failed to copy");
+        });
+    }
+</script>
+
+<style>
+    /* ---- shared color variants ---- */
+
+    /* Box variant border */
+    [data-color="neutral"] { border-color: rgb(64 64 64); }
+    [data-color="blue"]    { border-color: rgb(96 165 250 / 0.4); }
+    [data-color="green"]   { border-color: rgb(74 222 128 / 0.4); }
+    [data-color="yellow"]  { border-color: rgb(250 204 21 / 0.4); }
+    [data-color="red"]     { border-color: rgb(248 113 113 / 0.4); }
+    [data-color="violet"]  { border-color: rgb(167 139 250 / 0.4); }
+
+    /* Box variant value + description text */
+    [data-color="neutral"] [data-value],
+    [data-color="neutral"] [data-description] { color: rgb(245 245 245); }
+
+    [data-color="blue"] [data-value],
+    [data-color="blue"] [data-description] { color: rgb(147 197 253); }
+
+    [data-color="green"] [data-value],
+    [data-color="green"] [data-description] { color: rgb(134 239 172); }
+
+    [data-color="yellow"] [data-value],
+    [data-color="yellow"] [data-description] { color: rgb(253 224 71); }
+
+    [data-color="red"] [data-value],
+    [data-color="red"] [data-description] { color: rgb(252 165 165); }
+
+    [data-color="violet"] [data-value],
+    [data-color="violet"] [data-description] { color: rgb(196 181 253); }
+
+    /* Field variant text */
+    p[data-color="neutral"] { color: rgb(245 245 245); }
+    p[data-color="blue"]    { color: rgb(147 197 253); }
+    p[data-color="green"]   { color: rgb(134 239 172); }
+    p[data-color="yellow"]  { color: rgb(253 224 71); }
+    p[data-color="red"]     { color: rgb(252 165 165); }
+    p[data-color="violet"]  { color: rgb(196 181 253); }
+</style>

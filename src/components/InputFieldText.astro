@@ -1,0 +1,19 @@
+---
+let { label, id, placeholder = "" } = Astro.props as {
+    label: string;
+    id: string;
+    placeholder?: string;
+};
+---
+
+<div class="w-full">
+    <label for={id} class="block mb-2 text-left text-sm font-medium text-neutral-300">
+        {label}
+    </label>
+    <input
+            type="text"
+            id={id}
+            placeholder={placeholder}
+            class="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-neutral-100 placeholder-neutral-500 outline-none focus:border-violet-500 transition-colors"
+    />
+</div>

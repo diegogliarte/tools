@@ -1,0 +1,133 @@
+---
+interface Dataset {
+    label: string;
+    data: number[];
+    color: string;
+    }
+
+interface Props {
+    id: string;
+    labels: string[];
+    datasets: Dataset[];
+    preset?: "number" | "currency" | "percent";
+    locale?: string;
+    currency?: string;
+    }
+
+const {
+    id,
+    labels = [],
+    datasets = [],
+    preset = "number",
+    locale = "en-US",
+    currency = "USD",
+    } = Astro.props;
+---
+
+<div class="bg-neutral-900 rounded-lg border border-neutral-700 p-4 relative">
+    <!-- Chart -->
+    <canvas id={id} height="240" class={labels.length && datasets.length ? "" : "hidden"}></canvas>
+
+    <!-- Fallback message -->
+    <div
+            id={`${id}-empty`}
+            class={`absolute inset-0 flex items-center justify-center text-neutral-400 text-sm ${
+                labels.length && datasets.length ? "hidden" : ""
+            }`}
+    >
+        No data
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+
+<script type="module" define:vars={{ id, labels, datasets, preset, locale, currency }}>
+    function formatTick(value) {
+        switch (preset) {
+            case "currency":
+                return value.toLocaleString(locale, {
+                    style: "currency",
+                    currency,
+                    maximumFractionDigits: 0,
+                });
+            case "percent":
+                return value.toLocaleString(locale, {
+                    style: "percent",
+                    maximumFractionDigits: 1,
+                });
+            default:
+                return value.toLocaleString(locale);
+        }
+    }
+
+    const ctx = document.getElementById(id);
+    const emptyMsg = document.getElementById(`${id}-empty`);
+
+    if (ctx && window.Chart) {
+        const chart = new window.Chart(ctx, {
+            type: "line",
+            data: {
+                labels,
+                datasets: datasets.map((d) => ({
+                    label: d.label,
+                    data: d.data,
+                    borderColor: d.color,
+                    backgroundColor: d.color + "33",
+                    borderWidth: 2,
+                    tension: 0.25,
+                    fill: true,
+                    pointRadius: 2,
+                    pointHoverRadius: 4,
+                })),
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: "#e5e5e5" } },
+                },
+                scales: {
+                    x: {
+                        ticks: { color: "#a3a3a3" },
+                        grid: { color: "#404040" },
+                    },
+                    y: {
+                        ticks: {
+                            color: "#a3a3a3",
+                            callback: (v) => formatTick(v),
+                        },
+                        grid: { color: "#404040" },
+                    },
+                },
+            },
+        });
+
+        // Handle updates
+        ctx.addEventListener("update-chart", (e) => {
+            const { labels, datasets } = e.detail;
+
+            chart.data.labels = labels;
+            chart.data.datasets = datasets.map((d) => ({
+                label: d.label,
+                data: d.data,
+                borderColor: d.color,
+                backgroundColor: d.color + "33",
+                borderWidth: 2,
+                tension: 0.25,
+                fill: true,
+                pointRadius: 2,
+                pointHoverRadius: 4,
+            }));
+            chart.update();
+
+
+            // Toggle fallback visibility
+            if (labels.length && datasets.length) {
+                ctx.classList.remove("hidden");
+                emptyMsg.classList.add("hidden");
+            } else {
+                ctx.classList.add("hidden");
+                emptyMsg.classList.remove("hidden");
+            }
+        });
+    }
+</script>

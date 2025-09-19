@@ -1,0 +1,60 @@
+---
+import InputFieldText from "@components/InputFieldText.astro";
+import ResultDisplay from "@components/ResultDisplay.astro";
+
+export const tool = {
+    title: "Hasher Generator",
+    description: "Generate hashes (MD5, SHA1, SHA256, SHA512) from text in real-time",
+};
+---
+
+<section class="max-w-2xl mx-auto space-y-8">
+    <InputFieldText id="inputText" label="Enter text to hash" placeholder="Type something..." />
+
+    <div class="text-left space-y-4">
+        <ResultDisplay id="md5" label="MD5" copiable variant="field" />
+        <ResultDisplay id="sha1" label="SHA1" copiable variant="field" />
+        <ResultDisplay id="sha256" label="SHA256" copiable variant="field" />
+        <ResultDisplay id="sha512" label="SHA512" copiable variant="field" />
+    </div>
+</section>
+
+<script is:inline src="/md5.js"></script>
+
+<script>
+    const $input = document.getElementById("inputText");
+    const $md5 = document.getElementById("md5");
+    const $sha1 = document.getElementById("sha1");
+    const $sha256 = document.getElementById("sha256");
+    const $sha512 = document.getElementById("sha512");
+
+    async function hashMessage(message, algorithm) {
+        if (algorithm === "MD5") return md5(message);
+
+        const encoder = new TextEncoder();
+        const data = encoder.encode(message);
+        const hash = await crypto.subtle.digest(algorithm, data);
+        return Array.from(new Uint8Array(hash))
+            .map(b => b.toString(16).padStart(2, "0"))
+            .join("");
+    }
+
+    async function generate() {
+        const text = $input.value;
+        if (!text) {
+            $md5.textContent = $sha1.textContent = $sha256.textContent = $sha512.textContent = "—";
+            return;
+        }
+
+        try {
+            $md5.textContent = await hashMessage(text, "MD5");
+            $sha1.textContent = await hashMessage(text, "SHA-1");
+            $sha256.textContent = await hashMessage(text, "SHA-256");
+            $sha512.textContent = await hashMessage(text, "SHA-512");
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    $input.addEventListener("input", generate);
+</script>

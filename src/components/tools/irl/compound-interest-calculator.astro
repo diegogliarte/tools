@@ -1,0 +1,97 @@
+---
+import InputFieldNumber from "@components/InputFieldNumber.astro";
+import ResultDisplay from "@components/ResultDisplay.astro";
+import LineChart from "@components/LineChart.astro";
+
+export const tool = {
+    title: "Compound Interest Calculator",
+    description: "Calculate growth of your savings with monthly contributions and annual rate.",
+};
+---
+
+<section class="max-w-2xl mx-auto space-y-8 text-center">
+    <div id="ci-form" class="space-y-5 text-left">
+        <div class="grid grid-cols-2 gap-4">
+            <InputFieldNumber id="principal" label="Initial (€)" placeholder="1000" min={0} step={100} />
+            <InputFieldNumber id="contribution" label="Monthly (€)" placeholder="100" min={0} step={10} />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <InputFieldNumber id="years" label="Years" placeholder="5" min={0} step={1} />
+            <InputFieldNumber id="months" label="Months" placeholder="0" min={0} step={1} max={11} />
+        </div>
+        <InputFieldNumber id="rate" label="Annual Rate (%)" placeholder="5" min={0} step={0.1} />
+    </div>
+
+    <!-- Results -->
+    <div class="grid sm:grid-cols-3 gap-4 text-left">
+        <ResultDisplay id="contributedBox" label="Contributed" value="€0" color="blue" variant="box" />
+        <ResultDisplay id="earnedBox" label="Earned" value="€0" color="green" variant="box" />
+        <ResultDisplay id="totalBox" label="Total" value="€0" color="violet" variant="box" />
+    </div>
+
+    <LineChart id="ci-chart" preset="currency" locale="es-ES" currency="EUR" labels={[]} datasets={[]} />
+
+</section>
+
+<script>
+    const $form = document.getElementById("ci-form");
+    const $contributed = document.querySelector("#contributedBox [data-value]");
+    const $earned = document.querySelector("#earnedBox [data-value]");
+    const $total = document.querySelector("#totalBox [data-value]");
+    const $chart = document.getElementById("ci-chart");
+
+    function formatMoney(n) {
+        return n.toLocaleString("es-ES", {
+            style: "currency",
+            currency: "EUR",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+    }
+
+    function calculate() {
+        const principal = parseFloat(document.getElementById("principal")?.value) || 0;
+        const contribution = parseFloat(document.getElementById("contribution")?.value) || 0;
+        const years = parseInt(document.getElementById("years")?.value) || 0;
+        const months = parseInt(document.getElementById("months")?.value) || 0;
+        const rate = parseFloat(document.getElementById("rate")?.value) / 100 || 0;
+
+        const totalMonths = years * 12 + months;
+        const monthlyRate = rate / 12;
+
+        let futureValue = principal;
+        let totalContributed = principal;
+
+        const contributedData = [principal];
+        const totalData = [principal];
+        const labels = [];
+
+        for (let i = 1; i <= totalMonths; i++) {
+            futureValue = futureValue * (1 + monthlyRate) + contribution;
+            totalContributed += contribution;
+
+            contributedData.push(totalContributed);
+            totalData.push(futureValue);
+            labels.push(i.toString());
+        }
+
+        const earned = futureValue - totalContributed;
+
+        $contributed.textContent = formatMoney(totalContributed);
+        $earned.textContent = formatMoney(earned);
+        $total.textContent = formatMoney(futureValue);
+
+        $chart?.dispatchEvent(new CustomEvent("update-chart", {
+            detail: {
+                labels,
+                datasets: [
+                    { label: "Contributed", data: contributedData, color: "#60a5fa" },
+                    { label: "Total", data: totalData, color: "#a78bfa" },
+                ],
+            },
+        }));
+    }
+
+    $form.addEventListener("input", calculate);
+    calculate();
+</script>

@@ -1,0 +1,162 @@
+---
+let { label, id, placeholder = "", step = 1, min = -Infinity, max = Infinity, value = "" } = Astro.props as {
+    label: string;
+    id: string;
+    placeholder?: string;
+    step?: number;
+    min?: number;
+    max?: number;
+    value?: number | string;
+};
+---
+
+<div class="w-full">
+    <label for={id} class="block mb-2 text-left text-sm font-medium text-neutral-300">
+        {label}
+    </label>
+
+    <div class="flex items-center rounded-md flex border border-neutral-700 bg-neutral-900 transition">
+        <button
+                type="button"
+                id={`decrement-button-${id}`}
+                class="font-bold p-2 w-12 h-full rounded-s-md cursor-pointer transition text-violet-300 hover:text-violet-400"
+                aria-label="Decrease"
+        >−</button>
+
+        <input
+                type="number"
+                id={id}
+                class="p-2 w-full text-center outline-none"
+                placeholder={placeholder}
+                value={value}
+                step={step}
+                min={min}
+                max={max}
+                data-step={step}
+                data-min={min}
+                data-max={max}
+        />
+
+        <button
+                type="button"
+                id={`increment-button-${id}`}
+                class="font-bold p-2 w-12 rounded-e-md cursor-pointer transition text-violet-300 hover:text-violet-400"
+                aria-label="Increase"
+        >+</button>
+    </div>
+</div>
+
+<script define:vars={{ id, step, min, max }}>
+    const input = document.getElementById(id);
+    const decrementButton = document.getElementById(`decrement-button-${id}`);
+    const incrementButton = document.getElementById(`increment-button-${id}`);
+
+    const getStep = () => {
+        const step = parseFloat(input.dataset.step || String(step) || "1");
+        return Number.isFinite(step) ? step : 1;
+    };
+
+    function roundToStep(value, step) {
+        const decimals = (step.toString().split(".")[1] || "").length;
+        return parseFloat(value.toFixed(decimals));
+    }
+
+    const getMin = () => {
+        const min = parseFloat(input.dataset.min || String(min) || "0");
+        return Number.isFinite(min) ? min : 0;
+    };
+
+    const getMax = () => {
+        const max = parseFloat(input.dataset.max || String(max) || "Infinity");
+        return Number.isFinite(max) ? max : Infinity;
+    };
+
+    const seedIfEmpty = () => {
+        if (!input.value) {
+            const placeholder = parseFloat(input.placeholder || "0");
+            input.value = Number.isFinite(placeholder) ? String(placeholder) : "0";
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            return true;
+        }
+        return false;
+    };
+
+    const clampAndSet = (value, redispatch = true) => {
+        let newValue = Number.isFinite(value) ? value : 0;
+        const min = getMin();
+        const max = getMax();
+        if (newValue < min) newValue = min;
+        if (newValue > max) newValue = max;
+        input.value = String(newValue);
+
+        if (redispatch) {
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+    };
+
+    const stepOnce = (dir) => {
+        if (seedIfEmpty()) return;
+        const step = getStep();
+        let value = parseFloat(input.value || "0") || 0;
+        value += dir === "inc" ? step : -step;
+        value = roundToStep(value, step);
+        clampAndSet(value);
+    };
+
+    // --- press & hold (pointer) ---
+    let holdTO, holdIV;
+
+    const startHold = (dir) => {
+        if (seedIfEmpty()) return;
+        // immediate step
+        stepOnce(dir);
+        // after delay, repeat fast
+        holdTO = setTimeout(() => {
+            holdIV = setInterval(() => stepOnce(dir), 60);
+        }, 300);
+    };
+    const stopHold = () => {
+        clearTimeout(holdTO); holdTO = undefined;
+        clearInterval(holdIV); holdIV = undefined;
+    };
+
+    const onPointerDown = (e, dir) => {
+        e.preventDefault();
+        const target = e.currentTarget;
+        if (target.setPointerCapture) target.setPointerCapture(e.pointerId);
+        startHold(dir);
+    };
+
+    decrementButton.addEventListener("pointerdown", (e) => onPointerDown(e, "dec"));
+    incrementButton.addEventListener("pointerdown", (e) => onPointerDown(e, "inc"));
+    decrementButton.addEventListener("pointerup", stopHold);
+    incrementButton.addEventListener("pointerup", stopHold);
+    decrementButton.addEventListener("pointerleave", stopHold);
+    incrementButton.addEventListener("pointerleave", stopHold);
+    decrementButton.addEventListener("pointercancel", stopHold);
+    incrementButton.addEventListener("pointercancel", stopHold);
+    window.addEventListener("blur", stopHold);
+
+    // --- manual typing: clamp on-the-fly (min only) ---
+    input.addEventListener("input", () => {
+        if (input.value === "") return; // let parent know it's empty
+        const v = parseFloat(input.value);
+        if (!Number.isFinite(v)) {
+            input.value = "";
+            return;
+        }
+        clampAndSet(v, false); // 👈 don’t redispatch from inside input handler
+    });
+
+    // --- keyboard arrows ---
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp")  { e.preventDefault(); stepOnce("inc"); }
+        if (e.key === "ArrowDown"){ e.preventDefault(); stepOnce("dec"); }
+    });
+</script>
+
+<style>
+    /* Hide native number spinners (keep your own styling) */
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+</style>

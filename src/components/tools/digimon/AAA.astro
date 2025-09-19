@@ -1,0 +1,84 @@
+---
+import Layout from "@layouts/Layout.astro";
+import InputFieldNumber from "@components/InputFieldNumber.astro";
+
+export const tool = {
+    title: "Digiiiii Mon",
+    description: "Calculate your Body Mass Index easily.",
+};
+
+---
+
+<Layout title={tool.title}>
+    <section class="space-y-6">
+        <h1 class="text-2xl font-bold text-neutral-100">{tool.title}</h1>
+        <p class="text-neutral-400 text-sm">
+            Enter your height and weight to calculate your Body Mass Index (BMI).
+        </p>
+
+        <form id="bmi-form" class="space-y-4 max-w-sm">
+            <InputFieldNumber id="height" label="Height (cm)" placeholder="e.g. 170" min={50} max={250} step={1} />
+            <InputFieldNumber id="weight" label="Weight (kg)" placeholder="e.g. 65" min={10} max={300} step={0.1} />
+            <button
+                    type="button"
+                    id="calc-btn"
+                    class="w-full rounded-md bg-violet-600 hover:bg-violet-500 px-4 py-2 font-medium text-white transition-colors"
+            >
+                Calculate
+            </button>
+        </form>
+
+        <div id="result-box" class="hidden rounded-lg border border-neutral-700 bg-neutral-900 p-4 transition-colors">
+            <p id="bmi-value" class="text-xl font-bold text-neutral-100"></p>
+            <p id="bmi-category" class="text-sm"></p>
+        </div>
+
+        <div class="mt-6">
+            <h2 class="text-lg font-semibold text-neutral-100">BMI Categories</h2>
+            <ul class="mt-2 space-y-1 text-sm">
+                <li class="text-blue-400">Underweight: &lt; 18.5</li>
+                <li class="text-green-400">Normal weight: 18.5 – 24.9</li>
+                <li class="text-yellow-400">Overweight: 25 – 29.9</li>
+                <li class="text-red-400">Obese: 30 or greater</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        const btn = document.getElementById("calc-btn");
+        const resultBox = document.getElementById("result-box");
+        const bmiValue = document.getElementById("bmi-value");
+        const bmiCategory = document.getElementById("bmi-category");
+
+        btn.addEventListener("click", () => {
+            const height = parseFloat((document.getElementById("height") as HTMLInputElement).value);
+            const weight = parseFloat((document.getElementById("weight") as HTMLInputElement).value);
+
+            if (!height || !weight) return;
+
+            const bmi = weight / ((height / 100) ** 2);
+            let category = "";
+            let color = "";
+
+            if (bmi < 18.5) {
+                category = "Underweight";
+                color = "text-blue-400";
+            } else if (bmi < 25) {
+                category = "Normal weight";
+                color = "text-green-400";
+            } else if (bmi < 30) {
+                category = "Overweight";
+                color = "text-yellow-400";
+            } else {
+                category = "Obese";
+                color = "text-red-400";
+            }
+
+            bmiValue.textContent = `BMI: ${bmi.toFixed(1)}`;
+            bmiCategory.textContent = category;
+            bmiCategory.className = `text-sm font-medium ${color}`;
+
+            resultBox.classList.remove("hidden");
+        });
+    </script>
+</Layout>

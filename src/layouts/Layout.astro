@@ -1,0 +1,70 @@
+---
+import "@styles/global.css";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import {findCategoryTitle, findToolTitle} from "@lib/discover-tools";
+import Toast from "@components/Toast.astro";
+const {title} = Astro.props
+
+// auto-generate breadcrumbs from current path
+const path = Astro.url.pathname; // e.g. "/irl/my-tool"
+const segments = path.split("/").filter(Boolean); // ["irl","my-tool"]
+
+let breadcrumbItems: { label: string; href?: string }[] = [{label: "Home", href: "/"}];
+
+if (segments.length > 0) {
+    const categorySlug = segments[0];
+    breadcrumbItems.push({
+        label: findCategoryTitle(categorySlug) ?? categorySlug,
+        href: `/${categorySlug}`,
+    });
+}
+
+if (segments.length > 1) {
+    const toolSlug = segments[1];
+    breadcrumbItems.push({
+        label: findToolTitle(segments[0], toolSlug) ?? toolSlug,
+    });
+}
+---
+<!doctype html>
+<html lang="en" class="bg-neutral-950 text-neutral-200">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="generator" content={Astro.generator}/>
+    <title>{title ? `${title} | Tools` : "Tools"}</title>
+        </head>
+        <body class="min-h-screen flex flex-col">
+        <main class="flex-1 space-y-6 px-6">
+            {breadcrumbItems.length > 0 && (
+                    <div class="border-b border-neutral-600">
+                        <div class="max-w-5xl mx-auto py-3">
+                            <Breadcrumbs items={breadcrumbItems}/>
+                        </div>
+                    </div>
+            )}
+
+            <div class="max-w-5xl mx-auto">
+                <slot/>
+            </div>
+            <Toast/>
+        </main>
+        <footer class="p-4 text-center text-xs text-neutral-500">
+            © {new Date().getFullYear()} by
+            <a
+                    href="https://linkedin.com/in/diegogliarte"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="text-violet-400 hover:underline"
+            >
+                diegogliarte
+            </a>
+        </footer>
+        </body>
+        </html>
+
+<script type="module">
+    import { copyToClipboard } from "/src/lib/clipboard.ts";
+    window.copyToClipboard = copyToClipboard;
+</script>

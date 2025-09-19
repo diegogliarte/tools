@@ -1,0 +1,61 @@
+---
+import InputFieldText from "@components/InputFieldText.astro";
+
+export const tool = {
+    title: "QR Code Generator",
+    description: "Generate and download QR codes instantly",
+};
+---
+
+<section class="max-w-lg mx-auto text-center space-y-8">
+    <InputFieldText id="qr-code" label="Enter a text or URL" placeholder="https://example.com" />
+
+    <div class="flex flex-col items-center gap-4">
+        <canvas
+                id="qr"
+                class="rounded-lg bg-white transition-opacity duration-300 opacity-0 cursor-pointer"
+                width="256"
+                height="256"
+        ></canvas>
+        <p id="qr-caption" class="text-xs text-neutral-400"></p>
+    </div>
+</section>
+
+<script>
+    import QRCode from "qrcode";
+
+    const $qrCode = document.getElementById("qr-code");
+    const $qr = document.getElementById("qr");
+    const $caption = document.getElementById("qr-caption");
+
+    async function generateQR() {
+        const text = $qrCode.value.trim();
+
+        if (!text) {
+            const ctx = $qr.getContext("2d");
+            ctx.clearRect(0, 0, $qr.width, $qr.height);
+            $qr.style.opacity = "0";
+            $caption.textContent = "";
+            return;
+        }
+
+        try {
+            await QRCode.toCanvas($qr, text, { width: 256, margin: 2 });
+            $qr.style.opacity = "1";
+            $caption.textContent = "Click QR to download";
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    $qrCode.addEventListener("input", generateQR);
+
+    $qr.addEventListener("click", () => {
+        if (!$qrCode.value.trim()) return;
+        const link = document.createElement("a");
+        link.href = $qr.toDataURL("image/png");
+        link.download = "qr-code.png";
+        link.click();
+        window.showToast?.("QR downloaded", "success");
+    });
+</script>

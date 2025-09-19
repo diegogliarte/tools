@@ -1,0 +1,32 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { discoverTools } from "@lib/discover-tools";
+import ToolHeader from "@components/ToolHeader.astro";
+
+export async function getStaticPaths() {
+    const categories = discoverTools();
+    return categories.flatMap(cat =>
+        cat.tools.map(tool => ({
+            params: { category: cat.title.toLowerCase(), tool: tool.href.split("/").pop() }
+        }))
+    );
+}
+
+const { category, tool } = Astro.params;
+const all = discoverTools();
+
+// normalize
+const categoryGroup = all.find(c => c.title.toLowerCase() === category.toLowerCase());
+const toolEntry = categoryGroup?.tools.find(t => t.href.endsWith(`/${tool}`));
+
+if (!toolEntry) {
+    throw new Error(`Tool not found: ${category}/${tool}`);
+}
+
+const ToolComponent = toolEntry.component;
+---
+
+<Layout title={toolEntry.name}>
+    <ToolHeader title={toolEntry.name} description={toolEntry.description}/>
+    <ToolComponent />
+</Layout>

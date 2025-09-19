@@ -1,0 +1,77 @@
+---
+import InputFieldNumber from "@components/InputFieldNumber.astro";
+import InfoCard from "@components/InfoCard.astro";
+import ResultDisplay from "@components/ResultDisplay.astro";
+
+export const tool = {
+    title: "BMI Calculator",
+    description: "Calculate your Body Mass Index",
+};
+---
+
+<section class="max-w-lg mx-auto text-center space-y-8">
+    <div class="space-y-5" id="bmi-form">
+        <InputFieldNumber id="height" label="Height (cm)" placeholder="176" step={1} min={0} />
+        <InputFieldNumber id="weight" label="Weight (kg)" placeholder="72" step={0.5} min={0} />
+    </div>
+
+    <ResultDisplay
+            id="bmi-result"
+            variant="box"
+            value="BMI: ?"
+            description="Enter height and weight to see your BMI."
+            color="neutral"
+    />
+
+    <InfoCard title="BMI Categories">
+        <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+            <li class="rounded-md bg-neutral-800/60 px-3 py-2 text-blue-400">Underweight: < 18.5</li>
+            <li class="rounded-md bg-neutral-800/60 px-3 py-2 text-green-400">Normal weight: 18.5–24.9</li>
+            <li class="rounded-md bg-neutral-800/60 px-3 py-2 text-yellow-400">Overweight: 25–29.9</li>
+            <li class="rounded-md bg-neutral-800/60 px-3 py-2 text-red-400">Obese: ≥ 30</li>
+        </ul>
+    </InfoCard>
+</section>
+
+<script>
+    const $form = document.getElementById("bmi-form");
+    const $result = document.getElementById("bmi-result");
+    const $value = $result.querySelector("[data-value]");
+    const $desc = $result.querySelector("[data-description]");
+
+    const COLORS = {
+        pending: { color: "neutral", label: "Enter height and weight to see your BMI." },
+        under:   { color: "blue",   label: "Underweight" },
+        normal:  { color: "green",  label: "Normal weight" },
+        over:    { color: "yellow", label: "Overweight" },
+        obese:   { color: "red",    label: "Obese" },
+    };
+
+    function setPending() {
+        $value.textContent = "BMI: ?";
+        $desc.textContent = COLORS.pending.label;
+        $result.setAttribute("data-color", COLORS.pending.color);
+    }
+
+    function calculate() {
+        const height = parseFloat(document.getElementById("height")?.value || "");
+        const weight = parseFloat(document.getElementById("weight")?.value || "");
+
+        if (!height || !weight) return setPending();
+
+        const bmi = weight / ((height / 100) ** 2);
+        $value.textContent = `BMI: ${bmi.toFixed(1)}`;
+
+        let c;
+        if (bmi < 18.5) c = COLORS.under;
+        else if (bmi < 25) c = COLORS.normal;
+        else if (bmi < 30) c = COLORS.over;
+        else c = COLORS.obese;
+
+        $desc.textContent = c.label;
+        $result.setAttribute("data-color", c.color);
+    }
+
+    $form.addEventListener("input", calculate);
+    setPending();
+</script>

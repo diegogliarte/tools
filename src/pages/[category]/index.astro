@@ -1,0 +1,26 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ToolList from "@components/ToolList.astro";
+import { discoverToolsFor, discoverTools } from "@lib/discover-tools";
+
+export async function getStaticPaths() {
+    const categories = discoverTools().map((category) => ({
+        params: { category: category.title.toLowerCase() },
+    }));
+    return categories;
+}
+
+const { category } = Astro.params;
+const group = discoverToolsFor(category!);
+---
+
+<Layout title={group ? group.title : "Not found"}>
+    {group ? (
+            <ToolList tools={group.tools} />
+    ) : (
+            <section class="space-y-4">
+                <p class="text-neutral-400">No tools found for “{category}”.</p>
+                <a href="/" class="text-violet-400 hover:underline">Back to Home</a>
+            </section>
+        )
+</Layout>

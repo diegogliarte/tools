@@ -1,0 +1,64 @@
+---
+import { ToastType } from "@lib/toast";
+const { id = "toast" } = Astro.props;
+---
+
+<div
+        id={id}
+        class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 max-w-xs px-3 py-2 rounded-md opacity-0 transition-opacity duration-300 pointer-events-none bg-neutral-800 text-neutral-100 text-sm shadow-md"
+>
+    <!-- Icon -->
+    <svg id={`${id}-icon`} class="w-4 h-4 flex-shrink-0 text-blue-400" fill="currentColor" viewBox="0 0 20 20"></svg>
+
+    <!-- Message -->
+    <span id={`${id}-msg`} class="flex-1"></span>
+</div>
+
+<script define:vars={{ id, ToastType }}>
+    const $toast = document.getElementById(id);
+    const $msg = document.getElementById(`${id}-msg`);
+    const $icon = document.getElementById(`${id}-icon`);
+
+    let closeTimeout;
+
+    function closeToast() {
+        if ($toast) {
+            $toast.style.opacity = "0";
+            $toast.style.pointerEvents = "none";
+        }
+    }
+
+    function setVariant(type) {
+        switch (type) {
+            case ToastType.Success:
+                $icon.setAttribute("class", "w-4 h-4 flex-shrink-0 text-green-400");
+                $icon.innerHTML = `<path d="M16.707 5.293a1 1 0 0 0-1.414 0L9 11.586 6.707 9.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l7-7a1 1 0 0 0 0-1.414Z"/>`;
+                break;
+            case ToastType.Error:
+                $icon.setAttribute("class", "w-4 h-4 flex-shrink-0 text-red-400");
+                $icon.innerHTML = `<path d="M10 18a8 8 0 1 0-8-8 8 8 0 0 0 8 8Zm-1-5h2v2h-2v-2Zm0-8h2v6h-2V5Z"/>`;
+                break;
+            default:
+                $icon.setAttribute("class", "w-4 h-4 flex-shrink-0 text-blue-400");
+                $icon.innerHTML = `<path d="M10 18a8 8 0 1 0-8-8 8 8 0 0 0 8 8Zm-.75-11.25a.75.75 0 1 1 1.5 0v4.5a.75.75 0 0 1-1.5 0Zm.75 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>`;
+        }
+    }
+
+    window.showToast = function (message, type = ToastType.Info) {
+        if (!$toast) return;
+
+        clearTimeout(closeTimeout);
+        $msg.textContent = message;
+        setVariant(type);
+
+        $toast.style.opacity = "1";
+        $toast.style.pointerEvents = "auto";
+
+        closeTimeout = setTimeout(closeToast, 2000);
+    };
+
+    $toast.addEventListener("click", () => {
+        clearTimeout(closeTimeout);
+        closeToast();
+    });
+</script>
