@@ -1,4 +1,5 @@
 ---
+import InputRadio from "../../InputRadio.astro";
 export const prerender = false;
 import { fetchSlayerTasks } from "@lib/api/osrs";
 import InputFieldText from "@components/InputFieldText.astro";
@@ -11,7 +12,7 @@ export const tool = {
         "Compare task chances across Slayer masters. Search monsters, toggle percentage/weight, and filter by requirements.",
 };
 
-const masters = await fetchSlayerTasks(); // parser should return cleaned quest/unlock names
+const masters = await fetchSlayerTasks();
 const monsters = Array.from(
     new Set(Object.values(masters).flat().map((t) => t.name))
 ).sort();
@@ -31,8 +32,8 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
     <div class="space-y-6">
         <!-- Slayer/Combat side by side -->
         <div class="flex gap-6">
-            <InputFieldNumber id="slayer-level" label="Slayer Level" placeholder="e.g. 85" />
-            <InputFieldNumber id="combat-level" label="Combat Level" placeholder="e.g. 100" />
+            <InputFieldNumber id="slayer-level" label="Slayer Level" placeholder="e.g. 85" min={1} />
+            <InputFieldNumber id="combat-level" label="Combat Level" placeholder="e.g. 100" min={3} />
         </div>
 
         <div>
@@ -68,25 +69,37 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
                 ))}
             </div>
         </div>
-
-        <!-- Search -->
-        <InputFieldText
-                id="monster-search"
-                label="Search Monsters"
-                placeholder="e.g. Abyssal demon"
-        />
-
-        <!-- Toggles -->
-        <div class="flex flex-wrap gap-4">
-            <InputCheckbox id="show-percent" label="Show Percent" checked />
-            <InputCheckbox id="show-weight" label="Show Weight" />
-        </div>
     </div>
 
     <!-- Table -->
     <div class="overflow-x-auto">
-        <table id="slayer-table" class="w-full border-collapse text-sm text-left">
+        <table id="slayer-table" class="w-full table-fixed border-collapse text-sm text-left">
             <thead class="bg-neutral-800 sticky top-0 z-10">
+            <tr class="bg-neutral-800">
+                <th class="p-2" colspan={Object.keys(masters).length + 1}>
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                        <!-- Search inside table -->
+                        <div class="flex-1 max-w-xs">
+                            <InputFieldText
+                                    id="monster-search"
+                                    placeholder="Search e.g. Abyssal demon"
+                            />
+                        </div>
+
+                        <div class="flex gap-4">
+                            <InputRadio id="mode-percent" name="mode" label="Percent" checked />
+                            <InputRadio id="mode-weight" name="mode" label="Weight" />
+                        </div>
+
+                        <span
+                                id="blocked-counter"
+                                class="text-sm text-neutral-400 font-medium"
+                        >
+                            0 / 7 blocks
+                            </span>
+                    </div>
+                </th>
+            </tr>
             <tr>
                 <th class="p-2 cursor-pointer" data-sort="monster">Monster</th>
                 {Object.keys(masters).map((master) => (
@@ -99,9 +112,13 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
                 ))}
             </tr>
             </thead>
+
             <tbody>
             {monsters.map((monster) => (
-                    <tr class="odd:bg-neutral-900 even:bg-neutral-800/50">
+                    <tr
+                        class="slayer-row odd:bg-neutral-900 even:bg-neutral-800/50 transition cursor-pointer hover:opacity-75"
+                        data-monster={monster}
+                    >
                         <td class="p-2 font-medium flex items-center gap-1">
                             {(() => {
                                 const example = Object.values(masters)
@@ -138,6 +155,17 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
     </div>
 </section>
 
+<style>
+    .slayer-row.blocked {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    .slayer-row.blocked:hover {
+        opacity: 0.6;
+    }
+</style>
+
 <script>
     const $table = document.getElementById("slayer-table");
     const $search = document.getElementById("monster-search");
@@ -147,27 +175,31 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
     const $toggleQuests = document.getElementById("toggle-quests");
     const $toggleUnlocks = document.getElementById("toggle-unlocks");
 
-    const $showPercent = document.getElementById("show-percent");
-    const $showWeight = document.getElementById("show-weight");
+    const $modePercent = document.getElementById("mode-percent");
+    const $modeWeight = document.getElementById("mode-weight");
+
+    const $blockedCounter = document.getElementById("blocked-counter");
 
     let mode = "percent";
     let sortDirections = {};
+    let blocked = new Set();
 
-    // Percent/weight toggle
     function updateMode() {
-        mode = $showWeight.checked ? "weight" : "percent";
+        if ($modeWeight.checked) {
+            mode = "weight";
+        } else {
+            mode = "percent";
+        }
         updateTable();
     }
-    $showPercent.addEventListener("change", () => {
-        $showWeight.checked = !$showPercent.checked;
-        updateMode();
-    });
-    $showWeight.addEventListener("change", () => {
-        $showPercent.checked = !$showWeight.checked;
-        updateMode();
-    });
 
-    // Recalculate + handle requirements
+    function updateBlockedCounter() {
+        $blockedCounter.textContent = `${blocked.size} / 7 blocked`;
+    }
+
+    $modePercent.addEventListener("change", updateMode);
+    $modeWeight.addEventListener("change", updateMode);
+
     function updateTable() {
         const slayerReq = parseInt($slayerLevel.value) || 120;
         const combatReq = parseInt($combatLevel.value) || 120;
@@ -177,7 +209,6 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
         const checkedUnlocks = Array.from(document.querySelectorAll("input[id^='unlock-']:checked"))
             .map((el) => el.id.replace("unlock-", ""));
 
-        // recalc totals per master considering locked tasks = weight 0
         const totals = {};
         $table.querySelectorAll("thead th[data-sort]").forEach((th) => {
             const master = th.dataset.sort;
@@ -186,6 +217,8 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
             $table.querySelectorAll(`tbody td[data-master="${master}"]`).forEach((cell) => {
                 let weight = parseFloat(cell.dataset.weight) || 0;
                 let missing = [];
+                const monster = cell.dataset.monster;
+
                 const slayer = parseInt(cell.dataset.slayer) || 0;
                 const combat = parseInt(cell.dataset.combat) || 0;
                 const quests = cell.dataset.quests ? cell.dataset.quests.split(",") : [];
@@ -200,7 +233,7 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
                     if (!checkedUnlocks.includes(u)) missing.push(`Unlock ${u}`);
                 });
 
-                if (missing.length > 0) weight = 0;
+                if (missing.length > 0 || blocked.has(monster)) weight = 0;
                 total += weight;
             });
             totals[master] = total;
@@ -217,6 +250,7 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
 
             let weight = parseFloat(cell.dataset.weight) || 0;
             const master = cell.dataset.master;
+            const monster = cell.dataset.monster;
             let missing = [];
             const slayer = parseInt(cell.dataset.slayer) || 0;
             const combat = parseInt(cell.dataset.combat) || 0;
@@ -232,10 +266,12 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
                 if (!checkedUnlocks.includes(u)) missing.push(`Unlock ${u}`);
             });
 
-            if (missing.length > 0) {
+            if (missing.length > 0 || blocked.has(monster)) {
                 weight = 0;
                 cell.className = "p-2 text-right text-red-500 cursor-help";
-                cell.title = "Missing: " + missing.join(", ");
+                cell.title = missing.length > 0
+                    ? "Missing: " + missing.join(", ")
+                    : "Blocked task";
             } else {
                 cell.className = "p-2 text-right";
                 cell.removeAttribute("title");
@@ -248,6 +284,17 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
                 cell.textContent = weight;
             }
         });
+
+        $table.querySelectorAll("tbody tr").forEach((row) => {
+            const monster = row.dataset.monster;
+            if (blocked.has(monster)) {
+                row.classList.add("blocked");
+            } else {
+                row.classList.remove("blocked");
+            }
+        });
+
+        updateBlockedCounter();
     }
 
     $slayerLevel.addEventListener("input", updateTable);
@@ -320,6 +367,31 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
             rows.forEach((row) => $table.querySelector("tbody").appendChild(row));
         });
     });
+
+    // Block tasks by clicking row
+    $table.querySelectorAll("tbody tr").forEach((row) => {
+        const monster = row.querySelector("td")?.textContent.trim();
+        const isBoss = row.querySelector("td")?.textContent.includes("👑");
+
+        row.addEventListener("click", () => {
+            if (isBoss) {
+                window.showToast("Boss tasks cannot be blocked", "error");
+                return;
+            }
+
+            if (blocked.has(monster)) {
+                blocked.delete(monster);
+            } else {
+                if (blocked.size >= 7) {
+                    window.showToast("You can only block up to 7 tasks", "error");
+                    return;
+                }
+                blocked.add(monster);
+            }
+            updateTable();
+        });
+    });
+
 
     updateTable();
 </script>
