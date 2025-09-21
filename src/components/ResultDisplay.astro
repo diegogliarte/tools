@@ -48,13 +48,15 @@ const {
 </div>
         )}
 
-<script define:vars={{ id, copiable }}>
+<script type="module" define:vars={{ id, copiable }}>
+    import { copyToClipboard } from "/src/lib/clipboard.ts";
+
     if (copiable) {
         const el = document.getElementById(id);
         el?.addEventListener("click", async () => {
             const text = el.textContent.trim();
             if (text === "—") return;
-            await window.copyToClipboard?.(text, "Copied to clipboard", "Failed to copy");
+            await copyToClipboard(text, "Copied to clipboard", "Failed to copy");
         });
     }
 </script>
