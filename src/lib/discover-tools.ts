@@ -21,7 +21,7 @@ export type CategoryGroup = {
 };
 
 export function discoverTools(): CategoryGroup[] {
-    const modules = import.meta.glob('/src/components/tools/*/*.astro', { eager: true }) as Record<
+    const modules = import.meta.glob('/src/tools/*/*.astro', { eager: true }) as Record<
         string,
         { tool?: ToolMeta, default: any }
     >;
@@ -31,10 +31,10 @@ export function discoverTools(): CategoryGroup[] {
     for (const [file, mod] of Object.entries(modules)) {
         if (/\/index\.astro$/i.test(file)) continue; // skip category index pages
 
-        // ["", "src", "components", "tools", "<category>", "<tool>.astro"]
+        // ["", "src", "tools", "<category>", "<tool>.astro"]
         const parts = file.split('/');
-        const category = parts[4];
-        const base = parts[5];
+        const category = parts[3];
+        const base = parts[4];
         // get clean slugs
         const categorySlug = category.toLowerCase();
         const toolSlug = base.replace(/\.astro$/, '').toLowerCase();
