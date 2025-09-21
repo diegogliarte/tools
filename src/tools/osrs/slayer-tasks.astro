@@ -319,11 +319,31 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
     // Search
     $search.addEventListener("input", () => {
         const query = $search.value.toLowerCase();
-        $table.querySelectorAll("tbody tr").forEach((row) => {
-            const monster = row.querySelector("td")?.textContent.toLowerCase() || "";
-            row.style.display = monster.includes(query) ? "" : "none";
+        const rows = $table.querySelectorAll("tbody tr[data-monster]");
+        let visibleCount = 0;
+
+        rows.forEach((row) => {
+            const monster = row.dataset.monster.toLowerCase();
+            const match = monster.includes(query);
+            row.style.display = match ? "" : "none";
+            if (match) visibleCount++;
         });
+
+        // Remove old "no match" row if it exists
+        const noMatchRow = $table.querySelector("tbody tr.no-match");
+        if (noMatchRow) noMatchRow.remove();
+
+        // If no visible rows, add "no match" row
+        if (visibleCount === 0) {
+            const colspan = $table.querySelectorAll("thead th").length;
+            const newRow = document.createElement("tr");
+            newRow.className = "no-match";
+            newRow.innerHTML = `<td colspan="${colspan}" class="p-4 text-center text-neutral-500">No matches found</td>`;
+            $table.querySelector("tbody").appendChild(newRow);
+        }
     });
+
+
 
     // Sorting toggle asc/desc
     const headers = $table.querySelectorAll("thead th[data-sort]");
