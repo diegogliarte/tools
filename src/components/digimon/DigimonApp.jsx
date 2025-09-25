@@ -39,7 +39,6 @@ export default function DigimonApp() {
         fetchDigimons().then(setDigimons);
     }, []);
 
-    // ✅ Load from URL or localStorage
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
         const encoded = params.get("team");
@@ -58,19 +57,23 @@ export default function DigimonApp() {
         }
     }, []);
 
-    // ✅ Sync team to URL + localStorage
     useEffect(() => {
-        if (team.length === 0) return;
+        const url = new URL(window.location.href);
+
+        if (team.length === 0) {
+            url.searchParams.delete("team");
+            window.history.replaceState({}, "", url);
+            localStorage.removeItem(STORAGE_KEY);
+            return;
+        }
 
         const encoded = encodeTeam(team);
-        const url = new URL(window.location.href);
         url.searchParams.set("team", encoded);
         window.history.replaceState({}, "", url);
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(team));
     }, [team]);
 
-    // ✅ Search binding
     useEffect(() => {
         const input = document.getElementById("digimon-search");
         if (!input) return;
