@@ -1,7 +1,13 @@
+import { useState } from "react";
 import Badge from "@components/Badge.jsx";
 
-function portraitFor(d) {
-    return d?.portrait ? `/digimon-portraits/${d.portrait}` : "/digimon-portraits/placeholder.webp";
+function portraitSources(d) {
+    if (!d?.portrait) return ["/digimon-portraits/placeholder.webp"];
+    return [
+        `/digimon-portraits/${d.portrait}`,
+        `/digimon-portraits-new/${d.portrait}`,
+        "/digimon-portraits/placeholder.webp",
+    ];
 }
 
 function typeIconFor(type) {
@@ -28,17 +34,16 @@ export default function DigimonSlot({
                                     }) {
     if (!digimon) return null;
 
-    const portrait = portraitFor(digimon);
+    const sources = portraitSources(digimon);
+    const [srcIndex, setSrcIndex] = useState(0);
+
     const typeIcon = typeIconFor(digimon.type);
 
-    // Badge detection (Digimon-specific)
+    // Badge detection
     const dnaReqs = digimon.requirements?.filter((r) =>
         r.includes("personnality is")
     );
-    const eggReqs = digimon.requirements?.filter((r) =>
-        r.includes("Digi-Egg")
-    );
-
+    const eggReqs = digimon.requirements?.filter((r) => r.includes("Digi-Egg"));
     const reqs = dnaReqs?.length ? dnaReqs : eggReqs?.length ? eggReqs : null;
 
     const badgeProps = reqs
@@ -67,6 +72,12 @@ export default function DigimonSlot({
         if (isEnd) imgClasses += " cursor-pointer hover:ring-red-400";
     }
 
+    const handleError = () => {
+        if (srcIndex < sources.length - 1) {
+            setSrcIndex((i) => i + 1);
+        }
+    };
+
     return (
         <div
             className={`flex flex-col items-center gap-1 ${
@@ -74,7 +85,7 @@ export default function DigimonSlot({
                     ? "cursor-pointer hover:bg-neutral-700 rounded p-2 transition"
                     : ""
             }`}
-            onClick={compact ? onClick : undefined} // 👈 only clickable in compact mode
+            onClick={compact ? onClick : undefined} // only clickable in compact mode
         >
             {!compact && (
                 <span className="text-xs text-neutral-400">{digimon.stage}</span>
@@ -82,13 +93,10 @@ export default function DigimonSlot({
 
             <div className="relative">
                 <img
-                    src={portrait}
+                    src={sources[srcIndex]}
                     alt={digimon.name}
                     title={digimon.name}
-                    onError={(e) =>
-                        (e.currentTarget.src =
-                            "/digimon-portraits/placeholder.webp")
-                    }
+                    onError={handleError}
                     className={imgClasses}
                     onClick={!compact ? onClick : undefined}
                 />
@@ -107,13 +115,11 @@ export default function DigimonSlot({
             </div>
 
             <span className="text-xs text-neutral-200 text-center">
-                {digimon.name}
-            </span>
+        {digimon.name}
+      </span>
 
             {compact && (
-                <span className="text-xs text-neutral-400">
-                    {digimon.stage}
-                </span>
+                <span className="text-xs text-neutral-400">{digimon.stage}</span>
             )}
         </div>
     );

@@ -19,16 +19,7 @@ echo.
 
 for %%F in ("%inputDir%\*.png") do (
     echo Processing %%~nxF...
-
-    :: 1. Lossless (original size)
-    ffmpeg -y -i "%%F" -c:v libwebp -lossless 1 "%baseOutput%\lossless\%%~nF.webp"
-
-    :: 2. Quality 75 (original size)
-    ffmpeg -y -i "%%F" -c:v libwebp -q:v 75 "%baseOutput%\q75\%%~nF.webp"
-
-    :: 3. Lossless scaled to 256px wide
-    ffmpeg -y -i "%%F" -vf "scale=256:-1" -c:v libwebp -lossless 1 "%baseOutput%\lossless_256\%%~nF.webp"
-
+	
     :: 4. Quality 75 scaled to 256px wide
     ffmpeg -y -i "%%F" -vf "scale=256:-1" -c:v libwebp -q:v 75 "%baseOutput%\q75_256\%%~nF.webp"
 )

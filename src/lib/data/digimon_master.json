@@ -5134,7 +5134,7 @@
             "MP >= 920",
             "INT >= 1820"
         ],
-        "portrait": "39_Lucemon: Falldown Mode.webp",
+        "portrait": "39_Lucemon Falldown Mode.webp",
         "pre_evolutions": [
             390
         ],
@@ -6507,7 +6507,7 @@
             "INT >= 1740",
             "SPI >= 1540"
         ],
-        "portrait": "439_Belphemon: Sleep Mode.webp",
+        "portrait": "439_Belphemon Sleep Mode.webp",
         "pre_evolutions": [
             584,
             237,
@@ -6901,7 +6901,7 @@
         "requirements": [
             "Agent Rank >= 7"
         ],
-        "portrait": "743_Duftmon: Leopard Mode.webp",
+        "portrait": "743_Duftmon Leopard Mode.webp",
         "pre_evolutions": [
             739
         ],
@@ -7214,7 +7214,7 @@
             "MP >= 1180",
             "SPI >= 1180"
         ],
-        "portrait": "732_Imperialdramon: Dragon Mode.webp",
+        "portrait": "732_Imperialdramon Dragon Mode.webp",
         "pre_evolutions": [
             419,
             408
@@ -7233,7 +7233,7 @@
             "Agent Rank >= 7",
             "ATK >= 2500"
         ],
-        "portrait": "419_Imperialdramon: Fighter Mode.webp",
+        "portrait": "419_Imperialdramon Fighter Mode.webp",
         "pre_evolutions": [
             732
         ],
@@ -8463,7 +8463,7 @@
             "Alphamon's personnality is Friendly",
             "Ouryumon's personnality is Zealous"
         ],
-        "portrait": "766_Alphamon: Ouryuken.webp",
+        "portrait": "766_Alphamon Ouryuken.webp",
         "pre_evolutions": [
             416,
             193
@@ -8512,7 +8512,7 @@
             "ATK >= 3760",
             "SPD >= 2960"
         ],
-        "portrait": "775_Beelzebumon: Blast Mode.webp",
+        "portrait": "775_Beelzebumon Blast Mode.webp",
         "pre_evolutions": [
             35
         ],
@@ -8528,7 +8528,7 @@
             "HP >= 4680",
             "ATK >= 2070"
         ],
-        "portrait": "40_Belphemon: Rage Mode.webp",
+        "portrait": "40_Belphemon Rage Mode.webp",
         "pre_evolutions": [
             439
         ],
@@ -8561,7 +8561,7 @@
             "Bancho Leomon's personnality is Daring",
             "Valdurmon's personnality is Sociable"
         ],
-        "portrait": "118_Chaosmon: Valdur Arm.webp",
+        "portrait": "118_Chaosmon Valdur Arm.webp",
         "pre_evolutions": [
             117,
             49
@@ -8578,7 +8578,7 @@
             "ATK >= 2810",
             "INT >= 3170"
         ],
-        "portrait": "105_Dukemon: Crimson Mode.webp",
+        "portrait": "105_Dukemon Crimson Mode.webp",
         "pre_evolutions": [
             126
         ],
@@ -8662,7 +8662,7 @@
             "SPD >= 2740",
             "Have ??? item"
         ],
-        "portrait": "420_Imperialdramon: Paladin Mode.webp",
+        "portrait": "420_Imperialdramon Paladin Mode.webp",
         "pre_evolutions": [
             732,
             419
@@ -8696,7 +8696,7 @@
             "INT >= 3090",
             "SPD >= 1880"
         ],
-        "portrait": "435_Lucemon: Satan Mode.webp",
+        "portrait": "435_Lucemon Satan Mode.webp",
         "pre_evolutions": [
             39
         ],
@@ -8728,7 +8728,7 @@
             "ATK >= 3100",
             "SPD >= 3100"
         ],
-        "portrait": "777_Mirage Gaogamon: Burst Mode.webp",
+        "portrait": "777_Mirage Gaogamon Burst Mode.webp",
         "pre_evolutions": [
             95
         ],
@@ -8780,7 +8780,7 @@
             "MP >= 1710",
             "SPD >= 3390"
         ],
-        "portrait": "778_Ravmon: Burst Mode.webp",
+        "portrait": "778_Ravmon Burst Mode.webp",
         "pre_evolutions": [
             740
         ],
@@ -8796,7 +8796,7 @@
             "INT >= 3170",
             "SPI >= 2700"
         ],
-        "portrait": "779_Rosemon: Burst Mode.webp",
+        "portrait": "779_Rosemon Burst Mode.webp",
         "pre_evolutions": [
             57
         ],
@@ -8812,7 +8812,7 @@
             "HP >= 4900",
             "SPD >= 2810"
         ],
-        "portrait": "776_Shine Greymon: Burst Mode.webp",
+        "portrait": "776_Shine Greymon Burst Mode.webp",
         "pre_evolutions": [
             94
         ],
@@ -9189,7 +9189,7 @@
         "requirements": [
             "Agent Rank >= 7"
         ],
-        "portrait": "675_Magna Garurumon: Separation.webp",
+        "portrait": "675_Magna Garurumon Separation.webp",
         "pre_evolutions": [
             678
         ],
