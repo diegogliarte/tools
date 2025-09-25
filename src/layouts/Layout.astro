@@ -6,8 +6,8 @@ import Toast from "@components/Toast.astro";
 const {title} = Astro.props
 
 // auto-generate breadcrumbs from current path
-const path = Astro.url.pathname; // e.g. "/irl/my-tool"
-const segments = path.split("/").filter(Boolean); // ["irl","my-tool"]
+const path = Astro.url.pathname; // e.g. "/IRL/my-tool"
+const segments = path.split("/").filter(Boolean); // ["IRL","my-tool"]
 
 let breadcrumbItems: { label: string; href?: string }[] = [{label: "Home", href: "/"}];
 

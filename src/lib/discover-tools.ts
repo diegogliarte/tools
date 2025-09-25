@@ -39,7 +39,7 @@ export function discoverTools(): CategoryGroup[] {
         const categorySlug = category.toLowerCase();
         const toolSlug = base.replace(/\.astro$/, '').toLowerCase();
 
-        // href like /osrs/slayer
+        // href like /OSRS/slayer
         const href = `/${categorySlug}/${toolSlug}`;
 
         const meta = (mod?.tool ?? {}) as ToolMeta;
