@@ -14,6 +14,21 @@ const stageOrder = {
     Armor: 7,
 };
 
+const STORAGE_KEY = "digimon-team";
+
+function encodeTeam(team) {
+    const json = JSON.stringify(team);
+    return btoa(json); // base64
+}
+
+function decodeTeam(str) {
+    try {
+        return JSON.parse(atob(str));
+    } catch {
+        return [];
+    }
+}
+
 export default function DigimonApp() {
     const [digimons, setDigimons] = useState({});
     const [team, setTeam] = useState([]);
@@ -24,6 +39,38 @@ export default function DigimonApp() {
         fetchDigimons().then(setDigimons);
     }, []);
 
+    // ✅ Load from URL or localStorage
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const encoded = params.get("team");
+
+        if (encoded) {
+            setTeam(decodeTeam(encoded));
+        } else {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    setTeam(JSON.parse(saved));
+                } catch {
+                    console.warn("Invalid team in localStorage");
+                }
+            }
+        }
+    }, []);
+
+    // ✅ Sync team to URL + localStorage
+    useEffect(() => {
+        if (team.length === 0) return;
+
+        const encoded = encodeTeam(team);
+        const url = new URL(window.location.href);
+        url.searchParams.set("team", encoded);
+        window.history.replaceState({}, "", url);
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(team));
+    }, [team]);
+
+    // ✅ Search binding
     useEffect(() => {
         const input = document.getElementById("digimon-search");
         if (!input) return;
@@ -35,7 +82,6 @@ export default function DigimonApp() {
 
         input.value = query;
         input.addEventListener("input", handleInput);
-
         return () => input.removeEventListener("input", handleInput);
     }, [query]);
 
@@ -69,7 +115,11 @@ export default function DigimonApp() {
             {/* Search */}
             {showResults && (
                 <div>
-                    <SearchResults query={query} matches={matches} onSelect={selectDigimon} />
+                    <SearchResults
+                        query={query}
+                        matches={matches}
+                        onSelect={selectDigimon}
+                    />
                     <p className="mt-2 text-xs text-neutral-500 text-center">
                         Click a Digimon to start a new chain
                     </p>
@@ -84,7 +134,8 @@ export default function DigimonApp() {
 
                 {team.length === 0 ? (
                     <div className="p-6 border-2 border-dashed border-neutral-600 rounded-lg text-center text-neutral-400">
-                        No Digimon selected yet. Use the search above to start building your team.
+                        No Digimon selected yet. Use the search above to start building your
+                        team.
                     </div>
                 ) : (
                     <div className="grid gap-4">
