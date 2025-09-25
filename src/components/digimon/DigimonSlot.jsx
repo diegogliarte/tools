@@ -42,7 +42,7 @@ export default function DigimonSlot({
         : null;
 
     // Image classes
-    let imgClasses = "w-16 h-16 object-contain rounded-lg transition";
+    let imgClasses = "w-12 h-12 object-contain rounded-lg transition";
     if (clickable) {
         imgClasses +=
             side === "left"
@@ -80,8 +80,8 @@ export default function DigimonSlot({
             </div>
 
             <span className="text-xs text-neutral-200 text-center">
-        {digimon.name}
-      </span>
+            {digimon.name}
+            </span>
 
             {compact && (
                 <span className="text-xs text-neutral-400">{digimon.stage}</span>

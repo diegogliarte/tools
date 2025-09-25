@@ -91,7 +91,7 @@ export default function DigimonApp() {
                         {team.map((chain, i) => (
                             <div
                                 key={i}
-                                className="p-4 rounded-lg bg-neutral-800 shadow-sm relative border border-neutral-700"
+                                className="p-2 rounded-lg bg-neutral-800 shadow-sm relative border border-neutral-700"
                             >
                                 <button
                                     onClick={() => removeChain(i)}
