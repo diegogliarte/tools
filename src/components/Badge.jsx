@@ -1,9 +1,19 @@
 import Tooltip from "@components/Tooltip.jsx";
 
-export default function Badge({ icon, label, tooltip }) {
+export default function Badge({
+                                  icon,
+                                  label,
+                                  tooltip,
+                                  position = "absolute -top-2 -right-2",
+                                  withBackground = true,
+                                  className = "",
+                              }) {
     return (
-        <div className="absolute -top-2 -right-2 group">
-            <div className="cursor-pointer w-6 h-6 flex items-center justify-center text-sm font-bold rounded-md bg-neutral-700/80 text-white shadow-sm">
+        <div className={`${position} group ${className}`}>
+            <div
+                className={`cursor-pointer w-6 h-6 flex items-center justify-center text-sm font-bold rounded-md shadow-sm
+                ${withBackground ? "bg-neutral-700/80 text-white" : ""}`}
+            >
                 {icon}
             </div>
 

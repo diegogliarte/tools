@@ -4,6 +4,19 @@ function portraitFor(d) {
     return d?.portrait ? `/digimon-portraits/${d.portrait}` : "/digimon-portraits/placeholder.webp";
 }
 
+function typeIconFor(type) {
+    if (!type) return null;
+    const normalized = type.toLowerCase();
+    if (normalized.includes("none")) return "/digimon-icons/none.webp";
+    if (normalized.includes("vaccine")) return "/digimon-icons/vaccine.webp";
+    if (normalized.includes("virus")) return "/digimon-icons/virus.webp";
+    if (normalized.includes("data")) return "/digimon-icons/data.webp";
+    if (normalized.includes("variable")) return "/digimon-icons/variable.webp";
+    if (normalized.includes("free")) return "/digimon-icons/free.webp";
+    if (normalized.includes("unknown")) return "/digimon-icons/unknown.webp";
+    return null;
+}
+
 export default function DigimonSlot({
                                         digimon,
                                         clickable,
@@ -16,6 +29,7 @@ export default function DigimonSlot({
     if (!digimon) return null;
 
     const portrait = portraitFor(digimon);
+    const typeIcon = typeIconFor(digimon.type);
 
     // Badge detection (Digimon-specific)
     const dnaReqs = digimon.requirements?.filter((r) =>
@@ -71,20 +85,35 @@ export default function DigimonSlot({
                     src={portrait}
                     alt={digimon.name}
                     title={digimon.name}
-                    onError={(e) => (e.currentTarget.src = "/digimon-portraits/placeholder.webp")}
+                    onError={(e) =>
+                        (e.currentTarget.src =
+                            "/digimon-portraits/placeholder.webp")
+                    }
                     className={imgClasses}
                     onClick={!compact ? onClick : undefined}
                 />
+
+                {/* Type icon in bottom-right corner */}
+                {typeIcon && (
+                    <img
+                        src={typeIcon}
+                        alt={digimon.type}
+                        title={digimon.type}
+                        className="absolute -bottom-1 -right-2 w-4 h-4 rounded-full bg-neutral-900"
+                    />
+                )}
 
                 {!compact && badgeProps && <Badge {...badgeProps} />}
             </div>
 
             <span className="text-xs text-neutral-200 text-center">
-            {digimon.name}
+                {digimon.name}
             </span>
 
             {compact && (
-                <span className="text-xs text-neutral-400">{digimon.stage}</span>
+                <span className="text-xs text-neutral-400">
+                    {digimon.stage}
+                </span>
             )}
         </div>
     );
