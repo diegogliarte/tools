@@ -182,6 +182,57 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
     let sortDirections = {};
     let blocked = new Set();
 
+    const STORAGE_KEY = "slayer-task-settings";
+
+    function saveSettings() {
+        const settings = {
+            slayerLevel: $slayerLevel.value,
+            combatLevel: $combatLevel.value,
+            quests: Array.from(document.querySelectorAll("input[id^='quest-']:checked")).map(el => el.id),
+            unlocks: Array.from(document.querySelectorAll("input[id^='unlock-']:checked")).map(el => el.id),
+            blocked: Array.from(blocked),
+            mode,
+            search: $search.value
+        };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+    }
+
+    function loadSettings() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        try {
+            const settings = JSON.parse(raw);
+            if (settings.slayerLevel) $slayerLevel.value = settings.slayerLevel;
+            if (settings.combatLevel) $combatLevel.value = settings.combatLevel;
+
+            if (Array.isArray(settings.quests)) {
+                document.querySelectorAll("input[id^='quest-']").forEach(el => {
+                    el.checked = settings.quests.includes(el.id);
+                });
+            }
+            if (Array.isArray(settings.unlocks)) {
+                document.querySelectorAll("input[id^='unlock-']").forEach(el => {
+                    el.checked = settings.unlocks.includes(el.id);
+                });
+            }
+            if (Array.isArray(settings.blocked)) {
+                blocked = new Set(settings.blocked);
+            }
+            if (settings.mode === "weight") {
+                $modeWeight.checked = true;
+                mode = "weight";
+            } else {
+                $modePercent.checked = true;
+                mode = "percent";
+            }
+            if (settings.search) {
+                $search.value = settings.search;
+            }
+        } catch (e) {
+            console.error("Failed to load slayer settings:", e);
+        }
+    }
+
     function updateMode() {
         if ($modeWeight.checked) {
             mode = "weight";
@@ -293,6 +344,7 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
         });
 
         updateBlockedCounter();
+        saveSettings();
     }
 
     $slayerLevel.addEventListener("input", updateTable);
@@ -410,6 +462,6 @@ const allUnlocks = Array.from(new Set(allTasks.flatMap((t) => t.unlock || []))).
         });
     });
 
-
+    loadSettings();
     updateTable();
 </script>
