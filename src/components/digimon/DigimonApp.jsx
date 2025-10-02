@@ -104,6 +104,11 @@ export default function DigimonApp() {
     }
 
     function updateChain(index, newChain) {
+        if (newChain.length === 0) {
+            removeChain(index)
+            return
+        }
+
         const updated = [...team];
         updated[index] = newChain;
         setTeam(updated);
