@@ -13,13 +13,13 @@ function portraitSources(d) {
 function typeIconFor(type) {
     if (!type) return null;
     const normalized = type.toLowerCase();
-    if (normalized.includes("none")) return "/digimon-icons/none.webp";
-    if (normalized.includes("vaccine")) return "/digimon-icons/vaccine.webp";
-    if (normalized.includes("virus")) return "/digimon-icons/virus.webp";
-    if (normalized.includes("data")) return "/digimon-icons/data.webp";
-    if (normalized.includes("variable")) return "/digimon-icons/variable.webp";
-    if (normalized.includes("free")) return "/digimon-icons/free.webp";
-    if (normalized.includes("unknown")) return "/digimon-icons/unknown.webp";
+    if (normalized.includes("none")) return "/digimon-icons/none.png";
+    if (normalized.includes("vaccine")) return "/digimon-icons/vaccine.png";
+    if (normalized.includes("virus")) return "/digimon-icons/virus.png";
+    if (normalized.includes("data")) return "/digimon-icons/data.png";
+    if (normalized.includes("variable")) return "/digimon-icons/variable.png";
+    if (normalized.includes("free")) return "/digimon-icons/free.png";
+    if (normalized.includes("unknown")) return "/digimon-icons/unknown.png";
     return null;
 }
 
@@ -36,10 +36,9 @@ export default function DigimonSlot({
 
     const sources = portraitSources(digimon);
     const [srcIndex, setSrcIndex] = useState(0);
-
     const typeIcon = typeIconFor(digimon.type);
 
-    // Badge detection
+    // Badge detection...
     const dnaReqs = digimon.requirements?.filter((r) =>
         r.includes("personnality is")
     );
@@ -60,7 +59,6 @@ export default function DigimonSlot({
         }
         : null;
 
-    // Image classes
     let imgClasses = "w-12 h-12 object-contain rounded-lg transition";
     if (clickable) {
         imgClasses +=
@@ -84,8 +82,8 @@ export default function DigimonSlot({
                 compact
                     ? "cursor-pointer hover:bg-neutral-700 rounded p-2 transition"
                     : ""
-            }`}
-            onClick={compact ? onClick : undefined} // only clickable in compact mode
+            } w-20`} // ✅ fixed width for all slots
+            onClick={compact ? onClick : undefined}
         >
             {!compact && (
                 <span className="text-xs text-neutral-400">{digimon.stage}</span>
@@ -101,7 +99,6 @@ export default function DigimonSlot({
                     onClick={!compact ? onClick : undefined}
                 />
 
-                {/* Type icon in bottom-right corner */}
                 {typeIcon && (
                     <img
                         src={typeIcon}
@@ -114,9 +111,13 @@ export default function DigimonSlot({
                 {!compact && badgeProps && <Badge {...badgeProps} />}
             </div>
 
-            <span className="text-xs text-neutral-200 text-center">
-        {digimon.name}
-      </span>
+            {/* ✅ Name will truncate instead of resizing container */}
+            <span
+                className="text-xs text-neutral-200 text-center truncate max-w-full"
+                title={digimon.name} // show full name on hover
+            >
+                {digimon.name}
+            </span>
 
             {compact && (
                 <span className="text-xs text-neutral-400">{digimon.stage}</span>
@@ -124,3 +125,4 @@ export default function DigimonSlot({
         </div>
     );
 }
+
