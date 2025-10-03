@@ -49,7 +49,7 @@ if (segments.length > 1) {
         <body class="min-h-screen flex flex-col">
         <main class="flex-1 space-y-6 px-6">
             {breadcrumbItems.length > 0 && (
-                    <div class="border-b border-neutral-600">
+                    <div class="border-b border-neutral-600 meta-ui">
                         <div class="max-w-5xl mx-auto py-3">
                             <Breadcrumbs items={breadcrumbItems}/>
                         </div>
@@ -61,7 +61,7 @@ if (segments.length > 1) {
             </div>
             <Toast/>
         </main>
-        <footer class="p-4 text-center text-xs text-neutral-500">
+        <footer class="p-4 text-center text-xs text-neutral-500 meta-ui">
             © {new Date().getFullYear()} by
             <a
                     href="https://github.com/diegogliarte"

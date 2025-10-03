@@ -1,0 +1,176 @@
+---
+export const tool = {
+    title: "Chrono",
+    description: "Chronometer with laps on the right side, deletable with hover feedback",
+};
+---
+
+<div
+        id="chrono"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-neutral-200 font-mono transition-opacity select-none cursor-pointer"
+        style="font-size: 5rem; opacity:0.8;"
+>
+    00:00:00
+</div>
+
+<div
+        id="laps"
+        class="absolute top-20 right-8 flex flex-col text-sm select-none cursor-pointer"
+></div>
+
+<style>
+    @font-face {
+        font-family: 'clockicons';
+        src: url('/fonts/clockicons.ttf') format('truetype');
+    }
+    #chrono {
+        font-family: 'clockicons', monospace;
+    }
+
+    #chrono.resetting {
+        animation: resetPulse 0.3s ease-out;
+    }
+
+    @keyframes resetPulse {
+        0%   { transform: scale(1); }
+        30%  { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    body {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    let startTime = 0;
+    let elapsedTime = 0;
+    let interval = null;
+    let isRunning = false;
+    let holdTimeout = null;
+    let isReset = false;
+
+    const $chrono = document.getElementById("chrono");
+    const $laps = document.getElementById("laps");
+
+    function formatTime(ms) {
+        const totalSeconds = Math.floor(ms / 1000);
+        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+        return `${hours}:${minutes}:${seconds}`;
+    }
+
+    function updateDisplay() {
+        const formatted = formatTime(elapsedTime);
+        $chrono.textContent = formatted;
+        document.title = formatted;
+    }
+
+    function updateOpacity() {
+        $chrono.style.opacity = isRunning ? "1" : "0.8";
+    }
+
+    function startChrono() {
+        if (!isRunning) {
+            startTime = Date.now() - elapsedTime;
+            interval = setInterval(() => {
+                elapsedTime = Date.now() - startTime;
+                updateDisplay();
+            }, 10);
+            isRunning = true;
+            updateOpacity();
+        }
+    }
+
+    function pauseChrono() {
+        if (isRunning) {
+            clearInterval(interval);
+            isRunning = false;
+            updateOpacity();
+        }
+    }
+
+    function resetChrono() {
+        pauseChrono();
+        elapsedTime = 0;
+        isReset = true;
+        updateDisplay();
+        updateOpacity();
+        $laps.innerHTML = "";
+
+        $chrono.classList.remove("resetting");
+        void $chrono.offsetWidth;
+        $chrono.classList.add("resetting");
+    }
+
+    function addLap() {
+        const formatted = formatTime(elapsedTime);
+        const lapEl = document.createElement("div");
+        lapEl.textContent = formatted;
+
+        lapEl.className =
+            "cursor-pointer text-neutral-400 hover:text-red-400 transition transform";
+
+        // prevent lap clicks from toggling chrono
+        lapEl.addEventListener("click", (e) => {
+            e.stopPropagation(); // 🔹 don't trigger chrono click
+            lapEl.remove();
+        });
+
+        $laps.appendChild(lapEl);
+    }
+
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    // Left click: start/pause
+    document.addEventListener("click", () => {
+        if (isReset) {
+            isReset = false;
+            return;
+        }
+        isRunning ? pauseChrono() : startChrono();
+    });
+
+    // Double click: fullscreen
+    document.addEventListener("dblclick", toggleFullscreen);
+
+    // Hold left click: reset
+    document.addEventListener("mousedown", (e) => {
+        if (e.button === 0) {
+            holdTimeout = setTimeout(() => {
+                resetChrono();
+            }, 250);
+        }
+    });
+    document.addEventListener("mouseup", () => {
+        if (holdTimeout) {
+            clearTimeout(holdTimeout);
+            holdTimeout = null;
+        }
+    });
+
+    // Middle click: add lap
+    document.addEventListener("auxclick", (e) => {
+        if (e.button === 1) {
+            e.preventDefault();
+            addLap();
+        }
+    });
+
+    // Right click: toggle meta UI
+    document.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        document.querySelectorAll(".meta-ui").forEach((el) => {
+            el.classList.toggle("hidden");
+        });
+    });
+
+    updateDisplay();
+</script>
