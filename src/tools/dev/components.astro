@@ -1,0 +1,115 @@
+---
+export const tool = {
+    title: "Components",
+    description: "Showcase of reusable UI components",
+};
+
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import InfoCard from "@components/InfoCard.astro";
+import InputFieldNumber from "@components/InputFieldNumber.astro";
+import InputFieldText from "@components/InputFieldText.astro";
+import InputCheckbox from "@components/InputCheckbox.astro";
+import InputRadio from "@components/InputRadio.astro";
+import LineChart from "@components/LineChart.astro";
+import Loading from "@components/Loading.astro";
+import ResultDisplay from "@components/ResultDisplay.astro";
+import ToolHeader from "@components/ToolHeader.astro";
+import ToolList from "@components/ToolList.astro";
+import Button from "@components/Button.astro";
+import Badge from "@components/Badge.jsx";
+---
+
+<section class="max-w-2xl mx-auto space-y-10">
+    <h2 class="text-3xl font-bold text-center">Components</h2>
+
+    <!-- Inputs -->
+    <div class="border border-neutral-700 bg-neutral-900/40 rounded-lg p-6">
+        <h3 class="text-xl font-semibold pb-6">Inputs</h3>
+
+        <div class="py-4 border-b border-neutral-700">
+            <div class="grid gap-6 sm:grid-cols-2 justify-items-center">
+                <InputFieldText id="demo-text" label="Text" placeholder="Enter text" />
+                <InputFieldNumber id="demo-num" label="Number" placeholder="0" step={1} min={0} />
+            </div>
+        </div>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center gap-6">
+            <InputCheckbox id="chk-a" label="A" />
+            <InputCheckbox id="chk-b" label="B" />
+            <InputCheckbox id="chk-c" label="C" />
+        </div>
+
+        <div class="py-4 flex justify-center gap-6">
+            <InputRadio id="rad-1" name="demo" label="1" checked />
+            <InputRadio id="rad-2" name="demo" label="2" />
+            <InputRadio id="rad-3" name="demo" label="3" />
+        </div>
+    </div>
+
+    <!-- Display -->
+    <div class="border border-neutral-700 bg-neutral-900/40 rounded-lg p-6">
+        <h3 class="text-xl font-semibold pb-6">Display</h3>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center">
+            <InfoCard title="Info Card">This is inside an InfoCard</InfoCard>
+        </div>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center">
+            <ResultDisplay id="res-1" label="Result" value="42" description="Example value" variant="box" color="violet" />
+        </div>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center">
+            <ResultDisplay id="res-compact" label="Compact Result" value="Hello World" copiable variant="field" color="green" />
+        </div>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center">
+            <Loading message="Loading data... (it's not actually loading)" />
+        </div>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center">
+            <Button label="Show Toast" onClick="window.showToast('I am a toast!')" />
+        </div>
+
+        <div class="py-4 flex justify-center">
+            <div class="relative w-16 aspect-square bg-neutral-800 rounded-md text-center flex items-center justify-center">
+                Hover Star
+                <Badge icon="⭐" label="Star Badge" tooltip="This is a badge tooltip" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="border border-neutral-700 bg-neutral-900/40 rounded-lg p-6">
+        <h3 class="text-xl font-semibold pb-6">Navigation</h3>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center">
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Components" }]} />
+        </div>
+
+        <div class="py-4 border-b border-neutral-700 flex justify-center">
+            <ToolHeader title="Tool Header" description="This is a header description" />
+        </div>
+
+        <div class="py-4 flex justify-center">
+            <ToolList tools={[
+                { name: "BMI Calculator", href: "/health/bmi" },
+                { name: "Password Generator", href: "/security/password" },
+            ]} />
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="border border-neutral-700 bg-neutral-900/40 rounded-lg p-6">
+        <h3 class="text-xl font-semibold pb-6">Charts</h3>
+            <LineChart
+                    id="chart-demo"
+                    labels={["Jan", "Feb", "Mar", "Apr", "May"]}
+                    datasets={[
+                        { label: "Visitors", data: [50, 80, 65, 90, 120], color: "#60a5fa" },
+                        { label: "Signups", data: [10, 20, 18, 25, 30], color: "#a78bfa" },
+                        { label: "Revenue", data: [200, 300, 280, 350, 400], color: "#34d399" },
+                    ]}
+                    yZero
+            />
+    </div>
+</section>

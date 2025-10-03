@@ -1,0 +1,675 @@
+=== C:\Users\diego\Documents\programming\tools\src\components\Breadcrumbs.astro ===
+---
+const { items } = Astro.props as {
+  items: { label: string; href?: string }[];
+};
+---
+
+<nav class="text-sm text-neutral-400">
+  <ol class="flex flex-wrap items-center gap-2">
+    {items.map((item, i) => {
+      const isLast = i === items.length - 1;
+      return (
+          <>
+            {item.href && !isLast ? (
+                <li>
+                  <a
+                      href={item.href}
+                      class="hover:text-violet-400 transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+            ) : (
+                <li
+                    class={isLast ? "text-neutral-100 font-medium" : "text-neutral-200"}
+                >
+                  {item.label}
+                </li>
+            )}
+            {i < items.length - 1 && (
+                <li class="text-neutral-600">/</li>
+            )}
+          </>
+      );
+    })}
+  </ol>
+</nav>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\InfoCard.astro ===
+---
+const { title } = Astro.props as { title?: string };
+---
+
+<section class="rounded-lg border border-neutral-700 bg-neutral-900 p-4">
+    {title && <h3 class="text-sm font-semibold text-neutral-200 mb-2">{title}</h3>}
+    <slot />
+</section>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\InputCheckbox.astro ===
+---
+const { id, label, checked = false } = Astro.props as {
+    id: string;
+    label: string;
+    checked?: boolean;
+};
+---
+
+<label
+        for={id}
+        class="group flex items-center gap-2 cursor-pointer select-none text-sm text-neutral-300"
+>
+    <input
+            id={id}
+            type="checkbox"
+            class="sr-only peer"
+            checked={checked}
+    />
+
+    <span
+            class="w-3 h-3 rounded-xs border border-neutral-600 bg-neutral-900
+           transition-all duration-150 ease-out
+           peer-checked:border-violet-500 peer-checked:bg-violet-500
+           peer-checked:scale-110 peer-checked:shadow-sm
+           group-hover:border-violet-400 group-hover:bg-neutral-800
+           peer-focus-visible:ring-2 peer-focus-visible:ring-violet-500/60"
+    ></span>
+
+    {label}
+</label>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\InputFieldNumber.astro ===
+---
+let { label, id, placeholder = "", step = 1, min = -Infinity, max = Infinity, value = "" } = Astro.props as {
+    label: string;
+    id: string;
+    placeholder?: string;
+    step?: number;
+    min?: number;
+    max?: number;
+    value?: number | string;
+};
+---
+
+<div class="w-full">
+    <label for={id} class="block mb-2 text-left text-sm font-medium text-neutral-300">
+        {label}
+    </label>
+
+    <div class="flex items-center rounded-md flex border border-neutral-700 bg-neutral-900 transition">
+        <button
+                type="button"
+                id={`decrement-button-${id}`}
+                class="font-bold p-2 w-12 h-full rounded-s-md cursor-pointer transition text-violet-300 hover:text-violet-400"
+                aria-label="Decrease"
+        >−</button>
+
+        <input
+                type="number"
+                id={id}
+                class="p-2 w-full text-center outline-none"
+                placeholder={placeholder}
+                value={value}
+                step={step}
+                min={min}
+                max={max}
+                data-step={step}
+                data-min={min}
+                data-max={max}
+        />
+
+        <button
+                type="button"
+                id={`increment-button-${id}`}
+                class="font-bold p-2 w-12 rounded-e-md cursor-pointer transition text-violet-300 hover:text-violet-400"
+                aria-label="Increase"
+        >+</button>
+    </div>
+</div>
+
+<script define:vars={{ id, step, min, max }}>
+    const input = document.getElementById(id);
+    const decrementButton = document.getElementById(`decrement-button-${id}`);
+    const incrementButton = document.getElementById(`increment-button-${id}`);
+
+    const getStep = () => {
+        const step = parseFloat(input.dataset.step || String(step) || "1");
+        return Number.isFinite(step) ? step : 1;
+    };
+
+    function roundToStep(value, step) {
+        const decimals = (step.toString().split(".")[1] || "").length;
+        return parseFloat(value.toFixed(decimals));
+    }
+
+    const getMin = () => {
+        const min = parseFloat(input.dataset.min || String(min) || "0");
+        return Number.isFinite(min) ? min : 0;
+    };
+
+    const getMax = () => {
+        const max = parseFloat(input.dataset.max || String(max) || "Infinity");
+        return Number.isFinite(max) ? max : Infinity;
+    };
+
+    const seedIfEmpty = () => {
+        if (!input.value) {
+            const placeholder = parseFloat(input.placeholder || "0");
+            input.value = Number.isFinite(placeholder) ? String(placeholder) : "0";
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            return true;
+        }
+        return false;
+    };
+
+    const clampAndSet = (value, redispatch = true) => {
+        let newValue = Number.isFinite(value) ? value : 0;
+        const min = getMin();
+        const max = getMax();
+        if (newValue < min) newValue = min;
+        if (newValue > max) newValue = max;
+        input.value = String(newValue);
+
+        if (redispatch) {
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        }
+    };
+
+    const stepOnce = (dir) => {
+        if (seedIfEmpty()) return;
+        const step = getStep();
+        let value = parseFloat(input.value || "0") || 0;
+        value += dir === "inc" ? step : -step;
+        value = roundToStep(value, step);
+        clampAndSet(value);
+    };
+
+    // --- press & hold (pointer) ---
+    let holdTO, holdIV;
+
+    const startHold = (dir) => {
+        if (seedIfEmpty()) return;
+        // immediate step
+        stepOnce(dir);
+        // after delay, repeat fast
+        holdTO = setTimeout(() => {
+            holdIV = setInterval(() => stepOnce(dir), 60);
+        }, 300);
+    };
+    const stopHold = () => {
+        clearTimeout(holdTO); holdTO = undefined;
+        clearInterval(holdIV); holdIV = undefined;
+    };
+
+    const onPointerDown = (e, dir) => {
+        e.preventDefault();
+        const target = e.currentTarget;
+        if (target.setPointerCapture) target.setPointerCapture(e.pointerId);
+        startHold(dir);
+    };
+
+    decrementButton.addEventListener("pointerdown", (e) => onPointerDown(e, "dec"));
+    incrementButton.addEventListener("pointerdown", (e) => onPointerDown(e, "inc"));
+    decrementButton.addEventListener("pointerup", stopHold);
+    incrementButton.addEventListener("pointerup", stopHold);
+    decrementButton.addEventListener("pointerleave", stopHold);
+    incrementButton.addEventListener("pointerleave", stopHold);
+    decrementButton.addEventListener("pointercancel", stopHold);
+    incrementButton.addEventListener("pointercancel", stopHold);
+    window.addEventListener("blur", stopHold);
+
+    // --- manual typing: clamp on-the-fly (min only) ---
+    input.addEventListener("input", () => {
+        if (input.value === "") return; // let parent know it's empty
+        const v = parseFloat(input.value);
+        if (!Number.isFinite(v)) {
+            input.value = "";
+            return;
+        }
+        clampAndSet(v, false); // 👈 don’t redispatch from inside input handler
+    });
+
+    // --- keyboard arrows ---
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowUp")  { e.preventDefault(); stepOnce("inc"); }
+        if (e.key === "ArrowDown"){ e.preventDefault(); stepOnce("dec"); }
+    });
+</script>
+
+<style>
+    /* Hide native number spinners (keep your own styling) */
+    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+</style>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\InputFieldText.astro ===
+---
+let { label, id, placeholder = "" } = Astro.props as {
+    label: string;
+    id: string;
+    placeholder?: string;
+};
+---
+
+<div class="w-full">
+    <label for={id} class="block mb-2 text-left text-sm font-medium text-neutral-300">
+        {label}
+    </label>
+    <input
+            type="text"
+            id={id}
+            placeholder={placeholder}
+            class="w-full rounded-md border border-neutral-700 bg-neutral-900 px-3 py-2 text-neutral-100 placeholder-neutral-500 outline-none focus:border-violet-500 transition-colors"
+            autocomplete="off"
+    />
+</div>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\InputRadio.astro ===
+---
+const { id, name, label, checked = false } = Astro.props as {
+    id: string;
+    name: string; // radios need a name to group properly
+    label: string;
+    checked?: boolean;
+};
+---
+
+<label
+        for={id}
+        class="group flex items-center gap-2 cursor-pointer select-none text-sm text-neutral-300"
+>
+    <input
+            id={id}
+            name={name}
+            type="radio"
+            class="sr-only peer"
+            checked={checked}
+    />
+
+    <span
+            class="w-3 h-3 rounded-full border border-neutral-600 bg-neutral-900
+           transition-all duration-150 ease-out
+           peer-checked:border-violet-500 peer-checked:bg-violet-500
+           peer-checked:shadow-[0_0_0_2px_rgb(124,58,237,0.4)]
+           group-hover:border-violet-400 group-hover:bg-neutral-800
+           peer-focus-visible:ring-2 peer-focus-visible:ring-violet-500/60"
+    ></span>
+
+    {label}
+</label>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\LineChart.astro ===
+---
+interface Dataset {
+    label: string;
+    data: number[];
+    color: string;
+    }
+
+interface Props {
+    id: string;
+    labels: string[];
+    datasets: Dataset[];
+    preset?: "number" | "currency" | "percent";
+    locale?: string;
+    currency?: string;
+    yZero?: boolean;
+    }
+
+const {
+    id,
+    labels = [],
+    datasets = [],
+    preset = "number",
+    locale = "en-US",
+    currency = "USD",
+    yZero = false
+    } = Astro.props;
+---
+
+<div class="bg-neutral-900 rounded-lg border border-neutral-700 p-4 relative">
+    <!-- Chart -->
+    <canvas id={id} height="240" class={labels.length && datasets.length ? "" : "hidden"}></canvas>
+
+    <!-- Fallback message -->
+    <div
+            id={`${id}-empty`}
+            class={`absolute inset-0 flex items-center justify-center text-neutral-400 text-sm ${
+                labels.length && datasets.length ? "hidden" : ""
+            }`}
+    >
+        No data
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+
+<script type="module" define:vars={{ id, labels, datasets, preset, locale, currency, yZero }}>
+    function formatTick(value) {
+        switch (preset) {
+            case "currency":
+                return value.toLocaleString(locale, {
+                    style: "currency",
+                    currency,
+                    maximumFractionDigits: 0,
+                });
+            case "percent":
+                return value.toLocaleString(locale, {
+                    style: "percent",
+                    maximumFractionDigits: 1,
+                });
+            default:
+                return value.toLocaleString(locale);
+        }
+    }
+
+    const ctx = document.getElementById(id);
+    const emptyMsg = document.getElementById(`${id}-empty`);
+
+    if (ctx && window.Chart) {
+        const chart = new window.Chart(ctx, {
+            type: "line",
+            data: {
+                labels,
+                datasets: datasets.map((d) => ({
+                    label: d.label,
+                    data: d.data,
+                    borderColor: d.color,
+                    backgroundColor: d.color + "33",
+                    borderWidth: 2,
+                    tension: 0.25,
+                    fill: true,
+                    pointRadius: 2,
+                    pointHoverRadius: 4,
+                })),
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { labels: { color: "#e5e5e5" } },
+                },
+                scales: {
+                    x: {
+                        ticks: { color: "#a3a3a3" },
+                        grid: { color: "#404040" },
+                    },
+                    y: {
+                        ticks: {
+                            color: "#a3a3a3",
+                            callback: (v) => formatTick(v),
+                        },
+                        grid: { color: "#404040" },
+                        beginAtZero: yZero,
+                    },
+                },
+            },
+        });
+
+        // Handle updates
+        ctx.addEventListener("update-chart", (e) => {
+            const { labels, datasets } = e.detail;
+
+            chart.data.labels = labels;
+            chart.data.datasets = datasets.map((d) => ({
+                label: d.label,
+                data: d.data,
+                borderColor: d.color,
+                backgroundColor: d.color + "33",
+                borderWidth: 2,
+                tension: 0.25,
+                fill: true,
+                pointRadius: 2,
+                pointHoverRadius: 4,
+            }));
+            chart.update();
+
+
+            // Toggle fallback visibility
+            if (labels.length && datasets.length) {
+                ctx.classList.remove("hidden");
+                emptyMsg.classList.add("hidden");
+            } else {
+                ctx.classList.add("hidden");
+                emptyMsg.classList.remove("hidden");
+            }
+        });
+    }
+</script>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\Loading.astro ===
+---
+const { message = "Loading..." } = Astro.props;
+---
+
+<div class="flex flex-col items-center justify-center">
+    <div class="h-8 w-8 animate-spin rounded-full border-4 border-violet-500 border-t-transparent mb-2" />
+
+    <span class="text-xs font-medium">{message}</span>
+</div>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\ResultDisplay.astro ===
+---
+interface Props {
+    id: string;
+    label?: string;
+    value?: string;
+    description?: string;
+    copiable?: boolean;
+    variant?: "box" | "field";
+    color?: "neutral" | "blue" | "green" | "yellow" | "red" | "violet";
+}
+
+const {
+    id,
+    label = "",
+    value = "—",
+    description = "",
+    copiable = false,
+    variant = "field",
+    color = "neutral",
+} = Astro.props;
+---
+
+{variant === "box" ? (
+<div
+        id={id}
+        data-color={color}
+        class="rounded-lg border p-4 text-left bg-neutral-900"
+>
+    {label && <p class="text-sm font-medium text-neutral-400">{label}</p>}
+    <p data-value class="text-xl font-bold">{value}</p>
+    {description && (
+    <p data-description class="text-sm">{description}</p>
+        )}
+        </div>
+        ) : (
+<div class="text-left">
+    {label && <p class="text-sm font-medium text-neutral-400">{label}</p>}
+    <p
+            id={id}
+            data-color={color}
+            class="font-mono text-xs break-all transition-colors cursor-pointer hover:!text-violet-400"
+    >
+        {value}
+    </p>
+    {description && (
+            <p data-description class="text-xs text-neutral-400">{description}</p>
+    )}
+</div>
+        )}
+
+<script type="module" define:vars={{ id, copiable }}>
+    import { copyToClipboard } from "/src/lib/clipboard.ts";
+
+    if (copiable) {
+        const el = document.getElementById(id);
+        el?.addEventListener("click", async () => {
+            const text = el.textContent.trim();
+            if (text === "—") return;
+            await copyToClipboard(text, "Copied to clipboard", "Failed to copy");
+        });
+    }
+</script>
+
+<style>
+    /* ---- shared color variants ---- */
+
+    /* Box variant border */
+    [data-color="neutral"] { border-color: rgb(64 64 64); }
+    [data-color="blue"]    { border-color: rgb(96 165 250 / 0.4); }
+    [data-color="green"]   { border-color: rgb(74 222 128 / 0.4); }
+    [data-color="yellow"]  { border-color: rgb(250 204 21 / 0.4); }
+    [data-color="red"]     { border-color: rgb(248 113 113 / 0.4); }
+    [data-color="violet"]  { border-color: rgb(167 139 250 / 0.4); }
+
+    /* Box variant value + description text */
+    [data-color="neutral"] [data-value],
+    [data-color="neutral"] [data-description] { color: rgb(245 245 245); }
+
+    [data-color="blue"] [data-value],
+    [data-color="blue"] [data-description] { color: rgb(147 197 253); }
+
+    [data-color="green"] [data-value],
+    [data-color="green"] [data-description] { color: rgb(134 239 172); }
+
+    [data-color="yellow"] [data-value],
+    [data-color="yellow"] [data-description] { color: rgb(253 224 71); }
+
+    [data-color="red"] [data-value],
+    [data-color="red"] [data-description] { color: rgb(252 165 165); }
+
+    [data-color="violet"] [data-value],
+    [data-color="violet"] [data-description] { color: rgb(196 181 253); }
+
+    /* Field variant text */
+    p[data-color="neutral"] { color: rgb(245 245 245); }
+    p[data-color="blue"]    { color: rgb(147 197 253); }
+    p[data-color="green"]   { color: rgb(134 239 172); }
+    p[data-color="yellow"]  { color: rgb(253 224 71); }
+    p[data-color="red"]     { color: rgb(252 165 165); }
+    p[data-color="violet"]  { color: rgb(196 181 253); }
+</style>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\Toast.astro ===
+---
+import { ToastType } from "@lib/toast";
+const { id = "toast" } = Astro.props;
+---
+
+<div
+        id={id}
+        class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 max-w-xs px-3 py-2 rounded-md opacity-0 transition-opacity duration-300 pointer-events-none bg-neutral-800 text-neutral-100 text-sm shadow-md"
+>
+    <!-- Icon -->
+    <svg id={`${id}-icon`} class="w-4 h-4 flex-shrink-0 text-blue-400" fill="currentColor" viewBox="0 0 20 20"></svg>
+
+    <!-- Message -->
+    <span id={`${id}-msg`} class="flex-1"></span>
+</div>
+
+<script define:vars={{ id, ToastType }}>
+    const $toast = document.getElementById(id);
+    const $msg = document.getElementById(`${id}-msg`);
+    const $icon = document.getElementById(`${id}-icon`);
+
+    let closeTimeout;
+
+    function closeToast() {
+        if ($toast) {
+            $toast.style.opacity = "0";
+            $toast.style.pointerEvents = "none";
+        }
+    }
+
+    function setVariant(type) {
+        switch (type) {
+            case ToastType.Success:
+                $icon.setAttribute("class", "w-4 h-4 flex-shrink-0 text-green-400");
+                $icon.innerHTML = `<path d="M16.707 5.293a1 1 0 0 0-1.414 0L9 11.586 6.707 9.293a1 1 0 1 0-1.414 1.414l3 3a1 1 0 0 0 1.414 0l7-7a1 1 0 0 0 0-1.414Z"/>`;
+                break;
+            case ToastType.Error:
+                $icon.setAttribute("class", "w-4 h-4 flex-shrink-0 text-red-400");
+                $icon.innerHTML = `<path d="M10 18a8 8 0 1 0-8-8 8 8 0 0 0 8 8Zm-1-5h2v2h-2v-2Zm0-8h2v6h-2V5Z"/>`;
+                break;
+            default:
+                $icon.setAttribute("class", "w-4 h-4 flex-shrink-0 text-blue-400");
+                $icon.innerHTML = `<path d="M10 18a8 8 0 1 0-8-8 8 8 0 0 0 8 8Zm-.75-11.25a.75.75 0 1 1 1.5 0v4.5a.75.75 0 0 1-1.5 0Zm.75 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>`;
+        }
+    }
+
+    window.showToast = function (message, type = ToastType.Info) {
+        if (!$toast) return;
+
+        clearTimeout(closeTimeout);
+        $msg.textContent = message;
+        setVariant(type);
+
+        $toast.style.opacity = "1";
+        $toast.style.pointerEvents = "auto";
+
+        closeTimeout = setTimeout(closeToast, 2000);
+    };
+
+    $toast.addEventListener("click", () => {
+        clearTimeout(closeTimeout);
+        closeToast();
+    });
+</script>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\ToolHeader.astro ===
+---
+const { title, description } = Astro.props as {
+    title: string;
+    description?: string;
+};
+---
+
+<header class="space-y-2 text-center m-8">
+    <h1 class="text-2xl font-bold text-neutral-100">{title}</h1>
+    {description && <p class="text-neutral-400 text-sm">{description}</p>}
+</header>
+
+
+
+=== C:\Users\diego\Documents\programming\tools\src\components\ToolList.astro ===
+---
+const { tools } = Astro.props as {
+  tools: { name: string; href: string; description?: string }[];
+};
+---
+<ul>
+  {tools.map((tool) => (
+      <li>
+        <a
+            href={tool.href.toLowerCase()}
+            class="group flex items-center gap-2 rounded-md px-2 py-1 text-neutral-300 hover:text-neutral-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60"
+        >
+            <span aria-hidden="true" class="w-1.5 h-1.5 rounded-full bg-neutral-600 group-hover:bg-violet-400 group-focus:bg-violet-400 transition-colors"></span>
+          <span>{tool.name}</span>
+        </a>
+      </li>
+  ))}
+</ul>
+
+
+
