@@ -1,4 +1,4 @@
-import raw from "@lib/data/digimon_master.json";
+import raw from "@lib/data/digimon_data.json";
 
 export interface Digimon {
     id: number;
@@ -9,6 +9,8 @@ export interface Digimon {
     portrait: string;
     pre_evolutions: number[];
     evolutions: number[];
+    base_personality: string;
+    ridable: boolean;
 }
 
 export type DigimonMap = Record<number, Digimon>;

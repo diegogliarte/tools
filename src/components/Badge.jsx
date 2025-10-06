@@ -11,7 +11,7 @@ export default function Badge({
     return (
         <div className={`${position} group ${className}`}>
             <div
-                className={`cursor-pointer w-6 h-6 flex items-center justify-center text-sm font-bold rounded-md shadow-sm
+                className={`cursor-pointer w-5 h-5 flex items-center justify-center text-xs font-bold rounded-md shadow-sm
                 ${withBackground ? "bg-neutral-700/80 text-white" : ""}`}
             >
                 {icon}

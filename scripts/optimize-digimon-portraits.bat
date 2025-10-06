@@ -3,16 +3,13 @@ set inputDir=%~dp0..\public\portraits
 set baseOutput=%~dp0..\public\digimon-portraits-webp
 
 :: Make subfolders for each variant
-for %%D in (lossless q75 lossless_256 q75_256) do (
+for %%D in (q75_256) do (
     if not exist "%baseOutput%\%%D" mkdir "%baseOutput%\%%D"
 )
 
 echo.
 echo ======================================
 echo Generating ALL variants for comparison
-echo   1. lossless (original size)
-echo   2. q75 (original size)
-echo   3. lossless_256 (scaled to 256px)
 echo   4. q75_256 (scaled to 256px)
 echo ======================================
 echo.
@@ -26,8 +23,5 @@ for %%F in ("%inputDir%\*.png") do (
 
 echo.
 echo ✅ Done! Variants saved into:
-echo   %baseOutput%\lossless
-echo   %baseOutput%\q75
-echo   %baseOutput%\lossless_256
 echo   %baseOutput%\q75_256
 pause

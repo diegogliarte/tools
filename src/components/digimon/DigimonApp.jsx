@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { fetchDigimons } from "@lib/api/digimon.ts";
+import oldDigimons from "@lib/data/digimon_data_old.json";
 import SearchResults from "@components/digimon/SearchResults.jsx";
 import EvolutionChain from "@components/digimon/EvolutionChain.jsx";
 
 const stageOrder = {
-    Baby: 0,
-    "In-Training": 1,
+    "In-Training I": 0,
+    "In-Training II": 1,
     Rookie: 2,
     Champion: 3,
     Ultimate: 4,
@@ -15,16 +16,65 @@ const stageOrder = {
 };
 
 const STORAGE_KEY = "digimon-team";
+const TEAM_VERSION = "v2";
+
+function migrateOldTeam(oldTeam, oldDigimons, newDigimons) {
+    const normalizeData = (data) =>
+        Array.isArray(data) ? data : Object.values(data);
+
+    const normalizeName = (name) =>
+        name
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, "");
+
+    const newList = normalizeData(newDigimons);
+    const oldList = normalizeData(oldDigimons);
+
+    const nameToNewId = Object.fromEntries(
+        newList.map((d) => [normalizeName(d.name), d.id])
+    );
+    const oldIdToName = Object.fromEntries(
+        oldList.map((d) => [d.id, d.name])
+    );
+
+    const migrated = oldTeam.map((chain) =>
+        chain
+            .map((oldId) => {
+                const oldName = oldIdToName[oldId];
+                if (!oldName) return null;
+                const normalized = normalizeName(oldName);
+                const newId = nameToNewId[normalized];
+                if (!newId) {
+                    console.warn(`⚠️ No match for ${oldName} → skipped`);
+                    return null;
+                }
+                return newId;
+            })
+            .filter(Boolean)
+    );
+
+    return migrated;
+}
+
 
 function encodeTeam(team) {
     const json = JSON.stringify(team);
-    return btoa(json); // base64
+    const base64 = btoa(json);
+    return `${TEAM_VERSION}:${base64}`;
 }
 
-function decodeTeam(str) {
+function decodeTeam(str, newDigimons) {
     try {
-        return JSON.parse(atob(str));
-    } catch {
+        if (str.startsWith(`${TEAM_VERSION}:`)) {
+            const base64 = str.slice(TEAM_VERSION.length + 1);
+            return JSON.parse(atob(base64));
+        }
+
+        // Otherwise, assume old data → migrate
+        const oldTeam = JSON.parse(atob(str));
+        return migrateOldTeam(oldTeam, oldDigimons, newDigimons);
+    } catch (err) {
+        console.warn("❌ Failed to decode or migrate team", err);
         return [];
     }
 }
@@ -34,30 +84,58 @@ export default function DigimonApp() {
     const [team, setTeam] = useState([]);
     const [query, setQuery] = useState("");
     const [showResults, setShowResults] = useState(false);
+    const decodedOnce = useRef(false);
 
     useEffect(() => {
         fetchDigimons().then(setDigimons);
     }, []);
 
     useEffect(() => {
+        if (!digimons || Object.keys(digimons).length === 0) return;
+
         const params = new URLSearchParams(window.location.search);
         const encoded = params.get("team");
 
+        let decoded = [];
         if (encoded) {
-            setTeam(decodeTeam(encoded));
+            decoded = decodeTeam(encoded, digimons);
         } else {
             const saved = localStorage.getItem(STORAGE_KEY);
             if (saved) {
-                try {
-                    setTeam(JSON.parse(saved));
-                } catch {
-                    console.warn("Invalid team in localStorage");
-                }
+                decoded = decodeTeam(saved, digimons);
             }
         }
-    }, []);
+
+        // ✅ Validate chains individually
+        const allIds = new Set(Object.keys(digimons).map(Number));
+        const cleanedTeam = (decoded || []).filter((chain) => {
+            if (!Array.isArray(chain) || chain.length === 0) return false;
+
+            const valid = chain.every((id) => allIds.has(id));
+            if (!valid) {
+                console.warn("⚠️ Removing invalid chain:", chain);
+            }
+            return valid;
+        });
+
+        if (cleanedTeam.length > 0) {
+            setTeam(cleanedTeam);
+        } else {
+            console.warn("⚠️ All chains invalid or empty, clearing team");
+            setTeam([]);
+            localStorage.removeItem(STORAGE_KEY);
+            const url = new URL(window.location.href);
+            url.searchParams.delete("team");
+            window.history.replaceState({}, "", url);
+        }
+
+        decodedOnce.current = true;
+    }, [digimons]);
+
 
     useEffect(() => {
+        if (!decodedOnce.current) return;
+
         const url = new URL(window.location.href);
 
         if (team.length === 0) {
@@ -71,7 +149,7 @@ export default function DigimonApp() {
         url.searchParams.set("team", encoded);
         window.history.replaceState({}, "", url);
 
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(team));
+        localStorage.setItem(STORAGE_KEY, encoded);
     }, [team]);
 
     useEffect(() => {
@@ -105,8 +183,8 @@ export default function DigimonApp() {
 
     function updateChain(index, newChain) {
         if (newChain.length === 0) {
-            removeChain(index)
-            return
+            removeChain(index);
+            return;
         }
 
         const updated = [...team];

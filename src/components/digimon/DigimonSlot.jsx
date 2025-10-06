@@ -5,7 +5,6 @@ function portraitSources(d) {
     if (!d?.portrait) return ["/digimon-portraits/placeholder.webp"];
     return [
         `/digimon-portraits/${d.portrait}`,
-        `/digimon-portraits-new/${d.portrait}`,
         "/digimon-portraits/placeholder.webp",
     ];
 }
@@ -13,7 +12,7 @@ function portraitSources(d) {
 function typeIconFor(type) {
     if (!type) return null;
     const normalized = type.toLowerCase();
-    if (normalized.includes("none")) return "/digimon-icons/none.png";
+    if (normalized.includes("no data")) return "/digimon-icons/no-data.png";
     if (normalized.includes("vaccine")) return "/digimon-icons/vaccine.png";
     if (normalized.includes("virus")) return "/digimon-icons/virus.png";
     if (normalized.includes("data")) return "/digimon-icons/data.png";
@@ -38,28 +37,45 @@ export default function DigimonSlot({
     const [srcIndex, setSrcIndex] = useState(0);
     const typeIcon = typeIconFor(digimon.type);
 
-    // Badge detection...
-    const dnaReqs = digimon.requirements?.filter((r) =>
-        r.includes("personnality is")
-    );
-    const eggReqs = digimon.requirements?.filter((r) => r.includes("Digi-Egg"));
-    const reqs = dnaReqs?.length ? dnaReqs : eggReqs?.length ? eggReqs : null;
+    // Badge detection
+    const reqs = digimon.requirements || [];
 
-    const badgeProps = reqs
-        ? {
-            icon: dnaReqs?.length ? "🧬" : "🥚",
-            label: dnaReqs?.length ? "DNA Jogress" : "Armor Evolution",
+    const dnaReqs = reqs.filter(
+        (r) =>
+            /Jogress|Partner|[\(\)]/.test(r) && !r.includes("Digi-Egg")
+    );
+
+    const eggReqs = reqs.filter((r) => /Digi-?Egg/i.test(r));
+
+    let badgeProps = null;
+    if (dnaReqs.length > 1) {
+        badgeProps = {
+            icon: "🧬",
+            label: "DNA Jogress",
             tooltip: (
                 <div className="space-y-1">
-                    {reqs.map((r, i) => (
+                    {dnaReqs.map((r, i) => (
                         <div key={i}>· {r}</div>
                     ))}
                 </div>
             ),
-        }
-        : null;
+        };
+    } else if (eggReqs.length > 0) {
+        badgeProps = {
+            icon: "🥚",
+            label: "Armor Evolution",
+            tooltip: (
+                <div className="space-y-1">
+                    {eggReqs.map((r, i) => (
+                        <div key={i}>· {r}</div>
+                    ))}
+                </div>
+            ),
+        };
+    }
 
-    let imgClasses = "w-12 h-12 object-contain rounded-lg transition";
+
+    let imgClasses = "w-12 h-12 object-contain rounded-lg transition cursor-help";
     if (clickable) {
         imgClasses +=
             side === "left"
@@ -78,9 +94,9 @@ export default function DigimonSlot({
 
     return (
         <div
-            className={`flex flex-col items-center gap-1 ${
+            className={`flex flex-col items-center gap-0.5 ${
                 compact
-                    ? "cursor-pointer hover:bg-neutral-700 rounded p-2 transition"
+                    ? "cursor-pointer hover:bg-neutral-700 rounded p-1 transition"
                     : ""
             } w-20`} // ✅ fixed width for all slots
             onClick={compact ? onClick : undefined}
@@ -93,10 +109,14 @@ export default function DigimonSlot({
                 <img
                     src={sources[srcIndex]}
                     alt={digimon.name}
-                    title={digimon.name}
                     onError={handleError}
                     className={imgClasses}
                     onClick={!compact ? onClick : undefined}
+                    title={
+                        digimon.base_personality
+                            ? `${digimon.name} (${digimon.base_personality})`
+                            : digimon.name
+                    }
                 />
 
                 {typeIcon && (
@@ -120,7 +140,7 @@ export default function DigimonSlot({
             </span>
 
             {compact && (
-                <span className="text-xs text-neutral-400">{digimon.stage}</span>
+                <span className="text-[12px] text-neutral-400">{digimon.stage}</span>
             )}
         </div>
     );
