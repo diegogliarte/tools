@@ -11,9 +11,11 @@ let { label, id, placeholder = "", step = 1, min = -Infinity, max = Infinity, va
 ---
 
 <div class="w-full">
-    <label for={id} class="block mb-2 text-left text-sm font-medium text-neutral-300">
-        {label}
-    </label>
+    {label && (
+            <label for={id} class="block mb-2 text-left text-sm font-medium text-neutral-300">
+                {label}
+            </label>
+    )}
 
     <div class="flex items-center rounded-md flex border border-neutral-700 bg-neutral-900 transition">
         <button

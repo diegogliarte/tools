@@ -1,4 +1,6 @@
 ---
+import InputCheckbox from "@components/InputCheckbox.astro";
+import InputFieldNumber from "@components/InputFieldNumber.astro";
 import InputFieldText from "@components/InputFieldText.astro";
 import DigimonRouterApp from "@components/digimon/DigimonRouterApp.jsx";
 
@@ -9,21 +11,56 @@ export const tool = {
 ---
 
 <section class="max-w-6xl mx-auto space-y-8">
-    <div class="flex flex-wrap justify-between gap-6">
-        <div class="relative w-full sm:w-[48%]" id="start-column">
-            <InputFieldText
-                    id="digimon-start"
-                    label="Start Digimon"
-                    placeholder="Search e.g. Agumon"
-            />
+
+    <div class="py-3 border-y border-neutral-700 space-y-3 text-xs">
+        <!-- Stage Filters -->
+        <div class="flex flex-wrap justify-center items-center gap-4 text-neutral-300">
+            <span class="text-neutral-400 font-medium mr-2">Stages:</span>
+            <InputCheckbox id="stage-intraining1" label="In-Training I" checked />
+            <InputCheckbox id="stage-intraining2" label="In-Training II" checked />
+            <InputCheckbox id="stage-rookie" label="Rookie" checked />
+            <InputCheckbox id="stage-champion" label="Champion" checked />
+            <InputCheckbox id="stage-ultimate" label="Ultimate" checked />
+            <InputCheckbox id="stage-mega" label="Mega" checked />
+            <InputCheckbox id="stage-ultra" label="Ultra" checked />
+            <InputCheckbox id="stage-armor" label="Armor" checked />
         </div>
 
+        <!-- Type Filters -->
+        <div class="flex flex-wrap justify-center items-center gap-4 text-xs text-neutral-300">
+            <span class="text-neutral-400 font-medium mr-2">Types:</span>
+            <InputCheckbox id="type-data" label="Data" checked />
+            <InputCheckbox id="type-free" label="Free" checked />
+            <InputCheckbox id="type-no-data" label="No Data" checked />
+            <InputCheckbox id="type-unknown" label="Unknown" checked />
+            <InputCheckbox id="type-vaccine" label="Vaccine" checked />
+            <InputCheckbox id="type-variable" label="Variable" checked />
+            <InputCheckbox id="type-virus" label="Virus" checked />
+        </div>
+
+        <!-- Agent Rank -->
+        <div class="flex justify-center items-center gap-3">
+            <span class="text-neutral-400 font-medium">Agent Rank:</span>
+            <div class="w-32">
+                <InputFieldNumber
+                        id="agent-rank"
+                        placeholder="∞"
+                        step={1}
+                        min={1}
+                        max={11}
+                />
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Inputs for start/end -->
+    <div class="flex flex-wrap justify-between gap-6">
+        <div class="relative w-full sm:w-[48%]" id="start-column">
+            <InputFieldText id="digimon-start" label="Start Digimon" placeholder="Search e.g. Agumon" />
+        </div>
         <div class="relative w-full sm:w-[48%]" id="end-column">
-            <InputFieldText
-                    id="digimon-end"
-                    label="Target Digimon"
-                    placeholder="Search e.g. WarGreymon"
-            />
+            <InputFieldText id="digimon-end" label="Target Digimon" placeholder="Search e.g. WarGreymon" />
         </div>
     </div>
 

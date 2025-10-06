@@ -63,19 +63,39 @@ export default function DigimonRouterApp() {
 
     function findShortestPath(startId, endId, blocked = []) {
         if (!startId || !endId) return [];
+
+        const { blockedStages, blockedTypes, agentRank } = getSpecialBlocks();
         const graph = buildGraph();
         const blockedSet = new Set(blocked);
-
         const queue = [[startId]];
         const visited = new Set([startId]);
+
         while (queue.length) {
             const path = queue.shift();
             const node = path[path.length - 1];
-
             if (node === endId) return path;
 
             for (const neighbor of graph[node] || []) {
-                if (!visited.has(neighbor) && !blockedSet.has(neighbor)) {
+                const digimon = digimons[neighbor];
+                if (!digimon) continue;
+
+                const stageBlocked = blockedStages.includes(digimon.stage);
+                const typeBlocked = blockedTypes.some(t =>
+                    digimon.type.toLowerCase().includes(t.toLowerCase())
+                );
+
+                const exceedsRank = digimon.requirements?.some(r => {
+                    const match = r.match(/Agent Rank >= (\d+)/);
+                    return match && agentRank < Number(match[1]);
+                });
+
+                if (
+                    !visited.has(neighbor) &&
+                    !blockedSet.has(neighbor) &&
+                    !stageBlocked &&
+                    !typeBlocked &&
+                    !exceedsRank
+                ) {
                     visited.add(neighbor);
                     queue.push([...path, neighbor]);
                 }
@@ -117,6 +137,49 @@ export default function DigimonRouterApp() {
             })
         );
     }
+
+    function getSpecialBlocks() {
+        const stageCheckboxes = document.querySelectorAll('[id^="stage-"]');
+        const typeCheckboxes = document.querySelectorAll('[id^="type-"]');
+
+        const blockedStages = Array.from(stageCheckboxes)
+            .filter(cb => !cb.checked)
+            .map(cb => cb.labels?.[0]?.innerText || cb.id.replace("stage-", ""));
+
+        const blockedTypes = Array.from(typeCheckboxes)
+            .filter(cb => !cb.checked)
+            .map(cb => cb.labels?.[0]?.innerText || cb.id.replace("type-", ""));
+
+        const rankInput = document.getElementById("agent-rank");
+        let agentRank = rankInput ? Number(rankInput.value) : Infinity;
+        if (!rankInput || rankInput.value === "") agentRank = Infinity;
+
+        return { blockedStages, blockedTypes, agentRank };
+    }
+
+    useEffect(() => {
+        const recalcAllRoutes = () => {
+            setRoutes(prev =>
+                prev.map(route => ({
+                    ...route,
+                    path: findShortestPath(route.start.id, route.end.id, route.blocked),
+                }))
+            );
+        };
+
+        const checkboxes = document.querySelectorAll(
+            '[id^="stage-"], [id^="type-"]'
+        );
+        const rankInput = document.getElementById("agent-rank");
+
+        checkboxes.forEach(cb => cb.addEventListener("change", recalcAllRoutes));
+        if (rankInput) rankInput.addEventListener("input", recalcAllRoutes);
+
+        return () => {
+            checkboxes.forEach(cb => cb.removeEventListener("change", recalcAllRoutes));
+            if (rankInput) rankInput.removeEventListener("input", recalcAllRoutes);
+        };
+    }, [digimons]);
 
     // --- JSX ---
     return (
@@ -217,11 +280,7 @@ export default function DigimonRouterApp() {
 
             {/* 🧭 Route Visualization */}
             <div className="space-y-6">
-                {routes.length === 0 && !pendingStart && !pendingEnd ? (
-                    <p className="text-neutral-500 text-center italic">
-                        Choose a Start and End Digimon to visualize their shortest route.
-                    </p>
-                ) : (
+                {
                     routes.map((route, i) => {
                         const hasPath = route.path.length > 0;
 
@@ -322,7 +381,7 @@ export default function DigimonRouterApp() {
                             </div>
                         );
                     })
-                )}
+                }
             </div>
         </div>
     );
