@@ -37,41 +37,47 @@ export default function DigimonSlot({
     const [srcIndex, setSrcIndex] = useState(0);
     const typeIcon = typeIconFor(digimon.type);
 
-    // Badge detection
+    // 🧬 Badge detection (DNA & Armor only)
     const reqs = digimon.requirements || [];
 
+// Detect DNA Jogress evolutions — multiple partners, parentheses, etc.
     const dnaReqs = reqs.filter(
-        (r) =>
-            /Jogress|Partner|[\(\)]/.test(r) && !r.includes("Digi-Egg")
+        (r) => /Jogress|Partner|[\(\)]/.test(r) && !r.includes("Digi-Egg")
     );
 
+// Detect Armor evolutions (Digi-Egg based)
     const eggReqs = reqs.filter((r) => /Digi-?Egg/i.test(r));
 
+    // Ignore Agent Skill requirements — don't badge those
+    const isAgentSkillEvo = reqs.some((r) => /Agent Skills/i.test(r));
+
     let badgeProps = null;
-    if (dnaReqs.length > 1) {
-        badgeProps = {
-            icon: "🧬",
-            label: "DNA Jogress",
-            tooltip: (
-                <div className="space-y-1">
-                    {dnaReqs.map((r, i) => (
-                        <div key={i}>· {r}</div>
-                    ))}
-                </div>
-            ),
-        };
-    } else if (eggReqs.length > 0) {
-        badgeProps = {
-            icon: "🥚",
-            label: "Armor Evolution",
-            tooltip: (
-                <div className="space-y-1">
-                    {eggReqs.map((r, i) => (
-                        <div key={i}>· {r}</div>
-                    ))}
-                </div>
-            ),
-        };
+    if (!isAgentSkillEvo) {
+        if (dnaReqs.length > 1) {
+            badgeProps = {
+                icon: "🧬",
+                label: "DNA Jogress",
+                tooltip: (
+                    <div className="space-y-1">
+                        {dnaReqs.map((r, i) => (
+                            <div key={i}>· {r}</div>
+                        ))}
+                    </div>
+                ),
+            };
+        } else if (eggReqs.length > 0) {
+            badgeProps = {
+                icon: "🥚",
+                label: "Armor Evolution",
+                tooltip: (
+                    <div className="space-y-1">
+                        {eggReqs.map((r, i) => (
+                            <div key={i}>· {r}</div>
+                        ))}
+                    </div>
+                ),
+            };
+        }
     }
 
 
