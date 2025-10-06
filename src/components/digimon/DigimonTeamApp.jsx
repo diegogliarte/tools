@@ -79,7 +79,7 @@ function decodeTeam(str, newDigimons) {
     }
 }
 
-export default function DigimonApp() {
+export default function DigimonTeamApp() {
     const [digimons, setDigimons] = useState({});
     const [team, setTeam] = useState([]);
     const [query, setQuery] = useState("");

@@ -1,6 +1,6 @@
 ---
 import InputFieldText from "@components/InputFieldText.astro";
-import DigimonApp from "@components/digimon/DigimonApp.jsx";
+import DigimonTeamApp from "../../components/digimon/DigimonTeamApp.jsx";
 
 export const tool = {
     title: "Digimon Team Planner",
@@ -15,5 +15,5 @@ export const tool = {
             placeholder="Search e.g. Greymon"
     />
 
-    <DigimonApp client:load />
+    <DigimonTeamApp client:load />
 </section>

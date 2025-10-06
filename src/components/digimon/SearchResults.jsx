@@ -1,6 +1,6 @@
 import DigimonSlot from "@components/digimon/DigimonSlot.jsx";
 
-export default function SearchResults({ query, matches, onSelect }) {
+export default function SearchResults({ query, matches, onSelect, maxDigimons=50 }) {
     if (!query || matches.length === 0) {
         return (
             <ul className="mt-2 space-y-2 text-neutral-300">
@@ -13,7 +13,7 @@ export default function SearchResults({ query, matches, onSelect }) {
 
     return (
         <ul className="flex flex-wrap gap-3 justify-center mt-2">
-            {matches.slice(0, 50).map((d) => (
+            {matches.slice(0, maxDigimons).map((d) => (
                 <DigimonSlot
                     key={d.id}
                     digimon={d}

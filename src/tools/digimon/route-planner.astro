@@ -1,0 +1,31 @@
+---
+import InputFieldText from "@components/InputFieldText.astro";
+import DigimonRouterApp from "@components/digimon/DigimonRouterApp.jsx";
+
+export const tool = {
+    title: "Digimon Route Planner",
+    description: "Find the shortest Digivolution route between any two Digimon.",
+};
+---
+
+<section class="max-w-6xl mx-auto space-y-8">
+    <div class="flex flex-wrap justify-between gap-6">
+        <div class="relative w-full sm:w-[48%]" id="start-column">
+            <InputFieldText
+                    id="digimon-start"
+                    label="Start Digimon"
+                    placeholder="Search e.g. Agumon"
+            />
+        </div>
+
+        <div class="relative w-full sm:w-[48%]" id="end-column">
+            <InputFieldText
+                    id="digimon-end"
+                    label="Target Digimon"
+                    placeholder="Search e.g. WarGreymon"
+            />
+        </div>
+    </div>
+
+    <DigimonRouterApp client:load />
+</section>

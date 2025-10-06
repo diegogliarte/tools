@@ -81,7 +81,8 @@ export default function DigimonSlot({
     }
 
 
-    let imgClasses = "w-12 h-12 object-contain rounded-lg transition cursor-help";
+    let imgClasses = `w-12 h-12 object-contain rounded-lg transition ${
+        compact ? "cursor-pointer" : "cursor-help" }`;
     if (clickable) {
         imgClasses +=
             side === "left"
@@ -104,7 +105,7 @@ export default function DigimonSlot({
                 compact
                     ? "cursor-pointer hover:bg-neutral-700 rounded p-1 transition"
                     : ""
-            } w-20`} // ✅ fixed width for all slots
+            } w-20`}
             onClick={compact ? onClick : undefined}
         >
             {!compact && (
@@ -137,10 +138,10 @@ export default function DigimonSlot({
                 {!compact && badgeProps && <Badge {...badgeProps} />}
             </div>
 
-            {/* ✅ Name will truncate instead of resizing container */}
+            {/* Name will truncate instead of resizing container */}
             <span
                 className="text-xs text-neutral-200 text-center truncate max-w-full"
-                title={digimon.name} // show full name on hover
+                title={digimon.name}
             >
                 {digimon.name}
             </span>
