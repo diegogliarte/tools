@@ -33,7 +33,7 @@ export default function EvolutionChain({ digimons, chain, setChain }) {
             {/* Center */}
             <div className="flex items-center">
                 {leftOptions.length > 0 && (
-                    <div className="w-px h-22 mx-1 bg-neutral-700" />
+                    <div className="w-px h-20 mx-1 bg-neutral-700" />
                 )}
                 {chain.map((id, idx) => {
                     const d = digimons[id];

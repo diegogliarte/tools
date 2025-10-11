@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchDigimons } from "@lib/api/digimon.ts";
 import oldDigimons from "@lib/data/digimon_data_old.json";
 import SearchResults from "@components/digimon/SearchResults.jsx";
@@ -19,25 +19,15 @@ const STORAGE_KEY = "digimon-team";
 const TEAM_VERSION = "v2";
 
 function migrateOldTeam(oldTeam, oldDigimons, newDigimons) {
-    const normalizeData = (data) =>
-        Array.isArray(data) ? data : Object.values(data);
-
-    const normalizeName = (name) =>
-        name
-            .toLowerCase()
-            .replace(/[^a-z0-9]/g, "");
-
+    const normalizeData = (data) => (Array.isArray(data) ? data : Object.values(data));
+    const normalizeName = (name) => name.toLowerCase().replace(/[^a-z0-9]/g, "");
     const newList = normalizeData(newDigimons);
     const oldList = normalizeData(oldDigimons);
 
-    const nameToNewId = Object.fromEntries(
-        newList.map((d) => [normalizeName(d.name), d.id])
-    );
-    const oldIdToName = Object.fromEntries(
-        oldList.map((d) => [d.id, d.name])
-    );
+    const nameToNewId = Object.fromEntries(newList.map((d) => [normalizeName(d.name), d.id]));
+    const oldIdToName = Object.fromEntries(oldList.map((d) => [d.id, d.name]));
 
-    const migrated = oldTeam.map((chain) =>
+    return oldTeam.map((chain) =>
         chain
             .map((oldId) => {
                 const oldName = oldIdToName[oldId];
@@ -52,10 +42,7 @@ function migrateOldTeam(oldTeam, oldDigimons, newDigimons) {
             })
             .filter(Boolean)
     );
-
-    return migrated;
 }
-
 
 function encodeTeam(team) {
     const json = JSON.stringify(team);
@@ -69,8 +56,6 @@ function decodeTeam(str, newDigimons) {
             const base64 = str.slice(TEAM_VERSION.length + 1);
             return JSON.parse(atob(base64));
         }
-
-        // Otherwise, assume old data → migrate
         const oldTeam = JSON.parse(atob(str));
         return migrateOldTeam(oldTeam, oldDigimons, newDigimons);
     } catch (err) {
@@ -86,41 +71,35 @@ export default function DigimonTeamApp() {
     const [showResults, setShowResults] = useState(false);
     const decodedOnce = useRef(false);
 
+    // Refs for animation (store DOM nodes)
+    const itemRefs = useRef(new Map());
+
     useEffect(() => {
         fetchDigimons().then(setDigimons);
     }, []);
 
     useEffect(() => {
         if (!digimons || Object.keys(digimons).length === 0) return;
-
         const params = new URLSearchParams(window.location.search);
         const encoded = params.get("team");
-
         let decoded = [];
-        if (encoded) {
-            decoded = decodeTeam(encoded, digimons);
-        } else {
+
+        if (encoded) decoded = decodeTeam(encoded, digimons);
+        else {
             const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                decoded = decodeTeam(saved, digimons);
-            }
+            if (saved) decoded = decodeTeam(saved, digimons);
         }
 
-        // ✅ Validate chains individually
         const allIds = new Set(Object.keys(digimons).map(Number));
         const cleanedTeam = (decoded || []).filter((chain) => {
             if (!Array.isArray(chain) || chain.length === 0) return false;
-
             const valid = chain.every((id) => allIds.has(id));
-            if (!valid) {
-                console.warn("⚠️ Removing invalid chain:", chain);
-            }
+            if (!valid) console.warn("⚠️ Removing invalid chain:", chain);
             return valid;
         });
 
-        if (cleanedTeam.length > 0) {
-            setTeam(cleanedTeam);
-        } else {
+        if (cleanedTeam.length > 0) setTeam(cleanedTeam);
+        else {
             console.warn("⚠️ All chains invalid or empty, clearing team");
             setTeam([]);
             localStorage.removeItem(STORAGE_KEY);
@@ -128,16 +107,12 @@ export default function DigimonTeamApp() {
             url.searchParams.delete("team");
             window.history.replaceState({}, "", url);
         }
-
         decodedOnce.current = true;
     }, [digimons]);
 
-
     useEffect(() => {
         if (!decodedOnce.current) return;
-
         const url = new URL(window.location.href);
-
         if (team.length === 0) {
             url.searchParams.delete("team");
             window.history.replaceState({}, "", url);
@@ -148,19 +123,16 @@ export default function DigimonTeamApp() {
         const encoded = encodeTeam(team);
         url.searchParams.set("team", encoded);
         window.history.replaceState({}, "", url);
-
         localStorage.setItem(STORAGE_KEY, encoded);
     }, [team]);
 
     useEffect(() => {
         const input = document.getElementById("digimon-search");
         if (!input) return;
-
         function handleInput(e) {
             setQuery(e.target.value);
             setShowResults(true);
         }
-
         input.value = query;
         input.addEventListener("input", handleInput);
         return () => input.removeEventListener("input", handleInput);
@@ -186,7 +158,6 @@ export default function DigimonTeamApp() {
             removeChain(index);
             return;
         }
-
         const updated = [...team];
         updated[index] = newChain;
         setTeam(updated);
@@ -196,23 +167,67 @@ export default function DigimonTeamApp() {
         setTeam(team.filter((_, i) => i !== index));
     }
 
+    function animateReorder(oldRects) {
+        const newRects = new Map();
+        itemRefs.current.forEach((node, key) => {
+            if (node) newRects.set(key, node.getBoundingClientRect());
+        });
+
+        newRects.forEach((newRect, key) => {
+            const oldRect = oldRects.get(key);
+            if (!oldRect) return;
+            const dy = oldRect.top - newRect.top;
+            if (dy) {
+                const el = itemRefs.current.get(key);
+                el.style.transform = `translateY(${dy}px)`;
+                el.style.transition = "transform 0s";
+                requestAnimationFrame(() => {
+                    el.style.transform = "";
+                    el.style.transition = "transform 150ms";
+                });
+            }
+        });
+    }
+
+    function moveChainUp(index) {
+        if (index === 0) return;
+        const oldRects = new Map();
+        itemRefs.current.forEach((node, key) => {
+            if (node) oldRects.set(key, node.getBoundingClientRect());
+        });
+
+        const updated = [...team];
+        [updated[index - 1], updated[index]] = [updated[index], updated[index - 1]];
+        setTeam(updated);
+
+        requestAnimationFrame(() => animateReorder(oldRects));
+    }
+
+    function moveChainDown(index) {
+        if (index === team.length - 1) return;
+        const oldRects = new Map();
+        itemRefs.current.forEach((node, key) => {
+            if (node) oldRects.set(key, node.getBoundingClientRect());
+        });
+
+        const updated = [...team];
+        [updated[index + 1], updated[index]] = [updated[index], updated[index + 1]];
+        setTeam(updated);
+
+        requestAnimationFrame(() => animateReorder(oldRects));
+    }
+
     return (
         <div className="space-y-6">
-            {/* Search */}
             {showResults && (
                 <div>
-                    <SearchResults
-                        query={query}
-                        matches={matches}
-                        onSelect={selectDigimon}
-                    />
+                    <SearchResults query={query} matches={matches} onSelect={selectDigimon} />
                     <p className="mt-2 text-xs text-neutral-500 text-center">
                         Click a Digimon to start a new chain
                     </p>
                 </div>
             )}
 
-            {/* Team section */}
             <div>
                 <h2 className="text-lg font-semibold text-neutral-200 mb-3">
                     Your Team {team.length > 0 && `(${team.length})`}
@@ -220,23 +235,45 @@ export default function DigimonTeamApp() {
 
                 {team.length === 0 ? (
                     <div className="p-6 border-2 border-dashed border-neutral-600 rounded-lg text-center text-neutral-400">
-                        No Digimon selected yet. Use the search above to start building your
-                        team.
+                        No Digimon selected yet. Use the search above to start building your team.
                     </div>
                 ) : (
-                    <div className="grid gap-4">
+                    <div className="grid gap-4 relative">
                         {team.map((chain, i) => (
                             <div
-                                key={i}
-                                className="p-2 rounded-lg bg-neutral-800 shadow-sm relative border border-neutral-700"
+                                key={chain.join("-")}
+                                ref={(el) => itemRefs.current.set(chain.join("-"), el)}
+                                className="p-2 rounded-lg bg-neutral-800 shadow-sm relative border border-neutral-700 transition-transform duration-300"
                             >
                                 <button
                                     onClick={() => removeChain(i)}
-                                    className="absolute cursor-pointer top-2 right-2 text-neutral-400 hover:text-violet-500 transition"
+                                    className="absolute top-2 right-2 text-neutral-400 hover:text-violet-500 transition cursor-pointer"
                                     title="Remove this chain"
                                 >
                                     ✕
                                 </button>
+
+                                <div className="absolute left-1 top-0 flex flex-col gap-1">
+                                    {i > 0 && (
+                                        <button
+                                            onClick={() => moveChainUp(i)}
+                                            className="text-neutral-400 hover:text-violet-400 transition cursor-pointer"
+                                            title="Move up"
+                                        >
+                                            ↑
+                                        </button>
+                                    )}
+                                    {i < team.length - 1 && (
+                                        <button
+                                            onClick={() => moveChainDown(i)}
+                                            className="text-neutral-400 hover:text-violet-400 transition cursor-pointer"
+                                            title="Move down"
+                                        >
+                                            ↓
+                                        </button>
+                                    )}
+                                </div>
+
                                 <EvolutionChain
                                     digimons={digimons}
                                     chain={chain}
