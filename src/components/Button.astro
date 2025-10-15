@@ -5,12 +5,14 @@ const {
     onClick,
     variant = "primary",
     size = "sm",
+    action,
 } = Astro.props as {
     id?: string;
     label: string;
     onClick?: string;
     variant?: "primary" | "secondary";
     size?: "sm" | "md" | "lg";
+    action?: string;
 };
 
 const variants = {
@@ -26,9 +28,10 @@ const sizes = {
 ---
 
 <button
-        id={id}
-        class={`rounded-md transition-colors cursor-pointer ${variants[variant]} ${sizes[size]}`}
-        onClick={onClick}
+    id={id}
+    data-action={action}
+    class={`rounded-md transition-colors cursor-pointer ${variants[variant]} ${sizes[size]}`}
+    onClick={onClick}
 >
-    {label}
+{label}
 </button>

@@ -70,8 +70,6 @@ export default function DigimonTeamApp() {
     const [query, setQuery] = useState("");
     const [showResults, setShowResults] = useState(false);
     const decodedOnce = useRef(false);
-
-    // Refs for animation (store DOM nodes)
     const itemRefs = useRef(new Map());
 
     useEffect(() => {
@@ -100,7 +98,6 @@ export default function DigimonTeamApp() {
 
         if (cleanedTeam.length > 0) setTeam(cleanedTeam);
         else {
-            console.warn("⚠️ All chains invalid or empty, clearing team");
             setTeam([]);
             localStorage.removeItem(STORAGE_KEY);
             const url = new URL(window.location.href);
@@ -138,6 +135,34 @@ export default function DigimonTeamApp() {
         return () => input.removeEventListener("input", handleInput);
     }, [query]);
 
+    useEffect(() => {
+        function handleButtonClick(e) {
+            const action = e.target?.dataset?.action;
+            if (!action) return;
+
+            switch (action) {
+                case "random-team":
+                    generateRandomTeam();
+                    break;
+                default:
+                    console.warn(`⚠️ Unknown button action: ${action}`);
+            }
+        }
+
+        document.addEventListener("click", handleButtonClick);
+
+        return () => {
+            document.removeEventListener("click", handleButtonClick);
+        };
+    }, [digimons]);
+
+    useEffect(() => {
+        const title = document.getElementById("team-title");
+        if (!title) return;
+        title.textContent = `Your Team (${team.length})`;
+    }, [team]);
+
+
     const matches = Object.values(digimons)
         .filter((d) => d.name.toLowerCase().includes(query.toLowerCase()))
         .sort((a, b) => {
@@ -172,7 +197,6 @@ export default function DigimonTeamApp() {
         itemRefs.current.forEach((node, key) => {
             if (node) newRects.set(key, node.getBoundingClientRect());
         });
-
         newRects.forEach((newRect, key) => {
             const oldRect = oldRects.get(key);
             if (!oldRect) return;
@@ -195,11 +219,9 @@ export default function DigimonTeamApp() {
         itemRefs.current.forEach((node, key) => {
             if (node) oldRects.set(key, node.getBoundingClientRect());
         });
-
         const updated = [...team];
         [updated[index - 1], updated[index]] = [updated[index], updated[index - 1]];
         setTeam(updated);
-
         requestAnimationFrame(() => animateReorder(oldRects));
     }
 
@@ -209,12 +231,46 @@ export default function DigimonTeamApp() {
         itemRefs.current.forEach((node, key) => {
             if (node) oldRects.set(key, node.getBoundingClientRect());
         });
-
         const updated = [...team];
         [updated[index + 1], updated[index]] = [updated[index], updated[index + 1]];
         setTeam(updated);
-
         requestAnimationFrame(() => animateReorder(oldRects));
+    }
+
+    function generateRandomTeam() {
+        if (!digimons || Object.keys(digimons).length === 0) return;
+
+        const all = Object.values(digimons);
+        const byId = Object.fromEntries(all.map((d) => [d.id, d]));
+        const inTraining = all.filter((d) => d.stage === "In-Training I");
+
+        const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+        function buildChain(start) {
+            const chain = [start.id];
+            let current = start;
+            const visited = new Set([current.id]);
+            console.log(current)
+            while (Array.isArray(current.evolutions) && current.evolutions.length > 0) {
+                const nextId = getRandom(current.evolutions);
+                if (visited.has(nextId) || !byId[nextId]) break;
+                current = byId[nextId];
+                visited.add(current.id);
+                chain.push(current.id);
+            }
+            return chain;
+        }
+
+        const randomChains = [];
+        const teamSize = 6;
+        while (randomChains.length < teamSize) {
+            const start = getRandom(inTraining);
+            randomChains.push(buildChain(start));
+        }
+
+        setTeam(randomChains);
+        setShowResults(false);
+        setQuery("");
     }
 
     return (
@@ -228,62 +284,56 @@ export default function DigimonTeamApp() {
                 </div>
             )}
 
-            <div>
-                <h2 className="text-lg font-semibold text-neutral-200 mb-3">
-                    Your Team {team.length > 0 && `(${team.length})`}
-                </h2>
-
-                {team.length === 0 ? (
-                    <div className="p-6 border-2 border-dashed border-neutral-600 rounded-lg text-center text-neutral-400">
-                        No Digimon selected yet. Use the search above to start building your team.
-                    </div>
-                ) : (
-                    <div className="grid gap-4 relative">
-                        {team.map((chain, i) => (
-                            <div
-                                key={chain.join("-")}
-                                ref={(el) => itemRefs.current.set(chain.join("-"), el)}
-                                className="p-2 rounded-lg bg-neutral-800 shadow-sm relative border border-neutral-700 transition-transform duration-300"
+            {team.length === 0 ? (
+                <div className="p-6 border-2 border-dashed border-neutral-600 rounded-lg text-center text-neutral-400">
+                    No Digimon selected yet. Use the search above or the Random button to start building your team.
+                </div>
+            ) : (
+                <div className="grid gap-4 relative">
+                    {team.map((chain, i) => (
+                        <div
+                            key={`${chain.join("-")}-${i}`}
+                            ref={(el) => itemRefs.current.set(`${chain.join("-")}-${i}`, el)}
+                            className="p-2 rounded-lg bg-neutral-800 shadow-sm relative border border-neutral-700 transition-transform duration-300"
+                        >
+                            <button
+                                onClick={() => removeChain(i)}
+                                className="absolute top-2 right-2 text-neutral-400 hover:text-violet-500 transition cursor-pointer"
+                                title="Remove this chain"
                             >
-                                <button
-                                    onClick={() => removeChain(i)}
-                                    className="absolute top-2 right-2 text-neutral-400 hover:text-violet-500 transition cursor-pointer"
-                                    title="Remove this chain"
-                                >
-                                    ✕
-                                </button>
+                                ✕
+                            </button>
 
-                                <div className="absolute left-1 top-0 flex flex-col gap-1">
-                                    {i > 0 && (
-                                        <button
-                                            onClick={() => moveChainUp(i)}
-                                            className="text-neutral-400 hover:text-violet-400 transition cursor-pointer"
-                                            title="Move up"
-                                        >
-                                            ↑
-                                        </button>
-                                    )}
-                                    {i < team.length - 1 && (
-                                        <button
-                                            onClick={() => moveChainDown(i)}
-                                            className="text-neutral-400 hover:text-violet-400 transition cursor-pointer"
-                                            title="Move down"
-                                        >
-                                            ↓
-                                        </button>
-                                    )}
-                                </div>
-
-                                <EvolutionChain
-                                    digimons={digimons}
-                                    chain={chain}
-                                    setChain={(newChain) => updateChain(i, newChain)}
-                                />
+                            <div className="absolute left-1 top-0 flex flex-col gap-1">
+                                {i > 0 && (
+                                    <button
+                                        onClick={() => moveChainUp(i)}
+                                        className="text-neutral-400 hover:text-violet-400 transition cursor-pointer"
+                                        title="Move up"
+                                    >
+                                        ↑
+                                    </button>
+                                )}
+                                {i < team.length - 1 && (
+                                    <button
+                                        onClick={() => moveChainDown(i)}
+                                        className="text-neutral-400 hover:text-violet-400 transition cursor-pointer"
+                                        title="Move down"
+                                    >
+                                        ↓
+                                    </button>
+                                )}
                             </div>
-                        ))}
-                    </div>
-                )}
-            </div>
+
+                            <EvolutionChain
+                                digimons={digimons}
+                                chain={chain}
+                                setChain={(newChain) => updateChain(i, newChain)}
+                            />
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

@@ -1,6 +1,7 @@
 ---
 import InputFieldText from "@components/InputFieldText.astro";
-import DigimonTeamApp from "../../components/digimon/DigimonTeamApp.jsx";
+import Button from "@components/Button.astro";
+import DigimonTeamApp from "@components/digimon/DigimonTeamApp.jsx";
 
 export const tool = {
     title: "Digimon Team Planner",
@@ -14,6 +15,19 @@ export const tool = {
             label="Select a new Digimon Partner"
             placeholder="Search e.g. Greymon"
     />
+
+    <div class="flex justify-between items-center mb-4">
+        <h2 id="team-title" class="text-lg font-semibold text-neutral-200">
+            Your Team (0)
+        </h2>
+
+        <Button
+                label="🎲 Random Team"
+                variant="primary"
+                size="sm"
+                action="random-team"
+        />
+    </div>
 
     <DigimonTeamApp client:load />
 </section>
