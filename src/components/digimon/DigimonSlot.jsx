@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Badge from "@components/Badge.jsx";
 
 function portraitSources(d) {
@@ -35,20 +35,15 @@ export default function DigimonSlot({
 
     const sources = portraitSources(digimon);
     const [srcIndex, setSrcIndex] = useState(0);
+    const [showPersonality, setShowPersonality] = useState(false);
+    const tooltipRef = useRef(null);
     const typeIcon = typeIconFor(digimon.type);
 
-    // 🧬 Badge detection (DNA & Armor only)
     const reqs = digimon.requirements || [];
-
-// Detect DNA Jogress evolutions — multiple partners, parentheses, etc.
     const dnaReqs = reqs.filter(
         (r) => /Jogress|Partner|[\(\)]/.test(r) && !r.includes("Digi-Egg")
     );
-
-// Detect Armor evolutions (Digi-Egg based)
     const eggReqs = reqs.filter((r) => /Digi-?Egg/i.test(r));
-
-    // Ignore Agent Skill requirements — don't badge those
     const isAgentSkillEvo = reqs.some((r) => /Agent Skills/i.test(r));
 
     let badgeProps = null;
@@ -80,9 +75,9 @@ export default function DigimonSlot({
         }
     }
 
-
     let imgClasses = `w-12 h-12 object-contain rounded-lg transition ${
-        compact ? "cursor-pointer" : "cursor-help" }`;
+        compact ? "cursor-pointer" : "cursor-help"
+    }`;
     if (clickable) {
         imgClasses +=
             side === "left"
@@ -99,14 +94,41 @@ export default function DigimonSlot({
         }
     };
 
+    const pressTimer = useRef(null);
+
+    const handleTouchStart = (e) => {
+        e.preventDefault();
+        setShowPersonality(false);
+        pressTimer.current = setTimeout(() => setShowPersonality(true), 450);
+    };
+
+    const handleTouchEnd = () => {
+        clearTimeout(pressTimer.current);
+    };
+
+    const handleContextMenu = (e) => {
+        e.preventDefault();
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (tooltipRef.current && !tooltipRef.current.contains(e.target)) {
+                setShowPersonality(false);
+            }
+        };
+        document.addEventListener("click", handleClickOutside);
+        return () => document.removeEventListener("click", handleClickOutside);
+    }, []);
+
     return (
         <div
             className={`flex flex-col items-center gap-0.5 ${
                 compact
                     ? "cursor-pointer hover:bg-neutral-700 rounded p-1 transition"
                     : ""
-            } w-20`}
+            } w-20 relative`}
             onClick={compact ? onClick : undefined}
+            ref={tooltipRef}
         >
             {!compact && (
                 <span className="text-xs text-neutral-400">{digimon.stage}</span>
@@ -119,6 +141,9 @@ export default function DigimonSlot({
                     onError={handleError}
                     className={imgClasses}
                     onClick={!compact ? onClick : undefined}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onContextMenu={handleContextMenu}
                     title={
                         digimon.base_personality
                             ? `${digimon.name} (${digimon.base_personality})`
@@ -132,24 +157,34 @@ export default function DigimonSlot({
                         alt={digimon.type}
                         title={digimon.type}
                         className="absolute -bottom-1 -right-2 w-4 h-4 rounded-full bg-neutral-900"
+                        onTouchStart={handleTouchStart}
+                        onTouchEnd={handleTouchEnd}
+                        onContextMenu={handleContextMenu}
                     />
                 )}
 
                 {!compact && badgeProps && <Badge {...badgeProps} />}
             </div>
 
-            {/* Name will truncate instead of resizing container */}
             <span
-                className="text-xs text-neutral-200 text-center truncate max-w-full"
+                className="text-xs text-neutral-200 text-center truncate max-w-full cursor-pointer"
                 title={digimon.name}
+                onClick={() => setShowPersonality((prev) => !prev)}
             >
                 {digimon.name}
             </span>
 
+            {showPersonality && digimon.base_personality && (
+                <div className="absolute top-full mt-1 px-2 py-1 text-[11px] bg-neutral-800 text-white rounded shadow-lg z-10">
+                    {digimon.base_personality}
+                </div>
+            )}
+
             {compact && (
-                <span className="text-[12px] text-neutral-400">{digimon.stage}</span>
+                <span className="text-[12px] text-neutral-400">
+                    {digimon.stage}
+                </span>
             )}
         </div>
     );
 }
-
