@@ -49,7 +49,7 @@ const {
         )}
 
 <script type="module" define:vars={{ id, copiable }}>
-    import { copyToClipboard } from "@lib/clipboard.ts";
+    import {copyToClipboard} from "../lib/clipboard";
 
     if (copiable) {
         const el = document.getElementById(id);
