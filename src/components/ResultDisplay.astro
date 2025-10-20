@@ -48,9 +48,9 @@ const {
 </div>
         )}
 
-<script type="module" define:vars={{ id, copiable }}>
-    import {copyToClipboard} from "../lib/clipboard";
+<script is:inline src="/clipboard.js"></script>
 
+<script define:vars={{ id, copiable }}>
     if (copiable) {
         const el = document.getElementById(id);
         el?.addEventListener("click", async () => {
@@ -60,6 +60,7 @@ const {
         });
     }
 </script>
+
 
 <style>
     /* ---- shared color variants ---- */
