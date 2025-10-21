@@ -3,6 +3,7 @@ import "@styles/global.css";
 import Breadcrumbs from "@components/Breadcrumbs.astro";
 import {findCategoryTitle, findToolTitle} from "@lib/discover-tools";
 import Toast from "@components/Toast.astro";
+import Button from "../components/Button.astro";
 const {title} = Astro.props
 
 // auto-generate breadcrumbs from current path
@@ -62,15 +63,35 @@ if (segments.length > 1) {
             <Toast/>
         </main>
         <footer class="p-4 text-center text-xs text-neutral-500 meta-ui">
-            © {new Date().getFullYear()} by
-            <a
-                    href="https://github.com/diegogliarte"
-                    target="_blank"
-                    rel="noreferrer"
-                    class="text-violet-400 hover:underline"
-            >
-                diegogliarte
-            </a>
+            <div class="flex flex-col items-center justify-center gap-3">
+                <Button
+                        href="https://ko-fi.com/diegogliarte"
+                        target="_blank"
+                        variant="primary"
+                        size="xs"
+                        title="Buy me a coffee on Ko-fi"
+                >
+                    <img
+                            src="https://storage.ko-fi.com/cdn/cup-border.png"
+                            alt="Ko-fi"
+                            class="w-3 h-3"
+                    />
+                    <span>Buy me a coffee</span>
+                </Button>
+                <span>
+                  © {new Date().getFullYear()} by
+                  <a
+                          href="https://github.com/diegogliarte"
+                          target="_blank"
+                          rel="noreferrer"
+                          class="text-violet-400 hover:underline"
+                  >
+                    diegogliarte
+                  </a>
+                </span>
+            </div>
         </footer>
+
+
         </body>
         </html>
