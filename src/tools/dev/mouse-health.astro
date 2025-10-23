@@ -1,0 +1,188 @@
+---
+import ResultDisplay from "@components/ResultDisplay.astro";
+import Button from "@components/Button.astro";
+
+export const tool = {
+    title: "Mouse Health",
+    description: "Detect faulty clicks, drag signal issues, or scroll wheel problems.",
+};
+---
+
+<section class="max-w-xl mx-auto text-center space-y-8">
+
+    <!-- CLICK TEST -->
+    <div class="border border-neutral-700 bg-neutral-900/40 rounded-lg p-6 space-y-4">
+        <h3 class="text-lg font-semibold">Click Test</h3>
+        <p class="text-sm text-neutral-400">
+            Click normally several times. If a suspicious double-click appears even when you only pressed once,
+            your mouse switch might be bouncing.
+        </p>
+
+        <Button id="click-btn" label="Click" />
+        <ResultDisplay id="click-warning" label="Last Click Status" value="—" color="green" variant="box" />
+    </div>
+
+    <!-- DRAG TEST -->
+    <div class="border border-neutral-700 bg-neutral-900/40 rounded-lg p-6 space-y-4">
+        <h3 class="text-lg font-semibold">Drag Test</h3>
+        <p class="text-sm text-neutral-400">
+            Hold the mouse inside the box and move it around. After release there’s a 0.5 s cooldown.
+            Starting again during that time is counted as a suspicious re-drag.
+        </p>
+
+        <div
+                id="drag-area"
+                class="w-full h-48 bg-neutral-800 rounded-md flex items-center justify-center select-none transition-colors duration-150"
+        >
+            <span id="drag-label" class="text-neutral-400">Ready</span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 text-left">
+            <ResultDisplay id="drag-count" label="Valid Drags" value="0" color="green" variant="box" />
+            <ResultDisplay id="drag-suspicious" label="Suspicious Re-Drags" value="0" color="red" variant="box" />
+        </div>
+    </div>
+
+    <!-- SCROLL TEST -->
+    <div class="border border-neutral-700 bg-neutral-900/40 rounded-lg p-6 space-y-4">
+        <h3 class="text-lg font-semibold">Scroll Test</h3>
+        <p class="text-sm text-neutral-400">
+            Scroll slowly inside this box. Direction flips or large jumps will trigger warnings,
+            which clear automatically after 5 clean scrolls.
+        </p>
+
+        <div
+                id="scroll-box"
+                class="w-full h-32 bg-neutral-800 rounded-md overflow-hidden flex items-center justify-center select-none"
+        >
+            <span id="scroll-label" class="text-neutral-400">Scroll inside me</span>
+        </div>
+
+        <ResultDisplay id="scroll-warning" label="Scroll Status" value="—" color="green" variant="box" />
+    </div>
+
+</section>
+
+<script>
+    // === CLICK TEST ===
+    const clickBtn = document.getElementById("click-btn");
+    const clickWarnBox = document.getElementById("click-warning");
+    const clickWarnValue = clickWarnBox.querySelector("[data-value]");
+    let lastClickTime = 0;
+
+    clickBtn.addEventListener("click", () => {
+        const now = performance.now();
+        const diff = now - lastClickTime;
+
+        if (lastClickTime && diff < 25) {
+            clickWarnBox.dataset.color = "red";
+            clickWarnValue.textContent = `${Math.round(diff)} ms ⚠️ Double-click?`;
+        } else {
+            clickWarnBox.dataset.color = "green";
+            clickWarnValue.textContent = "OK";
+        }
+
+        lastClickTime = now;
+    });
+
+    // === DRAG TEST ===
+    const dragArea = document.getElementById("drag-area");
+    const dragLabel = document.getElementById("drag-label");
+    const dragCountValue = document.querySelector("#drag-count [data-value]");
+    const dragSuspiciousValue = document.querySelector("#drag-suspicious [data-value]");
+    const dragCountBox = document.getElementById("drag-count");
+    const dragSuspiciousBox = document.getElementById("drag-suspicious");
+
+    let isHolding = false;
+    let canPress = true;
+    let dragCount = 0;
+    let suspiciousCount = 0;
+
+    function setDragColor(color, text) {
+        dragArea.style.backgroundColor = color;
+        dragLabel.textContent = text;
+    }
+
+    dragArea.addEventListener("mousedown", () => {
+        if (!canPress) {
+            // clicked during cooldown → suspicious re-drag
+            suspiciousCount++;
+            dragSuspiciousValue.textContent = suspiciousCount;
+            dragSuspiciousBox.dataset.color = "red";
+            dragArea.style.backgroundColor = "#991b1b";
+            dragLabel.textContent = "⚠️ Re-drag during cooldown";
+            setTimeout(() => setDragColor("#1f2937", "Ready"), 600);
+            return;
+        }
+
+        isHolding = true;
+        setDragColor("#374151", "Dragging...");
+    });
+
+    window.addEventListener("mouseup", () => {
+        if (!isHolding) return;
+        isHolding = false;
+        canPress = false;
+        dragCount++;
+        dragCountValue.textContent = dragCount;
+        dragCountBox.dataset.color = "green";
+        setDragColor("#7f1d1d", "Released (cooldown)");
+        setTimeout(() => {
+            canPress = true;
+            setDragColor("#1f2937", "Ready");
+        }, 500);
+    });
+
+    window.addEventListener("mousemove", () => {
+        if (isHolding) dragArea.style.backgroundColor = "#4b5563";
+    });
+
+    // === SCROLL TEST ===
+    const scrollBox = document.getElementById("scroll-box");
+    const scrollWarnBox = document.getElementById("scroll-warning");
+    const scrollWarnValue = scrollWarnBox.querySelector("[data-value]");
+    const scrollLabel = document.getElementById("scroll-label");
+
+    let lastDir = 0;
+    let lastTime = 0;
+    let anomaly = false;
+    let cleanScrolls = 0;
+
+    scrollBox.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        const dir = Math.sign(e.deltaY);
+        const now = performance.now();
+        const diff = now - lastTime;
+        const jump = Math.abs(e.deltaY);
+        let issue = "";
+
+        if (lastDir && dir !== lastDir && diff < 20) {
+            issue = "Direction flip";
+        } else if (jump > 300) {
+            issue = "Scroll jump";
+        }
+
+        if (issue) {
+            anomaly = true;
+            cleanScrolls = 0;
+            scrollWarnBox.dataset.color = "red";
+            scrollWarnValue.textContent = issue;
+            scrollLabel.textContent = "Anomaly detected";
+        } else {
+            if (anomaly) {
+                cleanScrolls++;
+                if (cleanScrolls >= 5) anomaly = false;
+            } else {
+                scrollWarnBox.dataset.color = "green";
+                scrollWarnValue.textContent = "OK" +
+                    "";
+            }
+
+            scrollLabel.textContent = dir > 0 ? "Scrolling down" : "Scrolling up";
+        }
+
+        lastDir = dir;
+        lastTime = now;
+        setTimeout(() => (scrollLabel.textContent = "Scroll inside me"), 500);
+    }, { passive: false });
+</script>
