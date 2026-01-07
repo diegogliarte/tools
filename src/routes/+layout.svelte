@@ -26,7 +26,7 @@
 	<div class="flex flex-col flex-1">
 		<Navbar {toggleSidebar} />
 
-		<main class="p-4 flex-1">
+		<main class="p-2 flex-1">
 			{@render children()}
 		</main>
 
