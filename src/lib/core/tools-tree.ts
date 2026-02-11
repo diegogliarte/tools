@@ -17,6 +17,7 @@ import { tool as DigimonStoryTSTeamBuilder } from '$lib/tools/digimon-story-ts-t
 import { tool as DigimonStoryTSShortestRoute } from '$lib/tools/digimon-story-ts-shortest-route';
 import { tool as ImageCompressor } from '$lib/tools/image-compressor';
 import { tool as YearDaysGrid } from '$lib/tools/year-days-grid';
+import { tool as OSRSChatEffects } from '$lib/tools/osrs-chat-effects';
 
 function applyHref(category: ToolCategory, parentPath = ''): ToolCategory {
 	const categorySlug = slugify(category.name);
@@ -61,6 +62,11 @@ export const rawTree: ToolCategory[] = [
 	{
 		name: 'Digimon Story TS',
 		tools: [DigimonStoryTSStats, DigimonStoryTSTeamBuilder, DigimonStoryTSShortestRoute],
+		subgroups: []
+	},
+	{
+		name: 'OSRS',
+		tools: [OSRSChatEffects],
 		subgroups: []
 	}
 ];

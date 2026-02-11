@@ -53,7 +53,6 @@
 	let buttonClicks = $state(0);
 </script>
 
-<!-- REUSABLE GALLERY CARD SNIPPET -->
 {#snippet galleryItem(title: string, Demo: Snippet<[]>, Footer?: Snippet<[]>)}
 	<section class="border p-4 flex flex-col gap-2">
 		<h2>{title}</h2>
