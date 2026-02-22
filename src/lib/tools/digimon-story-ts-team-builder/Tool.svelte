@@ -9,6 +9,8 @@
 	import MdiChevronRight from '~icons/mdi/chevron-right';
 	import MdiClose from '~icons/mdi/close';
 	import MdiDiceMultiple from '~icons/mdi/dice-multiple';
+	import MdiChevronUp from '~icons/mdi/chevron-up';
+	import MdiChevronDown from '~icons/mdi/chevron-down';
 
 
 	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
@@ -147,6 +149,22 @@
 		team = team.filter((_, i) => i !== index);
 	}
 
+	function moveChainUp(index: number) {
+		if (index <= 0) return;
+
+		const updated = [...team];
+		[updated[index - 1], updated[index]] = [updated[index], updated[index - 1]];
+		team = updated;
+	}
+
+	function moveChainDown(index: number) {
+		if (index >= team.length - 1) return;
+
+		const updated = [...team];
+		[updated[index], updated[index + 1]] = [updated[index + 1], updated[index]];
+		team = updated;
+	}
+
 	function randomItem<T>(arr: T[]): T {
 		return arr[Math.floor(Math.random() * arr.length)];
 	}
@@ -265,10 +283,32 @@
 
 	{@const notInChain = (d: Digimon) => !c.includes(d.id)}
 
-	<div class="relative border">
+	<div class="relative border flex">
+		<div class="flex flex-col justify-center px-2">
+			{#if i > 0}
+				<button
+					type="button"
+					class="opacity-50 hover:opacity-100 hover:text-accent cursor-pointer transition"
+					onclick={() => moveChainUp(i)}
+				>
+					<MdiChevronUp />
+				</button>
+			{/if}
+
+			{#if i < team.length - 1}
+				<button
+					type="button"
+					class="opacity-50 hover:opacity-100 hover:text-accent cursor-pointer transition"
+					onclick={() => moveChainDown(i)}
+				>
+					<MdiChevronDown />
+				</button>
+			{/if}
+		</div>
+
 		<button
 			type="button"
-			class="absolute top-1 right-1 opacity-50 hover:opacity-100 hover:text-accent cursor-pointer"
+			class="absolute top-1 right-1 opacity-50 hover:opacity-100 hover:text-accent cursor-pointer transition"
 			onclick={(e) => {
 				e.stopPropagation();
 				deleteChain(i);
