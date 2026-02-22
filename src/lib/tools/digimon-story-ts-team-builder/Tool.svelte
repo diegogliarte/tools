@@ -63,9 +63,13 @@
 
 	onMount(() => {
 		const params = new URLSearchParams(window.location.search);
-		const raw = params.get('team');
+		let  raw = params.get('team');
 		if (!raw) return;
 
+		// Remove legacy v2 prefix
+		if (raw.startsWith('v2:')) {
+			raw = raw.slice(3);
+		}
 		const decoded = decodeTeam(raw);
 		if (!decoded) return;
 
