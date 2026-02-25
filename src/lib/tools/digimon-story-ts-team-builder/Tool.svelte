@@ -284,7 +284,7 @@
 	{@const notInChain = (d: Digimon) => !c.includes(d.id)}
 
 	<div class="relative border flex">
-		<div class="flex flex-col justify-center px-2">
+		<div class="flex flex-col justify-start px-2 py-2">
 			{#if i > 0}
 				<button
 					type="button"
