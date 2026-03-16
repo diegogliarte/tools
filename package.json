@@ -15,7 +15,8 @@
 		"scrape:inazuma-vr:players": "tsx src/scripts/inazuma-eleven-vr/players.ts",
 		"scrape:inazuma-vr:hissatsu-movies": "tsx src/scripts/inazuma-eleven-vr/hissatsu-movies.ts",
 		"scrape:digimon-story-ts:digimons": "tsx src/scripts/digimon-story-ts/digimons.ts",
-		"scrape:digimon-story-ts:download-icons": "tsx src/scripts/digimon-story-ts/download-icons.ts"
+		"scrape:digimon-story-ts:download-icons": "tsx src/scripts/digimon-story-ts/download-icons.ts",
+		"scrape:pmd-blue:download-icons": "tsx src/scripts/pmd-blue/download-icons.ts"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.0",

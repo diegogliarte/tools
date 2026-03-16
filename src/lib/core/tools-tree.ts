@@ -18,6 +18,7 @@ import { tool as DigimonStoryTSShortestRoute } from '$lib/tools/digimon-story-ts
 import { tool as ImageCompressor } from '$lib/tools/image-compressor';
 import { tool as YearDaysGrid } from '$lib/tools/year-days-grid';
 import { tool as OSRSChatEffects } from '$lib/tools/osrs-chat-effects';
+import { tool as PMDRecruitCalculator } from '$lib/tools/pmd-recruit-calculator';
 
 function applyHref(category: ToolCategory, parentPath = ''): ToolCategory {
 	const categorySlug = slugify(category.name);
@@ -68,7 +69,18 @@ export const rawTree: ToolCategory[] = [
 		name: 'OSRS',
 		tools: [OSRSChatEffects],
 		subgroups: []
-	}
+	},
+	{
+		name: 'Pokémon Mystery Dungeon',
+		tools: [],
+		subgroups: [
+			 {
+				 name: 'Blue Rescue Team',
+				 tools: [PMDRecruitCalculator],
+				 subgroups: []
+			 }
+		]
+	},
 ];
 
 export const toolsTree = rawTree.map((c) => applyHref(c));
