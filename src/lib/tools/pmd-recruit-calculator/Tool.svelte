@@ -5,13 +5,23 @@
 
 	import PokemonCell from "./components/PokemonCell.svelte";
 
-	import pokemonRaw from "$lib/data/pmd-blue/pokemons.json";
+	import pokemonsRaw from "$lib/data/pmd-blue/pokemons.json";
+	import { useToolState } from '$lib/utils/cookies.utils.svelte';
 
-	const pokemon = pokemonRaw;
+	const pokemons = pokemonsRaw;
 
-	let leaderLevel = $state(90);
-	let friendBow = $state(false);
-	let hideUnrecruitable = $state(false);
+	let { data } = $props();
+
+	const defaults = {
+		leaderLevel: 90,
+		friendBow: false,
+		hideUnrecruitable: false
+	};
+
+	let toolState = useToolState(
+		{ ...defaults, ...(data?.toolState ?? {}) },
+		data.toolId
+	);
 
 	function levelBonus(level: number) {
 		if (level >= 90) return 24;
@@ -24,25 +34,25 @@
 		return 0;
 	}
 
-	function computeRate(p) {
-		let rate = p.recruit.rate;
+	function computeRate(pokemon) {
+		let rate = pokemon.recruit.rate;
 
-		rate += levelBonus(leaderLevel);
+		rate += levelBonus(toolState.leaderLevel);
 
-		if (friendBow) rate += 10;
+		if (toolState.friendBow) rate += 10;
 
 		return rate;
 	}
 
 	const rows = $derived.by(() => {
 
-		let list = pokemon.map(p => ({
-			...p,
-			effectiveRate: computeRate(p)
+		let list = pokemons.map(pokemon => ({
+			...pokemon,
+			effectiveRate: computeRate(pokemon)
 		}));
 
-		if (hideUnrecruitable) {
-			list = list.filter(p => p.effectiveRate > 0);
+		if (toolState.hideUnrecruitable) {
+			list = list.filter(pokemon => pokemon.effectiveRate > 0);
 		}
 
 		return list;
@@ -53,11 +63,11 @@
 		label: "Pokémon",
 		width: "220px",
 
-		searchValue: p => p.name,
+		searchValue: pokemon => pokemon.name,
 
-		renderComponent: p => ({
+		renderComponent: pokemon => ({
 			component: PokemonCell,
-			props: { pokemon: p }
+			props: { pokemon: pokemon }
 		})
 	};
 
@@ -65,19 +75,19 @@
 		key: "baseRate",
 		label: "Base Rate",
 
-		sortValue: p => p.recruit.rate,
+		sortValue: pokemon => pokemon.recruit.rate,
 
-		render: p => `${p.recruit.rate}%`
+		render: pokemon => `${pokemon.recruit.rate}%`
 	};
 
 	const effectiveRateColumn: Column = {
 		key: "effectiveRate",
 		label: "Effective Rate",
 
-		sortValue: p => p.effectiveRate,
+		sortValue: pokemon => pokemon.effectiveRate,
 
-		render: p => {
-			const r = p.effectiveRate;
+		render: pokemon => {
+			const r = pokemon.effectiveRate;
 
 			const color =
 				r > 10 ? "text-green-600" :
@@ -92,20 +102,20 @@
 		key: "friendArea",
 		label: "Friend Area",
 
-		sortValue: p => p.encounter.friendArea ?? "",
+		sortValue: pokemon => pokemon.encounter.friendArea ?? "",
 
-		render: p => p.encounter.friendArea ?? "—"
+		render: pokemon => pokemon.encounter.friendArea ?? "—"
 	};
 
 	const locationsColumn: Column = {
 		key: "locations",
 		label: "Locations",
 
-		render: p => {
+		render: pokemon => {
 
-			if (!p.encounter.locations.length) return "—";
+			if (!pokemon.encounter.locations.length) return "—";
 
-			return p.encounter.locations
+			return pokemon.encounter.locations
 				.map(l =>
 					l.floors
 						? `${l.dungeon} (${l.floors})`
@@ -119,9 +129,9 @@
 		key: "notes",
 		label: "Notes",
 
-		render: p =>
-			p.recruit.note ??
-			p.encounter.note ??
+		render: pokemon =>
+			pokemon.recruit.note ??
+			pokemon.encounter.note ??
 			"—"
 	};
 
@@ -139,8 +149,8 @@
 	<div>
 		<NumberInput
 			label="Leader Level"
-			bind:value={leaderLevel}
-			min={1}
+			bind:value={toolState.leaderLevel}
+			min={0}
 			max={100}
 			step={1}
 		/>
@@ -148,12 +158,12 @@
 
 	<CheckboxInput
 		label="Friend Bow"
-		bind:checked={friendBow}
+		bind:checked={toolState.friendBow}
 	/>
 
 	<CheckboxInput
 		label="Hide unrecruitable"
-		bind:checked={hideUnrecruitable}
+		bind:checked={toolState.hideUnrecruitable}
 	/>
 
 </div>
