@@ -1,0 +1,146 @@
+<script lang="ts">
+	import DataTable, { type Column } from "$lib/components/ui/data-table.svelte";
+	import CheckboxInput from "$lib/components/ui/checkbox-input.svelte";
+
+	import FlagBadges from "./components/FlagBadges.svelte";
+
+	import movesRaw from "$lib/data/pmd-blue/moves.json";
+	import moveFlags from "$lib/data/pmd-blue/move-flags.json";
+
+	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+
+	const moves = movesRaw;
+	const damageFlags = moveFlags.damageFlags;
+	const otherFlags = moveFlags.otherFlags;
+
+	const damageMap = Object.fromEntries(damageFlags.map(f => [f.id, f.description]));
+	const otherMap = Object.fromEntries(otherFlags.map(f => [f.id, f.description]));
+
+	const typeColor = {
+		Fire: "bg-red-700",
+		Water: "bg-blue-700",
+		Grass: "bg-green-700",
+		Electric: "bg-yellow-500",
+		Ice: "bg-cyan-400",
+		Fighting: "bg-orange-700",
+		Poison: "bg-purple-700",
+		Ground: "bg-yellow-700",
+		Flying: "bg-sky-500",
+		Psychic: "bg-pink-600",
+		Bug: "bg-lime-600",
+		Rock: "bg-yellow-800",
+		Ghost: "bg-indigo-700",
+		Dragon: "bg-indigo-900",
+		Dark: "bg-neutral-800",
+		Steel: "bg-gray-400",
+		Normal: "bg-neutral-500",
+		Typeless: "bg-neutral-400"
+	};
+
+	const rows = moves.map(m => ({
+		...m,
+		type: m.type?.trim() || "None",
+		class: m.class?.trim() || "None",
+	}));
+
+	const types = sortNoneLast(unique(rows.map(r => r.type)));
+	const classes = sortNoneLast(unique(rows.map(r => r.class)));
+	const targets = sortNoneLast(unique(rows.map(r => r.targets)));
+
+	let typeFilter = $state(makeFilter(types));
+	let classFilter = $state(makeFilter(classes));
+	let targetFilter = $state(makeFilter(targets));
+
+	let filteredRows = $derived.by(() => {
+		const allowedTypes = Object.keys(typeFilter).filter(k => typeFilter[k]);
+		const allowedClasses = Object.keys(classFilter).filter(k => classFilter[k]);
+		const allowedTargets = Object.keys(targetFilter).filter(k => targetFilter[k]);
+
+		return rows.filter(r =>
+			(allowedTypes.length ? allowedTypes.includes(r.type) : true) &&
+			(allowedClasses.length ? allowedClasses.includes(r.class) : true) &&
+			(allowedTargets.length ? allowedTargets.includes(r.targets) : true)
+		);
+	});
+
+	const columns: Column[] = [
+		{
+			key: "name",
+			label: "Name",
+			width: "220px",
+			searchValue: m => `${m.name} ${m.type} ${m.class}`,
+			render: m => `
+				<div class="flex items-center gap-2">
+					<div class="w-2.5 h-2.5 rounded-sm ${typeColor[m.type] ?? 'bg-neutral-500'}"></div>
+					<span>${m.name}</span>
+				</div>
+			`
+		},
+		{ key: "type", label: "Type" },
+		{
+			key: "class",
+			label: "Class",
+			render: m => {
+				const color =
+					m.class === "Physical" ? "text-red-400" :
+						m.class === "Special" ? "text-blue-400" :
+							"text-yellow-400";
+
+				return `<span class="${color}">${m.class}</span>`;
+			}
+		},
+		{ key: "power", label: "Power" },
+		{ key: "maxPP", label: "PP" },
+		{ key: "acc1", label: "Acc 1" },
+		{ key: "acc2", label: "Acc 2" },
+		{ key: "crit", label: "Crit" },
+
+		{
+			key: "damageFlags",
+			label: "Damage Flags",
+			renderComponent: m => ({
+				component: FlagBadges,
+				props: {
+					flags: m.damageFlags,
+					map: damageMap,
+					variant: "damage"
+				}
+			})
+		},
+		{
+			key: "otherFlags",
+			label: "Other Flags",
+			renderComponent: m => ({
+				component: FlagBadges,
+				props: {
+					flags: m.otherFlags,
+					map: otherMap,
+					variant: "other"
+				}
+			})
+		},
+
+		{ key: "targets", label: "Targets" }
+	];
+
+	const filterGroups = [
+		{ name: "Type", list: types, store: typeFilter },
+		{ name: "Class", list: classes, store: classFilter },
+		{ name: "Targets", list: targets, store: targetFilter }
+	];
+</script>
+
+<div class="flex justify-around flex-col sm:flex-row gap-2 mb-4">
+	{#each filterGroups as group (group.name)}
+		<div class="flex flex-row sm:flex-col gap-1">
+			{#each group.list as val (val)}
+				<CheckboxInput
+					label={val}
+					bind:checked={group.store[val]}
+				/>
+			{/each}
+		</div>
+	{/each}
+</div>
+
+<DataTable {columns} rows={filteredRows} pageSize={50} />

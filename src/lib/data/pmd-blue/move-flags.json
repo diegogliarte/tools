@@ -1,0 +1,1094 @@
+{
+	"damageFlags": [
+		{
+			"id": 1,
+			"description": "If the target has Magic Coat, the move can be reflected to the user of the move."
+		},
+		{
+			"id": 2,
+			"description": "If a Pokémon is using Snatch, this move's effects can be redirected to the user of Snatch."
+		},
+		{
+			"id": 3,
+			"description": "This is a sound- or mouth-based move, and accordingly cannot be used if the user is Muzzled."
+		},
+		{
+			"id": 4,
+			"description": "If the target of this move is Frozen, they receive zero damage and no other effects from the move."
+		},
+		{
+			"id": 5,
+			"description": "This is a damaging move and thus affected by Taunt: moves without this flag cannot be used while the user is Taunted."
+		},
+		{
+			"id": 6,
+			"description": "This move can have its power boosted by Ginseng (up to +99). If the move is the basic attack is has a cap of +1 even though it can't be boosted normally."
+		}
+	],
+	"otherFlags": [
+		{
+			"id": 0,
+			"description": "Deals damage, no special effects."
+		},
+		{
+			"id": 1,
+			"description": "Deals damage with no special effects, but PP does not decrement (because this is your basic A Button attack and infinite-use)."
+		},
+		{
+			"id": 2,
+			"description": "This move has no effect. No non-glitched move uses this flag."
+		},
+		{
+			"id": 3,
+			"description": "The target's damage doubles if they are Digging."
+		},
+		{
+			"id": 4,
+			"description": "The target's damage doubles if they are Flying or are Bouncing."
+		},
+		{
+			"id": 5,
+			"description": "Recoil damage: the user loses 1/4 of their maximum HP. Furthermore, PP does not decrement. (This is used by Struggle.)"
+		},
+		{
+			"id": 6,
+			"description": "10% chance to burn the target. (Only used by Flame Wheel, I don't know why.)"
+		},
+		{
+			"id": 7,
+			"description": "10% chance to burn the target."
+		},
+		{
+			"id": 8,
+			"description": "10% chance to freeze the target."
+		},
+		{
+			"id": 9,
+			"description": "This user goes into the resting Paused status after this move's use to recharge, but only if a target is hit."
+		},
+		{
+			"id": 10,
+			"description": "Applies the Focus Energy status to the user, boosting their critical hit rate for 3-4 turns."
+		},
+		{
+			"id": 11,
+			"description": "This move has a boosted critical-hit rate. Since critical rate variable handles this however this flag is pointless: these moves have higher values already."
+		},
+		{
+			"id": 12,
+			"description": "The target suffers 9,999 damage (essentially a one-hit KO), though if immune to the move type it's 0. Used by Fissure."
+		},
+		{
+			"id": 13,
+			"description": "The target suffers 9,999 damage (essentially a one-hit KO), though if immune to the move type it's 0. Used by Sheer Cold and Guillotine."
+		},
+		{
+			"id": 14,
+			"description": "Essentially the same as the previous, but without the type resistance condition, but since this \"move\" (One-Shot) is typeless it's irrelevant."
+		},
+		{
+			"id": 15,
+			"description": "The target has a 10% chance to become constricted (unable to act while suffering several turns of damage)."
+		},
+		{
+			"id": 16,
+			"description": "The target has a 10% chance to become constricted (unable to act while suffering several turns of damage). Damage suffered doubles if the target is Diving."
+		},
+		{
+			"id": 17,
+			"description": "Damage doubles if the target is diving."
+		},
+		{
+			"id": 18,
+			"description": "The target will be unable to move."
+		},
+		{
+			"id": 19,
+			"description": "The target has an 18% chance to become poisoned."
+		},
+		{
+			"id": 20,
+			"description": "This move has a 10% chance to lower the target's Sp. Def. by one stage."
+		},
+		{
+			"id": 21,
+			"description": "This move has a 10% chance to lower the target's Defense by one stage."
+		},
+		{
+			"id": 22,
+			"description": "This move has a 10% chance to raise the user's Attack by one stage."
+		},
+		{
+			"id": 23,
+			"description": "This move has a 10% chance to raise the user's Defense by one stage."
+		},
+		{
+			"id": 24,
+			"description": "This move has a 10% chance to poison the target."
+		},
+		{
+			"id": 25,
+			"description": "The damage dealt is doubled if the target is Flying or Bouncing. This also has a 15% chance to make the target cringe."
+		},
+		{
+			"id": 26,
+			"description": "This move has a 10% chance to lower the target's movement speed by one stage."
+		},
+		{
+			"id": 27,
+			"description": "This move has a 10% chance to raise the user's Attack, Defense, Sp. Atk., Sp. Def., and movement speed by one stage each."
+		},
+		{
+			"id": 28,
+			"description": "This move has a 10% chance to confuse the target."
+		},
+		{
+			"id": 29,
+			"description": "This move has a 50% chance to lower the target's Sp. Atk. by one stage."
+		},
+		{
+			"id": 30,
+			"description": "This move has a 50% chance to lower the target's Sp. Def. by one stage."
+		},
+		{
+			"id": 31,
+			"description": "This move has a 50% chance to lower the target's Defense by one stage."
+		},
+		{
+			"id": 32,
+			"description": "This move has a 40% chance to poison the target."
+		},
+		{
+			"id": 33,
+			"description": "This move has a 50% chance to burn the target."
+		},
+		{
+			"id": 34,
+			"description": "This move has a 10% chance to paralyze the target."
+		},
+		{
+			"id": 35,
+			"description": "This move has a 15% chance to paralyze the target."
+		},
+		{
+			"id": 36,
+			"description": "This move has a 10% chance to make the target cringe."
+		},
+		{
+			"id": 37,
+			"description": "This move has a 20% chance to make the target cringe."
+		},
+		{
+			"id": 38,
+			"description": "This move has a 25% chance to make the target cringe."
+		},
+		{
+			"id": 39,
+			"description": "This move has a 30% chance to make the target cringe."
+		},
+		{
+			"id": 40,
+			"description": "This move has a 40% chance to make the target cringe."
+		},
+		{
+			"id": 41,
+			"description": "This move has a 30% chance to confuse the target."
+		},
+		{
+			"id": 42,
+			"description": "This move has a 20% chance to do one of these: burn, freeze, or paralyze the target."
+		},
+		{
+			"id": 43,
+			"description": "This move has a 20% chance to raise the user's Attack by one stage."
+		},
+		{
+			"id": 44,
+			"description": "This move has a 10% chance to burn the target."
+		},
+		{
+			"id": 45,
+			"description": "The target can become infatuated, provided they are of the opposite gender of the user."
+		},
+		{
+			"id": 46,
+			"description": "This move paralyzes the target. (Used by Disable.)"
+		},
+		{
+			"id": 47,
+			"description": "This move has a 35% chance to make the target cringe."
+		},
+		{
+			"id": 48,
+			"description": "This move deals fixed damage: 55 HP."
+		},
+		{
+			"id": 49,
+			"description": "This move deals fixed damage: 65 HP."
+		},
+		{
+			"id": 50,
+			"description": "This move paralyzes the target. (Used by Stun Spore.)"
+		},
+		{
+			"id": 51,
+			"description": "This move has a 10% chance to paralyze the target."
+		},
+		{
+			"id": 52,
+			"description": "This move puts the target to sleep."
+		},
+		{
+			"id": 53,
+			"description": "The target begins to yawn."
+		},
+		{
+			"id": 54,
+			"description": "This move has a 10% chance to paralyze the target."
+		},
+		{
+			"id": 55,
+			"description": "This move prevents the target from moving."
+		},
+		{
+			"id": 56,
+			"description": "The target suffers 9,999 damage (essentially a one-hit KO), though if immune to the move type it's 0. Used by Horn Drill."
+		},
+		{
+			"id": 57,
+			"description": "This move confuses the target."
+		},
+		{
+			"id": 58,
+			"description": "This move poisons the target."
+		},
+		{
+			"id": 59,
+			"description": "This move paralyzes the target."
+		},
+		{
+			"id": 60,
+			"description": "This move paralyzes the target."
+		},
+		{
+			"id": 61,
+			"description": "This move deals damage and paralyzes the target."
+		},
+		{
+			"id": 62,
+			"description": "If this move hits, then the user's Attack and Defense are lowered by one stage."
+		},
+		{
+			"id": 63,
+			"description": "If this move hits, then the target's movement speed is lower by one stage."
+		},
+		{
+			"id": 64,
+			"description": "If this move hits, then the target is confused."
+		},
+		{
+			"id": 65,
+			"description": "If this move hits, then the target's Sp. Def. is lowered by two stages."
+		},
+		{
+			"id": 66,
+			"description": "The target is throw 10 spaces in a random direction or until it hits a wall, losing 5 HP in the latter case. Fails on boss floors with cliffs."
+		},
+		{
+			"id": 67,
+			"description": "The user's and target's current HP are adjusted to become the average of the two, possibly raising or lowering."
+		},
+		{
+			"id": 68,
+			"description": "This move raises the user's Sp. Atk. by two stages."
+		},
+		{
+			"id": 69,
+			"description": "This move raises the user's Evasion by one stage,"
+		},
+		{
+			"id": 70,
+			"description": "This move raises the user's Attack and movement speed by one stage each."
+		},
+		{
+			"id": 71,
+			"description": "This move raises the user's Attack and Defense by one stage each."
+		},
+		{
+			"id": 72,
+			"description": "This move raises the user's Attack by one stage."
+		},
+		{
+			"id": 73,
+			"description": "The user of this move becomes enraged."
+		},
+		{
+			"id": 74,
+			"description": "This move raises the user's Attack by two stages."
+		},
+		{
+			"id": 75,
+			"description": "This move raises the user's Sp. Atk. and Sp. Def. by one stage."
+		},
+		{
+			"id": 76,
+			"description": "This move raises the user's Sp. Atk. by one stage."
+		},
+		{
+			"id": 77,
+			"description": "This move raises the user's Sp. Def. by two stages."
+		},
+		{
+			"id": 78,
+			"description": "This move raises the user's Defense by one stage,"
+		},
+		{
+			"id": 79,
+			"description": "This move raises the user's Defense by two stages."
+		},
+		{
+			"id": 80,
+			"description": "This move raises the user's Defense and Sp. Def. by one stage."
+		},
+		{
+			"id": 81,
+			"description": "This move has a 40% chance to lower the target's accuracy by one stage."
+		},
+		{
+			"id": 82,
+			"description": "This move has a 60% chance to lower the target's accuracy by one stage."
+		},
+		{
+			"id": 83,
+			"description": "This move has a 60% chance to halve the target's Attack multiplier, with a minimum of 2 / 256."
+		},
+		{
+			"id": 84,
+			"description": "If this move hits the target, the target's Sp. Atk. is reduced by two stages."
+		},
+		{
+			"id": 85,
+			"description": "This move lower's the target's movement speed."
+		},
+		{
+			"id": 86,
+			"description": "This move lowers the target's Attack by one stage."
+		},
+		{
+			"id": 87,
+			"description": "This move lower's the target's Attack by two stages."
+		},
+		{
+			"id": 88,
+			"description": "This move reduces the target's Defense multiplier to 1/4 of its current value, but no less than 2 / 256."
+		},
+		{
+			"id": 89,
+			"description": "This move reduces the target's HP by an amount equal to the user's level."
+		},
+		{
+			"id": 90,
+			"description": "The user will regain HP equal to 50% of the damage dealt."
+		},
+		{
+			"id": 91,
+			"description": "The user suffers damage equal to 12.5% of their maximum HP. (Used only for Double-Edge for some reason.)"
+		},
+		{
+			"id": 92,
+			"description": "The user suffers damage equal to 12.5% of their maximum HP."
+		},
+		{
+			"id": 93,
+			"description": "The user will regain HP equal to 50% of the damage dealt. (Used only for Absorb for some reason.)"
+		},
+		{
+			"id": 94,
+			"description": "The target becomes confused but their Attack is boosted by two stages."
+		},
+		{
+			"id": 95,
+			"description": "When used, this move's damage increments with each hit."
+		},
+		{
+			"id": 96,
+			"description": "The user of this move attacks twice in a row. Each hit has a 20% chance to poison the target (36% chance overall to poison)."
+		},
+		{
+			"id": 97,
+			"description": "SolarBeam's effect. The user charges up for one turn before attacking, or uses it instantly in Sun. If it is Hailing, Rainy, or Sandstorming, damage is halved (24 power)."
+		},
+		{
+			"id": 98,
+			"description": "Sky Attack's effect. The user charges up for a turn before attacking. Damage is doubled at the end of calculation."
+		},
+		{
+			"id": 99,
+			"description": "This move lowers the target's movement speed by one stage. (This is simply used for the placeholder move Slow Down, for the generic effect.)"
+		},
+		{
+			"id": 100,
+			"description": "The user attacks 2-5 turns in a row, becoming confused at the end of it."
+		},
+		{
+			"id": 101,
+			"description": "The user and target are immobilized for 3 to 5 turns while the target suffers damage from it."
+		},
+		{
+			"id": 102,
+			"description": "If the target of this move is asleep, they are awakened."
+		},
+		{
+			"id": 103,
+			"description": "This move has a 30% chance to badly poison the target."
+		},
+		{
+			"id": 104,
+			"description": "At random, one of the following occur: target recovers 25% HP (20%), target takes 40 damage (40%), target takes 80 damage (30%), or target takes 120 damage (10%)."
+		},
+		{
+			"id": 105,
+			"description": "The user falls under the effects of Reflect."
+		},
+		{
+			"id": 106,
+			"description": "The floor's weather becomes Sandstorm."
+		},
+		{
+			"id": 107,
+			"description": "The user's allies gain the Safeguard status."
+		},
+		{
+			"id": 108,
+			"description": "The Mist status envelopes the user."
+		},
+		{
+			"id": 109,
+			"description": "The user falls under the effects of Light Screen."
+		},
+		{
+			"id": 110,
+			"description": "The user attacks five times. If an attack misses, the attack ends. When used the damage increments by a factor of x1.5 with each hit."
+		},
+		{
+			"id": 111,
+			"description": "Reduces the targets' Attack and Sp. Atk. multipliers to 1/4 of their current value, 2 / 256 at minimum. User is reduced to 1 HP and warps at random. Fails if no target."
+		},
+		{
+			"id": 112,
+			"description": "The target regains HP equal to 1/4 of their maximum HP."
+		},
+		{
+			"id": 113,
+			"description": "User recovers a portion of their HP relative to the weather: 50 HP in Clear, 80 HP in Sun, 30 HP in Sandstorm, 40 HP if Cloudy, 10 HP in Rain and Hail, 1 HP in Snow."
+		},
+		{
+			"id": 114,
+			"description": "User recovers a portion of their HP relative to the weather: 50 HP in Clear, 80 HP in Sun, 30 HP in Sandstorm, 40 HP if Cloudy, 10 HP in Rain and Hail, 1 HP in Snow."
+		},
+		{
+			"id": 115,
+			"description": "User falls asleep, recovers their HP, and recovers their status."
+		},
+		{
+			"id": 116,
+			"description": "The user regains HP equal to 1/2 of their maximum HP."
+		},
+		{
+			"id": 117,
+			"description": "Scans the area."
+		},
+		{
+			"id": 118,
+			"description": "The user and the target swap hold items. This move fails if the user lacks one or if the target does."
+		},
+		{
+			"id": 119,
+			"description": "If this move damages the target, the user steals the target's hold item if the user lacks one and the target has one."
+		},
+		{
+			"id": 120,
+			"description": "If this move damages the target, the user steals the target's hold item if the user lacks one and the target has one."
+		},
+		{
+			"id": 121,
+			"description": "This move raises the movement speed of all targets."
+		},
+		{
+			"id": 122,
+			"description": "The user gains the Counter status."
+		},
+		{
+			"id": 123,
+			"description": "The user gains the Bide status."
+		},
+		{
+			"id": 124,
+			"description": "This flag is for the attack released at the end of Bide, reducing the target's HP by two times the damage intake. No valid move used this flag."
+		},
+		{
+			"id": 125,
+			"description": "Creates a random trap based on the floor."
+		},
+		{
+			"id": 126,
+			"description": "When attacked while knowing this move and asleep, the user faces their attack and uses a move at random. Ignores Confused/Cowering and links. Overriden by Snore."
+		},
+		{
+			"id": 127,
+			"description": "If user is a Ghost type: user's HP is halved, and target is cursed. If user isn't a Ghost-type: the user's Attack and Defense are boosted by one stage while speed lowers."
+		},
+		{
+			"id": 128,
+			"description": "This move has doubled damage. If the move misses, the user receives half of the intended damage, at minimum 1."
+		},
+		{
+			"id": 129,
+			"description": "This move has doubled damage. If the move hits, the user becomes Paused at the end of the turn."
+		},
+		{
+			"id": 130,
+			"description": "This move has a variable power and type."
+		},
+		{
+			"id": 131,
+			"description": "The user charges up for Razor Wind, using it on the next turn. Damage is doubled."
+		},
+		{
+			"id": 132,
+			"description": "User charges up for a Focus Punch, using it on the next turn. Damage is doubled."
+		},
+		{
+			"id": 133,
+			"description": "The user gains the Magic Coat status."
+		},
+		{
+			"id": 134,
+			"description": "The target gains the Nightmare status."
+		},
+		{
+			"id": 135,
+			"description": "User recovers a portion of their HP relative to the weather: 50 HP in Clear, 80 HP in Sun, 30 HP in Sandstorm, 40 HP if Cloudy, 10 HP in Rain and Hail, 1 HP in Snow."
+		},
+		{
+			"id": 136,
+			"description": "This move deals exactly 35 damage. This move is Vacuum-Cut."
+		},
+		{
+			"id": 137,
+			"description": "The floor gains the Mud Sport or Water Sport status. The former weakens Electric moves, and the latter weakens Fire."
+		},
+		{
+			"id": 138,
+			"description": "This move has a 30% chance to lower the target's Defense by one stage."
+		},
+		{
+			"id": 139,
+			"description": "This move will lower the target's Defense by one stage."
+		},
+		{
+			"id": 140,
+			"description": "This move will burn the target."
+		},
+		{
+			"id": 141,
+			"description": "This move gives the target the Ingrain status."
+		},
+		{
+			"id": 142,
+			"description": "This move deals random damage between 128/256 to 383/256 of the user's Level. (Approximately: 0.5 to 1.5 times the user's Level.) Limited to the range of 1-199."
+		},
+		{
+			"id": 143,
+			"description": "The target gains the Leech Seed status. Fails on Grass-types."
+		},
+		{
+			"id": 144,
+			"description": "A Spikes trap appears beneath the user."
+		},
+		{
+			"id": 145,
+			"description": "All of the target's/targets' status ailments are cured."
+		},
+		{
+			"id": 146,
+			"description": "All targets have their stat stages and multipliers returned to normal levels. This neither considered a reduction or increment in stats for anything relevant to it."
+		},
+		{
+			"id": 147,
+			"description": "The user gains the Power Ears status."
+		},
+		{
+			"id": 148,
+			"description": "The targets are put to sleep."
+		},
+		{
+			"id": 149,
+			"description": "If the target is paralyzed, the damage from this attack doubles, but the target is cured of their paralysis as well."
+		},
+		{
+			"id": 150,
+			"description": "This move deals fixed damage (5, 10, 15, 20, 25, 30, 35, or 40, for Magnitudes 4 to 10 respectively). The damage doubles on a target who is Digging."
+		},
+		{
+			"id": 151,
+			"description": "The user gains the Skull Bash status: their Defense boosts for a turn as they charge for an attack on the next turn. Damage is doubled."
+		},
+		{
+			"id": 152,
+			"description": "The user gains the Wish status."
+		},
+		{
+			"id": 153,
+			"description": "The target's Sp. Atk. is raised one stage, but they also become confused."
+		},
+		{
+			"id": 154,
+			"description": "This move will lower the target's Accuracy by one stage."
+		},
+		{
+			"id": 155,
+			"description": "This move will lower the target's Accuracy by one stage."
+		},
+		{
+			"id": 156,
+			"description": "This move will lower the user's Sp. Atk. by two stages if it hits the target."
+		},
+		{
+			"id": 157,
+			"description": "This move will badly poison the target."
+		},
+		{
+			"id": 158,
+			"description": "This move lowers the target's Sp. Def. by three stages."
+		},
+		{
+			"id": 159,
+			"description": "This move disables the last move the target used. It is not considered sealed however."
+		},
+		{
+			"id": 160,
+			"description": "Reduces the target's HP by half, rounded down, but it cannot KO the target."
+		},
+		{
+			"id": 161,
+			"description": "This move damage the target, but it cannot KO the target. If it would normally KO the target they are left with 1 HP."
+		},
+		{
+			"id": 162,
+			"description": "This reduces all targets' HP to 1. For each target affected, the user's HP is halved, but cannot go lower than 1."
+		},
+		{
+			"id": 163,
+			"description": "The target's HP becomes equal to that of the user's, provided the user has lower HP. Ineffective otherwise."
+		},
+		{
+			"id": 164,
+			"description": "All targets switch position with the user."
+		},
+		{
+			"id": 165,
+			"description": "The user regains HP equal to half of the damage dealt, rounded down. If the target is not asleep, napping, or having a nightmare, the move fails."
+		},
+		{
+			"id": 166,
+			"description": "The layout of the map - including stairs, items, and Pokémon - are revealed. Visibility is cleared, though its range limitations remain."
+		},
+		{
+			"id": 167,
+			"description": "If the floor in front of the user is water or lava, it becomes a normal floor tile."
+		},
+		{
+			"id": 168,
+			"description": "All targets warp randomly."
+		},
+		{
+			"id": 169,
+			"description": "All water and lava tiles turn into normal floor tiles."
+		},
+		{
+			"id": 170,
+			"description": "You become able to see the location of the stairs on the map."
+		},
+		{
+			"id": 171,
+			"description": "This move removes the effects of Light Screen and Reflect the target."
+		},
+		{
+			"id": 172,
+			"description": "This move raises the user's Defense by one stage."
+		},
+		{
+			"id": 173,
+			"description": "The user gains the Sure Shot status, assuring that their next move will land."
+		},
+		{
+			"id": 174,
+			"description": "The user gains the Vital Throw status."
+		},
+		{
+			"id": 175,
+			"description": "The user begins to Fly, waiting for an attack on the next turn. Damage is doubled."
+		},
+		{
+			"id": 176,
+			"description": "The user Bounces, and attacks on the next turn. Damage is doubled. This move has a 30% chance to paralyze the target."
+		},
+		{
+			"id": 177,
+			"description": "The user begins to Dive, waiting for an attack on the next turn. Damage is doubled. Move fails if the user is not on a water tile."
+		},
+		{
+			"id": 178,
+			"description": "The user begins to Dig, waiting for an attack on the next turn. Damage is doubled. Move fails if the user is not on a land tile."
+		},
+		{
+			"id": 179,
+			"description": "This move lowers the targets' Evasion by one stage."
+		},
+		{
+			"id": 180,
+			"description": "This move raises the user's Evasion by one stage,"
+		},
+		{
+			"id": 181,
+			"description": "This move forces the target to drop its hold item onto the ground."
+		},
+		{
+			"id": 182,
+			"description": "This removes all traps in the room, excepting Wonder Tiles. This will not work during boss battles."
+		},
+		{
+			"id": 183,
+			"description": "This gives the user the Long Toss status."
+		},
+		{
+			"id": 184,
+			"description": "This gives the user the Pierce status."
+		},
+		{
+			"id": 185,
+			"description": "This gives the user the Grudge status."
+		},
+		{
+			"id": 186,
+			"description": "This Petrifies the targets indefinitely until attacked."
+		},
+		{
+			"id": 187,
+			"description": "This move's use will cause the user to use a move known by a random Pokémon on the floor. If Assist is chosen, this move fails."
+		},
+		{
+			"id": 188,
+			"description": "This enables the Set Damage status on the target, fixing their damage output."
+		},
+		{
+			"id": 189,
+			"description": "This will cause the target to Cower."
+		},
+		{
+			"id": 190,
+			"description": "This move turns the target of it into a decoy."
+		},
+		{
+			"id": 191,
+			"description": "If this move misses, the user receives half of the damage it would've normally dealt to the target, at minimum 1."
+		},
+		{
+			"id": 192,
+			"description": "This enables the Protect status on the target."
+		},
+		{
+			"id": 193,
+			"description": "Thetarget becomes Taunted."
+		},
+		{
+			"id": 194,
+			"description": "The target's Attack and Defense become lowered by one stage."
+		},
+		{
+			"id": 195,
+			"description": "The damage multiplier depends on user HP. 0-25% is 8x, 25-50% is 4x, 50-75% is 2x, 75-100% is 1x."
+		},
+		{
+			"id": 196,
+			"description": "This move will cause a small explosion."
+		},
+		{
+			"id": 197,
+			"description": "This move will cause a huge explosion."
+		},
+		{
+			"id": 198,
+			"description": "This move causes the user to gain the Charging status."
+		},
+		{
+			"id": 199,
+			"description": "This move' s damage doubles if the user is Burned, Poisoned, Badly Poisoned, or Paralyzed."
+		},
+		{
+			"id": 200,
+			"description": "The damage for this move (Low Kick) is dependent on the target's species."
+		},
+		{
+			"id": 201,
+			"description": "The damage multiplier depends on user HP. 0-25% is 25/256, 25%-50% is 51/256, 50-75% is 128/256, 75-100% is 256/256 (or just x1)."
+		},
+		{
+			"id": 202,
+			"description": "The damage multiplier depends on user HP. 0-25% is 25/256, 25%-50% is 51/256, 50-75% is 128/256, 75-100% is 256/256 (or just x1)."
+		},
+		{
+			"id": 203,
+			"description": "The target of this move obtains the Whiffer status."
+		},
+		{
+			"id": 204,
+			"description": "This permits the target to sell as traps in the same room. They also will not be triggered."
+		},
+		{
+			"id": 205,
+			"description": "The user stores power, up to three total times."
+		},
+		{
+			"id": 206,
+			"description": "The damage of this move is multiplied by the number of times the user had used Stockpile (0, 1, 2, or 3). Only if this move hits does the Stockpile counter zero out."
+		},
+		{
+			"id": 207,
+			"description": "The user recovers HP based on the number of times they've Stockpiled (0 = 0 HP, 1 = 20 HP, 2 = 40 HP, 3 = 80 HP). The Stockpile counter resets to zero after."
+		},
+		{
+			"id": 208,
+			"description": "The weather becomes Rain."
+		},
+		{
+			"id": 209,
+			"description": "The PP of the last move used by the target is set to zero."
+		},
+		{
+			"id": 210,
+			"description": "The user becomes Invisible."
+		},
+		{
+			"id": 211,
+			"description": "The user gains the Mirror Coat status."
+		},
+		{
+			"id": 212,
+			"description": "The targets gain the Perish Song status."
+		},
+		{
+			"id": 213,
+			"description": "This move removes all traps nearby."
+		},
+		{
+			"id": 214,
+			"description": "The user gains Destiny Bond status with respect to the target of this move."
+		},
+		{
+			"id": 215,
+			"description": "The target gains the Encore status, affecting their last move used. Fails if the target is iether the team leader or if they haven't used a move on this floor."
+		},
+		{
+			"id": 216,
+			"description": "If the current weather is not Clear/Cloudy, damage doubles. If Sunny, this move is Fire type; Fog or Rain, Water; Sandstorm, Rock; Hail or Snow, Ice."
+		},
+		{
+			"id": 217,
+			"description": "The weather becomes Sunny."
+		},
+		{
+			"id": 218,
+			"description": "If this move defeats the target and doesn't join your team, the target drops money."
+		},
+		{
+			"id": 219,
+			"description": "One-Room the entirety of the room becomes regular floor tiles and the room a single room. Doesn't work on boss floors."
+		},
+		{
+			"id": 220,
+			"description": "The user gains the Enduring status."
+		},
+		{
+			"id": 221,
+			"description": "This move raises the Attack and Sp. Atk. of all targets by one stage, excepting the user of the move."
+		},
+		{
+			"id": 222,
+			"description": "This move raises the user's Attack by 20 stages, but lowers the user's Belly to 1 point. Fails if the user has 1 Belly or less."
+		},
+		{
+			"id": 223,
+			"description": "This move lowers the targets' Bellies by 10."
+		},
+		{
+			"id": 224,
+			"description": "This move lowers the target's Attack by two stages."
+		},
+		{
+			"id": 225,
+			"description": "This move has a 30% chance to lower the target's movement speed by one stage."
+		},
+		{
+			"id": 226,
+			"description": "This move will lower the target's movement speed by one stage."
+		},
+		{
+			"id": 227,
+			"description": "The wall tile the user is currently facing becomes replaced with a normal floor tile. Does not work on diagonal facings."
+		},
+		{
+			"id": 228,
+			"description": "The user transforms into a random Pokémon species on the dungeon floor that can appear. Fails if the user already has transformed."
+		},
+		{
+			"id": 229,
+			"description": "This move changes the weather on the floor to Hail."
+		},
+		{
+			"id": 230,
+			"description": "This enables the Mobile status on the user."
+		},
+		{
+			"id": 231,
+			"description": "This move lowers the targets' Evasion stage to 10 if it is any higher than that. Further, Ghost types become able to be hit by Normal and Fighting moves."
+		},
+		{
+			"id": 232,
+			"description": "The user will move one space in a random direction, neglecting towards a wall. If it lands on a Pokémon, both will lose 5 HP and return to their positions. If it lands on a space it cannot enter normally, it warps. This move's movement will not induce traps to be triggered. Finally, the move can be used even when Hungry."
+		},
+		{
+			"id": 233,
+			"description": "The user and target swap positions."
+		},
+		{
+			"id": 234,
+			"description": "The target of the move warps, landing on the stairs, becoming Petrified indefinitely until attacked."
+		},
+		{
+			"id": 235,
+			"description": "The allies of the user of this move warp, landing on the user."
+		},
+		{
+			"id": 236,
+			"description": "The move's user gains the Mini Counter status."
+		},
+		{
+			"id": 237,
+			"description": "This move's target becomes Paused."
+		},
+		{
+			"id": 238,
+			"description": "The user's allies warp to the user and land on them."
+		},
+		{
+			"id": 239,
+			"description": "This move has no effect. Associated with the Reviver Orb which was reduced to have no power and dummied out in development."
+		},
+		{
+			"id": 240,
+			"description": "The team leader and their allies escape from the dungeon, and if used in a linked move - somehow - the moves stop being used."
+		},
+		{
+			"id": 241,
+			"description": "This move causes special effects depending on the terrain, with 30% probability."
+		},
+		{
+			"id": 242,
+			"description": "This move will cause a special effect depending on the terrain."
+		},
+		{
+			"id": 243,
+			"description": "The target of the move transforms into an item. They will not drop any hold items, and the defeater of the Pokémon will not gain any experience."
+		},
+		{
+			"id": 244,
+			"description": "This move transforms into the last move used by the target of the move permanently."
+		},
+		{
+			"id": 245,
+			"description": "The user acquires the Mirror Move status."
+		},
+		{
+			"id": 246,
+			"description": "The user of this move gains the target's Abilities. This will fail if the user were to gain Wonder Guard."
+		},
+		{
+			"id": 247,
+			"description": "The user and the target of this move will swap their Abilities. If either party has Wonder Guard as an Ability, the move fails."
+		},
+		{
+			"id": 248,
+			"description": "The user's type changes to that of one of their moves at random, regardless of the move's type. Weather Ball is considered to be Normal. Fails if the user has the Forecast Ability."
+		},
+		{
+			"id": 249,
+			"description": "All items held by the user and their allies are no longer sticky. For members of rescue teams, this includes all items on their person in the bag."
+		},
+		{
+			"id": 250,
+			"description": "The target loses HP based on the user's IQ."
+		},
+		{
+			"id": 251,
+			"description": "The target obtains the Snatch status; to prevent conflicts, all others with the Snatch status at this time will lose it."
+		},
+		{
+			"id": 252,
+			"description": "The user will change types based on the terrain."
+		},
+		{
+			"id": 253,
+			"description": "The target loses HP based on the user's IQ."
+		},
+		{
+			"id": 254,
+			"description": "The user of this move copies the stat changes on the target."
+		},
+		{
+			"id": 255,
+			"description": "Whenever at an attack hits the user, if this move is known and the user asleep, the user will face the attack and use this move. 30% to cause cringing. Ignores Confusion and Cowering and linked moves."
+		},
+		{
+			"id": 256,
+			"description": "If this move is used by a member of a rescue team, all items named \"Used TM\" are restored to their original usable state. Also unstickies them."
+		},
+		{
+			"id": 257,
+			"description": "The target of this move becomes muzzled."
+		},
+		{
+			"id": 258,
+			"description": "This move once used will cause the user to follow up with a random second attack."
+		},
+		{
+			"id": 259,
+			"description": "The targets of this move can identify which Pokémon in the floor are holding items and thus will drop them if defeated (or other applicable instances)."
+		},
+		{
+			"id": 260,
+			"description": "The user gains the Conversion 2 status. Fails of the user has the Forecast ability."
+		},
+		{
+			"id": 261,
+			"description": "The user of the move moves as far as possible in their direction of facing, stopping at a wall or Pokémon. Fails on floors with cliffs."
+		},
+		{
+			"id": 262,
+			"description": "All unclaimed items on the floor, excepting those within two tiles of the user, land on the user's position, provided there is space around the user."
+		},
+		{
+			"id": 263,
+			"description": "The user of this move uses the last move used by the target, excepting Assist, Mimic, Encore, Mirror Move, and Sketch, or if the target is charging for an attack."
+		},
+		{
+			"id": 264,
+			"description": "The target is thrown onto a random space the target can enter within the room's range from the perspective of the user, and takes a random facing. If a foe is in the room, they are thrown to them instead, and both lose 10 HP."
+		},
+		{
+			"id": 265,
+			"description": "The target loses HP dependent on their species."
+		}
+	]
+}
