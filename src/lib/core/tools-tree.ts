@@ -75,13 +75,13 @@ export const rawTree: ToolCategory[] = [
 		name: 'Pokémon Mystery Dungeon',
 		tools: [],
 		subgroups: [
-			 {
-				 name: 'Blue Rescue Team',
-				 tools: [PMDBlueStats, PMDBlueRecruitCalculator],
-				 subgroups: []
-			 }
+			{
+				name: 'Blue Rescue Team',
+				tools: [PMDBlueStats, PMDBlueRecruitCalculator],
+				subgroups: []
+			}
 		]
-	},
+	}
 ];
 
 export const toolsTree = rawTree.map((c) => applyHref(c));

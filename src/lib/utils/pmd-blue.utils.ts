@@ -49,11 +49,7 @@ export type Pokemon = {
 };
 
 // --- STATS HELPERS ---
-export function computeStatAtLevel(
-	base: number,
-	growth: number[],
-	level: number
-): number {
+export function computeStatAtLevel(base: number, growth: number[], level: number): number {
 	let total = base;
 
 	for (let i = 1; i < level && i < growth.length; i++) {
@@ -63,10 +59,7 @@ export function computeStatAtLevel(
 	return total;
 }
 
-export function computeGrowthAtLevel(
-	growth: number[],
-	level: number
-): number {
+export function computeGrowthAtLevel(growth: number[], level: number): number {
 	let total = 0;
 
 	for (let i = 1; i < level && i < growth.length; i++) {
@@ -118,11 +111,7 @@ export function levelBonus(level: number) {
 	return 0;
 }
 
-export function computeRecruitRate(
-	pokemon: Pokemon,
-	level: number,
-	friendBow: boolean
-) {
+export function computeRecruitRate(pokemon: Pokemon, level: number, friendBow: boolean) {
 	let rate = pokemon.recruit.rate;
 
 	rate += levelBonus(level);

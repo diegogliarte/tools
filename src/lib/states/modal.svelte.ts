@@ -1,4 +1,4 @@
-import type { Component } from "svelte";
+import type { Component } from 'svelte';
 
 type ModalState = {
 	component: Component<any> | null;
@@ -16,7 +16,7 @@ export function openModal(component: Component<any>, props: Record<string, any> 
 }
 
 export function closeModal() {
-	console.log("Closing modal");
+	console.log('Closing modal');
 	modalState.component = null;
 	modalState.props = {};
 }

@@ -1,7 +1,4 @@
-export function useToolState<T>(
-	initial: T,
-	toolId: string
-) {
+export function useToolState<T>(initial: T, toolId: string) {
 	const state = $state(initial);
 
 	$effect(() => {

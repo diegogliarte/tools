@@ -3,8 +3,7 @@ import path from 'node:path';
 
 const OUT_DIR = path.join('static', 'pokemon-mystery-dungeon', 'icons');
 
-const BASE_URL =
-	'https://raw.githubusercontent.com/PMDCollab/SpriteCollab/master/portrait';
+const BASE_URL = 'https://raw.githubusercontent.com/PMDCollab/SpriteCollab/master/portrait';
 
 const MAX_CONSECUTIVE_FAILURES = 20;
 
@@ -32,15 +31,36 @@ async function downloadUnown() {
 	const base = '0201';
 
 	// A
-	await download(
-		`${BASE_URL}/${base}/Normal.png`,
-		path.join(OUT_DIR, `0201-A.png`)
-	);
+	await download(`${BASE_URL}/${base}/Normal.png`, path.join(OUT_DIR, `0201-A.png`));
 
 	const letters = [
-		'B','C','D','E','F','G','H','I','J','K','L','M',
-		'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-		'!','?'
+		'B',
+		'C',
+		'D',
+		'E',
+		'F',
+		'G',
+		'H',
+		'I',
+		'J',
+		'K',
+		'L',
+		'M',
+		'N',
+		'O',
+		'P',
+		'Q',
+		'R',
+		'S',
+		'T',
+		'U',
+		'V',
+		'W',
+		'X',
+		'Y',
+		'Z',
+		'!',
+		'?'
 	];
 
 	function safeName(x: string) {
@@ -54,10 +74,7 @@ async function downloadUnown() {
 
 		const url = `${BASE_URL}/${base}/${folder}/Normal.png`;
 
-		const out = path.join(
-			OUT_DIR,
-			`0201-${safeName(letters[i])}.png`
-		);
+		const out = path.join(OUT_DIR, `0201-${safeName(letters[i])}.png`);
 
 		const ok = await download(url, out);
 
