@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Button from "$lib/components/ui/button.svelte";
 	import type { Snippet } from 'svelte';
 	import MdiClose from '~icons/mdi/close';
+	import { closeModal } from '$lib/states/modal.svelte';
 
 	interface Props {
-		showModal?: boolean;
 		title?: string;
 		closable?: boolean;
 		onClose?: () => void;
@@ -12,7 +11,6 @@
 	}
 
 	let {
-		showModal = $bindable(false),
 		title = "",
 		closable = true,
 		onClose,
@@ -22,18 +20,29 @@
 	let dialog = $state<HTMLDialogElement | null>(null);
 
 	$effect(() => {
-		if (showModal) dialog.showModal();
+		if (!dialog) return;
+
+		if (!dialog.open) {
+			dialog.showModal();
+
+			document.body.style.overflow = "hidden";
+		}
 	});
 
 	function close() {
-		dialog?.close();
+		if (dialog?.open) {
+			dialog.close();
+		}
+
+		document.body.style.overflow = "";
+
+		closeModal();
 		onClose?.();
 	}
 </script>
 
 <dialog
 	bind:this={dialog}
-	onclose={() => (showModal = false)}
 	onclick={(e) => {
 		if (e.target === dialog) close();
 	}}
@@ -41,7 +50,6 @@
 		backdrop:bg-bg/30 backdrop:backdrop-blur-xs
 		p-0 border-none
 		w-full h-full
-		transition-all duration-200
 		bg-transparent
 		text-text
 		flex justify-center items-center
@@ -68,7 +76,7 @@
 					<button
 						type="button"
 						class="absolute top-2 right-2 text-large opacity-50 hover:opacity-100 hover:text-accent cursor-pointer"
-						onclick={() => dialog.close()}
+						onclick={close}
 					>
 						<MdiClose />
 					</button>

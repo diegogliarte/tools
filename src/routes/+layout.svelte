@@ -8,6 +8,7 @@
 	import Sidebar from '$lib/components/Sidebar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 
+	import { modalState, closeModal } from "$lib/states/modal.svelte";
 
 	let { data, children }: LayoutProps = $props();
 
@@ -27,6 +28,14 @@
 		<Navbar {toggleSidebar} />
 
 		<main class="p-2 flex-1">
+			{#if modalState.component}
+				{@const ModalComponent = modalState.component}
+
+				<ModalComponent
+					{...modalState.props}
+					onClose={closeModal}
+				/>
+			{/if}
 			{@render children()}
 		</main>
 

@@ -2,8 +2,8 @@ import type { ToolDefinition } from '$lib/tools/types';
 import Tool from './Tool.svelte';
 
 export const tool: ToolDefinition = {
-	title: 'Move List',
-	description: 'List of all moves in the game, with their stats and effects.',
+	title: 'Stats',
+	description: 'View Pokémons and Moves stats.',
 	component: Tool,
 	fullscreen: true
 };

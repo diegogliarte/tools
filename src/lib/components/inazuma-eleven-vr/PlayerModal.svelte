@@ -3,18 +3,16 @@
 	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
 	import players from '$lib/data/inazuma-eleven-vr/players.json';
 
-	import { calculateATDFStats, type Player } from '$lib/utils/inazuma-eleven-vr.utils';
-	import { computePlayerTier } from '$lib/utils/inazuma-eleven-vr.utils';
-
+	import { calculateATDFStats, type Player, computePlayerTier } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	interface Props {
 		player: Player;
-		showModal: boolean;
+		onClose?: () => void;
 	}
 
-	let { player, showModal = $bindable() }: Props = $props();
+	let { player, onClose }: Props = $props();
 
-	let tierInfo = $derived(computePlayerTier(player, players as Player[]))
+	let tierInfo = $derived(computePlayerTier(player, players as Player[]));
 
 	let atdf = $derived(calculateATDFStats({
 		kick: player.Kick,
@@ -28,15 +26,11 @@
 	}));
 </script>
 
-<Modal bind:showModal title={player?.Name}>
+<Modal title={player?.Name} {onClose}>
 	{#if player}
-		<!-- Header row -->
 		<div class="flex gap-4 mb-4">
 			<div class="w-26 h-26">
-				<PlayerIcon
-					player={player}
-					openModal={false}
-				/>
+				<PlayerIcon player={player} openModal={false} />
 			</div>
 
 			<div class="flex flex-col justify-between text-xs">
@@ -50,25 +44,25 @@
 
 		<h3 class="font-bold mb-1">Stats</h3>
 		<div class="grid grid-cols-2 sm:grid-cols-4 gap-1 mb-4 text-xs">
-			<div>Kick: <span class="font-bold">{player.Kick}</span></div>
-			<div>Control: <span class="font-bold">{player.Control}</span></div>
-			<div>Technique: <span class="font-bold">{player.Technique}</span></div>
-			<div>Pressure: <span class="font-bold">{player.Pressure}</span></div>
-			<div>Physical: <span class="font-bold">{player.Physical}</span></div>
-			<div>Agility: <span class="font-bold">{player.Agility}</span></div>
-			<div>Intelligence: <span class="font-bold">{player.Intelligence}</span></div>
-			<div>Total: <span class="font-bold">{player.Total}</span></div>
+			<div>Kick: <b>{player.Kick}</b></div>
+			<div>Control: <b>{player.Control}</b></div>
+			<div>Technique: <b>{player.Technique}</b></div>
+			<div>Pressure: <b>{player.Pressure}</b></div>
+			<div>Physical: <b>{player.Physical}</b></div>
+			<div>Agility: <b>{player.Agility}</b></div>
+			<div>Intelligence: <b>{player.Intelligence}</b></div>
+			<div>Total: <b>{player.Total}</b></div>
 		</div>
 
 		<h3 class="font-bold mb-1">ATDF Stats</h3>
 		<div class="grid grid-cols-2 sm:grid-cols-4 gap-1 mb-4 text-xs">
-			<div>Shoot AT: <span class="font-bold">{atdf.shootAT}</span></div>
-			<div>Focus AT: <span class="font-bold">{atdf.focusAT}</span></div>
-			<div>Focus DF: <span class="font-bold">{atdf.focusDF}</span></div>
-			<div>Scramble AT: <span class="font-bold">{atdf.scrambleAT}</span></div>
-			<div>Scramble DF: <span class="font-bold">{atdf.scrambleDF}</span></div>
-			<div>Wall DF: <span class="font-bold">{atdf.wallDF}</span></div>
-			<div>KP: <span class="font-bold">{atdf.kp}</span></div>
+			<div>Shoot AT: <b>{atdf.shootAT}</b></div>
+			<div>Focus AT: <b>{atdf.focusAT}</b></div>
+			<div>Focus DF: <b>{atdf.focusDF}</b></div>
+			<div>Scramble AT: <b>{atdf.scrambleAT}</b></div>
+			<div>Scramble DF: <b>{atdf.scrambleDF}</b></div>
+			<div>Wall DF: <b>{atdf.wallDF}</b></div>
+			<div>KP: <b>{atdf.kp}</b></div>
 		</div>
 
 		<h3 class="font-bold mb-1">Profile</h3>
@@ -79,7 +73,6 @@
 			<div>Role: <span class="text-accent">{player.Role}</span></div>
 		</div>
 
-		<!-- Teams -->
 		{#if player.Teams?.length}
 			<h3 class="font-bold mb-1">Teams</h3>
 			<ul class="list-disc list-inside mb-4">
@@ -89,7 +82,6 @@
 			</ul>
 		{/if}
 
-		<!-- How to Obtain -->
 		{#if player.HowToObtain?.length}
 			<h3 class="font-bold mb-2">How to Obtain</h3>
 
@@ -98,21 +90,18 @@
 					<div class="border p-2">
 						<div class="font-bold mb-1">{obtain.title}</div>
 
-						<!-- Direct entries -->
 						{#if obtain.entries.length}
-							<ul class="list-disc list-inside  mb-2">
+							<ul class="list-disc list-inside mb-2">
 								{#each obtain.entries as e (e)}
 									<li>{e}</li>
 								{/each}
 							</ul>
 						{/if}
 
-						<!-- Subsections -->
 						{#each obtain.subsections as s (s)}
 							<div class="mb-2 pl-2 border-l">
-								<div class="font-semibold  mb-1">{s.title}</div>
-
-								<ul class="list-disc list-inside ">
+								<div class="font-semibold mb-1">{s.title}</div>
+								<ul class="list-disc list-inside">
 									{#each s.entries as e (e)}
 										<li>{e}</li>
 									{/each}

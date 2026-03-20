@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { tooltipAction} from '$lib/actions/tooltip';
+	import { tooltipAction } from '$lib/actions/tooltip';
 	import DigimonModal from '$lib/components/digimon-story-ts/DigimonModal.svelte';
+	import { openModal } from '$lib/states/modal.svelte';
+
 	import { type Digimon, getDigimonIcon } from '$lib/utils/digimon-story-ts.utils';
 	import { toKebabCase } from '$lib/utils/text.utils';
 
@@ -17,10 +19,13 @@
 		variant = 'default',
 		selected = false,
 		onClick,
-		openModal = true
+		openModal: canOpenModal = true
 	}: Props = $props();
 
-	let showModal = $state(false);
+	function open() {
+		if (!canOpenModal) return;
+		openModal(DigimonModal, { digimon });
+	}
 
 	const evoBadge = $derived.by(() => {
 		const types = digimon.evolution_conditions?.map(e => e.type) ?? [];
@@ -53,9 +58,7 @@
 	<button
 		type="button"
 		class="w-full cursor-pointer p-0 border hover:border-accent transition"
-		onclick={() => {
-			if (openModal) showModal = true;
-		}}
+		onclick={open}
 	>
 		<img
 			src={getDigimonIcon(digimon)}
@@ -65,13 +68,6 @@
 		/>
 	</button>
 
-	{#if showModal}
-		<DigimonModal
-			digimon={digimon}
-			bind:showModal
-		/>
-	{/if}
-
 {:else}
 	<div class="flex flex-col items-center gap-1">
 		<button
@@ -80,7 +76,7 @@
 				cursor-pointer
 				relative border
 				{selected ? 'border-accent hover:border-red-400' : 'hover:border-accent'}
-				 transition
+				transition
 			"
 			onclick={() => onClick?.(digimon)}
 		>
@@ -107,23 +103,12 @@
 			{/if}
 		</button>
 
-		<!-- Name (opens modal) -->
 		<button
 			type="button"
 			class="text-xs w-18 text-center truncate cursor-pointer hover:text-accent transition"
-			onclick={() => {
-				if (openModal) showModal = true;
-			}}
+			onclick={open}
 		>
 			{digimon.name}
 		</button>
 	</div>
-
-	{#if showModal}
-		<DigimonModal
-			digimon={digimon}
-			bind:showModal
-		/>
-	{/if}
 {/if}
-

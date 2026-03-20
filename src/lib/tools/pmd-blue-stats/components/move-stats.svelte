@@ -1,13 +1,13 @@
 <script lang="ts">
-	import DataTable, { type Column } from "$lib/components/ui/data-table.svelte";
-	import CheckboxInput from "$lib/components/ui/checkbox-input.svelte";
+	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
+	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
 
-	import FlagBadges from "./components/FlagBadges.svelte";
-
-	import movesRaw from "$lib/data/pmd-blue/moves.json";
-	import moveFlags from "$lib/data/pmd-blue/move-flags.json";
+	import movesRaw from '$lib/data/pmd-blue/moves.json';
+	import moveFlags from '$lib/data/pmd-blue/move-flags.json';
 
 	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+	import MoveCell from '$lib/components/pmd-blue/MoveCell.svelte';
+	import FlagBadges from '$lib/components/pmd-blue/FlagBadges.svelte';
 
 	const moves = movesRaw;
 	const damageFlags = moveFlags.damageFlags;
@@ -16,31 +16,11 @@
 	const damageMap = Object.fromEntries(damageFlags.map(f => [f.id, f.description]));
 	const otherMap = Object.fromEntries(otherFlags.map(f => [f.id, f.description]));
 
-	const typeColor = {
-		Fire: "bg-red-700",
-		Water: "bg-blue-700",
-		Grass: "bg-green-700",
-		Electric: "bg-yellow-500",
-		Ice: "bg-cyan-400",
-		Fighting: "bg-orange-700",
-		Poison: "bg-purple-700",
-		Ground: "bg-yellow-700",
-		Flying: "bg-sky-500",
-		Psychic: "bg-pink-600",
-		Bug: "bg-lime-600",
-		Rock: "bg-yellow-800",
-		Ghost: "bg-indigo-700",
-		Dragon: "bg-indigo-900",
-		Dark: "bg-neutral-800",
-		Steel: "bg-gray-400",
-		Normal: "bg-neutral-500",
-		Typeless: "bg-neutral-400"
-	};
-
 	const rows = moves.map(m => ({
 		...m,
-		type: m.type?.trim() || "None",
-		class: m.class?.trim() || "None",
+		type: m.type?.trim() || 'None',
+		class: m.class?.trim() || 'None',
+		targets: m.targets?.trim() || 'None'
 	}));
 
 	const types = sortNoneLast(unique(rows.map(r => r.type)));
@@ -65,74 +45,72 @@
 
 	const columns: Column[] = [
 		{
-			key: "name",
-			label: "Name",
-			width: "220px",
+			key: 'name',
+			label: 'Name',
+			width: '220px',
 			searchValue: m => `${m.name} ${m.type} ${m.class}`,
-			render: m => `
-				<div class="flex items-center gap-2">
-					<div class="w-2.5 h-2.5 rounded-sm ${typeColor[m.type] ?? 'bg-neutral-500'}"></div>
-					<span>${m.name}</span>
-				</div>
-			`
+			renderComponent: (m) => ({
+				component: MoveCell,
+				props: { move: m }
+			})
 		},
-		{ key: "type", label: "Type" },
+		{ key: 'type', label: 'Type' },
 		{
-			key: "class",
-			label: "Class",
+			key: 'class',
+			label: 'Class',
 			render: m => {
 				const color =
-					m.class === "Physical" ? "text-red-400" :
-						m.class === "Special" ? "text-blue-400" :
-							"text-yellow-400";
+					m.class === 'Physical' ? 'text-red-400' :
+						m.class === 'Special' ? 'text-blue-400' :
+							'text-yellow-400';
 
 				return `<span class="${color}">${m.class}</span>`;
 			}
 		},
-		{ key: "power", label: "Power" },
-		{ key: "maxPP", label: "PP" },
-		{ key: "acc1", label: "Acc 1" },
-		{ key: "acc2", label: "Acc 2" },
-		{ key: "crit", label: "Crit" },
+		{ key: 'power', label: 'Power' },
+		{ key: 'maxPP', label: 'PP' },
+		{ key: 'acc1', label: 'Acc 1' },
+		{ key: 'acc2', label: 'Acc 2' },
+		{ key: 'crit', label: 'Crit' },
 
 		{
-			key: "damageFlags",
-			label: "Damage Flags",
+			key: 'damageFlags',
+			label: 'Damage Flags',
 			renderComponent: m => ({
 				component: FlagBadges,
 				props: {
 					flags: m.damageFlags,
 					map: damageMap,
-					variant: "damage"
+					variant: 'damage'
 				}
 			})
 		},
 		{
-			key: "otherFlags",
-			label: "Other Flags",
+			key: 'otherFlags',
+			label: 'Other Flags',
 			renderComponent: m => ({
 				component: FlagBadges,
 				props: {
 					flags: m.otherFlags,
 					map: otherMap,
-					variant: "other"
+					variant: 'other'
 				}
 			})
 		},
 
-		{ key: "targets", label: "Targets" }
+		{ key: 'targets', label: 'Targets' }
 	];
 
 	const filterGroups = [
-		{ name: "Type", list: types, store: typeFilter },
-		{ name: "Class", list: classes, store: classFilter },
-		{ name: "Targets", list: targets, store: targetFilter }
+		{ name: 'Type', list: types, store: typeFilter },
+		{ name: 'Class', list: classes, store: classFilter },
+		{ name: 'Targets', list: targets, store: targetFilter }
 	];
 </script>
 
 <div class="flex justify-around flex-col sm:flex-row gap-2 mb-4">
 	{#each filterGroups as group (group.name)}
-		<div class="flex flex-row sm:flex-col gap-1">
+		<div class="flex flex-row sm:flex-col sm:gap-1 gap-4 items-center sm:items-start">
 			{#each group.list as val (val)}
 				<CheckboxInput
 					label={val}

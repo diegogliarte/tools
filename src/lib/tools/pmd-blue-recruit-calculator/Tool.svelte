@@ -3,12 +3,91 @@
 	import CheckboxInput from "$lib/components/ui/checkbox-input.svelte";
 	import NumberInput from "$lib/components/ui/number-input.svelte";
 
-	import PokemonCell from "./components/PokemonCell.svelte";
-
 	import pokemonsRaw from "$lib/data/pmd-blue/pokemons.json";
 	import { useToolState } from '$lib/utils/cookies.utils.svelte';
 
-	const pokemons = pokemonsRaw;
+	import {
+		type Pokemon,
+		buildEvolvesFromMap,
+		computeRecruitRate
+	} from "$lib/utils/pmd-blue.utils";
+	import PokemonCell from '$lib/components/pmd-blue/PokemonCell.svelte';
+
+	const pokemons = pokemonsRaw as Pokemon[];
+
+	const pokemonByName = new Map<string, Pokemon>(
+		pokemons.map((p) => [p.name, p])
+	);
+
+	const evolvesFromMap = buildEvolvesFromMap(pokemons);
+
+	function ownSearchParts(pokemon: Pokemon): string[] {
+		const parts: string[] = [pokemon.name];
+
+		if (pokemon.encounter.friendArea) {
+			parts.push(pokemon.encounter.friendArea);
+		}
+
+		if (pokemon.encounter.note) {
+			parts.push(pokemon.encounter.note);
+		}
+
+		if (pokemon.recruit.note) {
+			parts.push(pokemon.recruit.note);
+		}
+
+		for (const loc of pokemon.encounter.locations ?? []) {
+			if (loc.dungeon) parts.push(loc.dungeon);
+			if (loc.floors) parts.push(loc.floors);
+		}
+
+		return parts;
+	}
+
+	function buildInheritedSearchParts(
+		pokemonName: string,
+		visited = new Set<string>()
+	): string[] {
+		if (visited.has(pokemonName)) return [];
+		visited.add(pokemonName);
+
+		const parts: string[] = [];
+		const sources = evolvesFromMap[pokemonName] ?? [];
+
+		for (const source of sources) {
+			parts.push(source.from);
+			parts.push(source.method);
+
+			const prevo = pokemonByName.get(source.from);
+			if (prevo) {
+				parts.push(...ownSearchParts(prevo));
+				parts.push(...buildInheritedSearchParts(prevo.name, visited));
+			}
+		}
+
+		return parts;
+	}
+
+	const searchIndexByName: Record<string, string> = (() => {
+		const map: Record<string, string> = {};
+
+		for (const pokemon of pokemons) {
+			const allParts = [
+				...ownSearchParts(pokemon),
+				...buildInheritedSearchParts(pokemon.name)
+			];
+
+			map[pokemon.name] = Array.from(
+				new Set(
+					allParts
+						.filter(Boolean)
+						.map((s) => String(s).trim().toLowerCase())
+				)
+			).join(" ");
+		}
+
+		return map;
+	})();
 
 	let { data } = $props();
 
@@ -23,36 +102,18 @@
 		data.toolId
 	);
 
-	function levelBonus(level: number) {
-		if (level >= 90) return 24;
-		if (level >= 80) return 17.5;
-		if (level >= 70) return 15;
-		if (level >= 60) return 12.5;
-		if (level >= 50) return 10;
-		if (level >= 40) return 7.5;
-		if (level >= 30) return 5;
-		return 0;
-	}
-
-	function computeRate(pokemon) {
-		let rate = pokemon.recruit.rate;
-
-		rate += levelBonus(toolState.leaderLevel);
-
-		if (toolState.friendBow) rate += 10;
-
-		return rate;
-	}
-
 	const rows = $derived.by(() => {
-
-		let list = pokemons.map(pokemon => ({
+		let list = pokemons.map((pokemon) => ({
 			...pokemon,
-			effectiveRate: computeRate(pokemon)
+			effectiveRate: computeRecruitRate(
+				pokemon,
+				toolState.leaderLevel,
+				toolState.friendBow
+			)
 		}));
 
 		if (toolState.hideUnrecruitable) {
-			list = list.filter(pokemon => pokemon.effectiveRate > 0);
+			list = list.filter((pokemon) => pokemon.effectiveRate > 0);
 		}
 
 		return list;
@@ -63,11 +124,11 @@
 		label: "Pokémon",
 		width: "220px",
 
-		searchValue: pokemon => pokemon.name,
+		searchValue: (pokemon) => searchIndexByName[pokemon.name] ?? pokemon.name.toLowerCase(),
 
-		renderComponent: pokemon => ({
+		renderComponent: (pokemon) => ({
 			component: PokemonCell,
-			props: { pokemon: pokemon }
+			props: { pokemon }
 		})
 	};
 
@@ -75,18 +136,18 @@
 		key: "baseRate",
 		label: "Base Rate",
 
-		sortValue: pokemon => pokemon.recruit.rate,
+		sortValue: (pokemon) => pokemon.recruit.rate,
 
-		render: pokemon => `${pokemon.recruit.rate}%`
+		render: (pokemon) => `${pokemon.recruit.rate}%`
 	};
 
 	const effectiveRateColumn: Column = {
 		key: "effectiveRate",
 		label: "Effective Rate",
 
-		sortValue: pokemon => pokemon.effectiveRate,
+		sortValue: (pokemon) => pokemon.effectiveRate,
 
-		render: pokemon => {
+		render: (pokemon) => {
 			const r = pokemon.effectiveRate;
 
 			const color =
@@ -102,25 +163,35 @@
 		key: "friendArea",
 		label: "Friend Area",
 
-		sortValue: pokemon => pokemon.encounter.friendArea ?? "",
+		sortValue: (pokemon) => pokemon.encounter.friendArea ?? "",
 
-		render: pokemon => pokemon.encounter.friendArea ?? "—"
+		render: (pokemon) => pokemon.encounter.friendArea ?? "—"
 	};
 
 	const locationsColumn: Column = {
 		key: "locations",
 		label: "Locations",
 
-		render: pokemon => {
-
+		render: (pokemon) => {
 			if (!pokemon.encounter.locations.length) return "—";
 
 			return pokemon.encounter.locations
-				.map(l =>
-					l.floors
-						? `${l.dungeon} (${l.floors})`
-						: l.dungeon
-				)
+				.map((l) => l.floors ? `${l.dungeon} (${l.floors})` : l.dungeon)
+				.join("<br>");
+		}
+	};
+
+	const evolvesFromColumn: Column = {
+		key: "evolvesFrom",
+		label: "Evolves From",
+
+		render: (pokemon) => {
+			const sources = evolvesFromMap[pokemon.name];
+
+			if (!sources?.length) return "—";
+
+			return sources
+				.map((e) => `${e.from} (${e.method})`)
 				.join("<br>");
 		}
 	};
@@ -128,8 +199,9 @@
 	const notesColumn: Column = {
 		key: "notes",
 		label: "Notes",
+		width: "25%",
 
-		render: pokemon =>
+		render: (pokemon) =>
 			pokemon.recruit.note ??
 			pokemon.encounter.note ??
 			"—"
@@ -141,6 +213,7 @@
 		effectiveRateColumn,
 		friendAreaColumn,
 		locationsColumn,
+		evolvesFromColumn,
 		notesColumn
 	];
 </script>
@@ -165,7 +238,6 @@
 		label="Hide unrecruitable"
 		bind:checked={toolState.hideUnrecruitable}
 	/>
-
 </div>
 
 <DataTable {columns} rows={rows} pageSize={50} />

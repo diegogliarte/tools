@@ -22,10 +22,10 @@
 
 	interface Props {
 		digimon: Digimon;
-		showModal: boolean;
+		onClose?: () => void;
 	}
 
-	let { digimon, showModal = $bindable() }: Props = $props();
+	let { digimon, onClose }: Props = $props();
 
 	const digimonById = new Map<number, Digimon>(
 		(digimonRaw as Digimon[]).map(d => [d.id, d])
@@ -69,36 +69,25 @@
 					alt={skill.type}
 					class="h-[1.25em] w-[1.25em] shrink-0"
 				/>
-
 				<span class="font-bold">{skill.name}</span>
 			</div>
 
 			{#if skill.sp_cost !== undefined}
-				<span>
-					SP {skill.sp_cost}
-				</span>
+				<span>SP {skill.sp_cost}</span>
 			{/if}
 		</div>
 
 		<div>
-			{skill.type}
-				· {skill.damage_type}
-				· Power {skill.power}{#if skill.hit_count && skill.hit_count > 1}×{skill.hit_count}
-			{/if}
+			{skill.type} · {skill.damage_type}
+			· Power {skill.power}{#if skill.hit_count > 1}×{skill.hit_count}{/if}
 		</div>
 
-		<div>
-			{skill.description}
-		</div>
+		<div>{skill.description}</div>
 	</div>
 {/snippet}
 
-
-
-
-<Modal bind:showModal title={digimon?.name}>
+<Modal title={digimon?.name} {onClose}>
 	{#if digimon}
-		<!-- Header -->
 		<div class="flex gap-4 mb-4">
 			<div class="w-26 h-26">
 				<DigimonIcon digimon={digimon} openModal={false} />
@@ -107,44 +96,46 @@
 			<div class="flex flex-col justify-between text-xs">
 				<div class="font-bold">{digimon.name}</div>
 				<div>{digimon.generation}</div>
+
 				<div class="flex items-center gap-1 leading-none">
 					<img
 						class="h-[1.5em] w-[1.5em]"
 						src="/digimon-story-ts/{digimon.attribute.toLowerCase().replace(' ', '-')}.png"
-						alt="Attribute {digimon.attribute}"
 					/>
 					<span>{digimon.attribute} · {digimon.type}</span>
 				</div>
-				<div>Base Personality: <span class="text-accent">{digimon.base_personality}</span></div>
+
+				<div>
+					Base Personality:
+					<span class="text-accent">{digimon.base_personality}</span>
+				</div>
+
 				{#if digimon.ridable}
 					<div class="text-accent">Ridable</div>
 				{/if}
 			</div>
 		</div>
 
-		<!-- Stats -->
 		<h3 class="font-bold mb-1">Base Stats</h3>
 		<div class="grid grid-cols-2 sm:grid-cols-4 gap-1 mb-4 text-xs">
-			<div>HP: <span class="font-bold">{digimon.base_stats.lv99.HP}</span></div>
-			<div>SP: <span class="font-bold">{digimon.base_stats.lv99.SP}</span></div>
-			<div>ATK: <span class="font-bold">{digimon.base_stats.lv99.ATK}</span></div>
-			<div>DEF: <span class="font-bold">{digimon.base_stats.lv99.DEF}</span></div>
-			<div>INT: <span class="font-bold">{digimon.base_stats.lv99.INT}</span></div>
-			<div>SPI: <span class="font-bold">{digimon.base_stats.lv99.SPI}</span></div>
-			<div>SPD: <span class="font-bold">{digimon.base_stats.lv99.SPD}</span></div>
+			<div>HP: <b>{digimon.base_stats.lv99.HP}</b></div>
+			<div>SP: <b>{digimon.base_stats.lv99.SP}</b></div>
+			<div>ATK: <b>{digimon.base_stats.lv99.ATK}</b></div>
+			<div>DEF: <b>{digimon.base_stats.lv99.DEF}</b></div>
+			<div>INT: <b>{digimon.base_stats.lv99.INT}</b></div>
+			<div>SPI: <b>{digimon.base_stats.lv99.SPI}</b></div>
+			<div>SPD: <b>{digimon.base_stats.lv99.SPD}</b></div>
 		</div>
 
-		<!-- Evolution Conditions -->
 		{#if digimon.evolution_conditions?.length}
 			<h3 class="font-bold mb-2">Evolution Conditions</h3>
-
 			<div class="flex flex-col gap-2 mb-4 text-xs">
-				{#each digimon.evolution_conditions as evo (evo)}
+				{#each digimon.evolution_conditions as evo}
 					<div class="border p-2">
 						<div class="font-semibold mb-1 capitalize">{evo.type}</div>
 						<ul class="list-disc list-inside">
-							{#each Object.entries(evo.requirements) as [key, value]}
-								<li>{key}: {value}</li>
+							{#each Object.entries(evo.requirements) as [k, v]}
+								<li>{k}: {v}</li>
 							{/each}
 						</ul>
 					</div>
@@ -152,7 +143,6 @@
 			</div>
 		{/if}
 
-		<!-- Skills -->
 		{#if specialSkills.length || attachmentSkills.length}
 			<h3 class="font-bold mb-2">Skills</h3>
 
@@ -160,7 +150,6 @@
 				{#if specialSkills.length}
 					<div>
 						<div class="font-semibold mb-1">Special</div>
-
 						<div class="flex flex-col gap-2">
 							{#each specialSkills as s (s.slug)}
 								{@render SkillCard(s)}
@@ -172,7 +161,6 @@
 				{#if attachmentSkills.length}
 					<div>
 						<div class="font-semibold mb-1">Attachments</div>
-
 						<div class="flex flex-col gap-2">
 							{#each attachmentSkills as s (s.slug)}
 								{@render SkillCard(s)}
@@ -183,28 +171,6 @@
 			</div>
 		{/if}
 
-		<!-- Personalities -->
-		{#if digimon.possible_personalities}
-			<h3 class="font-bold mb-2">Personalities</h3>
-
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 text-xs">
-				{#each Object.entries(digimon.possible_personalities) as [group, entries]}
-					<div class="border p-2">
-						<div class="font-semibold mb-1">{group}</div>
-						<ul class="list-disc list-inside">
-							{#each entries as p (p.name)}
-								<li>
-									{p.name}
-									<span>({p.chance}%)</span>
-								</li>
-							{/each}
-						</ul>
-					</div>
-				{/each}
-			</div>
-		{/if}
-
-		<!-- Evolutions -->
 		{#if preEvolutions.length || evolutions.length}
 			<h3 class="font-bold mb-2">Evolution Tree</h3>
 
@@ -238,6 +204,5 @@
 				{/if}
 			</div>
 		{/if}
-
 	{/if}
 </Modal>

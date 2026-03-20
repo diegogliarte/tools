@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { openModal } from "$lib/states/modal.svelte";
 	import PlayerModal from "$lib/components/inazuma-eleven-vr/PlayerModal.svelte";
 	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
@@ -11,7 +12,7 @@
 	let {
 		player,
 		variant = "default",
-		openModal = true
+		openModal: canOpenModal = true
 	}: Props = $props();
 
 	const elementColor: Record<string, string> = {
@@ -21,16 +22,17 @@
 		Wind: "bg-sky-800/75"
 	};
 
-	let showModal = $state(false);
+	function open() {
+		if (!canOpenModal) return;
+		openModal(PlayerModal, { player });
+	}
 </script>
 
-<!-- BUTTON / ICON -->
 <button
 	type="button"
 	class="w-full cursor-pointer p-0 group"
-	onclick={() => {
-			if (openModal) showModal = true;
-		}}>
+	onclick={open}
+>
 	<img
 		src={player.Image}
 		alt={player.Name}
@@ -42,10 +44,3 @@
 		"
 	/>
 </button>
-
-{#if showModal}
-	<PlayerModal
-		player={player}
-		bind:showModal
-	/>
-{/if}
