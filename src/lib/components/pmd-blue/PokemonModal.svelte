@@ -5,6 +5,7 @@
 	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
 	import movesRaw from '$lib/data/pmd-blue/moves.json';
 	import pokemonMovesRaw from '$lib/data/pmd-blue/pokemon-moves.json';
+	import abilitiesRaw from '$lib/data/pmd-blue/abilities.json';
 
 	import {
 		type Pokemon,
@@ -27,9 +28,13 @@
 	const pokemonByName = new Map(pokemons.map(p => [p.name, p]));
 	const evolvesFromMap = buildEvolvesFromMap(pokemons);
 	const moveById = new Map(movesRaw.map(m => [m.id, m]));
+	const abilityById = new Map(abilitiesRaw.map(a => [a.id, a]));
 
 	const evolvesFrom = $derived(evolvesFromMap[pokemon.name] ?? []);
 	const evolvesTo = $derived(pokemon.evolution ?? []);
+
+	const ability_1 = $derived(abilityById.get(pokemon.ability_1_id));
+	const ability_2 = $derived(pokemon.ability_2_id ? abilityById.get(pokemon.ability_2_id) : null);
 
 	const moveEntry = $derived(
 		pokemonMovesRaw.find(m => m.pokemon_id === pokemon.game_id)
@@ -68,10 +73,27 @@
 
 			<div class="text-xs flex flex-col gap-1">
 				<div>Recruit: {pokemon.recruit.rate}%</div>
+				{#if pokemon.encounter.note}
+					Note: {pokemon.encounter.note}
+				{/if}
 				<div>Friend Area: {pokemon.encounter.friendArea ?? "—"}</div>
 
-				{#if pokemon.encounter.note}
-					<div>{pokemon.encounter.note}</div>
+				{#if ability_1}
+					<div>
+						Ability 1: <span class="text-accent">{ability_1.name}</span>
+					</div>
+					{#if ability_1.description}
+						<div class="opacity-70">{ability_1.description}</div>
+					{/if}
+				{/if}
+
+				{#if ability_2}
+					<div>
+						Ability 2: <span class="text-accent">{ability_2.name}</span>
+					</div>
+					{#if ability_2.description}
+						<div class="opacity-70">{ability_2.description}</div>
+					{/if}
 				{/if}
 			</div>
 		</div>

@@ -20,6 +20,7 @@ import { tool as YearDaysGrid } from '$lib/tools/year-days-grid';
 import { tool as OSRSChatEffects } from '$lib/tools/osrs-chat-effects';
 import { tool as PMDBlueRecruitCalculator } from '$lib/tools/pmd-blue-recruit-calculator';
 import { tool as PMDBlueStats } from '$lib/tools/pmd-blue-stats';
+import { tool as PMDBlueTeamBuilder } from '$lib/tools/pmd-blue-team-builder';
 
 function applyHref(category: ToolCategory, parentPath = ''): ToolCategory {
 	const categorySlug = slugify(category.name);
@@ -77,7 +78,7 @@ export const rawTree: ToolCategory[] = [
 		subgroups: [
 			{
 				name: 'Blue Rescue Team',
-				tools: [PMDBlueStats, PMDBlueRecruitCalculator],
+				tools: [PMDBlueStats, PMDBlueRecruitCalculator, PMDBlueTeamBuilder],
 				subgroups: []
 			}
 		]

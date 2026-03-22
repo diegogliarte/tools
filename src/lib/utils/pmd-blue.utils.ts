@@ -32,6 +32,9 @@ export type Pokemon = {
 
 	evolution?: EvolutionLink[];
 
+	ability_1_id: number;
+	ability_2_id: number | null;
+
 	// stats
 	base_hp: number;
 	base_atk: number;

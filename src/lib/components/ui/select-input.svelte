@@ -1,5 +1,5 @@
 <script lang="ts">
-	import MdiChevronDown from "~icons/mdi/chevron-down";
+	import MdiChevronDown from '~icons/mdi/chevron-down';
 
 	interface Option {
 		value: string | boolean;
@@ -10,19 +10,23 @@
 		value?: string | boolean | null;
 		options: Option[];
 		label?: string;
-		placeholder?: string; // Shown when no value
+		placeholder?: string;
 		allowEmpty?: boolean;
 	}
 
 	let {
-		value = $bindable(""),
+		value = $bindable(''),
 		options,
-		label = "",
-		placeholder = "—",
+		label = '',
+		placeholder = '—',
 		allowEmpty = true
 	}: Props = $props();
 
 	const uid = $props.id();
+
+	function handleChange(event: Event) {
+		value = (event.currentTarget as HTMLSelectElement).value;
+	}
 </script>
 
 <div class="flex flex-col gap-0.5">
@@ -33,7 +37,8 @@
 	<div class="relative cursor-pointer">
 		<select
 			id={uid}
-			bind:value
+			value={String(value ?? '')}
+			onchange={handleChange}
 			class="
 				w-full px-3 py-2
 				border
@@ -44,24 +49,22 @@
 				transition
 				cursor-pointer
 				appearance-none
-				pr-8 /* space for the chevron */
+				pr-8
 			"
 		>
 			{#if allowEmpty}
-				<option value="" class="">
+				<option value="">
 					{placeholder}
 				</option>
 			{/if}
 
-			{#each options as opt (opt)}
-				<option value={opt.value}>
+			{#each options as opt (opt.value)}
+				<option value={String(opt.value)}>
 					{opt.label}
 				</option>
 			{/each}
-
 		</select>
 
-		<!-- Chevron Icon -->
 		<div
 			class="
 				absolute inset-y-0 right-2
