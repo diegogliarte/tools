@@ -35,7 +35,6 @@
 		{
 			key: "name",
 			label: "Name",
-			width: "220px",
 			searchValue: (p) => p.name,
 			renderComponent: (p) => ({
 				component: PokemonCell,

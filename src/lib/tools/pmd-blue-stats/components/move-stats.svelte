@@ -47,7 +47,7 @@
 		{
 			key: 'name',
 			label: 'Name',
-			width: '220px',
+			width: '200px',
 			searchValue: m => `${m.name} ${m.type} ${m.class}`,
 			renderComponent: (m) => ({
 				component: MoveCell,

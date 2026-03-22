@@ -122,7 +122,6 @@
 	const pokemonColumn: Column = {
 		key: "name",
 		label: "Pokémon",
-		width: "220px",
 
 		searchValue: (pokemon) => searchIndexByName[pokemon.name] ?? pokemon.name.toLowerCase(),
 

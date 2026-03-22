@@ -180,6 +180,18 @@
 		return label ? uniqueOptions([...options, { value: currentValue, label }]) : options;
 	}
 
+	function moveTargetIcon(target?: string) {
+		if (!target) return '';
+
+		const t = target.toLowerCase();
+
+		if (t.includes('all in room')) return '◎';
+		if (t.includes('foes in room')) return '✦';
+		if (t.includes('line of sight')) return '➜';
+
+		return '';
+	}
+
 	function moveOptions(slot: number) {
 		const usedElsewhere = new Set(selectedMoves(slot));
 		const options: Option[] = [];
@@ -196,7 +208,10 @@
 				const move = moveById.get(moveId);
 				if (!move) continue;
 
-				options.push({ value: moveId, label: move.name });
+				options.push({
+					value: moveId,
+					label: `${move.name} ${moveTargetIcon(move.targets)}`
+				});
 			}
 		}
 
@@ -252,7 +267,7 @@
 
 			<div class="w-full">
 				<SelectInput
-s					options={pokemonOptions}
+					options={pokemonOptions}
 					placeholder="Pokémon"
 					allowEmpty={true}
 					bind:value={selectedPokemon}
