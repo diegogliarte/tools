@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { copy } from "$lib/utils/clipboard.utils";
+	import { messageToast } from '$lib/utils/toast.utils';
 	import MdiContentCopy from "~icons/mdi/content-copy";
 	import MdiCheck from "~icons/mdi/check";
 
@@ -7,9 +8,7 @@
 		value: string | number;
 	}
 
-	let {
-		value,
-	}: Props = $props();
+	let { value }: Props = $props();
 
 	let copied = $state(false);
 
@@ -18,7 +17,10 @@
 
 		if (await copy(value.toString())) {
 			copied = true;
+			messageToast('success', 'Copied to clipboard');
 			setTimeout(() => copied = false, 500);
+		} else {
+			messageToast('error', 'Failed to copy');
 		}
 	}
 </script>

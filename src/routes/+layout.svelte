@@ -7,6 +7,7 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import Toast from '$lib/components/ui/toast.svelte';
 
 	import { modalState, closeModal } from "$lib/states/modal.svelte";
 
@@ -36,7 +37,10 @@
 					onClose={closeModal}
 				/>
 			{/if}
+
 			{@render children()}
+
+			<Toast />
 		</main>
 
 		<Footer />
