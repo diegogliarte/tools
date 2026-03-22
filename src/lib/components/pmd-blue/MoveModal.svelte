@@ -20,6 +20,9 @@
 		damageFlags: number[];
 		otherFlags: number[];
 		targets: string;
+		min_hits?: number;
+		max_hits?: number;
+		hit_count_mode?: string;
 	}
 
 	interface PokemonMoveEntry {
@@ -71,6 +74,24 @@
 		Typeless: "bg-neutral-400"
 	};
 
+	function formatHits(move: Move) {
+		const min = move.min_hits;
+		const max = move.max_hits;
+		const mode = move.hit_count_mode;
+
+		if (min != null && max != null) return min === max ? `${min}` : `${min}-${max}`;
+		if (min != null) return `${min}`;
+		if (max != null) return `${max}`;
+		return '—';
+	}
+
+	function formatHitMode(mode?: string) {
+		if (!mode) return '—';
+		if (mode === 'fixed') return 'Fixed';
+		if (mode === 'range') return 'Range';
+		return mode;
+	}
+
 	// 🔥 Pokemon learning this move
 	const learnedBy = $derived.by(() => {
 		if (!move.id) return { levelUp: [], tm: [] };
@@ -109,6 +130,8 @@
 		<div>Acc1: <b>{move.acc1}</b></div>
 		<div>Acc2: <b>{move.acc2}</b></div>
 		<div>Targets: <b>{move.targets}</b></div>
+		<div>Hits: <b>{formatHits(move)}</b></div>
+		<div>Hit Mode: <b>{formatHitMode(move.hit_count_mode)}</b></div>
 	</div>
 
 	<h3 class="font-bold mb-1">Flags</h3>

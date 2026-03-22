@@ -24,6 +24,9 @@
 		maxPP?: number | string;
 		targets?: string;
 		description?: string;
+		hit_count_mode?: string;
+		min_hits?: number;
+		max_hits?: number;
 	};
 
 	type PokemonMoves = {
@@ -185,11 +188,20 @@
 
 		const t = target.toLowerCase();
 
-		if (t.includes('all in room')) return '◎';
-		if (t.includes('foes in room')) return '✦';
+		if (t.includes('all in room')) return '■';
+		if (t.includes('foes in room')) return '⊡';
 		if (t.includes('line of sight')) return '➜';
 
 		return '';
+	}
+
+	function moveHitModeIcon(mode?: string) {
+		return mode && mode !== 'Single' ? '✹' : '';
+	}
+
+	function formatHitMode(move?: Move) {
+		if (!move?.hit_count_mode || move.hit_count_mode === 'Single') return '';
+		return move.hit_count_mode;
 	}
 
 	function moveOptions(slot: number) {
@@ -208,9 +220,12 @@
 				const move = moveById.get(moveId);
 				if (!move) continue;
 
+				const targetIcon = moveTargetIcon(move.targets);
+				const hitModeIcon = moveHitModeIcon(move.hit_count_mode);
+
 				options.push({
 					value: moveId,
-					label: `${move.name} ${moveTargetIcon(move.targets)}`
+					label: `${move.name}${targetIcon ? ` ${targetIcon}` : ''}${hitModeIcon ? ` ${hitModeIcon}` : ''}`
 				});
 			}
 		}
@@ -251,6 +266,9 @@
 {#snippet moveCard(move: Move)}
 	<div class="opacity-80 text-xs">
 		{move.type ?? '—'} · Power {move.power ?? '—'} · {move.maxPP ?? '—'}PP · {move.targets ?? '—'}
+		{#if formatHitMode(move)}
+			· {formatHitMode(move)}
+		{/if}
 	</div>
 {/snippet}
 

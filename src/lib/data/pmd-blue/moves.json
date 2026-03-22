@@ -16,7 +16,10 @@
     "otherFlags": [
       1
     ],
-    "targets": "Foe in front"
+    "targets": "Foe in front",
+		"min_hits": null,
+		"max_hits": null,
+		"hit_count_mode": "Single"
   },
   {
     "name": "Absorb",
@@ -40,7 +43,7 @@
     "id": 135,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Acid",
@@ -63,7 +66,7 @@
     "id": 332,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Acid Armor",
@@ -85,7 +88,7 @@
     "id": 202,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Aerial Ace",
@@ -108,7 +111,7 @@
     "id": 179,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Aeroblast",
@@ -131,7 +134,7 @@
     "id": 353,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Agility",
@@ -153,7 +156,7 @@
     "id": 95,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Air Cutter",
@@ -176,7 +179,7 @@
     "id": 36,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Amnesia",
@@ -198,7 +201,7 @@
     "id": 215,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Ancient Power",
@@ -221,7 +224,7 @@
     "id": 93,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Arm Thrust",
@@ -244,7 +247,7 @@
     "id": 175,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Aromatherapy",
@@ -265,7 +268,7 @@
     "id": 15,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Assist",
@@ -288,7 +291,7 @@
     "id": 229,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Astonish",
@@ -311,7 +314,7 @@
     "id": 46,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Attract",
@@ -333,7 +336,7 @@
     "id": 326,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Aurora Beam",
@@ -356,7 +359,7 @@
     "id": 42,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Barrage",
@@ -379,7 +382,7 @@
     "id": 168,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Barrier",
@@ -401,7 +404,7 @@
     "id": 258,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Baton Pass",
@@ -422,7 +425,7 @@
     "id": 252,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Beat Up",
@@ -443,7 +446,7 @@
     "id": 269,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Belly Drum",
@@ -465,7 +468,7 @@
     "id": 257,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bide",
@@ -486,7 +489,7 @@
     "id": 61,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bind",
@@ -509,7 +512,7 @@
     "id": 125,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bite",
@@ -533,7 +536,7 @@
     "id": 63,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Blast Burn",
@@ -556,7 +559,7 @@
     "id": 272,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Blaze Kick",
@@ -578,7 +581,7 @@
     "id": 276,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Blizzard",
@@ -601,7 +604,7 @@
     "id": 270,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Block",
@@ -623,7 +626,7 @@
     "id": 194,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bloop Slash",
@@ -646,7 +649,7 @@
     "id": 366,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Blowback",
@@ -667,7 +670,7 @@
     "id": 368,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Body Slam",
@@ -690,7 +693,7 @@
     "id": 235,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bone Club",
@@ -713,7 +716,7 @@
     "id": 289,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bone Rush",
@@ -736,7 +739,7 @@
     "id": 285,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Bonemerang",
@@ -759,7 +762,7 @@
     "id": 290,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bounce",
@@ -782,7 +785,7 @@
     "id": 205,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Brick Break",
@@ -805,7 +808,7 @@
     "id": 72,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bubble",
@@ -828,7 +831,7 @@
     "id": 16,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bubblebeam",
@@ -851,7 +854,7 @@
     "id": 255,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bulk Up",
@@ -873,7 +876,7 @@
     "id": 265,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Bullet Seed",
@@ -896,7 +899,7 @@
     "id": 163,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Calm Mind",
@@ -918,7 +921,7 @@
     "id": 319,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Camouflage",
@@ -940,7 +943,7 @@
     "id": 286,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Charge",
@@ -962,7 +965,7 @@
     "id": 128,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Charm",
@@ -984,7 +987,7 @@
     "id": 11,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Clamp",
@@ -1007,7 +1010,7 @@
     "id": 69,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Cleanse",
@@ -1028,7 +1031,7 @@
     "id": 378,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Comet Punch",
@@ -1051,7 +1054,7 @@
     "id": 347,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Confuse Ray",
@@ -1073,7 +1076,7 @@
     "id": 13,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Confusion",
@@ -1096,7 +1099,7 @@
     "id": 234,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Constrict",
@@ -1119,7 +1122,7 @@
     "id": 71,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Conversion",
@@ -1140,7 +1143,7 @@
     "id": 183,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Conversion 2",
@@ -1161,7 +1164,7 @@
     "id": 184,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Cosmic Power",
@@ -1183,7 +1186,7 @@
     "id": 99,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Cotton Spore",
@@ -1205,7 +1208,7 @@
     "id": 351,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Counter",
@@ -1226,7 +1229,7 @@
     "id": 51,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Covet",
@@ -1249,7 +1252,7 @@
     "id": 287,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Crabhammer",
@@ -1272,7 +1275,7 @@
     "id": 87,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Cross Chop",
@@ -1295,7 +1298,7 @@
     "id": 90,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Crunch",
@@ -1319,7 +1322,7 @@
     "id": 62,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Crush Claw",
@@ -1342,7 +1345,7 @@
     "id": 275,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Curse",
@@ -1363,7 +1366,7 @@
     "id": 237,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Cut",
@@ -1386,7 +1389,7 @@
     "id": 18,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Decoy Maker",
@@ -1407,7 +1410,7 @@
     "id": 380,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Defense Curl",
@@ -1429,7 +1432,7 @@
     "id": 302,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Destiny Bond",
@@ -1450,7 +1453,7 @@
     "id": 313,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Detect",
@@ -1471,7 +1474,7 @@
     "id": 305,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dig",
@@ -1494,7 +1497,7 @@
     "id": 8,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Disable",
@@ -1515,7 +1518,7 @@
     "id": 59,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dive",
@@ -1538,7 +1541,7 @@
     "id": 156,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dizzy Punch",
@@ -1561,7 +1564,7 @@
     "id": 264,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Doom Desire",
@@ -1582,7 +1585,7 @@
     "id": 256,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Double Kick",
@@ -1605,7 +1608,7 @@
     "id": 222,
     "min_hits": 2,
     "max_hits": 2,
-    "hit_count_mode": "exact"
+    "hit_count_mode": "Exact"
   },
   {
     "name": "Double Team",
@@ -1627,7 +1630,7 @@
     "id": 56,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Double-Edge",
@@ -1650,7 +1653,7 @@
     "id": 140,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "DoubleSlap",
@@ -1673,7 +1676,7 @@
     "id": 39,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Dragon Claw",
@@ -1696,7 +1699,7 @@
     "id": 208,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dragon Dance",
@@ -1718,7 +1721,7 @@
     "id": 343,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dragon Rage",
@@ -1740,7 +1743,7 @@
     "id": 341,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dragonbreath",
@@ -1764,7 +1767,7 @@
     "id": 342,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dream Eater",
@@ -1788,7 +1791,7 @@
     "id": 331,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Drill Peck",
@@ -1811,7 +1814,7 @@
     "id": 211,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Drought",
@@ -1832,7 +1835,7 @@
     "id": 388,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Dynamicpunch",
@@ -1855,7 +1858,7 @@
     "id": 246,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Earthquake",
@@ -1878,7 +1881,7 @@
     "id": 118,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Egg Bomb",
@@ -1901,7 +1904,7 @@
     "id": 166,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Ember",
@@ -1923,7 +1926,7 @@
     "id": 262,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Encore",
@@ -1944,7 +1947,7 @@
     "id": 17,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Endeavor",
@@ -1966,7 +1969,7 @@
     "id": 66,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Endure",
@@ -1987,7 +1990,7 @@
     "id": 104,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Eruption",
@@ -2009,7 +2012,7 @@
     "id": 278,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Escape",
@@ -2030,7 +2033,7 @@
     "id": 385,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Excavate",
@@ -2053,7 +2056,7 @@
     "id": 361,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Explosion",
@@ -2075,7 +2078,7 @@
     "id": 155,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Extrasensory",
@@ -2098,7 +2101,7 @@
     "id": 133,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "ExtremeSpeed",
@@ -2121,7 +2124,7 @@
     "id": 132,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Facade",
@@ -2144,7 +2147,7 @@
     "id": 67,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Faint Attack",
@@ -2167,7 +2170,7 @@
     "id": 167,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fake Out",
@@ -2190,7 +2193,7 @@
     "id": 226,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fake Tears",
@@ -2213,7 +2216,7 @@
     "id": 33,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "False Swipe",
@@ -2235,7 +2238,7 @@
     "id": 314,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Famish",
@@ -2256,7 +2259,7 @@
     "id": 398,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Featherdance",
@@ -2278,7 +2281,7 @@
     "id": 267,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fill-In",
@@ -2299,7 +2302,7 @@
     "id": 400,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fire Blast",
@@ -2321,7 +2324,7 @@
     "id": 157,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fire Punch",
@@ -2343,7 +2346,7 @@
     "id": 292,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fire Spin",
@@ -2365,7 +2368,7 @@
     "id": 291,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fissure",
@@ -2387,7 +2390,7 @@
     "id": 131,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Flail",
@@ -2410,7 +2413,7 @@
     "id": 121,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Flame Wheel",
@@ -2432,7 +2435,7 @@
     "id": 52,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Flamethrower",
@@ -2454,7 +2457,7 @@
     "id": 53,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Flash",
@@ -2476,7 +2479,7 @@
     "id": 273,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Flatter",
@@ -2499,7 +2502,7 @@
     "id": 45,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fly",
@@ -2522,7 +2525,7 @@
     "id": 153,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Focus Energy",
@@ -2544,7 +2547,7 @@
     "id": 74,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Focus Punch",
@@ -2567,7 +2570,7 @@
     "id": 75,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Follow Me",
@@ -2588,7 +2591,7 @@
     "id": 102,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Foresight",
@@ -2609,7 +2612,7 @@
     "id": 315,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Frenzy Plant",
@@ -2632,7 +2635,7 @@
     "id": 238,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Frustration",
@@ -2654,7 +2657,7 @@
     "id": 328,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Fury Attack",
@@ -2677,7 +2680,7 @@
     "id": 311,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Fury Cutter",
@@ -2700,7 +2703,7 @@
     "id": 346,
     "min_hits": 2,
     "max_hits": 2,
-    "hit_count_mode": "exact"
+    "hit_count_mode": "Exact"
   },
   {
     "name": "Fury Swipes",
@@ -2723,7 +2726,7 @@
     "id": 312,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Future Sight",
@@ -2744,7 +2747,7 @@
     "id": 317,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Giga Drain",
@@ -2767,7 +2770,7 @@
     "id": 76,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Glare",
@@ -2789,7 +2792,7 @@
     "id": 281,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Grasswhistle",
@@ -2812,7 +2815,7 @@
     "id": 84,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Growl",
@@ -2835,7 +2838,7 @@
     "id": 217,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Growth",
@@ -2857,7 +2860,7 @@
     "id": 148,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Grudge",
@@ -2878,7 +2881,7 @@
     "id": 49,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Guillotine",
@@ -2900,7 +2903,7 @@
     "id": 247,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Gust",
@@ -2923,7 +2926,7 @@
     "id": 57,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hail",
@@ -2944,7 +2947,7 @@
     "id": 14,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Harden",
@@ -2966,7 +2969,7 @@
     "id": 58,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Haze",
@@ -2987,7 +2990,7 @@
     "id": 88,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Headbutt",
@@ -3010,7 +3013,7 @@
     "id": 139,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Heal Bell",
@@ -3031,7 +3034,7 @@
     "id": 26,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Heat Wave",
@@ -3053,7 +3056,7 @@
     "id": 230,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Helping Hand",
@@ -3074,7 +3077,7 @@
     "id": 185,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hi Jump Kick",
@@ -3097,7 +3100,7 @@
     "id": 206,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hidden Power",
@@ -3120,7 +3123,7 @@
     "id": 324,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Horn Attack",
@@ -3143,7 +3146,7 @@
     "id": 176,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Horn Drill",
@@ -3165,7 +3168,7 @@
     "id": 177,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Howl",
@@ -3188,7 +3191,7 @@
     "id": 195,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "HP Gauge",
@@ -3209,7 +3212,7 @@
     "id": 393,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hurl",
@@ -3232,7 +3235,7 @@
     "id": 406,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hydro Cannon",
@@ -3255,7 +3258,7 @@
     "id": 239,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hydro Pump",
@@ -3278,7 +3281,7 @@
     "id": 240,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hyper Beam",
@@ -3301,7 +3304,7 @@
     "id": 242,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hyper Fang",
@@ -3325,7 +3328,7 @@
     "id": 261,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hyper Voice",
@@ -3349,7 +3352,7 @@
     "id": 241,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Hypnosis",
@@ -3371,7 +3374,7 @@
     "id": 111,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Ice Ball",
@@ -3394,7 +3397,7 @@
     "id": 2,
     "min_hits": 1,
     "max_hits": 5,
-    "hit_count_mode": "until_miss_up_to_five"
+    "hit_count_mode": "Until miss"
   },
   {
     "name": "Ice Beam",
@@ -3417,7 +3420,7 @@
     "id": 345,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Ice Punch",
@@ -3440,7 +3443,7 @@
     "id": 344,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Icicle Spear",
@@ -3463,7 +3466,7 @@
     "id": 180,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Icy Wind",
@@ -3486,7 +3489,7 @@
     "id": 97,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Imprison",
@@ -3507,7 +3510,7 @@
     "id": 266,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Ingrain",
@@ -3529,7 +3532,7 @@
     "id": 233,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Invisify",
@@ -3550,7 +3553,7 @@
     "id": 391,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Iron Defense",
@@ -3572,7 +3575,7 @@
     "id": 186,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Iron Tail",
@@ -3595,7 +3598,7 @@
     "id": 1,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Itemize",
@@ -3616,7 +3619,7 @@
     "id": 403,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Jump Kick",
@@ -3639,7 +3642,7 @@
     "id": 204,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Karate Chop",
@@ -3662,7 +3665,7 @@
     "id": 68,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Kinesis",
@@ -3683,7 +3686,7 @@
     "id": 146,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Knock Off",
@@ -3704,7 +3707,7 @@
     "id": 249,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Leaf Blade",
@@ -3727,7 +3730,7 @@
     "id": 336,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Leech Life",
@@ -3751,7 +3754,7 @@
     "id": 80,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Leech Seed",
@@ -3773,7 +3776,7 @@
     "id": 329,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Leer",
@@ -3795,7 +3798,7 @@
     "id": 224,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Lick",
@@ -3819,7 +3822,7 @@
     "id": 120,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Light Screen",
@@ -3841,7 +3844,7 @@
     "id": 259,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Lock-On",
@@ -3862,7 +3865,7 @@
     "id": 349,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Long Toss",
@@ -3883,7 +3886,7 @@
     "id": 410,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Lovely Kiss",
@@ -3906,7 +3909,7 @@
     "id": 4,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Low Kick",
@@ -3929,7 +3932,7 @@
     "id": 92,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Luster Purge",
@@ -3952,7 +3955,7 @@
     "id": 335,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mach Punch",
@@ -3975,7 +3978,7 @@
     "id": 300,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Magic Coat",
@@ -3996,7 +3999,7 @@
     "id": 298,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Magical Leaf",
@@ -4019,7 +4022,7 @@
     "id": 297,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Magnitude",
@@ -4041,7 +4044,7 @@
     "id": 296,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mean Look",
@@ -4063,7 +4066,7 @@
     "id": 89,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Meditate",
@@ -4085,7 +4088,7 @@
     "id": 333,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mega Drain",
@@ -4108,7 +4111,7 @@
     "id": 320,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mega Kick",
@@ -4131,7 +4134,7 @@
     "id": 321,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mega Punch",
@@ -4154,7 +4157,7 @@
     "id": 322,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Megahorn",
@@ -4177,7 +4180,7 @@
     "id": 323,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Memento",
@@ -4198,7 +4201,7 @@
     "id": 43,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Metal Claw",
@@ -4221,7 +4224,7 @@
     "id": 325,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Metal Sound",
@@ -4243,7 +4246,7 @@
     "id": 83,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Meteor Mash",
@@ -4266,7 +4269,7 @@
     "id": 103,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Metronome",
@@ -4288,7 +4291,7 @@
     "id": 330,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Milk Drink",
@@ -4311,7 +4314,7 @@
     "id": 318,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mimic",
@@ -4332,7 +4335,7 @@
     "id": 327,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mind Reader",
@@ -4353,7 +4356,7 @@
     "id": 98,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Minimize",
@@ -4375,7 +4378,7 @@
     "id": 169,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mirror Coat",
@@ -4396,7 +4399,7 @@
     "id": 316,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mirror Move",
@@ -4417,7 +4420,7 @@
     "id": 40,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mist",
@@ -4439,7 +4442,7 @@
     "id": 130,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mist Ball",
@@ -4462,7 +4465,7 @@
     "id": 309,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mobile",
@@ -4483,7 +4486,7 @@
     "id": 407,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Moonlight",
@@ -4505,7 +4508,7 @@
     "id": 173,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Morning Sun",
@@ -4527,7 +4530,7 @@
     "id": 6,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mud Shot",
@@ -4550,7 +4553,7 @@
     "id": 299,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mud Sport",
@@ -4571,7 +4574,7 @@
     "id": 212,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Muddy Water",
@@ -4594,7 +4597,7 @@
     "id": 159,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Mud-Slap",
@@ -4617,7 +4620,7 @@
     "id": 213,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Nature Power",
@@ -4639,7 +4642,7 @@
     "id": 119,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Needle Arm",
@@ -4662,7 +4665,7 @@
     "id": 221,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Night Shade",
@@ -4684,7 +4687,7 @@
     "id": 216,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Nightmare",
@@ -4705,7 +4708,7 @@
     "id": 5,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "No-Move",
@@ -4726,7 +4729,7 @@
     "id": 384,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Observer",
@@ -4747,7 +4750,7 @@
     "id": 379,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Octazooka",
@@ -4771,7 +4774,7 @@
     "id": 44,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Odor Sleuth",
@@ -4792,7 +4795,7 @@
     "id": 54,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "One-Room",
@@ -4813,7 +4816,7 @@
     "id": 399,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "One-Shot",
@@ -4836,7 +4839,7 @@
     "id": 392,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Outrage",
@@ -4859,7 +4862,7 @@
     "id": 91,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Overheat",
@@ -4881,7 +4884,7 @@
     "id": 41,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Pain Split",
@@ -4902,7 +4905,7 @@
     "id": 21,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Pay Day",
@@ -4925,7 +4928,7 @@
     "id": 228,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Peck",
@@ -4948,7 +4951,7 @@
     "id": 174,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Perish Song",
@@ -4970,7 +4973,7 @@
     "id": 293,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Petal Dance",
@@ -4993,7 +4996,7 @@
     "id": 253,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Petrify",
@@ -5014,7 +5017,7 @@
     "id": 374,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Pierce",
@@ -5035,7 +5038,7 @@
     "id": 412,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Pin Missile",
@@ -5058,7 +5061,7 @@
     "id": 306,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Poison Fang",
@@ -5081,7 +5084,7 @@
     "id": 198,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Poison Gas",
@@ -5103,7 +5106,7 @@
     "id": 196,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Poison Sting",
@@ -5126,7 +5129,7 @@
     "id": 200,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Poison Tail",
@@ -5149,7 +5152,7 @@
     "id": 283,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Poisonpowder",
@@ -5171,7 +5174,7 @@
     "id": 199,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Pounce",
@@ -5192,7 +5195,7 @@
     "id": 376,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Pound",
@@ -5215,7 +5218,7 @@
     "id": 250,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Powder Snow",
@@ -5238,7 +5241,7 @@
     "id": 101,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Power-Ears",
@@ -5259,7 +5262,7 @@
     "id": 387,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Present",
@@ -5281,7 +5284,7 @@
     "id": 277,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Protect",
@@ -5302,7 +5305,7 @@
     "id": 301,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Psybeam",
@@ -5325,7 +5328,7 @@
     "id": 107,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Psych Up",
@@ -5346,7 +5349,7 @@
     "id": 115,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Psychic",
@@ -5369,7 +5372,7 @@
     "id": 109,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Psycho Boost",
@@ -5392,7 +5395,7 @@
     "id": 110,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Psywave",
@@ -5414,7 +5417,7 @@
     "id": 108,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Pursuit",
@@ -5435,7 +5438,7 @@
     "id": 38,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Quick Attack",
@@ -5458,7 +5461,7 @@
     "id": 190,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rage",
@@ -5479,7 +5482,7 @@
     "id": 19,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rain Dance",
@@ -5500,7 +5503,7 @@
     "id": 12,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rapid Spin",
@@ -5523,7 +5526,7 @@
     "id": 96,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Razor Leaf",
@@ -5546,7 +5549,7 @@
     "id": 251,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Razor Wind",
@@ -5569,7 +5572,7 @@
     "id": 60,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rebound",
@@ -5590,7 +5593,7 @@
     "id": 365,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Recover",
@@ -5612,7 +5615,7 @@
     "id": 117,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Recycle",
@@ -5633,7 +5636,7 @@
     "id": 337,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Reflect",
@@ -5655,7 +5658,7 @@
     "id": 338,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Refresh",
@@ -5676,7 +5679,7 @@
     "id": 339,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rest",
@@ -5698,7 +5701,7 @@
     "id": 232,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Return",
@@ -5720,7 +5723,7 @@
     "id": 48,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Revenge",
@@ -5741,7 +5744,7 @@
     "id": 340,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Reversal",
@@ -5764,7 +5767,7 @@
     "id": 77,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Reviver",
@@ -5785,7 +5788,7 @@
     "id": 395,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Roar",
@@ -5809,7 +5812,7 @@
     "id": 284,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rock Blast",
@@ -5832,7 +5835,7 @@
     "id": 350,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Rock Slide",
@@ -5855,7 +5858,7 @@
     "id": 30,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rock Smash",
@@ -5877,7 +5880,7 @@
     "id": 29,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rock Throw",
@@ -5900,7 +5903,7 @@
     "id": 28,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rock Tomb",
@@ -5923,7 +5926,7 @@
     "id": 73,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Role Play",
@@ -5944,7 +5947,7 @@
     "id": 220,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rolling Kick",
@@ -5967,7 +5970,7 @@
     "id": 303,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Rollout",
@@ -5990,7 +5993,7 @@
     "id": 105,
     "min_hits": 1,
     "max_hits": 5,
-    "hit_count_mode": "until_miss_up_to_five"
+    "hit_count_mode": "Until miss"
   },
   {
     "name": "Sacred Fire",
@@ -6013,7 +6016,7 @@
     "id": 149,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Safeguard",
@@ -6035,7 +6038,7 @@
     "id": 134,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sand Tomb",
@@ -6058,7 +6061,7 @@
     "id": 143,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sand-Attack",
@@ -6080,7 +6083,7 @@
     "id": 142,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sandstorm",
@@ -6101,7 +6104,7 @@
     "id": 141,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Scan",
@@ -6122,7 +6125,7 @@
     "id": 386,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Scary Face",
@@ -6144,7 +6147,7 @@
     "id": 106,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Scratch",
@@ -6167,7 +6170,7 @@
     "id": 260,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Screech",
@@ -6190,7 +6193,7 @@
     "id": 27,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Searchlight",
@@ -6211,7 +6214,7 @@
     "id": 373,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Secret Power",
@@ -6234,7 +6237,7 @@
     "id": 263,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "See Stairs",
@@ -6255,7 +6258,7 @@
     "id": 409,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "See-Trap",
@@ -6276,7 +6279,7 @@
     "id": 363,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Seismic Toss",
@@ -6298,7 +6301,7 @@
     "id": 170,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Selfdestruct",
@@ -6320,7 +6323,7 @@
     "id": 123,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Shadow Ball",
@@ -6343,7 +6346,7 @@
     "id": 127,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Shadow Punch",
@@ -6366,7 +6369,7 @@
     "id": 126,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sharpen",
@@ -6388,7 +6391,7 @@
     "id": 55,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sheer Cold",
@@ -6410,7 +6413,7 @@
     "id": 150,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Shock Wave",
@@ -6433,7 +6436,7 @@
     "id": 189,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Shocker",
@@ -6456,7 +6459,7 @@
     "id": 396,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Siesta",
@@ -6477,7 +6480,7 @@
     "id": 381,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Signal Beam",
@@ -6500,7 +6503,7 @@
     "id": 114,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Silver Wind",
@@ -6523,7 +6526,7 @@
     "id": 82,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sing",
@@ -6546,7 +6549,7 @@
     "id": 34,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sketch",
@@ -6567,7 +6570,7 @@
     "id": 138,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Skill Swap",
@@ -6588,7 +6591,7 @@
     "id": 137,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Skull Bash",
@@ -6611,7 +6614,7 @@
     "id": 348,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sky Attack",
@@ -6634,7 +6637,7 @@
     "id": 100,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sky Uppercut",
@@ -6657,7 +6660,7 @@
     "id": 136,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Slack Off",
@@ -6679,7 +6682,7 @@
     "id": 218,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Slam",
@@ -6702,7 +6705,7 @@
     "id": 161,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Slash",
@@ -6725,7 +6728,7 @@
     "id": 81,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sleep Powder",
@@ -6747,7 +6750,7 @@
     "id": 231,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sleep Talk",
@@ -6769,7 +6772,7 @@
     "id": 227,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Slow Down",
@@ -6790,7 +6793,7 @@
     "id": 371,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sludge",
@@ -6813,7 +6816,7 @@
     "id": 279,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sludge Bomb",
@@ -6836,7 +6839,7 @@
     "id": 280,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Smellingsalt",
@@ -6859,7 +6862,7 @@
     "id": 78,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Smog",
@@ -6882,7 +6885,7 @@
     "id": 147,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Smokescreen",
@@ -6904,7 +6907,7 @@
     "id": 37,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Snatch",
@@ -6925,7 +6928,7 @@
     "id": 334,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Snore",
@@ -6949,7 +6952,7 @@
     "id": 25,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Softboiled",
@@ -6971,7 +6974,7 @@
     "id": 165,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Solar Beam",
@@ -6994,7 +6997,7 @@
     "id": 151,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sonicboom",
@@ -7016,7 +7019,7 @@
     "id": 152,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Spark",
@@ -7039,7 +7042,7 @@
     "id": 144,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Speed Boost",
@@ -7060,7 +7063,7 @@
     "id": 372,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Spider Web",
@@ -7082,7 +7085,7 @@
     "id": 86,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Spike Cannon",
@@ -7105,7 +7108,7 @@
     "id": 201,
     "min_hits": 2,
     "max_hits": 5,
-    "hit_count_mode": "range"
+    "hit_count_mode": "Multi Hit"
   },
   {
     "name": "Spikes",
@@ -7126,7 +7129,7 @@
     "id": 295,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Spin Slash",
@@ -7149,7 +7152,7 @@
     "id": 362,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Spit Up",
@@ -7173,7 +7176,7 @@
     "id": 245,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Spite",
@@ -7194,7 +7197,7 @@
     "id": 35,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Splash",
@@ -7215,7 +7218,7 @@
     "id": 254,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Spore",
@@ -7237,7 +7240,7 @@
     "id": 79,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Stay Away",
@@ -7258,7 +7261,7 @@
     "id": 375,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Steel Wing",
@@ -7281,7 +7284,7 @@
     "id": 244,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Stockpile",
@@ -7304,7 +7307,7 @@
     "id": 160,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Stomp",
@@ -7327,7 +7330,7 @@
     "id": 271,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Strength",
@@ -7348,7 +7351,7 @@
     "id": 50,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "String Shot",
@@ -7370,7 +7373,7 @@
     "id": 23,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Struggle",
@@ -7392,7 +7395,7 @@
     "id": 352,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Stun Spore",
@@ -7414,7 +7417,7 @@
     "id": 124,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Submission",
@@ -7437,7 +7440,7 @@
     "id": 116,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Substitute",
@@ -7459,7 +7462,7 @@
     "id": 304,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sunny Day",
@@ -7480,7 +7483,7 @@
     "id": 223,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Super Fang",
@@ -7504,7 +7507,7 @@
     "id": 20,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Superpower",
@@ -7527,7 +7530,7 @@
     "id": 243,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Supersonic",
@@ -7550,7 +7553,7 @@
     "id": 171,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Surf",
@@ -7573,7 +7576,7 @@
     "id": 219,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Swagger",
@@ -7595,7 +7598,7 @@
     "id": 24,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Swallow",
@@ -7618,7 +7621,7 @@
     "id": 236,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sweet Kiss",
@@ -7641,7 +7644,7 @@
     "id": 191,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Sweet Scent",
@@ -7663,7 +7666,7 @@
     "id": 10,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Swift",
@@ -7686,7 +7689,7 @@
     "id": 145,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Switcher",
@@ -7707,7 +7710,7 @@
     "id": 367,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Swords Dance",
@@ -7729,7 +7732,7 @@
     "id": 181,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Synthesis",
@@ -7751,7 +7754,7 @@
     "id": 94,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Tackle",
@@ -7774,7 +7777,7 @@
     "id": 154,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Tail Glow",
@@ -7796,7 +7799,7 @@
     "id": 288,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Tail Whip",
@@ -7818,7 +7821,7 @@
     "id": 122,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Take Down",
@@ -7841,7 +7844,7 @@
     "id": 203,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Takeaway",
@@ -7863,7 +7866,7 @@
     "id": 364,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Taunt",
@@ -7884,7 +7887,7 @@
     "id": 172,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Teeter Dance",
@@ -7905,7 +7908,7 @@
     "id": 274,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Teleport",
@@ -7926,7 +7929,7 @@
     "id": 187,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Thief",
@@ -7949,7 +7952,7 @@
     "id": 214,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Thrash",
@@ -7972,7 +7975,7 @@
     "id": 9,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Thunder Wave",
@@ -7994,7 +7997,7 @@
     "id": 192,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Thunderbolt",
@@ -8017,7 +8020,7 @@
     "id": 129,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Thunderpunch",
@@ -8040,7 +8043,7 @@
     "id": 65,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Thundershock",
@@ -8063,7 +8066,7 @@
     "id": 188,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Thunder",
@@ -8086,7 +8089,7 @@
     "id": 64,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Tickle",
@@ -8108,7 +8111,7 @@
     "id": 85,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Torment",
@@ -8130,7 +8133,7 @@
     "id": 22,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Totter",
@@ -8151,7 +8154,7 @@
     "id": 382,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Toxic",
@@ -8173,7 +8176,7 @@
     "id": 197,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Transfer",
@@ -8194,7 +8197,7 @@
     "id": 370,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Transform",
@@ -8215,7 +8218,7 @@
     "id": 282,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Trap Buster",
@@ -8236,7 +8239,7 @@
     "id": 389,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Trapper",
@@ -8257,7 +8260,7 @@
     "id": 401,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Trawl",
@@ -8278,7 +8281,7 @@
     "id": 377,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Tri Attack",
@@ -8300,7 +8303,7 @@
     "id": 207,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Trick",
@@ -8321,7 +8324,7 @@
     "id": 209,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Triple Kick",
@@ -8344,7 +8347,7 @@
     "id": 210,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Twineedle",
@@ -8367,7 +8370,7 @@
     "id": 164,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Twister",
@@ -8390,7 +8393,7 @@
     "id": 162,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Two-Edge",
@@ -8411,7 +8414,7 @@
     "id": 383,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Uproar",
@@ -8433,7 +8436,7 @@
     "id": 112,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Vacuum-Cut",
@@ -8454,7 +8457,7 @@
     "id": 394,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "ViceGrip",
@@ -8477,7 +8480,7 @@
     "id": 248,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Vine Whip",
@@ -8500,7 +8503,7 @@
     "id": 182,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Vital Throw",
@@ -8521,7 +8524,7 @@
     "id": 7,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Volt Tackle",
@@ -8544,7 +8547,7 @@
     "id": 354,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Warp",
@@ -8565,7 +8568,7 @@
     "id": 369,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Water Gun",
@@ -8588,7 +8591,7 @@
     "id": 308,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Water Pulse",
@@ -8611,7 +8614,7 @@
     "id": 310,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Water Sport",
@@ -8632,7 +8635,7 @@
     "id": 307,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Water Spout",
@@ -8655,7 +8658,7 @@
     "id": 113,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Waterfall",
@@ -8678,7 +8681,7 @@
     "id": 158,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Weather Ball",
@@ -8701,7 +8704,7 @@
     "id": 31,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Whirlpool",
@@ -8724,7 +8727,7 @@
     "id": 32,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Whirlwind",
@@ -8745,7 +8748,7 @@
     "id": 268,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Wide Slash",
@@ -8768,7 +8771,7 @@
     "id": 360,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Wild Call",
@@ -8789,7 +8792,7 @@
     "id": 390,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Will-O-Wisp",
@@ -8811,7 +8814,7 @@
     "id": 47,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Wing Attack",
@@ -8834,7 +8837,7 @@
     "id": 178,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Wish",
@@ -8855,7 +8858,7 @@
     "id": 225,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Withdraw",
@@ -8877,7 +8880,7 @@
     "id": 70,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Wrap",
@@ -8898,7 +8901,7 @@
     "id": 294,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Yawn",
@@ -8921,7 +8924,7 @@
     "id": 3,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   },
   {
     "name": "Zap Cannon",
@@ -8944,6 +8947,6 @@
     "id": 193,
     "min_hits": null,
     "max_hits": null,
-    "hit_count_mode": null
+    "hit_count_mode": "Single"
   }
 ]
