@@ -81,9 +81,9 @@ export function resetToastTimer(id: string) {
 		return items.map((item) =>
 			item.id === id
 				? {
-					...item,
-					createdAt: Date.now()
-				}
+						...item,
+						createdAt: Date.now()
+					}
 				: item
 		);
 	});
