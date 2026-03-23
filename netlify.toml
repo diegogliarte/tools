@@ -7,3 +7,9 @@
     to = "/digimon-story-ts/team-builder"
     status = 301
     force = true
+
+[[redirects]]
+    from = "/digimon/route-planner"
+    to = "/digimon-story-ts/shortest-route"
+    status = 301
+    force = true
