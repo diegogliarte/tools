@@ -21,6 +21,7 @@ import { tool as OSRSChatEffects } from '$lib/tools/osrs-chat-effects';
 import { tool as PMDBlueRecruitCalculator } from '$lib/tools/pmd-blue-recruit-calculator';
 import { tool as PMDBlueStats } from '$lib/tools/pmd-blue-stats';
 import { tool as PMDBlueTeamBuilder } from '$lib/tools/pmd-blue-team-builder';
+import { tool as PMDBlueJoySeedFarming } from '$lib/tools/pmd-blue-joy-seed-farming';
 
 function applyHref(category: ToolCategory, parentPath = ''): ToolCategory {
 	const categorySlug = slugify(category.name);
@@ -78,7 +79,7 @@ export const rawTree: ToolCategory[] = [
 		subgroups: [
 			{
 				name: 'Blue Rescue Team',
-				tools: [PMDBlueStats, PMDBlueRecruitCalculator, PMDBlueTeamBuilder],
+				tools: [PMDBlueStats, PMDBlueRecruitCalculator, PMDBlueTeamBuilder, PMDBlueJoySeedFarming],
 				subgroups: []
 			}
 		]
