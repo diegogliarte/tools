@@ -2,7 +2,7 @@
 	import { findTool } from '$lib/core/tools-registry';
 	import { toolsTree } from '$lib/core/tools-tree';
 
-	let { params, data } = $props();
+	let { params } = $props();
 
 	let categoryPath = $derived(params.groups.split("/"));
 	let toolSlug = $derived(params.tool);
@@ -25,7 +25,7 @@
 	{@const Component = tool.component}
 
 	<div class="flex flex-col {!tool.fullscreen ? 'max-w-3xl mx-auto' : '' } {!tool.removeBorder ? 'border-0' : '' } border-text m-4 mt-8 gap-8">
-		<Component {data} />
+		<Component />
 	</div>
 
 {:else}

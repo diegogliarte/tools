@@ -3,8 +3,7 @@
 	import CheckboxInput from "$lib/components/ui/checkbox-input.svelte";
 	import NumberInput from "$lib/components/ui/number-input.svelte";
 
-	import pokemonsRaw from "$lib/data/pmd-blue/pokemons.json";
-	import { useToolState } from '$lib/utils/cookies.utils.svelte';
+	import pokemonsRaw from "$lib/data/pmd-blue/pokemons.json"
 
 	import {
 		type Pokemon,
@@ -89,30 +88,22 @@
 		return map;
 	})();
 
-	let { data } = $props();
 
-	const defaults = {
-		leaderLevel: 90,
-		friendBow: false,
-		hideUnrecruitable: false
-	};
-
-	let toolState = useToolState(
-		{ ...defaults, ...(data?.toolState ?? {}) },
-		data.toolId
-	);
+	let leaderLevel = $state(90);
+	let friendBow = $state(false);
+	let hideUnrecruitable = $state(false);
 
 	const rows = $derived.by(() => {
 		let list = pokemons.map((pokemon) => ({
 			...pokemon,
 			effectiveRate: computeRecruitRate(
 				pokemon,
-				toolState.leaderLevel,
-				toolState.friendBow
+				leaderLevel,
+				friendBow
 			)
 		}));
 
-		if (toolState.hideUnrecruitable) {
+		if (hideUnrecruitable) {
 			list = list.filter((pokemon) => pokemon.effectiveRate > 0);
 		}
 
@@ -221,7 +212,7 @@
 	<div>
 		<NumberInput
 			label="Leader Level"
-			bind:value={toolState.leaderLevel}
+			bind:value={leaderLevel}
 			min={0}
 			max={100}
 			step={1}
@@ -230,12 +221,12 @@
 
 	<CheckboxInput
 		label="Friend Bow"
-		bind:checked={toolState.friendBow}
+		bind:checked={friendBow}
 	/>
 
 	<CheckboxInput
 		label="Hide unrecruitable"
-		bind:checked={toolState.hideUnrecruitable}
+		bind:checked={hideUnrecruitable}
 	/>
 </div>
 

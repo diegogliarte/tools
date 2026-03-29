@@ -11,14 +11,12 @@
 
 	import { modalState, closeModal } from "$lib/states/modal.svelte";
 
-	let { data, children }: LayoutProps = $props();
+	let { children }: LayoutProps = $props();
 
-	let isSidebarOpen = $state(data.sidebarOpen);
+	let isSidebarOpen = $state(false);
 
 	function toggleSidebar() {
 		isSidebarOpen = !isSidebarOpen;
-
-		document.cookie = `sidebar-open=${isSidebarOpen}; path=/; max-age=31536000`;
 	}
 </script>
 
