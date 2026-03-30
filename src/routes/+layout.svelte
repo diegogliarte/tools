@@ -21,21 +21,29 @@
 
 	let showScrollTop = $state(false);
 
+	let mainEl: HTMLElement;
+
 	function handleScroll() {
-		showScrollTop = window.scrollY > 600;
+		if (!mainEl) return;
+		showScrollTop = mainEl.scrollTop > 600;
 	}
 
 	function scrollToTop() {
-		window.scrollTo({
+		if (!mainEl) return;
+
+		mainEl.scrollTo({
 			top: 0,
 			behavior: "smooth"
 		});
 	}
 
 	$effect(() => {
+		if (!mainEl) return;
+
 		handleScroll();
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
+		mainEl.addEventListener("scroll", handleScroll);
+
+		return () => mainEl.removeEventListener("scroll", handleScroll);
 	});
 </script>
 
@@ -45,7 +53,9 @@
 	<div class="flex flex-col flex-1">
 		<Navbar {toggleSidebar} />
 
-		<main class="p-2 flex-1 overflow-y-auto">
+		<main
+			bind:this={mainEl}
+			class="p-2 flex-1 overflow-y-auto">
 			{#if modalState.component}
 				{@const ModalComponent = modalState.component}
 
@@ -62,7 +72,7 @@
 			{#if showScrollTop}
 				<button
 					onclick={scrollToTop}
-					class="fixed bottom-3 right-3 z-50 aspect-square w-6 h-6 text-sm border bg-bg cursor-pointer"
+					class="fixed bottom-10 right-4 z-50 aspect-square w-8 h-8 text-sm border bg-bg cursor-pointer"
 				>
 					↑
 				</button>
