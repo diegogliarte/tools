@@ -96,16 +96,26 @@
 	let page = $state(1);
 	let visibleRows = $derived.by(() => processed.slice(0, page * pageSize));
 
+	let scrollEl: HTMLElement;
+
 	function onScroll() {
-		const bottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+		const el = document.querySelector("main");
+		if (!el) return;
+
+		const bottom =
+			el.scrollTop + el.clientHeight >= el.scrollHeight - 50;
+
 		if (bottom && visibleRows.length < processed.length) {
 			page += 1;
 		}
 	}
 
 	$effect(() => {
-		window.addEventListener("scroll", onScroll);
-		return () => window.removeEventListener("scroll", onScroll);
+		const el = document.querySelector("main");
+		if (!el) return;
+
+		el.addEventListener("scroll", onScroll);
+		return () => el.removeEventListener("scroll", onScroll);
 	});
 
 	// ---------------------------
@@ -139,7 +149,7 @@
 	</div>
 </div>
 
-<div>
+<div bind:this={scrollEl}>
 	<table class="w-full border-collapse text-sm">
 		<thead>
 		<tr class="border-b border-text/50">

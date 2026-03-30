@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<footer class="border-t p-2 text-center text-xs flex flex-col items-center gap-2 z-50">
+<footer class="border-t p-2 text-center text-xs flex flex-col items-center gap-2 z-40">
 
 	<span class="text-text-dim">
         © {new Date().getFullYear()} by

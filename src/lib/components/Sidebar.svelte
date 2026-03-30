@@ -18,16 +18,14 @@
 
 <div
 	class="
-		sticky
-		top-0
 		min-w-sidebar
 		w-sidebar
-		h-screen
 		border-r
 		transition-transform
 		{visible ? '' : 'hidden'}
 		p-1 flex flex-col gap-1 text-xs
 		overflow-y-auto
+		{visible ? 'block' : 'hidden'}
 	"
 >
 	<div>
@@ -39,5 +37,4 @@
 			/>
 		{/each}
 	</div>
-
 </div>

@@ -18,15 +18,34 @@
 	function toggleSidebar() {
 		isSidebarOpen = !isSidebarOpen;
 	}
+
+	let showScrollTop = $state(false);
+
+	function handleScroll() {
+		showScrollTop = window.scrollY > 600;
+	}
+
+	function scrollToTop() {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth"
+		});
+	}
+
+	$effect(() => {
+		handleScroll();
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	});
 </script>
 
-<div class="flex bg-bg text-text">
+<div class="flex h-screen bg-bg text-text overflow-y-hidden">
 	<Sidebar visible={isSidebarOpen} />
 
 	<div class="flex flex-col flex-1">
 		<Navbar {toggleSidebar} />
 
-		<main class="p-2 flex-1">
+		<main class="p-2 flex-1 overflow-y-auto">
 			{#if modalState.component}
 				{@const ModalComponent = modalState.component}
 
@@ -39,6 +58,15 @@
 			{@render children()}
 
 			<Toast />
+
+			{#if showScrollTop}
+				<button
+					onclick={scrollToTop}
+					class="fixed bottom-3 right-3 z-50 aspect-square w-6 h-6 text-sm border bg-bg cursor-pointer"
+				>
+					↑
+				</button>
+			{/if}
 		</main>
 
 		<Footer />
