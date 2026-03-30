@@ -33,6 +33,8 @@
 			now.getMinutes() * 60 +
 			now.getSeconds()) / 86400;
 
+	const week = ((passedDays - 1 + dayProgress) / 7).toFixed(2);
+
 </script>
 
 <h2 class="text-center font-semibold text-large">
@@ -46,6 +48,8 @@
 	max={totalDays}
 	showValue={false}
 />
+
+<div>Current Week <span class="text-accent">{week}</span></div>
 
 <div class="flex justify-center">
 	<div
