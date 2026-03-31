@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Modal from '$lib/components/ui/Modal.svelte';
+	import Modal from '$lib/components/ui/modal.svelte';
 	import MdiSteam from '~icons/mdi/steam';
 	import MdiTwitter from '~icons/mdi/twitter';
 	import MdiChevronLeft from '~icons/mdi/chevron-left';
