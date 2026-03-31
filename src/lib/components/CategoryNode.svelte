@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type { ToolCategory } from "$lib/tools/types";
-	import { page } from "$app/state";
+	import type { ToolCategory } from '$lib/tools/types';
+	import { page } from '$app/state';
 
-	import MdiChevronDown from "~icons/mdi/chevron-down";
-	import MdiChevronRight from "~icons/mdi/chevron-right";
+	import MdiChevronDown from '~icons/mdi/chevron-down';
+	import MdiChevronRight from '~icons/mdi/chevron-right';
 
 	export let category: ToolCategory;
 	export let collapsed: Record<string, boolean>;
@@ -12,7 +12,7 @@
 
 <div>
 	<button
-		class="w-full flex items-center text-left hover:text-accent py-1 cursor-pointer"
+		class="flex w-full cursor-pointer items-center py-1 text-left hover:text-accent"
 		onclick={() => toggleCategory(category.name)}
 	>
 		{#if collapsed[category.name]}
@@ -25,13 +25,12 @@
 	</button>
 
 	{#if !collapsed[category.name]}
-		<div class="border-l border-text pl-2 flex flex-col">
-
+		<div class="flex flex-col border-l border-text pl-2">
 			<!-- tools -->
 			{#each category.tools as tool (tool.href)}
 				<a
 					href={tool.href}
-					class="py-0.5 hover:text-accent truncate {page.url.pathname === tool.href ? 'text-accent' : ''}"
+					class="truncate py-0.5 hover:text-accent {page.url.pathname === tool.href ? 'text-accent' : ''}"
 					title={tool.title}
 				>
 					{tool.title}
@@ -40,13 +39,8 @@
 
 			<!-- subgroups -->
 			{#each category.subgroups as subgroup (subgroup.name)}
-				<svelte:self
-					category={subgroup}
-					{collapsed}
-					{toggleCategory}
-				/>
+				<svelte:self category={subgroup} {collapsed} {toggleCategory} />
 			{/each}
-
 		</div>
 	{/if}
 </div>

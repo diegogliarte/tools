@@ -1,28 +1,21 @@
 <script lang="ts">
 	import { labelGroups } from '$lib/states/label-groups.svelte.js';
-	import CopyButton from "$lib/components/ui/copy-button.svelte";
-
+	import CopyButton from '$lib/components/ui/copy-button.svelte';
 
 	interface Props {
-		label? : string;
+		label?: string;
 		value?: string | number | null;
 		group?: string | null;
 		isCopyable?: boolean;
-		valueAlign?: "left" | "center" | "right";
+		valueAlign?: 'left' | 'center' | 'right';
 	}
 
-	let {
-		label = "",
-		value = "",
-		group,
-		isCopyable = true,
-		valueAlign = "left"
-	}: Props = $props();
+	let { label = '', value = '', group, isCopyable = true, valueAlign = 'left' }: Props = $props();
 
 	const alignmentClass = {
-		left: "text-left",
-		center: "text-center",
-		right: "text-right"
+		left: 'text-left',
+		center: 'text-center',
+		right: 'text-right'
 	}[valueAlign];
 
 	let labelEl: HTMLElement | null = $state(null);
@@ -39,13 +32,9 @@
 	});
 </script>
 
-<div class="w-full flex items-center">
+<div class="flex w-full items-center">
 	{#if label}
-		<div
-			bind:this={labelEl}
-			class="border border-r-0 p-1 text-center"
-			style={`min-width:${labelGroups[group] ?? 0}px`}
-		>
+		<div bind:this={labelEl} class="border border-r-0 p-1 text-center" style={`min-width:${labelGroups[group] ?? 0}px`}>
 			{label}
 		</div>
 	{/if}
@@ -53,8 +42,8 @@
 	<div
 		class="
 			flex-1
-			truncate
 			cursor-pointer
+			truncate
 			border
 			p-1
 			outline-none hover:border-accent focus:border-accent focus:bg-accent-dark
@@ -62,12 +51,12 @@
 		"
 		tabindex="-1"
 	>
-		{value ?? "—"}
+		{value ?? '—'}
 	</div>
 
 	{#if isCopyable}
-		<div class="flex ml-2">
-			<CopyButton value={value ?? ""} />
+		<div class="ml-2 flex">
+			<CopyButton value={value ?? ''} />
 		</div>
 	{/if}
 </div>

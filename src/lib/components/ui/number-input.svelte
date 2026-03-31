@@ -4,7 +4,6 @@
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 
-
 	interface Props {
 		value?: number | null;
 		label?: string;
@@ -20,7 +19,7 @@
 		min = undefined,
 		max = undefined,
 		step = undefined,
-		placeholder = '',
+		placeholder = ''
 	}: Props = $props();
 
 	const uid = $props.id();
@@ -29,8 +28,8 @@
 
 	function startHold(direction: 1 | -1) {
 		if (value === null && placeholder) {
-			value = Number(placeholder)
-			return
+			value = Number(placeholder);
+			return;
 		}
 		value = getNextValue(direction);
 
@@ -38,10 +37,10 @@
 			holdInterval = setInterval(() => {
 				value = getNextValue(direction);
 			}, 50); // speed during hold
-		}, 200) // delay before rapid firing starts
+		}, 200); // delay before rapid firing starts
 	}
 
-	function getNextValue(direction: 1 | -1): number{
+	function getNextValue(direction: 1 | -1): number {
 		let next = (value ?? 0) + (step ?? 1) * direction;
 		return clampStep(next, min, max, step);
 	}
@@ -53,13 +52,12 @@
 		clearInterval(holdInterval);
 		holdInterval = null;
 	}
-
 </script>
 
-{#snippet arrow(dir: 1 | -1, symbol: "up" | "down")}
+{#snippet arrow(dir: 1 | -1, symbol: 'up' | 'down')}
 	<button
 		type="button"
-		class="leading-none cursor-pointer hover:text-accent active:text-accent"
+		class="cursor-pointer leading-none hover:text-accent active:text-accent"
 		onmousedown={() => startHold(dir)}
 		onmouseup={stopHold}
 		onmouseleave={stopHold}
@@ -74,7 +72,7 @@
 	</button>
 {/snippet}
 
-<div class="relative flex flex-col w-full gap-0.5">
+<div class="relative flex w-full flex-col gap-0.5">
 	{#if label}
 		<label for={uid}>{label}</label>
 	{/if}
@@ -84,11 +82,11 @@
 			id={uid}
 			type="number"
 			class="
-				w-full px-3 py-2
-				border
-				outline-none hover:border-accent focus:border-accent focus:bg-accent-dark
-				transition-all
-				pr-8
+				w-full border px-3
+				py-2
+				pr-8 transition-all outline-none hover:border-accent
+				focus:border-accent
+				focus:bg-accent-dark
 			"
 			bind:value
 			use:clampAction={{ min, max, step }}
@@ -106,16 +104,15 @@
 	</div>
 </div>
 
-
 <style>
-    @layer utilities {
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            @apply appearance-none;
-        }
-    }
+	@layer utilities {
+		input[type='number']::-webkit-inner-spin-button,
+		input[type='number']::-webkit-outer-spin-button {
+			@apply appearance-none;
+		}
+	}
 
-    input[type='number'] {
-        -moz-appearance: textfield;
-    }
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
 </style>

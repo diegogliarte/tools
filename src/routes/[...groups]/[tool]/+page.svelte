@@ -4,19 +4,18 @@
 
 	let { params } = $props();
 
-	let categoryPath = $derived(params.groups.split("/"));
+	let categoryPath = $derived(params.groups.split('/'));
 	let toolSlug = $derived(params.tool);
 	let tool = $derived(findTool(categoryPath, toolSlug, toolsTree));
 </script>
 
 <svelte:head>
-	<title>{tool?.title ?? "Not Found"} | Tools</title>
-	<meta name="description" content={tool?.description ?? "Not Found"} />
+	<title>{tool?.title ?? 'Not Found'} | Tools</title>
+	<meta name="description" content={tool?.description ?? 'Not Found'} />
 
-	<meta property="og:title" content={tool?.title ?? "Not Found"} />
-	<meta property="og:description" content={tool?.description ?? "Not Found"} />
+	<meta property="og:title" content={tool?.title ?? 'Not Found'} />
+	<meta property="og:description" content={tool?.description ?? 'Not Found'} />
 </svelte:head>
-
 
 {#if tool}
 	<h1 class="text-center text-large">{tool.title}</h1>
@@ -24,10 +23,13 @@
 
 	{@const Component = tool.component}
 
-	<div class="flex flex-col {!tool.fullscreen ? 'max-w-3xl mx-auto' : '' } {!tool.removeBorder ? 'border-0' : '' } border-text m-4 mt-8 gap-8">
+	<div
+		class="flex flex-col {!tool.fullscreen ? 'mx-auto max-w-3xl' : ''} {!tool.removeBorder
+			? 'border-0'
+			: ''} m-4 mt-8 gap-8 border-text"
+	>
 		<Component />
 	</div>
-
 {:else}
 	<p>Tool not found</p>
 {/if}

@@ -14,13 +14,7 @@
 		allowEmpty?: boolean;
 	}
 
-	let {
-		value = $bindable(''),
-		options,
-		label = '',
-		placeholder = '—',
-		allowEmpty = true
-	}: Props = $props();
+	let { value = $bindable(''), options, label = '', placeholder = '—', allowEmpty = true }: Props = $props();
 
 	const uid = $props.id();
 
@@ -40,16 +34,16 @@
 			value={String(value ?? '')}
 			onchange={handleChange}
 			class="
-				w-full px-3 py-2
+				w-full cursor-pointer appearance-none
 				border
+				bg-bg
+				px-3
+				py-2
+				pr-8
+				transition
 				outline-none
 				hover:border-accent
 				focus:border-accent
-				bg-bg
-				transition
-				cursor-pointer
-				appearance-none
-				pr-8
 			"
 		>
 			{#if allowEmpty}
@@ -67,9 +61,9 @@
 
 		<div
 			class="
-				absolute inset-y-0 right-2
-				flex items-center
-				pointer-events-none
+				pointer-events-none absolute inset-y-0
+				right-2 flex
+				items-center
 			"
 		>
 			<MdiChevronDown />
@@ -78,7 +72,7 @@
 </div>
 
 <style>
-    option:checked {
-        color: var(--color-accent);
-    }
+	option:checked {
+		color: var(--color-accent);
+	}
 </style>

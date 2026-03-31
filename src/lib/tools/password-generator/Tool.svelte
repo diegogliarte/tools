@@ -1,15 +1,14 @@
 <script lang="ts">
-	import NumberInput from "$lib/components/ui/number-input.svelte";
-	import CheckboxInput from "$lib/components/ui/checkbox-input.svelte";
-	import LabeledRow from "$lib/components/ui/labeled-row.svelte";
-	import MdiRefresh from "~icons/mdi/refresh";
+	import NumberInput from '$lib/components/ui/number-input.svelte';
+	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import LabeledRow from '$lib/components/ui/labeled-row.svelte';
+	import MdiRefresh from '~icons/mdi/refresh';
 
 	let length = $state(16);
 	let useLower = $state(true);
 	let useUpper = $state(true);
 	let useNumbers = $state(true);
 	let useSymbols = $state(false);
-
 
 	let password = $derived.by(generate);
 	let spinning = $state(false);
@@ -19,16 +18,16 @@
 	}
 
 	function generate(): string {
-		let chars = "";
+		let chars = '';
 
-		if (useLower) chars += "abcdefghijklmnopqrstuvwxyz";
-		if (useUpper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		if (useNumbers) chars += "0123456789";
-		if (useSymbols) chars += "!@#$%^&*()-_=+[]{};:,.<>?";
+		if (useLower) chars += 'abcdefghijklmnopqrstuvwxyz';
+		if (useUpper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		if (useNumbers) chars += '0123456789';
+		if (useSymbols) chars += '!@#$%^&*()-_=+[]{};:,.<>?';
 
-		if (chars.length === 0) return "";
+		if (chars.length === 0) return '';
 
-		let result = "";
+		let result = '';
 		for (let i = 0; i < length; i++) {
 			result += chars[Math.floor(Math.random() * chars.length)];
 		}
@@ -36,7 +35,7 @@
 	}
 </script>
 
-<NumberInput bind:value={length} label="Length" min={1}/>
+<NumberInput bind:value={length} label="Length" min={1} />
 
 <div class="grid grid-cols-2 gap-2">
 	<CheckboxInput label="Lowercase (a–z)" bind:checked={useLower} />
@@ -46,26 +45,29 @@
 </div>
 
 <div class="flex items-center gap-2">
-	<LabeledRow value={password ? password : "-"} />
+	<LabeledRow value={password ? password : '-'} />
 	<button
 		class={`cursor-pointer transition hover:text-accent ${spinning ? 'spin' : ''}`}
-		onclick={() => {regenerate(); spinning = true} }
-		onanimationend={() => spinning = false}
+		onclick={() => {
+			regenerate();
+			spinning = true;
+		}}
+		onanimationend={() => (spinning = false)}
 	>
 		<MdiRefresh />
 	</button>
 </div>
 
 <style>
-    .spin {
-        animation: spin 0.2s linear;
-    }
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
+	.spin {
+		animation: spin 0.2s linear;
+	}
+	@keyframes spin {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
 </style>

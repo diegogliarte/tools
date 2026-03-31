@@ -2,7 +2,7 @@
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
-	import MdiChevronUpDown from "~icons/mdi/chevron-up-down";
+	import MdiChevronUpDown from '~icons/mdi/chevron-up-down';
 	import type { Component } from 'svelte';
 
 	export interface Column<RowType = any> {
@@ -29,9 +29,9 @@
 
 	let { columns, rows, pageSize = 50 }: Props = $props();
 
-	let search = $state("");
+	let search = $state('');
 	let sortKey = $state<keyof any | null>(null);
-	let sortDir = $state<"asc" | "desc" | null>(null);
+	let sortDir = $state<'asc' | 'desc' | null>(null);
 
 	let processed = $derived.by(() => {
 		let filtered = rows;
@@ -42,7 +42,7 @@
 
 			filtered = rows.filter((r) =>
 				columns.some((c) => {
-					let value = "";
+					let value = '';
 
 					// 1) If column defines a custom search extractor
 					if (c.searchValue) {
@@ -53,8 +53,8 @@
 					else if (c.render) {
 						const html = c.render(r);
 						value = html
-							.replace(/<[^>]+>/g, " ")     // strip tags
-							.replace(/\s+/g, " ")         // normalize spaces
+							.replace(/<[^>]+>/g, ' ') // strip tags
+							.replace(/\s+/g, ' ') // normalize spaces
 							.trim()
 							.toLowerCase();
 					}
@@ -62,9 +62,7 @@
 					// 3) Else fallback to raw cell value
 					else {
 						const raw = r[c.key];
-						value = typeof raw === "string"
-							? raw.toLowerCase()
-							: String(raw ?? "").toLowerCase();
+						value = typeof raw === 'string' ? raw.toLowerCase() : String(raw ?? '').toLowerCase();
 					}
 
 					return value.includes(q);
@@ -75,13 +73,13 @@
 		// --- sorting (unchanged) ---
 		if (sortKey) {
 			filtered = [...filtered].sort((a, b) => {
-				const col = columns.find(c => c.key === sortKey);
+				const col = columns.find((c) => c.key === sortKey);
 
 				const av = col?.sortValue ? col.sortValue(a) : a[sortKey];
 				const bv = col?.sortValue ? col.sortValue(b) : b[sortKey];
 
-				if (av < bv) return sortDir === "asc" ? -1 : 1;
-				if (av > bv) return sortDir === "asc" ? 1 : -1;
+				if (av < bv) return sortDir === 'asc' ? -1 : 1;
+				if (av > bv) return sortDir === 'asc' ? 1 : -1;
 				return 0;
 			});
 		}
@@ -99,11 +97,10 @@
 	let scrollEl: HTMLElement;
 
 	function onScroll() {
-		const el = document.querySelector("main");
+		const el = document.querySelector('main');
 		if (!el) return;
 
-		const bottom =
-			el.scrollTop + el.clientHeight >= el.scrollHeight - 50;
+		const bottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 50;
 
 		if (bottom && visibleRows.length < processed.length) {
 			page += 1;
@@ -111,11 +108,11 @@
 	}
 
 	$effect(() => {
-		const el = document.querySelector("main");
+		const el = document.querySelector('main');
 		if (!el) return;
 
-		el.addEventListener("scroll", onScroll);
-		return () => el.removeEventListener("scroll", onScroll);
+		el.addEventListener('scroll', onScroll);
+		return () => el.removeEventListener('scroll', onScroll);
 	});
 
 	// ---------------------------
@@ -124,9 +121,9 @@
 	function toggleSort(key: keyof any) {
 		if (sortKey !== key) {
 			sortKey = key;
-			sortDir = "desc";
-		} else if (sortDir === "desc") {
-			sortDir = "asc";
+			sortDir = 'desc';
+		} else if (sortDir === 'desc') {
+			sortDir = 'asc';
 		} else {
 			sortKey = null;
 			sortDir = null;
@@ -137,14 +134,10 @@
 <!-- Search + Counter -->
 <div class="flex items-center justify-between gap-2">
 	<div class="w-48">
-		<TextInput
-			placeholder="Search..."
-			bind:value={search}
-		/>
+		<TextInput placeholder="Search..." bind:value={search} />
 	</div>
 
-
-	<div class="opacity-70 text-xs">
+	<div class="text-xs opacity-70">
 		Showing {processed.length} of {rows.length}
 	</div>
 </div>
@@ -152,61 +145,58 @@
 <div bind:this={scrollEl}>
 	<table class="w-full border-collapse text-sm">
 		<thead>
-		<tr class="border-b border-text/50">
-			{#each columns as col (col)}
-				<th
-					class="text-left p-1 font-medium cursor-pointer select-none transition"
-					style={col.width ? `width:${col.width}` : ""}
-					onclick={() => toggleSort(col.key)}
-				>
-					<div class="flex items-center gap-1 transition hover:text-accent {sortKey === col.key ? 'text-accent' : ''}">
-						<span>{col.label}</span>
+			<tr class="border-b border-text/50">
+				{#each columns as col (col)}
+					<th
+						class="cursor-pointer p-1 text-left font-medium transition select-none"
+						style={col.width ? `width:${col.width}` : ''}
+						onclick={() => toggleSort(col.key)}
+					>
+						<div
+							class="flex items-center gap-1 transition hover:text-accent {sortKey === col.key ? 'text-accent' : ''}"
+						>
+							<span>{col.label}</span>
 
-						<span class="inline-flex items-center justify-center opacity-60">
-							{#if sortKey === col.key}
-								{#if sortDir === "asc"}
-									<MdiChevronUp />
-								{:else if sortDir === "desc"}
-									<MdiChevronDown />
+							<span class="inline-flex items-center justify-center opacity-60">
+								{#if sortKey === col.key}
+									{#if sortDir === 'asc'}
+										<MdiChevronUp />
+									{:else if sortDir === 'desc'}
+										<MdiChevronDown />
+									{/if}
+								{:else}
+									<MdiChevronUpDown class="opacity-30" />
 								{/if}
-							{:else}
-								<MdiChevronUpDown class="opacity-30" />
-							{/if}
-						</span>
-					</div>
-				</th>
-
-			{/each}
-		</tr>
+							</span>
+						</div>
+					</th>
+				{/each}
+			</tr>
 		</thead>
 
 		<tbody>
-		{#if visibleRows.length === 0}
-			<tr>
-				<td colspan={columns.length} class="py-4 text-center opacity-70">
-					No results
-				</td>
-			</tr>
-		{:else}
-			{#each visibleRows as row (row)}
-				<tr class="border-b border-text/25 hover:bg-accent-dark/20 transition">
-					{#each columns as col (col)}
-						<td class="p-1">
-							{#if col.renderComponent}
-								{@const Component = col.renderComponent(row).component}
-								<Component {...col.renderComponent(row).props} />
-
-							{:else if col.render}
-								{@html col.render(row)}
-
-							{:else}
-								{row[col.key]}
-							{/if}
-						</td>
-					{/each}
+			{#if visibleRows.length === 0}
+				<tr>
+					<td colspan={columns.length} class="py-4 text-center opacity-70"> No results </td>
 				</tr>
-			{/each}
-		{/if}
+			{:else}
+				{#each visibleRows as row (row)}
+					<tr class="border-b border-text/25 transition hover:bg-accent-dark/20">
+						{#each columns as col (col)}
+							<td class="p-1">
+								{#if col.renderComponent}
+									{@const Component = col.renderComponent(row).component}
+									<Component {...col.renderComponent(row).props} />
+								{:else if col.render}
+									{@html col.render(row)}
+								{:else}
+									{row[col.key]}
+								{/if}
+							</td>
+						{/each}
+					</tr>
+				{/each}
+			{/if}
 		</tbody>
 	</table>
 </div>

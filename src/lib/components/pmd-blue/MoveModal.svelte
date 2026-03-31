@@ -3,9 +3,9 @@
 	import FlagBadges from './FlagBadges.svelte';
 	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
 
-	import moveFlags from "$lib/data/pmd-blue/move-flags.json";
-	import pokemonsRaw from "$lib/data/pmd-blue/pokemons.json";
-	import pokemonMovesRaw from "$lib/data/pmd-blue/pokemon-moves.json";
+	import moveFlags from '$lib/data/pmd-blue/move-flags.json';
+	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
+	import pokemonMovesRaw from '$lib/data/pmd-blue/pokemon-moves.json';
 
 	interface Move {
 		id?: number;
@@ -48,30 +48,30 @@
 	const pokemons = pokemonsRaw as Pokemon[];
 	const pokemonMoves = pokemonMovesRaw as PokemonMoveEntry[];
 
-	const pokemonById = new Map(pokemons.map(p => [p.game_id, p]));
+	const pokemonById = new Map(pokemons.map((p) => [p.game_id, p]));
 
-	const damageMap = Object.fromEntries(moveFlags.damageFlags.map(f => [f.id, f.description]));
-	const otherMap = Object.fromEntries(moveFlags.otherFlags.map(f => [f.id, f.description]));
+	const damageMap = Object.fromEntries(moveFlags.damageFlags.map((f) => [f.id, f.description]));
+	const otherMap = Object.fromEntries(moveFlags.otherFlags.map((f) => [f.id, f.description]));
 
 	const typeColor = {
-		Fire: "bg-red-700",
-		Water: "bg-blue-700",
-		Grass: "bg-green-700",
-		Electric: "bg-yellow-500",
-		Ice: "bg-cyan-400",
-		Fighting: "bg-orange-700",
-		Poison: "bg-purple-700",
-		Ground: "bg-yellow-700",
-		Flying: "bg-sky-500",
-		Psychic: "bg-pink-600",
-		Bug: "bg-lime-600",
-		Rock: "bg-yellow-800",
-		Ghost: "bg-indigo-700",
-		Dragon: "bg-indigo-900",
-		Dark: "bg-neutral-800",
-		Steel: "bg-gray-400",
-		Normal: "bg-neutral-500",
-		Typeless: "bg-neutral-400"
+		Fire: 'bg-red-700',
+		Water: 'bg-blue-700',
+		Grass: 'bg-green-700',
+		Electric: 'bg-yellow-500',
+		Ice: 'bg-cyan-400',
+		Fighting: 'bg-orange-700',
+		Poison: 'bg-purple-700',
+		Ground: 'bg-yellow-700',
+		Flying: 'bg-sky-500',
+		Psychic: 'bg-pink-600',
+		Bug: 'bg-lime-600',
+		Rock: 'bg-yellow-800',
+		Ghost: 'bg-indigo-700',
+		Dragon: 'bg-indigo-900',
+		Dark: 'bg-neutral-800',
+		Steel: 'bg-gray-400',
+		Normal: 'bg-neutral-500',
+		Typeless: 'bg-neutral-400'
 	};
 
 	function formatHits(move: Move) {
@@ -103,7 +103,7 @@
 			const p = pokemonById.get(entry.pokemon_id);
 			if (!p) continue;
 
-			if (entry.levelup_moves?.some(m => m.move_id === move.id)) {
+			if (entry.levelup_moves?.some((m) => m.move_id === move.id)) {
 				levelUp.push(p);
 			}
 
@@ -117,13 +117,13 @@
 </script>
 
 <Modal title={move?.name} {onClose}>
-	<div class="flex items-center gap-2 mb-4">
-		<div class="w-3 h-3 rounded-sm {typeColor[move.type] ?? 'bg-neutral-500'}"></div>
+	<div class="mb-4 flex items-center gap-2">
+		<div class="h-3 w-3 rounded-sm {typeColor[move.type] ?? 'bg-neutral-500'}"></div>
 		<div class="text-sm">{move.type} · {move.class}</div>
 	</div>
 
-	<h3 class="font-bold mb-1">Stats</h3>
-	<div class="grid grid-cols-2 sm:grid-cols-3 gap-1 mb-4 text-xs">
+	<h3 class="mb-1 font-bold">Stats</h3>
+	<div class="mb-4 grid grid-cols-2 gap-1 text-xs sm:grid-cols-3">
 		<div>Power: <b>{move.power}</b></div>
 		<div>PP: <b>{move.maxPP}</b></div>
 		<div>Crit: <b>{move.crit}</b></div>
@@ -134,27 +134,27 @@
 		<div>Hit Mode: <b>{formatHitMode(move.hit_count_mode)}</b></div>
 	</div>
 
-	<h3 class="font-bold mb-1">Flags</h3>
+	<h3 class="mb-1 font-bold">Flags</h3>
 	<div class="flex flex-row gap-4 text-xs">
 		<div>
-			<div class="font-semibold mb-1">Damage Flags</div>
+			<div class="mb-1 font-semibold">Damage Flags</div>
 			<FlagBadges flags={move.damageFlags} map={damageMap} variant="damage" />
 		</div>
 
 		<div>
-			<div class="font-semibold mb-1">Other Flags</div>
+			<div class="mb-1 font-semibold">Other Flags</div>
 			<FlagBadges flags={move.otherFlags} map={otherMap} variant="other" />
 		</div>
 	</div>
 
-	<h3 class="font-bold mb-2 mt-4">Learned By</h3>
+	<h3 class="mt-4 mb-2 font-bold">Learned By</h3>
 
-	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+	<div class="grid grid-cols-1 gap-4 text-xs sm:grid-cols-2">
 		{#if learnedBy.levelUp.length}
 			<div>
-				<div class="font-semibold mb-1">Level Up</div>
+				<div class="mb-1 font-semibold">Level Up</div>
 
-				<div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+				<div class="grid grid-cols-3 gap-2 sm:grid-cols-4">
 					{#each learnedBy.levelUp as p (p.id)}
 						<PokemonIcon pokemon={p} />
 					{/each}
@@ -164,9 +164,9 @@
 
 		{#if learnedBy.tm.length}
 			<div>
-				<div class="font-semibold mb-1">TM</div>
+				<div class="mb-1 font-semibold">TM</div>
 
-				<div class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+				<div class="grid grid-cols-3 gap-2 sm:grid-cols-4">
 					{#each learnedBy.tm as p (p.id)}
 						<PokemonIcon pokemon={p} />
 					{/each}

@@ -8,12 +8,7 @@
 		children: Snippet;
 	}
 
-	let {
-		active = false,
-		disabled = false,
-		onClick = undefined,
-		children
-	}: Props = $props();
+	let { active = false, disabled = false, onClick = undefined, children }: Props = $props();
 
 	function handleClick() {
 		if (!disabled && onClick) onClick();
@@ -22,10 +17,10 @@
 
 <button
 	class="
-        px-3 py-2 border transition cursor-pointer
+        cursor-pointer border px-3 py-2 transition
         not-disabled:hover:border-accent
-        disabled:opacity-50 disabled:cursor-not-allowed
-        {active ? 'bg-accent border-accent' : ''}
+        disabled:cursor-not-allowed disabled:opacity-50
+        {active ? 'border-accent bg-accent' : ''}
     "
 	onclick={handleClick}
 	{disabled}

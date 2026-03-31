@@ -25,7 +25,7 @@
 	let tableColumns = [
 		{ key: 'id', label: 'ID', width: '50px' },
 		{ key: 'name', label: 'Name' },
-		{ key: 'age', label: 'Age', sortValue: r => r.age }
+		{ key: 'age', label: 'Age', sortValue: (r) => r.age }
 	];
 	let tableRows = [
 		{ id: 1, name: 'Alice', age: 31 },
@@ -53,14 +53,14 @@
 	let buttonClicks = $state(0);
 </script>
 
-{#snippet galleryItem(title: string, Demo: Snippet<[]>, Footer?: Snippet<[]>)}
-	<section class="border p-4 flex flex-col gap-2">
+{#snippet galleryItem(title: string, Demo: Snippet, Footer?: Snippet)}
+	<section class="flex flex-col gap-2 border p-4">
 		<h2>{title}</h2>
 
 		{@render Demo()}
 
 		{#if Footer}
-			<pre class="text-xs flex flex-col">{@render Footer()}</pre>
+			<pre class="flex flex-col text-xs">{@render Footer()}</pre>
 		{/if}
 	</section>
 {/snippet}
@@ -75,14 +75,7 @@
 {/snippet}
 
 {#snippet demoNumberInput()}
-	<NumberInput
-		label="Count"
-		min={0}
-		max={50}
-		step={5}
-		placeholder="10"
-		bind:value={numValue}
-	/>
+	<NumberInput label="Count" min={0} max={50} step={5} placeholder="10" bind:value={numValue} />
 {/snippet}
 
 {#snippet footerNumberInput()}
@@ -96,10 +89,10 @@
 
 {#snippet footerCheckbox()}
 	<span>
-	checked = {checkValue}
+		checked = {checkValue}
 	</span>
 	<span>
-	checked2 = {checkValue2}
+		checked2 = {checkValue2}
 	</span>
 {/snippet}
 
@@ -116,13 +109,7 @@
 {/snippet}
 
 {#snippet demoSelect()}
-	<SelectInput
-		label="Pick One"
-		options={selectOptions}
-		placeholder="—"
-		allowEmpty={true}
-		bind:value={selectVal}
-	/>
+	<SelectInput label="Pick One" options={selectOptions} placeholder="—" allowEmpty={true} bind:value={selectVal} />
 {/snippet}
 
 {#snippet footerSelect()}
@@ -130,12 +117,7 @@
 {/snippet}
 
 {#snippet demoTextArea()}
-	<TextArea
-		label="Code"
-		displayLines={true}
-		bind:value={areaVal}
-		placeholder="Enter text..."
-	/>
+	<TextArea label="Code" displayLines={true} bind:value={areaVal} placeholder="Enter text..." />
 {/snippet}
 
 {#snippet footerTextArea()}
@@ -143,21 +125,11 @@
 {/snippet}
 
 {#snippet demoDataTable()}
-	<DataTable
-		columns={tableColumns}
-		rows={tableRows}
-		pageSize={20}
-	/>
+	<DataTable columns={tableColumns} rows={tableRows} pageSize={20} />
 {/snippet}
 
 {#snippet demoLineChart()}
-	<LineChart
-		labels={lineLabels}
-		datasets={lineSets}
-		preset="number"
-		locale="en-US"
-		yZero={true}
-	/>
+	<LineChart labels={lineLabels} datasets={lineSets} preset="number" locale="en-US" yZero={true} />
 {/snippet}
 
 {#snippet demoProgressBar()}
@@ -177,20 +149,13 @@
 {/snippet}
 
 {#snippet demoButton()}
-<Button onClick={() => buttonClicks++}>
-	Default
-</Button>
+	<Button onClick={() => buttonClicks++}>Default</Button>
 
-<Button
-	active={buttonActive}
-	onClick={() => (buttonActive = !buttonActive)}
->
-	{buttonActive ? 'Active' : 'Inactive'}
-</Button>
+	<Button active={buttonActive} onClick={() => (buttonActive = !buttonActive)}>
+		{buttonActive ? 'Active' : 'Inactive'}
+	</Button>
 
-<Button disabled>
-	Disabled
-</Button>
+	<Button disabled>Disabled</Button>
 {/snippet}
 
 {#snippet footerButton()}
@@ -198,18 +163,16 @@
 	<span>active = {buttonActive}</span>
 {/snippet}
 
-
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-	{@render galleryItem("TextInput", demoTextInput, footerTextInput)}
-	{@render galleryItem("NumberInput", demoNumberInput, footerNumberInput)}
-	{@render galleryItem("SelectInput", demoSelect, footerSelect)}
-	{@render galleryItem("CheckboxInput", demoCheckbox, footerCheckbox)}
-	{@render galleryItem("LabeledRow", demoLabeledRow)}
-	{@render galleryItem("CopyButton", demoCopyButton)}
-	{@render galleryItem("TextArea", demoTextArea, footerTextArea)}
-	{@render galleryItem("DataTable", demoDataTable)}
-	{@render galleryItem("LineChart", demoLineChart)}
-	{@render galleryItem("ProgressBar", demoProgressBar)}
-	{@render galleryItem("Button", demoButton, footerButton)}
-
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+	{@render galleryItem('TextInput', demoTextInput, footerTextInput)}
+	{@render galleryItem('NumberInput', demoNumberInput, footerNumberInput)}
+	{@render galleryItem('SelectInput', demoSelect, footerSelect)}
+	{@render galleryItem('CheckboxInput', demoCheckbox, footerCheckbox)}
+	{@render galleryItem('LabeledRow', demoLabeledRow)}
+	{@render galleryItem('CopyButton', demoCopyButton)}
+	{@render galleryItem('TextArea', demoTextArea, footerTextArea)}
+	{@render galleryItem('DataTable', demoDataTable)}
+	{@render galleryItem('LineChart', demoLineChart)}
+	{@render galleryItem('ProgressBar', demoProgressBar)}
+	{@render galleryItem('Button', demoButton, footerButton)}
 </div>

@@ -12,7 +12,7 @@
 		label = '',
 		accept = '',
 		multiple = true,
-		disabled = false,
+		disabled = false
 	}: Props = $props();
 
 	const uid = $props.id();
@@ -54,12 +54,12 @@
 	<label
 		for={uid}
 		class="
-			block w-full px-4 py-4
-			border cursor-pointer border-dashed
+			block w-full cursor-pointer border
+			border-dashed px-4 py-4
+			text-center
 			transition
 			select-none
-			text-center
-			{disabled ? 'opacity-50 cursor-not-allowed' : ''}
+			{disabled ? 'cursor-not-allowed opacity-50' : ''}
 			{isDragging ? 'border-accent bg-accent-dark' : ''}
 			hover:border-accent
 		"
@@ -68,19 +68,9 @@
 		ondrop={handleDrop}
 	>
 		<span class="text-sm">
-			{files?.length
-				? `${files.length} file(s) selected`
-				: 'Drop images here or click'}
+			{files?.length ? `${files.length} file(s) selected` : 'Drop images here or click'}
 		</span>
 	</label>
 
-	<input
-		id={uid}
-		type="file"
-		class="hidden"
-		{accept}
-		{multiple}
-		{disabled}
-		onchange={handleInputChange}
-	/>
+	<input id={uid} type="file" class="hidden" {accept} {multiple} {disabled} onchange={handleInputChange} />
 </div>

@@ -12,7 +12,6 @@
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 
-
 	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 	import { getEvolutions, getPreEvolutions, indexDigimonById } from '$lib/utils/digimon-story-ts.utils';
@@ -31,9 +30,7 @@
 			if (Array.isArray(parsed)) {
 				team = parsed;
 			}
-		} catch {
-
-		}
+		} catch {}
 	});
 
 	$effect(() => {
@@ -46,10 +43,7 @@
 
 	function encodeTeam(team: number[][]): string {
 		const snapshot = $state.snapshot(team);
-		return btoa(JSON.stringify(snapshot))
-			.replace(/\+/g, '-')
-			.replace(/\//g, '_')
-			.replace(/=+$/, '');
+		return btoa(JSON.stringify(snapshot)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 	}
 
 	function decodeTeam(raw: string): number[][] | null {
@@ -65,7 +59,7 @@
 
 	onMount(() => {
 		const params = new URLSearchParams(window.location.search);
-		let  raw = params.get('team');
+		let raw = params.get('team');
 		if (!raw) return;
 
 		// Remove legacy v2 prefix
@@ -90,15 +84,11 @@
 		return url.toString();
 	});
 
-
 	const filteredDigimon = $derived.by(() => {
 		const q = search.trim().toLowerCase();
 		if (!q) return [];
 
-		return digimon.filter(d =>
-			d.name.toLowerCase().includes(q) ||
-			d.slug.toLowerCase().includes(q)
-		);
+		return digimon.filter((d) => d.name.toLowerCase().includes(q) || d.slug.toLowerCase().includes(q));
 	});
 
 	function startChain(d: Digimon) {
@@ -114,7 +104,6 @@
 
 		team = team.map((c, i) => (i === index ? next : c));
 	}
-
 
 	function extendLeft(index: number, d: Digimon) {
 		updateChain(index, [d.id, ...team[index]]);
@@ -144,7 +133,6 @@
 		updateChain(index, chain.slice(0, idx));
 	}
 
-
 	function deleteChain(index: number) {
 		team = team.filter((_, i) => i !== index);
 	}
@@ -169,10 +157,7 @@
 		return arr[Math.floor(Math.random() * arr.length)];
 	}
 
-	function buildRandomChain(
-		start: Digimon,
-		used: Set<number>
-	): number[] {
+	function buildRandomChain(start: Digimon, used: Set<number>): number[] {
 		const chain: number[] = [start.id];
 		let current = start;
 
@@ -181,8 +166,8 @@
 
 		while (current.evolutions?.length) {
 			const candidates = current.evolutions
-				.filter(id => !visited.has(id) && !used.has(id))
-				.map(id => digimonById.get(id))
+				.filter((id) => !visited.has(id) && !used.has(id))
+				.map((id) => digimonById.get(id))
 				.filter((d): d is Digimon => Boolean(d));
 
 			if (!candidates.length) break;
@@ -199,9 +184,7 @@
 	}
 
 	function generateRandomTeam() {
-		const starters = digimon.filter(
-			d => d.generation === 'In-Training I'
-		);
+		const starters = digimon.filter((d) => d.generation === 'In-Training I');
 
 		if (!starters.length) return;
 
@@ -210,7 +193,7 @@
 		const chains: number[][] = [];
 
 		while (chains.length < TEAM_SIZE && starters.length) {
-			const availableStarters = starters.filter(d => !used.has(d.id));
+			const availableStarters = starters.filter((d) => !used.has(d.id));
 			if (!availableStarters.length) break;
 
 			const start = randomItem(availableStarters);
@@ -224,52 +207,39 @@
 	}
 </script>
 
-
 <div class="flex items-center justify-between gap-2">
 	<div class="w-64">
-		<TextInput
-			placeholder="Agumon"
-			bind:value={search}
-		/>
+		<TextInput placeholder="Agumon" bind:value={search} />
 	</div>
 
 	<div class="flex gap-8">
 		<div class="flex items-center gap-2">
 			Share your team!
-			<CopyButton
-				value={shareUrl}
-			/>
+			<CopyButton value={shareUrl} />
 		</div>
 
 		<Button onClick={generateRandomTeam}>
-		<span class="flex items-center">
-			<MdiDiceMultiple />Random Team
-		</span>
+			<span class="flex items-center">
+				<MdiDiceMultiple />Random Team
+			</span>
 		</Button>
 	</div>
-
 </div>
 
 {#if search && filteredDigimon.length}
 	<div class="flex flex-wrap gap-2">
 		{#each filteredDigimon as d (d.id)}
-			<button
-				type="button"
-				class="w-12 hover:scale-110 transition"
-				onclick={() => startChain(d)}
-			>
+			<button type="button" class="w-12 transition hover:scale-110" onclick={() => startChain(d)}>
 				<DigimonIcon digimon={d} />
 			</button>
 		{/each}
 	</div>
 {:else if search}
-	<div class="opacity-60 mb-6">
-		No Digimon found
-	</div>
+	<div class="mb-6 opacity-60">No Digimon found</div>
 {/if}
 
 {#if team.length === 0}
-	<div class="w-full mx-auto text-center mt-8">
+	<div class="mx-auto mt-8 w-full text-center">
 		No Digimon chains yet. Search a Digimon, generate a random team, or load one from a link.
 	</div>
 {/if}
@@ -283,12 +253,12 @@
 
 	{@const notInChain = (d: Digimon) => !c.includes(d.id)}
 
-	<div class="relative border flex">
+	<div class="relative flex border">
 		<div class="flex flex-col justify-start px-2 py-2">
 			{#if i > 0}
 				<button
 					type="button"
-					class="opacity-50 hover:opacity-100 hover:text-accent cursor-pointer transition"
+					class="cursor-pointer opacity-50 transition hover:text-accent hover:opacity-100"
 					onclick={() => moveChainUp(i)}
 				>
 					<MdiChevronUp />
@@ -298,7 +268,7 @@
 			{#if i < team.length - 1}
 				<button
 					type="button"
-					class="opacity-50 hover:opacity-100 hover:text-accent cursor-pointer transition"
+					class="cursor-pointer opacity-50 transition hover:text-accent hover:opacity-100"
 					onclick={() => moveChainDown(i)}
 				>
 					<MdiChevronDown />
@@ -308,7 +278,7 @@
 
 		<button
 			type="button"
-			class="absolute top-1 right-1 opacity-50 hover:opacity-100 hover:text-accent cursor-pointer transition"
+			class="absolute top-1 right-1 cursor-pointer opacity-50 transition hover:text-accent hover:opacity-100"
 			onclick={(e) => {
 				e.stopPropagation();
 				deleteChain(i);
@@ -317,16 +287,12 @@
 			<MdiClose />
 		</button>
 
-		<div class="flex justify-center items-center w-full gap-6 p-2">
+		<div class="flex w-full items-center justify-center gap-6 p-2">
 			<!-- Pre-evolutions -->
 			<div class="flex flex-col gap-2">
 				{#each preEvos.filter(notInChain) as d (d.id)}
 					<div class="w-14">
-						<DigimonIcon
-							digimon={d}
-							variant="viewer"
-							onClick={() => extendLeft(i, d)}
-						/>
+						<DigimonIcon digimon={d} variant="viewer" onClick={() => extendLeft(i, d)} />
 					</div>
 				{/each}
 			</div>
@@ -337,12 +303,7 @@
 					{@const d = digimonById.get(id)}
 					{#if d}
 						<div class="w-14">
-							<DigimonIcon
-								digimon={d}
-								variant="viewer"
-								selected
-								onClick={() => trimChain(c, d)}
-							/>
+							<DigimonIcon digimon={d} variant="viewer" selected onClick={() => trimChain(c, d)} />
 						</div>
 					{/if}
 
@@ -351,40 +312,27 @@
 
 						{@const evoRequirements =
 							next?.evolution_conditions
-								?.map(e =>
+								?.map((e) =>
 									Object.entries(e.requirements)
 										.map(([k, v]) => `${k}: ${v}`)
 										.join('\n')
 								)
-								.join('\n\n') ?? ''
-						}
-						<div
-							class="relative"
-							use:tooltipAction={{ text: evoRequirements, position: 'top'}}
-						>
-							<MdiChevronRight
-								class="transition hover:text-accent -mx-2 cursor-help"
-							/>
+								.join('\n\n') ?? ''}
+						<div class="relative" use:tooltipAction={{ text: evoRequirements, position: 'top' }}>
+							<MdiChevronRight class="-mx-2 cursor-help transition hover:text-accent" />
 						</div>
-
 					{/if}
 				{/each}
 			</div>
-
 
 			<!-- Evolutions -->
 			<div class="flex flex-col gap-2">
 				{#each evos.filter(notInChain) as d (d.id)}
 					<div class="w-14">
-						<DigimonIcon
-							digimon={d}
-							variant="viewer"
-							onClick={() => extendRight(i, d)}
-						/>
+						<DigimonIcon digimon={d} variant="viewer" onClick={() => extendRight(i, d)} />
 					</div>
 				{/each}
 			</div>
 		</div>
 	</div>
 {/each}
-

@@ -6,40 +6,34 @@
 		checked?: boolean;
 	}
 
-	let {
-		label = "",
-		checked = $bindable(false),
-	}: Props = $props();
+	let { label = '', checked = $bindable(false) }: Props = $props();
 
 	const uid = $props.id();
 </script>
 
-<label
-	for={uid}
-	class="flex items-center gap-1 cursor-pointer text-xs h-fit group select-none"
->
-	<span class="relative w-3 h-3 flex items-center justify-center">
+<label for={uid} class="group flex h-fit cursor-pointer items-center gap-1 text-xs select-none">
+	<span class="relative flex h-3 w-3 items-center justify-center">
 		<input
 			id={uid}
 			type="checkbox"
 			bind:checked
 			class="
-				w-3 h-3
+				h-3 w-3
+				cursor-pointer
 				appearance-none
 				border
-				checked:bg-accent-dark
-				checked:border-accent
-				cursor-pointer
 				transition
+				checked:border-accent
+				checked:bg-accent-dark
 			"
 		/>
 
 		<MdiCheck
 			class="
-				absolute
-				w-2.5 h-2.5
-				text-accent
 				pointer-events-none
+				absolute h-2.5
+				w-2.5
+				text-accent
 				transition
 				{checked ? 'opacity-100 ' : 'opacity-0'}
 			"

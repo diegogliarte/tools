@@ -13,7 +13,7 @@
 		const m = Math.floor((total % 3600) / 60);
 		const s = Math.floor(total % 60);
 
-		return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+		return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 	});
 
 	$effect(() => {
@@ -99,7 +99,7 @@
 </script>
 
 <div
-	class="w-full h-full fixed inset-0 select-none cursor-pointer"
+	class="fixed inset-0 h-full w-full cursor-pointer select-none"
 	onmousedown={onMouseDown}
 	onmouseup={onMouseUp}
 	ondblclick={onDblClick}
@@ -113,22 +113,22 @@
 			-translate-x-1/2 -translate-y-1/1
 			transition-opacity duration-200
 		"
-		style={running ? "opacity: 1" : "opacity: 0.5"}
+		style={running ? 'opacity: 1' : 'opacity: 0.5'}
 	>
 		<div
 			class="
+				font-clockicons
 				text-7xl
 				transition-transform
-				font-clockicons
 			"
-			style={pulsing ? "transform: scale(1.1);" : "transform: scale(1);"}
+			style={pulsing ? 'transform: scale(1.1);' : 'transform: scale(1);'}
 		>
 			{formatted}
 		</div>
 	</div>
 
 	<!-- laps on right -->
-	<div class="absolute top-0 right-0 p-4 flex flex-col gap-1 text-xs">
+	<div class="absolute top-0 right-0 flex flex-col gap-1 p-4 text-xs">
 		{#each laps as lap, i (i)}
 			<div>{lap}</div>
 		{/each}

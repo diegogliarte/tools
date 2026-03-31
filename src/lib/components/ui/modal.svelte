@@ -10,12 +10,7 @@
 		children: Snippet;
 	}
 
-	let {
-		title = "",
-		closable = true,
-		onClose,
-		children
-	}: Props = $props();
+	let { title = '', closable = true, onClose, children }: Props = $props();
 
 	let dialog = $state<HTMLDialogElement | null>(null);
 
@@ -25,7 +20,7 @@
 		if (!dialog.open) {
 			dialog.showModal();
 
-			document.body.style.overflow = "hidden";
+			document.body.style.overflow = 'hidden';
 		}
 	});
 
@@ -34,7 +29,7 @@
 			dialog.close();
 		}
 
-		document.body.style.overflow = "";
+		document.body.style.overflow = '';
 
 		closeModal();
 		onClose?.();
@@ -47,27 +42,27 @@
 		if (e.target === dialog) close();
 	}}
 	class="
-		backdrop:bg-bg/30 backdrop:backdrop-blur-xs
-		p-0 border-none
-		w-full h-full
-		bg-transparent
-		text-text
-		flex justify-center items-center
 		mx-auto my-auto
+		flex h-full
+		w-full items-center
+		justify-center
+		border-none
+		bg-transparent p-0 text-text
+		backdrop:bg-bg/30 backdrop:backdrop-blur-xs
 	"
 >
 	<div
 		class="
-			bg-bg border border-text
-			p-4
-			w-[min(90vw,800px)]
-			max-h-[90vh]
+			relative max-h-[90vh] w-[min(90vw,800px)]
 			overflow-y-auto
-			relative
+			border
+			border-text
+			bg-bg
+			p-4
 		"
 	>
 		{#if title || closable}
-			<div class="flex items-center justify-between mb-3">
+			<div class="mb-3 flex items-center justify-between">
 				{#if title}
 					<h2 class="text-large">{title}</h2>
 				{/if}
@@ -75,7 +70,7 @@
 				{#if closable}
 					<button
 						type="button"
-						class="absolute top-2 right-2 text-large opacity-50 hover:opacity-100 hover:text-accent cursor-pointer"
+						class="absolute top-2 right-2 cursor-pointer text-large opacity-50 hover:text-accent hover:opacity-100"
 						onclick={close}
 					>
 						<MdiClose />
@@ -89,7 +84,7 @@
 </dialog>
 
 <style>
-    dialog:not([open]) {
-        display: none;
-    }
+	dialog:not([open]) {
+		display: none;
+	}
 </style>

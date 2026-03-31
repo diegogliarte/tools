@@ -9,15 +9,11 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Toast from '$lib/components/ui/toast.svelte';
 
-	import { modalState, closeModal } from "$lib/states/modal.svelte";
+	import { modalState, closeModal } from '$lib/states/modal.svelte';
 
 	let { children }: LayoutProps = $props();
 
 	let isSidebarOpen = $state(false);
-
-	function toggleSidebar() {
-		isSidebarOpen = !isSidebarOpen;
-	}
 
 	let showScrollTop = $state(false);
 
@@ -33,7 +29,7 @@
 
 		mainEl.scrollTo({
 			top: 0,
-			behavior: "smooth"
+			behavior: 'smooth'
 		});
 	}
 
@@ -41,28 +37,23 @@
 		if (!mainEl) return;
 
 		handleScroll();
-		mainEl.addEventListener("scroll", handleScroll);
+		mainEl.addEventListener('scroll', handleScroll);
 
-		return () => mainEl.removeEventListener("scroll", handleScroll);
+		return () => mainEl.removeEventListener('scroll', handleScroll);
 	});
 </script>
 
-<div class="flex h-screen bg-bg text-text overflow-y-hidden">
+<div class="flex h-[100dvh] overflow-y-hidden bg-bg text-text">
 	<Sidebar visible={isSidebarOpen} />
 
-	<div class="flex flex-col flex-1">
-		<Navbar {toggleSidebar} />
+	<div class="flex flex-1 flex-col">
+		<Navbar bind:isSidebarOpen />
 
-		<main
-			bind:this={mainEl}
-			class="p-2 flex-1 overflow-y-auto">
+		<main bind:this={mainEl} class="flex-1 overflow-y-auto p-2">
 			{#if modalState.component}
 				{@const ModalComponent = modalState.component}
 
-				<ModalComponent
-					{...modalState.props}
-					onClose={closeModal}
-				/>
+				<ModalComponent {...modalState.props} onClose={closeModal} />
 			{/if}
 
 			{@render children()}
@@ -72,7 +63,7 @@
 			{#if showScrollTop}
 				<button
 					onclick={scrollToTop}
-					class="fixed bottom-10 right-4 z-50 aspect-square w-8 h-8 text-sm border bg-bg cursor-pointer"
+					class="fixed right-4 bottom-10 z-50 aspect-square h-8 w-8 cursor-pointer border bg-bg text-sm"
 				>
 					↑
 				</button>

@@ -34,9 +34,7 @@
 		selectedIdx = selectedIdx === idx ? null : idx;
 	}
 
-	const selectedResult = $derived(
-		selectedIdx !== null ? results[selectedIdx] ?? null : null
-	);
+	const selectedResult = $derived(selectedIdx !== null ? (results[selectedIdx] ?? null) : null);
 
 	/* ---------------------------------------------
 	   Phase 1: initialize results when files change
@@ -58,7 +56,7 @@
 				selectedIdx = 0;
 			}
 
-			results = files.map(file => ({
+			results = files.map((file) => ({
 				name: file.name.replace(/\.\w+$/, getExtension(format)),
 				original: file,
 				originalUrl: URL.createObjectURL(file),
@@ -84,11 +82,7 @@
 
 			convertingIdx = i;
 
-			const { blob, url } = await convert(
-				r.original,
-				format,
-				quality / 100
-			);
+			const { blob, url } = await convert(r.original, format, quality / 100);
 
 			results[i] = {
 				...r,
@@ -114,11 +108,7 @@
 		}
 	}
 
-	function convert(
-		file: File,
-		mime: string,
-		quality: number
-	): Promise<{ blob: Blob; url: string }> {
+	function convert(file: File, mime: string, quality: number): Promise<{ blob: Blob; url: string }> {
 		return new Promise((resolve, reject) => {
 			const img = new Image();
 			img.onload = () => {
@@ -132,7 +122,7 @@
 				ctx.drawImage(img, 0, 0);
 
 				canvas.toBlob(
-					blob => {
+					(blob) => {
 						if (!blob) return reject();
 						resolve({
 							blob,
@@ -187,39 +177,20 @@
 		const rect = target.getBoundingClientRect();
 		const x = e.clientX - rect.left;
 
-		comparePos = Math.min(
-			100,
-			Math.max(0, (x / rect.width) * 100)
-		);
+		comparePos = Math.min(100, Math.max(0, (x / rect.width) * 100));
 	}
 </script>
 
 <!-- FILE INPUT -->
-<FileDrop label="Images" accept="image/*" bind:files>
-
-</FileDrop>
+<FileDrop label="Images" accept="image/*" bind:files></FileDrop>
 
 <!-- CONTROLS -->
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-baseline-last">
-	<SelectInput
-		label="Output format"
-		options={formatOptions}
-		bind:value={format}
-		allowEmpty={false}
-	/>
+<div class="grid grid-cols-1 items-baseline-last gap-4 sm:grid-cols-3">
+	<SelectInput label="Output format" options={formatOptions} bind:value={format} allowEmpty={false} />
 
-	<NumberInput
-		label="Quality"
-		min={1}
-		max={100}
-		step={1}
-		bind:value={quality}
-	/>
+	<NumberInput label="Quality" min={1} max={100} step={1} bind:value={quality} />
 
-	<Button
-		disabled={convertingIdx !== null || !results.length}
-		onClick={downloadAll}
-	>
+	<Button disabled={convertingIdx !== null || !results.length} onClick={downloadAll}>
 		{#if convertingIdx !== null}
 			Converting ({convertingIdx + 1}/{results.length})
 		{:else}
@@ -230,22 +201,17 @@
 
 <!-- COMPARISON -->
 {#if selectedResult}
-	<div class="flex flex-col gap-2 items-center">
+	<div class="flex flex-col items-center gap-2">
 		<div class="text-sm">Comparison</div>
 
 		<div
-			class="relative border overflow-hidden select-none w-full max-w-80 cursor-ew-resize"
+			class="relative w-full max-w-80 cursor-ew-resize overflow-hidden border select-none"
 			onmousedown={startCompareDrag}
 			onmousemove={(e) => isDraggingCompare && updateComparePos(e)}
 			onmouseup={stopCompareDrag}
 			onmouseleave={stopCompareDrag}
 		>
-			<img
-				src={selectedResult.originalUrl}
-				alt="Original"
-				class="block w-full"
-				draggable="false"
-			/>
+			<img src={selectedResult.originalUrl} alt="Original" class="block w-full" draggable="false" />
 
 			{#if selectedResult.convertedUrl}
 				<img
@@ -258,14 +224,14 @@
 			{/if}
 
 			<div
-				class="absolute top-0 bottom-0 pointer-events-none"
+				class="pointer-events-none absolute top-0 bottom-0"
 				style={`left: ${comparePos}%; width: 24px; transform: translateX(-12px);`}
 			>
 				<div class="absolute inset-y-0 left-1/2 w-px bg-accent"></div>
 			</div>
 		</div>
 
-		<div class="flex justify-between text-xs max-w-80 w-full">
+		<div class="flex w-full max-w-80 justify-between text-xs">
 			<span>Converted</span>
 			<span>Original</span>
 		</div>
@@ -274,10 +240,12 @@
 
 <!-- RESULT GRID -->
 {#if results.length}
-	<div class="grid grid-cols-2 md:grid-cols-5 sm:grid-cols-4 gap-2">
+	<div class="grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-5">
 		{#each results as r, idx (idx)}
 			<div
-				class="border p-2 cursor-pointer hover:border-accent {selectedIdx === idx ? 'border-accent bg-accent-dark' : ''}"
+				class="cursor-pointer border p-2 hover:border-accent {selectedIdx === idx
+					? 'border-accent bg-accent-dark'
+					: ''}"
 				onclick={() => toggleSelect(idx)}
 			>
 				<div class="truncate text-sm">{r.name}</div>
@@ -287,12 +255,8 @@
 						{(r.convertedBlob.size / 1024).toFixed(1)} KB
 						<span class="ml-1">
 							(
-							{(
-								100 -
-								(r.convertedBlob.size / r.original.size) * 100
-							).toFixed(0)}
-							%
-							)
+							{(100 - (r.convertedBlob.size / r.original.size) * 100).toFixed(0)}
+							% )
 						</span>
 					{:else}
 						Converting…

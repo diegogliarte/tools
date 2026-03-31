@@ -6,18 +6,16 @@
 	let displayMode = $state<'digimon-stats' | 'skill-stats'>('digimon-stats');
 </script>
 
-<div class="flex gap-2 mb-4">
-	<Button active={displayMode === 'digimon-stats'} onClick={() => displayMode = 'digimon-stats'}>
+<div class="mb-4 flex gap-2">
+	<Button active={displayMode === 'digimon-stats'} onClick={() => (displayMode = 'digimon-stats')}>
 		Digimon Stats
 	</Button>
 
-	<Button active={displayMode === 'skill-stats'} onClick={() => displayMode = 'skill-stats'}>
-		Skill Stats
-	</Button>
+	<Button active={displayMode === 'skill-stats'} onClick={() => (displayMode = 'skill-stats')}>Skill Stats</Button>
 </div>
 
-{#if displayMode === "digimon-stats"}
+{#if displayMode === 'digimon-stats'}
 	<DigimonStats />
-{:else if displayMode === "skill-stats"}
+{:else if displayMode === 'skill-stats'}
 	<SkillStats />
 {/if}

@@ -7,17 +7,11 @@
 		displayLines?: boolean;
 	}
 
-	let {
-		value = $bindable(""),
-		label = "",
-		placeholder = "",
-		readonly = false,
-		displayLines = false
-	}: Props = $props();
+	let { value = $bindable(''), label = '', placeholder = '', readonly = false, displayLines = false }: Props = $props();
 
 	const uid = $props.id();
 
-	let lineCount = $derived(value.split("\n").length);
+	let lineCount = $derived(value.split('\n').length);
 	let hoveredLine = $state<number | null>(null);
 
 	function handleMouseMove(e: MouseEvent) {
@@ -25,7 +19,7 @@
 
 		const textarea = e.currentTarget as HTMLTextAreaElement;
 		const style = getComputedStyle(textarea);
-		const lineHeight = parseFloat(style.lineHeight || "20");
+		const lineHeight = parseFloat(style.lineHeight || '20');
 		const offset = textarea.scrollTop;
 		const y = e.offsetY + offset;
 		hoveredLine = Math.floor(y / lineHeight) + 1;
@@ -36,16 +30,15 @@
 	}
 </script>
 
-<div class="flex flex-col w-full gap-0.5">
+<div class="flex w-full flex-col gap-0.5">
 	{#if label}
 		<label for={uid}>{label}</label>
 	{/if}
 
-	<div class="relative w-full flex border">
-
+	<div class="relative flex w-full border">
 		{#if displayLines}
 			<!-- Line numbers (same for both modes) -->
-			<div class="flex flex-col p-2 text-xs select-none text-right min-w-[2.5rem] border-r">
+			<div class="flex min-w-[2.5rem] flex-col border-r p-2 text-right text-xs select-none">
 				{#each Array(lineCount) as _, i (i)}
 					<div>
 						{i + 1}
@@ -62,12 +55,12 @@
 			onmousemove={handleMouseMove}
 			onmouseleave={handleMouseLeave}
 			class="
-				text-wrap
-				flex-1 resize-none
-				text-xs
 				min-h-64
-				outline-none p-2
-				whitespace-pre font-mono
+				flex-1 resize-none
+				p-2
+				font-mono
+				text-xs text-wrap
+				whitespace-pre outline-none
 			"
 		></textarea>
 	</div>

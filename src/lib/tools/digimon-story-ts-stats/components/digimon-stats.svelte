@@ -10,37 +10,38 @@
 
 	const digimon: Digimon[] = digimonRaw as unknown as Digimon[];
 
-	const generations = unique(digimon.map(d => d.generation));
-	const attributes  = unique(digimon.map(d => d.attribute));
-	const types       = unique(digimon.map(d => d.type));
-	const personalities = unique(digimon.map(d => d.base_personality));
+	const generations = unique(digimon.map((d) => d.generation));
+	const attributes = unique(digimon.map((d) => d.attribute));
+	const types = unique(digimon.map((d) => d.type));
+	const personalities = unique(digimon.map((d) => d.base_personality));
 
-	let generationFilter   = $state(makeFilter(generations));
-	let attributeFilter    = $state(makeFilter(attributes));
-	let typeFilter         = $state(makeFilter(types));
-	let personalityFilter  = $state(makeFilter(personalities));
+	let generationFilter = $state(makeFilter(generations));
+	let attributeFilter = $state(makeFilter(attributes));
+	let typeFilter = $state(makeFilter(types));
+	let personalityFilter = $state(makeFilter(personalities));
 
 	let statLevel = $state<'lv1' | 'lv99'>('lv99');
 
 	let ridableOnly = $state(false);
 
 	const filteredRows = $derived.by(() => {
-		const genSel  = Object.keys(generationFilter).filter(k => generationFilter[k]);
-		const attrSel = Object.keys(attributeFilter).filter(k => attributeFilter[k]);
-		const typeSel = Object.keys(typeFilter).filter(k => typeFilter[k]);
-		const persSel = Object.keys(personalityFilter).filter(k => personalityFilter[k]);
+		const genSel = Object.keys(generationFilter).filter((k) => generationFilter[k]);
+		const attrSel = Object.keys(attributeFilter).filter((k) => attributeFilter[k]);
+		const typeSel = Object.keys(typeFilter).filter((k) => typeFilter[k]);
+		const persSel = Object.keys(personalityFilter).filter((k) => personalityFilter[k]);
 
-		return digimon.filter(d =>
-			(genSel.length  ? genSel.includes(d.generation) : true) &&
-			(attrSel.length ? attrSel.includes(d.attribute) : true) &&
-			(typeSel.length ? typeSel.includes(d.type) : true) &&
-			(persSel.length ? persSel.includes(d.base_personality) : true) &&
-			(!ridableOnly || d.ridable)
+		return digimon.filter(
+			(d) =>
+				(genSel.length ? genSel.includes(d.generation) : true) &&
+				(attrSel.length ? attrSel.includes(d.attribute) : true) &&
+				(typeSel.length ? typeSel.includes(d.type) : true) &&
+				(persSel.length ? persSel.includes(d.base_personality) : true) &&
+				(!ridableOnly || d.ridable)
 		);
 	});
 
 	const rows = $derived.by(() =>
-		filteredRows.map(d => ({
+		filteredRows.map((d) => ({
 			...d,
 			...d.base_stats[statLevel]
 		}))
@@ -50,8 +51,8 @@
 		key: 'name',
 		label: 'Digimon',
 		width: '260px',
-		searchValue: d => `${d.name} ${d.generation} ${d.attribute} ${d.type}`,
-		renderComponent: d => ({
+		searchValue: (d) => `${d.name} ${d.generation} ${d.attribute} ${d.type}`,
+		renderComponent: (d) => ({
 			component: DigimonCell,
 			props: { digimon: d }
 		})
@@ -60,8 +61,8 @@
 	const attributeColumn: Column<Digimon> = {
 		key: 'attribute',
 		label: 'Attr',
-		sortValue: d => d.attribute,
-		render: d => `
+		sortValue: (d) => d.attribute,
+		render: (d) => `
 		<div class="flex items-center gap-1 leading-none">
 			<img
 				src="/digimon-story-ts/${d.attribute.toLowerCase().replace(' ', '-')}.png"
@@ -73,42 +74,36 @@
 	`
 	};
 
-
 	const typeColumn: Column<Digimon> = {
 		key: 'type',
 		label: 'Type',
-		sortValue: d => d.type
+		sortValue: (d) => d.type
 	};
-
 
 	const totalColumn: Column<any> = {
 		key: 'TOTAL',
 		label: 'Total',
 
-		sortValue: d =>
-			d.HP + d.SP + d.ATK + d.DEF + d.INT + d.SPI + d.SPD,
+		sortValue: (d) => d.HP + d.SP + d.ATK + d.DEF + d.INT + d.SPI + d.SPD,
 
-		render: d =>
-			String(d.HP + d.SP + d.ATK + d.DEF + d.INT + d.SPI + d.SPD)
+		render: (d) => String(d.HP + d.SP + d.ATK + d.DEF + d.INT + d.SPI + d.SPD)
 	};
-
 
 	const ridableColumn: Column<Digimon> = {
 		key: 'ridable',
 		label: 'Ridable',
 
-		sortValue: d => d.ridable ? 1 : 0,
-		render: d => d.ridable ? '✓' : '—'
+		sortValue: (d) => (d.ridable ? 1 : 0),
+		render: (d) => (d.ridable ? '✓' : '—')
 	};
-
 
 	const columns = $derived([
 		digimonColumn,
 		attributeColumn,
 		typeColumn,
 
-		{ key: 'HP',  label: 'HP' },
-		{ key: 'SP',  label: 'SP' },
+		{ key: 'HP', label: 'HP' },
+		{ key: 'SP', label: 'SP' },
 		{ key: 'ATK', label: 'ATK' },
 		{ key: 'DEF', label: 'DEF' },
 		{ key: 'INT', label: 'INT' },
@@ -116,37 +111,33 @@
 		{ key: 'SPD', label: 'SPD' },
 
 		totalColumn,
-		ridableColumn,
+		ridableColumn
 	]);
-
 </script>
 
-<div class="flex justify-around flex-col sm:flex-row gap-2 mb-4">
-	<div class="flex flex-row sm:flex-col flex-wrap gap-1">
+<div class="mb-4 flex flex-col justify-around gap-2 sm:flex-row">
+	<div class="flex flex-row flex-wrap gap-1 sm:flex-col">
 		{#each generations as g (g)}
 			<CheckboxInput label={g} bind:checked={generationFilter[g]} />
 		{/each}
 	</div>
 
-	<div class="flex flex-row sm:flex-col gap-1">
+	<div class="flex flex-row gap-1 sm:flex-col">
 		{#each attributes as a (a)}
 			<CheckboxInput label={a} bind:checked={attributeFilter[a]} />
 		{/each}
 	</div>
 
-	<CheckboxInput
-		label="Ridable only"
-		bind:checked={ridableOnly}
-	/>
+	<CheckboxInput label="Ridable only" bind:checked={ridableOnly} />
 
 	<SelectInput
 		label="Stats Level"
 		bind:value={statLevel}
 		options={[
-			{ value: 'lv1',  label: 'Lv. 1' },
+			{ value: 'lv1', label: 'Lv. 1' },
 			{ value: 'lv99', label: 'Lv. 99' }
 		]}
 	/>
 </div>
 
-<DataTable {columns} rows={rows} pageSize={50} />
+<DataTable {columns} {rows} pageSize={50} />

@@ -5,11 +5,7 @@
 	import movesRaw from '$lib/data/pmd-blue/moves.json';
 	import pokemonMovesRaw from '$lib/data/pmd-blue/pokemon-moves.json';
 	import abilitiesRaw from '$lib/data/pmd-blue/abilities.json';
-	import {
-		type Pokemon,
-		computeStatAtLevel,
-		buildEvolvesFromMap
-	} from '$lib/utils/pmd-blue.utils';
+	import { type Pokemon, computeStatAtLevel, buildEvolvesFromMap } from '$lib/utils/pmd-blue.utils';
 	import { openModal } from '$lib/states/modal.svelte';
 	import MoveModal from '$lib/components/pmd-blue/MoveModal.svelte';
 
@@ -26,17 +22,13 @@
 
 	const moveById = new Map(movesRaw.map((m) => [m.id, m]));
 	const abilityById = new Map(abilitiesRaw.map((a) => [a.id, a]));
-	const moveEntryByPokemonId = new Map(
-		pokemonMovesRaw.map((m) => [m.pokemon_id, m])
-	);
+	const moveEntryByPokemonId = new Map(pokemonMovesRaw.map((m) => [m.pokemon_id, m]));
 
 	const evolvesFrom = $derived(evolvesFromMap[pokemon.name] ?? []);
 	const evolvesTo = $derived(pokemon.evolution ?? []);
 
 	const ability_1 = $derived(abilityById.get(pokemon.ability_1_id));
-	const ability_2 = $derived(
-		pokemon.ability_2_id ? abilityById.get(pokemon.ability_2_id) : null
-	);
+	const ability_2 = $derived(pokemon.ability_2_id ? abilityById.get(pokemon.ability_2_id) : null);
 
 	type DisplayMove = {
 		id: number;
@@ -52,9 +44,7 @@
 
 	function getDirectPreEvolutionPokemons(target: Pokemon): Pokemon[] {
 		const entries = evolvesFromMap[target.name] ?? [];
-		return entries
-			.map((e) => pokemonByName.get(e.from))
-			.filter((p): p is Pokemon => Boolean(p));
+		return entries.map((e) => pokemonByName.get(e.from)).filter((p): p is Pokemon => Boolean(p));
 	}
 
 	function getAllPreEvolutionPokemons(target: Pokemon): Pokemon[] {
@@ -128,9 +118,7 @@
 
 					if (!currentIds.has(move.id)) {
 						existing.preEvolutionOnly = true;
-						existing.sourcePokemonNames = Array.from(
-							new Set([...(existing.sourcePokemonNames ?? []), pre.name])
-						);
+						existing.sourcePokemonNames = Array.from(new Set([...(existing.sourcePokemonNames ?? []), pre.name]));
 					}
 				} else {
 					merged.set(move.id, {
@@ -177,9 +165,7 @@
 				if (existing) {
 					if (!currentIds.has(move.id)) {
 						existing.preEvolutionOnly = true;
-						existing.sourcePokemonNames = Array.from(
-							new Set([...(existing.sourcePokemonNames ?? []), pre.name])
-						);
+						existing.sourcePokemonNames = Array.from(new Set([...(existing.sourcePokemonNames ?? []), pre.name]));
 					}
 				} else {
 					merged.set(move.id, {
@@ -192,9 +178,7 @@
 			}
 		}
 
-		return Array.from(merged.values()).sort((a, b) =>
-			a.name.localeCompare(b.name)
-		);
+		return Array.from(merged.values()).sort((a, b) => a.name.localeCompare(b.name));
 	}
 
 	const moves = $derived.by(() => {
@@ -216,12 +200,12 @@
 
 <Modal title={pokemon?.name} {onClose}>
 	{#if pokemon}
-		<div class="flex gap-4 mb-4">
+		<div class="mb-4 flex gap-4">
 			<div class="w-20">
 				<PokemonIcon {pokemon} />
 			</div>
 
-			<div class="text-xs flex flex-col gap-1">
+			<div class="flex flex-col gap-1 text-xs">
 				<div>Recruit: {pokemon.recruit.rate}%</div>
 
 				{#if pokemon.encounter.note}
@@ -253,8 +237,8 @@
 		</div>
 
 		{#if pokemon.encounter.locations?.length}
-			<h3 class="font-bold mb-1">Locations</h3>
-			<ul class="list-disc list-inside text-xs mb-4">
+			<h3 class="mb-1 font-bold">Locations</h3>
+			<ul class="mb-4 list-inside list-disc text-xs">
 				{#each pokemon.encounter.locations as l (l)}
 					<li>{l.dungeon}{l.floors ? ` (${l.floors})` : ''}</li>
 				{/each}
@@ -262,30 +246,30 @@
 		{/if}
 
 		{#if evolvesFrom.length || evolvesTo.length}
-			<h3 class="font-bold mb-1">Evolution</h3>
-			<div class="flex items-start justify-center gap-4 text-xs mb-4 flex-wrap">
+			<h3 class="mb-1 font-bold">Evolution</h3>
+			<div class="mb-4 flex flex-wrap items-start justify-center gap-4 text-xs">
 				{#each evolvesFrom as e (e.from)}
 					{@const p = pokemonByName.get(e.from)}
 					{#if p}
-						<div class="flex flex-col items-center w-20 text-center">
+						<div class="flex w-20 flex-col items-center text-center">
 							<PokemonIcon pokemon={p} />
-							<div class="mt-1 truncate w-full">{p.name}</div>
+							<div class="mt-1 w-full truncate">{p.name}</div>
 							<div class="text-xs opacity-70">{e.method}</div>
 						</div>
 					{/if}
 				{/each}
 
-				<div class="flex flex-col items-center w-20 text-center">
+				<div class="flex w-20 flex-col items-center text-center">
 					<PokemonIcon {pokemon} />
-					<div class="mt-1 font-bold truncate w-full">{pokemon.name}</div>
+					<div class="mt-1 w-full truncate font-bold">{pokemon.name}</div>
 				</div>
 
 				{#each evolvesTo as e (e.to)}
 					{@const p = pokemonByName.get(e.to)}
 					{#if p}
-						<div class="flex flex-col items-center w-20 text-center">
+						<div class="flex w-20 flex-col items-center text-center">
 							<PokemonIcon pokemon={p} />
-							<div class="mt-1 truncate w-full">{p.name}</div>
+							<div class="mt-1 w-full truncate">{p.name}</div>
 							<div class="text-xs opacity-70">{e.method}</div>
 						</div>
 					{/if}
@@ -294,29 +278,29 @@
 		{/if}
 
 		{#if moves.levelUp?.length || moves.tm?.length}
-			<h3 class="font-bold mb-1">Moves</h3>
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs mb-4">
+			<h3 class="mb-1 font-bold">Moves</h3>
+			<div class="mb-4 grid grid-cols-1 gap-4 text-xs sm:grid-cols-2">
 				{#if moves.levelUp?.length}
 					<div>
-						<div class="font-semibold mb-1">Level Up</div>
-						<ul class="list-disc list-inside">
+						<div class="mb-1 font-semibold">Level Up</div>
+						<ul class="list-inside list-disc">
 							{#each moves.levelUp as m (m.id)}
 								<li>
 									Lv {m.level}:
 									<button
 										type="button"
-										class="hover:text-accent cursor-pointer"
+										class="cursor-pointer hover:text-accent"
 										onclick={() => openModal(MoveModal, { move: moveById.get(m.id) })}
 									>
 										{m.name}
 									</button>
 									{#if m.preEvolutionOnly}
-                    <span
+										<span
 											class="ml-1 opacity-70"
 											title={`Only available through pre-evolution(s): ${m.sourcePokemonNames?.join(', ') ?? ''}`}
 										>
-                      ({preEvolutionNames(m)})
-                    </span>
+											({preEvolutionNames(m)})
+										</span>
 									{/if}
 								</li>
 							{/each}
@@ -326,24 +310,24 @@
 
 				{#if moves.tm?.length}
 					<div>
-						<div class="font-semibold mb-1">TM</div>
-						<ul class="list-disc list-inside">
+						<div class="mb-1 font-semibold">TM</div>
+						<ul class="list-inside list-disc">
 							{#each moves.tm as m (m.id)}
 								<li>
 									<button
 										type="button"
-										class="hover:text-accent cursor-pointer"
+										class="cursor-pointer hover:text-accent"
 										onclick={() => openModal(MoveModal, { move: moveById.get(m.id) })}
 									>
 										{m.name}
 									</button>
 									{#if m.preEvolutionOnly}
-                    <span
+										<span
 											class="ml-1 opacity-70"
 											title={`Only available through pre-evolution(s): ${m.sourcePokemonNames?.join(', ') ?? ''}`}
 										>
-                      ({preEvolutionNames(m)})
-                    </span>
+											({preEvolutionNames(m)})
+										</span>
 									{/if}
 								</li>
 							{/each}
@@ -353,35 +337,35 @@
 			</div>
 		{/if}
 
-		<h3 class="font-bold mb-2">Stats by Level</h3>
-		<div class="overflow-auto max-h-64 text-xs border">
+		<h3 class="mb-2 font-bold">Stats by Level</h3>
+		<div class="max-h-64 overflow-auto border text-xs">
 			<table class="w-full text-left">
 				<thead class="sticky top-0 bg-neutral-900">
-				<tr>
-					<th class="p-1">Lv</th>
-					<th class="p-1">HP</th>
-					<th class="p-1">Atk</th>
-					<th class="p-1">Def</th>
-					<th class="p-1">SpA</th>
-					<th class="p-1">SpD</th>
-				</tr>
+					<tr>
+						<th class="p-1">Lv</th>
+						<th class="p-1">HP</th>
+						<th class="p-1">Atk</th>
+						<th class="p-1">Def</th>
+						<th class="p-1">SpA</th>
+						<th class="p-1">SpD</th>
+					</tr>
 				</thead>
 				<tbody>
-				{#each Array(100) as _, i}
-					{@const lvl = i + 1}
-					<tr>
-						<td class="p-1">{lvl}</td>
-						<td class="p-1">{statAt(lvl, pokemon.base_hp, pokemon.stats_growth.hp)}</td>
-						<td class="p-1">{statAt(lvl, pokemon.base_atk, pokemon.stats_growth.atk)}</td>
-						<td class="p-1">{statAt(lvl, pokemon.base_def, pokemon.stats_growth.def)}</td>
-						<td class="p-1">
-							{statAt(lvl, pokemon.base_sp_atk, pokemon.stats_growth.sp_atk)}
-						</td>
-						<td class="p-1">
-							{statAt(lvl, pokemon.base_sp_def, pokemon.stats_growth.sp_def)}
-						</td>
-					</tr>
-				{/each}
+					{#each Array(100) as _, i}
+						{@const lvl = i + 1}
+						<tr>
+							<td class="p-1">{lvl}</td>
+							<td class="p-1">{statAt(lvl, pokemon.base_hp, pokemon.stats_growth.hp)}</td>
+							<td class="p-1">{statAt(lvl, pokemon.base_atk, pokemon.stats_growth.atk)}</td>
+							<td class="p-1">{statAt(lvl, pokemon.base_def, pokemon.stats_growth.def)}</td>
+							<td class="p-1">
+								{statAt(lvl, pokemon.base_sp_atk, pokemon.stats_growth.sp_atk)}
+							</td>
+							<td class="p-1">
+								{statAt(lvl, pokemon.base_sp_def, pokemon.stats_growth.sp_def)}
+							</td>
+						</tr>
+					{/each}
 				</tbody>
 			</table>
 		</div>

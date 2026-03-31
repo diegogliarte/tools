@@ -1,22 +1,16 @@
 <script lang="ts">
-	import DataTable, { type Column } from "$lib/components/ui/data-table.svelte";
-	import CheckboxInput from "$lib/components/ui/checkbox-input.svelte";
-	import NumberInput from "$lib/components/ui/number-input.svelte";
+	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
+	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import NumberInput from '$lib/components/ui/number-input.svelte';
 
-	import pokemonsRaw from "$lib/data/pmd-blue/pokemons.json"
+	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
 
-	import {
-		type Pokemon,
-		buildEvolvesFromMap,
-		computeRecruitRate
-	} from "$lib/utils/pmd-blue.utils";
+	import { type Pokemon, buildEvolvesFromMap, computeRecruitRate } from '$lib/utils/pmd-blue.utils';
 	import PokemonCell from '$lib/components/pmd-blue/PokemonCell.svelte';
 
 	const pokemons = pokemonsRaw as Pokemon[];
 
-	const pokemonByName = new Map<string, Pokemon>(
-		pokemons.map((p) => [p.name, p])
-	);
+	const pokemonByName = new Map<string, Pokemon>(pokemons.map((p) => [p.name, p]));
 
 	const evolvesFromMap = buildEvolvesFromMap(pokemons);
 
@@ -43,10 +37,7 @@
 		return parts;
 	}
 
-	function buildInheritedSearchParts(
-		pokemonName: string,
-		visited = new Set<string>()
-	): string[] {
+	function buildInheritedSearchParts(pokemonName: string, visited = new Set<string>()): string[] {
 		if (visited.has(pokemonName)) return [];
 		visited.add(pokemonName);
 
@@ -71,23 +62,15 @@
 		const map: Record<string, string> = {};
 
 		for (const pokemon of pokemons) {
-			const allParts = [
-				...ownSearchParts(pokemon),
-				...buildInheritedSearchParts(pokemon.name)
-			];
+			const allParts = [...ownSearchParts(pokemon), ...buildInheritedSearchParts(pokemon.name)];
 
-			map[pokemon.name] = Array.from(
-				new Set(
-					allParts
-						.filter(Boolean)
-						.map((s) => String(s).trim().toLowerCase())
-				)
-			).join(" ");
+			map[pokemon.name] = Array.from(new Set(allParts.filter(Boolean).map((s) => String(s).trim().toLowerCase()))).join(
+				' '
+			);
 		}
 
 		return map;
 	})();
-
 
 	let leaderLevel = $state(90);
 	let friendBow = $state(false);
@@ -96,11 +79,7 @@
 	const rows = $derived.by(() => {
 		let list = pokemons.map((pokemon) => ({
 			...pokemon,
-			effectiveRate: computeRecruitRate(
-				pokemon,
-				leaderLevel,
-				friendBow
-			)
+			effectiveRate: computeRecruitRate(pokemon, leaderLevel, friendBow)
 		}));
 
 		if (hideUnrecruitable) {
@@ -111,8 +90,8 @@
 	});
 
 	const pokemonColumn: Column = {
-		key: "name",
-		label: "Pokémon",
+		key: 'name',
+		label: 'Pokémon',
 
 		searchValue: (pokemon) => searchIndexByName[pokemon.name] ?? pokemon.name.toLowerCase(),
 
@@ -123,8 +102,8 @@
 	};
 
 	const baseRateColumn: Column = {
-		key: "baseRate",
-		label: "Base Rate",
+		key: 'baseRate',
+		label: 'Base Rate',
 
 		sortValue: (pokemon) => pokemon.recruit.rate,
 
@@ -132,69 +111,59 @@
 	};
 
 	const effectiveRateColumn: Column = {
-		key: "effectiveRate",
-		label: "Effective Rate",
+		key: 'effectiveRate',
+		label: 'Effective Rate',
 
 		sortValue: (pokemon) => pokemon.effectiveRate,
 
 		render: (pokemon) => {
 			const r = pokemon.effectiveRate;
 
-			const color =
-				r > 10 ? "text-green-600" :
-					r > 0 ? "text-yellow-600" :
-						"text-red-600";
+			const color = r > 10 ? 'text-green-600' : r > 0 ? 'text-yellow-600' : 'text-red-600';
 
 			return `<span class="${color}">${r.toFixed(1)}%</span>`;
 		}
 	};
 
 	const friendAreaColumn: Column = {
-		key: "friendArea",
-		label: "Friend Area",
+		key: 'friendArea',
+		label: 'Friend Area',
 
-		sortValue: (pokemon) => pokemon.encounter.friendArea ?? "",
+		sortValue: (pokemon) => pokemon.encounter.friendArea ?? '',
 
-		render: (pokemon) => pokemon.encounter.friendArea ?? "—"
+		render: (pokemon) => pokemon.encounter.friendArea ?? '—'
 	};
 
 	const locationsColumn: Column = {
-		key: "locations",
-		label: "Locations",
+		key: 'locations',
+		label: 'Locations',
 
 		render: (pokemon) => {
-			if (!pokemon.encounter.locations.length) return "—";
+			if (!pokemon.encounter.locations.length) return '—';
 
-			return pokemon.encounter.locations
-				.map((l) => l.floors ? `${l.dungeon} (${l.floors})` : l.dungeon)
-				.join("<br>");
+			return pokemon.encounter.locations.map((l) => (l.floors ? `${l.dungeon} (${l.floors})` : l.dungeon)).join('<br>');
 		}
 	};
 
 	const evolvesFromColumn: Column = {
-		key: "evolvesFrom",
-		label: "Evolves From",
+		key: 'evolvesFrom',
+		label: 'Evolves From',
 
 		render: (pokemon) => {
 			const sources = evolvesFromMap[pokemon.name];
 
-			if (!sources?.length) return "—";
+			if (!sources?.length) return '—';
 
-			return sources
-				.map((e) => `${e.from} (${e.method})`)
-				.join("<br>");
+			return sources.map((e) => `${e.from} (${e.method})`).join('<br>');
 		}
 	};
 
 	const notesColumn: Column = {
-		key: "notes",
-		label: "Notes",
-		width: "25%",
+		key: 'notes',
+		label: 'Notes',
+		width: '25%',
 
-		render: (pokemon) =>
-			pokemon.recruit.note ??
-			pokemon.encounter.note ??
-			"—"
+		render: (pokemon) => pokemon.recruit.note ?? pokemon.encounter.note ?? '—'
 	};
 
 	const columns = [
@@ -208,26 +177,14 @@
 	];
 </script>
 
-<div class="flex justify-center items-center gap-6">
+<div class="flex items-center justify-center gap-6">
 	<div>
-		<NumberInput
-			label="Leader Level"
-			bind:value={leaderLevel}
-			min={0}
-			max={100}
-			step={1}
-		/>
+		<NumberInput label="Leader Level" bind:value={leaderLevel} min={0} max={100} step={1} />
 	</div>
 
-	<CheckboxInput
-		label="Friend Bow"
-		bind:checked={friendBow}
-	/>
+	<CheckboxInput label="Friend Bow" bind:checked={friendBow} />
 
-	<CheckboxInput
-		label="Hide unrecruitable"
-		bind:checked={hideUnrecruitable}
-	/>
+	<CheckboxInput label="Hide unrecruitable" bind:checked={hideUnrecruitable} />
 </div>
 
-<DataTable {columns} rows={rows} pageSize={50} />
+<DataTable {columns} {rows} pageSize={50} />

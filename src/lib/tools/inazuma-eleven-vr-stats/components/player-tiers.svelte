@@ -5,10 +5,9 @@
 	import { computeRoleTiers } from '$lib/utils/inazuma-eleven-vr.utils';
 	import rawPlayers from '$lib/data/inazuma-eleven-vr/players.json';
 
-	const ROLES = ["FW", "MF", "DF", "GK"] as const;
+	const ROLES = ['FW', 'MF', 'DF', 'GK'] as const;
 
 	const players: Player[] = rawPlayers as Player[];
-
 </script>
 
 <div class="flex flex-col gap-12">
@@ -17,7 +16,6 @@
 			<h2 class="text-large">{role}</h2>
 
 			<div class="grid grid-cols-3 gap-6">
-
 				{#each computeRoleTiers(role, players) as tier, i (i)}
 					<div>
 						<h3>
@@ -25,17 +23,13 @@
 						</h3>
 
 						<!-- 👇 4-column grid of players -->
-						<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-1">
+						<div class="grid grid-cols-2 gap-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
 							{#each tier.players as p (p.Image)}
-								<PlayerIcon
-									player={p}
-								/>
+								<PlayerIcon player={p} />
 							{/each}
 						</div>
-
 					</div>
 				{/each}
-
 			</div>
 		</div>
 	{/each}

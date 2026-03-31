@@ -13,14 +13,10 @@
 	const damageFlags = moveFlags.damageFlags;
 	const otherFlags = moveFlags.otherFlags;
 
-	const damageMap = Object.fromEntries(damageFlags.map(f => [f.id, f.description]));
-	const otherMap = Object.fromEntries(otherFlags.map(f => [f.id, f.description]));
+	const damageMap = Object.fromEntries(damageFlags.map((f) => [f.id, f.description]));
+	const otherMap = Object.fromEntries(otherFlags.map((f) => [f.id, f.description]));
 
-	function formatHits(move: {
-		min_hits?: number;
-		max_hits?: number;
-		hit_count_mode?: string;
-	}) {
+	function formatHits(move: { min_hits?: number; max_hits?: number; hit_count_mode?: string }) {
 		const min = move.min_hits;
 		const max = move.max_hits;
 		const mode = move.hit_count_mode;
@@ -31,7 +27,7 @@
 		return '—';
 	}
 
-	const rows = moves.map(m => ({
+	const rows = moves.map((m) => ({
 		...m,
 		type: m.type?.trim() || 'None',
 		class: m.class?.trim() || 'None',
@@ -40,10 +36,10 @@
 		hitsDisplay: formatHits(m)
 	}));
 
-	const types = sortNoneLast(unique(rows.map(r => r.type)));
-	const classes = sortNoneLast(unique(rows.map(r => r.class)));
-	const targets = sortNoneLast(unique(rows.map(r => r.targets)));
-	const hitModes = sortNoneLast(unique(rows.map(r => r.hitModeDisplay)));
+	const types = sortNoneLast(unique(rows.map((r) => r.type)));
+	const classes = sortNoneLast(unique(rows.map((r) => r.class)));
+	const targets = sortNoneLast(unique(rows.map((r) => r.targets)));
+	const hitModes = sortNoneLast(unique(rows.map((r) => r.hitModeDisplay)));
 
 	let typeFilter = $state(makeFilter(types));
 	let classFilter = $state(makeFilter(classes));
@@ -51,16 +47,17 @@
 	let hitModeFilter = $state(makeFilter(hitModes));
 
 	let filteredRows = $derived.by(() => {
-		const allowedTypes = Object.keys(typeFilter).filter(k => typeFilter[k]);
-		const allowedClasses = Object.keys(classFilter).filter(k => classFilter[k]);
-		const allowedTargets = Object.keys(targetFilter).filter(k => targetFilter[k]);
-		const allowedHitModes = Object.keys(hitModeFilter).filter(k => hitModeFilter[k]);
+		const allowedTypes = Object.keys(typeFilter).filter((k) => typeFilter[k]);
+		const allowedClasses = Object.keys(classFilter).filter((k) => classFilter[k]);
+		const allowedTargets = Object.keys(targetFilter).filter((k) => targetFilter[k]);
+		const allowedHitModes = Object.keys(hitModeFilter).filter((k) => hitModeFilter[k]);
 
-		return rows.filter(r =>
-			(allowedTypes.length ? allowedTypes.includes(r.type) : true) &&
-			(allowedClasses.length ? allowedClasses.includes(r.class) : true) &&
-			(allowedTargets.length ? allowedTargets.includes(r.targets) : true) &&
-			(allowedHitModes.length ? allowedHitModes.includes(r.hitModeDisplay) : true)
+		return rows.filter(
+			(r) =>
+				(allowedTypes.length ? allowedTypes.includes(r.type) : true) &&
+				(allowedClasses.length ? allowedClasses.includes(r.class) : true) &&
+				(allowedTargets.length ? allowedTargets.includes(r.targets) : true) &&
+				(allowedHitModes.length ? allowedHitModes.includes(r.hitModeDisplay) : true)
 		);
 	});
 
@@ -69,7 +66,7 @@
 			key: 'name',
 			label: 'Name',
 			width: '200px',
-			searchValue: m =>
+			searchValue: (m) =>
 				`${m.name} ${m.type} ${m.class} ${m.hit_count_mode ?? ''} ${m.min_hits ?? ''} ${m.max_hits ?? ''}`,
 			renderComponent: (m) => ({
 				component: MoveCell,
@@ -80,11 +77,9 @@
 		{
 			key: 'class',
 			label: 'Class',
-			render: m => {
+			render: (m) => {
 				const color =
-					m.class === 'Physical' ? 'text-red-400' :
-						m.class === 'Special' ? 'text-blue-400' :
-							'text-yellow-400';
+					m.class === 'Physical' ? 'text-red-400' : m.class === 'Special' ? 'text-blue-400' : 'text-yellow-400';
 
 				return `<span class="${color}">${m.class}</span>`;
 			}
@@ -100,7 +95,7 @@
 		{
 			key: 'damageFlags',
 			label: 'Damage Flags',
-			renderComponent: m => ({
+			renderComponent: (m) => ({
 				component: FlagBadges,
 				props: {
 					flags: m.damageFlags,
@@ -112,7 +107,7 @@
 		{
 			key: 'otherFlags',
 			label: 'Other Flags',
-			renderComponent: m => ({
+			renderComponent: (m) => ({
 				component: FlagBadges,
 				props: {
 					flags: m.otherFlags,
@@ -133,14 +128,11 @@
 	];
 </script>
 
-<div class="flex justify-around flex-col sm:flex-row gap-2 mb-4">
+<div class="mb-4 flex flex-col justify-around gap-2 sm:flex-row">
 	{#each filterGroups as group (group.name)}
-		<div class="flex flex-row sm:flex-col sm:gap-1 gap-4 items-center sm:items-start">
+		<div class="flex flex-row items-center gap-4 sm:flex-col sm:items-start sm:gap-1">
 			{#each group.list as val (val)}
-				<CheckboxInput
-					label={val}
-					bind:checked={group.store[val]}
-				/>
+				<CheckboxInput label={val} bind:checked={group.store[val]} />
 			{/each}
 		</div>
 	{/each}

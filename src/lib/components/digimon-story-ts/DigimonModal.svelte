@@ -27,48 +27,28 @@
 
 	let { digimon, onClose }: Props = $props();
 
-	const digimonById = new Map<number, Digimon>(
-		(digimonRaw as Digimon[]).map(d => [d.id, d])
-	);
+	const digimonById = new Map<number, Digimon>((digimonRaw as Digimon[]).map((d) => [d.id, d]));
 
-	const preEvolutions = $derived(
-		digimon.pre_evolutions
-			?.map(id => digimonById.get(id))
-			.filter(Boolean) as Digimon[]
-	);
+	const preEvolutions = $derived(digimon.pre_evolutions?.map((id) => digimonById.get(id)).filter(Boolean) as Digimon[]);
 
-	const evolutions = $derived(
-		digimon.evolutions
-			?.map(id => digimonById.get(id))
-			.filter(Boolean) as Digimon[]
-	);
+	const evolutions = $derived(digimon.evolutions?.map((id) => digimonById.get(id)).filter(Boolean) as Digimon[]);
 
-	const skillBySlug = new Map<string, Skill>(
-		(skillsRaw as Skill[]).map(s => [s.slug, s])
-	);
+	const skillBySlug = new Map<string, Skill>((skillsRaw as Skill[]).map((s) => [s.slug, s]));
 
 	const specialSkills = $derived(
-		digimon.skills.special
-			.map(slug => skillBySlug.get(slug))
-			.filter(Boolean) as Skill[]
+		digimon.skills.special.map((slug) => skillBySlug.get(slug)).filter(Boolean) as Skill[]
 	);
 
 	const attachmentSkills = $derived(
-		digimon.skills.attachment
-			.map(slug => skillBySlug.get(slug))
-			.filter(Boolean) as Skill[]
+		digimon.skills.attachment.map((slug) => skillBySlug.get(slug)).filter(Boolean) as Skill[]
 	);
 </script>
 
 {#snippet SkillCard(skill)}
-	<div class="border p-2 flex flex-col gap-2">
-		<div class="flex justify-between items-center">
+	<div class="flex flex-col gap-2 border p-2">
+		<div class="flex items-center justify-between">
 			<div class="flex items-center gap-2">
-				<img
-					src={getSkillIcon(skill.type)}
-					alt={skill.type}
-					class="h-[1.25em] w-[1.25em] shrink-0"
-				/>
+				<img src={getSkillIcon(skill.type)} alt={skill.type} class="h-[1.25em] w-[1.25em] shrink-0" />
 				<span class="font-bold">{skill.name}</span>
 			</div>
 
@@ -88,9 +68,9 @@
 
 <Modal title={digimon?.name} {onClose}>
 	{#if digimon}
-		<div class="flex gap-4 mb-4">
-			<div class="w-26 h-26">
-				<DigimonIcon digimon={digimon} openModal={false} />
+		<div class="mb-4 flex gap-4">
+			<div class="h-26 w-26">
+				<DigimonIcon {digimon} openModal={false} />
 			</div>
 
 			<div class="flex flex-col justify-between text-xs">
@@ -116,8 +96,8 @@
 			</div>
 		</div>
 
-		<h3 class="font-bold mb-1">Base Stats</h3>
-		<div class="grid grid-cols-2 sm:grid-cols-4 gap-1 mb-4 text-xs">
+		<h3 class="mb-1 font-bold">Base Stats</h3>
+		<div class="mb-4 grid grid-cols-2 gap-1 text-xs sm:grid-cols-4">
 			<div>HP: <b>{digimon.base_stats.lv99.HP}</b></div>
 			<div>SP: <b>{digimon.base_stats.lv99.SP}</b></div>
 			<div>ATK: <b>{digimon.base_stats.lv99.ATK}</b></div>
@@ -128,12 +108,12 @@
 		</div>
 
 		{#if digimon.evolution_conditions?.length}
-			<h3 class="font-bold mb-2">Evolution Conditions</h3>
-			<div class="flex flex-col gap-2 mb-4 text-xs">
+			<h3 class="mb-2 font-bold">Evolution Conditions</h3>
+			<div class="mb-4 flex flex-col gap-2 text-xs">
 				{#each digimon.evolution_conditions as evo}
 					<div class="border p-2">
-						<div class="font-semibold mb-1 capitalize">{evo.type}</div>
-						<ul class="list-disc list-inside">
+						<div class="mb-1 font-semibold capitalize">{evo.type}</div>
+						<ul class="list-inside list-disc">
 							{#each Object.entries(evo.requirements) as [k, v]}
 								<li>{k}: {v}</li>
 							{/each}
@@ -144,12 +124,12 @@
 		{/if}
 
 		{#if specialSkills.length || attachmentSkills.length}
-			<h3 class="font-bold mb-2">Skills</h3>
+			<h3 class="mb-2 font-bold">Skills</h3>
 
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 text-xs">
+			<div class="mb-4 grid grid-cols-1 gap-4 text-xs sm:grid-cols-2">
 				{#if specialSkills.length}
 					<div>
-						<div class="font-semibold mb-1">Special</div>
+						<div class="mb-1 font-semibold">Special</div>
 						<div class="flex flex-col gap-2">
 							{#each specialSkills as s (s.slug)}
 								{@render SkillCard(s)}
@@ -160,7 +140,7 @@
 
 				{#if attachmentSkills.length}
 					<div>
-						<div class="font-semibold mb-1">Attachments</div>
+						<div class="mb-1 font-semibold">Attachments</div>
 						<div class="flex flex-col gap-2">
 							{#each attachmentSkills as s (s.slug)}
 								{@render SkillCard(s)}
@@ -172,17 +152,17 @@
 		{/if}
 
 		{#if preEvolutions.length || evolutions.length}
-			<h3 class="font-bold mb-2">Evolution Tree</h3>
+			<h3 class="mb-2 font-bold">Evolution Tree</h3>
 
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+			<div class="grid grid-cols-1 gap-4 text-xs sm:grid-cols-2">
 				{#if preEvolutions.length}
 					<div>
-						<div class="font-semibold mb-1">Pre-evolutions</div>
+						<div class="mb-1 font-semibold">Pre-evolutions</div>
 						<div class="flex flex-wrap gap-2">
 							{#each preEvolutions as d (d.id)}
-								<div class="flex flex-col items-center w-16">
+								<div class="flex w-16 flex-col items-center">
 									<DigimonIcon digimon={d} />
-									<div class="text-center mt-1">{d.name}</div>
+									<div class="mt-1 text-center">{d.name}</div>
 								</div>
 							{/each}
 						</div>
@@ -191,12 +171,12 @@
 
 				{#if evolutions.length}
 					<div>
-						<div class="font-semibold mb-1">Evolutions</div>
+						<div class="mb-1 font-semibold">Evolutions</div>
 						<div class="flex flex-wrap gap-2">
 							{#each evolutions as d (d.id)}
-								<div class="flex flex-col items-center w-16">
+								<div class="flex w-16 flex-col items-center">
 									<DigimonIcon digimon={d} />
-									<div class="text-center text-xs mt-1 truncate w-full">{d.name}</div>
+									<div class="mt-1 w-full truncate text-center text-xs">{d.name}</div>
 								</div>
 							{/each}
 						</div>

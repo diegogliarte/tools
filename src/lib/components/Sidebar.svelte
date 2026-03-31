@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { toolsTree } from "$lib/core/tools-tree";
-	import CategoryNode from "./CategoryNode.svelte";
+	import { toolsTree } from '$lib/core/tools-tree';
+	import CategoryNode from './CategoryNode.svelte';
 
 	interface Props {
 		visible: boolean;
@@ -13,28 +13,23 @@
 	function toggleCategory(cat: string) {
 		collapsed[cat] = !collapsed[cat];
 	}
-
 </script>
 
 <div
 	class="
-		min-w-sidebar
 		w-sidebar
+		min-w-sidebar
 		border-r
 		transition-transform
 		{visible ? '' : 'hidden'}
-		p-1 flex flex-col gap-1 text-xs
-		overflow-y-auto
+		flex flex-col gap-1 overflow-y-auto p-1
+		text-xs
 		{visible ? 'block' : 'hidden'}
 	"
 >
 	<div>
 		{#each toolsTree as category (category.name)}
-			<CategoryNode
-				{category}
-				{collapsed}
-				{toggleCategory}
-			/>
+			<CategoryNode {category} {collapsed} {toggleCategory} />
 		{/each}
 	</div>
 </div>

@@ -13,8 +13,8 @@
 </script>
 
 <div class="flex gap-4">
-	<NumberInput bind:value={height} label="Height (cm)" min={0} step={.5} placeholder="176"/>
-	<NumberInput bind:value={weight} label="Weight (kg)" min={0} step={.5} placeholder="72"/>
+	<NumberInput bind:value={height} label="Height (cm)" min={0} step={0.5} placeholder="176" />
+	<NumberInput bind:value={weight} label="Weight (kg)" min={0} step={0.5} placeholder="72" />
 </div>
 
 <ProgressBar
@@ -24,9 +24,9 @@
 	label="BMI"
 	showValue={true}
 	segments={[
-		{ limit: 18.5, color: "blue" },
-		{ limit: 25,   color: "green" },
-		{ limit: 30,   color: "yellow" },
-		{ limit: 40,   color: "red" }
+		{ limit: 18.5, color: 'blue' },
+		{ limit: 25, color: 'green' },
+		{ limit: 30, color: 'yellow' },
+		{ limit: 40, color: 'red' }
 	]}
 />

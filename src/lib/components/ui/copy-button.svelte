@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { copy } from "$lib/utils/clipboard.utils";
+	import { copy } from '$lib/utils/clipboard.utils';
 	import { messageToast } from '$lib/utils/toast.utils';
-	import MdiContentCopy from "~icons/mdi/content-copy";
-	import MdiCheck from "~icons/mdi/check";
+	import MdiContentCopy from '~icons/mdi/content-copy';
+	import MdiCheck from '~icons/mdi/check';
 
 	interface Props {
 		value: string | number;
@@ -18,7 +18,7 @@
 		if (await copy(value.toString())) {
 			copied = true;
 			messageToast('success', 'Copied to clipboard');
-			setTimeout(() => copied = false, 500);
+			setTimeout(() => (copied = false), 500);
 		} else {
 			messageToast('error', 'Failed to copy');
 		}
@@ -29,14 +29,14 @@
 	type="button"
 	class="
 		cursor-pointer
-		hover:text-accent
 		transition-colors
+		hover:text-accent
 	"
 	onclick={handleClick}
 >
 	{#if copied}
-		<MdiCheck class="text-accent w-4 h-4" />
+		<MdiCheck class="h-4 w-4 text-accent" />
 	{:else}
-		<MdiContentCopy class="w-4 h-4" />
+		<MdiContentCopy class="h-4 w-4" />
 	{/if}
 </button>

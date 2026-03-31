@@ -21,30 +21,34 @@
 	let paceM = $state<number | undefined>();
 	let paceS = $state<number | undefined>();
 
-	let locked = $state<"time" | "distance" | "pace">("pace");
+	let locked = $state<'time' | 'distance' | 'pace'>('pace');
 
-	const lock = (f: "time" | "distance" | "pace") => (locked = f);
+	const lock = (f: 'time' | 'distance' | 'pace') => (locked = f);
 
 	$effect(() => {
 		const t = hmsToSeconds(timeH, timeM, timeS);
 		const p = hmsToSeconds(paceH, paceM, paceS);
 		const d = distance || 0;
 
-		if (locked === "distance" && p > 0 && t > 0) {
+		if (locked === 'distance' && p > 0 && t > 0) {
 			const dist = t / p;
 			distance = Number(dist.toFixed(2));
 		}
 
-		if (locked === "time" && p > 0 && distance) {
+		if (locked === 'time' && p > 0 && distance) {
 			const total = p * d;
 			const { h, m, s } = secondsToHMS(total);
-			timeH = h; timeM = m; timeS = s;
+			timeH = h;
+			timeM = m;
+			timeS = s;
 		}
 
-		if (locked === "pace" && d && t > 0) {
+		if (locked === 'pace' && d && t > 0) {
 			const perKm = t / d;
 			const { h, m, s } = secondsToHMS(perKm);
-			paceH = h; paceM = m; paceS = s;
+			paceH = h;
+			paceM = m;
+			paceS = s;
 		}
 	});
 
@@ -69,27 +73,24 @@
 		}
 	}
 
-	const baseInput = "w-6 text-center bg-transparent border-b outline-none transition-colors";
-	const unlockedInput = "focus:border-accent hover:border-accent";
+	const baseInput = 'w-6 text-center bg-transparent border-b outline-none transition-colors';
+	const unlockedInput = 'focus:border-accent hover:border-accent';
 </script>
 
-{#snippet labeledButton(label: string, active: boolean, onclick: () => void) }
-	<button
-		class="cursor-pointer transition-colors hover:text-accent {active ? 'text-accent' : ''}"
-		onclick={onclick}
-	>
+{#snippet labeledButton(label: string, active: boolean, onclick: () => void)}
+	<button class="cursor-pointer transition-colors hover:text-accent {active ? 'text-accent' : ''}" {onclick}>
 		{label}
 	</button>
 {/snippet}
 
-{#snippet colons() }
+{#snippet colons()}
 	<span class="mx-2 text-accent">:</span>
 {/snippet}
 
-<section class="max-w-xs mx-auto space-y-6">
+<section class="mx-auto max-w-xs space-y-6">
 	<!-- TIME -->
-	<div class="flex justify-between items-center gap-8">
-		{@render labeledButton("Time", locked === "time", () => lock("time"))}
+	<div class="flex items-center justify-between gap-8">
+		{@render labeledButton('Time', locked === 'time', () => lock('time'))}
 
 		<div class="flex items-center transition-opacity {locked === 'time' ? 'opacity-50' : ''}">
 			<input
@@ -97,9 +98,10 @@
 				bind:this={timeHEl}
 				bind:value={timeH}
 				placeholder="h"
-				readonly={locked === "time"}
+				readonly={locked === 'time'}
 				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
-				oninput={(e) => limit2(e, timeMEl)} />
+				oninput={(e) => limit2(e, timeMEl)}
+			/>
 
 			{@render colons()}
 
@@ -108,7 +110,7 @@
 				bind:this={timeMEl}
 				bind:value={timeM}
 				placeholder="m"
-				readonly={locked === "time"}
+				readonly={locked === 'time'}
 				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, timeSEl)}
 			/>
@@ -120,7 +122,7 @@
 				bind:this={timeSEl}
 				bind:value={timeS}
 				placeholder="s"
-				readonly={locked === "time"}
+				readonly={locked === 'time'}
 				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, distanceEl)}
 			/>
@@ -128,8 +130,8 @@
 	</div>
 
 	<!-- DISTANCE -->
-	<div class="flex justify-between items-center">
-		{@render labeledButton("Distance", locked === "distance", () => lock("distance"))}
+	<div class="flex items-center justify-between">
+		{@render labeledButton('Distance', locked === 'distance', () => lock('distance'))}
 
 		<input
 			type="number"
@@ -137,15 +139,17 @@
 			bind:value={distance}
 			step="0.1"
 			placeholder="km"
-			readonly={locked === "distance"}
-			class="w-20 h-full text-right bg-transparent border-b outline-none transition-colors {locked === 'distance' ? 'opacity-50' : 'focus:border-accent hover:border-accent'}"
-			oninput={(e) => locked !== "distance" && enforceDistanceLimit(e)}
+			readonly={locked === 'distance'}
+			class="h-full w-20 border-b bg-transparent text-right transition-colors outline-none {locked === 'distance'
+				? 'opacity-50'
+				: 'hover:border-accent focus:border-accent'}"
+			oninput={(e) => locked !== 'distance' && enforceDistanceLimit(e)}
 		/>
 	</div>
 
 	<!-- PACE -->
-	<div class="flex justify-between items-center">
-		{@render labeledButton("Pace", locked === "pace", () => lock("pace"))}
+	<div class="flex items-center justify-between">
+		{@render labeledButton('Pace', locked === 'pace', () => lock('pace'))}
 
 		<div class="flex items-center transition-opacity {locked === 'pace' ? 'opacity-50' : ''}">
 			<input
@@ -153,7 +157,7 @@
 				bind:this={paceHEl}
 				bind:value={paceH}
 				placeholder="h"
-				readonly={locked === "pace"}
+				readonly={locked === 'pace'}
 				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, paceMEl)}
 			/>
@@ -165,7 +169,7 @@
 				bind:this={paceMEl}
 				bind:value={paceM}
 				placeholder="m"
-				readonly={locked === "pace"}
+				readonly={locked === 'pace'}
 				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, paceSEl)}
 			/>
@@ -177,23 +181,22 @@
 				bind:this={paceSEl}
 				bind:value={paceS}
 				placeholder="s"
-				readonly={locked === "pace"}
+				readonly={locked === 'pace'}
 				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, timeHEl)}
 			/>
-
 		</div>
 	</div>
 </section>
 
 <style>
-    /* Remove spinner buttons */
-    input::-webkit-inner-spin-button,
-    input::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-    input[type="number"] {
-        -moz-appearance: textfield;
-    }
+	/* Remove spinner buttons */
+	input::-webkit-inner-spin-button,
+	input::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
 </style>

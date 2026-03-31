@@ -2,11 +2,7 @@
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
 
-
-	import {
-		type Pokemon,
-		computeLevel100Stats
-	} from '$lib/utils/pmd-blue.utils';
+	import { type Pokemon, computeLevel100Stats } from '$lib/utils/pmd-blue.utils';
 	import PokemonCell from '$lib/components/pmd-blue/PokemonCell.svelte';
 
 	const pokemons = pokemonsRaw as Pokemon[];
@@ -33,8 +29,8 @@
 
 	const columns: Column[] = [
 		{
-			key: "name",
-			label: "Name",
+			key: 'name',
+			label: 'Name',
 			searchValue: (p) => p.name,
 			renderComponent: (p) => ({
 				component: PokemonCell,
@@ -42,17 +38,17 @@
 			})
 		},
 
-		{ key: "lvl1_hp", label: "HP (1)" },
-		{ key: "lvl1_atk", label: "Atk (1)" },
-		{ key: "lvl1_def", label: "Def (1)" },
-		{ key: "lvl1_sp_atk", label: "SpA (1)" },
-		{ key: "lvl1_sp_def", label: "SpD (1)" },
+		{ key: 'lvl1_hp', label: 'HP (1)' },
+		{ key: 'lvl1_atk', label: 'Atk (1)' },
+		{ key: 'lvl1_def', label: 'Def (1)' },
+		{ key: 'lvl1_sp_atk', label: 'SpA (1)' },
+		{ key: 'lvl1_sp_def', label: 'SpD (1)' },
 
-		{ key: "lvl100_hp", label: "HP (100)" },
-		{ key: "lvl100_atk", label: "Atk (100)" },
-		{ key: "lvl100_def", label: "Def (100)" },
-		{ key: "lvl100_sp_atk", label: "SpA (100)" },
-		{ key: "lvl100_sp_def", label: "SpD (100)" }
+		{ key: 'lvl100_hp', label: 'HP (100)' },
+		{ key: 'lvl100_atk', label: 'Atk (100)' },
+		{ key: 'lvl100_def', label: 'Def (100)' },
+		{ key: 'lvl100_sp_atk', label: 'SpA (100)' },
+		{ key: 'lvl100_sp_def', label: 'SpD (100)' }
 	];
 </script>
 

@@ -10,8 +10,8 @@
 </script>
 
 <div class="flex items-center gap-2">
-	<div class="w-14 h-14 aspect-square">
-		<DigimonIcon digimon={digimon} />
+	<div class="aspect-square h-14 w-14">
+		<DigimonIcon {digimon} />
 	</div>
 	<div>{digimon.name}</div>
 </div>

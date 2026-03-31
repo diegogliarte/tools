@@ -13,18 +13,18 @@
 	}
 </script>
 
-<div class="text-xs fixed right-4 bottom-4 z-60 flex max-w-[calc(100vw-2rem)] flex-col gap-2 sm:max-w-sm">
+<div class="fixed right-4 bottom-4 z-60 flex max-w-[calc(100vw-2rem)] flex-col gap-2 text-xs sm:max-w-sm">
 	{#each $toastState as toast (toast.id)}
 		<button
 			type="button"
 			aria-label="Dismiss notification"
 			class="
 				w-full
-				border
-				bg-bg
-				px-3 py-2
-				text-left
 				cursor-pointer
+				border
+				bg-bg px-3
+				py-2
+				text-left
 				transition-colors
 				hover:border-accent
 				{typeClass[toast.type] || ''}

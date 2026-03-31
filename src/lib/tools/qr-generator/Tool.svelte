@@ -1,9 +1,9 @@
 <script lang="ts">
-	import TextInput from "$lib/components/ui/text-input.svelte";
-	import QRCode from "qrcode";
+	import TextInput from '$lib/components/ui/text-input.svelte';
+	import QRCode from 'qrcode';
 
-	let text = $state("");
-	let caption = $state("");
+	let text = $state('');
+	let caption = $state('');
 	let visible = $state(false);
 
 	let canvas: HTMLCanvasElement;
@@ -12,7 +12,7 @@
 		(async () => {
 			if (!text.trim()) {
 				visible = false;
-				caption = "";
+				caption = '';
 				return;
 			}
 
@@ -22,31 +22,25 @@
 					margin: 2
 				});
 				visible = true;
-				caption = "Click QR to download";
-
+				caption = 'Click QR to download';
 			} catch (e) {
 				console.error(e);
-				caption = "There was an error trying to generate the QR code.";
+				caption = 'There was an error trying to generate the QR code.';
 			}
 		})();
 	});
 
-
 	function downloadQR() {
 		if (!text.trim()) return;
 
-		const link = document.createElement("a");
-		link.href = canvas.toDataURL("image/png");
-		link.download = "qr-code.png";
+		const link = document.createElement('a');
+		link.href = canvas.toDataURL('image/png');
+		link.download = 'qr-code.png';
 		link.click();
 	}
 </script>
 
-<TextInput
-	bind:value={text}
-	label="Enter a text or URL"
-	placeholder="https://example.com"
-/>
+<TextInput bind:value={text} label="Enter a text or URL" placeholder="https://example.com" />
 
 <div class="flex flex-col items-center">
 	<canvas
@@ -61,9 +55,12 @@
 	></canvas>
 </div>
 
-<p class="
-	text-xs
+<p
+	class="
 	h-1
 	text-center
+	text-xs
 	transition-opacity {visible ? 'opacity-100' : 'opacity-0'}"
->{caption}</p>
+>
+	{caption}
+</p>

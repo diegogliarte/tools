@@ -117,12 +117,7 @@
 		return moveIds.every((id) => moveSet.has(id));
 	}
 
-	function filteredPokemons(args?: {
-		pokemonName?: string;
-		ability1?: string;
-		ability2?: string;
-		moveIds?: string[];
-	}) {
+	function filteredPokemons(args?: { pokemonName?: string; ability1?: string; ability2?: string; moveIds?: string[] }) {
 		return pokemons.filter((pokemon) => matchesPokemon(pokemon, args));
 	}
 
@@ -171,11 +166,7 @@
 		)
 	);
 
-	function includeCurrentOption(
-		options: Option[],
-		currentValue: string,
-		getLabel: (value: string) => string | null
-	) {
+	function includeCurrentOption(options: Option[], currentValue: string, getLabel: (value: string) => string | null) {
 		if (!currentValue) return options;
 		if (options.some((o) => o.value === currentValue)) return options;
 
@@ -231,16 +222,9 @@
 		}
 
 		const currentValue =
-			slot === 1 ? selectedMove1 :
-				slot === 2 ? selectedMove2 :
-					slot === 3 ? selectedMove3 :
-						selectedMove4;
+			slot === 1 ? selectedMove1 : slot === 2 ? selectedMove2 : slot === 3 ? selectedMove3 : selectedMove4;
 
-		return includeCurrentOption(
-			uniqueOptions(options),
-			currentValue,
-			(value) => moveById.get(value)?.name ?? null
-		);
+		return includeCurrentOption(uniqueOptions(options), currentValue, (value) => moveById.get(value)?.name ?? null);
 	}
 
 	const move1Options = $derived.by(() => moveOptions(1));
@@ -264,7 +248,7 @@
 {/snippet}
 
 {#snippet moveCard(move: Move)}
-	<div class="opacity-80 text-xs">
+	<div class="text-xs opacity-80">
 		{move.type ?? '—'} · Power {move.power ?? '—'} · {move.maxPP ?? '—'}PP · {move.targets ?? '—'}
 		{#if formatHitMode(move)}
 			· {formatHitMode(move)}
@@ -272,10 +256,10 @@
 	</div>
 {/snippet}
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 	<div class="flex flex-col gap-4">
-		<div class="flex flex-row gap-2 items-center">
-			<div class="h-full aspect-square flex items-center justify-center text-center">
+		<div class="flex flex-row items-center gap-2">
+			<div class="flex aspect-square h-full items-center justify-center text-center">
 				{#if selectedPokemonData}
 					<PokemonIcon pokemon={selectedPokemonData} />
 				{:else}
@@ -284,22 +268,12 @@
 			</div>
 
 			<div class="w-full">
-				<SelectInput
-					options={pokemonOptions}
-					placeholder="Pokémon"
-					allowEmpty={true}
-					bind:value={selectedPokemon}
-				/>
+				<SelectInput options={pokemonOptions} placeholder="Pokémon" allowEmpty={true} bind:value={selectedPokemon} />
 			</div>
 		</div>
 
 		<div class="flex flex-col gap-1">
-			<SelectInput
-				options={ability1Options}
-				placeholder="Ability 1"
-				allowEmpty={true}
-				bind:value={selectedAbility1}
-			/>
+			<SelectInput options={ability1Options} placeholder="Ability 1" allowEmpty={true} bind:value={selectedAbility1} />
 
 			{#if selectedAbility1Data}
 				{@render detailCard(selectedAbility1Data.name, selectedAbility1Data.description)}
@@ -307,12 +281,7 @@
 		</div>
 
 		<div class="flex flex-col gap-1">
-			<SelectInput
-				options={ability2Options}
-				placeholder="Ability 2"
-				allowEmpty={true}
-				bind:value={selectedAbility2}
-			/>
+			<SelectInput options={ability2Options} placeholder="Ability 2" allowEmpty={true} bind:value={selectedAbility2} />
 
 			{#if selectedAbility2Data}
 				{@render detailCard(selectedAbility2Data.name, selectedAbility2Data.description)}

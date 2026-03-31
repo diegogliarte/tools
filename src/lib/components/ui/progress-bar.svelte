@@ -11,18 +11,11 @@
 		min?: number;
 		max?: number;
 		label?: string;
-		showValue?: boolean;  // show floating label below bar
+		showValue?: boolean; // show floating label below bar
 		segments?: Segment[]; // optional array of segment ranges
 	}
 
-	let {
-		value = $bindable(0),
-		min = 0,
-		max,
-		label = "",
-		showValue = true,
-		segments = []
-	}: Props = $props();
+	let { value = $bindable(0), min = 0, max, label = '', showValue = true, segments = [] }: Props = $props();
 
 	const uid = $props.id();
 
@@ -38,7 +31,7 @@
 		if (segments.length === 0) return [];
 
 		return segments.map((seg, i) => {
-			const start = i === 0 ? min : segments[i-1].limit;
+			const start = i === 0 ? min : segments[i - 1].limit;
 			const end = seg.limit;
 
 			const widthPercentage = ((end - start) / (max - min)) * 100;
@@ -47,67 +40,56 @@
 	});
 
 	const COLOR_MAP = {
-		blue:  "text-blue-500",
-		green: "text-green-500",
-		yellow:"text-yellow-500",
-		red:   "text-red-500",
-		accent:"text-accent",
-		white: "text-white",
-		black: "text-black"
+		blue: 'text-blue-500',
+		green: 'text-green-500',
+		yellow: 'text-yellow-500',
+		red: 'text-red-500',
+		accent: 'text-accent',
+		white: 'text-white',
+		black: 'text-black'
 	};
 
 	let currentColor: string = $derived.by(() => {
 		if (value === null || value === undefined || segments.length === 0) {
-			return "text-text"; // fallback to your theme's default text
+			return 'text-text'; // fallback to your theme's default text
 		}
 
 		for (const seg of segments) {
-			if (value <= seg.limit) return COLOR_MAP[seg.color] ?? "text-text";
+			if (value <= seg.limit) return COLOR_MAP[seg.color] ?? 'text-text';
 		}
 
 		// above last segment
-		return COLOR_MAP[segments[segments.length - 1].color] ?? "text-text";
+		return COLOR_MAP[segments[segments.length - 1].color] ?? 'text-text';
 	});
-
 </script>
 
-<div class="flex flex-col w-full gap-0.5">
-
+<div class="flex w-full flex-col gap-0.5">
 	{#if label}
 		<label for={uid}>{label}</label>
 	{/if}
 
-	<div class="relative w-full mb-4">
+	<div class="relative mb-4 w-full">
 		{#if showValue}
 			<div
 				class="absolute -bottom-7 transition-all {currentColor}"
-				style={
-					value !== null
-						? `left: calc(${percentage}% - 1rem)`
-						: "left: 50%; transform: translateX(-50%);"
-				}
+				style={value !== null ? `left: calc(${percentage}% - 1rem)` : 'left: 50%; transform: translateX(-50%);'}
 			>
-				{value !== null ? value.toFixed(1) : "??"}
+				{value !== null ? value.toFixed(1) : '??'}
 			</div>
 		{/if}
 
-		<div class="border border-text h-3">
-			<div
-				class="h-full bg-accent transition-all"
-				style="width: {percentage}%"
-			></div>
+		<div class="h-3 border border-text">
+			<div class="h-full bg-accent transition-all" style="width: {percentage}%"></div>
 
 			<!-- Segment ticks -->
-			<div class="absolute inset-0 pointer-events-none">
+			<div class="pointer-events-none absolute inset-0">
 				{#each segments as seg}
 					<div
 						class="absolute top-0 bottom-0 border-r border-white"
-						style="left: {( (seg.limit - min) / (max - min) ) * 100}%"
+						style="left: {((seg.limit - min) / (max - min)) * 100}%"
 					></div>
 				{/each}
 			</div>
-
 		</div>
-
 	</div>
 </div>

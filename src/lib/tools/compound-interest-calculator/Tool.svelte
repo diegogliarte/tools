@@ -1,7 +1,7 @@
 <script lang="ts">
-	import NumberInput from "$lib/components/ui/number-input.svelte";
-	import LineChart from "$lib/components/ui/line-chart.svelte";
-	import LabeledRow from "$lib/components/ui/labeled-row.svelte";
+	import NumberInput from '$lib/components/ui/number-input.svelte';
+	import LineChart from '$lib/components/ui/line-chart.svelte';
+	import LabeledRow from '$lib/components/ui/labeled-row.svelte';
 
 	let principal = $state(1000);
 	let monthly = $state(100);
@@ -45,49 +45,36 @@
 
 	const datasets = $derived.by(() => [
 		{
-			label: "Contributed",
+			label: 'Contributed',
 			data: result.contributed,
-			color: "#60A5FA" // blue-400
+			color: '#60A5FA' // blue-400
 		},
 		{
-			label: "Interest Earned",
+			label: 'Interest Earned',
 			data: result.earned,
-			color: "#34D399" // green-400
+			color: '#34D399' // green-400
 		},
 		{
-			label: "Total Value",
+			label: 'Total Value',
 			data: result.total,
-			color: "#A78BFA" // purple-400
+			color: '#A78BFA' // purple-400
 		}
 	]);
 
 	function formatMoney(n: number): string {
-		return n.toLocaleString("es-ES", {
-			style: "currency",
-			currency: "EUR",
+		return n.toLocaleString('es-ES', {
+			style: 'currency',
+			currency: 'EUR',
 			minimumFractionDigits: 2,
-			maximumFractionDigits: 2,
+			maximumFractionDigits: 2
 		});
 	}
 
-	const finalContrib = $derived(
-		result.contributed.length
-			? formatMoney(result.contributed.at(-1)!)
-			: ""
-	);
+	const finalContrib = $derived(result.contributed.length ? formatMoney(result.contributed.at(-1)!) : '');
 
-	const finalEarned = $derived(
-		result.earned.length
-			? formatMoney(result.earned.at(-1)!)
-			: ""
-	);
+	const finalEarned = $derived(result.earned.length ? formatMoney(result.earned.at(-1)!) : '');
 
-	const finalTotal = $derived(
-		result.total.length
-			? formatMoney(result.total.at(-1)!)
-			: ""
-	);
-
+	const finalTotal = $derived(result.total.length ? formatMoney(result.total.at(-1)!) : '');
 </script>
 
 <div class="grid grid-cols-2 gap-4">
@@ -98,19 +85,16 @@
 </div>
 
 <div class="flex flex-col gap-4 md:flex-row">
-	<LabeledRow valueAlign="center" label="Contributed" value={finalContrib} isCopyable={false} group="compound-interest"/>
-	<LabeledRow valueAlign="center" label="Earned" value={finalEarned} isCopyable={false} group="compound-interest"/>
-	<LabeledRow valueAlign="center" label="Total" value={finalTotal} isCopyable={false} group="compound-interest"/>
+	<LabeledRow
+		valueAlign="center"
+		label="Contributed"
+		value={finalContrib}
+		isCopyable={false}
+		group="compound-interest"
+	/>
+	<LabeledRow valueAlign="center" label="Earned" value={finalEarned} isCopyable={false} group="compound-interest" />
+	<LabeledRow valueAlign="center" label="Total" value={finalTotal} isCopyable={false} group="compound-interest" />
 </div>
 
-
-
 <!-- Chart -->
-<LineChart
-	labels={result.labels}
-	datasets={datasets}
-	preset="currency"
-	currency="EUR"
-	locale="es-ES"
-	yZero={true}
-/>
+<LineChart labels={result.labels} {datasets} preset="currency" currency="EUR" locale="es-ES" yZero={true} />
