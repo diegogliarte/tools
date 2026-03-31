@@ -59,7 +59,7 @@
 
 		interval = setInterval(() => {
 			index++;
-		}, 2500);
+		}, 3000);
 	}
 
 	function stopAuto() {
@@ -112,7 +112,7 @@
 				I'm currently developing <strong>VPetlings</strong>, a game where you raise your own virtual pet right on your <strong>desktop</strong>.
 			</p>
 
-			<p class="flex flex-wrap items-center gap-2">
+			<p class="flex flex-wrap items-center gap-1.5">
 				<span>If you enjoy my tools, I would highly appreciate following us on</span>
 
 				<a
@@ -124,7 +124,7 @@
 					<span>Twitter</span>
 				</a>
 
-				<span> as well as</span>
+				<span> as well as giving us a</span>
 
 				<a
 					href={steamUrl}
@@ -132,7 +132,7 @@
 					class="flex items-center gap-1 text-accent hover:underline cursor-pointer"
 				>
 					<MdiSteam class="h-4 w-4" />
-					<span>wishlisting it on Steam</span>
+					<span>wishlist on Steam</span>
 				</a>
 			</p>
 		</div>
