@@ -12,8 +12,8 @@
 
 <svelte:head>
 	<title>{tool ? `${tool.title} | ${tool?.categoryPath.join(' | ')}` : 'Not Found'}</title>
-	<meta name="description" content={tool?.description ?? 'Not Found'} />
-	<link rel="icon" href={`${tool?.favicon ?? '/favicons/favicon.ico'}?v=${tool?.href}`} />
+	<meta name="description" content={`${tool?.title ?? 'Not Found'} - ${tool?.description ?? 'Not Found'}`} />
+	<link rel="icon" href={`${tool?.favicon ?? '/favicons/default.png	'}?v=${tool?.href}`} />
 
 	<meta property="og:title" content={tool?.title ?? 'Not Found'} />
 	<meta property="og:description" content={tool?.description ?? 'Not Found'} />
