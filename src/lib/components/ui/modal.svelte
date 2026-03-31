@@ -43,7 +43,7 @@
 	}}
 	class="
 		mx-auto my-auto
-		flex h-full
+		flex min-h-[100dvh]
 		w-full items-center
 		justify-center
 		border-none
@@ -53,12 +53,12 @@
 >
 	<div
 		class="
-			relative max-h-[90vh] w-[min(90vw,800px)]
-			overflow-y-auto
+			relative max-h-[calc(100dvh-4rem)] w-[min(90vw,800px)]
+			overflow-y-auto overscroll-contain
 			border
 			border-text
 			bg-bg
-			p-4
+			p-2
 		"
 	>
 		{#if title || closable}

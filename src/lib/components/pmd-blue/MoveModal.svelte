@@ -92,7 +92,6 @@
 		return mode;
 	}
 
-	// 🔥 Pokemon learning this move
 	const learnedBy = $derived.by(() => {
 		if (!move.id) return { levelUp: [], tm: [] };
 
