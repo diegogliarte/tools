@@ -1,5 +1,4 @@
 <script lang="ts">
-	import MdiMenu from '~icons/mdi/menu';
 	import MdiGithub from '~icons/mdi/github';
 	import MdiHome from '~icons/mdi/home';
 	import MdiShape from '~icons/mdi/shape';

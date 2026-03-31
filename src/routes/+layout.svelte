@@ -46,7 +46,7 @@
 <div class="flex h-[100dvh] overflow-y-hidden bg-bg text-text">
 	<Sidebar visible={isSidebarOpen} />
 
-	<div class="flex flex-1 flex-col">
+	<div class="flex flex-1 flex-col min-w-0">
 		<Navbar bind:isSidebarOpen />
 
 		<main bind:this={mainEl} class="flex-1 overflow-y-auto p-2">
