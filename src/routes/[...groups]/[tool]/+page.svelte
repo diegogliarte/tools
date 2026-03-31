@@ -28,7 +28,7 @@
 	<div
 		class="flex flex-col {!tool.fullscreen ? 'mx-auto max-w-3xl' : ''} {!tool.removeBorder
 			? 'border-0'
-			: ''} m-4 mt-8 gap-8 border-text"
+			: ''} m-4 mt-8 gap-8 border-text w-fit"
 	>
 		<Component />
 	</div>

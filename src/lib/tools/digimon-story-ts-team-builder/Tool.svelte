@@ -230,7 +230,7 @@
 	<div class="flex flex-wrap gap-2">
 		{#each filteredDigimon as d (d.id)}
 			<button type="button" class="w-12 transition hover:scale-110" onclick={() => startChain(d)}>
-				<DigimonIcon digimon={d} />
+				<DigimonIcon digimon={d} openModal={false} />
 			</button>
 		{/each}
 	</div>

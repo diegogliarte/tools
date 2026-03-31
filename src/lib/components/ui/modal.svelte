@@ -53,7 +53,7 @@
 >
 	<div
 		class="
-			relative max-h-[calc(100dvh-4rem)] w-[min(90vw,800px)]
+			relative max-h-[calc(100dvh-4rem)] w-[min(85vw,800px)]
 			overflow-y-auto overscroll-contain
 			border
 			border-text
