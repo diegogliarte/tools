@@ -7,11 +7,13 @@
 	let categoryPath = $derived(params.groups.split('/'));
 	let toolSlug = $derived(params.tool);
 	let tool = $derived(findTool(categoryPath, toolSlug, toolsTree));
+
 </script>
 
 <svelte:head>
-	<title>{tool?.title ?? 'Not Found'} | Tools</title>
+	<title>{tool ? `${tool.title} | ${tool?.categoryPath.join(' | ')}` : 'Not Found'}</title>
 	<meta name="description" content={tool?.description ?? 'Not Found'} />
+	<link rel="icon" href={`${tool?.favicon ?? '/favicons/favicon.ico'}?v=${tool?.href}`} />
 
 	<meta property="og:title" content={tool?.title ?? 'Not Found'} />
 	<meta property="og:description" content={tool?.description ?? 'Not Found'} />

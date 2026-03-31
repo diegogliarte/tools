@@ -23,16 +23,28 @@ import { tool as PMDBlueStats } from '$lib/tools/pmd-blue-stats';
 import { tool as PMDBlueTeamBuilder } from '$lib/tools/pmd-blue-team-builder';
 import { tool as PMDBlueJoySeedFarming } from '$lib/tools/pmd-blue-joy-seed-farming';
 
-function applyHref(category: ToolCategory, parentPath = ''): ToolCategory {
+function enrichTool(
+	category: ToolCategory,
+	parentPath = '',
+	parentFavicon?: string,
+	parentCategoryPath: string[] = []
+): ToolCategory {
 	const categorySlug = slugify(category.name);
 	const fullPath = parentPath ? `${parentPath}/${categorySlug}` : categorySlug;
+	const favicon = category.favicon ?? parentFavicon;
+
+	const currentCategoryPath = [...parentCategoryPath, category.name];
 
 	category.tools = category.tools.map((tool) => ({
 		...tool,
-		href: `/${fullPath}/${slugify(tool.title)}`
+		href: `/${fullPath}/${slugify(tool.title)}`,
+		favicon: tool.favicon ?? favicon,
+		categoryPath: currentCategoryPath
 	}));
 
-	category.subgroups = category.subgroups.map((sub) => applyHref(sub, fullPath));
+	category.subgroups = category.subgroups.map((sub) =>
+		enrichTool(sub, fullPath, favicon, currentCategoryPath)
+	);
 
 	return category;
 }
@@ -60,13 +72,15 @@ export const rawTree: ToolCategory[] = [
 	},
 	{
 		name: 'Inazuma Eleven VR',
+		favicon: '/favicons/inazuma-eleven.png',
 		tools: [InazumaElevenVRStats, InazumaElevenVRVisualizer],
-		subgroups: []
+		subgroups: [],
 	},
 	{
 		name: 'Digimon Story TS',
+		favicon: '/favicons/digimon.png',
 		tools: [DigimonStoryTSStats, DigimonStoryTSTeamBuilder, DigimonStoryTSShortestRoute],
-		subgroups: []
+		subgroups: [],
 	},
 	{
 		name: 'OSRS',
@@ -75,6 +89,7 @@ export const rawTree: ToolCategory[] = [
 	},
 	{
 		name: 'Pokémon Mystery Dungeon',
+		favicon: '/favicons/pokemon.png',
 		tools: [],
 		subgroups: [
 			{
@@ -86,4 +101,4 @@ export const rawTree: ToolCategory[] = [
 	}
 ];
 
-export const toolsTree = rawTree.map((c) => applyHref(c));
+export const toolsTree = rawTree.map((c) => enrichTool(c));

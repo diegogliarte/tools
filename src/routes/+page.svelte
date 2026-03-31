@@ -5,7 +5,7 @@
 
 <svelte:head>
 	<title>Home | Tools</title>
-	<meta name="description" content="Browse all available tools." />
+	<meta name="description" content="Browse all my tools." />
 
 	<meta property="og:title" content="Home | Tools" />
 	<meta property="og:description" content="Browse all available tools." />
