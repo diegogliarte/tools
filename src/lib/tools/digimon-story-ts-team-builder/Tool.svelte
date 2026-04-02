@@ -15,33 +15,74 @@
 	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 	import { getEvolutions, getPreEvolutions, indexDigimonById } from '$lib/utils/digimon-story-ts.utils';
+	import { setCookies } from '$lib/utils/cookies.utils';
+	import { createCookieState } from '$lib/states/cookies.svelte';
+
+	interface Props {
+		cookieKey: string;
+		cookieState: any;
+	}
+
+	let { cookieKey, cookieState }: Props = $props();
+
+	const STORAGE_KEY = 'digimon-story-ts:team-builder';
+
+	function normalizeCookieState(value: any): Chain[] {
+		if (Array.isArray(value)) return value;
+
+		if (value && typeof value === 'object') {
+			const arr = Object.values(value);
+			if (arr.every(v => Array.isArray(v))) {
+				return arr as Chain[];
+			}
+		}
+
+		return [];
+	}
+
+	function getFallbackState(): Chain[] {
+		if (typeof window === 'undefined') return [];
+
+		try {
+			const raw = localStorage.getItem(STORAGE_KEY);
+			if (!raw) return [];
+
+			const parsed = JSON.parse(raw);
+			if (Array.isArray(parsed)) {
+				setCookies(cookieKey, parsed);
+				return parsed;
+			}
+		} catch {}
+
+		return [];
+	}
+
+	type Chain = number[];
+
+	const team = createCookieState(
+		cookieKey,
+		normalizeCookieState(cookieState),
+		[]
+	);
+
+	if (team.length === 0) {
+		const fallback = getFallbackState();
+		if (fallback.length > 0) {
+			team.splice(0, team.length, ...fallback);
+		}
+	}
+
+	function setTeam(next: Chain[]) {
+		team.length = 0;
+		team.push(...next);
+	}
 
 	const digimon: Digimon[] = digimonRaw as unknown as Digimon[];
 	const digimonById = indexDigimonById(digimon);
 
-	const STORAGE_KEY = 'digimon-story-ts:team-builder';
-
-	$effect(() => {
-		const raw = localStorage.getItem(STORAGE_KEY);
-		if (!raw) return;
-
-		try {
-			const parsed = JSON.parse(raw);
-			if (Array.isArray(parsed)) {
-				team = parsed;
-			}
-		} catch {}
-	});
-
-	$effect(() => {
-		localStorage.setItem(STORAGE_KEY, JSON.stringify(team));
-	});
-
 	let search = $state('');
-	type Chain = number[];
-	let team = $state<Chain[]>([]);
 
-	function encodeTeam(team: number[][]): string {
+	function encodeTeam(): string {
 		const snapshot = $state.snapshot(team);
 		return btoa(JSON.stringify(snapshot)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 	}
@@ -55,7 +96,7 @@
 		}
 	}
 
-	const teamEncoded = $derived(encodeTeam(team));
+	const teamEncoded = $derived(encodeTeam());
 
 	onMount(() => {
 		const params = new URLSearchParams(window.location.search);
@@ -69,8 +110,8 @@
 		const decoded = decodeTeam(raw);
 		if (!decoded) return;
 
-		team = decoded;
-		localStorage.setItem(STORAGE_KEY, JSON.stringify(decoded));
+		setTeam(decoded);
+		setCookies(cookieKey, decoded);
 
 		const url = new URL(window.location.href);
 		url.searchParams.delete('team');
@@ -92,17 +133,17 @@
 	});
 
 	function startChain(d: Digimon) {
-		team = [...team, [d.id]];
+		setTeam([...team, [d.id]]);
 		search = '';
 	}
 
 	function updateChain(index: number, next: number[]) {
 		if (next.length === 0) {
-			team = team.filter((_, i) => i !== index);
+			setTeam(team.filter((_, i) => i !== index));
 			return;
 		}
 
-		team = team.map((c, i) => (i === index ? next : c));
+		setTeam(team.map((c, i) => (i === index ? next : c)));
 	}
 
 	function extendLeft(index: number, d: Digimon) {
@@ -134,7 +175,7 @@
 	}
 
 	function deleteChain(index: number) {
-		team = team.filter((_, i) => i !== index);
+		setTeam(team.filter((_, i) => i !== index));
 	}
 
 	function moveChainUp(index: number) {
@@ -142,7 +183,7 @@
 
 		const updated = [...team];
 		[updated[index - 1], updated[index]] = [updated[index], updated[index - 1]];
-		team = updated;
+		setTeam(updated);
 	}
 
 	function moveChainDown(index: number) {
@@ -150,7 +191,7 @@
 
 		const updated = [...team];
 		[updated[index], updated[index + 1]] = [updated[index + 1], updated[index]];
-		team = updated;
+		setTeam(updated);
 	}
 
 	function randomItem<T>(arr: T[]): T {
@@ -202,7 +243,7 @@
 			chains.push(chain);
 		}
 
-		team = chains;
+		setTeam(chains);
 		search = '';
 	}
 </script>

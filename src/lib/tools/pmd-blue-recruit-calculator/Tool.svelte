@@ -2,11 +2,25 @@
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
 	import NumberInput from '$lib/components/ui/number-input.svelte';
+	import { createCookieState } from '$lib/states/cookies.svelte';
 
 	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
 
-	import { type Pokemon, buildEvolvesFromMap, computeRecruitRate } from '$lib/utils/pmd-blue.utils';
+	import { buildEvolvesFromMap, computeRecruitRate, type Pokemon } from '$lib/utils/pmd-blue.utils';
 	import PokemonCell from '$lib/components/pmd-blue/PokemonCell.svelte';
+
+	interface Props {
+		cookieKey: string;
+		cookieState: any;
+	}
+
+	let { cookieKey, cookieState }: Props = $props();
+
+	const _state = createCookieState(cookieKey, cookieState, {
+		leaderLevel: 90,
+		friendBow: false,
+		hideUnrecruitable: false
+	});
 
 	const pokemons = pokemonsRaw as Pokemon[];
 
@@ -72,17 +86,13 @@
 		return map;
 	})();
 
-	let leaderLevel = $state(90);
-	let friendBow = $state(false);
-	let hideUnrecruitable = $state(false);
-
 	const rows = $derived.by(() => {
 		let list = pokemons.map((pokemon) => ({
 			...pokemon,
-			effectiveRate: computeRecruitRate(pokemon, leaderLevel, friendBow)
+			effectiveRate: computeRecruitRate(pokemon, _state.leaderLevel, _state.friendBow)
 		}));
 
-		if (hideUnrecruitable) {
+		if (_state.hideUnrecruitable) {
 			list = list.filter((pokemon) => pokemon.effectiveRate > 0);
 		}
 
@@ -179,12 +189,12 @@
 
 <div class="flex items-center justify-center gap-6">
 	<div>
-		<NumberInput label="Leader Level" bind:value={leaderLevel} min={0} max={100} step={1} />
+		<NumberInput label="Leader Level" bind:value={_state.leaderLevel} min={0} max={100} step={1} />
 	</div>
 
-	<CheckboxInput label="Friend Bow" bind:checked={friendBow} />
+	<CheckboxInput label="Friend Bow" bind:checked={_state.friendBow} />
 
-	<CheckboxInput label="Hide unrecruitable" bind:checked={hideUnrecruitable} />
+	<CheckboxInput label="Hide unrecruitable" bind:checked={_state.hideUnrecruitable} />
 </div>
 
 <DataTable {columns} {rows} pageSize={50} />

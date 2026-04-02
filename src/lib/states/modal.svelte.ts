@@ -16,7 +16,6 @@ export function openModal(component: Component<any>, props: Record<string, any> 
 }
 
 export function closeModal() {
-	console.log('Closing modal');
 	modalState.component = null;
 	modalState.props = {};
 }

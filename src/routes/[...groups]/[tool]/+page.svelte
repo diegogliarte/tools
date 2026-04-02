@@ -2,7 +2,7 @@
 	import { findTool } from '$lib/core/tools-registry';
 	import { toolsTree } from '$lib/core/tools-tree';
 
-	let { params } = $props();
+	let { params, data } = $props();
 
 	let categoryPath = $derived(params.groups.split('/'));
 	let toolSlug = $derived(params.tool);
@@ -26,11 +26,9 @@
 	{@const Component = tool.component}
 
 	<div
-		class="flex flex-col {!tool.fullscreen ? 'mx-auto max-w-3xl' : ''} {!tool.removeBorder
-			? 'border-0'
-			: ''} m-4 mt-8 gap-8 border-text w-fit"
+		class="flex flex-col mt-12 gap-8  {!tool.fullscreen ? 'mx-auto max-w-3xl w-full' : 'min-w-full w-fit '} "
 	>
-		<Component />
+		<Component cookieKey={data.cookieKey} cookieState={data.cookieState} />
 	</div>
 {:else}
 	<p>Tool not found</p>

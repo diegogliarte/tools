@@ -10,10 +10,17 @@
 	import Toast from '$lib/components/ui/toast.svelte';
 
 	import { modalState, closeModal } from '$lib/states/modal.svelte';
+	import { setCookies } from '$lib/utils/cookies.utils';
 
-	let { children }: LayoutProps = $props();
+	let { children, data }: LayoutProps = $props();
 
-	let isSidebarOpen = $state(false);
+	const SIDEBAR_KEY = 'layout.sidebar';
+
+	let isSidebarOpen = $state(data.isSidebarOpen ?? false);
+
+	$effect(() => {
+		setCookies(SIDEBAR_KEY, isSidebarOpen);
+	});
 
 	let showScrollTop = $state(false);
 
