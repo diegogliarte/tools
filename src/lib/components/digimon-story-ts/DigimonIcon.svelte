@@ -45,12 +45,12 @@
 </script>
 
 {#if variant === 'default'}
-	<button type="button" class="w-full cursor-pointer border p-0 transition hover:border-accent" onclick={open}>
+	<button type="button" class="w-12 cursor-pointer border p-0 transition hover:border-accent" onclick={open}>
 		<img
 			src={getDigimonIcon(digimon)}
 			alt={digimon.name}
 			loading="lazy"
-			class="pointer-events-none aspect-square h-full w-full object-cover"
+			class="pointer-events-none aspect-square h-12 w-12 object-cover"
 		/>
 	</button>
 {:else}
@@ -69,7 +69,7 @@
 				src={getDigimonIcon(digimon)}
 				alt={digimon.name}
 				loading="lazy"
-				class="pointer-events-none h-full w-full object-cover"
+				class="pointer-events-none h-12 w-12 object-cover"
 			/>
 
 			<img

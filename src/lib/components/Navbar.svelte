@@ -34,7 +34,7 @@
 	</button>
 {/snippet}
 
-<nav class="z-50 flex w-full items-center gap-4 border-b border-text bg-bg px-4 py-1.5 text-text">
+<nav class="z-50 flex w-full items-center gap-4 border-b border-text bg-bg px-2 py-1.5 text-text">
 	<button
 		aria-label="Toggle Sidebar"
 		class="cursor-pointer text-text transition hover:text-accent"

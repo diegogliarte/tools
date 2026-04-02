@@ -27,13 +27,8 @@ export function createCookieState<T>(
 
 	const state = $state<T>(value);
 
-	console.log(`Initial state for ${key}:`, state);
-	console.log(`Defaults for ${key}:`, defaults);
-	console.log(`Initial value for ${key}:`, value);
-
 	let initialized = false;
 	$effect(() => {
-		console.log(`State changed for ${key}:`, state, `initialized: ${initialized}`);
 
 		const snapshot = $state.snapshot(state);
 
