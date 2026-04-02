@@ -70,7 +70,7 @@
 			{#if showScrollTop}
 				<button
 					onclick={scrollToTop}
-					class="fixed right-4 bottom-10 z-50 aspect-square h-8 w-8 cursor-pointer border bg-bg text-sm"
+					class="fixed right-4 bottom-10 z-50 aspect-square h-6 w-6 cursor-pointer border bg-bg hover:border-accent text-xs"
 				>
 					↑
 				</button>
