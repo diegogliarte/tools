@@ -1,15 +1,3 @@
 [build]
 	command = "pnpm run build"
 	publish = "build"
-
-[[redirects]]
-    from = "/digimon/team-planner"
-    to = "/digimon-story-ts/team-builder"
-    status = 301
-    force = true
-
-[[redirects]]
-    from = "/digimon/route-planner"
-    to = "/digimon-story-ts/shortest-route"
-    status = 301
-    force = true
