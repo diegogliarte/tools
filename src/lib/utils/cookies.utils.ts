@@ -15,7 +15,8 @@ export function setCookie(name: string, value: string, maxAge = 60 * 60 * 24 * 3
 		`${encodeURIComponent(name)}=${encodeURIComponent(value)}`,
 		'Path=/',
 		`Max-Age=${maxAge}`,
-		'SameSite=Lax'
+		'SameSite=Lax',
+		'Secure'
 	].join('; ');
 }
 
