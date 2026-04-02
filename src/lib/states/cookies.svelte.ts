@@ -5,7 +5,25 @@ export function createCookieState<T>(
 	initial: T,
 	defaults: T
 ) {
-	const value = initial ?? defaults;
+	let value: T;
+
+	// ARRAY CASE
+	if (Array.isArray(defaults)) {
+		value = Array.isArray(initial) ? initial : defaults;
+	}
+
+	// OBJECT CASE
+	else if (typeof defaults === 'object' && defaults !== null) {
+		value = {
+			...defaults,
+			...(initial ?? {})
+		};
+	}
+
+	// PRIMITIVE CASE (just in case)
+	else {
+		value = initial ?? defaults;
+	}
 
 	const state = $state<T>(value);
 
