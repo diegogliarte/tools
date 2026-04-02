@@ -17,8 +17,10 @@
 	const SIDEBAR_KEY = 'layout.sidebar';
 
 	let isSidebarOpen = $state(data.isSidebarOpen ?? false);
+	console.log('Initial sidebar state:', isSidebarOpen);
 
 	$effect(() => {
+		console.log('Sidebar state changed:', isSidebarOpen);
 		setCookies(SIDEBAR_KEY, isSidebarOpen);
 	});
 
