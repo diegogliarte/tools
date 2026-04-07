@@ -10,6 +10,20 @@
 	const rows = pokemons.map((p) => {
 		const lvl100 = computeLevel100Stats(p);
 
+		const lvl1_total =
+			p.base_hp +
+			p.base_atk +
+			p.base_def +
+			p.base_sp_atk +
+			p.base_sp_def;
+
+		const lvl100_total =
+			lvl100.hp +
+			lvl100.atk +
+			lvl100.def +
+			lvl100.sp_atk +
+			lvl100.sp_def;
+
 		return {
 			...p,
 
@@ -23,7 +37,10 @@
 			lvl100_atk: lvl100.atk,
 			lvl100_def: lvl100.def,
 			lvl100_sp_atk: lvl100.sp_atk,
-			lvl100_sp_def: lvl100.sp_def
+			lvl100_sp_def: lvl100.sp_def,
+
+			lvl1_total,
+			lvl100_total
 		};
 	});
 
@@ -43,12 +60,14 @@
 		{ key: 'lvl1_def', label: 'Def (1)' },
 		{ key: 'lvl1_sp_atk', label: 'SpA (1)' },
 		{ key: 'lvl1_sp_def', label: 'SpD (1)' },
+		{ key: 'lvl1_total', label: 'Total (1)' },
 
 		{ key: 'lvl100_hp', label: 'HP (100)' },
 		{ key: 'lvl100_atk', label: 'Atk (100)' },
 		{ key: 'lvl100_def', label: 'Def (100)' },
 		{ key: 'lvl100_sp_atk', label: 'SpA (100)' },
-		{ key: 'lvl100_sp_def', label: 'SpD (100)' }
+		{ key: 'lvl100_sp_def', label: 'SpD (100)' },
+		{ key: 'lvl100_total', label: 'Total (100)' }
 	];
 </script>
 
