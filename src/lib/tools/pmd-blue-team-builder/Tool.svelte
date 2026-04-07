@@ -58,6 +58,10 @@
 	const pokemonByName = new Map(pokemons.map((p) => [p.name, p]));
 	const pokemonMovesById = new Map(pokemonMoves.map((p) => [String(p.pokemon_id), p]));
 
+	// ✅ Sketch ID
+	const sketchMoveId = moves.find((m) => m.name === 'Sketch')?.id;
+	const sketchMoveIdStr = sketchMoveId ? String(sketchMoveId) : null;
+
 	const pokemonMoveIds = new Map<string, Set<string>>(
 		pokemons.map((pokemon) => {
 			const entry = pokemonMovesById.get(String(pokemon.game_id));
@@ -94,6 +98,13 @@
 		].filter(Boolean);
 	}
 
+	// ✅ Detect sketch usage context
+	const isSketchSelected = $derived.by(() =>
+		[selectedMove1, selectedMove2, selectedMove3, selectedMove4].includes(sketchMoveIdStr ?? '')
+	);
+
+	const isSmeargleSelected = $derived.by(() => selectedPokemon === 'Smeargle');
+
 	function matchesPokemon(
 		pokemon: Pokemon,
 		{
@@ -114,10 +125,21 @@
 		if (ability2 && String(pokemon.ability_2_id ?? '') !== ability2) return false;
 
 		const moveSet = pokemonMoveIds.get(pokemon.name) ?? new Set<string>();
+
+		// ✅ Sketch = wildcard (FILTERING ONLY)
+		if (sketchMoveIdStr && moveSet.has(sketchMoveIdStr)) {
+			return true;
+		}
+
 		return moveIds.every((id) => moveSet.has(id));
 	}
 
-	function filteredPokemons(args?: { pokemonName?: string; ability1?: string; ability2?: string; moveIds?: string[] }) {
+	function filteredPokemons(args?: {
+		pokemonName?: string;
+		ability1?: string;
+		ability2?: string;
+		moveIds?: string[];
+	}) {
 		return pokemons.filter((pokemon) => matchesPokemon(pokemon, args));
 	}
 
@@ -176,13 +198,10 @@
 
 	function moveTargetIcon(target?: string) {
 		if (!target) return '';
-
 		const t = target.toLowerCase();
-
 		if (t.includes('all in room')) return '■';
 		if (t.includes('foes in room')) return '⊡';
 		if (t.includes('line of sight')) return '➜';
-
 		return '';
 	}
 
@@ -205,7 +224,15 @@
 			ability2: selectedAbility2,
 			moveIds: selectedMoves(slot)
 		})) {
-			for (const moveId of pokemonMoveIds.get(pokemon.name) ?? []) {
+			const moveSet = pokemonMoveIds.get(pokemon.name) ?? new Set<string>();
+			const hasSketch = sketchMoveIdStr && moveSet.has(sketchMoveIdStr);
+
+			const moveIdsToUse =
+				isSmeargleSelected && hasSketch
+					? moves.map((m) => String(m.id))
+					: moveSet;
+
+			for (const moveId of moveIdsToUse) {
 				if (usedElsewhere.has(moveId)) continue;
 
 				const move = moveById.get(moveId);
@@ -214,9 +241,18 @@
 				const targetIcon = moveTargetIcon(move.targets);
 				const hitModeIcon = moveHitModeIcon(move.hit_count_mode);
 
+				const isSketchSource =
+					hasSketch &&
+					!moveSet.has(moveId) &&
+					(isSketchSelected || isSmeargleSelected);
+
+				const sketchIcon = isSketchSource ? '✎' : '';
+
 				options.push({
 					value: moveId,
-					label: `${move.name}${targetIcon ? ` ${targetIcon}` : ''}${hitModeIcon ? ` ${hitModeIcon}` : ''}`
+					label: `${move.name}${sketchIcon ? ` ${sketchIcon}` : ''} ${targetIcon ? ` ${targetIcon}` : ''}${
+						hitModeIcon ? ` ${hitModeIcon}` : ''
+					}`
 				});
 			}
 		}
