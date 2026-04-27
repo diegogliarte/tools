@@ -1,11 +1,16 @@
 <script lang="ts">
 	import ToolCategorySection from '$lib/components/ToolCategorySection.svelte';
 	import { toolsTree } from '$lib/core/tools-tree';
+
+	import favicon from '/favicons/default.png'
+
 </script>
 
 <svelte:head>
 	<title>Home | Tools</title>
 	<meta name="description" content="Browse all my tools." />
+
+	<link rel="icon" href={favicon} />
 
 	<meta property="og:title" content="Home | Tools" />
 	<meta property="og:description" content="Browse all available tools." />
