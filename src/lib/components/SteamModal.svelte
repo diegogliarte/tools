@@ -28,7 +28,7 @@
 	let startX: number | null = null;
 	let currentX = $state(0);
 	let isDragging = $state(false);
-	let containerWidth = 1;
+	let containerWidth = $state(1);
 	let isAnimating = $state(false);
 
 	function next() {
@@ -200,13 +200,16 @@
 
 			<!-- Indicators -->
 			<div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-4">
-				{#each images as _, i}
+				{#each images as _, i (i)}
 					<button
+						type="button"
+						aria-label={`Show image ${i + 1}`}
+						title={`Show image ${i + 1}`}
 						class={`h-3 w-3 rotate-45 border cursor-pointer ${
 							i === index - 1 ? 'bg-accent' : 'bg-text/30'
 						}`}
 						onclick={() => go(i)}
-					/>
+					></button>
 				{/each}
 			</div>
 		</div>

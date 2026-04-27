@@ -81,6 +81,7 @@
 					<img
 						class="h-[1.5em] w-[1.5em]"
 						src="/digimon-story-ts/{digimon.attribute.toLowerCase().replace(' ', '-')}.png"
+						alt={`${digimon.attribute} attribute`}
 					/>
 					<span>{digimon.attribute} · {digimon.type}</span>
 				</div>

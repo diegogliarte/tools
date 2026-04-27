@@ -450,9 +450,11 @@
 </div>
 
 <div class="flex flex-col gap-1">
-	{#each floors as floor, i}
-		<div
+	{#each floors as floor, i (i)}
+		<button
+			type="button"
 			class={`cursor-pointer border px-3 py-2 ${i === current ? 'text-white' : 'opacity-30'}`}
+			aria-current={i === current ? 'true' : undefined}
 			onclick={() => selectFloor(i)}
 		>
 			<div class="mb-1 font-bold">{floor.floor}F</div>
@@ -472,6 +474,6 @@
 					{/if}
 				{/each}
 			</div>
-		</div>
+		</button>
 	{/each}
 </div>

@@ -36,9 +36,6 @@
 
 	const selectedResult = $derived(selectedIdx !== null ? (results[selectedIdx] ?? null) : null);
 
-	/* ---------------------------------------------
-	   Phase 1: initialize results when files change
-	----------------------------------------------*/
 	$effect(() => {
 		if (!files || !files.length || !quality || !format) return;
 
@@ -205,6 +202,12 @@
 		<div class="text-sm">Comparison</div>
 
 		<div
+			role="slider"
+			tabindex="0"
+			aria-label="Image comparison slider"
+			aria-valuemin="0"
+			aria-valuemax="100"
+			aria-valuenow={Math.round(comparePos)}
 			class="relative w-full max-w-80 cursor-ew-resize overflow-hidden border select-none"
 			onmousedown={startCompareDrag}
 			onmousemove={(e) => isDraggingCompare && updateComparePos(e)}
@@ -242,10 +245,13 @@
 {#if results.length}
 	<div class="grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-5">
 		{#each results as r, idx (idx)}
-			<div
+			<button
+				type="button"
 				class="cursor-pointer border p-2 hover:border-accent {selectedIdx === idx
 					? 'border-accent bg-accent-dark'
 					: ''}"
+				aria-pressed={selectedIdx === idx}
+				aria-label={`Select ${r.name}`}
 				onclick={() => toggleSelect(idx)}
 			>
 				<div class="truncate text-sm">{r.name}</div>
@@ -262,7 +268,7 @@
 						Converting…
 					{/if}
 				</div>
-			</div>
+			</button>
 		{/each}
 	</div>
 {/if}
