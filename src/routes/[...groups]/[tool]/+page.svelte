@@ -8,27 +8,35 @@
 	let toolSlug = $derived(params.tool);
 	let tool = $derived(findTool(categoryPath, toolSlug, toolsTree));
 
+	let componentPromise = $derived(tool?.loadComponent());
 </script>
 
 <svelte:head>
-	<title>{tool ? `${tool.title} | ${tool?.categoryPath.join(' | ')}` : 'Not Found'}</title>
+	<title>{tool ? `${tool.title} | ${tool.categoryPath?.join(' | ')}` : 'Not Found'}</title>
 	<meta name="description" content={`${tool?.title ?? 'Not Found'} - ${tool?.description ?? 'Not Found'}`} />
-	<link rel="icon" href={`${tool?.favicon ?? '/favicons/default.png	'}?v=${tool?.href}`} />
+	<link rel="icon" href={`${tool?.favicon ?? '/favicons/default.png'}?v=${tool?.href}`} />
 
 	<meta property="og:title" content={tool?.title ?? 'Not Found'} />
 	<meta property="og:description" content={tool?.description ?? 'Not Found'} />
 </svelte:head>
 
-{#if tool}
+{#if tool && componentPromise}
 	<h1 class="text-center text-large">{tool.title}</h1>
 	<h2 class="text-center">{tool.description}</h2>
 
-	{@const Component = tool.component}
-
 	<div
-		class="flex flex-col mt-12 gap-8  {!tool.fullscreen ? 'mx-auto max-w-3xl w-full' : 'min-w-full w-fit '} "
+		class="mt-12 flex flex-col gap-8 {!tool.fullscreen
+			? 'mx-auto w-full max-w-3xl'
+			: 'min-w-full w-fit'}"
 	>
-		<Component cookieKey={data.cookieKey} cookieState={data.cookieState} />
+		{#await componentPromise}
+			<p class="text-center opacity-60">Loading tool…</p>
+		{:then module}
+			{@const Component = module.default}
+			<Component cookieKey={data.cookieKey} cookieState={data.cookieState} />
+		{:catch}
+			<p class="text-center text-red-500">Failed to load tool.</p>
+		{/await}
 	</div>
 {:else}
 	<p>Tool not found</p>

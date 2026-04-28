@@ -1,6 +1,5 @@
 <script lang="ts">
 	import TextInput from '$lib/components/ui/text-input.svelte';
-	import QRCode from 'qrcode';
 
 	let text = $state('');
 	let caption = $state('');
@@ -17,7 +16,9 @@
 			}
 
 			try {
-				await QRCode.toCanvas(canvas, text, {
+				const { toCanvas } = await import('qrcode');
+
+				await toCanvas(canvas, text, {
 					width: 256,
 					margin: 2
 				});

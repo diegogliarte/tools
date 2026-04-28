@@ -32,21 +32,20 @@ function enrichTool(
 	const categorySlug = slugify(category.name);
 	const fullPath = parentPath ? `${parentPath}/${categorySlug}` : categorySlug;
 	const favicon = category.favicon ?? parentFavicon;
-
 	const currentCategoryPath = [...parentCategoryPath, category.name];
 
-	category.tools = category.tools.map((tool) => ({
-		...tool,
-		href: `/${fullPath}/${slugify(tool.title)}`,
-		favicon: tool.favicon ?? favicon,
-		categoryPath: currentCategoryPath
-	}));
-
-	category.subgroups = category.subgroups.map((sub) =>
-		enrichTool(sub, fullPath, favicon, currentCategoryPath)
-	);
-
-	return category;
+	return {
+		...category,
+		tools: category.tools.map((tool) => ({
+			...tool,
+			href: `/${fullPath}/${slugify(tool.title)}`,
+			favicon: tool.favicon ?? favicon,
+			categoryPath: currentCategoryPath
+		})),
+		subgroups: category.subgroups.map((sub) =>
+			enrichTool(sub, fullPath, favicon, currentCategoryPath)
+		)
+	};
 }
 
 export const rawTree: ToolCategory[] = [
@@ -74,13 +73,13 @@ export const rawTree: ToolCategory[] = [
 		name: 'Inazuma Eleven VR',
 		favicon: '/favicons/inazuma-eleven.png',
 		tools: [InazumaElevenVRStats, InazumaElevenVRVisualizer],
-		subgroups: [],
+		subgroups: []
 	},
 	{
 		name: 'Digimon Story TS',
 		favicon: '/favicons/digimon.png',
 		tools: [DigimonStoryTSStats, DigimonStoryTSTeamBuilder, DigimonStoryTSShortestRoute],
-		subgroups: [],
+		subgroups: []
 	},
 	{
 		name: 'OSRS',
@@ -101,4 +100,4 @@ export const rawTree: ToolCategory[] = [
 	}
 ];
 
-export const toolsTree = rawTree.map((c) => enrichTool(c));
+export const toolsTree = rawTree.map((category) => enrichTool(category));
