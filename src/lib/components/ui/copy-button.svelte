@@ -27,6 +27,7 @@
 
 <button
 	type="button"
+	aria-label="Copy to clipboard"
 	class="
 		cursor-pointer
 		transition-colors
