@@ -105,7 +105,7 @@
 </script>
 
 <Modal title="Hello!">
-	<div class="flex flex-col gap-6">
+	<div class="flex flex-col justify-center items-center gap-6">
 		<!-- Text -->
 		<div class="flex flex-col gap-2 text-sm opacity-90">
 			<p>
@@ -140,7 +140,7 @@
 		<!-- Carousel -->
 		<div
 			bind:clientWidth={containerWidth}
-			class="relative w-full overflow-hidden border border-text touch-pan-y"
+			class="relative w-3/4 overflow-hidden border border-text touch-pan-y"
 			ontouchstart={(e) => {
 				if (isAnimating) return;
 
