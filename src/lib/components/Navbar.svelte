@@ -7,10 +7,25 @@
 	import MdiChevronRight from '~icons/mdi/chevron-right';
 	import MdiSteam from '~icons/mdi/steam';
 	import SteamModal from '$lib/components/SteamModal.svelte';
+	import MdiMagnify from '~icons/mdi/magnify';
+	import ToolSearchModal from '$lib/components/ToolSearchModal.svelte';
+
 	import { openModal } from '$lib/states/modal.svelte';
 
 	export let isSidebarOpen: boolean;
+
+	function openSearch() {
+		openModal(ToolSearchModal);
+	}
+
+	function handleGlobalKeydown(event: KeyboardEvent) {
+		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+			event.preventDefault();
+			openSearch();
+		}
+	}
 </script>
+<svelte:window onkeydown={handleGlobalKeydown} />
 
 {#snippet navLink(href: string, label: string, Icon, external = false)}
 	<a
@@ -50,6 +65,21 @@
 	{@render navLink('/', 'Go to Home page', MdiHome)}
 
 	<div class="flex-1"></div>
+
+	<div class="w-full flex items-center justify-center text-xs">
+		<button
+			type="button"
+			aria-label="Search tools"
+			class="flex w-full max-w-96 cursor-pointer items-center gap-2 border px-1.5 py-0.5 text-text transition hover:border-accent hover:bg-accent-dark"
+			onclick={openSearch}
+		>
+			<MdiMagnify class="h-3 w-3" />
+			<span>Search</span>
+			<kbd class="hidden sm:flex border px-1 text-xxs opacity-60">Ctrl + K</kbd>
+		</button>
+
+	</div>
+
 
 	{@render navAction('Vpetlings (in development)', MdiSteam, () => openModal(SteamModal))}
 	{@render navLink('https://ko-fi.com/diegogliarte', 'Go to the ko-fi', MdiCoffee, true)}
