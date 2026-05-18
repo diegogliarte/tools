@@ -1,37 +1,36 @@
 import type { ToolCategory, ToolDefinition } from '$lib/tools/types';
 import { slugify } from '$lib/utils/slug.utils';
 
-/**
- * Recursively walk the category tree and find the tool
- * matching the given category path and tool slug.
- *
- * @param path Array of category slugs leading to the tool
- * @param toolSlug Slug of the tool to find
- * @param tree The category tree to search within
- * @returns The matching ToolDefinition or null if not found
- */
-export function findTool(path: string[], toolSlug: string, tree: ToolCategory[]): ToolDefinition | null {
+function getCategorySlug(category: ToolCategory): string {
+	return category.slug ?? slugify(category.name);
+}
+
+function getToolSlug(tool: ToolDefinition): string {
+	return slugify(tool.title);
+}
+
+export function findTool(
+	path: string[],
+	toolSlug: string,
+	tree: ToolCategory[]
+): ToolDefinition | null {
 	if (path.length === 0) return null;
 
 	let currentLevel = tree;
 
 	for (let i = 0; i < path.length; i++) {
 		const segment = path[i];
-
-		// locate category in current level
-		const category = currentLevel.find((cat) => slugify(cat.name) === segment);
+		const category = currentLevel.find((cat) => getCategorySlug(cat) === segment);
 
 		if (!category) return null;
 
-		// last segment → look for tool here
 		const isLast = i === path.length - 1;
 
 		if (isLast) {
-			const tool = category.tools.find((t) => slugify(t.title) === toolSlug);
+			const tool = category.tools.find((t) => getToolSlug(t) === toolSlug);
 			return tool ?? null;
 		}
 
-		// otherwise continue deeper
 		currentLevel = category.subgroups;
 	}
 

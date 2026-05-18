@@ -1,103 +1,130 @@
-import type { ToolCategory } from '$lib/tools/types';
+import type { ToolCategory, ToolCategoryMetadata, ToolDefinition } from '$lib/tools/types';
 import { slugify } from '$lib/utils/slug.utils';
 
-import { tool as BMICalculator } from '$lib/tools/bmi-calculator';
-import { tool as HasherGenerator } from '$lib/tools/hash-generator';
-import { tool as ChronoTool } from '$lib/tools/chrono';
-import { tool as PasswordGenerator } from '$lib/tools/password-generator';
-import { tool as QRGenerator } from '$lib/tools/qr-generator';
-import { tool as RunningCalculator } from '$lib/tools/running-calculator';
-import { tool as CompoundInterestCalculator } from '$lib/tools/compound-interest-calculator';
-import { tool as InazumaElevenVRStats } from '$lib/tools/inazuma-eleven-vr-stats';
-import { tool as Base64EncoderDecoder } from '$lib/tools/base64-encoder-decoder';
-import { tool as JSONFormatter } from '$lib/tools/json-formatter';
-import { tool as InazumaElevenVRVisualizer } from '$lib/tools/inazuma-eleven-vr-visualizer';
-import { tool as DigimonStoryTSStats } from '$lib/tools/digimon-story-ts-stats';
-import { tool as DigimonStoryTSTeamBuilder } from '$lib/tools/digimon-story-ts-team-builder';
-import { tool as DigimonStoryTSShortestRoute } from '$lib/tools/digimon-story-ts-shortest-route';
-import { tool as ImageCompressor } from '$lib/tools/image-compressor';
-import { tool as YearDaysGrid } from '$lib/tools/year-days-grid';
-import { tool as OSRSChatEffects } from '$lib/tools/osrs-chat-effects';
-import { tool as PMDBlueRecruitCalculator } from '$lib/tools/pmd-blue-recruit-calculator';
-import { tool as PMDBlueStats } from '$lib/tools/pmd-blue-stats';
-import { tool as PMDBlueTeamBuilder } from '$lib/tools/pmd-blue-team-builder';
-import { tool as PMDBlueJoySeedFarming } from '$lib/tools/pmd-blue-joy-seed-farming';
+type ToolIndexModule = {
+	tool?: ToolDefinition;
+	category?: ToolCategoryMetadata;
+};
 
-function enrichTool(
-	category: ToolCategory,
-	parentPath = '',
-	parentFavicon?: string,
-	parentCategoryPath: string[] = []
+type ToolFolderNode = {
+	slug: string;
+	category?: ToolCategoryMetadata;
+	tool?: ToolDefinition;
+	children: Map<string, ToolFolderNode>;
+};
+
+const indexModules = import.meta.glob('../tools/**/index.ts', {
+	eager: true
+}) as Record<string, ToolIndexModule>;
+
+const root: ToolFolderNode = {
+	slug: '',
+	children: new Map()
+};
+
+function getPathSegments(path: string): string[] {
+	return path
+		.replace('../tools/', '')
+		.replace('/index.ts', '')
+		.split('/')
+		.filter(Boolean);
+}
+
+function getOrCreateNode(segments: string[]): ToolFolderNode {
+	let current = root;
+
+	for (const segment of segments) {
+		let child = current.children.get(segment);
+
+		if (!child) {
+			child = {
+				slug: segment,
+				children: new Map()
+			};
+
+			current.children.set(segment, child);
+		}
+
+		current = child;
+	}
+
+	return current;
+}
+
+function titleFromSlug(slug: string): string {
+	return slug
+		.split('-')
+		.filter(Boolean)
+		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+		.join(' ');
+}
+
+function getNodeTitle(node: ToolFolderNode): string {
+	return node.tool?.title ?? node.category?.title ?? titleFromSlug(node.slug);
+}
+
+function getNodeOrder(node: ToolFolderNode): number {
+	return node.tool?.order ?? node.category?.order ?? Number.MAX_SAFE_INTEGER;
+}
+
+function sortNodes(a: ToolFolderNode, b: ToolFolderNode): number {
+	const orderDiff = getNodeOrder(a) - getNodeOrder(b);
+
+	if (orderDiff !== 0) return orderDiff;
+
+	return getNodeTitle(a).localeCompare(getNodeTitle(b), undefined, {
+		sensitivity: 'base'
+	});
+}
+
+function buildCategory(
+	node: ToolFolderNode,
+	parentSlugPath: string[] = [],
+	parentCategoryPath: string[] = [],
+	parentFavicon?: string
 ): ToolCategory {
-	const categorySlug = slugify(category.name);
-	const fullPath = parentPath ? `${parentPath}/${categorySlug}` : categorySlug;
-	const favicon = category.favicon ?? parentFavicon;
-	const currentCategoryPath = [...parentCategoryPath, category.name];
+	const name = node.category?.title ?? titleFromSlug(node.slug);
+	const favicon = node.category?.favicon ?? parentFavicon;
+	const slugPath = [...parentSlugPath, node.slug];
+	const categoryPath = [...parentCategoryPath, name];
+	const children = [...node.children.values()].sort(sortNodes);
 
 	return {
-		...category,
-		tools: category.tools.map((tool) => ({
-			...tool,
-			href: `/${fullPath}/${slugify(tool.title)}`,
-			favicon: tool.favicon ?? favicon,
-			categoryPath: currentCategoryPath
-		})),
-		subgroups: category.subgroups.map((sub) =>
-			enrichTool(sub, fullPath, favicon, currentCategoryPath)
-		)
+		name,
+		slug: node.slug,
+		favicon,
+		order: node.category?.order,
+		tools: children
+			.filter((child) => child.tool)
+			.map((child) => {
+				const tool = child.tool as ToolDefinition;
+
+				return {
+					...tool,
+					href: `/${[...slugPath, slugify(tool.title)].join('/')}`,
+					favicon: tool.favicon ?? favicon,
+					categoryPath
+				};
+			}),
+		subgroups: children
+			.filter((child) => !child.tool)
+			.map((child) => buildCategory(child, slugPath, categoryPath, favicon))
 	};
 }
 
-export const rawTree: ToolCategory[] = [
-	{
-		name: 'Health',
-		tools: [BMICalculator, RunningCalculator],
-		subgroups: []
-	},
-	{
-		name: 'Productivity',
-		tools: [ChronoTool, CompoundInterestCalculator, YearDaysGrid],
-		subgroups: []
-	},
-	{
-		name: 'Image',
-		tools: [ImageCompressor],
-		subgroups: []
-	},
-	{
-		name: 'Development',
-		tools: [HasherGenerator, PasswordGenerator, QRGenerator, Base64EncoderDecoder, JSONFormatter],
-		subgroups: []
-	},
-	{
-		name: 'Inazuma Eleven VR',
-		favicon: '/favicons/inazuma-eleven.png',
-		tools: [InazumaElevenVRStats, InazumaElevenVRVisualizer],
-		subgroups: []
-	},
-	{
-		name: 'Digimon Story TS',
-		favicon: '/favicons/digimon.png',
-		tools: [DigimonStoryTSStats, DigimonStoryTSTeamBuilder, DigimonStoryTSShortestRoute],
-		subgroups: []
-	},
-	{
-		name: 'OSRS',
-		tools: [OSRSChatEffects],
-		subgroups: []
-	},
-	{
-		name: 'Pokémon Mystery Dungeon',
-		favicon: '/favicons/pokemon.png',
-		tools: [],
-		subgroups: [
-			{
-				name: 'Blue Rescue Team',
-				tools: [PMDBlueStats, PMDBlueRecruitCalculator, PMDBlueTeamBuilder, PMDBlueJoySeedFarming],
-				subgroups: []
-			}
-		]
-	}
-];
+for (const [path, module] of Object.entries(indexModules)) {
+	const segments = getPathSegments(path);
+	const node = getOrCreateNode(segments);
 
-export const toolsTree = rawTree.map((category) => enrichTool(category));
+	if (module.category) node.category = module.category;
+	if (module.tool) node.tool = module.tool;
+}
+
+export const rawTree: ToolCategory[] = [...root.children.values()]
+	.filter((node) => !node.tool)
+	.sort(sortNodes)
+	.map((node) => buildCategory(node));
+
+export const toolsTree = rawTree;
+
+console.log(toolsTree);
