@@ -126,5 +126,3 @@ export const rawTree: ToolCategory[] = [...root.children.values()]
 	.map((node) => buildCategory(node));
 
 export const toolsTree = rawTree;
-
-console.log(toolsTree);
