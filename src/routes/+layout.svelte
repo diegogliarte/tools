@@ -53,7 +53,7 @@
 <div class="flex h-[100dvh] overflow-y-hidden bg-bg text-text">
 	<Sidebar visible={isSidebarOpen} />
 
-	<div class="flex flex-1 flex-col min-w-0">
+	<div class="flex min-w-0 flex-1 flex-col">
 		<Navbar bind:isSidebarOpen />
 
 		<main bind:this={mainEl} class="flex-1 overflow-y-auto p-2">
@@ -70,7 +70,7 @@
 			{#if showScrollTop}
 				<button
 					onclick={scrollToTop}
-					class="fixed right-4 bottom-10 z-50 aspect-square h-6 w-6 cursor-pointer border bg-bg hover:border-accent text-xs"
+					class="fixed right-4 bottom-10 z-50 aspect-square h-6 w-6 cursor-pointer border bg-bg text-xs hover:border-accent"
 				>
 					↑
 				</button>

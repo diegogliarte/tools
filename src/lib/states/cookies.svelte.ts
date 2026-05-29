@@ -1,10 +1,6 @@
 import { setCookies } from '$lib/utils/cookies.utils';
 
-export function createCookieState<T>(
-	key: string,
-	initial: T,
-	defaults: T
-) {
+export function createCookieState<T>(key: string, initial: T, defaults: T) {
 	let value: T;
 
 	// ARRAY CASE
@@ -29,7 +25,6 @@ export function createCookieState<T>(
 
 	let initialized = false;
 	$effect(() => {
-
 		const snapshot = $state.snapshot(state);
 
 		if (!initialized) {

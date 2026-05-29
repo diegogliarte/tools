@@ -25,11 +25,12 @@
 		}
 	}
 </script>
+
 <svelte:window onkeydown={handleGlobalKeydown} />
 
 {#snippet navLink(href: string, label: string, Icon, external = false)}
 	<a
-		href={href}
+		{href}
 		aria-label={label}
 		class="text-text transition hover:text-accent"
 		target={external ? '_blank' : undefined}
@@ -40,11 +41,7 @@
 {/snippet}
 
 {#snippet navAction(label: string, Icon, onclick: () => void)}
-	<button
-		aria-label={label}
-		class="text-text transition hover:text-accent cursor-pointer"
-		onclick={onclick}
-	>
+	<button aria-label={label} class="cursor-pointer text-text transition hover:text-accent" {onclick}>
 		<Icon class="h-5 w-5" />
 	</button>
 {/snippet}
@@ -66,7 +63,7 @@
 
 	<div class="flex-1"></div>
 
-	<div class="w-full flex items-center justify-center text-xs">
+	<div class="flex w-full items-center justify-center text-xs">
 		<button
 			type="button"
 			aria-label="Search tools"
@@ -75,11 +72,9 @@
 		>
 			<MdiMagnify class="h-3 w-3" />
 			<span>Search</span>
-			<kbd class="hidden sm:flex border px-1 text-xxs opacity-60">Ctrl + K</kbd>
+			<kbd class="hidden border px-1 text-xxs opacity-60 sm:flex">Ctrl + K</kbd>
 		</button>
-
 	</div>
-
 
 	{@render navAction('Vpetlings (in development)', MdiSteam, () => openModal(SteamModal))}
 	{@render navLink('https://ko-fi.com/diegogliarte', 'Go to the ko-fi', MdiCoffee, true)}

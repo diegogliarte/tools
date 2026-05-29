@@ -123,11 +123,7 @@
 		Install <code>yt-dlp</code> + <code>ffmpeg</code>, then run the commands locally.
 	</div>
 
-	<TextInput
-		bind:value={url}
-		label="URL"
-		placeholder="https://www.youtube.com/watch?v=VIDEO_ID"
-	/>
+	<TextInput bind:value={url} label="URL" placeholder="https://www.youtube.com/watch?v=VIDEO_ID" />
 
 	{#each installSections as section}
 		<section class="flex flex-col gap-1">

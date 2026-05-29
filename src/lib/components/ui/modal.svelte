@@ -73,7 +73,7 @@
 						class="absolute top-2 right-2 cursor-pointer text-large opacity-50 hover:text-accent hover:opacity-100"
 						onclick={close}
 					>
-						<MdiClose class="h-6 w-6"/>
+						<MdiClose class="h-6 w-6" />
 					</button>
 				{/if}
 			</div>

@@ -99,7 +99,9 @@
 
 <Modal title="Search tools">
 	<div class="flex flex-col gap-2">
-		<div class="flex items-center gap-2 border px-3 py-2 transition focus-within:border-accent focus-within:bg-accent-dark">
+		<div
+			class="flex items-center gap-2 border px-3 py-2 transition focus-within:border-accent focus-within:bg-accent-dark"
+		>
 			<MdiMagnify class="h-5 w-5 opacity-60" />
 
 			<input
@@ -123,10 +125,8 @@
 						id={`tool-search-result-${index}`}
 						type="button"
 						class="
-							flex w-full items-center gap-2 border border-transparent px-2 py-2 text-left transition cursor-pointer
-							{index === activeIndex
-								? 'border-accent bg-accent-dark'
-								: 'hover:border-accent hover:bg-accent-dark'}
+							flex w-full cursor-pointer items-center gap-2 border border-transparent px-2 py-2 text-left transition
+							{index === activeIndex ? 'border-accent bg-accent-dark' : 'hover:border-accent hover:bg-accent-dark'}
 						"
 						onmouseenter={() => (activeIndex = index)}
 						onclick={() => selectTool(result)}

@@ -28,7 +28,7 @@
 		<label for={uid} class="pointer-events-none">{label}</label>
 	{/if}
 
-	<div class="relative cursor-pointer w-fit">
+	<div class="relative w-fit cursor-pointer">
 		<select
 			id={uid}
 			value={String(value ?? '')}

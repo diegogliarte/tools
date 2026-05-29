@@ -5,19 +5,10 @@
 	import MdiChevronLeft from '~icons/mdi/chevron-left';
 	import MdiChevronRight from '~icons/mdi/chevron-right';
 
-	const images = [
-		'/steam/img1.jpg',
-		'/steam/img2.jpg',
-		'/steam/img3.jpg',
-		'/steam/img4.jpg'
-	];
+	const images = ['/steam/img1.jpg', '/steam/img2.jpg', '/steam/img3.jpg', '/steam/img4.jpg'];
 
 	// clones
-	const slides = [
-		images[images.length - 1],
-		...images,
-		images[0]
-	];
+	const slides = [images[images.length - 1], ...images, images[0]];
 
 	let index = $state(1);
 	let isTransitioning = $state(true);
@@ -98,39 +89,31 @@
 		return stopAuto;
 	});
 
-	const steamUrl =
-		'https://store.steampowered.com/app/3799160/?utm_source=tools.diegogliarte.com';
+	const steamUrl = 'https://store.steampowered.com/app/3799160/?utm_source=tools.diegogliarte.com';
 
 	const twitterUrl = 'https://x.com/sargantanagames';
 </script>
 
 <Modal title="Hello!">
-	<div class="flex flex-col justify-center items-center gap-6">
+	<div class="flex flex-col items-center justify-center gap-6">
 		<!-- Text -->
 		<div class="flex flex-col gap-2 text-sm opacity-90">
 			<p>
-				I'm currently developing <strong>VPetlings</strong>, a game where you raise your own virtual pet right on your <strong>desktop</strong>.
+				I'm currently developing <strong>VPetlings</strong>, a game where you raise your own virtual pet right on your
+				<strong>desktop</strong>.
 			</p>
 
 			<p class="flex flex-wrap items-center gap-1.5">
 				<span>If you enjoy my tools, I would highly appreciate following us on</span>
 
-				<a
-					href={twitterUrl}
-					target="_blank"
-					class="flex items-center gap-1 text-accent hover:underline cursor-pointer"
-				>
+				<a href={twitterUrl} target="_blank" class="flex cursor-pointer items-center gap-1 text-accent hover:underline">
 					<MdiTwitter class="h-4 w-4" />
 					<span>Twitter</span>
 				</a>
 
 				<span> as well as giving us a</span>
 
-				<a
-					href={steamUrl}
-					target="_blank"
-					class="flex items-center gap-1 text-accent hover:underline cursor-pointer"
-				>
+				<a href={steamUrl} target="_blank" class="flex cursor-pointer items-center gap-1 text-accent hover:underline">
 					<MdiSteam class="h-4 w-4" />
 					<span>wishlist on Steam</span>
 				</a>
@@ -140,7 +123,7 @@
 		<!-- Carousel -->
 		<div
 			bind:clientWidth={containerWidth}
-			class="relative w-3/4 overflow-hidden border border-text touch-pan-y"
+			class="relative w-3/4 touch-pan-y overflow-hidden border border-text"
 			ontouchstart={(e) => {
 				if (isAnimating) return;
 
@@ -175,39 +158,27 @@
 				"
 			>
 				{#each slides as img}
-					<img
-						src={img}
-						alt="Vpetlings screenshot"
-						class="w-full flex-shrink-0 object-cover aspect-video"
-					/>
+					<img src={img} alt="Vpetlings screenshot" class="aspect-video w-full flex-shrink-0 object-cover" />
 				{/each}
 			</div>
 
 			<!-- Controls -->
-			<button
-				class="absolute left-2 top-1/2 -translate-y-1/2 cursor-pointer"
-				onclick={prev}
-			>
+			<button class="absolute top-1/2 left-2 -translate-y-1/2 cursor-pointer" onclick={prev}>
 				<MdiChevronLeft class="h-10 w-10" />
 			</button>
 
-			<button
-				class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer"
-				onclick={next}
-			>
+			<button class="absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer" onclick={next}>
 				<MdiChevronRight class="h-10 w-10" />
 			</button>
 
 			<!-- Indicators -->
-			<div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-4">
+			<div class="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-4">
 				{#each images as _, i (i)}
 					<button
 						type="button"
 						aria-label={`Show image ${i + 1}`}
 						title={`Show image ${i + 1}`}
-						class={`h-3 w-3 rotate-45 border cursor-pointer ${
-							i === index - 1 ? 'bg-accent' : 'bg-text/30'
-						}`}
+						class={`h-3 w-3 rotate-45 cursor-pointer border ${i === index - 1 ? 'bg-accent' : 'bg-text/30'}`}
 						onclick={() => go(i)}
 					></button>
 				{/each}

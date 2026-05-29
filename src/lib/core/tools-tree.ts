@@ -23,11 +23,7 @@ const root: ToolFolderNode = {
 };
 
 function getPathSegments(path: string): string[] {
-	return path
-		.replace('../tools/', '')
-		.replace('/index.ts', '')
-		.split('/')
-		.filter(Boolean);
+	return path.replace('../tools/', '').replace('/index.ts', '').split('/').filter(Boolean);
 }
 
 function getOrCreateNode(segments: string[]): ToolFolderNode {

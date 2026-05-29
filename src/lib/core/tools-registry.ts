@@ -9,11 +9,7 @@ function getToolSlug(tool: ToolDefinition): string {
 	return slugify(tool.title);
 }
 
-export function findTool(
-	path: string[],
-	toolSlug: string,
-	tree: ToolCategory[]
-): ToolDefinition | null {
+export function findTool(path: string[], toolSlug: string, tree: ToolCategory[]): ToolDefinition | null {
 	if (path.length === 0) return null;
 
 	let currentLevel = tree;

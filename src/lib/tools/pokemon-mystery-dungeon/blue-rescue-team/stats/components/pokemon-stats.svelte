@@ -10,19 +10,9 @@
 	const rows = pokemons.map((p) => {
 		const lvl100 = computeLevel100Stats(p);
 
-		const lvl1_total =
-			p.base_hp +
-			p.base_atk +
-			p.base_def +
-			p.base_sp_atk +
-			p.base_sp_def;
+		const lvl1_total = p.base_hp + p.base_atk + p.base_def + p.base_sp_atk + p.base_sp_def;
 
-		const lvl100_total =
-			lvl100.hp +
-			lvl100.atk +
-			lvl100.def +
-			lvl100.sp_atk +
-			lvl100.sp_def;
+		const lvl100_total = lvl100.hp + lvl100.atk + lvl100.def + lvl100.sp_atk + lvl100.sp_def;
 
 		return {
 			...p,

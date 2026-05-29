@@ -131,9 +131,7 @@
 
 		const header = keys.map(escapeCsvValue).join(delimiter);
 
-		const body = rows
-			.map((row) => keys.map((key) => escapeCsvValue(row.values[key] ?? '')).join(delimiter))
-			.join('\n');
+		const body = rows.map((row) => keys.map((key) => escapeCsvValue(row.values[key] ?? '')).join(delimiter)).join('\n');
 
 		return [header, body].filter(Boolean).join('\n');
 	}
@@ -150,10 +148,7 @@
 			return Number(trimmed);
 		}
 
-		if (
-			(trimmed.startsWith('{') && trimmed.endsWith('}')) ||
-			(trimmed.startsWith('[') && trimmed.endsWith(']'))
-		) {
+		if ((trimmed.startsWith('{') && trimmed.endsWith('}')) || (trimmed.startsWith('[') && trimmed.endsWith(']'))) {
 			try {
 				return JSON.parse(trimmed);
 			} catch {
@@ -324,9 +319,7 @@
 			return '-';
 		}
 
-		return `${rows.length} row${rows.length === 1 ? '' : 's'}, ${keys.length} column${
-			keys.length === 1 ? '' : 's'
-		}`;
+		return `${rows.length} row${rows.length === 1 ? '' : 's'}, ${keys.length} column${keys.length === 1 ? '' : 's'}`;
 	});
 
 	const error = $derived.by(() => (parsed.ok ? '-' : parsed.error));
@@ -335,12 +328,12 @@
 		rows = rows.map((row) =>
 			row.id === rowId
 				? {
-					...row,
-					values: {
-						...row.values,
-						[key]: value
+						...row,
+						values: {
+							...row.values,
+							[key]: value
+						}
 					}
-				}
 				: row
 		);
 	}
@@ -475,29 +468,15 @@
 	<div class="flex flex-wrap items-end gap-2">
 		<TextInput label="New Column" bind:value={newColumn} placeholder="column_name" />
 
-		<Button onClick={addColumn} disabled={!newColumn.trim() || keys.includes(newColumn.trim())}>
-			Add Column
-		</Button>
+		<Button onClick={addColumn} disabled={!newColumn.trim() || keys.includes(newColumn.trim())}>Add Column</Button>
 
-		<SelectInput
-			label="Column"
-			bind:value={selectedColumn}
-			options={columnOptions}
-			placeholder="—"
-			allowEmpty={true}
-		/>
+		<SelectInput label="Column" bind:value={selectedColumn} options={columnOptions} placeholder="—" allowEmpty={true} />
 
 		<Button onClick={deleteColumn} disabled={!selectedColumn}>Delete Column</Button>
 	</div>
 
 	<div class="flex flex-wrap items-end gap-2">
-		<SelectInput
-			label="Sort Column"
-			bind:value={sortColumn}
-			options={sortOptions}
-			placeholder="—"
-			allowEmpty={true}
-		/>
+		<SelectInput label="Sort Column" bind:value={sortColumn} options={sortOptions} placeholder="—" allowEmpty={true} />
 
 		<Button onClick={toggleSort} disabled={!sortColumn}>{sortLabel}</Button>
 	</div>
@@ -512,55 +491,52 @@
 		<div class="overflow-auto">
 			<table class="w-full border-collapse text-sm">
 				<thead>
-				<tr class="border-b border-text/50">
-					{#each keys as key (key)}
-						<th class="p-1 text-left font-medium">
-							{key}
-						</th>
-					{/each}
+					<tr class="border-b border-text/50">
+						{#each keys as key (key)}
+							<th class="p-1 text-left font-medium">
+								{key}
+							</th>
+						{/each}
 
-					<th class="w-20 p-1 text-left font-medium">Actions</th>
-				</tr>
+						<th class="w-20 p-1 text-left font-medium">Actions</th>
+					</tr>
 				</thead>
 
 				<tbody>
-				{#if sortedRows.length === 0}
-					<tr>
-						<td colspan={keys.length + 1} class="py-4 text-center opacity-70">
-							No rows
-						</td>
-					</tr>
-				{:else}
-					{#each sortedRows as row (row.id)}
-						<tr class="border-b border-text/25 transition hover:bg-accent-dark/20">
-							{#each keys as key (key)}
-								<td class="p-1">
-									<input
-										value={row.values[key] ?? ''}
-										oninput={(e) =>
-												updateCell(row.id, key, (e.currentTarget as HTMLInputElement).value)}
-										class="
+					{#if sortedRows.length === 0}
+						<tr>
+							<td colspan={keys.length + 1} class="py-4 text-center opacity-70"> No rows </td>
+						</tr>
+					{:else}
+						{#each sortedRows as row (row.id)}
+							<tr class="border-b border-text/25 transition hover:bg-accent-dark/20">
+								{#each keys as key (key)}
+									<td class="p-1">
+										<input
+											value={row.values[key] ?? ''}
+											oninput={(e) => updateCell(row.id, key, (e.currentTarget as HTMLInputElement).value)}
+											class="
 												w-full
 												min-w-32
 												border
 												border-transparent
 												bg-transparent
 												p-1
-												outline-none
 												transition
+												outline-none
 												focus:border-accent/50
 												focus:bg-accent-dark/10
 											"
-									/>
-								</td>
-							{/each}
+										/>
+									</td>
+								{/each}
 
-							<td class="p-1">
-								<Button onClick={() => deleteRow(row.id)}>Delete</Button>
-							</td>
-						</tr>
-					{/each}
-				{/if}
+								<td class="p-1">
+									<Button onClick={() => deleteRow(row.id)}>Delete</Button>
+								</td>
+							</tr>
+						{/each}
+					{/if}
 				</tbody>
 			</table>
 		</div>

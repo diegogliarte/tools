@@ -32,7 +32,7 @@
 
 		if (value && typeof value === 'object') {
 			const arr = Object.values(value);
-			if (arr.every(v => Array.isArray(v))) {
+			if (arr.every((v) => Array.isArray(v))) {
 				return arr as Chain[];
 			}
 		}
@@ -59,11 +59,7 @@
 
 	type Chain = number[];
 
-	const team = createCookieState(
-		cookieKey,
-		normalizeCookieState(cookieState),
-		[]
-	);
+	const team = createCookieState(cookieKey, normalizeCookieState(cookieState), []);
 
 	if (team.length === 0) {
 		const fallback = getFallbackState();
