@@ -37635,8 +37635,8 @@
 				}
 			}
 		],
-		"pre_evolutions": [201, 210],
-		"evolutions": [],
+		"pre_evolutions": [201, 210, 463],
+		"evolutions": [463],
 		"skills": {
 			"special": ["24171-the-ray-of-victory", "24172-victory-sword"],
 			"attachment": ["critical-field", "saint-knuckle-iii", "gale-storm-iii", "speed-field"]
@@ -42903,8 +42903,8 @@
 				}
 			}
 		],
-		"pre_evolutions": [240, 204],
-		"evolutions": [],
+		"pre_evolutions": [240, 204, 465],
+		"evolutions": [465],
 		"skills": {
 			"special": ["27491-judgment-of-the-blade", "27493-weltgeist"],
 			"attachment": ["critical-field", "wolkenapalm-iii", "attack-field", "magma-fall-iii"]
@@ -47312,8 +47312,8 @@
 				}
 			}
 		],
-		"pre_evolutions": [294, 214],
-		"evolutions": [443],
+		"pre_evolutions": [294, 214, 466],
+		"evolutions": [443, 466],
 		"skills": {
 			"special": ["21261-lightning-joust", "21262-shield-of-the-just"],
 			"attachment": ["attack-field", "magic-field", "crush-blade-iii", "status-barrier"]
@@ -51591,8 +51591,8 @@
 				}
 			}
 		],
-		"pre_evolutions": [77],
-		"evolutions": [],
+		"pre_evolutions": [77, 464],
+		"evolutions": [464],
 		"skills": {
 			"special": ["23821-shining-gold-solar-storm", "23822-plasma-shot"],
 			"attachment": ["magic-field", "wind-claw-iii", "reset-body", "critical-field"]
@@ -52440,8 +52440,8 @@
 				}
 			}
 		],
-		"pre_evolutions": [312, 364, 431],
-		"evolutions": [431, 462],
+		"pre_evolutions": [312, 364, 431, 467],
+		"evolutions": [431, 462, 467],
 		"skills": {
 			"special": ["20881-transcendent-sword", "20882-supreme-cannon"],
 			"attachment": ["spell-boost", "magic-field", "speed-field", "restore"]
@@ -56362,6 +56362,615 @@
 		"skills": {
 			"special": ["24481-fearsome-blade", "24482-graceful-cannon"],
 			"attachment": ["attack-field", "lethal-blizzard-iii", "saint-knuckle-iii", "x-revive"]
+		}
+	},
+	{
+		"id": 463,
+		"slug": "ulforceveedramon-x-antibody",
+		"name": "UlforceVeedramon (X Antibody)",
+		"url": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/ulforceveedramon-x-antibody",
+		"generation": "Mega",
+		"attribute": "Vaccine",
+		"type": "Holy Knight",
+		"base_personality": "Zealous",
+		"icon": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/ulforceveedramon-x-antibody-icon.png",
+		"ridable": true,
+		"base_stats": {
+			"lv1": {
+				"HP": 2009,
+				"SP": 928,
+				"ATK": 1080,
+				"DEF": 560,
+				"INT": 700,
+				"SPI": 665,
+				"SPD": 1205
+			},
+			"lv99": {
+				"HP": 3412,
+				"SP": 1759,
+				"ATK": 1975,
+				"DEF": 1064,
+				"INT": 1268,
+				"SPI": 1100,
+				"SPD": 2066
+			}
+		},
+		"possible_personalities": {
+			"Philanthropy": [
+				{
+					"name": "Adoring",
+					"chance": 0
+				},
+				{
+					"name": "Devoted",
+					"chance": 2.76
+				},
+				{
+					"name": "Tolerant",
+					"chance": 2.76
+				},
+				{
+					"name": "Overprotective",
+					"chance": 2.76
+				}
+			],
+			"Valor": [
+				{
+					"name": "Zealous",
+					"chance": 58.62
+				},
+				{
+					"name": "Brave",
+					"chance": 0
+				},
+				{
+					"name": "Reckless",
+					"chance": 10.34
+				},
+				{
+					"name": "Daring",
+					"chance": 10.34
+				}
+			],
+			"Wisdom": [
+				{
+					"name": "Enlightened",
+					"chance": 1.38
+				},
+				{
+					"name": "Sly",
+					"chance": 1.38
+				},
+				{
+					"name": "Astute",
+					"chance": 0
+				},
+				{
+					"name": "Strategic",
+					"chance": 1.38
+				}
+			],
+			"Amicability": [
+				{
+					"name": "Opportunistic",
+					"chance": 2.76
+				},
+				{
+					"name": "Friendly",
+					"chance": 2.76
+				},
+				{
+					"name": "Sociable",
+					"chance": 2.76
+				},
+				{
+					"name": "Compassionate",
+					"chance": 0
+				}
+			]
+		},
+		"evolution_conditions": [
+			{
+				"type": "stats",
+				"requirements": {
+					"Agent Rank": "≥ 7",
+					"SP": "≥ 2960",
+					"Talent": "≥ 1980"
+				}
+			}
+		],
+		"pre_evolutions": [309],
+		"evolutions": [309],
+		"skills": {
+			"special": ["24181-the-ray-of-victory", "24182-victory-sword"],
+			"attachment": ["critical-field", "saint-knuckle-iii", "gale-storm-iii", "speed-field"]
+		}
+	},
+	{
+		"id": 464,
+		"slug": "magnamon-x-antibody",
+		"name": "Magnamon (X Antibody)",
+		"url": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/magnamon-x-antibody",
+		"generation": "Mega",
+		"attribute": "Vaccine",
+		"type": "Holy Knight",
+		"base_personality": "Zealous",
+		"icon": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/magnamon-x-antibody-icon.png",
+		"ridable": true,
+		"base_stats": {
+			"lv1": {
+				"HP": 1372,
+				"SP": 656,
+				"ATK": 990,
+				"DEF": 1250,
+				"INT": 975,
+				"SPI": 820,
+				"SPD": 735
+			},
+			"lv99": {
+				"HP": 2775,
+				"SP": 1487,
+				"ATK": 1954,
+				"DEF": 1754,
+				"INT": 1543,
+				"SPI": 1255,
+				"SPD": 1562
+			}
+		},
+		"possible_personalities": {
+			"Philanthropy": [
+				{
+					"name": "Adoring",
+					"chance": 0
+				},
+				{
+					"name": "Devoted",
+					"chance": 2.76
+				},
+				{
+					"name": "Tolerant",
+					"chance": 2.76
+				},
+				{
+					"name": "Overprotective",
+					"chance": 2.76
+				}
+			],
+			"Valor": [
+				{
+					"name": "Zealous",
+					"chance": 58.62
+				},
+				{
+					"name": "Brave",
+					"chance": 0
+				},
+				{
+					"name": "Reckless",
+					"chance": 10.34
+				},
+				{
+					"name": "Daring",
+					"chance": 10.34
+				}
+			],
+			"Wisdom": [
+				{
+					"name": "Enlightened",
+					"chance": 1.38
+				},
+				{
+					"name": "Sly",
+					"chance": 1.38
+				},
+				{
+					"name": "Astute",
+					"chance": 0
+				},
+				{
+					"name": "Strategic",
+					"chance": 1.38
+				}
+			],
+			"Amicability": [
+				{
+					"name": "Opportunistic",
+					"chance": 2.76
+				},
+				{
+					"name": "Friendly",
+					"chance": 2.76
+				},
+				{
+					"name": "Sociable",
+					"chance": 2.76
+				},
+				{
+					"name": "Compassionate",
+					"chance": 0
+				}
+			]
+		},
+		"evolution_conditions": [
+			{
+				"type": "item",
+				"requirements": {
+					"Agent Rank": "≥ 3",
+					"Req. Item": "Digi-Egg of Miracles"
+				}
+			}
+		],
+		"pre_evolutions": [423],
+		"evolutions": [423],
+		"skills": {
+			"special": ["24321-shining-gold-solar-storm", "24322-plasma-shot"],
+			"attachment": ["magic-field", "wind-claw-iii", "reset-body", "critical-field"]
+		}
+	},
+	{
+		"id": 465,
+		"slug": "jesmon-x-antibody",
+		"name": "Jesmon (X Antibody)",
+		"url": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/jesmon-x-antibody",
+		"generation": "Mega",
+		"attribute": "Data",
+		"type": "Holy Knight",
+		"base_personality": "Friendly",
+		"icon": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/jesmon-x-antibody-icon.png",
+		"ridable": false,
+		"base_stats": {
+			"lv1": {
+				"HP": 1645,
+				"SP": 816,
+				"ATK": 1165,
+				"DEF": 905,
+				"INT": 805,
+				"SPI": 775,
+				"SPD": 950
+			},
+			"lv99": {
+				"HP": 3048,
+				"SP": 1647,
+				"ATK": 2158,
+				"DEF": 1703,
+				"INT": 1373,
+				"SPI": 1210,
+				"SPD": 1517
+			}
+		},
+		"possible_personalities": {
+			"Philanthropy": [
+				{
+					"name": "Adoring",
+					"chance": 0
+				},
+				{
+					"name": "Devoted",
+					"chance": 1.38
+				},
+				{
+					"name": "Tolerant",
+					"chance": 1.38
+				},
+				{
+					"name": "Overprotective",
+					"chance": 1.38
+				}
+			],
+			"Valor": [
+				{
+					"name": "Zealous",
+					"chance": 2.76
+				},
+				{
+					"name": "Brave",
+					"chance": 0
+				},
+				{
+					"name": "Reckless",
+					"chance": 2.76
+				},
+				{
+					"name": "Daring",
+					"chance": 2.76
+				}
+			],
+			"Wisdom": [
+				{
+					"name": "Enlightened",
+					"chance": 2.76
+				},
+				{
+					"name": "Sly",
+					"chance": 2.76
+				},
+				{
+					"name": "Astute",
+					"chance": 0
+				},
+				{
+					"name": "Strategic",
+					"chance": 2.76
+				}
+			],
+			"Amicability": [
+				{
+					"name": "Opportunistic",
+					"chance": 10.34
+				},
+				{
+					"name": "Friendly",
+					"chance": 58.62
+				},
+				{
+					"name": "Sociable",
+					"chance": 10.34
+				},
+				{
+					"name": "Compassionate",
+					"chance": 0
+				}
+			]
+		},
+		"evolution_conditions": [
+			{
+				"type": "stats",
+				"requirements": {
+					"Agent Rank": "≥ 7",
+					"SPD": "≥ 1730",
+					"Talent": "≥ 2070"
+				}
+			}
+		],
+		"pre_evolutions": [352],
+		"evolutions": [352],
+		"skills": {
+			"special": ["24681-weltfluegel", "24682-ultimate-seibaken"],
+			"attachment": ["critical-field", "wolkenapalm-iii", "attack-field", "magma-fall-iii"]
+		}
+	},
+	{
+		"id": 466,
+		"slug": "gallantmon-x-antibody",
+		"name": "Gallantmon (X Antibody)",
+		"url": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/gallantmon-x-antibody",
+		"generation": "Mega",
+		"attribute": "Virus",
+		"type": "Holy Knight",
+		"base_personality": "Daring",
+		"icon": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/gallantmon-x-antibody-icon.png",
+		"ridable": false,
+		"base_stats": {
+			"lv1": {
+				"HP": 1736,
+				"SP": 872,
+				"ATK": 860,
+				"DEF": 855,
+				"INT": 1075,
+				"SPI": 865,
+				"SPD": 820
+			},
+			"lv99": {
+				"HP": 2968,
+				"SP": 1835,
+				"ATK": 1589,
+				"DEF": 1584,
+				"INT": 1843,
+				"SPI": 1369,
+				"SPD": 1353
+			}
+		},
+		"possible_personalities": {
+			"Philanthropy": [
+				{
+					"name": "Adoring",
+					"chance": 0
+				},
+				{
+					"name": "Devoted",
+					"chance": 2.76
+				},
+				{
+					"name": "Tolerant",
+					"chance": 2.76
+				},
+				{
+					"name": "Overprotective",
+					"chance": 2.76
+				}
+			],
+			"Valor": [
+				{
+					"name": "Zealous",
+					"chance": 10.34
+				},
+				{
+					"name": "Brave",
+					"chance": 0
+				},
+				{
+					"name": "Reckless",
+					"chance": 10.34
+				},
+				{
+					"name": "Daring",
+					"chance": 58.62
+				}
+			],
+			"Wisdom": [
+				{
+					"name": "Enlightened",
+					"chance": 1.38
+				},
+				{
+					"name": "Sly",
+					"chance": 1.38
+				},
+				{
+					"name": "Astute",
+					"chance": 0
+				},
+				{
+					"name": "Strategic",
+					"chance": 1.38
+				}
+			],
+			"Amicability": [
+				{
+					"name": "Opportunistic",
+					"chance": 2.76
+				},
+				{
+					"name": "Friendly",
+					"chance": 2.76
+				},
+				{
+					"name": "Sociable",
+					"chance": 2.76
+				},
+				{
+					"name": "Compassionate",
+					"chance": 0
+				}
+			]
+		},
+		"evolution_conditions": [
+			{
+				"type": "stats",
+				"requirements": {
+					"Agent Rank": "≥ 7",
+					"DEF": "≥ 2490",
+					"SPD": "≥ 1800"
+				}
+			}
+		],
+		"pre_evolutions": [388],
+		"evolutions": [388],
+		"skills": {
+			"special": ["23581-zeig-saber", "23582-shield-of-the-just"],
+			"attachment": ["attack-field", "magic-field", "crush-blade-iii", "status-barrier"]
+		}
+	},
+	{
+		"id": 467,
+		"slug": "omnimon-x-antibody",
+		"name": "Omnimon (X Antibody)",
+		"url": "https://www.grindosaur.com/en/games/digimon-story-time-stranger/digimon/omnimon-x-antibody",
+		"generation": "Mega +",
+		"attribute": "Vaccine",
+		"type": "Holy Knight",
+		"base_personality": "Daring",
+		"icon": "https://www.grindosaur.com/img/games/digimon-story-time-stranger/icons/omnimon-x-antibody-icon.png",
+		"ridable": true,
+		"base_stats": {
+			"lv1": {
+				"HP": 2156,
+				"SP": 792,
+				"ATK": 1430,
+				"DEF": 1070,
+				"INT": 1165,
+				"SPI": 940,
+				"SPD": 970
+			},
+			"lv99": {
+				"HP": 3559,
+				"SP": 1623,
+				"ATK": 2394,
+				"DEF": 1868,
+				"INT": 1733,
+				"SPI": 1375,
+				"SPD": 1503
+			}
+		},
+		"possible_personalities": {
+			"Philanthropy": [
+				{
+					"name": "Adoring",
+					"chance": 0
+				},
+				{
+					"name": "Devoted",
+					"chance": 2.76
+				},
+				{
+					"name": "Tolerant",
+					"chance": 2.76
+				},
+				{
+					"name": "Overprotective",
+					"chance": 2.76
+				}
+			],
+			"Valor": [
+				{
+					"name": "Zealous",
+					"chance": 10.34
+				},
+				{
+					"name": "Brave",
+					"chance": 0
+				},
+				{
+					"name": "Reckless",
+					"chance": 10.34
+				},
+				{
+					"name": "Daring",
+					"chance": 58.62
+				}
+			],
+			"Wisdom": [
+				{
+					"name": "Enlightened",
+					"chance": 1.38
+				},
+				{
+					"name": "Sly",
+					"chance": 1.38
+				},
+				{
+					"name": "Astute",
+					"chance": 0
+				},
+				{
+					"name": "Strategic",
+					"chance": 1.38
+				}
+			],
+			"Amicability": [
+				{
+					"name": "Opportunistic",
+					"chance": 2.76
+				},
+				{
+					"name": "Friendly",
+					"chance": 2.76
+				},
+				{
+					"name": "Sociable",
+					"chance": 2.76
+				},
+				{
+					"name": "Compassionate",
+					"chance": 0
+				}
+			]
+		},
+		"evolution_conditions": [
+			{
+				"type": "stats",
+				"requirements": {
+					"Agent Rank": "≥ 7",
+					"SP": "≥ 3180",
+					"INT": "≥ 1930"
+				}
+			}
+		],
+		"pre_evolutions": [430],
+		"evolutions": [430],
+		"skills": {
+			"special": ["23571-all-delete", "23572-supreme-cannon"],
+			"attachment": ["spell-boost", "magic-field", "speed-field", "restore"]
 		}
 	},
 	{
