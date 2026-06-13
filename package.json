@@ -17,7 +17,8 @@
 		"scrape:digimon-story-ts:digimons": "tsx src/scripts/digimon-story-ts/digimons.ts",
 		"scrape:digimon-story-ts:download-icons": "tsx src/scripts/digimon-story-ts/download-icons.ts",
 		"scrape:pmd-blue:download-icons": "tsx src/scripts/pmd-blue/download-icons.ts",
-		"generate:emojis": "tsx src/scripts/emojis/generate.ts"
+		"generate:emojis": "tsx src/scripts/emojis/generate.ts",
+		"generate-og-images": "tsx src/scripts/generate-og-images.ts"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.1.0",
@@ -36,6 +37,7 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.1",
 		"globals": "^16.5.0",
+		"playwright": "^1.60.0",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
 		"prettier-plugin-tailwindcss": "^0.7.2",

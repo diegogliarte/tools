@@ -31,3 +31,7 @@ export function toolPageDescription(tool: {
 }) {
 	return `${tool.description} Use ${tool.title} directly in your browser.`;
 }
+
+export function toolOgImageUrl(tool: { href: string }) {
+	return `${siteUrl}/og${tool.href}.png`;
+}

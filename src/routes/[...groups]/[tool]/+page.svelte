@@ -4,8 +4,8 @@
 	import { toolsTree } from '$lib/core/tools-tree';
 	import {
 		canonicalUrl,
-		defaultOgImage,
 		siteName,
+		toolOgImageUrl,
 		toolPageDescription,
 		toolPageTitle
 	} from '$lib/utils/seo.utils';
@@ -21,6 +21,7 @@
 	let canonical = $derived(canonicalUrl(page.url.pathname));
 	let metaTitle = $derived(toolPageTitle(tool));
 	let metaDescription = $derived(toolPageDescription(tool));
+	let ogImage = $derived(toolOgImageUrl(tool));
 	let imageAlt = $derived(`${tool.title} tool preview`);
 </script>
 
@@ -38,13 +39,15 @@
 	<meta property="og:title" content={metaTitle} />
 	<meta property="og:description" content={metaDescription} />
 	<meta property="og:url" content={canonical} />
-	<meta property="og:image" content={defaultOgImage} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 	<meta property="og:image:alt" content={imageAlt} />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={metaTitle} />
 	<meta name="twitter:description" content={metaDescription} />
-	<meta name="twitter:image" content={defaultOgImage} />
+	<meta name="twitter:image" content={ogImage} />
 	<meta name="twitter:image:alt" content={imageAlt} />
 </svelte:head>
 
