@@ -4,8 +4,8 @@
 	import { canonicalUrl, defaultOgImage, pageTitle, siteName } from '$lib/utils/seo.utils';
 
 	const canonical = canonicalUrl('/');
-	const title = pageTitle('Free Online Tools');
-	const description = 'Browse free online tools, generators, calculators, and interactive utilities.';
+	const title = pageTitle('Online Tools');
+	const description = 'Browse my online tools, generators, calculators, and interactive utilities.';
 </script>
 
 <svelte:head>
