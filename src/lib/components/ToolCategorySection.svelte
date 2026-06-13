@@ -12,7 +12,7 @@
 <section class="mb-4 last:mb-0">
 	<h3 class="mb-1 flex items-center gap-2 text-medium">
 		{#if !isSubgroup}
-			<img src={faviconUrl(category.favicon)} alt="" class="h-6 w-6" loading="lazy" />
+			<img src={faviconUrl(category.favicon)} alt="" class="h-5 w-5" loading="lazy" />
 		{/if}
 
 		<span class={`truncate ${isSubgroup ? 'ml-8' : ''}`}>{category.name}</span>

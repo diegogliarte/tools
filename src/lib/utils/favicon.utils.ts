@@ -1,4 +1,4 @@
-export const defaultFavicon = '/favicons/tools.svg';
+export const defaultFavicon = '/favicons/tools.png';
 
 export function faviconUrl(favicon?: string | null) {
 	return favicon ?? defaultFavicon;

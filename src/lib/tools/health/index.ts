@@ -2,5 +2,5 @@ import type { ToolCategoryMetadata } from '$lib/tools/types';
 
 export const category: ToolCategoryMetadata = {
 	title: 'Health',
-	favicon: '/favicons/health.svg'
+	favicon: '/favicons/health.png'
 };
