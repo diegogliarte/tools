@@ -1,6 +1,14 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import { findTool } from '$lib/core/tools-registry';
 	import { toolsTree } from '$lib/core/tools-tree';
+	import {
+		canonicalUrl,
+		defaultOgImage,
+		siteName,
+		toolPageDescription,
+		toolPageTitle
+	} from '$lib/utils/seo.utils';
 
 	let { params, data } = $props();
 
@@ -8,32 +16,48 @@
 	let toolSlug = $derived(params.tool);
 	let tool = $derived(findTool(categoryPath, toolSlug, toolsTree));
 
-	let componentPromise = $derived(tool?.loadComponent());
+	let componentPromise = $derived(tool.loadComponent());
+
+	let canonical = $derived(canonicalUrl(page.url.pathname));
+	let metaTitle = $derived(toolPageTitle(tool));
+	let metaDescription = $derived(toolPageDescription(tool));
+	let imageAlt = $derived(`${tool.title} tool preview`);
 </script>
 
 <svelte:head>
-	<title>{tool ? `${tool.title} | ${tool.categoryPath?.join(' | ')}` : 'Not Found'}</title>
-	<meta name="description" content={`${tool?.title ?? 'Not Found'} - ${tool?.description ?? 'Not Found'}`} />
-	<link rel="icon" href={`${tool?.favicon ?? '/favicons/default.png'}?v=${tool?.href}`} />
+	<title>{metaTitle}</title>
+	<meta name="description" content={metaDescription} />
+	<meta name="robots" content="index, follow" />
 
-	<meta property="og:title" content={tool?.title ?? 'Not Found'} />
-	<meta property="og:description" content={tool?.description ?? 'Not Found'} />
+	<link rel="canonical" href={canonical} />
+
+	<link rel="icon" href={`${tool.favicon ?? '/favicons/default.png'}?v=${tool.href}`} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content={siteName} />
+	<meta property="og:title" content={metaTitle} />
+	<meta property="og:description" content={metaDescription} />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:image" content={defaultOgImage} />
+	<meta property="og:image:alt" content={imageAlt} />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={metaTitle} />
+	<meta name="twitter:description" content={metaDescription} />
+	<meta name="twitter:image" content={defaultOgImage} />
+	<meta name="twitter:image:alt" content={imageAlt} />
 </svelte:head>
 
-{#if tool && componentPromise}
-	<h1 class="text-center text-large">{tool.title}</h1>
-	<h2 class="text-center">{tool.description}</h2>
+<h1 class="text-center text-large">{tool.title}</h1>
+<h2 class="text-center">{tool.description}</h2>
 
-	<div class="mt-12 flex flex-col gap-8 {!tool.fullscreen ? 'mx-auto w-full max-w-3xl' : 'w-fit min-w-full'}">
-		{#await componentPromise}
-			<p class="text-center opacity-60">Loading tool…</p>
-		{:then module}
-			{@const Component = module.default}
-			<Component cookieKey={data.cookieKey} cookieState={data.cookieState} />
-		{:catch}
-			<p class="text-center text-red-500">Failed to load tool.</p>
-		{/await}
-	</div>
-{:else}
-	<p>Tool not found</p>
-{/if}
+<div class="mt-12 flex flex-col gap-8 {!tool.fullscreen ? 'mx-auto w-full max-w-3xl' : 'w-fit min-w-full'}">
+	{#await componentPromise}
+		<p class="text-center opacity-60">Loading tool…</p>
+	{:then module}
+		{@const Component = module.default}
+		<Component cookieKey={data.cookieKey} cookieState={data.cookieState} />
+	{:catch}
+		<p class="text-center text-red-500">Failed to load tool.</p>
+	{/await}
+</div>
