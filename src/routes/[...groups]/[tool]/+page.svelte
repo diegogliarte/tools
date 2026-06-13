@@ -3,6 +3,7 @@
 	import { findTool } from '$lib/core/tools-registry';
 	import { toolsTree } from '$lib/core/tools-tree';
 	import { canonicalUrl, siteName, toolOgImageUrl, toolPageDescription, toolPageTitle } from '$lib/utils/seo.utils';
+	import { faviconType, faviconUrl } from '$lib/utils/favicon.utils';
 
 	let { params, data } = $props();
 
@@ -24,6 +25,8 @@
 	let metaDescription = $derived(toolPageDescription(tool));
 	let ogImage = $derived(toolOgImageUrl(tool));
 	let imageAlt = $derived(`${tool.title} tool preview`);
+	let favicon = $derived(faviconUrl(tool.favicon));
+	let faviconMime = $derived(faviconType(tool.favicon));
 </script>
 
 <svelte:head>
@@ -33,7 +36,7 @@
 
 	<link rel="canonical" href={canonical} />
 
-	<link rel="icon" href={`${tool.favicon ?? '/favicons/default.png'}?v=${tool.href}`} />
+	<link rel="icon" type={faviconMime} href={favicon} />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content={siteName} />

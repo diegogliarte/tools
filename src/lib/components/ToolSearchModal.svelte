@@ -4,6 +4,7 @@
 
 	import Modal from '$lib/components/ui/modal.svelte';
 	import { closeModal } from '$lib/states/modal.svelte';
+	import { faviconUrl } from '$lib/utils/favicon.utils';
 
 	import MdiMagnify from '~icons/mdi/magnify';
 	import MdiKeyboardReturn from '~icons/mdi/keyboard-return';
@@ -131,6 +132,8 @@
 						onmouseenter={() => (activeIndex = index)}
 						onclick={() => selectTool(result)}
 					>
+						<img src={faviconUrl(result.favicon)} alt="" class="h-6 w-6 shrink-0 object-contain" loading="lazy" />
+
 						<div class="min-w-0 flex-1">
 							<div class="truncate">{result.category} · {result.title}</div>
 							<div class="line-clamp-2 text-xs opacity-60">{result.description}</div>

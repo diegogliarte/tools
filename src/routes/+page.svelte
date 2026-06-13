@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href={canonical} />
 
-	<link rel="icon" href="/favicons/default.png" />
+	<link rel="icon" href="/favicons/tools.svg" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content={siteName} />
