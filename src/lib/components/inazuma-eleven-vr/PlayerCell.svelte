@@ -6,8 +6,9 @@
 		GK: 'bg-yellow-900',
 		DF: 'bg-blue-900',
 		MF: 'bg-green-900',
-		FW: 'bg-red-900'
-	};
+		FW: 'bg-red-900',
+		'?': 'bg-neutral-700'
+	} satisfies Record<Player['Position'], string>;
 
 	interface Props {
 		player: Player;
@@ -27,7 +28,7 @@
 		<div class="leading-none">{player.Name}</div>
 		<div
 			class="inline-block border px-1 text-xs
-				{positionColor[player.Position] ?? 'bg-neutral-700'}"
+				{positionColor[player.Position]}"
 		>
 			{player.Position}
 		</div>

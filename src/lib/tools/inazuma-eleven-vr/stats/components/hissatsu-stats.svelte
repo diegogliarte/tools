@@ -4,22 +4,47 @@
 	import hissatsu from '$lib/data/inazuma-eleven-vr/hissatsu.json';
 	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 
+	type HissatsuRow = {
+		Name: string;
+		'Japanese Name': string;
+		Power: number | string;
+		Tension: number | string;
+		Type: string;
+		'Sub-Type': string;
+		Element: string;
+		'Shop 1': string;
+		'Shop 2': string;
+		Movie?: string | null;
+	};
+
 	// Element colors (optional)
 	const elementColor = {
 		Mountain: 'bg-yellow-800',
 		Fire: 'bg-red-800',
 		Forest: 'bg-green-800',
 		Wind: 'bg-sky-800'
-	};
+	} as const;
 
-	const nameColumn: Column = {
+	function getElementColor(element: string) {
+		return elementColor[element as keyof typeof elementColor] ?? 'bg-neutral-600';
+	}
+
+	// Rows come directly from JSON
+	const rows: HissatsuRow[] = hissatsu.map((r) => ({
+		...r,
+		Type: r.Type?.trim() || 'None',
+		'Sub-Type': r['Sub-Type']?.trim() || 'None',
+		Element: r.Element?.trim() || 'None'
+	}));
+
+	const nameColumn: Column<HissatsuRow> = {
 		key: 'Name',
 		label: 'Name',
 		width: '260px',
 		searchValue: (h) => `${h.Name} ${h['Japanese Name']} ${h.Type} ${h.Element}`,
 		render: (h) => `
 		<div class="relative group flex items-center gap-2 cursor-pointer">
-			<div class="w-3 h-3 rounded-sm ${elementColor[h.Element] ?? 'bg-neutral-600'}"></div>
+			<div class="w-3 h-3 rounded-sm ${getElementColor(h.Element)}"></div>
 			<span>${h.Name}</span>
 
 
@@ -40,7 +65,7 @@
 	// 		</div>
 	// 		` : ""}
 
-	const columns: Column[] = [
+	const columns: Column<HissatsuRow>[] = [
 		nameColumn,
 		{ key: 'Power', label: 'Power' },
 		{ key: 'Tension', label: 'Tension' },
@@ -50,23 +75,16 @@
 		{ key: 'Shop 2', label: 'Shop 2' }
 	];
 
-	// Rows come directly from JSON
-	const rows = hissatsu.map((r) => ({
-		...r,
-		Type: r.Type?.trim() || 'None',
-		'Sub-Type': r['Sub-Type']?.trim() || 'None',
-		Element: r.Element?.trim() || 'None'
-	}));
-
 	const types = unique(rows.map((r) => r.Type));
 	const subtypes = sortNoneLast(unique(rows.map((r) => r['Sub-Type'])));
 	const elements = sortNoneLast(unique(rows.map((r) => r.Element)));
 	const powerVals = unique(rows.map((r) => r.Power)).filter(Boolean);
+	const powerOptions = powerVals.map(String);
 
 	let typeFilter = $state(makeFilter(types));
 	let subtypeFilter = $state(makeFilter(subtypes));
 	let elementFilter = $state(makeFilter(elements));
-	let powerFilter = $state(makeFilter(powerVals.map(String)));
+	let powerFilter = $state(makeFilter(powerOptions));
 
 	let filteredRows = $derived.by(() => {
 		const allowedTypes = Object.keys(typeFilter).filter((k) => typeFilter[k]);
@@ -87,7 +105,7 @@
 		{ name: 'Type', list: types, store: typeFilter },
 		{ name: 'Subtype', list: subtypes, store: subtypeFilter },
 		{ name: 'Element', list: elements, store: elementFilter },
-		{ name: 'Power', list: powerVals.map(String), store: powerFilter }
+		{ name: 'Power', list: powerOptions, store: powerFilter }
 	];
 </script>
 

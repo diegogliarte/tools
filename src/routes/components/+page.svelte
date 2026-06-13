@@ -13,6 +13,7 @@
 	import SelectInput from '$lib/components/ui/select-input.svelte';
 	import TextArea from '$lib/components/ui/text-area.svelte';
 	import Button from '$lib/components/ui/button.svelte';
+	import type { Column } from '$lib/components/ui/data-table.types';
 
 	// Demo state
 	let textValue = $state('');
@@ -22,12 +23,19 @@
 	let selectVal = $state('');
 	let areaVal = $state('Line 1\nLine 2\nLine 3');
 
+	type DemoTableRow = {
+		id: number;
+		name: string;
+		age: number;
+	};
+
 	let tableColumns = [
 		{ key: 'id', label: 'ID', width: '50px' },
 		{ key: 'name', label: 'Name' },
 		{ key: 'age', label: 'Age', sortValue: (r) => r.age }
-	];
-	let tableRows = [
+	] satisfies Column<DemoTableRow>[];
+
+	let tableRows: DemoTableRow[] = [
 		{ id: 1, name: 'Alice', age: 31 },
 		{ id: 2, name: 'Bob', age: 28 },
 		{ id: 3, name: 'Cindy', age: 44 },

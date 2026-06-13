@@ -14,13 +14,21 @@
 		cookieState: any;
 	}
 
+	type RecruitRow = Pokemon & {
+		effectiveRate: number;
+	};
+
 	let { cookieKey, cookieState }: Props = $props();
 
-	const _state = createCookieState(cookieKey, cookieState, {
-		leaderLevel: 90,
-		friendBow: false,
-		hideUnrecruitable: false
-	});
+	const _state = createCookieState(
+		() => cookieKey,
+		() => cookieState,
+		{
+			leaderLevel: 90,
+			friendBow: false,
+			hideUnrecruitable: false
+		}
+	);
 
 	const pokemons = pokemonsRaw as Pokemon[];
 
@@ -87,7 +95,7 @@
 	})();
 
 	const rows = $derived.by(() => {
-		let list = pokemons.map((pokemon) => ({
+		let list: RecruitRow[] = pokemons.map((pokemon) => ({
 			...pokemon,
 			effectiveRate: computeRecruitRate(pokemon, _state.leaderLevel, _state.friendBow)
 		}));
@@ -99,7 +107,7 @@
 		return list;
 	});
 
-	const pokemonColumn: Column = {
+	const pokemonColumn: Column<RecruitRow> = {
 		key: 'name',
 		label: 'Pokémon',
 
@@ -111,8 +119,8 @@
 		})
 	};
 
-	const baseRateColumn: Column = {
-		key: 'baseRate',
+	const baseRateColumn: Column<RecruitRow> = {
+		key: 'name',
 		label: 'Base Rate',
 
 		sortValue: (pokemon) => pokemon.recruit.rate,
@@ -120,7 +128,7 @@
 		render: (pokemon) => `${pokemon.recruit.rate}%`
 	};
 
-	const effectiveRateColumn: Column = {
+	const effectiveRateColumn: Column<RecruitRow> = {
 		key: 'effectiveRate',
 		label: 'Effective Rate',
 
@@ -135,8 +143,8 @@
 		}
 	};
 
-	const friendAreaColumn: Column = {
-		key: 'friendArea',
+	const friendAreaColumn: Column<RecruitRow> = {
+		key: 'name',
 		label: 'Friend Area',
 
 		sortValue: (pokemon) => pokemon.encounter.friendArea ?? '',
@@ -144,19 +152,21 @@
 		render: (pokemon) => pokemon.encounter.friendArea ?? '—'
 	};
 
-	const locationsColumn: Column = {
-		key: 'locations',
+	const locationsColumn: Column<RecruitRow> = {
+		key: 'name',
 		label: 'Locations',
 
 		render: (pokemon) => {
 			if (!pokemon.encounter.locations.length) return '—';
 
-			return pokemon.encounter.locations.map((l) => (l.floors ? `${l.dungeon} (${l.floors})` : l.dungeon)).join('<br>');
+			return pokemon.encounter.locations
+				.map((location) => (location.floors ? `${location.dungeon} (${location.floors})` : location.dungeon))
+				.join('<br>');
 		}
 	};
 
-	const evolvesFromColumn: Column = {
-		key: 'evolvesFrom',
+	const evolvesFromColumn: Column<RecruitRow> = {
+		key: 'name',
 		label: 'Evolves From',
 
 		render: (pokemon) => {
@@ -168,15 +178,15 @@
 		}
 	};
 
-	const notesColumn: Column = {
-		key: 'notes',
+	const notesColumn: Column<RecruitRow> = {
+		key: 'name',
 		label: 'Notes',
 		width: '25%',
 
 		render: (pokemon) => pokemon.recruit.note ?? pokemon.encounter.note ?? '—'
 	};
 
-	const columns = [
+	const columns: Column<RecruitRow>[] = [
 		pokemonColumn,
 		baseRateColumn,
 		effectiveRateColumn,

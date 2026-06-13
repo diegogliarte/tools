@@ -1,44 +1,6 @@
 <script lang="ts">
 	import { clamp } from '$lib/utils/math.utils';
 
-	interface Segment {
-		limit: number;
-		color: string; // "blue", "red", "green", ...
-	}
-
-	interface Props {
-		value?: number | null; // 176, 62.6, ...
-		min?: number;
-		max?: number;
-		label?: string;
-		showValue?: boolean; // show floating label below bar
-		segments?: Segment[]; // optional array of segment ranges
-	}
-
-	let { value = $bindable(0), min = 0, max, label = '', showValue = true, segments = [] }: Props = $props();
-
-	const uid = $props.id();
-
-	// Normalize value to 0–100%
-	let percentage = $derived.by(() => {
-		if (max === undefined) return 0;
-		const clamped = clamp(value ?? 0, min, max);
-		return ((clamped - min) / (max - min)) * 100;
-	});
-
-	// Convert each segment to its percentage width
-	let segmentPercents = $derived.by(() => {
-		if (segments.length === 0) return [];
-
-		return segments.map((seg, i) => {
-			const start = i === 0 ? min : segments[i - 1].limit;
-			const end = seg.limit;
-
-			const widthPercentage = ((end - start) / (max - min)) * 100;
-			return { widthPercentage, color: seg.color };
-		});
-	});
-
 	const COLOR_MAP = {
 		blue: 'text-blue-500',
 		green: 'text-green-500',
@@ -47,19 +9,59 @@
 		accent: 'text-accent',
 		white: 'text-white',
 		black: 'text-black'
-	};
+	} as const;
+
+	type SegmentColor = keyof typeof COLOR_MAP;
+
+	interface Segment {
+		limit: number;
+		color: SegmentColor;
+	}
+
+	interface Props {
+		value?: number | null;
+		min?: number;
+		max?: number;
+		label?: string;
+		showValue?: boolean;
+		segments?: Segment[];
+	}
+
+	let { value = $bindable(0), min = 0, max = 100, label = '', showValue = true, segments = [] }: Props = $props();
+
+	const uid = $props.id();
+
+	let range = $derived(max - min > 0 ? max - min : 1);
+
+	let percentage = $derived.by(() => {
+		const clamped = clamp(value ?? 0, min, max);
+		return ((clamped - min) / range) * 100;
+	});
+
+	let segmentPercents = $derived.by(() =>
+		segments.map((seg, i) => {
+			const start = i === 0 ? min : segments[i - 1].limit;
+			const end = seg.limit;
+
+			const widthPercentage = ((end - start) / range) * 100;
+
+			return {
+				widthPercentage,
+				color: seg.color
+			};
+		})
+	);
 
 	let currentColor: string = $derived.by(() => {
 		if (value === null || value === undefined || segments.length === 0) {
-			return 'text-text'; // fallback to your theme's default text
+			return 'text-text';
 		}
 
 		for (const seg of segments) {
-			if (value <= seg.limit) return COLOR_MAP[seg.color] ?? 'text-text';
+			if (value <= seg.limit) return COLOR_MAP[seg.color];
 		}
 
-		// above last segment
-		return COLOR_MAP[segments[segments.length - 1].color] ?? 'text-text';
+		return COLOR_MAP[segments[segments.length - 1].color];
 	});
 </script>
 
@@ -81,12 +83,11 @@
 		<div class="h-3 border border-text">
 			<div class="h-full bg-accent transition-all" style="width: {percentage}%"></div>
 
-			<!-- Segment ticks -->
 			<div class="pointer-events-none absolute inset-0">
 				{#each segments as seg}
 					<div
 						class="absolute top-0 bottom-0 border-r border-white"
-						style="left: {((seg.limit - min) / (max - min)) * 100}%"
+						style="left: {((seg.limit - min) / range) * 100}%"
 					></div>
 				{/each}
 			</div>

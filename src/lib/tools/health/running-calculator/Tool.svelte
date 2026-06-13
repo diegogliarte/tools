@@ -54,8 +54,14 @@
 
 	function limit2(e: Event, next?: HTMLInputElement | null) {
 		const input = e.target as HTMLInputElement;
-		if (input.value.length > 2) input.value = input.value.slice(0, 2);
-		if (input.value.length === 2 && next) next.select();
+
+		if (input.value.length > 2) {
+			input.value = input.value.slice(0, 2);
+		}
+
+		if (input.value.length === 2 && next) {
+			next.select();
+		}
 	}
 
 	let timeHEl: HTMLInputElement;
@@ -66,8 +72,9 @@
 	let paceSEl: HTMLInputElement;
 	let distanceEl: HTMLInputElement;
 
-	function enforceDistanceLimit(e) {
+	function enforceDistanceLimit(e: Event) {
 		const input = e.target as HTMLInputElement;
+
 		if (input.value.length > 5) {
 			input.value = input.value.slice(0, 5);
 		}
@@ -158,7 +165,7 @@
 				bind:value={paceH}
 				placeholder="h"
 				readonly={locked === 'pace'}
-				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
+				class={`${baseInput} ${locked !== 'pace' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, paceMEl)}
 			/>
 
@@ -170,7 +177,7 @@
 				bind:value={paceM}
 				placeholder="m"
 				readonly={locked === 'pace'}
-				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
+				class={`${baseInput} ${locked !== 'pace' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, paceSEl)}
 			/>
 
@@ -182,7 +189,7 @@
 				bind:value={paceS}
 				placeholder="s"
 				readonly={locked === 'pace'}
-				class={`${baseInput} ${locked !== 'time' ? unlockedInput : ''}`}
+				class={`${baseInput} ${locked !== 'pace' ? unlockedInput : ''}`}
 				oninput={(e) => limit2(e, timeHEl)}
 			/>
 		</div>
@@ -190,13 +197,15 @@
 </section>
 
 <style>
-	/* Remove spinner buttons */
 	input::-webkit-inner-spin-button,
 	input::-webkit-outer-spin-button {
 		-webkit-appearance: none;
+		appearance: none;
 		margin: 0;
 	}
+
 	input[type='number'] {
 		-moz-appearance: textfield;
+		appearance: textfield;
 	}
 </style>

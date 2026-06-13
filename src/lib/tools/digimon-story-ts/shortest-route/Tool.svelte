@@ -70,8 +70,11 @@
 		for (const evo of d.evolution_conditions ?? []) {
 			for (const [k, v] of Object.entries(evo.requirements ?? {})) {
 				if (k.toLowerCase().includes('agent')) {
-					const match = v.replace(/\s+/g, '').match(/^(≥|>=|>)?(\d+)$/)[2];
-					const required = Number(match);
+					const match = v.replace(/\s+/g, '').match(/^(≥|>=|>)?(\d+)$/);
+					if (!match) continue;
+
+					const required = Number(match[2]);
+
 					if (!Number.isNaN(required) && required > agentRank) {
 						return false;
 					}

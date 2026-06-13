@@ -6,7 +6,6 @@
 	import { untrack } from 'svelte';
 
 	import JSZip from 'jszip';
-	import { labelGroups } from '$lib/states/label-groups.svelte';
 
 	type Result = {
 		name: string;
@@ -37,7 +36,9 @@
 	const selectedResult = $derived(selectedIdx !== null ? (results[selectedIdx] ?? null) : null);
 
 	$effect(() => {
-		if (!files || !files.length || !quality || !format) return;
+		const currentFiles = files;
+
+		if (!currentFiles || currentFiles.length === 0 || !quality || !format) return;
 
 		untrack(() => {
 			convertRunId++;
@@ -49,11 +50,10 @@
 				}
 			}
 
-			if (files.length !== results.length) {
-				selectedIdx = 0;
-			}
+			const nextSelectedIdx = currentFiles.length !== results.length ? 0 : (selectedIdx ?? 0);
+			selectedIdx = nextSelectedIdx;
 
-			results = files.map((file) => ({
+			results = currentFiles.map((file) => ({
 				name: file.name.replace(/\.\w+$/, getExtension(format)),
 				original: file,
 				originalUrl: URL.createObjectURL(file),
@@ -61,12 +61,12 @@
 				convertedUrl: null
 			}));
 
-			convertAll(selectedIdx, convertRunId);
+			convertAll(nextSelectedIdx, convertRunId);
 		});
 	});
 
 	let convertRunId = $state(0);
-	async function convertAll(startIdx: number = 0, runId: number) {
+	async function convertAll(startIdx: number, runId: number) {
 		selectedIdx = startIdx;
 
 		const total = results.length;

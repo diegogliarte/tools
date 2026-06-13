@@ -10,18 +10,22 @@
 		valueAlign?: 'left' | 'center' | 'right';
 	}
 
-	let { label = '', value = '', group, isCopyable = true, valueAlign = 'left' }: Props = $props();
-
-	const alignmentClass = {
-		left: 'text-left',
-		center: 'text-center',
-		right: 'text-right'
-	}[valueAlign];
+	let { label = '', value = '', group = null, isCopyable = true, valueAlign = 'left' }: Props = $props();
 
 	let labelEl: HTMLElement | null = $state(null);
 
+	let alignmentClass = $derived(
+		{
+			left: 'text-left',
+			center: 'text-center',
+			right: 'text-right'
+		}[valueAlign]
+	);
+
+	let groupWidth = $derived(group ? (labelGroups[group] ?? 0) : 0);
+
 	$effect(() => {
-		if (!labelEl || group == null) return;
+		if (!labelEl || !group) return;
 
 		const width = labelEl.offsetWidth;
 		const current = labelGroups[group] ?? 0;
@@ -34,7 +38,7 @@
 
 <div class="flex w-full items-center">
 	{#if label}
-		<div bind:this={labelEl} class="border border-r-0 p-1 text-center" style={`min-width:${labelGroups[group] ?? 0}px`}>
+		<div bind:this={labelEl} class="border border-r-0 p-1 text-center" style={`min-width:${groupWidth}px`}>
 			{label}
 		</div>
 	{/if}

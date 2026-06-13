@@ -7,9 +7,19 @@
 	const pokemons = pokemonsRaw as Pokemon[];
 	const pokemonByName = new Map(pokemons.map((p) => [p.name, p]));
 
-	const plusle = pokemonByName.get('Plusle');
-	const alakazam = pokemonByName.get('Alakazam');
-	const raikou = pokemonByName.get('Raikou');
+	function getRequiredPokemon(name: string): Pokemon {
+		const pokemon = pokemonByName.get(name);
+
+		if (!pokemon) {
+			throw new Error(`Missing Pokémon data for ${name}`);
+		}
+
+		return pokemon;
+	}
+
+	const plusle = getRequiredPokemon('Plusle');
+	const alakazam = getRequiredPokemon('Alakazam');
+	const raikou = getRequiredPokemon('Raikou');
 
 	type Token =
 		| { type: 'move'; dir: string; count?: number; run?: boolean }

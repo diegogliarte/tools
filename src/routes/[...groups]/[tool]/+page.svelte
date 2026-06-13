@@ -2,20 +2,21 @@
 	import { page } from '$app/state';
 	import { findTool } from '$lib/core/tools-registry';
 	import { toolsTree } from '$lib/core/tools-tree';
-	import {
-		canonicalUrl,
-		siteName,
-		toolOgImageUrl,
-		toolPageDescription,
-		toolPageTitle
-	} from '$lib/utils/seo.utils';
+	import { canonicalUrl, siteName, toolOgImageUrl, toolPageDescription, toolPageTitle } from '$lib/utils/seo.utils';
 
 	let { params, data } = $props();
 
 	let categoryPath = $derived(params.groups.split('/'));
 	let toolSlug = $derived(params.tool);
-	let tool = $derived(findTool(categoryPath, toolSlug, toolsTree));
+	let tool = $derived.by(() => {
+		const found = findTool(categoryPath, toolSlug, toolsTree);
 
+		if (!found) {
+			throw new Error('Tool not found');
+		}
+
+		return found;
+	});
 	let componentPromise = $derived(tool.loadComponent());
 
 	let canonical = $derived(canonicalUrl(page.url.pathname));

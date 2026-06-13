@@ -59,7 +59,11 @@
 
 	type Chain = number[];
 
-	const team = createCookieState(cookieKey, normalizeCookieState(cookieState), []);
+	const team = createCookieState(
+		() => cookieKey,
+		() => normalizeCookieState(cookieState),
+		[]
+	);
 
 	if (team.length === 0) {
 		const fallback = getFallbackState();

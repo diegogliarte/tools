@@ -24,33 +24,41 @@
 
 	const uid = $props.id();
 
-	let holdInterval: Timeout = null;
+	let holdTimeout: ReturnType<typeof setTimeout> | null = null;
+	let holdInterval: ReturnType<typeof setInterval> | null = null;
 
 	function startHold(direction: 1 | -1) {
+		stopHold();
+
 		if (value === null && placeholder) {
 			value = Number(placeholder);
 			return;
 		}
+
 		value = getNextValue(direction);
 
-		holdInterval = setTimeout(() => {
+		holdTimeout = setTimeout(() => {
 			holdInterval = setInterval(() => {
 				value = getNextValue(direction);
-			}, 50); // speed during hold
-		}, 200); // delay before rapid firing starts
+			}, 50);
+		}, 200);
 	}
 
 	function getNextValue(direction: 1 | -1): number {
-		let next = (value ?? 0) + (step ?? 1) * direction;
+		const next = (value ?? 0) + (step ?? 1) * direction;
 		return clampStep(next, min, max, step);
 	}
 
 	function stopHold() {
-		if (!holdInterval) return;
+		if (holdTimeout) {
+			clearTimeout(holdTimeout);
+			holdTimeout = null;
+		}
 
-		clearTimeout(holdInterval);
-		clearInterval(holdInterval);
-		holdInterval = null;
+		if (holdInterval) {
+			clearInterval(holdInterval);
+			holdInterval = null;
+		}
 	}
 </script>
 
@@ -96,7 +104,6 @@
 			{placeholder}
 		/>
 
-		<!-- arrows inside the input -->
 		<div class="absolute inset-y-0 right-3 flex flex-col justify-center">
 			{@render arrow(1, 'up')}
 			{@render arrow(-1, 'down')}
@@ -108,11 +115,12 @@
 	@layer utilities {
 		input[type='number']::-webkit-inner-spin-button,
 		input[type='number']::-webkit-outer-spin-button {
-			@apply appearance-none;
+			appearance: none;
 		}
 	}
 
 	input[type='number'] {
 		-moz-appearance: textfield;
+		appearance: textfield;
 	}
 </style>

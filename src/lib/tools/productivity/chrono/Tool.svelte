@@ -1,8 +1,8 @@
 <script lang="ts">
 	let running = $state(false);
-	let elapsed = $state(0); // ms
+	let elapsed = $state(0);
 	let lastTick = $state(0);
-	let holdTimeout: Timeout | null = null;
+	let holdTimeout: ReturnType<typeof setTimeout> | null = null;
 
 	let laps = $state<string[]>([]);
 	let pulsing = $state(false);
@@ -22,15 +22,25 @@
 		function tick(t: number) {
 			if (running) {
 				if (lastTick === 0) lastTick = t;
+
 				const delta = t - lastTick;
 				elapsed += delta;
 				lastTick = t;
 			}
+
 			frame = requestAnimationFrame(tick);
 		}
 
 		frame = requestAnimationFrame(tick);
-		return () => cancelAnimationFrame(frame);
+
+		return () => {
+			cancelAnimationFrame(frame);
+
+			if (holdTimeout) {
+				clearTimeout(holdTimeout);
+				holdTimeout = null;
+			}
+		};
 	});
 
 	function toggleRun() {
@@ -61,32 +71,28 @@
 	}
 
 	function onMouseDown(e: MouseEvent) {
-		// middle = lap
 		if (e.button === 1) {
 			addLap();
 			return;
 		}
 
-		// hold → reset
 		if (e.button === 0) {
 			holdTimeout = setTimeout(() => {
 				reset();
-				holdTimeout = null; // IMPORTANT: prevents auto-toggle
+				holdTimeout = null;
 			}, 300);
 		}
 	}
 
 	function onMouseUp(e: MouseEvent) {
-		if (e.button === 0) {
-			// If hold triggered reset, do not toggle
-			if (holdTimeout === null) return;
+		if (e.button !== 0) return;
 
-			clearTimeout(holdTimeout);
-			holdTimeout = null;
+		if (holdTimeout === null) return;
 
-			// short click → start/pause
-			toggleRun();
-		}
+		clearTimeout(holdTimeout);
+		holdTimeout = null;
+
+		toggleRun();
 	}
 
 	function onDblClick() {
@@ -106,7 +112,6 @@
 	role="button"
 	tabindex="0"
 >
-	<!-- centered clock -->
 	<div
 		class="
 			absolute top-1/2 left-1/2
@@ -127,7 +132,6 @@
 		</div>
 	</div>
 
-	<!-- laps on right -->
 	<div class="absolute top-0 right-0 flex flex-col gap-1 p-4 text-xs">
 		{#each laps as lap, i (i)}
 			<div>{lap}</div>

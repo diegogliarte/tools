@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { Component } from 'svelte';
+
 	import MdiGithub from '~icons/mdi/github';
 	import MdiHome from '~icons/mdi/home';
 	import MdiShape from '~icons/mdi/shape';
@@ -11,6 +13,8 @@
 	import ToolSearchModal from '$lib/components/ToolSearchModal.svelte';
 
 	import { openModal } from '$lib/states/modal.svelte';
+
+	type IconComponent = Component<any, any, any>;
 
 	export let isSidebarOpen: boolean;
 
@@ -28,7 +32,7 @@
 
 <svelte:window onkeydown={handleGlobalKeydown} />
 
-{#snippet navLink(href: string, label: string, Icon, external = false)}
+{#snippet navLink(href: string, label: string, Icon: IconComponent, external = false)}
 	<a
 		{href}
 		aria-label={label}
@@ -40,7 +44,7 @@
 	</a>
 {/snippet}
 
-{#snippet navAction(label: string, Icon, onclick: () => void)}
+{#snippet navAction(label: string, Icon: IconComponent, onclick: () => void)}
 	<button aria-label={label} class="cursor-pointer text-text transition hover:text-accent" {onclick}>
 		<Icon class="h-5 w-5" />
 	</button>

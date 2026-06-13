@@ -1,24 +1,36 @@
 import { setCookies } from '$lib/utils/cookies.utils';
 
-export function createCookieState<T>(key: string, initial: T, defaults: T) {
+type MaybeGetter<T> = T | (() => T);
+
+function read<T>(value: MaybeGetter<T>): T {
+	if (typeof value === 'function') {
+		return (value as () => T)();
+	}
+
+	return value;
+}
+
+export function createCookieState<T>(key: MaybeGetter<string>, initial: MaybeGetter<T>, defaults: T) {
+	const initialValue = read(initial);
+
 	let value: T;
 
 	// ARRAY CASE
 	if (Array.isArray(defaults)) {
-		value = Array.isArray(initial) ? initial : defaults;
+		value = Array.isArray(initialValue) ? initialValue : defaults;
 	}
 
 	// OBJECT CASE
 	else if (typeof defaults === 'object' && defaults !== null) {
 		value = {
 			...defaults,
-			...(initial ?? {})
+			...(initialValue ?? {})
 		};
 	}
 
 	// PRIMITIVE CASE (just in case)
 	else {
-		value = initial ?? defaults;
+		value = initialValue ?? defaults;
 	}
 
 	const state = $state<T>(value);
@@ -32,7 +44,7 @@ export function createCookieState<T>(key: string, initial: T, defaults: T) {
 			return;
 		}
 
-		setCookies(key, snapshot);
+		setCookies(read(key), snapshot);
 	});
 
 	return state;

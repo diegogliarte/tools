@@ -12,10 +12,7 @@ export function pageTitle(title: string) {
 	return `${title} | ${siteName}`;
 }
 
-export function toolPageTitle(tool: {
-	title: string;
-	categoryPath?: string[];
-}) {
+export function toolPageTitle(tool: { title: string; categoryPath?: string[] }) {
 	const category = tool.categoryPath?.at(-1);
 
 	if (category) {
@@ -25,10 +22,7 @@ export function toolPageTitle(tool: {
 	return pageTitle(tool.title);
 }
 
-export function toolPageDescription(tool: {
-	title: string;
-	description: string;
-}) {
+export function toolPageDescription(tool: { title: string; description: string }) {
 	return `${tool.description} Use ${tool.title} directly in your browser.`;
 }
 

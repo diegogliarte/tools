@@ -1,15 +1,15 @@
-import type { ToolCategory, ToolDefinition } from '$lib/tools/types';
+import type { BuiltToolDefinition, ToolCategory } from '$lib/tools/types';
 import { slugify } from '$lib/utils/slug.utils';
 
 function getCategorySlug(category: ToolCategory): string {
 	return category.slug ?? slugify(category.name);
 }
 
-function getToolSlug(tool: ToolDefinition): string {
+function getToolSlug(tool: BuiltToolDefinition): string {
 	return slugify(tool.title);
 }
 
-export function findTool(path: string[], toolSlug: string, tree: ToolCategory[]): ToolDefinition | null {
+export function findTool(path: string[], toolSlug: string, tree: ToolCategory[]): BuiltToolDefinition | null {
 	if (path.length === 0) return null;
 
 	let currentLevel = tree;

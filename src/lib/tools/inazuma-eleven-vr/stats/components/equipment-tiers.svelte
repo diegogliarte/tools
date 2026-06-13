@@ -24,6 +24,8 @@
 		Misc: cleanItems(misc)
 	} satisfies Record<string, any[]>;
 
+	type GearType = keyof typeof gear;
+
 	const roleStat = {
 		FW: 'Shoot AT',
 		MF: 'Focus AT',
@@ -33,7 +35,10 @@
 
 	type Role = keyof typeof roleStat;
 
-	function computeTopItems(role: Role, type: keyof typeof gear) {
+	const roles = Object.keys(roleStat) as Role[];
+	const gearTypes = Object.keys(gear) as GearType[];
+
+	function computeTopItems(role: Role, type: GearType) {
 		const stat = roleStat[role];
 
 		return gear[type]
@@ -48,13 +53,13 @@
 </script>
 
 <div class="flex flex-col gap-12">
-	{#each Object.keys(roleStat) as role (role)}
+	{#each roles as role (role)}
 		<section>
 			<h2 class="text-large">{role}</h2>
 
 			<!-- Four gear categories -->
 			<div class="grid grid-cols-4 gap-6">
-				{#each Object.keys(gear) as type (type)}
+				{#each gearTypes as type (type)}
 					<div>
 						<h3>{type}</h3>
 

@@ -1,95 +1,85 @@
-<script lang="ts">
+<script module lang="ts">
+	export type { Column, SortValue } from '$lib/components/ui/data-table.types';
+</script>
+
+<script lang="ts" generics="RowType extends Record<string, any>">
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 	import MdiChevronUpDown from '~icons/mdi/chevron-up-down';
-	import type { Component } from 'svelte';
+	import type { Column as DataTableColumn, SortValue } from '$lib/components/ui/data-table.types';
 
-	export interface Column<RowType = any> {
-		key: string;
-		label: string;
-		width?: string;
-		// Option A: HTML string (existing)
-		render?: (row: RowType) => string;
-
-		// Option B: Svelte component (new)
-		renderComponent?: (row: RowType) => {
-			component: Component;
-			props?: Record<string, any>;
-		};
-		searchValue?: (row: RowType) => string;
-		sortValue?: (row: RowType) => number | string;
-	}
-
-	interface Props<RowType = any> {
-		columns: Column<RowType>[];
+	interface Props<RowType extends Record<string, any>> {
+		columns: DataTableColumn<RowType>[];
 		rows: RowType[];
 		pageSize?: number;
 	}
 
-	let { columns, rows, pageSize = 50 }: Props = $props();
+	let { columns, rows, pageSize = 50 }: Props<RowType> = $props();
 
 	let search = $state('');
-	let sortKey = $state<keyof any | null>(null);
+	let sortKey = $state<(keyof RowType & string) | null>(null);
 	let sortDir = $state<'asc' | 'desc' | null>(null);
+
+	function cellText(row: RowType, col: DataTableColumn<RowType>) {
+		if (col.searchValue) {
+			return col.searchValue(row);
+		}
+
+		if (col.render) {
+			return String(col.render(row) ?? '').replace(/<[^>]+>/g, ' ');
+		}
+
+		return String(row[col.key] ?? '');
+	}
+
+	function compareValues(a: SortValue, b: SortValue) {
+		if (a == null && b == null) return 0;
+		if (a == null) return 1;
+		if (b == null) return -1;
+
+		if (typeof a === 'number' && typeof b === 'number') {
+			return a - b;
+		}
+
+		return String(a).localeCompare(String(b), undefined, {
+			numeric: true,
+			sensitivity: 'base'
+		});
+	}
+
+	function renderHtml(value: string | number | null | undefined) {
+		return String(value ?? '');
+	}
 
 	let processed = $derived.by(() => {
 		let filtered = rows;
 
-		// --- filtering ---
 		if (search.trim()) {
 			const q = search.toLowerCase();
 
-			filtered = rows.filter((r) =>
-				columns.some((c) => {
-					let value = '';
-
-					// 1) If column defines a custom search extractor
-					if (c.searchValue) {
-						value = c.searchValue(r).toLowerCase();
-					}
-
-					// 2) Else if column uses a renderer → extract text from HTML
-					else if (c.render) {
-						const html = c.render(r);
-						value = html
-							.replace(/<[^>]+>/g, ' ') // strip tags
-							.replace(/\s+/g, ' ') // normalize spaces
-							.trim()
-							.toLowerCase();
-					}
-
-					// 3) Else fallback to raw cell value
-					else {
-						const raw = r[c.key];
-						value = typeof raw === 'string' ? raw.toLowerCase() : String(raw ?? '').toLowerCase();
-					}
-
-					return value.includes(q);
-				})
+			filtered = rows.filter((row) =>
+				columns.some((col) => cellText(row, col).replace(/\s+/g, ' ').trim().toLowerCase().includes(q))
 			);
 		}
 
-		// --- sorting (unchanged) ---
 		if (sortKey) {
+			const key = sortKey;
+			const dir = sortDir ?? 'asc';
+			const col = columns.find((column) => column.key === key);
+
 			filtered = [...filtered].sort((a, b) => {
-				const col = columns.find((c) => c.key === sortKey);
+				const av = col?.sortValue ? col.sortValue(a) : a[key];
+				const bv = col?.sortValue ? col.sortValue(b) : b[key];
 
-				const av = col?.sortValue ? col.sortValue(a) : a[sortKey];
-				const bv = col?.sortValue ? col.sortValue(b) : b[sortKey];
+				const result = compareValues(av, bv);
 
-				if (av < bv) return sortDir === 'asc' ? -1 : 1;
-				if (av > bv) return sortDir === 'asc' ? 1 : -1;
-				return 0;
+				return dir === 'asc' ? result : -result;
 			});
 		}
 
 		return filtered;
 	});
-
-	// ---------------------------
-	// INFINITE SCROLL BASED ON processed rows
-	// ---------------------------
 
 	let page = $state(1);
 	let visibleRows = $derived.by(() => processed.slice(0, page * pageSize));
@@ -115,10 +105,16 @@
 		return () => el.removeEventListener('scroll', onScroll);
 	});
 
-	// ---------------------------
-	// SORT TOGGLER
-	// ---------------------------
-	function toggleSort(key: keyof any) {
+	$effect(() => {
+		search;
+		sortKey;
+		sortDir;
+		rows;
+
+		page = 1;
+	});
+
+	function toggleSort(key: keyof RowType & string) {
 		if (sortKey !== key) {
 			sortKey = key;
 			sortDir = 'desc';
@@ -131,7 +127,6 @@
 	}
 </script>
 
-<!-- Search + Counter -->
 <div class="flex items-center justify-between gap-2">
 	<div class="w-48">
 		<TextInput placeholder="Search..." bind:value={search} />
@@ -177,7 +172,7 @@
 		<tbody>
 			{#if visibleRows.length === 0}
 				<tr>
-					<td colspan={columns.length} class="py-4 text-center opacity-70"> No results </td>
+					<td colspan={columns.length} class="py-4 text-center opacity-70">No results</td>
 				</tr>
 			{:else}
 				{#each visibleRows as row (row)}
@@ -185,12 +180,13 @@
 						{#each columns as col (col)}
 							<td class="p-1">
 								{#if col.renderComponent}
-									{@const Component = col.renderComponent(row).component}
-									<Component {...col.renderComponent(row).props} />
+									{@const rendered = col.renderComponent(row)}
+									{@const Component = rendered.component}
+									<Component {...rendered.props} />
 								{:else if col.render}
-									{@html col.render(row)}
+									{@html renderHtml(col.render(row))}
 								{:else}
-									{row[col.key]}
+									{row[col.key] ?? ''}
 								{/if}
 							</td>
 						{/each}

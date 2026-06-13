@@ -8,15 +8,21 @@
 	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 	import MoveCell from '$lib/components/pmd-blue/MoveCell.svelte';
 	import FlagBadges from '$lib/components/pmd-blue/FlagBadges.svelte';
+	import type { Move } from '$lib/components/pmd-blue/MoveModal.svelte';
 
-	const moves = movesRaw;
+	type MoveRow = Move & {
+		hitModeDisplay: string;
+		hitsDisplay: string;
+	};
+
+	const moves = movesRaw as Move[];
 	const damageFlags = moveFlags.damageFlags;
 	const otherFlags = moveFlags.otherFlags;
 
 	const damageMap = Object.fromEntries(damageFlags.map((f) => [f.id, f.description]));
 	const otherMap = Object.fromEntries(otherFlags.map((f) => [f.id, f.description]));
 
-	function formatHits(move: { min_hits?: number; max_hits?: number; hit_count_mode?: string }) {
+	function formatHits(move: { min_hits?: number | null; max_hits?: number | null; hit_count_mode?: string | null }) {
 		const min = move.min_hits;
 		const max = move.max_hits;
 		const mode = move.hit_count_mode;
@@ -27,7 +33,7 @@
 		return '—';
 	}
 
-	const rows = moves.map((m) => ({
+	const rows: MoveRow[] = moves.map((m) => ({
 		...m,
 		type: m.type?.trim() || 'None',
 		class: m.class?.trim() || 'None',
@@ -61,7 +67,7 @@
 		);
 	});
 
-	const columns: Column[] = [
+	const columns: Column<MoveRow>[] = [
 		{
 			key: 'name',
 			label: 'Name',
@@ -99,8 +105,7 @@
 				component: FlagBadges,
 				props: {
 					flags: m.damageFlags,
-					map: damageMap,
-					variant: 'damage'
+					map: damageMap
 				}
 			})
 		},
@@ -111,8 +116,7 @@
 				component: FlagBadges,
 				props: {
 					flags: m.otherFlags,
-					map: otherMap,
-					variant: 'other'
+					map: otherMap
 				}
 			})
 		},

@@ -1,13 +1,5 @@
-<script lang="ts">
-	import Modal from '$lib/components/ui/modal.svelte';
-	import FlagBadges from './FlagBadges.svelte';
-	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
-
-	import moveFlags from '$lib/data/pmd-blue/move-flags.json';
-	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
-	import pokemonMovesRaw from '$lib/data/pmd-blue/pokemon-moves.json';
-
-	interface Move {
+<script module lang="ts">
+	export interface Move {
 		id?: number;
 		name: string;
 		type: string;
@@ -20,38 +12,10 @@
 		damageFlags: number[];
 		otherFlags: number[];
 		targets: string;
-		min_hits?: number;
-		max_hits?: number;
-		hit_count_mode?: string;
+		min_hits?: number | null;
+		max_hits?: number | null;
+		hit_count_mode?: string | null;
 	}
-
-	interface PokemonMoveEntry {
-		pokemon_id: number;
-		levelup_moves: { move_id: number; level: number }[];
-		aux_moves: number[];
-	}
-
-	interface Pokemon {
-		id: number;
-		game_id: number;
-		name: string;
-		icon: string;
-	}
-
-	interface Props {
-		move: Move;
-		onClose?: () => void;
-	}
-
-	let { move, onClose }: Props = $props();
-
-	const pokemons = pokemonsRaw as Pokemon[];
-	const pokemonMoves = pokemonMovesRaw as PokemonMoveEntry[];
-
-	const pokemonById = new Map(pokemons.map((p) => [p.game_id, p]));
-
-	const damageMap = Object.fromEntries(moveFlags.damageFlags.map((f) => [f.id, f.description]));
-	const otherMap = Object.fromEntries(moveFlags.otherFlags.map((f) => [f.id, f.description]));
 
 	const typeColor = {
 		Fire: 'bg-red-700',
@@ -72,7 +36,79 @@
 		Steel: 'bg-gray-400',
 		Normal: 'bg-neutral-500',
 		Typeless: 'bg-neutral-400'
+	} as const;
+
+	export function getMoveTypeColor(type: string) {
+		return typeColor[type as keyof typeof typeColor] ?? 'bg-neutral-500';
+	}
+</script>
+
+<script lang="ts">
+	import Modal from '$lib/components/ui/modal.svelte';
+	import FlagBadges from './FlagBadges.svelte';
+	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
+
+	import moveFlags from '$lib/data/pmd-blue/move-flags.json';
+	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
+	import pokemonMovesRaw from '$lib/data/pmd-blue/pokemon-moves.json';
+
+	import type { Pokemon } from '$lib/utils/pmd-blue.utils';
+
+	type EncounterLocation = Pokemon['encounter']['locations'][number];
+
+	type RawEncounterLocation = Omit<EncounterLocation, 'floors'> & {
+		floors?: string | null;
 	};
+
+	type RawPokemon = Omit<Pokemon, 'encounter'> & {
+		encounter: Omit<Pokemon['encounter'], 'locations'> & {
+			locations: RawEncounterLocation[];
+		};
+	};
+
+	interface PokemonMoveEntry {
+		pokemon_id: number;
+		levelup_moves: { move_id: number; level: number }[];
+		aux_moves: number[];
+	}
+
+	interface Props {
+		move: Move;
+		onClose?: () => void;
+	}
+
+	let { move, onClose }: Props = $props();
+
+	function normalizeLocation(location: RawEncounterLocation): EncounterLocation {
+		const { floors, ...rest } = location;
+
+		if (floors == null) {
+			return rest;
+		}
+
+		return {
+			...rest,
+			floors
+		};
+	}
+
+	function normalizePokemon(pokemon: RawPokemon): Pokemon {
+		return {
+			...pokemon,
+			encounter: {
+				...pokemon.encounter,
+				locations: pokemon.encounter.locations.map(normalizeLocation)
+			}
+		};
+	}
+
+	const pokemons = (pokemonsRaw as unknown as RawPokemon[]).map(normalizePokemon);
+	const pokemonMoves = pokemonMovesRaw as PokemonMoveEntry[];
+
+	const pokemonById = new Map(pokemons.map((p) => [p.game_id, p]));
+
+	const damageMap = Object.fromEntries(moveFlags.damageFlags.map((f) => [f.id, f.description]));
+	const otherMap = Object.fromEntries(moveFlags.otherFlags.map((f) => [f.id, f.description]));
 
 	function formatHits(move: Move) {
 		const min = move.min_hits;
@@ -85,7 +121,7 @@
 		return '—';
 	}
 
-	function formatHitMode(mode?: string) {
+	function formatHitMode(mode?: string | null) {
 		if (!mode) return '—';
 		if (mode === 'fixed') return 'Fixed';
 		if (mode === 'range') return 'Range';
@@ -93,7 +129,7 @@
 	}
 
 	const learnedBy = $derived.by(() => {
-		if (!move.id) return { levelUp: [], tm: [] };
+		if (!move.id) return { levelUp: [], tm: [] } as { levelUp: Pokemon[]; tm: Pokemon[] };
 
 		const levelUp: Pokemon[] = [];
 		const tm: Pokemon[] = [];
@@ -117,7 +153,7 @@
 
 <Modal title={move?.name} {onClose}>
 	<div class="mb-4 flex items-center gap-2">
-		<div class="h-3 w-3 rounded-sm {typeColor[move.type] ?? 'bg-neutral-500'}"></div>
+		<div class="h-3 w-3 rounded-sm {getMoveTypeColor(move.type)}"></div>
 		<div class="text-sm">{move.type} · {move.class}</div>
 	</div>
 
@@ -137,12 +173,12 @@
 	<div class="flex flex-row gap-4 text-xs">
 		<div>
 			<div class="mb-1 font-semibold">Damage Flags</div>
-			<FlagBadges flags={move.damageFlags} map={damageMap} variant="damage" />
+			<FlagBadges flags={move.damageFlags} map={damageMap} />
 		</div>
 
 		<div>
 			<div class="mb-1 font-semibold">Other Flags</div>
-			<FlagBadges flags={move.otherFlags} map={otherMap} variant="other" />
+			<FlagBadges flags={move.otherFlags} map={otherMap} />
 		</div>
 	</div>
 

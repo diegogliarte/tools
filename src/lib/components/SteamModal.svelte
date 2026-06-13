@@ -45,6 +45,7 @@
 		index = i + 1;
 		resetAuto();
 	}
+
 	function startAuto() {
 		if (interval) return;
 
@@ -123,6 +124,9 @@
 		<!-- Carousel -->
 		<div
 			bind:clientWidth={containerWidth}
+			role="group"
+			aria-roledescription="carousel"
+			aria-label="Vpetlings screenshots"
 			class="relative w-3/4 touch-pan-y overflow-hidden border border-text"
 			ontouchstart={(e) => {
 				if (isAnimating) return;

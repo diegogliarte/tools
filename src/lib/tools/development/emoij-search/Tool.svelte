@@ -98,7 +98,6 @@
 		for (const term of terms) {
 			const termScore = scoreExpandedTerm(item, term);
 
-			// Require every query term to match somewhere.
 			if (termScore === 0) return 0;
 
 			score += termScore;
@@ -165,7 +164,7 @@
 		return 0;
 	}
 
-	function startsWithAny(tokens: string[], term: string) {
+	function startsWithAny(tokens: readonly string[], term: string) {
 		return tokens.some((token) => token.startsWith(term));
 	}
 

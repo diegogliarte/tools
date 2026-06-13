@@ -10,20 +10,18 @@ export type ToolSearchItem = ToolDefinition & {
 
 function flattenTools(categories: ToolCategory[]): ToolSearchItem[] {
 	return categories.flatMap((category) => [
-		...category.tools
-			.filter((tool): tool is ToolDefinition & { href: string } => Boolean(tool.href))
-			.map((tool) => {
-				const categoryPath = tool.categoryPath ?? [category.name];
-				const categoryLabel = categoryPath.join(' / ');
+		...category.tools.map((tool) => {
+			const categoryPath = tool.categoryPath ?? [category.name];
+			const categoryLabel = categoryPath.join(' / ');
 
-				return {
-					...tool,
-					href: tool.href,
-					category: categoryLabel,
-					categoryPath,
-					searchText: [tool.title, tool.description, categoryLabel].join(' ').toLowerCase()
-				};
-			}),
+			return {
+				...tool,
+				href: tool.href,
+				category: categoryLabel,
+				categoryPath,
+				searchText: [tool.title, tool.description, categoryLabel].join(' ').toLowerCase()
+			};
+		}),
 		...flattenTools(category.subgroups)
 	]);
 }

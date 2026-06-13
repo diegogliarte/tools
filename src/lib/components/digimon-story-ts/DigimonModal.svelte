@@ -44,7 +44,7 @@
 	);
 </script>
 
-{#snippet SkillCard(skill)}
+{#snippet SkillCard(skill: Skill)}
 	<div class="flex flex-col gap-2 border p-2">
 		<div class="flex items-center justify-between">
 			<div class="flex items-center gap-2">

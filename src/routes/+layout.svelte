@@ -16,7 +16,7 @@
 
 	const SIDEBAR_KEY = 'layout.sidebar';
 
-	let isSidebarOpen = $state(data.isSidebarOpen ?? false);
+	let isSidebarOpen = $derived(data.isSidebarOpen ?? false);
 
 	$effect(() => {
 		setCookies(SIDEBAR_KEY, isSidebarOpen);

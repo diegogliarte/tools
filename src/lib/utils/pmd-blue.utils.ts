@@ -10,7 +10,7 @@ export type EvolvesFromEntry = {
 
 export type EncounterLocation = {
 	dungeon: string;
-	floors?: string;
+	floors?: string | null;
 };
 
 export type Pokemon = {
