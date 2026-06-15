@@ -82,17 +82,9 @@
 
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup
-			label="Category"
-			options={types}
-			bind:checked={typeFilter}
-		/>
+		<CheckboxChipGroup label="Category" options={types} bind:checked={typeFilter} />
 
-		<CheckboxChipGroup
-			label="Shop"
-			options={shops}
-			bind:checked={shopFilter}
-		/>
+		<CheckboxChipGroup label="Shop" options={shops} bind:checked={shopFilter} />
 	</div>
 </div>
 

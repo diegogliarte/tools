@@ -101,9 +101,9 @@
 		for (const pokemon of pokemons) {
 			const allParts = [...ownSearchParts(pokemon), ...buildInheritedSearchParts(pokemon.name)];
 
-			map[pokemon.name] = Array.from(
-				new Set(allParts.filter(Boolean).map((s) => String(s).trim().toLowerCase()))
-			).join(' ');
+			map[pokemon.name] = Array.from(new Set(allParts.filter(Boolean).map((s) => String(s).trim().toLowerCase()))).join(
+				' '
+			);
 		}
 
 		return map;

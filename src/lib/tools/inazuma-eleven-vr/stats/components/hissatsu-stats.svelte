@@ -105,23 +105,11 @@
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
 
-		<CheckboxChipGroup
-			label="Subtype"
-			options={subtypes}
-			bind:checked={subtypeFilter}
-		/>
+		<CheckboxChipGroup label="Subtype" options={subtypes} bind:checked={subtypeFilter} />
 
-		<CheckboxChipGroup
-			label="Element"
-			options={elements}
-			bind:checked={elementFilter}
-		/>
+		<CheckboxChipGroup label="Element" options={elements} bind:checked={elementFilter} />
 
-		<CheckboxChipGroup
-			label="Power"
-			options={powerOptions}
-			bind:checked={powerFilter}
-		/>
+		<CheckboxChipGroup label="Power" options={powerOptions} bind:checked={powerFilter} />
 	</div>
 </div>
 

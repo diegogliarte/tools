@@ -170,17 +170,9 @@
 	<!-- Filters -->
 	<div class="flex flex-col gap-4">
 		<div class="grid gap-4 lg:grid-cols-2">
-			<CheckboxChipGroup
-				label="Generations"
-				options={generations}
-				bind:checked={generationFilter}
-			/>
+			<CheckboxChipGroup label="Generations" options={generations} bind:checked={generationFilter} />
 
-			<CheckboxChipGroup
-				label="Attributes"
-				options={attributes}
-				bind:checked={attributeFilter}
-			/>
+			<CheckboxChipGroup label="Attributes" options={attributes} bind:checked={attributeFilter} />
 		</div>
 
 		<div class="flex justify-center">

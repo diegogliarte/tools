@@ -4,10 +4,10 @@
 	type Option =
 		| string
 		| {
-		value: string;
-		label: string;
-		disabled?: boolean;
-	};
+				value: string;
+				label: string;
+				disabled?: boolean;
+		  };
 
 	type NormalizedOption = {
 		value: string;
@@ -83,9 +83,7 @@
 				...Object.fromEntries(
 					items.map((item) => [
 						item.value,
-						typeof saved[item.value] === 'boolean'
-							? saved[item.value]
-							: !!checked[item.value]
+						typeof saved[item.value] === 'boolean' ? saved[item.value] : !!checked[item.value]
 					])
 				)
 			};
@@ -137,19 +135,11 @@
 			<div class="flex items-center gap-2 text-xs opacity-70">
 				<span>{selectedCount}/{enabledItems.length}</span>
 
-				<button
-					type="button"
-					class="cursor-pointer transition hover:text-accent"
-					onclick={() => setAll(true)}
-				>
+				<button type="button" class="cursor-pointer transition hover:text-accent" onclick={() => setAll(true)}>
 					All
 				</button>
 
-				<button
-					type="button"
-					class="cursor-pointer transition hover:text-accent"
-					onclick={() => setAll(false)}
-				>
+				<button type="button" class="cursor-pointer transition hover:text-accent" onclick={() => setAll(false)}>
 					None
 				</button>
 			</div>
@@ -168,8 +158,8 @@
 					cursor-pointer border px-2 py-1 text-xs transition-all
 					disabled:pointer-events-none disabled:opacity-40
 					{selected
-						? 'border-accent bg-accent-dark text-accent shadow-sm'
-						: 'border-white/15 bg-transparent text-white/60 hover:border-white/35 hover:bg-white/5 hover:text-white/90'}
+					? 'border-accent bg-accent-dark text-accent shadow-sm'
+					: 'border-white/15 bg-transparent text-white/60 hover:border-white/35 hover:bg-white/5 hover:text-white/90'}
 				"
 				onclick={() => setValue(item.value, !selected)}
 			>

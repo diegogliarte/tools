@@ -22,11 +22,7 @@
 	const damageMap = Object.fromEntries(damageFlags.map((f) => [f.id, f.description]));
 	const otherMap = Object.fromEntries(otherFlags.map((f) => [f.id, f.description]));
 
-	function formatHits(move: {
-		min_hits?: number | null;
-		max_hits?: number | null;
-		hit_count_mode?: string | null;
-	}) {
+	function formatHits(move: { min_hits?: number | null; max_hits?: number | null; hit_count_mode?: string | null }) {
 		const min = move.min_hits;
 		const max = move.max_hits;
 
@@ -88,11 +84,7 @@
 			label: 'Class',
 			render: (m) => {
 				const color =
-					m.class === 'Physical'
-						? 'text-red-400'
-						: m.class === 'Special'
-							? 'text-blue-400'
-							: 'text-yellow-400';
+					m.class === 'Physical' ? 'text-red-400' : m.class === 'Special' ? 'text-blue-400' : 'text-yellow-400';
 
 				return `<span class="${color}">${m.class}</span>`;
 			}

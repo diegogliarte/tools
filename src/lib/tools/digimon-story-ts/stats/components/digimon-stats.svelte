@@ -14,9 +14,7 @@
 	const attributes = unique(digimon.map((d) => d.attribute));
 	const personalities = unique(digimon.map((d) => d.base_personality));
 
-	const ridableOptions = [
-		{ value: 'ridable', label: 'Ridable only' }
-	];
+	const ridableOptions = [{ value: 'ridable', label: 'Ridable only' }];
 
 	let generationFilter = $state(makeFilter(generations));
 	let attributeFilter = $state(makeFilter(attributes));
@@ -117,30 +115,13 @@
 
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup
-			label="Generations"
-			options={generations}
-			bind:checked={generationFilter}
-		/>
+		<CheckboxChipGroup label="Generations" options={generations} bind:checked={generationFilter} />
 
-		<CheckboxChipGroup
-			label="Attributes"
-			options={attributes}
-			bind:checked={attributeFilter}
-		/>
+		<CheckboxChipGroup label="Attributes" options={attributes} bind:checked={attributeFilter} />
 
-		<CheckboxChipGroup
-			label="Personalities"
-			options={personalities}
-			bind:checked={personalityFilter}
-		/>
+		<CheckboxChipGroup label="Personalities" options={personalities} bind:checked={personalityFilter} />
 
-		<CheckboxChipGroup
-			label="Ridable"
-			options={ridableOptions}
-			bind:checked={ridableFilter}
-			showActions={false}
-		/>
+		<CheckboxChipGroup label="Ridable" options={ridableOptions} bind:checked={ridableFilter} showActions={false} />
 	</div>
 
 	<div class="w-40">

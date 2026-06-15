@@ -92,29 +92,13 @@
 
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup
-			label="Position"
-			options={positions}
-			bind:checked={positionFilter}
-		/>
+		<CheckboxChipGroup label="Position" options={positions} bind:checked={positionFilter} />
 
-		<CheckboxChipGroup
-			label="Element"
-			options={elements}
-			bind:checked={elementFilter}
-		/>
+		<CheckboxChipGroup label="Element" options={elements} bind:checked={elementFilter} />
 
-		<CheckboxChipGroup
-			label="Role"
-			options={roles}
-			bind:checked={roleFilter}
-		/>
+		<CheckboxChipGroup label="Role" options={roles} bind:checked={roleFilter} />
 
-		<CheckboxChipGroup
-			label="Gender"
-			options={genders}
-			bind:checked={genderFilter}
-		/>
+		<CheckboxChipGroup label="Gender" options={genders} bind:checked={genderFilter} />
 	</div>
 
 	<!-- SEARCH -->
