@@ -81,7 +81,7 @@
 		</button>
 	</div>
 
-	<div class="text-text-dim hidden shrink-0 text-xxs whitespace-nowrap sm:block">
+	<div class="hidden shrink-0 text-xxs whitespace-nowrap sm:block">
 		<UmamiViews />
 	</div>
 

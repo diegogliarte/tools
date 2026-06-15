@@ -2,7 +2,7 @@
 </script>
 
 <footer class="z-40 flex flex-col items-center border-t p-1 text-xxs">
-	<span class="text-text-dim">
+	<span>
 		© {new Date().getFullYear()} by
 		<a href="https://github.com/diegogliarte" target="_blank" rel="noreferrer" class="text-accent hover:underline">
 			diegogliarte

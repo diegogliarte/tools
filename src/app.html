@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-		<link rel="preload" href="/fonts/clockicons.ttf" as="font" type="font/ttf" crossorigin />
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	%sveltekit.head%
+	<link rel="preload" href="/fonts/clockicons.ttf" as="font" type="font/ttf" crossorigin />
+
 	<script
 		defer
-		src="https://analytics.diegogliarte.com/script.js"
-		data-website-id="906d5ba8-9692-4bef-84fb-3c5e88966bf8"
+		src="%sveltekit.env.PUBLIC_UMAMI_BASE_URL%/script.js"
+		data-website-id="%sveltekit.env.PUBLIC_UMAMI_WEBSITE_ID%"
 	></script>
-	<body>
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+</head>
+
+<body>
+<div style="display: contents">%sveltekit.body%</div>
+</body>
 </html>
