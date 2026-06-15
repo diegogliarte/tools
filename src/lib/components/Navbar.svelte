@@ -11,6 +11,7 @@
 	import SteamModal from '$lib/components/SteamModal.svelte';
 	import MdiMagnify from '~icons/mdi/magnify';
 	import ToolSearchModal from '$lib/components/ToolSearchModal.svelte';
+	import UmamiViews from '$lib/components/UmamiViews.svelte';
 
 	import { openModal } from '$lib/states/modal.svelte';
 
@@ -78,6 +79,10 @@
 			<span>Search</span>
 			<kbd class="hidden border px-1 text-xxs opacity-60 sm:flex">Ctrl + K</kbd>
 		</button>
+	</div>
+
+	<div class="hidden shrink-0 whitespace-nowrap text-xxs text-text-dim sm:block">
+		<UmamiViews />
 	</div>
 
 	{@render navAction('Vpetlings (in development)', MdiSteam, () => openModal(SteamModal))}
