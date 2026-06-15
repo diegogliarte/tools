@@ -1,6 +1,6 @@
 <script lang="ts">
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
 	import movesRaw from '$lib/data/pmd-blue/moves.json';
 	import moveFlags from '$lib/data/pmd-blue/move-flags.json';
@@ -22,10 +22,13 @@
 	const damageMap = Object.fromEntries(damageFlags.map((f) => [f.id, f.description]));
 	const otherMap = Object.fromEntries(otherFlags.map((f) => [f.id, f.description]));
 
-	function formatHits(move: { min_hits?: number | null; max_hits?: number | null; hit_count_mode?: string | null }) {
+	function formatHits(move: {
+		min_hits?: number | null;
+		max_hits?: number | null;
+		hit_count_mode?: string | null;
+	}) {
 		const min = move.min_hits;
 		const max = move.max_hits;
-		const mode = move.hit_count_mode;
 
 		if (min != null && max != null) return min === max ? `${min}` : `${min}-${max}`;
 		if (min != null) return `${min}`;
@@ -85,7 +88,11 @@
 			label: 'Class',
 			render: (m) => {
 				const color =
-					m.class === 'Physical' ? 'text-red-400' : m.class === 'Special' ? 'text-blue-400' : 'text-yellow-400';
+					m.class === 'Physical'
+						? 'text-red-400'
+						: m.class === 'Special'
+							? 'text-blue-400'
+							: 'text-yellow-400';
 
 				return `<span class="${color}">${m.class}</span>`;
 			}
@@ -123,23 +130,18 @@
 
 		{ key: 'targets', label: 'Targets' }
 	];
-
-	const filterGroups = [
-		{ name: 'Type', list: types, store: typeFilter },
-		{ name: 'Class', list: classes, store: classFilter },
-		{ name: 'Targets', list: targets, store: targetFilter },
-		{ name: 'Hit Mode', list: hitModes, store: hitModeFilter }
-	];
 </script>
 
-<div class="mb-4 flex flex-col justify-around gap-2 sm:flex-row">
-	{#each filterGroups as group (group.name)}
-		<div class="flex flex-row items-center gap-4 sm:flex-col sm:items-start sm:gap-1">
-			{#each group.list as val (val)}
-				<CheckboxInput label={val} bind:checked={group.store[val]} />
-			{/each}
-		</div>
-	{/each}
+<div class="flex flex-col gap-4">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
+
+		<CheckboxChipGroup label="Class" options={classes} bind:checked={classFilter} />
+
+		<CheckboxChipGroup label="Targets" options={targets} bind:checked={targetFilter} />
+
+		<CheckboxChipGroup label="Hit Mode" options={hitModes} bind:checked={hitModeFilter} />
+	</div>
 </div>
 
 <DataTable {columns} rows={filteredRows} pageSize={50} />

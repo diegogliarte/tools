@@ -2,7 +2,7 @@
 	import players from '$lib/data/inazuma-eleven-vr/players.json';
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 
 	let search = $state('');
@@ -16,13 +16,6 @@
 	let elementFilter = $state(makeFilter(elements));
 	let roleFilter = $state(makeFilter(roles));
 	let genderFilter = $state(makeFilter(genders));
-
-	const filterGroups = [
-		{ name: 'Position', list: positions, store: positionFilter },
-		{ name: 'Element', list: elements, store: elementFilter },
-		{ name: 'Role', list: roles, store: roleFilter },
-		{ name: 'Gender', list: genders, store: genderFilter }
-	];
 
 	const positionOrder = ['FW', 'MF', 'DF', 'GK', '?'] as const;
 
@@ -55,17 +48,23 @@
 		const result: Record<string, any[]> = {};
 
 		for (const team of teamOrder) {
-			const list = teamMap[team].filter(
-				(p) =>
-					(allowedPositions.length ? allowedPositions.includes(p.Position) : true) &&
-					(allowedElements.length ? allowedElements.includes(p.Element) : true) &&
-					(allowedRoles.length ? allowedRoles.includes(p.Role) : true) &&
-					(allowedGenders.length ? allowedGenders.includes(p.Gender) : true) &&
+			const list = teamMap[team].filter((p) => {
+				const position = p.Position ?? '?';
+				const element = p.Element ?? 'None';
+				const role = p.Role ?? 'None';
+				const gender = p.Gender ?? 'None';
+
+				return (
+					(allowedPositions.length ? allowedPositions.includes(position) : true) &&
+					(allowedElements.length ? allowedElements.includes(element) : true) &&
+					(allowedRoles.length ? allowedRoles.includes(role) : true) &&
+					(allowedGenders.length ? allowedGenders.includes(gender) : true) &&
 					(!q ||
 						p.Name.toLowerCase().includes(q) ||
 						(p.Nickname ?? '').toLowerCase().includes(q) ||
 						team.toLowerCase().includes(q))
-			);
+				);
+			});
 
 			if (list.length) result[team] = list;
 		}
@@ -91,43 +90,61 @@
 	});
 </script>
 
-<div class="flex flex-col justify-around gap-2 sm:flex-row">
-	{#each filterGroups as group (group.name)}
-		<div class="flex flex-row gap-1 sm:flex-col">
-			{#each group.list as val (val)}
-				<CheckboxInput label={val} bind:checked={group.store[val]} />
-			{/each}
-		</div>
-	{/each}
-</div>
+<div class="flex flex-col gap-4">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<CheckboxChipGroup
+			label="Position"
+			options={positions}
+			bind:checked={positionFilter}
+		/>
 
-<!-- SEARCH -->
-<div class="mb-4 w-48">
-	<TextInput placeholder="Search..." bind:value={search} />
-</div>
+		<CheckboxChipGroup
+			label="Element"
+			options={elements}
+			bind:checked={elementFilter}
+		/>
 
-<div class="flex flex-row flex-wrap gap-8">
-	{#each visibleTeams as team (team)}
-		<div class="h-fit border px-2 pb-2">
-			<h2 class="text-large">{team}</h2>
+		<CheckboxChipGroup
+			label="Role"
+			options={roles}
+			bind:checked={roleFilter}
+		/>
 
-			<div class="flex flex-col gap-4">
-				{#each positionOrder as pos (pos)}
-					{#if playersByTeamAndPosition[team]?.[pos]?.length}
-						<div class="flex flex-row gap-2">
-							<h3>{pos}</h3>
+		<CheckboxChipGroup
+			label="Gender"
+			options={genders}
+			bind:checked={genderFilter}
+		/>
+	</div>
 
-							<div class="flex flex-row flex-wrap gap-0.5">
-								{#each playersByTeamAndPosition[team][pos] as p (p.ID)}
-									<div class="group h-16 w-16">
-										<PlayerIcon player={p} variant="viewer" />
-									</div>
-								{/each}
+	<!-- SEARCH -->
+	<div class="w-48">
+		<TextInput placeholder="Search..." bind:value={search} />
+	</div>
+
+	<div class="flex flex-row flex-wrap gap-8">
+		{#each visibleTeams as team (team)}
+			<div class="h-fit border px-2 pb-2">
+				<h2 class="text-large">{team}</h2>
+
+				<div class="flex flex-col gap-4">
+					{#each positionOrder as pos (pos)}
+						{#if playersByTeamAndPosition[team]?.[pos]?.length}
+							<div class="flex flex-row gap-2">
+								<h3>{pos}</h3>
+
+								<div class="flex flex-row flex-wrap gap-0.5">
+									{#each playersByTeamAndPosition[team][pos] as p (p.ID)}
+										<div class="group h-16 w-16">
+											<PlayerIcon player={p} variant="viewer" />
+										</div>
+									{/each}
+								</div>
 							</div>
-						</div>
-					{/if}
-				{/each}
+						{/if}
+					{/each}
+				</div>
 			</div>
-		</div>
-	{/each}
+		{/each}
+	</div>
 </div>

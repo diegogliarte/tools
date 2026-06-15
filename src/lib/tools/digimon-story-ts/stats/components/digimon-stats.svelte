@@ -1,6 +1,6 @@
 <script lang="ts">
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import SelectInput from '$lib/components/ui/select-input.svelte';
 
 	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
@@ -12,29 +12,29 @@
 
 	const generations = unique(digimon.map((d) => d.generation));
 	const attributes = unique(digimon.map((d) => d.attribute));
-	const types = unique(digimon.map((d) => d.type));
 	const personalities = unique(digimon.map((d) => d.base_personality));
+
+	const ridableOptions = [
+		{ value: 'ridable', label: 'Ridable only' }
+	];
 
 	let generationFilter = $state(makeFilter(generations));
 	let attributeFilter = $state(makeFilter(attributes));
-	let typeFilter = $state(makeFilter(types));
 	let personalityFilter = $state(makeFilter(personalities));
+	let ridableFilter = $state(makeFilter(ridableOptions.map((o) => o.value)));
 
 	let statLevel = $state<'lv1' | 'lv99'>('lv99');
-
-	let ridableOnly = $state(false);
 
 	const filteredRows = $derived.by(() => {
 		const genSel = Object.keys(generationFilter).filter((k) => generationFilter[k]);
 		const attrSel = Object.keys(attributeFilter).filter((k) => attributeFilter[k]);
-		const typeSel = Object.keys(typeFilter).filter((k) => typeFilter[k]);
 		const persSel = Object.keys(personalityFilter).filter((k) => personalityFilter[k]);
+		const ridableOnly = !!ridableFilter.ridable;
 
 		return digimon.filter(
 			(d) =>
 				(genSel.length ? genSel.includes(d.generation) : true) &&
 				(attrSel.length ? attrSel.includes(d.attribute) : true) &&
-				(typeSel.length ? typeSel.includes(d.type) : true) &&
 				(persSel.length ? persSel.includes(d.base_personality) : true) &&
 				(!ridableOnly || d.ridable)
 		);
@@ -115,29 +115,44 @@
 	]);
 </script>
 
-<div class="mb-4 flex flex-col justify-around gap-2 sm:flex-row">
-	<div class="flex flex-row flex-wrap gap-1 sm:flex-col">
-		{#each generations as g (g)}
-			<CheckboxInput label={g} bind:checked={generationFilter[g]} />
-		{/each}
+<div class="flex flex-col gap-4">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<CheckboxChipGroup
+			label="Generations"
+			options={generations}
+			bind:checked={generationFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Attributes"
+			options={attributes}
+			bind:checked={attributeFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Personalities"
+			options={personalities}
+			bind:checked={personalityFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Ridable"
+			options={ridableOptions}
+			bind:checked={ridableFilter}
+			showActions={false}
+		/>
 	</div>
 
-	<div class="flex flex-row gap-1 sm:flex-col">
-		{#each attributes as a (a)}
-			<CheckboxInput label={a} bind:checked={attributeFilter[a]} />
-		{/each}
+	<div class="w-40">
+		<SelectInput
+			label="Stats Level"
+			bind:value={statLevel}
+			options={[
+				{ value: 'lv1', label: 'Lv. 1' },
+				{ value: 'lv99', label: 'Lv. 99' }
+			]}
+		/>
 	</div>
-
-	<CheckboxInput label="Ridable only" bind:checked={ridableOnly} />
-
-	<SelectInput
-		label="Stats Level"
-		bind:value={statLevel}
-		options={[
-			{ value: 'lv1', label: 'Lv. 1' },
-			{ value: 'lv99', label: 'Lv. 99' }
-		]}
-	/>
 </div>
 
 <DataTable {columns} {rows} pageSize={50} />

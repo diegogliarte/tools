@@ -1,6 +1,6 @@
 <script lang="ts">
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
 	import skillsRaw from '$lib/data/digimon-story-ts/skills.json';
 	import { makeFilter, unique } from '$lib/utils/filters.utils.svelte.js';
@@ -29,6 +29,11 @@
 		skills.map((s) => s.damage_type).filter((d): d is 'magic' | 'physical' => d !== undefined)
 	);
 	const targets = unique(skills.map((s) => s.target).filter((t): t is SkillTarget => t !== 'unknown'));
+
+	const targetOptions = targets.map((target) => ({
+		value: target,
+		label: formatSkillTarget(target)
+	}));
 
 	let categoryFilter = $state(makeFilter(categories));
 	let typeFilter = $state(makeFilter(types));
@@ -127,29 +132,27 @@
 	]);
 </script>
 
-<div class="flex flex-col items-center gap-4">
-	<div class="flex flex-wrap gap-4">
-		{#each categories as c (c)}
-			<CheckboxInput label={c} bind:checked={categoryFilter[c]} />
-		{/each}
-	</div>
+<div class="flex flex-col gap-4">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<CheckboxChipGroup
+			label="Categories"
+			options={categories}
+			bind:checked={categoryFilter}
+		/>
 
-	<div class="flex flex-wrap gap-4">
-		{#each types as t (t)}
-			<CheckboxInput label={t} bind:checked={typeFilter[t]} />
-		{/each}
-	</div>
+		<CheckboxChipGroup label="Types" options={types} bind:checked={typeFilter} />
 
-	<div class="flex flex-wrap gap-4">
-		{#each damageTypes as d (d)}
-			<CheckboxInput label={d} bind:checked={damageFilter[d]} />
-		{/each}
-	</div>
+		<CheckboxChipGroup
+			label="Damage Types"
+			options={damageTypes}
+			bind:checked={damageFilter}
+		/>
 
-	<div class="flex flex-wrap gap-4">
-		{#each targets as t (t)}
-			<CheckboxInput label={formatSkillTarget(t)} bind:checked={targetFilter[t]} />
-		{/each}
+		<CheckboxChipGroup
+			label="Targets"
+			options={targetOptions}
+			bind:checked={targetFilter}
+		/>
 	</div>
 </div>
 

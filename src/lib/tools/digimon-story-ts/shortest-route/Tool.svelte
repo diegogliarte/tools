@@ -1,7 +1,7 @@
 <script lang="ts">
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import Button from '$lib/components/ui/button.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import NumberInput from '$lib/components/ui/number-input.svelte';
 	import DigimonIcon from '$lib/components/digimon-story-ts/DigimonIcon.svelte';
 	import { tooltipAction } from '$lib/actions/tooltip';
@@ -168,21 +168,25 @@
 	</div>
 
 	<!-- Filters -->
-	<div class="flex flex-col items-center gap-4">
-		<div class="flex flex-row gap-4">
-			{#each generations as g (g)}
-				<CheckboxInput label={g} bind:checked={generationFilter[g]} />
-			{/each}
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup
+				label="Generations"
+				options={generations}
+				bind:checked={generationFilter}
+			/>
+
+			<CheckboxChipGroup
+				label="Attributes"
+				options={attributes}
+				bind:checked={attributeFilter}
+			/>
 		</div>
 
-		<div class="flex flex-row gap-4">
-			{#each attributes as a (a)}
-				<CheckboxInput label={a} bind:checked={attributeFilter[a]} />
-			{/each}
-		</div>
-
-		<div class="w-64">
-			<NumberInput bind:value={agentRank} label="Agent Rank" min={1} max={10} />
+		<div class="flex justify-center">
+			<div class="w-64">
+				<NumberInput bind:value={agentRank} label="Agent Rank" min={1} max={10} />
+			</div>
 		</div>
 	</div>
 

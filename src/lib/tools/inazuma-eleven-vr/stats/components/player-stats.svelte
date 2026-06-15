@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import SelectInput from '$lib/components/ui/select-input.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
 	import rawPlayers from '$lib/data/inazuma-eleven-vr/players.json';
 	import PlayerCell from '$lib/components/inazuma-eleven-vr/PlayerCell.svelte';
@@ -33,10 +33,10 @@
 
 		return players.filter(
 			(p) =>
-				(posSelected.length ? posSelected.includes(p.Position) : true) &&
-				(elemSelected.length ? elemSelected.includes(p.Element) : true) &&
-				(roleSelected.length ? roleSelected.includes(p.Role) : true) &&
-				(genderSelected.length ? genderSelected.includes(p.Gender) : true)
+				(posSelected.length ? posSelected.includes(p.Position ?? '?') : true) &&
+				(elemSelected.length ? elemSelected.includes(p.Element ?? 'None') : true) &&
+				(roleSelected.length ? roleSelected.includes(p.Role ?? 'None') : true) &&
+				(genderSelected.length ? genderSelected.includes(p.Gender ?? 'None') : true)
 		);
 	});
 
@@ -98,40 +98,43 @@
 	let columns = $derived(statMode === 'normal' ? normalColumns : atdfColumns);
 </script>
 
-<!-- FILTERS + MODE SELECT -->
-<div class="flex flex-col justify-around gap-2 sm:flex-row">
-	<div class="flex flex-row gap-1 sm:flex-col">
-		{#each positions as position (position)}
-			<CheckboxInput label={position} bind:checked={positionFilter[position]} />
-		{/each}
+<div class="flex flex-col gap-4">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<CheckboxChipGroup
+			label="Positions"
+			options={positions}
+			bind:checked={positionFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Elements"
+			options={elements}
+			bind:checked={elementFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Roles"
+			options={roles}
+			bind:checked={roleFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Genders"
+			options={genders}
+			bind:checked={genderFilter}
+		/>
 	</div>
 
-	<div class="flex flex-row gap-1 sm:flex-col">
-		{#each elements as element (element)}
-			<CheckboxInput label={element} bind:checked={elementFilter[element]} />
-		{/each}
+	<div class="w-48">
+		<SelectInput
+			label="Stats Mode"
+			bind:value={statMode}
+			options={[
+				{ value: 'normal', label: 'Normal Stats' },
+				{ value: 'atdf', label: 'ATDF Stats' }
+			]}
+		/>
 	</div>
-
-	<div class="flex flex-row gap-1 sm:flex-col">
-		{#each roles as role (role)}
-			<CheckboxInput label={role} bind:checked={roleFilter[role]} />
-		{/each}
-	</div>
-
-	<div class="flex flex-row gap-1 sm:flex-col">
-		{#each genders as gender (gender)}
-			<CheckboxInput label={gender} bind:checked={genderFilter[gender]} />
-		{/each}
-	</div>
-
-	<SelectInput
-		label="Stats Mode"
-		bind:value={statMode}
-		options={[
-			{ value: 'normal', label: 'Normal Stats' },
-			{ value: 'atdf', label: 'ATDF Stats' }
-		]}
-	/>
 </div>
 
 <DataTable {columns} rows={computedRows} pageSize={50} />

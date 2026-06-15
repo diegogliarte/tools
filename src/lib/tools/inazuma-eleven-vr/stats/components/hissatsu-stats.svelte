@@ -1,6 +1,7 @@
 <script lang="ts">
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
+
 	import hissatsu from '$lib/data/inazuma-eleven-vr/hissatsu.json';
 	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 
@@ -46,8 +47,6 @@
 		<div class="relative group flex items-center gap-2 cursor-pointer">
 			<div class="w-3 h-3 rounded-sm ${getElementColor(h.Element)}"></div>
 			<span>${h.Name}</span>
-
-
 		</div>
 	`
 	};
@@ -100,23 +99,30 @@
 				(allowedPowers.length ? allowedPowers.includes(r.Power.toString()) : true)
 		);
 	});
-
-	const filterGroups = [
-		{ name: 'Type', list: types, store: typeFilter },
-		{ name: 'Subtype', list: subtypes, store: subtypeFilter },
-		{ name: 'Element', list: elements, store: elementFilter },
-		{ name: 'Power', list: powerOptions, store: powerFilter }
-	];
 </script>
 
-<div class="flex flex-col justify-around gap-2 sm:flex-row">
-	{#each filterGroups as group (group)}
-		<div class="flex flex-row gap-1 sm:flex-col">
-			{#each group.list as val (val)}
-				<CheckboxInput label={val} bind:checked={group.store[val]} />
-			{/each}
-		</div>
-	{/each}
+<div class="flex flex-col gap-4">
+	<div class="grid gap-4 lg:grid-cols-2">
+		<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
+
+		<CheckboxChipGroup
+			label="Subtype"
+			options={subtypes}
+			bind:checked={subtypeFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Element"
+			options={elements}
+			bind:checked={elementFilter}
+		/>
+
+		<CheckboxChipGroup
+			label="Power"
+			options={powerOptions}
+			bind:checked={powerFilter}
+		/>
+	</div>
 </div>
 
 <DataTable {columns} rows={filteredRows} pageSize={50} />

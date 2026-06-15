@@ -13,6 +13,7 @@
 	import SelectInput from '$lib/components/ui/select-input.svelte';
 	import TextArea from '$lib/components/ui/text-area.svelte';
 	import Button from '$lib/components/ui/button.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import type { Column } from '$lib/components/ui/data-table.types';
 
 	// Demo state
@@ -59,6 +60,8 @@
 
 	let buttonActive = $state(false);
 	let buttonClicks = $state(0);
+
+	let checkboxChipValue = $state<Record<string, boolean>>({ A: false, B: false, C: false });
 </script>
 
 {#snippet galleryItem(title: string, Demo: Snippet, Footer?: Snippet)}
@@ -166,6 +169,18 @@
 	<Button disabled>Disabled</Button>
 {/snippet}
 
+{#snippet demoCheckboxChipGroup()}
+	<CheckboxChipGroup label="Filters" bind:checked={checkboxChipValue} />
+{/snippet}
+
+{#snippet footerCheckboxChipGroup()}
+	selected =
+	{Object.entries(checkboxChipValue)
+		.filter(([, value]) => value)
+		.map(([key]) => key)
+		.join(', ') || 'none'}
+{/snippet}
+
 {#snippet footerButton()}
 	<span>clicks = {buttonClicks}</span>
 	<span>active = {buttonActive}</span>
@@ -176,6 +191,7 @@
 	{@render galleryItem('NumberInput', demoNumberInput, footerNumberInput)}
 	{@render galleryItem('SelectInput', demoSelect, footerSelect)}
 	{@render galleryItem('CheckboxInput', demoCheckbox, footerCheckbox)}
+	{@render galleryItem('CheckboxChipGroup', demoCheckboxChipGroup, footerCheckboxChipGroup)}
 	{@render galleryItem('LabeledRow', demoLabeledRow)}
 	{@render galleryItem('CopyButton', demoCopyButton)}
 	{@render galleryItem('TextArea', demoTextArea, footerTextArea)}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
-	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import NumberInput from '$lib/components/ui/number-input.svelte';
 	import { createCookieState } from '$lib/states/cookies.svelte';
 
@@ -29,6 +29,21 @@
 			hideUnrecruitable: false
 		}
 	);
+
+	const recruitOptions = [
+		{ value: 'friendBow', label: 'Friend Bow' },
+		{ value: 'hideUnrecruitable', label: 'Hide unrecruitable' }
+	];
+
+	let recruitFilter = $state<Record<string, boolean>>({
+		friendBow: _state.friendBow,
+		hideUnrecruitable: _state.hideUnrecruitable
+	});
+
+	$effect(() => {
+		_state.friendBow = !!recruitFilter.friendBow;
+		_state.hideUnrecruitable = !!recruitFilter.hideUnrecruitable;
+	});
 
 	const pokemons = pokemonsRaw as Pokemon[];
 
@@ -86,9 +101,9 @@
 		for (const pokemon of pokemons) {
 			const allParts = [...ownSearchParts(pokemon), ...buildInheritedSearchParts(pokemon.name)];
 
-			map[pokemon.name] = Array.from(new Set(allParts.filter(Boolean).map((s) => String(s).trim().toLowerCase()))).join(
-				' '
-			);
+			map[pokemon.name] = Array.from(
+				new Set(allParts.filter(Boolean).map((s) => String(s).trim().toLowerCase()))
+			).join(' ');
 		}
 
 		return map;
@@ -197,14 +212,19 @@
 	];
 </script>
 
-<div class="flex items-center justify-center gap-6">
-	<div>
+<div class="flex flex-wrap items-end justify-center gap-6">
+	<div class="w-48">
 		<NumberInput label="Leader Level" bind:value={_state.leaderLevel} min={0} max={100} step={1} />
 	</div>
 
-	<CheckboxInput label="Friend Bow" bind:checked={_state.friendBow} />
-
-	<CheckboxInput label="Hide unrecruitable" bind:checked={_state.hideUnrecruitable} />
+	<div class="min-w-64">
+		<CheckboxChipGroup
+			label="Recruit Options"
+			options={recruitOptions}
+			bind:checked={recruitFilter}
+			showActions={false}
+		/>
+	</div>
 </div>
 
 <DataTable {columns} {rows} pageSize={50} />
