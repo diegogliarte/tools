@@ -5,7 +5,7 @@
 	import { canonicalUrl, siteName, toolOgImageUrl, toolPageDescription, toolPageTitle } from '$lib/utils/seo.utils';
 	import { faviconType, faviconUrl } from '$lib/utils/favicon.utils';
 
-	let { params, data } = $props();
+	let { params } = $props();
 
 	let categoryPath = $derived(params.groups.split('/'));
 	let toolSlug = $derived(params.tool);
@@ -63,7 +63,7 @@
 		<p class="text-center opacity-60">Loading tool…</p>
 	{:then module}
 		{@const Component = module.default}
-		<Component cookieKey={data.cookieKey} cookieState={data.cookieState} />
+		<Component />
 	{:catch}
 		<p class="text-center text-red-500">Failed to load tool.</p>
 	{/await}

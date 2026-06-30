@@ -15,19 +15,9 @@
 	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 	import { getEvolutions, getPreEvolutions, indexDigimonById } from '$lib/utils/digimon-story-ts.utils';
-	import { setCookies } from '$lib/utils/cookies.utils';
-	import { createCookieState } from '$lib/states/cookies.svelte';
+	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
 
-	interface Props {
-		cookieKey: string;
-		cookieState: any;
-	}
-
-	let { cookieKey, cookieState }: Props = $props();
-
-	const STORAGE_KEY = 'digimon-story-ts:team-builder';
-
-	function normalizeCookieState(value: any): Chain[] {
+	function normalizeTeamState(value: unknown): Chain[] | null {
 		if (Array.isArray(value)) return value;
 
 		if (value && typeof value === 'object') {
@@ -37,40 +27,14 @@
 			}
 		}
 
-		return [];
-	}
-
-	function getFallbackState(): Chain[] {
-		if (typeof window === 'undefined') return [];
-
-		try {
-			const raw = localStorage.getItem(STORAGE_KEY);
-			if (!raw) return [];
-
-			const parsed = JSON.parse(raw);
-			if (Array.isArray(parsed)) {
-				setCookies(cookieKey, parsed);
-				return parsed;
-			}
-		} catch {}
-
-		return [];
+		return null;
 	}
 
 	type Chain = number[];
 
-	const team = createCookieState(
-		() => cookieKey,
-		() => normalizeCookieState(cookieState),
-		[]
-	);
-
-	if (team.length === 0) {
-		const fallback = getFallbackState();
-		if (fallback.length > 0) {
-			team.splice(0, team.length, ...fallback);
-		}
-	}
+	const team = createLocalStorageState<Chain[]>([], {
+		normalize: normalizeTeamState
+	});
 
 	function setTeam(next: Chain[]) {
 		team.length = 0;
@@ -111,7 +75,6 @@
 		if (!decoded) return;
 
 		setTeam(decoded);
-		setCookies(cookieKey, decoded);
 
 		const url = new URL(window.location.href);
 		url.searchParams.delete('team');

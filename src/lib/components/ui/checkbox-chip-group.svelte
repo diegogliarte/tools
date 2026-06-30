@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { syncLocalStorageState } from '$lib/states/local-storage.svelte';
 
 	type Option =
 		| string
@@ -21,7 +21,7 @@
 		checked?: Record<string, boolean>;
 		showActions?: boolean;
 		class?: string;
-		storageKey?: string; // Optional custom localStorage key. If omitted, the component uses the current path + label.
+		storageKey?: string; // Optional storage scope. If omitted, the component uses the current path + label.
 		persist?: boolean; // Set to false if you do not want this group to persist.
 	}
 
@@ -34,9 +34,6 @@
 		storageKey = '',
 		persist = true
 	}: Props = $props();
-
-	let mounted = $state(false);
-	let resolvedStorageKey = $state('');
 
 	const items = $derived(
 		(options.length ? options : Object.keys(checked)).map((option): NormalizedOption => {
@@ -59,45 +56,32 @@
 	const enabledItems = $derived(items.filter((item) => !item.disabled));
 	const selectedCount = $derived(items.filter((item) => checked[item.value]).length);
 
-	function getStorageKey() {
-		if (!persist) return '';
-		if (storageKey) return `checkbox-chip-group:${storageKey}`;
-
-		const path = window.location.pathname;
-		const name = label || 'unnamed';
-
-		return `checkbox-chip-group:${path}:${name}`;
+	function getPersistScope() {
+		return `checkbox-chip-group:${storageKey || label || 'unnamed'}`;
 	}
 
-	function loadPersistedValue() {
-		if (!resolvedStorageKey) return;
-
-		const raw = localStorage.getItem(resolvedStorageKey);
-		if (!raw) return;
-
-		try {
-			const saved = JSON.parse(raw) as Record<string, unknown>;
-
-			checked = {
-				...checked,
-				...Object.fromEntries(
-					items.map((item) => [
-						item.value,
-						typeof saved[item.value] === 'boolean' ? saved[item.value] : !!checked[item.value]
-					])
-				)
-			};
-		} catch {
-			localStorage.removeItem(resolvedStorageKey);
-		}
+	function getPersistedChecked(): Record<string, boolean> {
+		return Object.fromEntries(items.map((item) => [item.value, !!checked[item.value]])) as Record<string, boolean>;
 	}
 
-	function savePersistedValue() {
-		if (!mounted || !resolvedStorageKey) return;
+	function setPersistedChecked(next: Record<string, boolean>) {
+		checked = {
+			...checked,
+			...next
+		};
+	}
 
-		const value = Object.fromEntries(items.map((item) => [item.value, !!checked[item.value]]));
+	function normalizeCheckedState(value: unknown): Record<string, boolean> | null {
+		if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
 
-		localStorage.setItem(resolvedStorageKey, JSON.stringify(value));
+		const saved = value as Record<string, unknown>;
+
+		return Object.fromEntries(
+			items.map((item) => [
+				item.value,
+				typeof saved[item.value] === 'boolean' ? saved[item.value] : !!checked[item.value]
+			])
+		) as Record<string, boolean>;
 	}
 
 	function setValue(value: string, next: boolean) {
@@ -114,15 +98,16 @@
 		};
 	}
 
-	onMount(() => {
-		resolvedStorageKey = getStorageKey();
-		loadPersistedValue();
-		mounted = true;
-	});
-
-	$effect(() => {
-		savePersistedValue();
-	});
+	syncLocalStorageState(
+		getPersistedChecked,
+		setPersistedChecked,
+		{},
+		{
+			name: getPersistScope,
+			persist: () => persist,
+			normalize: normalizeCheckedState
+		}
+	);
 </script>
 
 <div class="flex flex-col gap-1.5 {className || 'w-full'}">

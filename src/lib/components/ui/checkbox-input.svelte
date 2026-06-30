@@ -1,14 +1,42 @@
 <script lang="ts">
+	import { syncLocalStorageState } from '$lib/states/local-storage.svelte';
+
 	import MdiCheck from '~icons/mdi/check';
 
 	interface Props {
 		label?: string;
 		checked?: boolean;
+		storageKey?: string;
+		persist?: boolean;
 	}
 
-	let { label = '', checked = $bindable(false) }: Props = $props();
+	let { label = '', checked = $bindable(false), storageKey = '', persist = true }: Props = $props();
 
 	const uid = $props.id();
+
+	function getPersistScope() {
+		return `checkbox-input:${storageKey || label || uid}`;
+	}
+
+	function normalizeCheckedState(value: unknown): { checked: boolean } | null {
+		if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+
+		const saved = value as Record<string, unknown>;
+		return typeof saved.checked === 'boolean' ? { checked: saved.checked } : null;
+	}
+
+	syncLocalStorageState(
+		() => ({ checked }),
+		(next) => {
+			checked = next.checked;
+		},
+		{ checked },
+		{
+			name: getPersistScope,
+			persist: () => persist,
+			normalize: normalizeCheckedState
+		}
+	);
 </script>
 
 <label for={uid} class="group flex h-fit cursor-pointer items-center gap-1 text-xs select-none">

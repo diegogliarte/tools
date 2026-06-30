@@ -2,33 +2,22 @@
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import NumberInput from '$lib/components/ui/number-input.svelte';
-	import { createCookieState } from '$lib/states/cookies.svelte';
+	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
 
 	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
 
 	import { buildEvolvesFromMap, computeRecruitRate, type Pokemon } from '$lib/utils/pmd-blue.utils';
 	import PokemonCell from '$lib/components/pmd-blue/PokemonCell.svelte';
 
-	interface Props {
-		cookieKey: string;
-		cookieState: any;
-	}
-
 	type RecruitRow = Pokemon & {
 		effectiveRate: number;
 	};
 
-	let { cookieKey, cookieState }: Props = $props();
-
-	const _state = createCookieState(
-		() => cookieKey,
-		() => cookieState,
-		{
-			leaderLevel: 90,
-			friendBow: false,
-			hideUnrecruitable: false
-		}
-	);
+	const _state = createLocalStorageState({
+		leaderLevel: 90,
+		friendBow: false,
+		hideUnrecruitable: false
+	});
 
 	const recruitOptions = [
 		{ value: 'friendBow', label: 'Friend Bow' },

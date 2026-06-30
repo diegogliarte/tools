@@ -1,19 +1,10 @@
 import type { Component } from 'svelte';
 
-export type ToolComponentProps = {
-	cookieKey: string;
-	cookieState: unknown;
-};
-
 /**
  * Tool components are loaded dynamically from the registry.
  *
- * Some tools declare no props.
- * Some tools require cookieKey/cookieState.
- * The route supplies the runtime props when rendering.
- *
  * Keeping this broad avoids forcing every Tool.svelte file to declare
- * optional cookie props just to satisfy the registry type.
+ * shared route props just to satisfy the registry type.
  */
 export type ToolComponent = Component<any, any, any>;
 
