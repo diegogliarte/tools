@@ -117,48 +117,48 @@
 </script>
 
 {#if players.length}
-<div class="flex flex-col gap-4">
-	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup label="Position" options={positions} bind:checked={positionFilter} />
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup label="Position" options={positions} bind:checked={positionFilter} />
 
-		<CheckboxChipGroup label="Element" options={elements} bind:checked={elementFilter} />
+			<CheckboxChipGroup label="Element" options={elements} bind:checked={elementFilter} />
 
-		<CheckboxChipGroup label="Role" options={roles} bind:checked={roleFilter} />
+			<CheckboxChipGroup label="Role" options={roles} bind:checked={roleFilter} />
 
-		<CheckboxChipGroup label="Gender" options={genders} bind:checked={genderFilter} />
-	</div>
+			<CheckboxChipGroup label="Gender" options={genders} bind:checked={genderFilter} />
+		</div>
 
-	<!-- SEARCH -->
-	<div class="w-48">
-		<TextInput placeholder="Search..." bind:value={search} />
-	</div>
+		<!-- SEARCH -->
+		<div class="w-48">
+			<TextInput placeholder="Search..." bind:value={search} />
+		</div>
 
-	<div class="flex flex-row flex-wrap gap-8">
-		{#each visibleTeams as team (team)}
-			<div class="h-fit border px-2 pb-2">
-				<h2 class="text-large">{team}</h2>
+		<div class="flex flex-row flex-wrap gap-8">
+			{#each visibleTeams as team (team)}
+				<div class="h-fit border px-2 pb-2">
+					<h2 class="text-large">{team}</h2>
 
-				<div class="flex flex-col gap-4">
-					{#each positionOrder as pos (pos)}
-						{#if playersByTeamAndPosition[team]?.[pos]?.length}
-							<div class="flex flex-row gap-2">
-								<h3>{pos}</h3>
+					<div class="flex flex-col gap-4">
+						{#each positionOrder as pos (pos)}
+							{#if playersByTeamAndPosition[team]?.[pos]?.length}
+								<div class="flex flex-row gap-2">
+									<h3>{pos}</h3>
 
-								<div class="flex flex-row flex-wrap gap-0.5">
-									{#each playersByTeamAndPosition[team][pos] as p (p.ID)}
-										<div class="group h-16 w-16">
-											<PlayerIcon player={p} variant="viewer" />
-										</div>
-									{/each}
+									<div class="flex flex-row flex-wrap gap-0.5">
+										{#each playersByTeamAndPosition[team][pos] as p (p.ID)}
+											<div class="group h-16 w-16">
+												<PlayerIcon player={p} variant="viewer" />
+											</div>
+										{/each}
+									</div>
 								</div>
-							</div>
-						{/if}
-					{/each}
+							{/if}
+						{/each}
+					</div>
 				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
-</div>
 {:else}
 	<p class="text-center opacity-60">Loading players...</p>
 {/if}

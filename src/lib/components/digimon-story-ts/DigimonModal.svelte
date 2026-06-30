@@ -4,21 +4,7 @@
 	import DigimonIcon from '$lib/components/digimon-story-ts/DigimonIcon.svelte';
 	import { loadDigimon, loadSkills } from '$lib/data/digimon-story-ts/data';
 
-	import { type Digimon, getSkillIcon } from '$lib/utils/digimon-story-ts.utils';
-
-	interface Skill {
-		slug: string;
-		category: 'special' | 'attachment';
-		type: string;
-		name: string;
-		damage_type: string;
-		sp_cost: number;
-		accuracy: number;
-		crit_rate: number;
-		power: number;
-		hit_count: number;
-		description: string;
-	}
+	import { type Digimon, type Skill, getSkillIcon } from '$lib/utils/digimon-story-ts.utils';
 
 	interface Props {
 		digimon: Digimon;
@@ -65,8 +51,8 @@
 		</div>
 
 		<div>
-			{skill.type} · {skill.damage_type}
-			· Power {skill.power}{#if skill.hit_count > 1}×{skill.hit_count}{/if}
+			{skill.type} · {skill.damage_type ?? '—'}
+			· Power {skill.power ?? '—'}{#if (skill.hit_count ?? 0) > 1}×{skill.hit_count}{/if}
 		</div>
 
 		<div>{skill.description}</div>

@@ -18,19 +18,21 @@
 		];
 	});
 
-	const rows = $derived(raw.map((r) => {
-		const cleaned: any = { ...r };
+	const rows = $derived(
+		raw.map((r) => {
+			const cleaned: any = { ...r };
 
-		for (const k of Object.keys(cleaned)) {
-			if (cleaned[k] === '') cleaned[k] = '';
-		}
+			for (const k of Object.keys(cleaned)) {
+				if (cleaned[k] === '') cleaned[k] = '';
+			}
 
-		cleaned.Shop1 = cleaned.Shop1 ?? '';
-		cleaned.Shop2 = cleaned.Shop2 ?? '';
-		cleaned.Shop3 = cleaned.Shop3 ?? '';
+			cleaned.Shop1 = cleaned.Shop1 ?? '';
+			cleaned.Shop2 = cleaned.Shop2 ?? '';
+			cleaned.Shop3 = cleaned.Shop3 ?? '';
 
-		return cleaned;
-	}));
+			return cleaned;
+		})
+	);
 
 	const columns: Column[] = [
 		{ key: 'Item', label: 'Item', width: '240px' },
@@ -82,15 +84,15 @@
 </script>
 
 {#if raw.length}
-<div class="flex flex-col gap-4">
-	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup label="Category" options={types} bind:checked={typeFilter} />
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup label="Category" options={types} bind:checked={typeFilter} />
 
-		<CheckboxChipGroup label="Shop" options={shops} bind:checked={shopFilter} />
+			<CheckboxChipGroup label="Shop" options={shops} bind:checked={shopFilter} />
+		</div>
 	</div>
-</div>
 
-<DataTable {columns} rows={filteredRows} pageSize={50} />
+	<DataTable {columns} rows={filteredRows} pageSize={50} />
 {:else}
 	<p class="text-center opacity-60">Loading equipment...</p>
 {/if}

@@ -113,30 +113,30 @@
 </script>
 
 {#if players.length}
-<div class="flex flex-col gap-4">
-	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup label="Positions" options={positions} bind:checked={positionFilter} />
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup label="Positions" options={positions} bind:checked={positionFilter} />
 
-		<CheckboxChipGroup label="Elements" options={elements} bind:checked={elementFilter} />
+			<CheckboxChipGroup label="Elements" options={elements} bind:checked={elementFilter} />
 
-		<CheckboxChipGroup label="Roles" options={roles} bind:checked={roleFilter} />
+			<CheckboxChipGroup label="Roles" options={roles} bind:checked={roleFilter} />
 
-		<CheckboxChipGroup label="Genders" options={genders} bind:checked={genderFilter} />
+			<CheckboxChipGroup label="Genders" options={genders} bind:checked={genderFilter} />
+		</div>
+
+		<div class="w-48">
+			<SelectInput
+				label="Stats Mode"
+				bind:value={statMode}
+				options={[
+					{ value: 'normal', label: 'Normal Stats' },
+					{ value: 'atdf', label: 'ATDF Stats' }
+				]}
+			/>
+		</div>
 	</div>
 
-	<div class="w-48">
-		<SelectInput
-			label="Stats Mode"
-			bind:value={statMode}
-			options={[
-				{ value: 'normal', label: 'Normal Stats' },
-				{ value: 'atdf', label: 'ATDF Stats' }
-			]}
-		/>
-	</div>
-</div>
-
-<DataTable {columns} rows={computedRows} pageSize={50} />
+	<DataTable {columns} rows={computedRows} pageSize={50} />
 {:else}
 	<p class="text-center opacity-60">Loading players...</p>
 {/if}

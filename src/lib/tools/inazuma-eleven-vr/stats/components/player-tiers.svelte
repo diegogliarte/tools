@@ -16,30 +16,30 @@
 </script>
 
 {#if players.length}
-<div class="flex flex-col gap-12">
-	{#each ROLES as role (role)}
-		<div>
-			<h2 class="text-large">{role}</h2>
+	<div class="flex flex-col gap-12">
+		{#each ROLES as role (role)}
+			<div>
+				<h2 class="text-large">{role}</h2>
 
-			<div class="grid grid-cols-3 gap-6">
-				{#each computeRoleTiers(role, players) as tier, i (i)}
-					<div>
-						<h3>
-							Tier {i + 1} ({tier.value})
-						</h3>
+				<div class="grid grid-cols-3 gap-6">
+					{#each computeRoleTiers(role, players) as tier, i (i)}
+						<div>
+							<h3>
+								Tier {i + 1} ({tier.value})
+							</h3>
 
-						<!-- 👇 4-column grid of players -->
-						<div class="grid grid-cols-2 gap-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-							{#each tier.players as p (p.Image)}
-								<PlayerIcon player={p} />
-							{/each}
+							<!-- 👇 4-column grid of players -->
+							<div class="grid grid-cols-2 gap-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
+								{#each tier.players as p (p.Image)}
+									<PlayerIcon player={p} />
+								{/each}
+							</div>
 						</div>
-					</div>
-				{/each}
+					{/each}
+				</div>
 			</div>
-		</div>
-	{/each}
-</div>
+		{/each}
+	</div>
 {:else}
 	<p class="text-center opacity-60">Loading players...</p>
 {/if}

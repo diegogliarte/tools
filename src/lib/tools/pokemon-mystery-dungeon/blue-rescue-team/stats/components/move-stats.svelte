@@ -37,14 +37,16 @@
 		return '—';
 	}
 
-	const rows = $derived(moves.map((m) => ({
-		...m,
-		type: m.type?.trim() || 'None',
-		class: m.class?.trim() || 'None',
-		targets: m.targets?.trim() || 'None',
-		hitModeDisplay: m.hit_count_mode?.trim() || 'None',
-		hitsDisplay: formatHits(m)
-	})));
+	const rows = $derived(
+		moves.map((m) => ({
+			...m,
+			type: m.type?.trim() || 'None',
+			class: m.class?.trim() || 'None',
+			targets: m.targets?.trim() || 'None',
+			hitModeDisplay: m.hit_count_mode?.trim() || 'None',
+			hitsDisplay: formatHits(m)
+		}))
+	);
 
 	const types = $derived(sortNoneLast(unique(rows.map((r) => r.type))));
 	const classes = $derived(sortNoneLast(unique(rows.map((r) => r.class))));
@@ -137,19 +139,19 @@
 </script>
 
 {#if moves.length}
-<div class="flex flex-col gap-4">
-	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
 
-		<CheckboxChipGroup label="Class" options={classes} bind:checked={classFilter} />
+			<CheckboxChipGroup label="Class" options={classes} bind:checked={classFilter} />
 
-		<CheckboxChipGroup label="Targets" options={targets} bind:checked={targetFilter} />
+			<CheckboxChipGroup label="Targets" options={targets} bind:checked={targetFilter} />
 
-		<CheckboxChipGroup label="Hit Mode" options={hitModes} bind:checked={hitModeFilter} />
+			<CheckboxChipGroup label="Hit Mode" options={hitModes} bind:checked={hitModeFilter} />
+		</div>
 	</div>
-</div>
 
-<DataTable {columns} rows={filteredRows} pageSize={50} />
+	<DataTable {columns} rows={filteredRows} pageSize={50} />
 {:else}
 	<p class="text-center opacity-60">Loading moves...</p>
 {/if}

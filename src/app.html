@@ -1,19 +1,19 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	%sveltekit.head%
-	<link rel="preload" href="/fonts/clockicons.ttf" as="font" type="font/ttf" crossorigin />
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+		<link rel="preload" href="/fonts/clockicons.ttf" as="font" type="font/ttf" crossorigin />
 
-	<script
-		defer
-		src="%sveltekit.env.PUBLIC_UMAMI_BASE_URL%/script.js"
-		data-website-id="%sveltekit.env.PUBLIC_UMAMI_WEBSITE_ID%"
-	></script>
-</head>
+		<script
+			defer
+			src="%sveltekit.env.PUBLIC_UMAMI_BASE_URL%/script.js"
+			data-website-id="%sveltekit.env.PUBLIC_UMAMI_WEBSITE_ID%"
+		></script>
+	</head>
 
-<body>
-<div style="display: contents">%sveltekit.body%</div>
-</body>
+	<body>
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
 </html>

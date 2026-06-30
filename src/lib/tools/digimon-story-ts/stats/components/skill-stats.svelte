@@ -34,15 +34,17 @@
 
 	const categories = $derived(unique(skills.map((s) => s.category)));
 	const types = $derived(unique(skills.map((s) => s.type)));
-	const damageTypes = $derived(unique(
-		skills.map((s) => s.damage_type).filter((d): d is 'magic' | 'physical' => d !== undefined)
-	));
+	const damageTypes = $derived(
+		unique(skills.map((s) => s.damage_type).filter((d): d is 'magic' | 'physical' => d !== undefined))
+	);
 	const targets = $derived(unique(skills.map((s) => s.target).filter((t): t is SkillTarget => t !== 'unknown')));
 
-	const targetOptions = $derived(targets.map((target) => ({
-		value: target,
-		label: formatSkillTarget(target)
-	})));
+	const targetOptions = $derived(
+		targets.map((target) => ({
+			value: target,
+			label: formatSkillTarget(target)
+		}))
+	);
 
 	let categoryFilter = $state<Record<string, boolean>>({});
 	let typeFilter = $state<Record<string, boolean>>({});
@@ -149,19 +151,19 @@
 </script>
 
 {#if skills.length}
-<div class="flex flex-col gap-4">
-	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup label="Categories" options={categories} bind:checked={categoryFilter} />
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup label="Categories" options={categories} bind:checked={categoryFilter} />
 
-		<CheckboxChipGroup label="Types" options={types} bind:checked={typeFilter} />
+			<CheckboxChipGroup label="Types" options={types} bind:checked={typeFilter} />
 
-		<CheckboxChipGroup label="Damage Types" options={damageTypes} bind:checked={damageFilter} />
+			<CheckboxChipGroup label="Damage Types" options={damageTypes} bind:checked={damageFilter} />
 
-		<CheckboxChipGroup label="Targets" options={targetOptions} bind:checked={targetFilter} />
+			<CheckboxChipGroup label="Targets" options={targetOptions} bind:checked={targetFilter} />
+		</div>
 	</div>
-</div>
 
-<DataTable {columns} rows={filteredRows} pageSize={50} />
+	<DataTable {columns} rows={filteredRows} pageSize={50} />
 {:else}
 	<p class="text-center opacity-60">Loading skills...</p>
 {/if}

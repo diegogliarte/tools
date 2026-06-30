@@ -29,9 +29,7 @@
 	const pokemonByName = $derived(new Map(pokemons.map((p) => [p.name, p])));
 	const evolvesFromMap = $derived(buildEvolvesFromMap(pokemons));
 
-	const moveById = $derived(
-		new Map<number, Move>(movesRaw.flatMap((m) => (m.id == null ? [] : [[m.id, m] as const])))
-	);
+	const moveById = $derived(new Map<number, Move>(movesRaw.flatMap((m) => (m.id == null ? [] : [[m.id, m] as const]))));
 	const abilityById = $derived(new Map(abilitiesRaw.map((a) => [a.id, a])));
 	const moveEntryByPokemonId = $derived(new Map(pokemonMovesRaw.map((m) => [m.pokemon_id, m])));
 

@@ -207,22 +207,22 @@
 </script>
 
 {#if pokemons.length}
-<div class="flex flex-wrap items-end justify-center gap-6">
-	<div class="w-48">
-		<NumberInput label="Leader Level" bind:value={_state.leaderLevel} min={0} max={100} step={1} />
+	<div class="flex flex-wrap items-end justify-center gap-6">
+		<div class="w-48">
+			<NumberInput label="Leader Level" bind:value={_state.leaderLevel} min={0} max={100} step={1} />
+		</div>
+
+		<div class="min-w-64">
+			<CheckboxChipGroup
+				label="Recruit Options"
+				options={recruitOptions}
+				bind:checked={recruitFilter}
+				showActions={false}
+			/>
+		</div>
 	</div>
 
-	<div class="min-w-64">
-		<CheckboxChipGroup
-			label="Recruit Options"
-			options={recruitOptions}
-			bind:checked={recruitFilter}
-			showActions={false}
-		/>
-	</div>
-</div>
-
-<DataTable {columns} {rows} pageSize={50} />
+	<DataTable {columns} {rows} pageSize={50} />
 {:else}
 	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
 {/if}

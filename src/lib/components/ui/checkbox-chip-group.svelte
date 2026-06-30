@@ -77,10 +77,11 @@
 		const saved = value as Record<string, unknown>;
 		const normalized = Object.fromEntries(
 			Object.entries(saved).filter((entry): entry is [string, boolean] => typeof entry[1] === 'boolean')
-		);
+		) as Record<string, boolean>;
 
 		for (const item of items) {
-			normalized[item.value] = typeof saved[item.value] === 'boolean' ? saved[item.value] : !!checked[item.value];
+			const savedValue = saved[item.value];
+			normalized[item.value] = typeof savedValue === 'boolean' ? savedValue : !!checked[item.value];
 		}
 
 		return normalized;

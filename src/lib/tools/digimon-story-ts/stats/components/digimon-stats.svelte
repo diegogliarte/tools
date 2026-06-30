@@ -32,7 +32,10 @@
 		addMissingFilterOptions(generationFilter, generations);
 		addMissingFilterOptions(attributeFilter, attributes);
 		addMissingFilterOptions(personalityFilter, personalities);
-		addMissingFilterOptions(ridableFilter, ridableOptions.map((o) => o.value));
+		addMissingFilterOptions(
+			ridableFilter,
+			ridableOptions.map((o) => o.value)
+		);
 	});
 
 	const filteredRows = $derived.by(() => {
@@ -126,30 +129,30 @@
 </script>
 
 {#if digimon.length}
-<div class="flex flex-col gap-4">
-	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup label="Generations" options={generations} bind:checked={generationFilter} />
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup label="Generations" options={generations} bind:checked={generationFilter} />
 
-		<CheckboxChipGroup label="Attributes" options={attributes} bind:checked={attributeFilter} />
+			<CheckboxChipGroup label="Attributes" options={attributes} bind:checked={attributeFilter} />
 
-		<CheckboxChipGroup label="Personalities" options={personalities} bind:checked={personalityFilter} />
+			<CheckboxChipGroup label="Personalities" options={personalities} bind:checked={personalityFilter} />
 
-		<CheckboxChipGroup label="Ridable" options={ridableOptions} bind:checked={ridableFilter} showActions={false} />
+			<CheckboxChipGroup label="Ridable" options={ridableOptions} bind:checked={ridableFilter} showActions={false} />
+		</div>
+
+		<div class="w-40">
+			<SelectInput
+				label="Stats Level"
+				bind:value={statLevel}
+				options={[
+					{ value: 'lv1', label: 'Lv. 1' },
+					{ value: 'lv99', label: 'Lv. 99' }
+				]}
+			/>
+		</div>
 	</div>
 
-	<div class="w-40">
-		<SelectInput
-			label="Stats Level"
-			bind:value={statLevel}
-			options={[
-				{ value: 'lv1', label: 'Lv. 1' },
-				{ value: 'lv99', label: 'Lv. 99' }
-			]}
-		/>
-	</div>
-</div>
-
-<DataTable {columns} {rows} pageSize={50} />
+	<DataTable {columns} {rows} pageSize={50} />
 {:else}
 	<p class="text-center opacity-60">Loading Digimon...</p>
 {/if}

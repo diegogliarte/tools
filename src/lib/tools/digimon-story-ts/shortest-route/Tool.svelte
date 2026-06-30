@@ -171,163 +171,163 @@
 <!-- ---------------- UI ---------------- -->
 
 {#if digimon.length}
-<div class="space-y-6">
-	<div class="flex gap-4">
-		<TextInput placeholder="Start Digimon" bind:value={startQuery} />
-		<TextInput placeholder="End Digimon" bind:value={endQuery} />
-		<Button onClick={reset}>Reset</Button>
-	</div>
-
-	<!-- Filters -->
-	<div class="flex flex-col gap-4">
-		<div class="grid gap-4 lg:grid-cols-2">
-			<CheckboxChipGroup label="Generations" options={generations} bind:checked={generationFilter} />
-
-			<CheckboxChipGroup label="Attributes" options={attributes} bind:checked={attributeFilter} />
+	<div class="space-y-6">
+		<div class="flex gap-4">
+			<TextInput placeholder="Start Digimon" bind:value={startQuery} />
+			<TextInput placeholder="End Digimon" bind:value={endQuery} />
+			<Button onClick={reset}>Reset</Button>
 		</div>
 
-		<div class="flex justify-center">
-			<div class="w-64">
-				<NumberInput bind:value={agentRank} label="Agent Rank" min={1} max={10} />
+		<!-- Filters -->
+		<div class="flex flex-col gap-4">
+			<div class="grid gap-4 lg:grid-cols-2">
+				<CheckboxChipGroup label="Generations" options={generations} bind:checked={generationFilter} />
+
+				<CheckboxChipGroup label="Attributes" options={attributes} bind:checked={attributeFilter} />
+			</div>
+
+			<div class="flex justify-center">
+				<div class="w-64">
+					<NumberInput bind:value={agentRank} label="Agent Rank" min={1} max={10} />
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Preview -->
-	<div class="flex items-center justify-center gap-6">
-		<div class="flex flex-col items-center gap-1">
-			{#if start}
-				<div class="h-14 w-14">
-					<DigimonIcon digimon={start} />
-				</div>
-			{:else}
-				<div class="flex h-14 w-14 items-center justify-center border text-xs">Start</div>
-			{/if}
-		</div>
-
-		<MdiChevronRight />
-
-		<!-- End slot -->
-		<div class="flex flex-col items-center gap-1">
-			{#if end}
-				<div class="h-14 w-14">
-					<DigimonIcon digimon={end} />
-				</div>
-			{:else}
-				<div class="flex h-14 w-14 items-center justify-center border text-xs">End</div>
-			{/if}
-		</div>
-	</div>
-
-	<!-- Search results -->
-	<div class="flex items-start gap-4">
-		<div class="flex flex-1 flex-wrap items-start gap-2 self-start">
-			{#each filteredStart as d (d.id)}
-				<button
-					class="w-12"
-					onclick={() => {
-						start = d;
-						startQuery = '';
-					}}
-				>
-					<DigimonIcon digimon={d} openModal={false} />
-				</button>
-			{/each}
-		</div>
-
-		<div class="flex flex-1 flex-wrap items-start gap-2 self-start">
-			{#each filteredEnd as d (d.id)}
-				<button
-					class="w-12"
-					onclick={() => {
-						end = d;
-						endQuery = '';
-					}}
-				>
-					<DigimonIcon digimon={d} openModal={false} />
-				</button>
-			{/each}
-		</div>
-	</div>
-
-	<!-- Routes -->
-	{#each routes as r, i (i)}
-		{@const path = routePath(r)}
-		{@const hasPath = path.length > 0}
-
-		<div class="relative flex flex-col items-center gap-4 border p-4">
-			<button
-				type="button"
-				class="absolute top-1 right-1 cursor-pointer opacity-50 hover:text-accent hover:opacity-100"
-				onclick={() => deleteRoute(i)}
-			>
-				<MdiClose />
-			</button>
-
-			<div class="flex items-center gap-4">
-				{#if hasPath}
-					{#each path as id, idx (id)}
-						{@const d = digimonById.get(id)}
-						{#if d}
-							<div class="w-14 cursor-pointer" class:opacity-40={r.blocked.has(id)}>
-								<DigimonIcon digimon={d} variant="viewer" onClick={() => toggleBlocked(r, id)} />
-							</div>
-						{/if}
-
-						{#if idx < path.length - 1}
-							{@const next = digimonById.get(path[idx + 1])}
-							<div
-								use:tooltipAction={{
-									text:
-										next?.evolution_conditions
-											?.map((e) =>
-												Object.entries(e.requirements)
-													.map(([k, v]) => `${k}: ${v}`)
-													.join('\n')
-											)
-											.join('\n\n') ?? '',
-									position: 'top'
-								}}
-								class="relative"
-							>
-								<MdiChevronRight class="-mx-2 cursor-help transition hover:text-accent" />
-							</div>
-						{/if}
-					{/each}
+		<!-- Preview -->
+		<div class="flex items-center justify-center gap-6">
+			<div class="flex flex-col items-center gap-1">
+				{#if start}
+					<div class="h-14 w-14">
+						<DigimonIcon digimon={start} />
+					</div>
 				{:else}
-					<!-- Start (always visible) -->
-					<div class="w-14">
-						<DigimonIcon digimon={r.start} variant="viewer" />
-					</div>
-
-					<MdiChevronRight class="opacity-40" />
-
-					<!-- End (always visible) -->
-					<div class="w-14">
-						<DigimonIcon digimon={r.end} variant="viewer" />
-					</div>
+					<div class="flex h-14 w-14 items-center justify-center border text-xs">Start</div>
 				{/if}
 			</div>
 
-			{#if path.length === 0}
-				<div class="text-sm text-red-400">No valid route available.</div>
-			{/if}
+			<MdiChevronRight />
 
-			{#if r.blocked.size}
-				<div class="flex flex-wrap gap-2 opacity-50">
-					{#each [...r.blocked] as id}
-						{@const d = digimonById.get(id)}
-						{#if d}
-							<div class="w-10 cursor-pointer">
-								<DigimonIcon digimon={d} variant="viewer" onClick={() => toggleBlocked(r, id)} />
-							</div>
-						{/if}
-					{/each}
-				</div>
-			{/if}
+			<!-- End slot -->
+			<div class="flex flex-col items-center gap-1">
+				{#if end}
+					<div class="h-14 w-14">
+						<DigimonIcon digimon={end} />
+					</div>
+				{:else}
+					<div class="flex h-14 w-14 items-center justify-center border text-xs">End</div>
+				{/if}
+			</div>
 		</div>
-	{/each}
-</div>
+
+		<!-- Search results -->
+		<div class="flex items-start gap-4">
+			<div class="flex flex-1 flex-wrap items-start gap-2 self-start">
+				{#each filteredStart as d (d.id)}
+					<button
+						class="w-12"
+						onclick={() => {
+							start = d;
+							startQuery = '';
+						}}
+					>
+						<DigimonIcon digimon={d} openModal={false} />
+					</button>
+				{/each}
+			</div>
+
+			<div class="flex flex-1 flex-wrap items-start gap-2 self-start">
+				{#each filteredEnd as d (d.id)}
+					<button
+						class="w-12"
+						onclick={() => {
+							end = d;
+							endQuery = '';
+						}}
+					>
+						<DigimonIcon digimon={d} openModal={false} />
+					</button>
+				{/each}
+			</div>
+		</div>
+
+		<!-- Routes -->
+		{#each routes as r, i (i)}
+			{@const path = routePath(r)}
+			{@const hasPath = path.length > 0}
+
+			<div class="relative flex flex-col items-center gap-4 border p-4">
+				<button
+					type="button"
+					class="absolute top-1 right-1 cursor-pointer opacity-50 hover:text-accent hover:opacity-100"
+					onclick={() => deleteRoute(i)}
+				>
+					<MdiClose />
+				</button>
+
+				<div class="flex items-center gap-4">
+					{#if hasPath}
+						{#each path as id, idx (id)}
+							{@const d = digimonById.get(id)}
+							{#if d}
+								<div class="w-14 cursor-pointer" class:opacity-40={r.blocked.has(id)}>
+									<DigimonIcon digimon={d} variant="viewer" onClick={() => toggleBlocked(r, id)} />
+								</div>
+							{/if}
+
+							{#if idx < path.length - 1}
+								{@const next = digimonById.get(path[idx + 1])}
+								<div
+									use:tooltipAction={{
+										text:
+											next?.evolution_conditions
+												?.map((e) =>
+													Object.entries(e.requirements)
+														.map(([k, v]) => `${k}: ${v}`)
+														.join('\n')
+												)
+												.join('\n\n') ?? '',
+										position: 'top'
+									}}
+									class="relative"
+								>
+									<MdiChevronRight class="-mx-2 cursor-help transition hover:text-accent" />
+								</div>
+							{/if}
+						{/each}
+					{:else}
+						<!-- Start (always visible) -->
+						<div class="w-14">
+							<DigimonIcon digimon={r.start} variant="viewer" />
+						</div>
+
+						<MdiChevronRight class="opacity-40" />
+
+						<!-- End (always visible) -->
+						<div class="w-14">
+							<DigimonIcon digimon={r.end} variant="viewer" />
+						</div>
+					{/if}
+				</div>
+
+				{#if path.length === 0}
+					<div class="text-sm text-red-400">No valid route available.</div>
+				{/if}
+
+				{#if r.blocked.size}
+					<div class="flex flex-wrap gap-2 opacity-50">
+						{#each [...r.blocked] as id}
+							{@const d = digimonById.get(id)}
+							{#if d}
+								<div class="w-10 cursor-pointer">
+									<DigimonIcon digimon={d} variant="viewer" onClick={() => toggleBlocked(r, id)} />
+								</div>
+							{/if}
+						{/each}
+					</div>
+				{/if}
+			</div>
+		{/each}
+	</div>
 {:else}
 	<p class="text-center opacity-60">Loading Digimon...</p>
 {/if}

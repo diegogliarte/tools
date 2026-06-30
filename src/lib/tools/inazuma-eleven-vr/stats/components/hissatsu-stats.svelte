@@ -37,12 +37,14 @@
 		hissatsu = (await loadHissatsu()) as HissatsuRow[];
 	});
 
-	const rows = $derived(hissatsu.map((r) => ({
-		...r,
-		Type: r.Type?.trim() || 'None',
-		'Sub-Type': r['Sub-Type']?.trim() || 'None',
-		Element: r.Element?.trim() || 'None'
-	})));
+	const rows = $derived(
+		hissatsu.map((r) => ({
+			...r,
+			Type: r.Type?.trim() || 'None',
+			'Sub-Type': r['Sub-Type']?.trim() || 'None',
+			Element: r.Element?.trim() || 'None'
+		}))
+	);
 
 	const nameColumn: Column<HissatsuRow> = {
 		key: 'Name',
@@ -115,19 +117,19 @@
 </script>
 
 {#if hissatsu.length}
-<div class="flex flex-col gap-4">
-	<div class="grid gap-4 lg:grid-cols-2">
-		<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
+	<div class="flex flex-col gap-4">
+		<div class="grid gap-4 lg:grid-cols-2">
+			<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
 
-		<CheckboxChipGroup label="Subtype" options={subtypes} bind:checked={subtypeFilter} />
+			<CheckboxChipGroup label="Subtype" options={subtypes} bind:checked={subtypeFilter} />
 
-		<CheckboxChipGroup label="Element" options={elements} bind:checked={elementFilter} />
+			<CheckboxChipGroup label="Element" options={elements} bind:checked={elementFilter} />
 
-		<CheckboxChipGroup label="Power" options={powerOptions} bind:checked={powerFilter} />
+			<CheckboxChipGroup label="Power" options={powerOptions} bind:checked={powerFilter} />
+		</div>
 	</div>
-</div>
 
-<DataTable {columns} rows={filteredRows} pageSize={50} />
+	<DataTable {columns} rows={filteredRows} pageSize={50} />
 {:else}
 	<p class="text-center opacity-60">Loading hissatsu...</p>
 {/if}

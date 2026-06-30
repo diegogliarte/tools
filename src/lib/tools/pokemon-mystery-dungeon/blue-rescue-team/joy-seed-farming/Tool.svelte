@@ -393,7 +393,7 @@
 		{ floor: 30, tokens: [A('Done')] }
 	];
 
-	let current = 0;
+	let current = $state(0);
 
 	function next() {
 		if (current < floors.length - 1) current++;
@@ -427,32 +427,32 @@
 </script>
 
 {#if plusle && alakazam && raikou}
-<div class="flex flex-col gap-6 border px-3 py-2">
-	<div class="flex items-center gap-2">
-		If <div class="aspect-square min-w-8"><PokemonIcon pokemon={plusle} /></div>
-		not recruited:
-		<div>1?1N F3F? ?8?+ 5R?H 64?6 PK?W</div>
-	</div>
-
-	<div class="flex items-center gap-2">
-		Items: Surf HM, Mobile Scarf, Cleanse Orb, Escape Orb (If <div class="aspect-square min-w-8">
-			<PokemonIcon pokemon={raikou} />
+	<div class="flex flex-col gap-6 border px-3 py-2">
+		<div class="flex items-center gap-2">
+			If <div class="aspect-square min-w-8"><PokemonIcon pokemon={plusle} /></div>
+			not recruited:
+			<div>1?1N F3F? ?8?+ 5R?H 64?6 PK?W</div>
 		</div>
-		not recruited)
-	</div>
 
-	<div class="flex items-center gap-2">
-		Use <div class="aspect-square min-w-8"><PokemonIcon pokemon={alakazam} /></div>
-		Teleport, Frustration ×3 (linked)
-	</div>
+		<div class="flex items-center gap-2">
+			Items: Surf HM, Mobile Scarf, Cleanse Orb, Escape Orb (If <div class="aspect-square min-w-8">
+				<PokemonIcon pokemon={raikou} />
+			</div>
+			not recruited)
+		</div>
 
-	<div class="">
-		Credits to
-		<a href="https://youtu.be/jImNyd4X-WE" target="_blank" rel="noreferrer" class="text-accent hover:underline">
-			Mystaldi
-		</a>
+		<div class="flex items-center gap-2">
+			Use <div class="aspect-square min-w-8"><PokemonIcon pokemon={alakazam} /></div>
+			Teleport, Frustration ×3 (linked)
+		</div>
+
+		<div class="">
+			Credits to
+			<a href="https://youtu.be/jImNyd4X-WE" target="_blank" rel="noreferrer" class="text-accent hover:underline">
+				Mystaldi
+			</a>
+		</div>
 	</div>
-</div>
 {:else}
 	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
 {/if}

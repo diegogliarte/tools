@@ -42,17 +42,19 @@
 	const sketchMoveId = $derived(moves.find((m) => m.name === 'Sketch')?.id);
 	const sketchMoveIdStr = $derived(sketchMoveId ? String(sketchMoveId) : null);
 
-	const pokemonMoveIds = $derived(new Map<string, Set<string>>(
-		pokemons.map((pokemon) => {
-			const entry = pokemonMovesById.get(String(pokemon.game_id));
-			const ids = new Set<string>();
+	const pokemonMoveIds = $derived(
+		new Map<string, Set<string>>(
+			pokemons.map((pokemon) => {
+				const entry = pokemonMovesById.get(String(pokemon.game_id));
+				const ids = new Set<string>();
 
-			for (const move of entry?.levelup_moves ?? []) ids.add(String(move.move_id));
-			for (const moveId of entry?.aux_moves ?? []) ids.add(String(moveId));
+				for (const move of entry?.levelup_moves ?? []) ids.add(String(move.move_id));
+				for (const moveId of entry?.aux_moves ?? []) ids.add(String(moveId));
 
-			return [pokemon.name, ids];
-		})
-	));
+				return [pokemon.name, ids];
+			})
+		)
+	);
 
 	function sortOptions(options: Option[]) {
 		return options.sort((a, b) => a.label.localeCompare(b.label));
@@ -171,7 +173,7 @@
 		return label ? uniqueOptions([...options, { value: currentValue, label }]) : options;
 	}
 
-	function moveTargetIcon(target?: string) {
+	function moveTargetIcon(target?: string | null) {
 		if (!target) return '';
 		const t = target.toLowerCase();
 		if (t.includes('all in room')) return '■';
@@ -180,7 +182,7 @@
 		return '';
 	}
 
-	function moveHitModeIcon(mode?: string) {
+	function moveHitModeIcon(mode?: string | null) {
 		return mode && mode !== 'Single' ? '✹' : '';
 	}
 
@@ -262,69 +264,79 @@
 {/snippet}
 
 {#if pokemons.length && moves.length}
-<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-	<div class="flex flex-col gap-4">
-		<div class="flex flex-row items-center gap-2">
-			<div class="flex aspect-square h-full items-center justify-center text-center">
-				{#if selectedPokemonData}
-					<PokemonIcon pokemon={selectedPokemonData} />
-				{:else}
-					<div class="text-xs">No Data</div>
+	<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+		<div class="flex flex-col gap-4">
+			<div class="flex flex-row items-center gap-2">
+				<div class="flex aspect-square h-full items-center justify-center text-center">
+					{#if selectedPokemonData}
+						<PokemonIcon pokemon={selectedPokemonData} />
+					{:else}
+						<div class="text-xs">No Data</div>
+					{/if}
+				</div>
+
+				<div class="w-full">
+					<SelectInput options={pokemonOptions} placeholder="Pokémon" allowEmpty={true} bind:value={selectedPokemon} />
+				</div>
+			</div>
+
+			<div class="flex flex-col gap-1">
+				<SelectInput
+					options={ability1Options}
+					placeholder="Ability 1"
+					allowEmpty={true}
+					bind:value={selectedAbility1}
+				/>
+
+				{#if selectedAbility1Data}
+					{@render detailCard(selectedAbility1Data.name, selectedAbility1Data.description)}
 				{/if}
 			</div>
 
-			<div class="w-full">
-				<SelectInput options={pokemonOptions} placeholder="Pokémon" allowEmpty={true} bind:value={selectedPokemon} />
+			<div class="flex flex-col gap-1">
+				<SelectInput
+					options={ability2Options}
+					placeholder="Ability 2"
+					allowEmpty={true}
+					bind:value={selectedAbility2}
+				/>
+
+				{#if selectedAbility2Data}
+					{@render detailCard(selectedAbility2Data.name, selectedAbility2Data.description)}
+				{/if}
 			</div>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<SelectInput options={ability1Options} placeholder="Ability 1" allowEmpty={true} bind:value={selectedAbility1} />
+		<div class="flex flex-col gap-4">
+			<div class="flex flex-col gap-2">
+				<SelectInput options={move1Options} placeholder="Move 1" allowEmpty={true} bind:value={selectedMove1} />
+				{#if selectedMove1Data}
+					{@render moveCard(selectedMove1Data)}
+				{/if}
+			</div>
 
-			{#if selectedAbility1Data}
-				{@render detailCard(selectedAbility1Data.name, selectedAbility1Data.description)}
-			{/if}
-		</div>
+			<div class="flex flex-col gap-2">
+				<SelectInput options={move2Options} placeholder="Move 2" allowEmpty={true} bind:value={selectedMove2} />
+				{#if selectedMove2Data}
+					{@render moveCard(selectedMove2Data)}
+				{/if}
+			</div>
 
-		<div class="flex flex-col gap-1">
-			<SelectInput options={ability2Options} placeholder="Ability 2" allowEmpty={true} bind:value={selectedAbility2} />
+			<div class="flex flex-col gap-2">
+				<SelectInput options={move3Options} placeholder="Move 3" allowEmpty={true} bind:value={selectedMove3} />
+				{#if selectedMove3Data}
+					{@render moveCard(selectedMove3Data)}
+				{/if}
+			</div>
 
-			{#if selectedAbility2Data}
-				{@render detailCard(selectedAbility2Data.name, selectedAbility2Data.description)}
-			{/if}
-		</div>
-	</div>
-
-	<div class="flex flex-col gap-4">
-		<div class="flex flex-col gap-2">
-			<SelectInput options={move1Options} placeholder="Move 1" allowEmpty={true} bind:value={selectedMove1} />
-			{#if selectedMove1Data}
-				{@render moveCard(selectedMove1Data)}
-			{/if}
-		</div>
-
-		<div class="flex flex-col gap-2">
-			<SelectInput options={move2Options} placeholder="Move 2" allowEmpty={true} bind:value={selectedMove2} />
-			{#if selectedMove2Data}
-				{@render moveCard(selectedMove2Data)}
-			{/if}
-		</div>
-
-		<div class="flex flex-col gap-2">
-			<SelectInput options={move3Options} placeholder="Move 3" allowEmpty={true} bind:value={selectedMove3} />
-			{#if selectedMove3Data}
-				{@render moveCard(selectedMove3Data)}
-			{/if}
-		</div>
-
-		<div class="flex flex-col gap-2">
-			<SelectInput options={move4Options} placeholder="Move 4" allowEmpty={true} bind:value={selectedMove4} />
-			{#if selectedMove4Data}
-				{@render moveCard(selectedMove4Data)}
-			{/if}
+			<div class="flex flex-col gap-2">
+				<SelectInput options={move4Options} placeholder="Move 4" allowEmpty={true} bind:value={selectedMove4} />
+				{#if selectedMove4Data}
+					{@render moveCard(selectedMove4Data)}
+				{/if}
+			</div>
 		</div>
 	</div>
-</div>
 {:else}
 	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
 {/if}

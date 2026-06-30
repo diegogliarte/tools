@@ -18,10 +18,6 @@
 	}
 </script>
 
-<button
-	type="button"
-	class="w-full cursor-pointer border p-0 transition hover:border-accent"
-	onclick={open}
->
+<button type="button" class="w-full cursor-pointer border p-0 transition hover:border-accent" onclick={open}>
 	<img src={getIcon(pokemon)} alt={pokemon.name} class="aspect-square h-full w-full object-cover" />
 </button>

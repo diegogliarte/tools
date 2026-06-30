@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ToolCategory } from '$lib/tools/types';
 	import { page } from '$app/state';
+	import CategoryNode from './CategoryNode.svelte';
 
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 	import MdiChevronRight from '~icons/mdi/chevron-right';
@@ -43,7 +44,7 @@
 
 			<!-- subgroups -->
 			{#each category.subgroups as subgroup (subgroup.name)}
-				<svelte:self category={subgroup} />
+				<CategoryNode category={subgroup} />
 			{/each}
 		</div>
 	{/if}
