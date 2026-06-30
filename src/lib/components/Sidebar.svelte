@@ -7,12 +7,6 @@
 	}
 
 	let { visible = $bindable() }: Props = $props();
-
-	let collapsed: Record<string, boolean> = $state({});
-
-	function toggleCategory(cat: string) {
-		collapsed[cat] = !collapsed[cat];
-	}
 </script>
 
 <div
@@ -29,7 +23,7 @@
 >
 	<div>
 		{#each toolsTree as category (category.name)}
-			<CategoryNode {category} {collapsed} {toggleCategory} />
+			<CategoryNode {category} />
 		{/each}
 	</div>
 </div>

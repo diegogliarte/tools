@@ -5,12 +5,10 @@
 	import { canonicalUrl, siteName, toolOgImageUrl, toolPageDescription, toolPageTitle } from '$lib/utils/seo.utils';
 	import { faviconType, faviconUrl } from '$lib/utils/favicon.utils';
 
-	let { params } = $props();
+	let { data } = $props();
 
-	let categoryPath = $derived(params.groups.split('/'));
-	let toolSlug = $derived(params.tool);
 	let tool = $derived.by(() => {
-		const found = findTool(categoryPath, toolSlug, toolsTree);
+		const found = findTool(data.categoryPath, data.toolSlug, toolsTree);
 
 		if (!found) {
 			throw new Error('Tool not found');

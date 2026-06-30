@@ -4,7 +4,7 @@ import { toolsTree } from '$lib/core/tools-tree';
 
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = ({ params }) => {
 	const categoryPath = params.groups.split('/');
 	const toolSlug = params.tool;
 
