@@ -75,13 +75,15 @@
 		if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
 
 		const saved = value as Record<string, unknown>;
+		const normalized = Object.fromEntries(
+			Object.entries(saved).filter((entry): entry is [string, boolean] => typeof entry[1] === 'boolean')
+		);
 
-		return Object.fromEntries(
-			items.map((item) => [
-				item.value,
-				typeof saved[item.value] === 'boolean' ? saved[item.value] : !!checked[item.value]
-			])
-		) as Record<string, boolean>;
+		for (const item of items) {
+			normalized[item.value] = typeof saved[item.value] === 'boolean' ? saved[item.value] : !!checked[item.value];
+		}
+
+		return normalized;
 	}
 
 	function setValue(value: string, next: boolean) {

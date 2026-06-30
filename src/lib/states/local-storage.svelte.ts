@@ -5,6 +5,7 @@ type MaybeGetter<T> = T | (() => T);
 type Options<T> = {
 	key?: MaybeGetter<string>;
 	name?: MaybeGetter<string>;
+	fallbackKeys?: MaybeGetter<string[]>;
 	persist?: MaybeGetter<boolean>;
 	normalize?: (value: unknown) => T | null;
 };
@@ -71,11 +72,27 @@ function getLocalStorageValue(key: string): unknown {
 	}
 }
 
+function getStoredValue(storageKey: string, fallbackKeys: string[]) {
+	for (const key of [storageKey, ...fallbackKeys]) {
+		const value = getLocalStorageValue(key);
+
+		if (value !== undefined) {
+			return { key, value };
+		}
+	}
+
+	return null;
+}
+
 function getStorageKey(options: Options<unknown>): string {
 	if (options.key) return read(options.key);
 
 	const name = options.name ? `:${read(options.name)}` : '';
 	return `tool-state:${window.location.pathname}${name}`;
+}
+
+function getFallbackKeys(options: Options<unknown>): string[] {
+	return options.fallbackKeys ? read(options.fallbackKeys) : [];
 }
 
 function shouldPersist(options: Options<unknown>): boolean {
@@ -95,10 +112,19 @@ export function syncLocalStorageState<T extends object>(
 		if (!shouldPersist(options)) return;
 
 		storageKey = getStorageKey(options);
-		const stored = getLocalStorageValue(storageKey);
+		const stored = getStoredValue(storageKey, getFallbackKeys(options));
 
-		if (stored !== undefined) {
-			setState(normalizeValue(stored, defaults, options.normalize));
+		if (stored) {
+			const next = normalizeValue(stored.value, defaults, options.normalize);
+			setState(next);
+
+			if (stored.key !== storageKey) {
+				try {
+					localStorage.setItem(storageKey, JSON.stringify(next));
+				} catch {
+					// Ignore unavailable or full storage; the in-memory state still works.
+				}
+			}
 		}
 
 		initialized = true;

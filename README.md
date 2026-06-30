@@ -1,38 +1,33 @@
-# sv
+# Tools
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Small collection of browser-based tools hosted at [tools.diegogliarte.com](https://tools.diegogliarte.com).
 
-## Creating a project
+Most tools here are built first for my own specific use cases, workflows, and games I care about. Some of them may still be useful to other people, but the site is intentionally practical rather than general-purpose.
 
-If you're seeing this, you've probably already done this step. Congrats!
+The project is built with SvelteKit and deployed as a mostly static site.
 
-```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Development
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm install
+pnpm dev
 ```
 
-## Building
-
-To create a production version of your app:
+## Build
 
 ```sh
-npm run build
+pnpm build
+pnpm preview
 ```
 
-You can preview the production build with `npm run preview`.
+## Notes
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- Source lives under `src/lib/tools`.
+- Tool metadata and routing are generated from local data/config.
+- The production site is deployed with the SvelteKit Netlify adapter.
+
+## Contributing
+
+Contributions are welcome. Feel free to open an issue or PR for bug fixes, small improvements, or new tools that fit the project.
+
+For larger changes, opening an issue first is usually better so the scope is clear.
