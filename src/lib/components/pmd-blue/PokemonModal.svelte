@@ -1,13 +1,10 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Modal from '$lib/components/ui/modal.svelte';
 	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
-	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
-	import movesRaw from '$lib/data/pmd-blue/moves.json';
-	import pokemonMovesRaw from '$lib/data/pmd-blue/pokemon-moves.json';
-	import abilitiesRaw from '$lib/data/pmd-blue/abilities.json';
+	import { loadPmdCoreData, type Ability, type Move, type PokemonMoves } from '$lib/data/pmd-blue/data';
 	import { type Pokemon, computeStatAtLevel, buildEvolvesFromMap } from '$lib/utils/pmd-blue.utils';
 	import { openModal } from '$lib/states/modal.svelte';
-	import MoveModal from '$lib/components/pmd-blue/MoveModal.svelte';
 
 	interface Props {
 		pokemon: Pokemon;
@@ -16,13 +13,27 @@
 
 	let { pokemon, onClose }: Props = $props();
 
-	const pokemons = pokemonsRaw as Pokemon[];
-	const pokemonByName = new Map(pokemons.map((p) => [p.name, p]));
-	const evolvesFromMap = buildEvolvesFromMap(pokemons);
+	let pokemons = $state<Pokemon[]>([]);
+	let movesRaw = $state<Move[]>([]);
+	let pokemonMovesRaw = $state<PokemonMoves[]>([]);
+	let abilitiesRaw = $state<Ability[]>([]);
 
-	const moveById = new Map(movesRaw.map((m) => [m.id, m]));
-	const abilityById = new Map(abilitiesRaw.map((a) => [a.id, a]));
-	const moveEntryByPokemonId = new Map(pokemonMovesRaw.map((m) => [m.pokemon_id, m]));
+	onMount(async () => {
+		const data = await loadPmdCoreData();
+		pokemons = data.pokemons;
+		movesRaw = data.moves;
+		pokemonMovesRaw = data.pokemonMoves;
+		abilitiesRaw = data.abilities;
+	});
+
+	const pokemonByName = $derived(new Map(pokemons.map((p) => [p.name, p])));
+	const evolvesFromMap = $derived(buildEvolvesFromMap(pokemons));
+
+	const moveById = $derived(
+		new Map<number, Move>(movesRaw.flatMap((m) => (m.id == null ? [] : [[m.id, m] as const])))
+	);
+	const abilityById = $derived(new Map(abilitiesRaw.map((a) => [a.id, a])));
+	const moveEntryByPokemonId = $derived(new Map(pokemonMovesRaw.map((m) => [m.pokemon_id, m])));
 
 	const evolvesFrom = $derived(evolvesFromMap[pokemon.name] ?? []);
 	const evolvesTo = $derived(pokemon.evolution ?? []);
@@ -76,12 +87,12 @@
 		}
 
 		return {
-			levelUp: entry.levelup_moves.map((m) => ({
+			levelUp: (entry.levelup_moves ?? []).map((m) => ({
 				level: m.level,
 				id: m.move_id,
 				name: moveById.get(m.move_id)?.name ?? `#${m.move_id}`
 			})),
-			tm: entry.aux_moves.map((id) => ({
+			tm: (entry.aux_moves ?? []).map((id) => ({
 				id,
 				name: moveById.get(id)?.name ?? `#${id}`
 			}))
@@ -196,6 +207,13 @@
 		if (!move.preEvolutionOnly || !move.sourcePokemonNames?.length) return '';
 		return move.sourcePokemonNames.join(', ');
 	}
+
+	async function openMove(move?: Move) {
+		if (!move) return;
+
+		const { default: MoveModal } = await import('$lib/components/pmd-blue/MoveModal.svelte');
+		openModal(MoveModal, { move });
+	}
 </script>
 
 <Modal title={pokemon?.name} {onClose}>
@@ -290,7 +308,7 @@
 									<button
 										type="button"
 										class="cursor-pointer hover:text-accent"
-										onclick={() => openModal(MoveModal, { move: moveById.get(m.id) })}
+										onclick={() => openMove(moveById.get(m.id))}
 									>
 										{m.name}
 									</button>
@@ -317,7 +335,7 @@
 									<button
 										type="button"
 										class="cursor-pointer hover:text-accent"
-										onclick={() => openModal(MoveModal, { move: moveById.get(m.id) })}
+										onclick={() => openMove(moveById.get(m.id))}
 									>
 										{m.name}
 									</button>

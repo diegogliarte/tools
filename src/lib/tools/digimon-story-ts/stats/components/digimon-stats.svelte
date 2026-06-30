@@ -1,27 +1,39 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import SelectInput from '$lib/components/ui/select-input.svelte';
 
-	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
-	import { makeFilter, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
+	import { addMissingFilterOptions, unique } from '$lib/utils/filters.utils.svelte.js';
 	import DigimonCell from '$lib/components/digimon-story-ts/DigimonCell.svelte';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 
-	const digimon: Digimon[] = digimonRaw as unknown as Digimon[];
+	let digimon = $state<Digimon[]>([]);
 
-	const generations = unique(digimon.map((d) => d.generation));
-	const attributes = unique(digimon.map((d) => d.attribute));
-	const personalities = unique(digimon.map((d) => d.base_personality));
+	onMount(async () => {
+		digimon = await loadDigimon();
+	});
+
+	const generations = $derived(unique(digimon.map((d) => d.generation)));
+	const attributes = $derived(unique(digimon.map((d) => d.attribute)));
+	const personalities = $derived(unique(digimon.map((d) => d.base_personality)));
 
 	const ridableOptions = [{ value: 'ridable', label: 'Ridable only' }];
 
-	let generationFilter = $state(makeFilter(generations));
-	let attributeFilter = $state(makeFilter(attributes));
-	let personalityFilter = $state(makeFilter(personalities));
-	let ridableFilter = $state(makeFilter(ridableOptions.map((o) => o.value)));
+	let generationFilter = $state<Record<string, boolean>>({});
+	let attributeFilter = $state<Record<string, boolean>>({});
+	let personalityFilter = $state<Record<string, boolean>>({});
+	let ridableFilter = $state<Record<string, boolean>>({});
 
 	let statLevel = $state<'lv1' | 'lv99'>('lv99');
+
+	$effect(() => {
+		addMissingFilterOptions(generationFilter, generations);
+		addMissingFilterOptions(attributeFilter, attributes);
+		addMissingFilterOptions(personalityFilter, personalities);
+		addMissingFilterOptions(ridableFilter, ridableOptions.map((o) => o.value));
+	});
 
 	const filteredRows = $derived.by(() => {
 		const genSel = Object.keys(generationFilter).filter((k) => generationFilter[k]);
@@ -113,6 +125,7 @@
 	]);
 </script>
 
+{#if digimon.length}
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Generations" options={generations} bind:checked={generationFilter} />
@@ -137,3 +150,6 @@
 </div>
 
 <DataTable {columns} {rows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading Digimon...</p>
+{/if}

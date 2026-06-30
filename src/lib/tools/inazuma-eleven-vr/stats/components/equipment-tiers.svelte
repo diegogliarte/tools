@@ -1,8 +1,9 @@
 <script lang="ts">
-	import boots from '$lib/data/inazuma-eleven-vr/boots.json';
-	import pendants from '$lib/data/inazuma-eleven-vr/pendants.json';
-	import bracelets from '$lib/data/inazuma-eleven-vr/bracelets.json';
-	import misc from '$lib/data/inazuma-eleven-vr/miscs.json';
+	import { onMount } from 'svelte';
+	import { loadEquipment } from '$lib/data/inazuma-eleven-vr/data';
+
+	const gearTypes = ['Boots', 'Pendants', 'Bracelets', 'Misc'] as const;
+	type GearType = (typeof gearTypes)[number];
 
 	/* ------------------------------------------------
 	   MERGE AND CLEAN
@@ -17,14 +18,22 @@
 		});
 	}
 
-	const gear = {
-		Boots: cleanItems(boots),
-		Pendants: cleanItems(pendants),
-		Bracelets: cleanItems(bracelets),
-		Misc: cleanItems(misc)
-	} satisfies Record<string, any[]>;
+	let gear = $state<Record<GearType, any[]>>({
+		Boots: [],
+		Pendants: [],
+		Bracelets: [],
+		Misc: []
+	});
 
-	type GearType = keyof typeof gear;
+	onMount(async () => {
+		const { boots, pendants, bracelets, misc } = await loadEquipment();
+		gear = {
+			Boots: cleanItems(boots),
+			Pendants: cleanItems(pendants),
+			Bracelets: cleanItems(bracelets),
+			Misc: cleanItems(misc)
+		};
+	});
 
 	const roleStat = {
 		FW: 'Shoot AT',
@@ -36,7 +45,7 @@
 	type Role = keyof typeof roleStat;
 
 	const roles = Object.keys(roleStat) as Role[];
-	const gearTypes = Object.keys(gear) as GearType[];
+	const loaded = $derived(gearTypes.some((type) => gear[type].length));
 
 	function computeTopItems(role: Role, type: GearType) {
 		const stat = roleStat[role];
@@ -52,6 +61,7 @@
 	}
 </script>
 
+{#if loaded}
 <div class="flex flex-col gap-12">
 	{#each roles as role (role)}
 		<section>
@@ -89,3 +99,6 @@
 		</section>
 	{/each}
 </div>
+{:else}
+	<p class="text-center opacity-60">Loading equipment...</p>
+{/if}

@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
-	import skillsRaw from '$lib/data/digimon-story-ts/skills.json';
-	import { makeFilter, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { loadSkills } from '$lib/data/digimon-story-ts/data';
+	import { addMissingFilterOptions, unique } from '$lib/utils/filters.utils.svelte.js';
 	import {
 		type Skill,
 		getSkillIcon,
@@ -14,31 +15,46 @@
 	} from '$lib/utils/digimon-story-ts.utils';
 	import { capitalize } from '$lib/utils/text.utils';
 
-	const skills: Skill[] = (skillsRaw as any[]).map((s) => ({
-		...s,
-		category: capitalize(s.category) as SkillCategory,
-		damage_type: capitalize(s.damage_type) as 'physical' | 'magic' | undefined,
-		type: capitalize(s.type),
-		name: capitalize(s.name),
-		target: parseSkillTarget(s.description)
-	}));
+	let rawSkills = $state<Skill[]>([]);
 
-	const categories = unique(skills.map((s) => s.category));
-	const types = unique(skills.map((s) => s.type));
-	const damageTypes = unique(
-		skills.map((s) => s.damage_type).filter((d): d is 'magic' | 'physical' => d !== undefined)
+	onMount(async () => {
+		rawSkills = await loadSkills();
+	});
+
+	const skills = $derived(
+		rawSkills.map((s) => ({
+			...s,
+			category: capitalize(s.category) as SkillCategory,
+			damage_type: capitalize(s.damage_type) as 'physical' | 'magic' | undefined,
+			type: capitalize(s.type),
+			name: capitalize(s.name),
+			target: parseSkillTarget(s.description)
+		}))
 	);
-	const targets = unique(skills.map((s) => s.target).filter((t): t is SkillTarget => t !== 'unknown'));
 
-	const targetOptions = targets.map((target) => ({
+	const categories = $derived(unique(skills.map((s) => s.category)));
+	const types = $derived(unique(skills.map((s) => s.type)));
+	const damageTypes = $derived(unique(
+		skills.map((s) => s.damage_type).filter((d): d is 'magic' | 'physical' => d !== undefined)
+	));
+	const targets = $derived(unique(skills.map((s) => s.target).filter((t): t is SkillTarget => t !== 'unknown')));
+
+	const targetOptions = $derived(targets.map((target) => ({
 		value: target,
 		label: formatSkillTarget(target)
-	}));
+	})));
 
-	let categoryFilter = $state(makeFilter(categories));
-	let typeFilter = $state(makeFilter(types));
-	let damageFilter = $state(makeFilter(damageTypes));
-	let targetFilter = $state(makeFilter(targets));
+	let categoryFilter = $state<Record<string, boolean>>({});
+	let typeFilter = $state<Record<string, boolean>>({});
+	let damageFilter = $state<Record<string, boolean>>({});
+	let targetFilter = $state<Record<string, boolean>>({});
+
+	$effect(() => {
+		addMissingFilterOptions(categoryFilter, categories);
+		addMissingFilterOptions(typeFilter, types);
+		addMissingFilterOptions(damageFilter, damageTypes);
+		addMissingFilterOptions(targetFilter, targets);
+	});
 
 	const filteredRows = $derived.by(() => {
 		const catSel = Object.keys(categoryFilter).filter((k) => categoryFilter[k]);
@@ -132,6 +148,7 @@
 	]);
 </script>
 
+{#if skills.length}
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Categories" options={categories} bind:checked={categoryFilter} />
@@ -145,3 +162,6 @@
 </div>
 
 <DataTable {columns} rows={filteredRows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading skills...</p>
+{/if}

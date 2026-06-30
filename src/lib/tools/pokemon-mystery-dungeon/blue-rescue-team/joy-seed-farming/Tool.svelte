@@ -1,25 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
-	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
+	import { loadPokemons } from '$lib/data/pmd-blue/data';
 	import type { Pokemon } from '$lib/utils/pmd-blue.utils';
 
-	const pokemons = pokemonsRaw as Pokemon[];
-	const pokemonByName = new Map(pokemons.map((p) => [p.name, p]));
+	let pokemons = $state<Pokemon[]>([]);
+	const pokemonByName = $derived(new Map(pokemons.map((p) => [p.name, p])));
 
-	function getRequiredPokemon(name: string): Pokemon {
-		const pokemon = pokemonByName.get(name);
-
-		if (!pokemon) {
-			throw new Error(`Missing Pokémon data for ${name}`);
-		}
-
-		return pokemon;
-	}
-
-	const plusle = getRequiredPokemon('Plusle');
-	const alakazam = getRequiredPokemon('Alakazam');
-	const raikou = getRequiredPokemon('Raikou');
+	const plusle = $derived(pokemonByName.get('Plusle'));
+	const alakazam = $derived(pokemonByName.get('Alakazam'));
+	const raikou = $derived(pokemonByName.get('Raikou'));
 
 	type Token =
 		| { type: 'move'; dir: string; count?: number; run?: boolean }
@@ -430,8 +420,13 @@
 		window.addEventListener('keydown', handleKey);
 		return () => window.removeEventListener('keydown', handleKey);
 	});
+
+	onMount(async () => {
+		pokemons = await loadPokemons();
+	});
 </script>
 
+{#if plusle && alakazam && raikou}
 <div class="flex flex-col gap-6 border px-3 py-2">
 	<div class="flex items-center gap-2">
 		If <div class="aspect-square min-w-8"><PokemonIcon pokemon={plusle} /></div>
@@ -458,6 +453,9 @@
 		</a>
 	</div>
 </div>
+{:else}
+	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
+{/if}
 
 <div class="flex flex-col gap-1">
 	{#each floors as floor, i (i)}

@@ -1,49 +1,29 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import SelectInput from '$lib/components/ui/select-input.svelte';
 	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
 
-	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
-	import movesRaw from '$lib/data/pmd-blue/moves.json';
-	import pokemonMovesRaw from '$lib/data/pmd-blue/pokemon-moves.json';
-	import abilitiesRaw from '$lib/data/pmd-blue/abilities.json';
+	import { loadPmdCoreData, type Ability, type Move, type PokemonMoves } from '$lib/data/pmd-blue/data';
 
 	import type { Pokemon } from '$lib/utils/pmd-blue.utils';
-
-	type Ability = {
-		id: number | string;
-		name: string;
-		description?: string;
-	};
-
-	type Move = {
-		id: number | string;
-		name: string;
-		type?: string;
-		class?: string;
-		power?: number | string;
-		maxPP?: number | string;
-		targets?: string;
-		description?: string;
-		hit_count_mode?: string;
-		min_hits?: number;
-		max_hits?: number;
-	};
-
-	type PokemonMoves = {
-		pokemon_id: number | string;
-		levelup_moves?: { level: number; move_id: number | string }[];
-		aux_moves?: Array<number | string>;
-	};
 
 	type Option = {
 		value: string;
 		label: string;
 	};
 
-	const pokemons = pokemonsRaw as Pokemon[];
-	const moves = movesRaw as Move[];
-	const pokemonMoves = pokemonMovesRaw as PokemonMoves[];
-	const abilities = abilitiesRaw as Ability[];
+	let pokemons = $state<Pokemon[]>([]);
+	let moves = $state<Move[]>([]);
+	let pokemonMoves = $state<PokemonMoves[]>([]);
+	let abilities = $state<Ability[]>([]);
+
+	onMount(async () => {
+		const data = await loadPmdCoreData();
+		pokemons = data.pokemons;
+		moves = data.moves;
+		pokemonMoves = data.pokemonMoves;
+		abilities = data.abilities;
+	});
 
 	let selectedPokemon = $state('');
 	let selectedAbility1 = $state('');
@@ -53,16 +33,16 @@
 	let selectedMove3 = $state('');
 	let selectedMove4 = $state('');
 
-	const moveById = new Map(moves.map((m) => [String(m.id), m]));
-	const abilityById = new Map(abilities.map((a) => [String(a.id), a]));
-	const pokemonByName = new Map(pokemons.map((p) => [p.name, p]));
-	const pokemonMovesById = new Map(pokemonMoves.map((p) => [String(p.pokemon_id), p]));
+	const moveById = $derived(new Map(moves.map((m) => [String(m.id), m])));
+	const abilityById = $derived(new Map(abilities.map((a) => [String(a.id), a])));
+	const pokemonByName = $derived(new Map(pokemons.map((p) => [p.name, p])));
+	const pokemonMovesById = $derived(new Map(pokemonMoves.map((p) => [String(p.pokemon_id), p])));
 
 	// ✅ Sketch ID
-	const sketchMoveId = moves.find((m) => m.name === 'Sketch')?.id;
-	const sketchMoveIdStr = sketchMoveId ? String(sketchMoveId) : null;
+	const sketchMoveId = $derived(moves.find((m) => m.name === 'Sketch')?.id);
+	const sketchMoveIdStr = $derived(sketchMoveId ? String(sketchMoveId) : null);
 
-	const pokemonMoveIds = new Map<string, Set<string>>(
+	const pokemonMoveIds = $derived(new Map<string, Set<string>>(
 		pokemons.map((pokemon) => {
 			const entry = pokemonMovesById.get(String(pokemon.game_id));
 			const ids = new Set<string>();
@@ -72,7 +52,7 @@
 
 			return [pokemon.name, ids];
 		})
-	);
+	));
 
 	function sortOptions(options: Option[]) {
 		return options.sort((a, b) => a.label.localeCompare(b.label));
@@ -281,6 +261,7 @@
 	</div>
 {/snippet}
 
+{#if pokemons.length && moves.length}
 <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
 	<div class="flex flex-col gap-4">
 		<div class="flex flex-row items-center gap-2">
@@ -344,3 +325,6 @@
 		</div>
 	</div>
 </div>
+{:else}
+	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
+{/if}

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { openModal } from '$lib/states/modal.svelte';
-	import PlayerModal from '$lib/components/inazuma-eleven-vr/PlayerModal.svelte';
 	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	interface Props {
@@ -18,8 +17,10 @@
 		Wind: 'bg-sky-800/75'
 	};
 
-	function open() {
+	async function open() {
 		if (!canOpenModal) return;
+
+		const { default: PlayerModal } = await import('$lib/components/inazuma-eleven-vr/PlayerModal.svelte');
 		openModal(PlayerModal, { player });
 	}
 </script>

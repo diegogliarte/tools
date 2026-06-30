@@ -12,7 +12,7 @@
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 
-	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
+	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 	import { getEvolutions, getPreEvolutions, indexDigimonById } from '$lib/utils/digimon-story-ts.utils';
 	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
@@ -41,10 +41,14 @@
 		team.push(...next);
 	}
 
-	const digimon: Digimon[] = digimonRaw as unknown as Digimon[];
-	const digimonById = indexDigimonById(digimon);
+	let digimon = $state<Digimon[]>([]);
+	const digimonById = $derived(indexDigimonById(digimon));
 
 	let search = $state('');
+
+	onMount(async () => {
+		digimon = await loadDigimon();
+	});
 
 	function encodeTeam(): string {
 		const snapshot = $state.snapshot(team);

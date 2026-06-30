@@ -14,6 +14,12 @@ export function makeFilter(list: string[], checked: boolean = false) {
 	return Object.fromEntries(list.map((v) => [v, checked])) as Record<string, boolean>;
 }
 
+export function addMissingFilterOptions(filter: Record<string, boolean>, options: string[], checked = false) {
+	for (const option of options) {
+		filter[option] ??= checked;
+	}
+}
+
 export type FilterGroup = {
 	name: string;
 	list: string[];

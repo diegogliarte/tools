@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import NumberInput from '$lib/components/ui/number-input.svelte';
 	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
 
-	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
+	import { loadPokemons } from '$lib/data/pmd-blue/data';
 
 	import { buildEvolvesFromMap, computeRecruitRate, type Pokemon } from '$lib/utils/pmd-blue.utils';
 	import PokemonCell from '$lib/components/pmd-blue/PokemonCell.svelte';
@@ -34,11 +35,15 @@
 		_state.hideUnrecruitable = !!recruitFilter.hideUnrecruitable;
 	});
 
-	const pokemons = pokemonsRaw as Pokemon[];
+	let pokemons = $state<Pokemon[]>([]);
 
-	const pokemonByName = new Map<string, Pokemon>(pokemons.map((p) => [p.name, p]));
+	onMount(async () => {
+		pokemons = await loadPokemons();
+	});
 
-	const evolvesFromMap = buildEvolvesFromMap(pokemons);
+	const pokemonByName = $derived(new Map<string, Pokemon>(pokemons.map((p) => [p.name, p])));
+
+	const evolvesFromMap = $derived(buildEvolvesFromMap(pokemons));
 
 	function ownSearchParts(pokemon: Pokemon): string[] {
 		const parts: string[] = [pokemon.name];
@@ -84,7 +89,7 @@
 		return parts;
 	}
 
-	const searchIndexByName: Record<string, string> = (() => {
+	const searchIndexByName = $derived.by(() => {
 		const map: Record<string, string> = {};
 
 		for (const pokemon of pokemons) {
@@ -96,7 +101,7 @@
 		}
 
 		return map;
-	})();
+	});
 
 	const rows = $derived.by(() => {
 		let list: RecruitRow[] = pokemons.map((pokemon) => ({
@@ -201,6 +206,7 @@
 	];
 </script>
 
+{#if pokemons.length}
 <div class="flex flex-wrap items-end justify-center gap-6">
 	<div class="w-48">
 		<NumberInput label="Leader Level" bind:value={_state.leaderLevel} min={0} max={100} step={1} />
@@ -217,3 +223,6 @@
 </div>
 
 <DataTable {columns} {rows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
+{/if}

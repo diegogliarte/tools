@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { openModal } from '$lib/states/modal.svelte';
-	import MoveModal, { getMoveTypeColor, type Move } from './MoveModal.svelte';
+	import { getMoveTypeColor, type Move } from '$lib/data/pmd-blue/data';
 
 	interface Props {
 		move: Move;
@@ -8,7 +8,8 @@
 
 	let { move }: Props = $props();
 
-	function open() {
+	async function open() {
+		const { default: MoveModal } = await import('./MoveModal.svelte');
 		openModal(MoveModal, { move });
 	}
 </script>

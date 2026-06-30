@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
-	import hissatsu from '$lib/data/inazuma-eleven-vr/hissatsu.json';
-	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { loadHissatsu } from '$lib/data/inazuma-eleven-vr/data';
+	import { addMissingFilterOptions, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 
 	type HissatsuRow = {
 		Name: string;
@@ -30,13 +31,18 @@
 		return elementColor[element as keyof typeof elementColor] ?? 'bg-neutral-600';
 	}
 
-	// Rows come directly from JSON
-	const rows: HissatsuRow[] = hissatsu.map((r) => ({
+	let hissatsu = $state<HissatsuRow[]>([]);
+
+	onMount(async () => {
+		hissatsu = (await loadHissatsu()) as HissatsuRow[];
+	});
+
+	const rows = $derived(hissatsu.map((r) => ({
 		...r,
 		Type: r.Type?.trim() || 'None',
 		'Sub-Type': r['Sub-Type']?.trim() || 'None',
 		Element: r.Element?.trim() || 'None'
-	}));
+	})));
 
 	const nameColumn: Column<HissatsuRow> = {
 		key: 'Name',
@@ -74,16 +80,23 @@
 		{ key: 'Shop 2', label: 'Shop 2' }
 	];
 
-	const types = unique(rows.map((r) => r.Type));
-	const subtypes = sortNoneLast(unique(rows.map((r) => r['Sub-Type'])));
-	const elements = sortNoneLast(unique(rows.map((r) => r.Element)));
-	const powerVals = unique(rows.map((r) => r.Power)).filter(Boolean);
-	const powerOptions = powerVals.map(String);
+	const types = $derived(unique(rows.map((r) => r.Type)));
+	const subtypes = $derived(sortNoneLast(unique(rows.map((r) => r['Sub-Type']))));
+	const elements = $derived(sortNoneLast(unique(rows.map((r) => r.Element))));
+	const powerVals = $derived(unique(rows.map((r) => r.Power)).filter(Boolean));
+	const powerOptions = $derived(powerVals.map(String));
 
-	let typeFilter = $state(makeFilter(types));
-	let subtypeFilter = $state(makeFilter(subtypes));
-	let elementFilter = $state(makeFilter(elements));
-	let powerFilter = $state(makeFilter(powerOptions));
+	let typeFilter = $state<Record<string, boolean>>({});
+	let subtypeFilter = $state<Record<string, boolean>>({});
+	let elementFilter = $state<Record<string, boolean>>({});
+	let powerFilter = $state<Record<string, boolean>>({});
+
+	$effect(() => {
+		addMissingFilterOptions(typeFilter, types);
+		addMissingFilterOptions(subtypeFilter, subtypes);
+		addMissingFilterOptions(elementFilter, elements);
+		addMissingFilterOptions(powerFilter, powerOptions);
+	});
 
 	let filteredRows = $derived.by(() => {
 		const allowedTypes = Object.keys(typeFilter).filter((k) => typeFilter[k]);
@@ -101,6 +114,7 @@
 	});
 </script>
 
+{#if hissatsu.length}
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
@@ -114,3 +128,6 @@
 </div>
 
 <DataTable {columns} rows={filteredRows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading hissatsu...</p>
+{/if}

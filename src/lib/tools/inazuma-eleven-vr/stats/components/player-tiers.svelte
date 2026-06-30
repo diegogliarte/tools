@@ -1,15 +1,21 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
 	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	import { computeRoleTiers } from '$lib/utils/inazuma-eleven-vr.utils';
-	import rawPlayers from '$lib/data/inazuma-eleven-vr/players.json';
+	import { loadPlayers } from '$lib/data/inazuma-eleven-vr/data';
 
 	const ROLES = ['FW', 'MF', 'DF', 'GK'] as const;
 
-	const players: Player[] = rawPlayers as Player[];
+	let players = $state<Player[]>([]);
+
+	onMount(async () => {
+		players = await loadPlayers();
+	});
 </script>
 
+{#if players.length}
 <div class="flex flex-col gap-12">
 	{#each ROLES as role (role)}
 		<div>
@@ -34,3 +40,6 @@
 		</div>
 	{/each}
 </div>
+{:else}
+	<p class="text-center opacity-60">Loading players...</p>
+{/if}

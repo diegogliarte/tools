@@ -1,26 +1,40 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import SelectInput from '$lib/components/ui/select-input.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
-	import rawPlayers from '$lib/data/inazuma-eleven-vr/players.json';
+	import { loadPlayers } from '$lib/data/inazuma-eleven-vr/data';
 	import PlayerCell from '$lib/components/inazuma-eleven-vr/PlayerCell.svelte';
-	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { addMissingFilterOptions, makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 	import { calculateATDFStats, type Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
-	const players: Player[] = rawPlayers.filter((p) => p.Name !== '???') as Player[];
+	let rawPlayers = $state<Player[]>([]);
 
-	const positions = sortNoneLast(unique(players.map((p) => p.Position ?? '?')));
-	const elements = sortNoneLast(unique(players.map((p) => p.Element ?? 'None')));
-	const roles = sortNoneLast(unique(players.map((p) => p.Role ?? 'None')));
-	const genders = sortNoneLast(unique(players.map((p) => p.Gender ?? 'None')));
+	onMount(async () => {
+		rawPlayers = await loadPlayers();
+	});
 
-	let positionFilter = $state(makeFilter(positions));
-	let elementFilter = $state(makeFilter(elements));
-	let roleFilter = $state(makeFilter(roles));
-	let genderFilter = $state(makeFilter(genders));
+	const players = $derived(rawPlayers.filter((p) => p.Name !== '???'));
+
+	const positions = $derived(sortNoneLast(unique(players.map((p) => p.Position ?? '?'))));
+	const elements = $derived(sortNoneLast(unique(players.map((p) => p.Element ?? 'None'))));
+	const roles = $derived(sortNoneLast(unique(players.map((p) => p.Role ?? 'None'))));
+	const genders = $derived(sortNoneLast(unique(players.map((p) => p.Gender ?? 'None'))));
+
+	let positionFilter = $state<Record<string, boolean>>({});
+	let elementFilter = $state<Record<string, boolean>>({});
+	let roleFilter = $state<Record<string, boolean>>({});
+	let genderFilter = $state<Record<string, boolean>>({});
 
 	let statMode = $state<'normal' | 'atdf'>('normal');
+
+	$effect(() => {
+		addMissingFilterOptions(positionFilter, positions, true);
+		addMissingFilterOptions(elementFilter, elements, true);
+		addMissingFilterOptions(roleFilter, roles, true);
+		addMissingFilterOptions(genderFilter, genders, true);
+	});
 
 	// ---------------------------------------
 	// FILTERED DATA
@@ -98,6 +112,7 @@
 	let columns = $derived(statMode === 'normal' ? normalColumns : atdfColumns);
 </script>
 
+{#if players.length}
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Positions" options={positions} bind:checked={positionFilter} />
@@ -122,3 +137,6 @@
 </div>
 
 <DataTable {columns} rows={computedRows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading players...</p>
+{/if}

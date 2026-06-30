@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { tooltipAction } from '$lib/actions/tooltip';
-	import DigimonModal from '$lib/components/digimon-story-ts/DigimonModal.svelte';
 	import { openModal } from '$lib/states/modal.svelte';
 
 	import { type Digimon, getDigimonIcon } from '$lib/utils/digimon-story-ts.utils';
@@ -16,8 +15,10 @@
 
 	let { digimon, variant = 'default', selected = false, onClick, openModal: canOpenModal = true }: Props = $props();
 
-	function open() {
+	async function open() {
 		if (!canOpenModal) return;
+
+		const { default: DigimonModal } = await import('$lib/components/digimon-story-ts/DigimonModal.svelte');
 		openModal(DigimonModal, { digimon });
 	}
 

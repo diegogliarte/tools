@@ -1,41 +1,67 @@
 <script lang="ts">
-	import players from '$lib/data/inazuma-eleven-vr/players.json';
+	import { onMount } from 'svelte';
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
+	import { loadPlayers } from '$lib/data/inazuma-eleven-vr/data';
 	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	let search = $state('');
+	let players = $state<Player[]>([]);
 
-	const positions = sortNoneLast(unique(players.map((p) => p.Position ?? '?')));
-	const elements = sortNoneLast(unique(players.map((p) => p.Element ?? 'None')));
-	const roles = sortNoneLast(unique(players.map((p) => p.Role ?? 'None')));
-	const genders = sortNoneLast(unique(players.map((p) => p.Gender ?? 'None')));
+	onMount(async () => {
+		players = await loadPlayers();
+	});
 
-	let positionFilter = $state(makeFilter(positions));
-	let elementFilter = $state(makeFilter(elements));
-	let roleFilter = $state(makeFilter(roles));
-	let genderFilter = $state(makeFilter(genders));
+	const positions = $derived(sortNoneLast(unique(players.map((p) => p.Position ?? '?'))));
+	const elements = $derived(sortNoneLast(unique(players.map((p) => p.Element ?? 'None'))));
+	const roles = $derived(sortNoneLast(unique(players.map((p) => p.Role ?? 'None'))));
+	const genders = $derived(sortNoneLast(unique(players.map((p) => p.Gender ?? 'None'))));
+
+	let positionFilter = $state<Record<string, boolean>>({});
+	let elementFilter = $state<Record<string, boolean>>({});
+	let roleFilter = $state<Record<string, boolean>>({});
+	let genderFilter = $state<Record<string, boolean>>({});
 
 	const positionOrder = ['FW', 'MF', 'DF', 'GK', '?'] as const;
 
-	const teamMap: Record<string, any[]> = {};
-
-	for (const p of players) {
-		const teams = p.Teams?.length ? p.Teams : ['-'];
-
-		for (const t of teams) {
-			if (!teamMap[t]) teamMap[t] = [];
-			teamMap[t].push(p);
+	function addMissingFilterOptions(filter: Record<string, boolean>, options: string[]) {
+		for (const option of options) {
+			filter[option] ??= true;
 		}
 	}
 
-	let teamOrder = Object.keys(teamMap);
+	$effect(() => {
+		addMissingFilterOptions(positionFilter, positions);
+		addMissingFilterOptions(elementFilter, elements);
+		addMissingFilterOptions(roleFilter, roles);
+		addMissingFilterOptions(genderFilter, genders);
+	});
 
-	teamOrder = teamOrder.filter((t) => t !== 'Unaffiliated' && t !== '-');
+	const teamMap = $derived.by(() => {
+		const map: Record<string, Player[]> = {};
 
-	if (teamMap['Unaffiliated']) teamOrder.push('Unaffiliated');
-	if (teamMap['-']) teamOrder.push('-');
+		for (const p of players) {
+			const teams = p.Teams?.length ? p.Teams : ['-'];
+
+			for (const t of teams) {
+				if (!map[t]) map[t] = [];
+				map[t].push(p);
+			}
+		}
+
+		return map;
+	});
+
+	const teamOrder = $derived.by(() => {
+		const order = Object.keys(teamMap).filter((t) => t !== 'Unaffiliated' && t !== '-');
+
+		if (teamMap['Unaffiliated']) order.push('Unaffiliated');
+		if (teamMap['-']) order.push('-');
+
+		return order;
+	});
 
 	const filteredTeamMap = $derived.by(() => {
 		const q = search.trim().toLowerCase();
@@ -45,7 +71,7 @@
 		const allowedRoles = Object.keys(roleFilter).filter((k) => roleFilter[k]);
 		const allowedGenders = Object.keys(genderFilter).filter((k) => genderFilter[k]);
 
-		const result: Record<string, any[]> = {};
+		const result: Record<string, Player[]> = {};
 
 		for (const team of teamOrder) {
 			const list = teamMap[team].filter((p) => {
@@ -75,7 +101,7 @@
 	const visibleTeams = $derived(Object.keys(filteredTeamMap));
 
 	const playersByTeamAndPosition = $derived.by(() => {
-		const map: Record<string, Record<string, any[]>> = {};
+		const map: Record<string, Record<string, Player[]>> = {};
 
 		for (const team in filteredTeamMap) {
 			map[team] = {};
@@ -90,6 +116,7 @@
 	});
 </script>
 
+{#if players.length}
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Position" options={positions} bind:checked={positionFilter} />
@@ -132,3 +159,6 @@
 		{/each}
 	</div>
 </div>
+{:else}
+	<p class="text-center opacity-60">Loading players...</p>
+{/if}

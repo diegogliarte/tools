@@ -1,13 +1,18 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
-	import pokemonsRaw from '$lib/data/pmd-blue/pokemons.json';
+	import { loadPokemons } from '$lib/data/pmd-blue/data';
 
 	import { type Pokemon, computeLevel100Stats } from '$lib/utils/pmd-blue.utils';
 	import PokemonCell from '$lib/components/pmd-blue/PokemonCell.svelte';
 
-	const pokemons = pokemonsRaw as Pokemon[];
+	let pokemons = $state<Pokemon[]>([]);
 
-	const rows = pokemons.map((p) => {
+	onMount(async () => {
+		pokemons = await loadPokemons();
+	});
+
+	const rows = $derived(pokemons.map((p) => {
 		const lvl100 = computeLevel100Stats(p);
 
 		const lvl1_total = p.base_hp + p.base_atk + p.base_def + p.base_sp_atk + p.base_sp_def;
@@ -32,7 +37,7 @@
 			lvl1_total,
 			lvl100_total
 		};
-	});
+	}));
 
 	const columns: Column[] = [
 		{
@@ -61,4 +66,8 @@
 	];
 </script>
 
-<DataTable {columns} {rows} pageSize={50} />
+{#if pokemons.length}
+	<DataTable {columns} {rows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
+{/if}

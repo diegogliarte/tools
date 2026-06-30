@@ -1,20 +1,24 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
-	import boots from '$lib/data/inazuma-eleven-vr/boots.json';
-	import pendants from '$lib/data/inazuma-eleven-vr/pendants.json';
-	import bracelets from '$lib/data/inazuma-eleven-vr/bracelets.json';
-	import misc from '$lib/data/inazuma-eleven-vr/miscs.json';
+	import { loadEquipment } from '$lib/data/inazuma-eleven-vr/data';
+	import { addMissingFilterOptions, unique } from '$lib/utils/filters.utils.svelte.js';
 
-	const raw = [
-		...boots.map((e) => ({ ...e, Category: 'Boots' })),
-		...pendants.map((e) => ({ ...e, Category: 'Pendant' })),
-		...bracelets.map((e) => ({ ...e, Category: 'Bracelet' })),
-		...misc.map((e) => ({ ...e, Category: 'Misc' }))
-	];
+	let raw = $state<any[]>([]);
 
-	const rows = raw.map((r) => {
+	onMount(async () => {
+		const { boots, pendants, bracelets, misc } = await loadEquipment();
+		raw = [
+			...boots.map((e) => ({ ...e, Category: 'Boots' })),
+			...pendants.map((e) => ({ ...e, Category: 'Pendant' })),
+			...bracelets.map((e) => ({ ...e, Category: 'Bracelet' })),
+			...misc.map((e) => ({ ...e, Category: 'Misc' }))
+		];
+	});
+
+	const rows = $derived(raw.map((r) => {
 		const cleaned: any = { ...r };
 
 		for (const k of Object.keys(cleaned)) {
@@ -26,7 +30,7 @@
 		cleaned.Shop3 = cleaned.Shop3 ?? '';
 
 		return cleaned;
-	});
+	}));
 
 	const columns: Column[] = [
 		{ key: 'Item', label: 'Item', width: '240px' },
@@ -54,19 +58,16 @@
 		{ key: 'Shop3', label: 'Shop 3' }
 	];
 
-	function unique<T>(arr: T[]): T[] {
-		return Array.from(new Set(arr));
-	}
+	const types = $derived(unique(rows.map((r) => r.Category)));
+	const shops = $derived(unique(rows.flatMap((r) => [r.Shop1, r.Shop2, r.Shop3]).filter(Boolean)));
 
-	function makeFilter(list: string[]) {
-		return Object.fromEntries(list.map((v) => [v, false])) as Record<string, boolean>;
-	}
+	let typeFilter = $state<Record<string, boolean>>({});
+	let shopFilter = $state<Record<string, boolean>>({});
 
-	const types = unique(rows.map((r) => r.Category));
-	const shops = unique(rows.flatMap((r) => [r.Shop1, r.Shop2, r.Shop3]).filter(Boolean));
-
-	let typeFilter = $state(makeFilter(types));
-	let shopFilter = $state(makeFilter(shops));
+	$effect(() => {
+		addMissingFilterOptions(typeFilter, types);
+		addMissingFilterOptions(shopFilter, shops);
+	});
 
 	let filteredRows = $derived.by(() => {
 		const activeTypes = Object.keys(typeFilter).filter((k) => typeFilter[k]);
@@ -80,6 +81,7 @@
 	});
 </script>
 
+{#if raw.length}
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Category" options={types} bind:checked={typeFilter} />
@@ -89,3 +91,6 @@
 </div>
 
 <DataTable {columns} rows={filteredRows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading equipment...</p>
+{/if}

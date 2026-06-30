@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import Button from '$lib/components/ui/button.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
@@ -9,15 +10,19 @@
 	import MdiChevronRight from '~icons/mdi/chevron-right';
 	import MdiClose from '~icons/mdi/close';
 
-	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
+	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 	import { indexDigimonById } from '$lib/utils/digimon-story-ts.utils';
-	import { makeFilter, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { addMissingFilterOptions, unique } from '$lib/utils/filters.utils.svelte.js';
 
 	/* ---------------- data ---------------- */
 
-	const digimon: Digimon[] = digimonRaw as unknown as Digimon[];
-	const digimonById = indexDigimonById(digimon);
+	let digimon = $state<Digimon[]>([]);
+	const digimonById = $derived(indexDigimonById(digimon));
+
+	onMount(async () => {
+		digimon = await loadDigimon();
+	});
 
 	let startQuery = $state('');
 	let endQuery = $state('');
@@ -34,12 +39,17 @@
 
 	/* ---------------- filters ---------------- */
 
-	const generations = unique(digimon.map((d) => d.generation));
-	const attributes = unique(digimon.map((d) => d.attribute));
+	const generations = $derived(unique(digimon.map((d) => d.generation)));
+	const attributes = $derived(unique(digimon.map((d) => d.attribute)));
 	let agentRank = $state<number>(10);
 
-	let generationFilter = $state(makeFilter(generations, true));
-	let attributeFilter = $state(makeFilter(attributes, true));
+	let generationFilter = $state<Record<string, boolean>>({});
+	let attributeFilter = $state<Record<string, boolean>>({});
+
+	$effect(() => {
+		addMissingFilterOptions(generationFilter, generations, true);
+		addMissingFilterOptions(attributeFilter, attributes, true);
+	});
 
 	function passesFilters(d: Digimon): boolean {
 		const genSel = Object.keys(generationFilter).filter((k) => generationFilter[k]);
@@ -160,6 +170,7 @@
 
 <!-- ---------------- UI ---------------- -->
 
+{#if digimon.length}
 <div class="space-y-6">
 	<div class="flex gap-4">
 		<TextInput placeholder="Start Digimon" bind:value={startQuery} />
@@ -317,3 +328,6 @@
 		</div>
 	{/each}
 </div>
+{:else}
+	<p class="text-center opacity-60">Loading Digimon...</p>
+{/if}

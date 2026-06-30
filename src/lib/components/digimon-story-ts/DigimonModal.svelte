@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Modal from '$lib/components/ui/modal.svelte';
 	import DigimonIcon from '$lib/components/digimon-story-ts/DigimonIcon.svelte';
-	import digimonRaw from '$lib/data/digimon-story-ts/digimon.json';
-	import skillsRaw from '$lib/data/digimon-story-ts/skills.json';
+	import { loadDigimon, loadSkills } from '$lib/data/digimon-story-ts/data';
 
 	import { type Digimon, getSkillIcon } from '$lib/utils/digimon-story-ts.utils';
 
@@ -27,13 +27,20 @@
 
 	let { digimon, onClose }: Props = $props();
 
-	const digimonById = new Map<number, Digimon>((digimonRaw as Digimon[]).map((d) => [d.id, d]));
+	let digimonList = $state<Digimon[]>([]);
+	let skills = $state<Skill[]>([]);
+
+	onMount(async () => {
+		[digimonList, skills] = await Promise.all([loadDigimon(), loadSkills()]);
+	});
+
+	const digimonById = $derived(new Map<number, Digimon>(digimonList.map((d) => [d.id, d])));
 
 	const preEvolutions = $derived(digimon.pre_evolutions?.map((id) => digimonById.get(id)).filter(Boolean) as Digimon[]);
 
 	const evolutions = $derived(digimon.evolutions?.map((id) => digimonById.get(id)).filter(Boolean) as Digimon[]);
 
-	const skillBySlug = new Map<string, Skill>((skillsRaw as Skill[]).map((s) => [s.slug, s]));
+	const skillBySlug = $derived(new Map<string, Skill>(skills.map((s) => [s.slug, s])));
 
 	const specialSkills = $derived(
 		digimon.skills.special.map((slug) => skillBySlug.get(slug)).filter(Boolean) as Skill[]

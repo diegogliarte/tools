@@ -1,26 +1,31 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
-	import movesRaw from '$lib/data/pmd-blue/moves.json';
-	import moveFlags from '$lib/data/pmd-blue/move-flags.json';
+	import { loadMoveFlags, loadMoves, type Move, type MoveFlags } from '$lib/data/pmd-blue/data';
 
-	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { addMissingFilterOptions, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 	import MoveCell from '$lib/components/pmd-blue/MoveCell.svelte';
 	import FlagBadges from '$lib/components/pmd-blue/FlagBadges.svelte';
-	import type { Move } from '$lib/components/pmd-blue/MoveModal.svelte';
 
 	type MoveRow = Move & {
 		hitModeDisplay: string;
 		hitsDisplay: string;
 	};
 
-	const moves = movesRaw as Move[];
-	const damageFlags = moveFlags.damageFlags;
-	const otherFlags = moveFlags.otherFlags;
+	let moves = $state<Move[]>([]);
+	let moveFlags = $state<MoveFlags>({ damageFlags: [], otherFlags: [] });
 
-	const damageMap = Object.fromEntries(damageFlags.map((f) => [f.id, f.description]));
-	const otherMap = Object.fromEntries(otherFlags.map((f) => [f.id, f.description]));
+	onMount(async () => {
+		[moves, moveFlags] = await Promise.all([loadMoves(), loadMoveFlags()]);
+	});
+
+	const damageFlags = $derived(moveFlags.damageFlags);
+	const otherFlags = $derived(moveFlags.otherFlags);
+
+	const damageMap = $derived(Object.fromEntries(damageFlags.map((f) => [f.id, f.description])));
+	const otherMap = $derived(Object.fromEntries(otherFlags.map((f) => [f.id, f.description])));
 
 	function formatHits(move: { min_hits?: number | null; max_hits?: number | null; hit_count_mode?: string | null }) {
 		const min = move.min_hits;
@@ -32,24 +37,31 @@
 		return '—';
 	}
 
-	const rows: MoveRow[] = moves.map((m) => ({
+	const rows = $derived(moves.map((m) => ({
 		...m,
 		type: m.type?.trim() || 'None',
 		class: m.class?.trim() || 'None',
 		targets: m.targets?.trim() || 'None',
 		hitModeDisplay: m.hit_count_mode?.trim() || 'None',
 		hitsDisplay: formatHits(m)
-	}));
+	})));
 
-	const types = sortNoneLast(unique(rows.map((r) => r.type)));
-	const classes = sortNoneLast(unique(rows.map((r) => r.class)));
-	const targets = sortNoneLast(unique(rows.map((r) => r.targets)));
-	const hitModes = sortNoneLast(unique(rows.map((r) => r.hitModeDisplay)));
+	const types = $derived(sortNoneLast(unique(rows.map((r) => r.type))));
+	const classes = $derived(sortNoneLast(unique(rows.map((r) => r.class))));
+	const targets = $derived(sortNoneLast(unique(rows.map((r) => r.targets))));
+	const hitModes = $derived(sortNoneLast(unique(rows.map((r) => r.hitModeDisplay))));
 
-	let typeFilter = $state(makeFilter(types));
-	let classFilter = $state(makeFilter(classes));
-	let targetFilter = $state(makeFilter(targets));
-	let hitModeFilter = $state(makeFilter(hitModes));
+	let typeFilter = $state<Record<string, boolean>>({});
+	let classFilter = $state<Record<string, boolean>>({});
+	let targetFilter = $state<Record<string, boolean>>({});
+	let hitModeFilter = $state<Record<string, boolean>>({});
+
+	$effect(() => {
+		addMissingFilterOptions(typeFilter, types);
+		addMissingFilterOptions(classFilter, classes);
+		addMissingFilterOptions(targetFilter, targets);
+		addMissingFilterOptions(hitModeFilter, hitModes);
+	});
 
 	let filteredRows = $derived.by(() => {
 		const allowedTypes = Object.keys(typeFilter).filter((k) => typeFilter[k]);
@@ -124,6 +136,7 @@
 	];
 </script>
 
+{#if moves.length}
 <div class="flex flex-col gap-4">
 	<div class="grid gap-4 lg:grid-cols-2">
 		<CheckboxChipGroup label="Type" options={types} bind:checked={typeFilter} />
@@ -137,3 +150,6 @@
 </div>
 
 <DataTable {columns} rows={filteredRows} pageSize={50} />
+{:else}
+	<p class="text-center opacity-60">Loading moves...</p>
+{/if}

@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Modal from '$lib/components/ui/modal.svelte';
 	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
-	import players from '$lib/data/inazuma-eleven-vr/players.json';
+	import { loadPlayers } from '$lib/data/inazuma-eleven-vr/data';
 
 	import { calculateATDFStats, type Player, computePlayerTier } from '$lib/utils/inazuma-eleven-vr.utils';
 
@@ -12,7 +13,13 @@
 
 	let { player, onClose }: Props = $props();
 
-	let tierInfo = $derived(computePlayerTier(player, players as Player[]));
+	let players = $state<Player[]>([]);
+
+	onMount(async () => {
+		players = await loadPlayers();
+	});
+
+	let tierInfo = $derived(players.length ? computePlayerTier(player, players) : { tier: null, value: null });
 
 	let atdf = $derived(
 		calculateATDFStats({
