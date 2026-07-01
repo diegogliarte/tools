@@ -5,10 +5,10 @@
 	import Modal from '$lib/components/ui/modal.svelte';
 	import { closeModal } from '$lib/states/modal.svelte';
 	import { faviconUrl } from '$lib/utils/favicon.utils';
+	import { toolSearchIndex, type ToolSearchItem } from '$lib/core/tools-tree';
 
 	import MdiMagnify from '~icons/mdi/magnify';
 	import MdiKeyboardReturn from '~icons/mdi/keyboard-return';
-	import { toolSearchIndex, type ToolSearchItem } from '$lib/core/tool-seach-index';
 
 	const MAX_RESULTS = 6;
 

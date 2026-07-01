@@ -1,7 +1,6 @@
-import { toolsTree } from '$lib/core/tools-tree';
+import { flatTools } from '$lib/core/tools-tree';
 import { siteUrl } from '$lib/utils/seo.utils';
 
-import type { ToolCategory } from '$lib/tools/types';
 import type { RequestHandler } from './$types';
 
 type SitemapUrl = {
@@ -25,17 +24,6 @@ function normalizePath(path: string) {
 	return `/${path.replace(/^\/+/, '').replace(/\/+$/, '')}`;
 }
 
-function collectToolUrls(categories: ToolCategory[]): SitemapUrl[] {
-	return categories.flatMap((category) => [
-		...category.tools.map((tool) => ({
-			loc: `${siteUrl}${normalizePath(tool.href)}`,
-			changefreq: 'monthly' as const,
-			priority: 0.8
-		})),
-		...collectToolUrls(category.subgroups)
-	]);
-}
-
 function collectSitemapUrls(): SitemapUrl[] {
 	return [
 		{
@@ -43,7 +31,11 @@ function collectSitemapUrls(): SitemapUrl[] {
 			changefreq: 'weekly',
 			priority: 1
 		},
-		...collectToolUrls(toolsTree)
+		...flatTools.map((tool) => ({
+			loc: `${siteUrl}${normalizePath(tool.href)}`,
+			changefreq: 'monthly' as const,
+			priority: 0.8
+		}))
 	];
 }
 

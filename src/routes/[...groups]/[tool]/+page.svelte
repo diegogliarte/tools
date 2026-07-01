@@ -1,21 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { findTool } from '$lib/core/tools-registry';
-	import { toolsTree } from '$lib/core/tools-tree';
 	import { canonicalUrl, siteName, toolOgImageUrl, toolPageDescription, toolPageTitle } from '$lib/utils/seo.utils';
 	import { faviconType, faviconUrl } from '$lib/utils/favicon.utils';
 
 	let { data } = $props();
 
-	let tool = $derived.by(() => {
-		const found = findTool(data.categoryPath, data.toolSlug, toolsTree);
-
-		if (!found) {
-			throw new Error('Tool not found');
-		}
-
-		return found;
-	});
+	let tool = $derived(data.tool);
 	let componentPromise = $derived(tool.loadComponent());
 
 	let canonical = $derived(canonicalUrl(page.url.pathname));

@@ -1,4 +1,10 @@
-import type { ToolCategory, ToolCategoryMetadata, ToolDefinition } from '$lib/tools/types';
+import type {
+	BuiltToolDefinition,
+	ToolCategory,
+	ToolCategoryMetadata,
+	ToolComponentModule,
+	ToolDefinition
+} from '$lib/tools/types';
 import { slugify } from '$lib/utils/slug.utils';
 
 type ToolIndexModule = {
@@ -6,8 +12,14 @@ type ToolIndexModule = {
 	category?: ToolCategoryMetadata;
 };
 
+export type ToolSearchItem = BuiltToolDefinition & {
+	category: string;
+	searchText: string;
+};
+
 type ToolFolderNode = {
 	slug: string;
+	path?: string;
 	category?: ToolCategoryMetadata;
 	tool?: ToolDefinition;
 	children: Map<string, ToolFolderNode>;
@@ -16,6 +28,11 @@ type ToolFolderNode = {
 const indexModules = import.meta.glob('../tools/**/index.ts', {
 	eager: true
 }) as Record<string, ToolIndexModule>;
+
+const toolComponentModules = import.meta.glob('../tools/**/Tool.svelte') as Record<
+	string,
+	() => Promise<ToolComponentModule>
+>;
 
 const root: ToolFolderNode = {
 	slug: '',
@@ -94,12 +111,19 @@ function buildCategory(
 			.filter((child) => child.tool)
 			.map((child) => {
 				const tool = child.tool as ToolDefinition;
+				const componentPath = child.path?.replace('/index.ts', '/Tool.svelte');
+				const loadComponent = componentPath ? toolComponentModules[componentPath] : undefined;
+
+				if (!loadComponent) {
+					throw new Error(`Missing Tool.svelte for ${child.path ?? child.slug}`);
+				}
 
 				return {
 					...tool,
 					href: `/${[...slugPath, slugify(tool.title)].join('/')}`,
 					favicon: tool.favicon ?? favicon,
-					categoryPath
+					categoryPath,
+					loadComponent
 				};
 			}),
 		subgroups: children
@@ -108,17 +132,49 @@ function buildCategory(
 	};
 }
 
+function flattenTools(categories: ToolCategory[]): ToolSearchItem[] {
+	return categories.flatMap((category) => [
+		...category.tools.map((tool) => {
+			const categoryLabel = tool.categoryPath.join(' / ');
+
+			return {
+				...tool,
+				category: categoryLabel,
+				searchText: [tool.title, tool.description, categoryLabel].join(' ').toLowerCase()
+			};
+		}),
+		...flattenTools(category.subgroups)
+	]);
+}
+
+function getRouteKey(path: string[], toolSlug: string): string {
+	return [...path, toolSlug].join('/');
+}
+
+function getHrefKey(href: string): string {
+	return href.replace(/^\/+/, '');
+}
+
 for (const [path, module] of Object.entries(indexModules)) {
 	const segments = getPathSegments(path);
 	const node = getOrCreateNode(segments);
+	node.path = path;
 
 	if (module.category) node.category = module.category;
 	if (module.tool) node.tool = module.tool;
 }
 
-export const rawTree: ToolCategory[] = [...root.children.values()]
+export const toolsTree: ToolCategory[] = [...root.children.values()]
 	.filter((node) => !node.tool)
 	.sort(sortNodes)
 	.map((node) => buildCategory(node));
 
-export const toolsTree = rawTree;
+export const flatTools = flattenTools(toolsTree);
+
+export const toolSearchIndex = flatTools;
+
+const toolByRouteKey = new Map(flatTools.map((tool) => [getHrefKey(tool.href), tool]));
+
+export function findTool(path: string[], toolSlug: string): BuiltToolDefinition | null {
+	return toolByRouteKey.get(getRouteKey(path, toolSlug)) ?? null;
+}
