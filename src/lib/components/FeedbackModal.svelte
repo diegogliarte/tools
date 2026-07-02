@@ -38,6 +38,7 @@
 				throw new Error('Failed to send feedback');
 			}
 
+			window.dispatchEvent(new CustomEvent('feedback:submitted'));
 			showToast('Feedback sent', { type: 'success', duration: 2500 });
 			closeModal();
 		} catch {

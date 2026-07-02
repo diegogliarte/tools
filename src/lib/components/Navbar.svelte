@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Component } from 'svelte';
 
 	import MdiGithub from '~icons/mdi/github';
@@ -13,16 +14,48 @@
 	import ToolSearchModal from '$lib/components/ToolSearchModal.svelte';
 	import UmamiViews from '$lib/components/UmamiViews.svelte';
 	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
+	import HintBubble from '$lib/components/ui/hint-bubble.svelte';
 
 	import { tooltipAction } from '$lib/actions/tooltip';
+	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
 	import { openModal } from '$lib/states/modal.svelte';
 
 	type IconComponent = Component<any, any, any>;
 
-	export let isSidebarOpen: boolean;
+	interface Props {
+		isSidebarOpen: boolean;
+	}
+
+	let { isSidebarOpen = $bindable() }: Props = $props();
+
+	const feedbackHint = createLocalStorageState(
+		{
+			lastVisitAt: 0,
+			visits: 0,
+			shown: false
+		},
+		{
+			key: 'ui:feedback-hint'
+		}
+	);
+
+	const FEEDBACK_HINT_VISIT_THRESHOLD = 3;
+	const FEEDBACK_HINT_VISIT_INTERVAL_MS = 24 * 60 * 60 * 1000;
+
+	let showFeedbackHint = $state(false);
 
 	function openSearch() {
 		openModal(ToolSearchModal);
+	}
+
+	function dismissFeedbackHint() {
+		feedbackHint.shown = true;
+		showFeedbackHint = false;
+	}
+
+	function openFeedback() {
+		dismissFeedbackHint();
+		openModal(FeedbackModal);
 	}
 
 	function handleGlobalKeydown(event: KeyboardEvent) {
@@ -31,6 +64,24 @@
 			openSearch();
 		}
 	}
+
+	onMount(() => {
+		const now = Date.now();
+		if (!feedbackHint.lastVisitAt || now - feedbackHint.lastVisitAt >= FEEDBACK_HINT_VISIT_INTERVAL_MS) {
+			feedbackHint.visits += 1;
+			feedbackHint.lastVisitAt = now;
+		}
+
+		showFeedbackHint = feedbackHint.visits >= FEEDBACK_HINT_VISIT_THRESHOLD && !feedbackHint.shown;
+
+		function handleFeedbackSubmitted() {
+			dismissFeedbackHint();
+		}
+
+		window.addEventListener('feedback:submitted', handleFeedbackSubmitted);
+
+		return () => window.removeEventListener('feedback:submitted', handleFeedbackSubmitted);
+	});
 </script>
 
 <svelte:window onkeydown={handleGlobalKeydown} />
@@ -94,7 +145,22 @@
 	</div>
 
 	{@render navAction('My steam game', MdiSteam, () => openModal(SteamModal))}
-	{@render navAction('Send feedback', MdiMessageTextOutline, () => openModal(FeedbackModal))}
+
+	<div class="relative flex h-5 w-5 shrink-0 items-center justify-center self-center">
+		{#if showFeedbackHint}
+			<HintBubble text={'Ideas, bugs, or feedback?\nLet me know here.'} onClick={dismissFeedbackHint} />
+		{/if}
+
+		<button
+			aria-label="Send feedback"
+			class={`cursor-pointer transition hover:text-accent ${showFeedbackHint ? 'animate-pulse text-accent' : 'text-text'}`}
+			use:tooltipAction={{ text: 'Send feedback', position: 'bottom' }}
+			onclick={openFeedback}
+		>
+			<MdiMessageTextOutline class="h-5 w-5" />
+		</button>
+	</div>
+
 	<!-- {@render navLink('https://ko-fi.com/diegogliarte', 'Go to Ko-fi', MdiCoffee, true, true)} -->
 	{@render navLink('https://github.com/diegogliarte/tools', 'Go to GitHub', MdiGithub, true, true)}
 </nav>
