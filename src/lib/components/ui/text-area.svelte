@@ -5,9 +5,17 @@
 		placeholder?: string;
 		readonly?: boolean;
 		displayLines?: boolean;
+		minHeightClass?: string;
 	}
 
-	let { value = $bindable(''), label = '', placeholder = '', readonly = false, displayLines = false }: Props = $props();
+	let {
+		value = $bindable(''),
+		label = '',
+		placeholder = '',
+		readonly = false,
+		displayLines = false,
+		minHeightClass = 'min-h-64'
+	}: Props = $props();
 
 	const uid = $props.id();
 
@@ -55,7 +63,7 @@
 			onmousemove={handleMouseMove}
 			onmouseleave={handleMouseLeave}
 			class="
-				min-h-64
+				{minHeightClass}
 				flex-1 resize-none
 				p-2
 				font-mono

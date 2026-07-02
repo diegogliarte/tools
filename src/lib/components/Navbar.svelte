@@ -7,11 +7,13 @@
 	import MdiCoffee from '~icons/mdi/coffee';
 	import MdiChevronLeft from '~icons/mdi/chevron-left';
 	import MdiChevronRight from '~icons/mdi/chevron-right';
+	import MdiMessageTextOutline from '~icons/mdi/message-text-outline';
 	import MdiSteam from '~icons/mdi/steam';
 	import SteamModal from '$lib/components/SteamModal.svelte';
 	import MdiMagnify from '~icons/mdi/magnify';
 	import ToolSearchModal from '$lib/components/ToolSearchModal.svelte';
 	import UmamiViews from '$lib/components/UmamiViews.svelte';
+	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
 
 	import { openModal } from '$lib/states/modal.svelte';
 
@@ -86,7 +88,7 @@
 	</div>
 
 	{@render navAction('Vpetlings (in development)', MdiSteam, () => openModal(SteamModal))}
+	{@render navAction('Send feedback', MdiMessageTextOutline, () => openModal(FeedbackModal))}
 	{@render navLink('https://ko-fi.com/diegogliarte', 'Go to the ko-fi', MdiCoffee, true)}
-	{@render navLink('/components', 'Go to Components page', MdiShape)}
 	{@render navLink('https://github.com/diegogliarte/tools', 'Go to the GitHub repo', MdiGithub, true)}
 </nav>
