@@ -3,7 +3,6 @@
 
 	import MdiGithub from '~icons/mdi/github';
 	import MdiHome from '~icons/mdi/home';
-	import MdiShape from '~icons/mdi/shape';
 	import MdiCoffee from '~icons/mdi/coffee';
 	import MdiChevronLeft from '~icons/mdi/chevron-left';
 	import MdiChevronRight from '~icons/mdi/chevron-right';
@@ -15,6 +14,7 @@
 	import UmamiViews from '$lib/components/UmamiViews.svelte';
 	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
 
+	import { tooltipAction } from '$lib/actions/tooltip';
 	import { openModal } from '$lib/states/modal.svelte';
 
 	type IconComponent = Component<any, any, any>;
@@ -35,11 +35,12 @@
 
 <svelte:window onkeydown={handleGlobalKeydown} />
 
-{#snippet navLink(href: string, label: string, Icon: IconComponent, external = false)}
+{#snippet navLink(href: string, label: string, Icon: IconComponent, external = false, showTooltip = false)}
 	<a
 		{href}
 		aria-label={label}
-		class="text-text transition hover:text-accent"
+		class="relative text-text transition hover:text-accent"
+		use:tooltipAction={showTooltip ? { text: label, position: 'bottom' } : undefined}
 		target={external ? '_blank' : undefined}
 		rel={external ? 'noopener noreferrer' : undefined}
 	>
@@ -48,7 +49,12 @@
 {/snippet}
 
 {#snippet navAction(label: string, Icon: IconComponent, onclick: () => void)}
-	<button aria-label={label} class="cursor-pointer text-text transition hover:text-accent" {onclick}>
+	<button
+		aria-label={label}
+		class="relative cursor-pointer text-text transition hover:text-accent"
+		use:tooltipAction={{ text: label, position: 'bottom' }}
+		{onclick}
+	>
 		<Icon class="h-5 w-5" />
 	</button>
 {/snippet}
@@ -87,8 +93,8 @@
 		<UmamiViews />
 	</div>
 
-	{@render navAction('Vpetlings (in development)', MdiSteam, () => openModal(SteamModal))}
+	{@render navAction('My steam game', MdiSteam, () => openModal(SteamModal))}
 	{@render navAction('Send feedback', MdiMessageTextOutline, () => openModal(FeedbackModal))}
-	{@render navLink('https://ko-fi.com/diegogliarte', 'Go to the ko-fi', MdiCoffee, true)}
-	{@render navLink('https://github.com/diegogliarte/tools', 'Go to the GitHub repo', MdiGithub, true)}
+	<!-- {@render navLink('https://ko-fi.com/diegogliarte', 'Go to Ko-fi', MdiCoffee, true, true)} -->
+	{@render navLink('https://github.com/diegogliarte/tools', 'Go to GitHub', MdiGithub, true, true)}
 </nav>
