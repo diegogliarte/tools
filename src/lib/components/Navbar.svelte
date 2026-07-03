@@ -147,10 +147,10 @@
 
 	<div class="relative flex h-5 w-5 shrink-0 items-center justify-center self-center">
 		<button
-			aria-label="Send feedback"
+			aria-label="Give feedback"
 			class={`cursor-pointer transition hover:text-accent ${showFeedbackHint ? 'animate-pulse text-accent' : 'text-text'}`}
 			use:tooltipAction={{
-				text: showFeedbackHint ? 'Ideas, bugs, or feedback?\nLet me know here.' : 'Send feedback',
+				text: showFeedbackHint ? 'Ideas, bugs, or feedback?\nLet me know here.' : 'Give feedback',
 				position: 'bottom',
 				open: showFeedbackHint,
 				interactive: showFeedbackHint,

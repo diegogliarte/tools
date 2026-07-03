@@ -49,9 +49,9 @@
 	}
 </script>
 
-<Modal title="Send feedback">
+<Modal title="Give feedback">
 	<div class="flex flex-col gap-3 text-sm">
-		<p class="opacity-80">Send a quick suggestion, issue, or idea. It goes straight to me.</p>
+		<p class="opacity-80">Share a suggestion, report an issue, or tell me what you'd like to see. It goes straight to me.</p>
 
 		<div class="flex flex-col gap-1">
 			<TextArea bind:value={message} label="Message" placeholder="What would you like to tell me?" minHeightClass="min-h-40" />
@@ -62,7 +62,7 @@
 
 		<div class="flex justify-end">
 			<Button disabled={!trimmedMessage || sending} onClick={submit}>
-				{sending ? 'Sending...' : 'Send'}
+				{sending ? 'Sending...' : 'Submit'}
 			</Button>
 		</div>
 	</div>
