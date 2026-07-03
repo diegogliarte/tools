@@ -14,7 +14,6 @@
 	import ToolSearchModal from '$lib/components/ToolSearchModal.svelte';
 	import UmamiViews from '$lib/components/UmamiViews.svelte';
 	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
-	import HintBubble from '$lib/components/ui/hint-bubble.svelte';
 
 	import { tooltipAction } from '$lib/actions/tooltip';
 	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
@@ -147,14 +146,16 @@
 	{@render navAction('My steam game', MdiSteam, () => openModal(SteamModal))}
 
 	<div class="relative flex h-5 w-5 shrink-0 items-center justify-center self-center">
-		{#if showFeedbackHint}
-			<HintBubble text={'Ideas, bugs, or feedback?\nLet me know here.'} onClick={dismissFeedbackHint} />
-		{/if}
-
 		<button
 			aria-label="Send feedback"
 			class={`cursor-pointer transition hover:text-accent ${showFeedbackHint ? 'animate-pulse text-accent' : 'text-text'}`}
-			use:tooltipAction={{ text: 'Send feedback', position: 'bottom' }}
+			use:tooltipAction={{
+				text: showFeedbackHint ? 'Ideas, bugs, or feedback?\nLet me know here.' : 'Send feedback',
+				position: 'bottom',
+				open: showFeedbackHint,
+				interactive: showFeedbackHint,
+				onTooltipClick: dismissFeedbackHint
+			}}
 			onclick={openFeedback}
 		>
 			<MdiMessageTextOutline class="h-5 w-5" />
