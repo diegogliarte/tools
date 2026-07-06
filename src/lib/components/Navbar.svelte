@@ -66,6 +66,7 @@
 
 	onMount(() => {
 		const now = Date.now();
+
 		if (!feedbackHint.lastVisitAt || now - feedbackHint.lastVisitAt >= FEEDBACK_HINT_VISIT_INTERVAL_MS) {
 			feedbackHint.visits += 1;
 			feedbackHint.lastVisitAt = now;
@@ -86,16 +87,28 @@
 <svelte:window onkeydown={handleGlobalKeydown} />
 
 {#snippet navLink(href: string, label: string, Icon: IconComponent, external = false, showTooltip = false)}
-	<a
-		{href}
-		aria-label={label}
-		class="relative text-text transition hover:text-accent"
-		use:tooltipAction={showTooltip ? { text: label, position: 'bottom' } : undefined}
-		target={external ? '_blank' : undefined}
-		rel={external ? 'noopener noreferrer' : undefined}
-	>
-		<Icon class="h-5 w-5" />
-	</a>
+	{#if showTooltip}
+		<a
+			{href}
+			aria-label={label}
+			class="relative text-text transition hover:text-accent"
+			use:tooltipAction={{ text: label, position: 'bottom' }}
+			target={external ? '_blank' : undefined}
+			rel={external ? 'noopener noreferrer' : undefined}
+		>
+			<Icon class="h-5 w-5" />
+		</a>
+	{:else}
+		<a
+			{href}
+			aria-label={label}
+			class="relative text-text transition hover:text-accent"
+			target={external ? '_blank' : undefined}
+			rel={external ? 'noopener noreferrer' : undefined}
+		>
+			<Icon class="h-5 w-5" />
+		</a>
+	{/if}
 {/snippet}
 
 {#snippet navAction(label: string, Icon: IconComponent, onclick: () => void)}

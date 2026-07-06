@@ -1,0 +1,2031 @@
+[
+  {
+    "slug": "active-4-flee",
+    "id": 4,
+    "category": "active",
+    "name": "Flee",
+    "description": "You flee from battle!",
+    "cost": 5
+  },
+  {
+    "slug": "active-5-flame-breath",
+    "id": 5,
+    "category": "active",
+    "name": "Flame Breath",
+    "description": "3× Fire damage to foes!",
+    "cost": 2
+  },
+  {
+    "slug": "active-6-storm-breath",
+    "id": 6,
+    "category": "active",
+    "name": "Storm Breath",
+    "description": "3× Water damage to foes!",
+    "cost": 2
+  },
+  {
+    "slug": "active-7-gaia-breath",
+    "id": 7,
+    "category": "active",
+    "name": "Gaia Breath",
+    "description": "3× Wood damage to foes!",
+    "cost": 2
+  },
+  {
+    "slug": "active-9-nightmare-breath",
+    "id": 9,
+    "category": "active",
+    "name": "Nightmare Breath",
+    "description": "10× Dark damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-20-divine-flame-breath",
+    "id": 20,
+    "category": "active",
+    "name": "Divine Flame Breath",
+    "description": "15× Fire damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-21-divine-storm-breath",
+    "id": 21,
+    "category": "active",
+    "name": "Divine Storm Breath",
+    "description": "15× Water damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-22-divine-gaia-breath",
+    "id": 22,
+    "category": "active",
+    "name": "Divine Gaia Breath",
+    "description": "15× Wood damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-24-divine-hell-breath",
+    "id": 24,
+    "category": "active",
+    "name": "Divine Hell Breath",
+    "description": "15× Dark damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-25-hellfire-breath",
+    "id": 25,
+    "category": "active",
+    "name": "Hellfire Breath",
+    "description": "60× Fire damage to foes! Your HP is 1!",
+    "cost": 7
+  },
+  {
+    "slug": "active-26-exa-freeze-breath",
+    "id": 26,
+    "category": "active",
+    "name": "Exa-Freeze Breath",
+    "description": "40× Water damage, and reduce their DEF!",
+    "cost": 7
+  },
+  {
+    "slug": "active-27-hard-mistral-breath",
+    "id": 27,
+    "category": "active",
+    "name": "Hard Mistral Breath",
+    "description": "20× Wood damage, and 2 Z-Orbs created!",
+    "cost": 7
+  },
+  {
+    "slug": "active-28-gigavolt-breath",
+    "id": 28,
+    "category": "active",
+    "name": "Gigavolt Breath",
+    "description": "20× Light damage, and paralysis for 2 turns!",
+    "cost": 6
+  },
+  {
+    "slug": "active-29-deep-shadow-breath",
+    "id": 29,
+    "category": "active",
+    "name": "Deep Shadow Breath",
+    "description": "20× Dark damage, and perfect defence!",
+    "cost": 6
+  },
+  {
+    "slug": "active-30-unknown",
+    "id": 30,
+    "category": "active",
+    "name": "ファイアボール",
+    "description": "※削除",
+    "cost": 2
+  },
+  {
+    "slug": "active-31-unknown",
+    "id": 31,
+    "category": "active",
+    "name": "ウォーターボール",
+    "description": "※削除",
+    "cost": 2
+  },
+  {
+    "slug": "active-32-unknown",
+    "id": 32,
+    "category": "active",
+    "name": "アースボール",
+    "description": "※削除",
+    "cost": 2
+  },
+  {
+    "slug": "active-33-unknown",
+    "id": 33,
+    "category": "active",
+    "name": "サンダーボール",
+    "description": "※削除",
+    "cost": 2
+  },
+  {
+    "slug": "active-45-divine-blast-cannon",
+    "id": 45,
+    "category": "active",
+    "name": "Divine Blast Cannon",
+    "description": "20,000 Fire damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-46-divine-cascade-cannon",
+    "id": 46,
+    "category": "active",
+    "name": "Divine Cascade Cannon",
+    "description": "20,000 Water damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-47-divine-tornado-cannon",
+    "id": 47,
+    "category": "active",
+    "name": "Divine Tornado Cannon",
+    "description": "20,000 Wood damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-48-divine-plasma-cannon",
+    "id": 48,
+    "category": "active",
+    "name": "Divine Plasma Cannon",
+    "description": "20,000 Light damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-49-divine-misty-cannon",
+    "id": 49,
+    "category": "active",
+    "name": "Divine Misty Cannon",
+    "description": "20,000 Dark damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-54-mega-gravity",
+    "id": 54,
+    "category": "active",
+    "name": "Mega Gravity",
+    "description": "Lowers foes' HP by 25%!",
+    "cost": 5
+  },
+  {
+    "slug": "active-55-giga-gravity",
+    "id": 55,
+    "category": "active",
+    "name": "Giga Gravity",
+    "description": "Lowers foes' HP by 30%!",
+    "cost": 6
+  },
+  {
+    "slug": "active-56-divine-wrath",
+    "id": 56,
+    "category": "active",
+    "name": "Divine Wrath",
+    "description": "Lowers foes' HP by 35%!",
+    "cost": 7
+  },
+  {
+    "slug": "active-57-grudge",
+    "id": 57,
+    "category": "active",
+    "name": "Grudge",
+    "description": "Does more damage, the lower your HP is!",
+    "cost": 3
+  },
+  {
+    "slug": "active-58-sworn-enemy",
+    "id": 58,
+    "category": "active",
+    "name": "Sworn Enemy",
+    "description": "Does vastly more damage the lower your HP is!",
+    "cost": 7
+  },
+  {
+    "slug": "active-59-shuffle-shot",
+    "id": 59,
+    "category": "active",
+    "name": "Shuffle Shot",
+    "description": "Random Dark damage to 1 foe!",
+    "cost": 3
+  },
+  {
+    "slug": "active-60-heal",
+    "id": 60,
+    "category": "active",
+    "name": "Heal",
+    "description": "Recovers 30% of maximum HP!",
+    "cost": 3
+  },
+  {
+    "slug": "active-61-ell-heal",
+    "id": 61,
+    "category": "active",
+    "name": "Ell-Heal",
+    "description": "Recovers 60% of maximum HP!",
+    "cost": 5
+  },
+  {
+    "slug": "active-62-cure",
+    "id": 62,
+    "category": "active",
+    "name": "Cure",
+    "description": "Heals your monsters' abnormal statuses!",
+    "cost": 2
+  },
+  {
+    "slug": "active-63-ray-of-healing",
+    "id": 63,
+    "category": "active",
+    "name": "Ray of Healing",
+    "description": "Recovers 700 HP!",
+    "cost": 1
+  },
+  {
+    "slug": "active-64-healing-blessing",
+    "id": 64,
+    "category": "active",
+    "name": "Healing Blessing",
+    "description": "Recovers 1500 HP!",
+    "cost": 2
+  },
+  {
+    "slug": "active-65-light-of-healing",
+    "id": 65,
+    "category": "active",
+    "name": "Light of Healing",
+    "description": "Recovers 4000 HP!",
+    "cost": 4
+  },
+  {
+    "slug": "active-66-full-heal",
+    "id": 66,
+    "category": "active",
+    "name": "Full Heal",
+    "description": "Recovers HP fully!",
+    "cost": 7
+  },
+  {
+    "slug": "active-67-heart-change-fire",
+    "id": 67,
+    "category": "active",
+    "name": "Heart Change - Fire",
+    "description": "Heart Orbs turned into Fire Orbs!",
+    "cost": 4
+  },
+  {
+    "slug": "active-68-heart-change-water",
+    "id": 68,
+    "category": "active",
+    "name": "Heart Change - Water",
+    "description": "Heart Orbs turned into Water Orbs!",
+    "cost": 4
+  },
+  {
+    "slug": "active-69-heart-change-wood",
+    "id": 69,
+    "category": "active",
+    "name": "Heart Change - Wood",
+    "description": "Heart Orbs turned into Wood Orbs!",
+    "cost": 4
+  },
+  {
+    "slug": "active-70-heart-change-light",
+    "id": 70,
+    "category": "active",
+    "name": "Heart Change - Light",
+    "description": "Heart Orbs turned into Light Orbs!",
+    "cost": 4
+  },
+  {
+    "slug": "active-71-heart-change-dark",
+    "id": 71,
+    "category": "active",
+    "name": "Heart Change - Dark",
+    "description": "Heart Orbs turned into Dark Orbs!",
+    "cost": 4
+  },
+  {
+    "slug": "active-72-heart-transformation-wood",
+    "id": 72,
+    "category": "active",
+    "name": "Heart Transformation - Wood",
+    "description": "Wood Orbs turned into Heart Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-73-heart-transformation-fire",
+    "id": 73,
+    "category": "active",
+    "name": "Heart Transformation - Fire",
+    "description": "Fire Orbs turned into Heart Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-74-heart-transformation-water",
+    "id": 74,
+    "category": "active",
+    "name": "Heart Transformation - Water",
+    "description": "Water Orbs turned into Heart Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-75-heart-transformation-dark",
+    "id": 75,
+    "category": "active",
+    "name": "Heart Transformation - Dark",
+    "description": "Dark Orbs turned into Heart Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-76-heart-transformation-light",
+    "id": 76,
+    "category": "active",
+    "name": "Heart Transformation - Light",
+    "description": "Light Orbs turned into Heart Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-77-orb-change-fire",
+    "id": 77,
+    "category": "active",
+    "name": "Orb Change - Fire",
+    "description": "Water Orbs turned into Fire Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-78-orb-change-water",
+    "id": 78,
+    "category": "active",
+    "name": "Orb Change - Water",
+    "description": "Wood Orbs turned into Water Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-79-orb-change-wood",
+    "id": 79,
+    "category": "active",
+    "name": "Orb Change - Wood",
+    "description": "Fire Orbs turned into Wood Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-80-orb-change-light",
+    "id": 80,
+    "category": "active",
+    "name": "Orb Change - Light",
+    "description": "Dark Orbs turned into Light Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-81-orb-change-dark",
+    "id": 81,
+    "category": "active",
+    "name": "Orb Change - Dark",
+    "description": "Light Orbs turned into Dark Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-82-reverse-orb-change-fire",
+    "id": 82,
+    "category": "active",
+    "name": "Reverse Orb Change - Fire",
+    "description": "Wood Orbs turned into Fire Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-83-reverse-orb-change-water",
+    "id": 83,
+    "category": "active",
+    "name": "Reverse Orb Change - Water",
+    "description": "Fire Orbs turned into Water Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-84-reverse-orb-change-wood",
+    "id": 84,
+    "category": "active",
+    "name": "Reverse Orb Change - Wood",
+    "description": "Water Orbs turned into Wood Orbs!",
+    "cost": 3
+  },
+  {
+    "slug": "active-85-ultra-orb-change-fire",
+    "id": 85,
+    "category": "active",
+    "name": "Ultra Orb Change - Fire",
+    "description": "Water and Heart Orbs turned into Fire Orbs!",
+    "cost": 6
+  },
+  {
+    "slug": "active-86-ultra-orb-change-water",
+    "id": 86,
+    "category": "active",
+    "name": "Ultra Orb Change - Water",
+    "description": "Wood and Heart Orbs turned into Water Orbs!",
+    "cost": 6
+  },
+  {
+    "slug": "active-87-ultra-orb-change-wood",
+    "id": 87,
+    "category": "active",
+    "name": "Ultra Orb Change - Wood",
+    "description": "Fire and Heart Orbs turned into Wood Orbs!",
+    "cost": 6
+  },
+  {
+    "slug": "active-88-orb-refresh",
+    "id": 88,
+    "category": "active",
+    "name": "Orb Refresh",
+    "description": "Changes Orb attributes randomly!",
+    "cost": 3
+  },
+  {
+    "slug": "active-89-stop-the-world",
+    "id": 89,
+    "category": "active",
+    "name": "Stop the World",
+    "description": "You can move Orbs freely for 5 seconds!",
+    "cost": 3
+  },
+  {
+    "slug": "active-90-change-the-world",
+    "id": 90,
+    "category": "active",
+    "name": "Change the World",
+    "description": "You can move Orbs freely for 10 seconds!",
+    "cost": 5
+  },
+  {
+    "slug": "active-91-the-future",
+    "id": 91,
+    "category": "active",
+    "name": "The Future",
+    "description": "You can move Orbs freely for 15 seconds!",
+    "cost": 6
+  },
+  {
+    "slug": "active-92-time-spring",
+    "id": 92,
+    "category": "active",
+    "name": "Time Spring",
+    "description": "You can move Orbs freely for 12 seconds!",
+    "cost": 5
+  },
+  {
+    "slug": "active-93-poison-mist",
+    "id": 93,
+    "category": "active",
+    "name": "Poison Mist",
+    "description": "All foes are poisoned!",
+    "cost": 3
+  },
+  {
+    "slug": "active-94-poison-smog",
+    "id": 94,
+    "category": "active",
+    "name": "Poison Smog",
+    "description": "All foes are lethally poisoned!",
+    "cost": 4
+  },
+  {
+    "slug": "active-95-hydra-s-lethal-poison",
+    "id": 95,
+    "category": "active",
+    "name": "Hydra's Lethal Poison",
+    "description": "All foes are super-lethally poisoned!",
+    "cost": 5
+  },
+  {
+    "slug": "active-96-menace",
+    "id": 96,
+    "category": "active",
+    "name": "Menace",
+    "description": "Delays foes' turn count by 2!",
+    "cost": 5
+  },
+  {
+    "slug": "active-98-guard-break",
+    "id": 98,
+    "category": "active",
+    "name": "Guard Break",
+    "description": "Enemy DEF lowered for 3 turns!",
+    "cost": 2
+  },
+  {
+    "slug": "active-99-armour-break",
+    "id": 99,
+    "category": "active",
+    "name": "Armour Break",
+    "description": "Enemy DEF greatly lowered for 3 turns!",
+    "cost": 3
+  },
+  {
+    "slug": "active-100-defensive-stance",
+    "id": 100,
+    "category": "active",
+    "name": "Defensive Stance",
+    "description": "Halves damage for 1 turn!",
+    "cost": 3
+  },
+  {
+    "slug": "active-101-iron-wall-stance",
+    "id": 101,
+    "category": "active",
+    "name": "Iron Wall Stance",
+    "description": "Halves damage for 2 turns!",
+    "cost": 5
+  },
+  {
+    "slug": "active-102-heroic-dragon-stance",
+    "id": 102,
+    "category": "active",
+    "name": "Heroic Dragon Stance",
+    "description": "You take only 25% damage for 3 turns!",
+    "cost": 8
+  },
+  {
+    "slug": "active-104-flame-barrier",
+    "id": 104,
+    "category": "active",
+    "name": "Flame Barrier",
+    "description": "Nullifies Wood damage for 1 turn!",
+    "cost": 4
+  },
+  {
+    "slug": "active-107-sea-barrier",
+    "id": 107,
+    "category": "active",
+    "name": "Sea Barrier",
+    "description": "Nullifies Fire damage for 1 turn!",
+    "cost": 4
+  },
+  {
+    "slug": "active-110-forest-barrier",
+    "id": 110,
+    "category": "active",
+    "name": "Forest Barrier",
+    "description": "Nullifies Water damage for 1 turn!",
+    "cost": 4
+  },
+  {
+    "slug": "active-113-sun-barrier",
+    "id": 113,
+    "category": "active",
+    "name": "Sun Barrier",
+    "description": "Nullifies Dark damage for 1 turn!",
+    "cost": 4
+  },
+  {
+    "slug": "active-114-flash-barrier",
+    "id": 114,
+    "category": "active",
+    "name": "Flash Barrier",
+    "description": "Nullifies Dark damage for 2 turns!",
+    "cost": 5
+  },
+  {
+    "slug": "active-117-dark-barrier",
+    "id": 117,
+    "category": "active",
+    "name": "Dark Barrier",
+    "description": "Nullifies Light damage for 2 turns!",
+    "cost": 5
+  },
+  {
+    "slug": "active-118-bloody-blade",
+    "id": 118,
+    "category": "active",
+    "name": "Bloody Blade",
+    "description": "Restores HP relative to damage dealt!",
+    "cost": 4
+  },
+  {
+    "slug": "active-124-howl",
+    "id": 124,
+    "category": "active",
+    "name": "Howl",
+    "description": "All your attacks are group attacks for 2 turns!",
+    "cost": 3
+  },
+  {
+    "slug": "active-125-long-howl",
+    "id": 125,
+    "category": "active",
+    "name": "Long Howl",
+    "description": "All your attacks are group attacks for 3 turns!",
+    "cost": 3
+  },
+  {
+    "slug": "active-128-abyssal-nightmare",
+    "id": 128,
+    "category": "active",
+    "name": "Abyssal Nightmare",
+    "description": "Enemy ATK lowered slightly for 3 turns!",
+    "cost": 4
+  },
+  {
+    "slug": "active-129-berserk",
+    "id": 129,
+    "category": "active",
+    "name": "Berserk",
+    "description": "Halves DEF but raises ATK by 1.5×!",
+    "cost": 4
+  },
+  {
+    "slug": "active-130-super-berserk",
+    "id": 130,
+    "category": "active",
+    "name": "Super Berserk",
+    "description": "Halves DEF but raises ATK by 2×!",
+    "cost": 7
+  },
+  {
+    "slug": "active-131-smash",
+    "id": 131,
+    "category": "active",
+    "name": "Smash",
+    "description": "Damage equal to 20% HP dealt to a foe!",
+    "cost": 4
+  },
+  {
+    "slug": "active-132-mega-smash",
+    "id": 132,
+    "category": "active",
+    "name": "Mega Smash",
+    "description": "Damage equal to 50% HP done to a foe!",
+    "cost": 4
+  },
+  {
+    "slug": "active-133-giga-smash",
+    "id": 133,
+    "category": "active",
+    "name": "Giga Smash",
+    "description": "Damage equal to HP dealt to a foe!",
+    "cost": 5
+  },
+  {
+    "slug": "active-134-fire-circle",
+    "id": 134,
+    "category": "active",
+    "name": "Fire Circle",
+    "description": "Absorbs all Fire damage for 1 turn!",
+    "cost": 6
+  },
+  {
+    "slug": "active-135-water-circle",
+    "id": 135,
+    "category": "active",
+    "name": "Water Circle",
+    "description": "Absorbs all Water damage for 1 turn!",
+    "cost": 6
+  },
+  {
+    "slug": "active-136-wood-circle",
+    "id": 136,
+    "category": "active",
+    "name": "Wood Circle",
+    "description": "Absorbs all Wood damage for 1 turn!",
+    "cost": 6
+  },
+  {
+    "slug": "active-141-shapeshift",
+    "id": 141,
+    "category": "active",
+    "name": "Shapeshift",
+    "description": "Transforms into another monster!",
+    "cost": 5
+  },
+  {
+    "slug": "active-142-heat-up",
+    "id": 142,
+    "category": "active",
+    "name": "Heat Up",
+    "description": "Raises ATK of Fire monsters slightly for 3 turn",
+    "cost": 3
+  },
+  {
+    "slug": "active-143-ultra-heat-up",
+    "id": 143,
+    "category": "active",
+    "name": "Ultra Heat Up",
+    "description": "Raises Fire monsters' ATK by 1.5× for 3 turns!",
+    "cost": 5
+  },
+  {
+    "slug": "active-147-spellbind",
+    "id": 147,
+    "category": "active",
+    "name": "Spellbind",
+    "description": "Delays foes' turn count by 4!",
+    "cost": 8
+  },
+  {
+    "slug": "active-161-banish-to-hell",
+    "id": 161,
+    "category": "active",
+    "name": "Banish to Hell",
+    "description": "Does 4444 damage to a single foe!",
+    "cost": 4
+  },
+  {
+    "slug": "active-162-risky-strike",
+    "id": 162,
+    "category": "active",
+    "name": "Risky Strike",
+    "description": "Damages your monsters to damage a foe!",
+    "cost": 2
+  },
+  {
+    "slug": "active-163-desperate-strike",
+    "id": 163,
+    "category": "active",
+    "name": "Desperate Strike",
+    "description": "Damages your monsters to damage a foe!",
+    "cost": 4
+  },
+  {
+    "slug": "active-173-flash-punch",
+    "id": 173,
+    "category": "active",
+    "name": "Flash Punch",
+    "description": "5× Light damage to a single foe!",
+    "cost": 2
+  },
+  {
+    "slug": "active-175-burning-breath",
+    "id": 175,
+    "category": "active",
+    "name": "Burning Breath",
+    "description": "10× Fire damage to all foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-179-dark-breath",
+    "id": 179,
+    "category": "active",
+    "name": "Dark Breath",
+    "description": "3× Dark damage to all foes!",
+    "cost": 2
+  },
+  {
+    "slug": "active-188-pulse-impact",
+    "id": 188,
+    "category": "active",
+    "name": "Pulse Impact",
+    "description": "10× Light damage to a single foe!",
+    "cost": 2
+  },
+  {
+    "slug": "active-220-ultra-orb-change-light",
+    "id": 220,
+    "category": "active",
+    "name": "Ultra Orb Change - Light",
+    "description": "Dark and Heart Orbs turned into Light Orbs!",
+    "cost": 6
+  },
+  {
+    "slug": "active-221-ultra-orb-change-dark",
+    "id": 221,
+    "category": "active",
+    "name": "Ultra Orb Change - Dark",
+    "description": "Light and Heart Orbs turned into Dark Orbs!",
+    "cost": 6
+  },
+  {
+    "slug": "active-222-z-boost",
+    "id": 222,
+    "category": "active",
+    "name": "Z-Boost",
+    "description": "An Orb changes into a Z-Orb!",
+    "cost": 5
+  },
+  {
+    "slug": "active-223-double-z-boost",
+    "id": 223,
+    "category": "active",
+    "name": "Double Z-Boost",
+    "description": "2 Orbs change into Z-Orbs!",
+    "cost": 6
+  },
+  {
+    "slug": "active-224-poisonous-secretions",
+    "id": 224,
+    "category": "active",
+    "name": "Poisonous Secretions",
+    "description": "1 foe is poisoned!",
+    "cost": 3
+  },
+  {
+    "slug": "active-225-lethal-poisonous-secretions",
+    "id": 225,
+    "category": "active",
+    "name": "Lethal Poisonous Secretions",
+    "description": "1 foe is lethally poisoned!",
+    "cost": 4
+  },
+  {
+    "slug": "active-229-growth",
+    "id": 229,
+    "category": "active",
+    "name": "Growth",
+    "description": "Raises Wood monsters' ATK a little for 5 turns!",
+    "cost": 4
+  },
+  {
+    "slug": "active-230-giant-growth",
+    "id": 230,
+    "category": "active",
+    "name": "Giant Growth",
+    "description": "Raises Wood ATK a little for 10 turns!",
+    "cost": 6
+  },
+  {
+    "slug": "active-231-mist-flare",
+    "id": 231,
+    "category": "active",
+    "name": "Mist Flare",
+    "description": "5× Fire damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-232-mirage-flare",
+    "id": 232,
+    "category": "active",
+    "name": "Mirage Flare",
+    "description": "10× Fire damage to foes!",
+    "cost": 3
+  },
+  {
+    "slug": "active-233-catastrophe",
+    "id": 233,
+    "category": "active",
+    "name": "Catastrophe",
+    "description": "20× Light damage, but HP reduced to 1!",
+    "cost": 6
+  },
+  {
+    "slug": "leader-1-unknown",
+    "id": 1,
+    "category": "leader",
+    "name": "レジストファイヤ",
+    "description": "Reduce Fire damage by 30%."
+  },
+  {
+    "slug": "leader-2-unknown",
+    "id": 2,
+    "category": "leader",
+    "name": "レジストウォーター",
+    "description": "Reduce Water damage by 30%."
+  },
+  {
+    "slug": "leader-3-unknown",
+    "id": 3,
+    "category": "leader",
+    "name": "レジストウッド",
+    "description": "Reduce Wood damage by 30%."
+  },
+  {
+    "slug": "leader-4-unknown",
+    "id": 4,
+    "category": "leader",
+    "name": "レジストライト",
+    "description": "Reduce Light damage by 30%."
+  },
+  {
+    "slug": "leader-5-unknown",
+    "id": 5,
+    "category": "leader",
+    "name": "レジストダーク",
+    "description": "Reduce Dark damage by 30%."
+  },
+  {
+    "slug": "leader-6-fire-resistance-high",
+    "id": 6,
+    "category": "leader",
+    "name": "Fire Resistance - High",
+    "description": "Reduce Fire damage by 50%."
+  },
+  {
+    "slug": "leader-7-water-resistance-high",
+    "id": 7,
+    "category": "leader",
+    "name": "Water Resistance - High",
+    "description": "Reduce Water damage by 50%."
+  },
+  {
+    "slug": "leader-8-wood-resistance-high",
+    "id": 8,
+    "category": "leader",
+    "name": "Wood Resistance - High",
+    "description": "Reduce Wood damage by 50%."
+  },
+  {
+    "slug": "leader-9-light-resistance-high",
+    "id": 9,
+    "category": "leader",
+    "name": "Light Resistance - High",
+    "description": "Reduce Light damage by 50%."
+  },
+  {
+    "slug": "leader-10-dark-resistance-high",
+    "id": 10,
+    "category": "leader",
+    "name": "Dark Resistance - High",
+    "description": "Reduce Dark damage by 50%."
+  },
+  {
+    "slug": "leader-11-soul-of-fire",
+    "id": 11,
+    "category": "leader",
+    "name": "Soul of Fire",
+    "description": "Raise HP of Fire monsters by 1.3x."
+  },
+  {
+    "slug": "leader-12-soul-of-water",
+    "id": 12,
+    "category": "leader",
+    "name": "Soul of Water",
+    "description": "Raise HP of Water monsters by 1.3x."
+  },
+  {
+    "slug": "leader-13-soul-of-wood",
+    "id": 13,
+    "category": "leader",
+    "name": "Soul of Wood",
+    "description": "Raise HP of Wood monsters by 1.3x."
+  },
+  {
+    "slug": "leader-14-soul-of-light",
+    "id": 14,
+    "category": "leader",
+    "name": "Soul of Light",
+    "description": "Raise HP of Light monsters by 1.3x."
+  },
+  {
+    "slug": "leader-15-soul-of-darkness",
+    "id": 15,
+    "category": "leader",
+    "name": "Soul of Darkness",
+    "description": "Raise HP of Dark monsters by 1.3x."
+  },
+  {
+    "slug": "leader-16-soul-of-flame",
+    "id": 16,
+    "category": "leader",
+    "name": "Soul of Flame",
+    "description": "Raise HP of Fire monsters by 1.5x."
+  },
+  {
+    "slug": "leader-17-soul-of-the-sea",
+    "id": 17,
+    "category": "leader",
+    "name": "Soul of the Sea",
+    "description": "Raise HP of Water monsters by 1.5x."
+  },
+  {
+    "slug": "leader-18-soul-of-the-forest",
+    "id": 18,
+    "category": "leader",
+    "name": "Soul of the Forest",
+    "description": "Raise HP of Wood monsters by 1.5x."
+  },
+  {
+    "slug": "leader-19-soul-of-the-sun",
+    "id": 19,
+    "category": "leader",
+    "name": "Soul of the Sun",
+    "description": "Raise HP of Light monsters by 1.5x."
+  },
+  {
+    "slug": "leader-20-soul-of-the-moon",
+    "id": 20,
+    "category": "leader",
+    "name": "Soul of the Moon",
+    "description": "Raise HP of Dark monsters by 1.5x."
+  },
+  {
+    "slug": "leader-21-fire-wood-spellbook",
+    "id": 21,
+    "category": "leader",
+    "name": "Fire & Wood Spellbook",
+    "description": "Reduce damage from Fire and Wood enemies by 30%."
+  },
+  {
+    "slug": "leader-22-water-fire-spellbook",
+    "id": 22,
+    "category": "leader",
+    "name": "Water & Fire Spellbook",
+    "description": "Reduce damage from Fire and Water enemies by 30%."
+  },
+  {
+    "slug": "leader-23-wood-water-spellbook",
+    "id": 23,
+    "category": "leader",
+    "name": "Wood & Water Spellbook",
+    "description": "Reduce damage from Water and Wood enemies by 30%."
+  },
+  {
+    "slug": "leader-24-light-wood-spellbook",
+    "id": 24,
+    "category": "leader",
+    "name": "Light & Wood Spellbook",
+    "description": "Reduce damage from Wood and Light enemies by 30%."
+  },
+  {
+    "slug": "leader-25-dark-water-spellbook",
+    "id": 25,
+    "category": "leader",
+    "name": "Dark & Water Spellbook",
+    "description": "Reduce damage from Water and Dark enemies by 30%."
+  },
+  {
+    "slug": "leader-26-fire-wood-grimoire",
+    "id": 26,
+    "category": "leader",
+    "name": "Fire & Wood Grimoire",
+    "description": "Reduce damage from Fire and Wood enemies by 40%."
+  },
+  {
+    "slug": "leader-27-water-fire-grimoire",
+    "id": 27,
+    "category": "leader",
+    "name": "Water & Fire Grimoire",
+    "description": "Reduce damage from Fire and Water enemies by 40%."
+  },
+  {
+    "slug": "leader-28-wood-water-grimoire",
+    "id": 28,
+    "category": "leader",
+    "name": "Wood & Water Grimoire",
+    "description": "Reduce damage from Water and Wood enemies by 40%."
+  },
+  {
+    "slug": "leader-29-light-wood-grimoire",
+    "id": 29,
+    "category": "leader",
+    "name": "Light & Wood Grimoire",
+    "description": "Reduce damage from Wood and Light enemies by 40%."
+  },
+  {
+    "slug": "leader-30-dark-water-grimoire",
+    "id": 30,
+    "category": "leader",
+    "name": "Dark & Water Grimoire",
+    "description": "Reduce damage from Water and Dark enemies by 40%."
+  },
+  {
+    "slug": "leader-36-flame-aura",
+    "id": 36,
+    "category": "leader",
+    "name": "Flame Aura",
+    "description": "Raise ATK of Fire monsters by 1.5x."
+  },
+  {
+    "slug": "leader-37-sea-aura",
+    "id": 37,
+    "category": "leader",
+    "name": "Sea Aura",
+    "description": "Raise ATK of Water monsters by 1.5x."
+  },
+  {
+    "slug": "leader-38-forest-aura",
+    "id": 38,
+    "category": "leader",
+    "name": "Forest Aura",
+    "description": "Raise ATK of Wood monsters by 1.5x."
+  },
+  {
+    "slug": "leader-39-sun-aura",
+    "id": 39,
+    "category": "leader",
+    "name": "Sun Aura",
+    "description": "Raise ATK of Light monsters by 1.5x."
+  },
+  {
+    "slug": "leader-40-moon-aura",
+    "id": 40,
+    "category": "leader",
+    "name": "Moon Aura",
+    "description": "Raise ATK of Dark monsters by 1.5x."
+  },
+  {
+    "slug": "leader-41-fire-counter",
+    "id": 41,
+    "category": "leader",
+    "name": "Fire Counter",
+    "description": "35% chance to counter Fire attacks for 2x damage."
+  },
+  {
+    "slug": "leader-45-dark-counter",
+    "id": 45,
+    "category": "leader",
+    "name": "Dark Counter",
+    "description": "35% chance to counter Dark attacks for 2x damage."
+  },
+  {
+    "slug": "leader-46-blaze-counter",
+    "id": 46,
+    "category": "leader",
+    "name": "Blaze Counter",
+    "description": "40% chance to counter Fire attacks for 0.94x damage."
+  },
+  {
+    "slug": "leader-47-splash-counter",
+    "id": 47,
+    "category": "leader",
+    "name": "Splash Counter",
+    "description": "40% chance to counter Water attacks for 0.94x damage."
+  },
+  {
+    "slug": "leader-48-typhoon-counter",
+    "id": 48,
+    "category": "leader",
+    "name": "Typhoon Counter",
+    "description": "40% chance to counter Wood attacks for 0.94x damage."
+  },
+  {
+    "slug": "leader-50-deadly-counter",
+    "id": 50,
+    "category": "leader",
+    "name": "Deadly Counter",
+    "description": "40% chance to counter Dark attacks for 0.94x damage."
+  },
+  {
+    "slug": "leader-51-resolve",
+    "id": 51,
+    "category": "leader",
+    "name": "Resolve",
+    "description": "Undecoded leader skill effect (code 14; params: 10, 4)."
+  },
+  {
+    "slug": "leader-52-perseverance",
+    "id": 52,
+    "category": "leader",
+    "name": "Perseverance",
+    "description": "Undecoded leader skill effect (code 14; params: 10, 8)."
+  },
+  {
+    "slug": "leader-53-prayer",
+    "id": 53,
+    "category": "leader",
+    "name": "Prayer",
+    "description": "Undecoded leader skill effect (code 13; params: 50)."
+  },
+  {
+    "slug": "leader-54-healing-song",
+    "id": 54,
+    "category": "leader",
+    "name": "Healing Song",
+    "description": "Undecoded leader skill effect (code 13; params: 100)."
+  },
+  {
+    "slug": "leader-56-haste",
+    "id": 56,
+    "category": "leader",
+    "name": "Haste",
+    "description": "Undecoded leader skill effect (code 15; params: 44)."
+  },
+  {
+    "slug": "leader-57-boosted-haste",
+    "id": 57,
+    "category": "leader",
+    "name": "Boosted Haste",
+    "description": "Undecoded leader skill effect (code 15; params: 144)."
+  },
+  {
+    "slug": "leader-58-divine-hand",
+    "id": 58,
+    "category": "leader",
+    "name": "Divine Hand",
+    "description": "Undecoded leader skill effect (code 15; params: 244)."
+  },
+  {
+    "slug": "leader-59-guard",
+    "id": 59,
+    "category": "leader",
+    "name": "Guard",
+    "description": "Undecoded leader skill effect (code 16; params: 10)."
+  },
+  {
+    "slug": "leader-60-hyper-guard",
+    "id": 60,
+    "category": "leader",
+    "name": "Hyper Guard",
+    "description": "Undecoded leader skill effect (code 16; params: 15)."
+  },
+  {
+    "slug": "leader-61-extreme-guard",
+    "id": 61,
+    "category": "leader",
+    "name": "Extreme Guard",
+    "description": "Undecoded leader skill effect (code 16; params: 20)."
+  },
+  {
+    "slug": "leader-62-follow-up-strike",
+    "id": 62,
+    "category": "leader",
+    "name": "Follow-Up Strike",
+    "description": "Undecoded leader skill effect (code 12; params: 100)."
+  },
+  {
+    "slug": "leader-63-grand-follow-up-strike",
+    "id": 63,
+    "category": "leader",
+    "name": "Grand Follow-Up Strike",
+    "description": "Undecoded leader skill effect (code 12; params: 150)."
+  },
+  {
+    "slug": "leader-67-aura-of-life",
+    "id": 67,
+    "category": "leader",
+    "name": "Aura of Life",
+    "description": "Undecoded leader skill effect (code 92; params: 110)."
+  },
+  {
+    "slug": "leader-68-aura-of-heaven-s-will",
+    "id": 68,
+    "category": "leader",
+    "name": "Aura of Heaven's Will",
+    "description": "Undecoded leader skill effect (code 92; params: 120)."
+  },
+  {
+    "slug": "leader-70-charge",
+    "id": 70,
+    "category": "leader",
+    "name": "Charge",
+    "description": "Undecoded leader skill effect (code 93; params: 3)."
+  },
+  {
+    "slug": "leader-71-hyper-charge",
+    "id": 71,
+    "category": "leader",
+    "name": "Hyper Charge",
+    "description": "Undecoded leader skill effect (code 93; params: 5)."
+  },
+  {
+    "slug": "leader-72-dimensional-shield",
+    "id": 72,
+    "category": "leader",
+    "name": "Dimensional Shield",
+    "description": "Undecoded leader skill effect (code 94; params: 50)."
+  },
+  {
+    "slug": "leader-84-luminous-eyes",
+    "id": 84,
+    "category": "leader",
+    "name": "Luminous Eyes",
+    "description": "Undecoded leader skill effect (code 61; params: 31, 3, 150)."
+  },
+  {
+    "slug": "leader-85-heavenly-eyes",
+    "id": 85,
+    "category": "leader",
+    "name": "Heavenly Eyes",
+    "description": "Undecoded leader skill effect (code 61; params: 31, 4, 250)."
+  },
+  {
+    "slug": "leader-86-eyes-of-the-sun",
+    "id": 86,
+    "category": "leader",
+    "name": "Eyes of the Sun",
+    "description": "Undecoded leader skill effect (code 61; params: 31, 5, 256, 94)."
+  },
+  {
+    "slug": "leader-87-triple-chomp",
+    "id": 87,
+    "category": "leader",
+    "name": "Triple Chomp",
+    "description": "Undecoded leader skill effect (code 66; params: 3, 110)."
+  },
+  {
+    "slug": "leader-88-fourth-kind",
+    "id": 88,
+    "category": "leader",
+    "name": "Fourth Kind",
+    "description": "Undecoded leader skill effect (code 66; params: 4, 130)."
+  },
+  {
+    "slug": "leader-89-five-elemental-links",
+    "id": 89,
+    "category": "leader",
+    "name": "Five Elemental Links",
+    "description": "Undecoded leader skill effect (code 66; params: 5, 150)."
+  },
+  {
+    "slug": "leader-90-sixth-element",
+    "id": 90,
+    "category": "leader",
+    "name": "Sixth Element",
+    "description": "Undecoded leader skill effect (code 66; params: 6, 250)."
+  },
+  {
+    "slug": "leader-91-lucky-seven",
+    "id": 91,
+    "category": "leader",
+    "name": "Lucky Seven",
+    "description": "Undecoded leader skill effect (code 66; params: 7, 256, 44)."
+  },
+  {
+    "slug": "leader-92-eighth-sacrifice",
+    "id": 92,
+    "category": "leader",
+    "name": "Eighth Sacrifice",
+    "description": "Undecoded leader skill effect (code 66; params: 8, 256, 94)."
+  },
+  {
+    "slug": "leader-94-ten-count-magic",
+    "id": 94,
+    "category": "leader",
+    "name": "Ten-Count Magic",
+    "description": "Undecoded leader skill effect (code 66; params: 10, 256, 244)."
+  },
+  {
+    "slug": "leader-96-pounding-heart",
+    "id": 96,
+    "category": "leader",
+    "name": "Pounding Heart",
+    "description": "Undecoded leader skill effect (code 95; params: 200)."
+  },
+  {
+    "slug": "leader-97-power-of-zeus",
+    "id": 97,
+    "category": "leader",
+    "name": "Power of Zeus",
+    "description": "Undecoded leader skill effect (code 44; params: 100, 1, 250)."
+  },
+  {
+    "slug": "leader-98-curse-of-the-dead",
+    "id": 98,
+    "category": "leader",
+    "name": "Curse of the Dead",
+    "description": "Undecoded leader skill effect (code 39; params: 30, 1, 200)."
+  },
+  {
+    "slug": "leader-100-protective-dance",
+    "id": 100,
+    "category": "leader",
+    "name": "Protective Dance",
+    "description": "Undecoded leader skill effect (code 43; params: 100, 100, 20)."
+  },
+  {
+    "slug": "leader-101-mystic-dance",
+    "id": 101,
+    "category": "leader",
+    "name": "Mystic Dance",
+    "description": "Undecoded leader skill effect (code 43; params: 100, 100, 30)."
+  },
+  {
+    "slug": "leader-103-skill-boost",
+    "id": 103,
+    "category": "leader",
+    "name": "Skill Boost",
+    "description": "Undecoded leader skill effect (code 96; params: 1)."
+  },
+  {
+    "slug": "leader-104-mega-skill-boost",
+    "id": 104,
+    "category": "leader",
+    "name": "Mega Skill Boost",
+    "description": "Undecoded leader skill effect (code 96; params: 2)."
+  },
+  {
+    "slug": "leader-106-ice-dagger",
+    "id": 106,
+    "category": "leader",
+    "name": "Ice Dagger",
+    "description": "Undecoded leader skill effect (code 97; params: 1, 5, 130)."
+  },
+  {
+    "slug": "leader-107-freezing-sword",
+    "id": 107,
+    "category": "leader",
+    "name": "Freezing Sword",
+    "description": "Undecoded leader skill effect (code 97; params: 1, 5, 150)."
+  },
+  {
+    "slug": "leader-108-blizzard-blade",
+    "id": 108,
+    "category": "leader",
+    "name": "Blizzard Blade",
+    "description": "Undecoded leader skill effect (code 97; params: 1, 6, 200)."
+  },
+  {
+    "slug": "leader-109-true-dragon-soul-s",
+    "id": 109,
+    "category": "leader",
+    "name": "True Dragon Soul - S",
+    "description": "Raise HP of Genuine Dragon monsters by 1.3x."
+  },
+  {
+    "slug": "leader-110-phantom-dragon-soul-s",
+    "id": 110,
+    "category": "leader",
+    "name": "Phantom Dragon Soul - S",
+    "description": "Raise HP of Phantom Dragon monsters by 1.3x."
+  },
+  {
+    "slug": "leader-111-animal-soul-s",
+    "id": 111,
+    "category": "leader",
+    "name": "Animal Soul - S",
+    "description": "Raise HP of Animal monsters by 1.3x."
+  },
+  {
+    "slug": "leader-112-mutant-soul-s",
+    "id": 112,
+    "category": "leader",
+    "name": "Mutant Soul - S",
+    "description": "Raise HP of Mutant monsters by 1.3x."
+  },
+  {
+    "slug": "leader-115-true-dragon-soul-l",
+    "id": 115,
+    "category": "leader",
+    "name": "True Dragon Soul - L",
+    "description": "Raise HP of Genuine Dragon monsters by 2x."
+  },
+  {
+    "slug": "leader-116-phantom-dragon-soul-l",
+    "id": 116,
+    "category": "leader",
+    "name": "Phantom Dragon Soul - L",
+    "description": "Raise HP of Phantom Dragon monsters by 2x."
+  },
+  {
+    "slug": "leader-117-animal-soul-l",
+    "id": 117,
+    "category": "leader",
+    "name": "Animal Soul - L",
+    "description": "Raise HP of Animal monsters by 2x."
+  },
+  {
+    "slug": "leader-118-mutant-soul-l",
+    "id": 118,
+    "category": "leader",
+    "name": "Mutant Soul - L",
+    "description": "Raise HP of Mutant monsters by 2x."
+  },
+  {
+    "slug": "leader-119-divine-soul-l",
+    "id": 119,
+    "category": "leader",
+    "name": "Divine Soul - L",
+    "description": "Raise HP of Deity monsters by 2x."
+  },
+  {
+    "slug": "leader-120-dragonoid-soul-l",
+    "id": 120,
+    "category": "leader",
+    "name": "Dragonoid Soul - L",
+    "description": "Raise HP of Dragonoid monsters by 2x."
+  },
+  {
+    "slug": "leader-121-true-dragon-rune-s",
+    "id": 121,
+    "category": "leader",
+    "name": "True Dragon Rune - S",
+    "description": "Raise DEF of Genuine Dragon monsters by 1.3x."
+  },
+  {
+    "slug": "leader-122-phantom-dragon-rune-s",
+    "id": 122,
+    "category": "leader",
+    "name": "Phantom Dragon Rune - S",
+    "description": "Raise DEF of Phantom Dragon monsters by 1.3x."
+  },
+  {
+    "slug": "leader-123-animal-rune-s",
+    "id": 123,
+    "category": "leader",
+    "name": "Animal Rune - S",
+    "description": "Raise DEF of Animal monsters by 1.3x."
+  },
+  {
+    "slug": "leader-124-mutant-rune-s",
+    "id": 124,
+    "category": "leader",
+    "name": "Mutant Rune - S",
+    "description": "Raise DEF of Mutant monsters by 1.3x."
+  },
+  {
+    "slug": "leader-126-dragonoid-rune-s",
+    "id": 126,
+    "category": "leader",
+    "name": "Dragonoid Rune - S",
+    "description": "Raise DEF of Dragonoid monsters by 1.3x."
+  },
+  {
+    "slug": "leader-127-true-dragon-rune-m",
+    "id": 127,
+    "category": "leader",
+    "name": "True Dragon Rune - M",
+    "description": "Raise DEF of Genuine Dragon monsters by 1.5x."
+  },
+  {
+    "slug": "leader-128-phantom-dragon-rune-m",
+    "id": 128,
+    "category": "leader",
+    "name": "Phantom Dragon Rune - M",
+    "description": "Raise DEF of Phantom Dragon monsters by 1.5x."
+  },
+  {
+    "slug": "leader-133-formula-soul",
+    "id": 133,
+    "category": "leader",
+    "name": "Formula Soul",
+    "description": "Undecoded leader skill effect (code 46; params: 3, 150)."
+  },
+  {
+    "slug": "leader-134-true-dragon-soul-m",
+    "id": 134,
+    "category": "leader",
+    "name": "True Dragon Soul - M",
+    "description": "Raise HP of Genuine Dragon monsters by 1.5x."
+  },
+  {
+    "slug": "leader-135-phantom-dragon-soul-m",
+    "id": 135,
+    "category": "leader",
+    "name": "Phantom Dragon Soul - M",
+    "description": "Raise HP of Phantom Dragon monsters by 1.5x."
+  },
+  {
+    "slug": "leader-136-animal-soul-m",
+    "id": 136,
+    "category": "leader",
+    "name": "Animal Soul - M",
+    "description": "Raise HP of Animal monsters by 1.5x."
+  },
+  {
+    "slug": "leader-137-mutant-soul-m",
+    "id": 137,
+    "category": "leader",
+    "name": "Mutant Soul - M",
+    "description": "Raise HP of Mutant monsters by 1.5x."
+  },
+  {
+    "slug": "leader-138-divine-soul-m",
+    "id": 138,
+    "category": "leader",
+    "name": "Divine Soul - M",
+    "description": "Raise HP of Deity monsters by 1.5x."
+  },
+  {
+    "slug": "leader-139-dragonoid-soul-m",
+    "id": 139,
+    "category": "leader",
+    "name": "Dragonoid Soul - M",
+    "description": "Raise HP of Dragonoid monsters by 1.5x."
+  },
+  {
+    "slug": "leader-147-little-bird-s-eye",
+    "id": 147,
+    "category": "leader",
+    "name": "Little Bird's Eye",
+    "description": "Undecoded leader skill effect (code 61; params: 31, 3, 130)."
+  },
+  {
+    "slug": "leader-148-falcon-s-eye",
+    "id": 148,
+    "category": "leader",
+    "name": "Falcon's Eye",
+    "description": "Undecoded leader skill effect (code 61; params: 31, 4, 200)."
+  },
+  {
+    "slug": "leader-149-soothing-melody",
+    "id": 149,
+    "category": "leader",
+    "name": "Soothing Melody",
+    "description": "Undecoded leader skill effect (code 13; params: 120)."
+  },
+  {
+    "slug": "leader-150-fire-aura",
+    "id": 150,
+    "category": "leader",
+    "name": "Fire Aura",
+    "description": "Raise ATK of Fire monsters by 1.3x."
+  },
+  {
+    "slug": "leader-151-water-aura",
+    "id": 151,
+    "category": "leader",
+    "name": "Water Aura",
+    "description": "Raise ATK of Water monsters by 1.3x."
+  },
+  {
+    "slug": "leader-152-wood-aura",
+    "id": 152,
+    "category": "leader",
+    "name": "Wood Aura",
+    "description": "Raise ATK of Wood monsters by 1.3x."
+  },
+  {
+    "slug": "leader-153-light-aura",
+    "id": 153,
+    "category": "leader",
+    "name": "Light Aura",
+    "description": "Raise ATK of Light monsters by 1.3x."
+  },
+  {
+    "slug": "leader-154-dark-aura",
+    "id": 154,
+    "category": "leader",
+    "name": "Dark Aura",
+    "description": "Raise ATK of Dark monsters by 1.3x."
+  },
+  {
+    "slug": "leader-155-divine-retribution",
+    "id": 155,
+    "category": "leader",
+    "name": "Divine Retribution",
+    "description": "Undecoded leader skill effect (code 122; params: 5, 150)."
+  },
+  {
+    "slug": "leader-156-divine-blessing",
+    "id": 156,
+    "category": "leader",
+    "name": "Divine Blessing",
+    "description": "Raise DEF of Deity monsters by 1.5x."
+  },
+  {
+    "slug": "leader-157-woe",
+    "id": 157,
+    "category": "leader",
+    "name": "Woe",
+    "description": "Undecoded leader skill effect (code 39; params: 40, 1, 150)."
+  },
+  {
+    "slug": "leader-161-wood-rune",
+    "id": 161,
+    "category": "leader",
+    "name": "Wood Rune",
+    "description": "Raise DEF of Wood monsters by 1.3x."
+  },
+  {
+    "slug": "leader-163-dark-rune",
+    "id": 163,
+    "category": "leader",
+    "name": "Dark Rune",
+    "description": "Raise DEF of Dark monsters by 1.3x."
+  },
+  {
+    "slug": "leader-164-fire-shield",
+    "id": 164,
+    "category": "leader",
+    "name": "Fire Shield",
+    "description": "Reduce Fire damage by 30%."
+  },
+  {
+    "slug": "leader-166-wood-shield",
+    "id": 166,
+    "category": "leader",
+    "name": "Wood Shield",
+    "description": "Reduce Wood damage by 30%."
+  },
+  {
+    "slug": "leader-169-flame-shield",
+    "id": 169,
+    "category": "leader",
+    "name": "Flame Shield",
+    "description": "Reduce Fire damage by 50%."
+  },
+  {
+    "slug": "leader-171-forest-shield",
+    "id": 171,
+    "category": "leader",
+    "name": "Forest Shield",
+    "description": "Reduce Wood damage by 50%."
+  },
+  {
+    "slug": "leader-175-water-armour",
+    "id": 175,
+    "category": "leader",
+    "name": "Water Armour",
+    "description": "Reduce Water damage by 30%."
+  },
+  {
+    "slug": "leader-180-sea-armour",
+    "id": 180,
+    "category": "leader",
+    "name": "Sea Armour",
+    "description": "Reduce Water damage by 50%."
+  },
+  {
+    "slug": "leader-181-forest-armour",
+    "id": 181,
+    "category": "leader",
+    "name": "Forest Armour",
+    "description": "Reduce Wood damage by 50%."
+  },
+  {
+    "slug": "leader-182-sun-armour",
+    "id": 182,
+    "category": "leader",
+    "name": "Sun Armour",
+    "description": "Reduce Light damage by 50%."
+  },
+  {
+    "slug": "leader-183-moon-armour",
+    "id": 183,
+    "category": "leader",
+    "name": "Moon Armour",
+    "description": "Reduce Dark damage by 50%."
+  },
+  {
+    "slug": "leader-184-phoenix-soul-s",
+    "id": 184,
+    "category": "leader",
+    "name": "Phoenix Soul - S",
+    "description": "Undecoded leader skill effect (code 69; params: 3, 130)."
+  },
+  {
+    "slug": "leader-185-fenrir-soul-s",
+    "id": 185,
+    "category": "leader",
+    "name": "Fenrir Soul - S",
+    "description": "Undecoded leader skill effect (code 69; params: 1, 5, 130)."
+  },
+  {
+    "slug": "leader-186-dragon-soul-s",
+    "id": 186,
+    "category": "leader",
+    "name": "Dragon Soul - S",
+    "description": "Undecoded leader skill effect (code 69; params: 2, 1, 130)."
+  },
+  {
+    "slug": "leader-187-elemental-soul-s",
+    "id": 187,
+    "category": "leader",
+    "name": "Elemental Soul - S",
+    "description": "Undecoded leader skill effect (code 69; params: 3, 2, 130)."
+  },
+  {
+    "slug": "leader-188-coatl-soul-s",
+    "id": 188,
+    "category": "leader",
+    "name": "Coatl Soul - S",
+    "description": "Undecoded leader skill effect (code 69; params: 4, 4, 130)."
+  },
+  {
+    "slug": "leader-189-kukulcan-soul-s",
+    "id": 189,
+    "category": "leader",
+    "name": "Kukulcan Soul - S",
+    "description": "Undecoded leader skill effect (code 31; params: 2, 6, 130)."
+  },
+  {
+    "slug": "leader-190-giant-soul-s",
+    "id": 190,
+    "category": "leader",
+    "name": "Giant Soul - S",
+    "description": "Undecoded leader skill effect (code 31; params: 6, 3, 130)."
+  },
+  {
+    "slug": "leader-191-tyrant-soul-s",
+    "id": 191,
+    "category": "leader",
+    "name": "Tyrant Soul - S",
+    "description": "Undecoded leader skill effect (code 31; params: 6, 1, 130)."
+  },
+  {
+    "slug": "leader-192-emperor-soul-s",
+    "id": 192,
+    "category": "leader",
+    "name": "Emperor Soul - S",
+    "description": "Undecoded leader skill effect (code 31; params: 5, 6, 130)."
+  },
+  {
+    "slug": "leader-194-phoenix-soul-m",
+    "id": 194,
+    "category": "leader",
+    "name": "Phoenix Soul - M",
+    "description": "Undecoded leader skill effect (code 69; params: 3, 150)."
+  },
+  {
+    "slug": "leader-195-fenrir-soul-m",
+    "id": 195,
+    "category": "leader",
+    "name": "Fenrir Soul - M",
+    "description": "Undecoded leader skill effect (code 69; params: 1, 5, 150)."
+  },
+  {
+    "slug": "leader-196-dragon-soul-m",
+    "id": 196,
+    "category": "leader",
+    "name": "Dragon Soul - M",
+    "description": "Undecoded leader skill effect (code 69; params: 2, 1, 150)."
+  },
+  {
+    "slug": "leader-197-elemental-soul-m",
+    "id": 197,
+    "category": "leader",
+    "name": "Elemental Soul - M",
+    "description": "Undecoded leader skill effect (code 69; params: 3, 2, 150)."
+  },
+  {
+    "slug": "leader-198-coatl-soul-m",
+    "id": 198,
+    "category": "leader",
+    "name": "Coatl Soul - M",
+    "description": "Undecoded leader skill effect (code 69; params: 4, 4, 150)."
+  },
+  {
+    "slug": "leader-199-kukulcan-soul-m",
+    "id": 199,
+    "category": "leader",
+    "name": "Kukulcan Soul - M",
+    "description": "Undecoded leader skill effect (code 31; params: 2, 6, 150)."
+  },
+  {
+    "slug": "leader-200-giant-soul-m",
+    "id": 200,
+    "category": "leader",
+    "name": "Giant Soul - M",
+    "description": "Undecoded leader skill effect (code 31; params: 6, 3, 150)."
+  },
+  {
+    "slug": "leader-201-tyrant-soul-m",
+    "id": 201,
+    "category": "leader",
+    "name": "Tyrant Soul - M",
+    "description": "Undecoded leader skill effect (code 31; params: 6, 1, 150)."
+  },
+  {
+    "slug": "leader-202-emperor-soul-m",
+    "id": 202,
+    "category": "leader",
+    "name": "Emperor Soul - M",
+    "description": "Undecoded leader skill effect (code 31; params: 5, 6, 150)."
+  },
+  {
+    "slug": "leader-203-bigfoot-soul-m",
+    "id": 203,
+    "category": "leader",
+    "name": "Bigfoot Soul - M",
+    "description": "Undecoded leader skill effect (code 31; params: 3, 4, 150)."
+  },
+  {
+    "slug": "leader-204-nirvana-soul",
+    "id": 204,
+    "category": "leader",
+    "name": "Nirvana Soul",
+    "description": "Undecoded leader skill effect (code 57; params: 1, 2, 200)."
+  },
+  {
+    "slug": "leader-222-sixth-sense",
+    "id": 222,
+    "category": "leader",
+    "name": "Sixth Sense",
+    "description": "Undecoded leader skill effect (code 66; params: 6, 200)."
+  },
+  {
+    "slug": "leader-223-fire-amulet",
+    "id": 223,
+    "category": "leader",
+    "name": "Fire Amulet",
+    "description": "Undecoded leader skill effect (code 118; params: 130)."
+  },
+  {
+    "slug": "leader-224-water-amulet",
+    "id": 224,
+    "category": "leader",
+    "name": "Water Amulet",
+    "description": "Undecoded leader skill effect (code 118; params: 1, 130)."
+  },
+  {
+    "slug": "leader-225-wood-amulet",
+    "id": 225,
+    "category": "leader",
+    "name": "Wood Amulet",
+    "description": "Undecoded leader skill effect (code 118; params: 2, 130)."
+  },
+  {
+    "slug": "leader-226-light-amulet",
+    "id": 226,
+    "category": "leader",
+    "name": "Light Amulet",
+    "description": "Undecoded leader skill effect (code 118; params: 3, 130)."
+  },
+  {
+    "slug": "leader-227-dark-amulet",
+    "id": 227,
+    "category": "leader",
+    "name": "Dark Amulet",
+    "description": "Undecoded leader skill effect (code 118; params: 4, 130)."
+  },
+  {
+    "slug": "leader-233-burning-soul",
+    "id": 233,
+    "category": "leader",
+    "name": "Burning Soul",
+    "description": "Raise HP of Fire monsters by 2x."
+  },
+  {
+    "slug": "leader-234-sea-god-s-soul",
+    "id": 234,
+    "category": "leader",
+    "name": "Sea God's Soul",
+    "description": "Raise HP of Water monsters by 2x."
+  },
+  {
+    "slug": "leader-235-earth-soul",
+    "id": 235,
+    "category": "leader",
+    "name": "Earth Soul",
+    "description": "Raise HP of Wood monsters by 2x."
+  },
+  {
+    "slug": "leader-236-shining-soul",
+    "id": 236,
+    "category": "leader",
+    "name": "Shining Soul",
+    "description": "Raise HP of Light monsters by 2x."
+  },
+  {
+    "slug": "leader-237-dark-soul",
+    "id": 237,
+    "category": "leader",
+    "name": "Dark Soul",
+    "description": "Raise HP of Dark monsters by 2x."
+  },
+  {
+    "slug": "leader-243-fire-chivalry",
+    "id": 243,
+    "category": "leader",
+    "name": "Fire Chivalry",
+    "description": "Raise HP and ATK of Fire monsters by 1.3x."
+  },
+  {
+    "slug": "leader-246-light-chivalry",
+    "id": 246,
+    "category": "leader",
+    "name": "Light Chivalry",
+    "description": "Raise HP and ATK of Light monsters by 1.3x."
+  },
+  {
+    "slug": "leader-248-flame-chivalry",
+    "id": 248,
+    "category": "leader",
+    "name": "Flame Chivalry",
+    "description": "Raise HP and ATK of Fire monsters by 1.5x."
+  },
+  {
+    "slug": "leader-250-forest-chivalry",
+    "id": 250,
+    "category": "leader",
+    "name": "Forest Chivalry",
+    "description": "Raise HP and ATK of Wood monsters by 1.5x."
+  },
+  {
+    "slug": "leader-252-moon-chivalry",
+    "id": 252,
+    "category": "leader",
+    "name": "Moon Chivalry",
+    "description": "Raise HP and ATK of Dark monsters by 1.5x."
+  },
+  {
+    "slug": "leader-253-flame-rune",
+    "id": 253,
+    "category": "leader",
+    "name": "Flame Rune",
+    "description": "Raise DEF of Fire monsters by 1.5x."
+  },
+  {
+    "slug": "leader-254-sea-rune",
+    "id": 254,
+    "category": "leader",
+    "name": "Sea Rune",
+    "description": "Raise DEF of Water monsters by 1.5x."
+  },
+  {
+    "slug": "leader-255-forest-rune",
+    "id": 255,
+    "category": "leader",
+    "name": "Forest Rune",
+    "description": "Raise DEF of Wood monsters by 1.5x."
+  }
+]
