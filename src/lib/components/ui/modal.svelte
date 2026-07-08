@@ -24,20 +24,29 @@
 		}
 	});
 
+	function finalizeClose() {
+		document.body.style.overflow = '';
+		closeModal();
+		onClose?.();
+	}
+
 	function close() {
 		if (dialog?.open) {
 			dialog.close();
+			return;
 		}
 
-		document.body.style.overflow = '';
-
-		closeModal();
-		onClose?.();
+		finalizeClose();
 	}
 </script>
 
 <dialog
 	bind:this={dialog}
+	onclose={finalizeClose}
+	oncancel={(e) => {
+		e.preventDefault();
+		close();
+	}}
 	onclick={(e) => {
 		if (e.target === dialog) close();
 	}}
