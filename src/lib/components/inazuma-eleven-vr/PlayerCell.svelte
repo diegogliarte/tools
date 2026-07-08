@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
+	import { openModal } from '$lib/states/modal.svelte';
 	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	const positionColor = {
@@ -15,12 +16,20 @@
 	}
 
 	let { player }: Props = $props();
+
+	async function open() {
+		const { default: PlayerModal } = await import('$lib/components/inazuma-eleven-vr/PlayerModal.svelte');
+		openModal(PlayerModal, { player });
+	}
 </script>
 
-<div class="flex items-center gap-2">
+<div
+	class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent"
+	onclick={open}
+>
 	<!-- Player icon -->
 	<div class="aspect-square h-14 w-14">
-		<PlayerIcon {player} />
+		<PlayerIcon {player} openModal={false} />
 	</div>
 
 	<!-- Name + Position -->
