@@ -3,7 +3,6 @@
 	import {
 		formatPadzNumber,
 		formatPadzSkillCategory,
-		getPadzElementIcon,
 		getPadzSkillCost,
 		type PadzSkill
 	} from '$lib/utils/puzzle-and-dragons-z.utils';
@@ -28,17 +27,6 @@
 	class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent"
 	onclick={open}
 >
-	{#if skill.type}
-		<div class="aspect-square h-10 w-10">
-			<img
-				src={getPadzElementIcon(skill.type)}
-				alt={skill.type}
-				class="h-full w-full object-contain"
-				loading="lazy"
-			/>
-		</div>
-	{/if}
-
 	<div>
 		<div class="leading-none">{skill.name}</div>
 

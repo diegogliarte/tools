@@ -38,7 +38,7 @@
 
 <button
 	type="button"
-	class="group w-full cursor-pointer p-0 disabled:cursor-default"
+	class="group w-full p-0 {canOpenModal ? 'cursor-pointer' : 'cursor-default'}"
 	disabled={!canOpenModal}
 	onclick={open}
 >

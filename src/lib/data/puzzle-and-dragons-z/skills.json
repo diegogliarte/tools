@@ -962,70 +962,70 @@
     "id": 11,
     "category": "leader",
     "name": "Soul of Fire",
-    "description": "Raise HP of Fire monsters by 1.3x."
+    "description": "Raise ATK of Fire monsters by 1.3x."
   },
   {
     "slug": "leader-12-soul-of-water",
     "id": 12,
     "category": "leader",
     "name": "Soul of Water",
-    "description": "Raise HP of Water monsters by 1.3x."
+    "description": "Raise ATK of Water monsters by 1.3x."
   },
   {
     "slug": "leader-13-soul-of-wood",
     "id": 13,
     "category": "leader",
     "name": "Soul of Wood",
-    "description": "Raise HP of Wood monsters by 1.3x."
+    "description": "Raise ATK of Wood monsters by 1.3x."
   },
   {
     "slug": "leader-14-soul-of-light",
     "id": 14,
     "category": "leader",
     "name": "Soul of Light",
-    "description": "Raise HP of Light monsters by 1.3x."
+    "description": "Raise ATK of Light monsters by 1.3x."
   },
   {
     "slug": "leader-15-soul-of-darkness",
     "id": 15,
     "category": "leader",
     "name": "Soul of Darkness",
-    "description": "Raise HP of Dark monsters by 1.3x."
+    "description": "Raise ATK of Dark monsters by 1.3x."
   },
   {
     "slug": "leader-16-soul-of-flame",
     "id": 16,
     "category": "leader",
     "name": "Soul of Flame",
-    "description": "Raise HP of Fire monsters by 1.5x."
+    "description": "Raise ATK of Fire monsters by 1.5x."
   },
   {
     "slug": "leader-17-soul-of-the-sea",
     "id": 17,
     "category": "leader",
     "name": "Soul of the Sea",
-    "description": "Raise HP of Water monsters by 1.5x."
+    "description": "Raise ATK of Water monsters by 1.5x."
   },
   {
     "slug": "leader-18-soul-of-the-forest",
     "id": 18,
     "category": "leader",
     "name": "Soul of the Forest",
-    "description": "Raise HP of Wood monsters by 1.5x."
+    "description": "Raise ATK of Wood monsters by 1.5x."
   },
   {
     "slug": "leader-19-soul-of-the-sun",
     "id": 19,
     "category": "leader",
     "name": "Soul of the Sun",
-    "description": "Raise HP of Light monsters by 1.5x."
+    "description": "Raise ATK of Light monsters by 1.5x."
   },
   {
     "slug": "leader-20-soul-of-the-moon",
     "id": 20,
     "category": "leader",
     "name": "Soul of the Moon",
-    "description": "Raise HP of Dark monsters by 1.5x."
+    "description": "Raise ATK of Dark monsters by 1.5x."
   },
   {
     "slug": "leader-21-fire-wood-spellbook",
@@ -1102,35 +1102,35 @@
     "id": 36,
     "category": "leader",
     "name": "Flame Aura",
-    "description": "Raise ATK of Fire monsters by 1.5x."
+    "description": "Raise HP of Fire monsters by 1.5x."
   },
   {
     "slug": "leader-37-sea-aura",
     "id": 37,
     "category": "leader",
     "name": "Sea Aura",
-    "description": "Raise ATK of Water monsters by 1.5x."
+    "description": "Raise HP of Water monsters by 1.5x."
   },
   {
     "slug": "leader-38-forest-aura",
     "id": 38,
     "category": "leader",
     "name": "Forest Aura",
-    "description": "Raise ATK of Wood monsters by 1.5x."
+    "description": "Raise HP of Wood monsters by 1.5x."
   },
   {
     "slug": "leader-39-sun-aura",
     "id": 39,
     "category": "leader",
     "name": "Sun Aura",
-    "description": "Raise ATK of Light monsters by 1.5x."
+    "description": "Raise HP of Light monsters by 1.5x."
   },
   {
     "slug": "leader-40-moon-aura",
     "id": 40,
     "category": "leader",
     "name": "Moon Aura",
-    "description": "Raise ATK of Dark monsters by 1.5x."
+    "description": "Raise HP of Dark monsters by 1.5x."
   },
   {
     "slug": "leader-41-fire-counter",
@@ -1179,853 +1179,853 @@
     "id": 51,
     "category": "leader",
     "name": "Resolve",
-    "description": "Undecoded leader skill effect (code 14; params: 10, 4)."
+    "description": "Chance to survive a lethal blow while HP is above 10%. Resolve strength: 4."
   },
   {
     "slug": "leader-52-perseverance",
     "id": 52,
     "category": "leader",
     "name": "Perseverance",
-    "description": "Undecoded leader skill effect (code 14; params: 10, 8)."
+    "description": "Chance to survive a lethal blow while HP is above 10%. Resolve strength: 8."
   },
   {
     "slug": "leader-53-prayer",
     "id": 53,
     "category": "leader",
     "name": "Prayer",
-    "description": "Undecoded leader skill effect (code 13; params: 50)."
+    "description": "Recover HP each turn after clearing Orbs. Recovery strength: 50."
   },
   {
     "slug": "leader-54-healing-song",
     "id": 54,
     "category": "leader",
     "name": "Healing Song",
-    "description": "Undecoded leader skill effect (code 13; params: 100)."
+    "description": "Recover HP each turn after clearing Orbs. Recovery strength: 100."
   },
   {
     "slug": "leader-56-haste",
     "id": 56,
     "category": "leader",
     "name": "Haste",
-    "description": "Undecoded leader skill effect (code 15; params: 44)."
+    "description": "Increase orb movement time. Time bonus strength: 44."
   },
   {
     "slug": "leader-57-boosted-haste",
     "id": 57,
     "category": "leader",
     "name": "Boosted Haste",
-    "description": "Undecoded leader skill effect (code 15; params: 144)."
+    "description": "Increase orb movement time. Time bonus strength: 144."
   },
   {
     "slug": "leader-58-divine-hand",
     "id": 58,
     "category": "leader",
     "name": "Divine Hand",
-    "description": "Undecoded leader skill effect (code 15; params: 244)."
+    "description": "Increase orb movement time. Time bonus strength: 244."
   },
   {
     "slug": "leader-59-guard",
     "id": 59,
     "category": "leader",
     "name": "Guard",
-    "description": "Undecoded leader skill effect (code 16; params: 10)."
+    "description": "Reduce damage from foes by 10%."
   },
   {
     "slug": "leader-60-hyper-guard",
     "id": 60,
     "category": "leader",
     "name": "Hyper Guard",
-    "description": "Undecoded leader skill effect (code 16; params: 15)."
+    "description": "Reduce damage from foes by 15%."
   },
   {
     "slug": "leader-61-extreme-guard",
     "id": 61,
     "category": "leader",
     "name": "Extreme Guard",
-    "description": "Undecoded leader skill effect (code 16; params: 20)."
+    "description": "Reduce damage from foes by 20%."
   },
   {
     "slug": "leader-62-follow-up-strike",
     "id": 62,
     "category": "leader",
     "name": "Follow-Up Strike",
-    "description": "Undecoded leader skill effect (code 12; params: 100)."
+    "description": "Deliver a 1x follow-up strike to one foe each turn after clearing Orbs."
   },
   {
     "slug": "leader-63-grand-follow-up-strike",
     "id": 63,
     "category": "leader",
     "name": "Grand Follow-Up Strike",
-    "description": "Undecoded leader skill effect (code 12; params: 150)."
+    "description": "Deliver a 1.5x follow-up strike to one foe each turn after clearing Orbs."
   },
   {
     "slug": "leader-67-aura-of-life",
     "id": 67,
     "category": "leader",
     "name": "Aura of Life",
-    "description": "Undecoded leader skill effect (code 92; params: 110)."
+    "description": "Raise HP of your monsters by 1.1x."
   },
   {
     "slug": "leader-68-aura-of-heaven-s-will",
     "id": 68,
     "category": "leader",
     "name": "Aura of Heaven's Will",
-    "description": "Undecoded leader skill effect (code 92; params: 120)."
+    "description": "Raise HP of your monsters by 1.2x."
   },
   {
     "slug": "leader-70-charge",
     "id": 70,
     "category": "leader",
     "name": "Charge",
-    "description": "Undecoded leader skill effect (code 93; params: 3)."
+    "description": "Recover 3 Skill Gauge points each turn after clearing Orbs."
   },
   {
     "slug": "leader-71-hyper-charge",
     "id": 71,
     "category": "leader",
     "name": "Hyper Charge",
-    "description": "Undecoded leader skill effect (code 93; params: 5)."
+    "description": "Recover 5 Skill Gauge points each turn after clearing Orbs."
   },
   {
     "slug": "leader-72-dimensional-shield",
     "id": 72,
     "category": "leader",
     "name": "Dimensional Shield",
-    "description": "Undecoded leader skill effect (code 94; params: 50)."
+    "description": "Raise DEF of your monsters by 1.5x."
   },
   {
     "slug": "leader-84-luminous-eyes",
     "id": 84,
     "category": "leader",
     "name": "Luminous Eyes",
-    "description": "Undecoded leader skill effect (code 61; params: 31, 3, 150)."
+    "description": "Raise ATK of your monsters by 1.5x after attacking with 3 or more elements at once."
   },
   {
     "slug": "leader-85-heavenly-eyes",
     "id": 85,
     "category": "leader",
     "name": "Heavenly Eyes",
-    "description": "Undecoded leader skill effect (code 61; params: 31, 4, 250)."
+    "description": "Raise ATK of your monsters by 2.5x after attacking with 4 or more elements at once."
   },
   {
     "slug": "leader-86-eyes-of-the-sun",
     "id": 86,
     "category": "leader",
     "name": "Eyes of the Sun",
-    "description": "Undecoded leader skill effect (code 61; params: 31, 5, 256, 94)."
+    "description": "Raise ATK of your monsters by 3.5x after attacking with 5 or more elements at once."
   },
   {
     "slug": "leader-87-triple-chomp",
     "id": 87,
     "category": "leader",
     "name": "Triple Chomp",
-    "description": "Undecoded leader skill effect (code 66; params: 3, 110)."
+    "description": "Raise ATK of your monsters by 1.1x after clearing 3 Combos or more."
   },
   {
     "slug": "leader-88-fourth-kind",
     "id": 88,
     "category": "leader",
     "name": "Fourth Kind",
-    "description": "Undecoded leader skill effect (code 66; params: 4, 130)."
+    "description": "Raise ATK of your monsters by 1.3x after clearing 4 Combos or more."
   },
   {
     "slug": "leader-89-five-elemental-links",
     "id": 89,
     "category": "leader",
     "name": "Five Elemental Links",
-    "description": "Undecoded leader skill effect (code 66; params: 5, 150)."
+    "description": "Raise ATK of your monsters by 1.5x after clearing 5 Combos or more."
   },
   {
     "slug": "leader-90-sixth-element",
     "id": 90,
     "category": "leader",
     "name": "Sixth Element",
-    "description": "Undecoded leader skill effect (code 66; params: 6, 250)."
+    "description": "Raise ATK of your monsters by 2.5x after clearing 6 Combos or more."
   },
   {
     "slug": "leader-91-lucky-seven",
     "id": 91,
     "category": "leader",
     "name": "Lucky Seven",
-    "description": "Undecoded leader skill effect (code 66; params: 7, 256, 44)."
+    "description": "Raise ATK of your monsters by 3x after clearing 7 Combos or more."
   },
   {
     "slug": "leader-92-eighth-sacrifice",
     "id": 92,
     "category": "leader",
     "name": "Eighth Sacrifice",
-    "description": "Undecoded leader skill effect (code 66; params: 8, 256, 94)."
+    "description": "Raise ATK of your monsters by 3.5x after clearing 8 Combos or more."
   },
   {
     "slug": "leader-94-ten-count-magic",
     "id": 94,
     "category": "leader",
     "name": "Ten-Count Magic",
-    "description": "Undecoded leader skill effect (code 66; params: 10, 256, 244)."
+    "description": "Raise ATK of your monsters by 5x after clearing 10 Combos or more."
   },
   {
     "slug": "leader-96-pounding-heart",
     "id": 96,
     "category": "leader",
     "name": "Pounding Heart",
-    "description": "Undecoded leader skill effect (code 95; params: 200)."
+    "description": "Increase HP recovered by clearing Heart Orbs by 2x."
   },
   {
     "slug": "leader-97-power-of-zeus",
     "id": 97,
     "category": "leader",
     "name": "Power of Zeus",
-    "description": "Undecoded leader skill effect (code 44; params: 100, 1, 250)."
+    "description": "Raise ATK of your monsters by 2.5x while HP is full."
   },
   {
     "slug": "leader-98-curse-of-the-dead",
     "id": 98,
     "category": "leader",
     "name": "Curse of the Dead",
-    "description": "Undecoded leader skill effect (code 39; params: 30, 1, 200)."
+    "description": "Raise ATK of your monsters by 2x while HP is 30% or less."
   },
   {
     "slug": "leader-100-protective-dance",
     "id": 100,
     "category": "leader",
     "name": "Protective Dance",
-    "description": "Undecoded leader skill effect (code 43; params: 100, 100, 20)."
+    "description": "Reduce damage taken by 20% while HP is full."
   },
   {
     "slug": "leader-101-mystic-dance",
     "id": 101,
     "category": "leader",
     "name": "Mystic Dance",
-    "description": "Undecoded leader skill effect (code 43; params: 100, 100, 30)."
+    "description": "Reduce damage taken by 30% while HP is full."
   },
   {
     "slug": "leader-103-skill-boost",
     "id": 103,
     "category": "leader",
     "name": "Skill Boost",
-    "description": "Undecoded leader skill effect (code 96; params: 1)."
+    "description": "Raise the Skill Gauge limit by 1 point."
   },
   {
     "slug": "leader-104-mega-skill-boost",
     "id": 104,
     "category": "leader",
     "name": "Mega Skill Boost",
-    "description": "Undecoded leader skill effect (code 96; params: 2)."
+    "description": "Raise the Skill Gauge limit by 2 points."
   },
   {
     "slug": "leader-106-ice-dagger",
     "id": 106,
     "category": "leader",
     "name": "Ice Dagger",
-    "description": "Undecoded leader skill effect (code 97; params: 1, 5, 130)."
+    "description": "Raise ATK of your monsters by 1.3x after clearing 5 or more Water Orbs at once."
   },
   {
     "slug": "leader-107-freezing-sword",
     "id": 107,
     "category": "leader",
     "name": "Freezing Sword",
-    "description": "Undecoded leader skill effect (code 97; params: 1, 5, 150)."
+    "description": "Raise ATK of your monsters by 1.5x after clearing 5 or more Water Orbs at once."
   },
   {
     "slug": "leader-108-blizzard-blade",
     "id": 108,
     "category": "leader",
     "name": "Blizzard Blade",
-    "description": "Undecoded leader skill effect (code 97; params: 1, 6, 200)."
+    "description": "Raise ATK of your monsters by 2x after clearing 6 or more Water Orbs at once."
   },
   {
     "slug": "leader-109-true-dragon-soul-s",
     "id": 109,
     "category": "leader",
     "name": "True Dragon Soul - S",
-    "description": "Raise HP of Genuine Dragon monsters by 1.3x."
+    "description": "Raise ATK of Genuine Dragon monsters by 1.3x."
   },
   {
     "slug": "leader-110-phantom-dragon-soul-s",
     "id": 110,
     "category": "leader",
     "name": "Phantom Dragon Soul - S",
-    "description": "Raise HP of Phantom Dragon monsters by 1.3x."
+    "description": "Raise ATK of Phantom Dragon monsters by 1.3x."
   },
   {
     "slug": "leader-111-animal-soul-s",
     "id": 111,
     "category": "leader",
     "name": "Animal Soul - S",
-    "description": "Raise HP of Animal monsters by 1.3x."
+    "description": "Raise ATK of Animal monsters by 1.3x."
   },
   {
     "slug": "leader-112-mutant-soul-s",
     "id": 112,
     "category": "leader",
     "name": "Mutant Soul - S",
-    "description": "Raise HP of Mutant monsters by 1.3x."
+    "description": "Raise ATK of Mutant monsters by 1.3x."
   },
   {
     "slug": "leader-115-true-dragon-soul-l",
     "id": 115,
     "category": "leader",
     "name": "True Dragon Soul - L",
-    "description": "Raise HP of Genuine Dragon monsters by 2x."
+    "description": "Raise ATK of Genuine Dragon monsters by 2x."
   },
   {
     "slug": "leader-116-phantom-dragon-soul-l",
     "id": 116,
     "category": "leader",
     "name": "Phantom Dragon Soul - L",
-    "description": "Raise HP of Phantom Dragon monsters by 2x."
+    "description": "Raise ATK of Phantom Dragon monsters by 2x."
   },
   {
     "slug": "leader-117-animal-soul-l",
     "id": 117,
     "category": "leader",
     "name": "Animal Soul - L",
-    "description": "Raise HP of Animal monsters by 2x."
+    "description": "Raise ATK of Animal monsters by 2x."
   },
   {
     "slug": "leader-118-mutant-soul-l",
     "id": 118,
     "category": "leader",
     "name": "Mutant Soul - L",
-    "description": "Raise HP of Mutant monsters by 2x."
+    "description": "Raise ATK of Mutant monsters by 2x."
   },
   {
     "slug": "leader-119-divine-soul-l",
     "id": 119,
     "category": "leader",
     "name": "Divine Soul - L",
-    "description": "Raise HP of Deity monsters by 2x."
+    "description": "Raise ATK of Deity monsters by 2x."
   },
   {
     "slug": "leader-120-dragonoid-soul-l",
     "id": 120,
     "category": "leader",
     "name": "Dragonoid Soul - L",
-    "description": "Raise HP of Dragonoid monsters by 2x."
+    "description": "Raise ATK of Dragonoid monsters by 2x."
   },
   {
     "slug": "leader-121-true-dragon-rune-s",
     "id": 121,
     "category": "leader",
     "name": "True Dragon Rune - S",
-    "description": "Raise DEF of Genuine Dragon monsters by 1.3x."
+    "description": "Raise HP and ATK of Genuine Dragon monsters by 1.3x."
   },
   {
     "slug": "leader-122-phantom-dragon-rune-s",
     "id": 122,
     "category": "leader",
     "name": "Phantom Dragon Rune - S",
-    "description": "Raise DEF of Phantom Dragon monsters by 1.3x."
+    "description": "Raise HP and ATK of Phantom Dragon monsters by 1.3x."
   },
   {
     "slug": "leader-123-animal-rune-s",
     "id": 123,
     "category": "leader",
     "name": "Animal Rune - S",
-    "description": "Raise DEF of Animal monsters by 1.3x."
+    "description": "Raise HP and ATK of Animal monsters by 1.3x."
   },
   {
     "slug": "leader-124-mutant-rune-s",
     "id": 124,
     "category": "leader",
     "name": "Mutant Rune - S",
-    "description": "Raise DEF of Mutant monsters by 1.3x."
+    "description": "Raise HP and ATK of Mutant monsters by 1.3x."
   },
   {
     "slug": "leader-126-dragonoid-rune-s",
     "id": 126,
     "category": "leader",
     "name": "Dragonoid Rune - S",
-    "description": "Raise DEF of Dragonoid monsters by 1.3x."
+    "description": "Raise HP and ATK of Dragonoid monsters by 1.3x."
   },
   {
     "slug": "leader-127-true-dragon-rune-m",
     "id": 127,
     "category": "leader",
     "name": "True Dragon Rune - M",
-    "description": "Raise DEF of Genuine Dragon monsters by 1.5x."
+    "description": "Raise HP and ATK of Genuine Dragon monsters by 1.5x."
   },
   {
     "slug": "leader-128-phantom-dragon-rune-m",
     "id": 128,
     "category": "leader",
     "name": "Phantom Dragon Rune - M",
-    "description": "Raise DEF of Phantom Dragon monsters by 1.5x."
+    "description": "Raise HP and ATK of Phantom Dragon monsters by 1.5x."
   },
   {
     "slug": "leader-133-formula-soul",
     "id": 133,
     "category": "leader",
     "name": "Formula Soul",
-    "description": "Undecoded leader skill effect (code 46; params: 3, 150)."
+    "description": "Raise HP of Fire and Light monsters by 1.5x."
   },
   {
     "slug": "leader-134-true-dragon-soul-m",
     "id": 134,
     "category": "leader",
     "name": "True Dragon Soul - M",
-    "description": "Raise HP of Genuine Dragon monsters by 1.5x."
+    "description": "Raise ATK of Genuine Dragon monsters by 1.5x."
   },
   {
     "slug": "leader-135-phantom-dragon-soul-m",
     "id": 135,
     "category": "leader",
     "name": "Phantom Dragon Soul - M",
-    "description": "Raise HP of Phantom Dragon monsters by 1.5x."
+    "description": "Raise ATK of Phantom Dragon monsters by 1.5x."
   },
   {
     "slug": "leader-136-animal-soul-m",
     "id": 136,
     "category": "leader",
     "name": "Animal Soul - M",
-    "description": "Raise HP of Animal monsters by 1.5x."
+    "description": "Raise ATK of Animal monsters by 1.5x."
   },
   {
     "slug": "leader-137-mutant-soul-m",
     "id": 137,
     "category": "leader",
     "name": "Mutant Soul - M",
-    "description": "Raise HP of Mutant monsters by 1.5x."
+    "description": "Raise ATK of Mutant monsters by 1.5x."
   },
   {
     "slug": "leader-138-divine-soul-m",
     "id": 138,
     "category": "leader",
     "name": "Divine Soul - M",
-    "description": "Raise HP of Deity monsters by 1.5x."
+    "description": "Raise ATK of Deity monsters by 1.5x."
   },
   {
     "slug": "leader-139-dragonoid-soul-m",
     "id": 139,
     "category": "leader",
     "name": "Dragonoid Soul - M",
-    "description": "Raise HP of Dragonoid monsters by 1.5x."
+    "description": "Raise ATK of Dragonoid monsters by 1.5x."
   },
   {
     "slug": "leader-147-little-bird-s-eye",
     "id": 147,
     "category": "leader",
     "name": "Little Bird's Eye",
-    "description": "Undecoded leader skill effect (code 61; params: 31, 3, 130)."
+    "description": "Raise ATK of your monsters by 1.3x after attacking with 3 or more elements at once."
   },
   {
     "slug": "leader-148-falcon-s-eye",
     "id": 148,
     "category": "leader",
     "name": "Falcon's Eye",
-    "description": "Undecoded leader skill effect (code 61; params: 31, 4, 200)."
+    "description": "Raise ATK of your monsters by 2x after attacking with 4 or more elements at once."
   },
   {
     "slug": "leader-149-soothing-melody",
     "id": 149,
     "category": "leader",
     "name": "Soothing Melody",
-    "description": "Undecoded leader skill effect (code 13; params: 120)."
+    "description": "Recover HP each turn after clearing Orbs. Recovery strength: 120."
   },
   {
     "slug": "leader-150-fire-aura",
     "id": 150,
     "category": "leader",
     "name": "Fire Aura",
-    "description": "Raise ATK of Fire monsters by 1.3x."
+    "description": "Raise HP of Fire monsters by 1.3x."
   },
   {
     "slug": "leader-151-water-aura",
     "id": 151,
     "category": "leader",
     "name": "Water Aura",
-    "description": "Raise ATK of Water monsters by 1.3x."
+    "description": "Raise HP of Water monsters by 1.3x."
   },
   {
     "slug": "leader-152-wood-aura",
     "id": 152,
     "category": "leader",
     "name": "Wood Aura",
-    "description": "Raise ATK of Wood monsters by 1.3x."
+    "description": "Raise HP of Wood monsters by 1.3x."
   },
   {
     "slug": "leader-153-light-aura",
     "id": 153,
     "category": "leader",
     "name": "Light Aura",
-    "description": "Raise ATK of Light monsters by 1.3x."
+    "description": "Raise HP of Light monsters by 1.3x."
   },
   {
     "slug": "leader-154-dark-aura",
     "id": 154,
     "category": "leader",
     "name": "Dark Aura",
-    "description": "Raise ATK of Dark monsters by 1.3x."
+    "description": "Raise HP of Dark monsters by 1.3x."
   },
   {
     "slug": "leader-155-divine-retribution",
     "id": 155,
     "category": "leader",
     "name": "Divine Retribution",
-    "description": "Undecoded leader skill effect (code 122; params: 5, 150)."
+    "description": "Raise ATK and DEF of Deity monsters by 1.5x."
   },
   {
     "slug": "leader-156-divine-blessing",
     "id": 156,
     "category": "leader",
     "name": "Divine Blessing",
-    "description": "Raise DEF of Deity monsters by 1.5x."
+    "description": "Raise HP and ATK of Deity monsters by 1.5x."
   },
   {
     "slug": "leader-157-woe",
     "id": 157,
     "category": "leader",
     "name": "Woe",
-    "description": "Undecoded leader skill effect (code 39; params: 40, 1, 150)."
+    "description": "Raise ATK of your monsters by 1.5x while HP is 40% or less."
   },
   {
     "slug": "leader-161-wood-rune",
     "id": 161,
     "category": "leader",
     "name": "Wood Rune",
-    "description": "Raise DEF of Wood monsters by 1.3x."
+    "description": "Raise HP and ATK of Wood monsters by 1.3x."
   },
   {
     "slug": "leader-163-dark-rune",
     "id": 163,
     "category": "leader",
     "name": "Dark Rune",
-    "description": "Raise DEF of Dark monsters by 1.3x."
+    "description": "Raise HP and ATK of Dark monsters by 1.3x."
   },
   {
     "slug": "leader-164-fire-shield",
     "id": 164,
     "category": "leader",
     "name": "Fire Shield",
-    "description": "Reduce Fire damage by 30%."
+    "description": "Raise DEF of Fire monsters by 1.3x."
   },
   {
     "slug": "leader-166-wood-shield",
     "id": 166,
     "category": "leader",
     "name": "Wood Shield",
-    "description": "Reduce Wood damage by 30%."
+    "description": "Raise DEF of Wood monsters by 1.3x."
   },
   {
     "slug": "leader-169-flame-shield",
     "id": 169,
     "category": "leader",
     "name": "Flame Shield",
-    "description": "Reduce Fire damage by 50%."
+    "description": "Raise DEF of Fire monsters by 1.5x."
   },
   {
     "slug": "leader-171-forest-shield",
     "id": 171,
     "category": "leader",
     "name": "Forest Shield",
-    "description": "Reduce Wood damage by 50%."
+    "description": "Raise DEF of Wood monsters by 1.5x."
   },
   {
     "slug": "leader-175-water-armour",
     "id": 175,
     "category": "leader",
     "name": "Water Armour",
-    "description": "Reduce Water damage by 30%."
+    "description": "Raise HP and DEF of Water monsters by 1.3x."
   },
   {
     "slug": "leader-180-sea-armour",
     "id": 180,
     "category": "leader",
     "name": "Sea Armour",
-    "description": "Reduce Water damage by 50%."
+    "description": "Raise HP and DEF of Water monsters by 1.5x."
   },
   {
     "slug": "leader-181-forest-armour",
     "id": 181,
     "category": "leader",
     "name": "Forest Armour",
-    "description": "Reduce Wood damage by 50%."
+    "description": "Raise HP and DEF of Wood monsters by 1.5x."
   },
   {
     "slug": "leader-182-sun-armour",
     "id": 182,
     "category": "leader",
     "name": "Sun Armour",
-    "description": "Reduce Light damage by 50%."
+    "description": "Raise HP and DEF of Light monsters by 1.5x."
   },
   {
     "slug": "leader-183-moon-armour",
     "id": 183,
     "category": "leader",
     "name": "Moon Armour",
-    "description": "Reduce Dark damage by 50%."
+    "description": "Raise HP and DEF of Dark monsters by 1.5x."
   },
   {
     "slug": "leader-184-phoenix-soul-s",
     "id": 184,
     "category": "leader",
     "name": "Phoenix Soul - S",
-    "description": "Undecoded leader skill effect (code 69; params: 3, 130)."
+    "description": "Raise ATK of Fire and Animal monsters by 1.3x."
   },
   {
     "slug": "leader-185-fenrir-soul-s",
     "id": 185,
     "category": "leader",
     "name": "Fenrir Soul - S",
-    "description": "Undecoded leader skill effect (code 69; params: 1, 5, 130)."
+    "description": "Raise ATK of Water and Deity monsters by 1.3x."
   },
   {
     "slug": "leader-186-dragon-soul-s",
     "id": 186,
     "category": "leader",
     "name": "Dragon Soul - S",
-    "description": "Undecoded leader skill effect (code 69; params: 2, 1, 130)."
+    "description": "Raise ATK of Wood and Genuine Dragon monsters by 1.3x."
   },
   {
     "slug": "leader-187-elemental-soul-s",
     "id": 187,
     "category": "leader",
     "name": "Elemental Soul - S",
-    "description": "Undecoded leader skill effect (code 69; params: 3, 2, 130)."
+    "description": "Raise ATK of Light and Phantom Dragon monsters by 1.3x."
   },
   {
     "slug": "leader-188-coatl-soul-s",
     "id": 188,
     "category": "leader",
     "name": "Coatl Soul - S",
-    "description": "Undecoded leader skill effect (code 69; params: 4, 4, 130)."
+    "description": "Raise ATK of Dark and Mutant monsters by 1.3x."
   },
   {
     "slug": "leader-189-kukulcan-soul-s",
     "id": 189,
     "category": "leader",
     "name": "Kukulcan Soul - S",
-    "description": "Undecoded leader skill effect (code 31; params: 2, 6, 130)."
+    "description": "Raise ATK of Phantom Dragon and Dragonoid monsters by 1.3x."
   },
   {
     "slug": "leader-190-giant-soul-s",
     "id": 190,
     "category": "leader",
     "name": "Giant Soul - S",
-    "description": "Undecoded leader skill effect (code 31; params: 6, 3, 130)."
+    "description": "Raise ATK of Dragonoid and Animal monsters by 1.3x."
   },
   {
     "slug": "leader-191-tyrant-soul-s",
     "id": 191,
     "category": "leader",
     "name": "Tyrant Soul - S",
-    "description": "Undecoded leader skill effect (code 31; params: 6, 1, 130)."
+    "description": "Raise ATK of Dragonoid and Genuine Dragon monsters by 1.3x."
   },
   {
     "slug": "leader-192-emperor-soul-s",
     "id": 192,
     "category": "leader",
     "name": "Emperor Soul - S",
-    "description": "Undecoded leader skill effect (code 31; params: 5, 6, 130)."
+    "description": "Raise ATK of Deity and Dragonoid monsters by 1.3x."
   },
   {
     "slug": "leader-194-phoenix-soul-m",
     "id": 194,
     "category": "leader",
     "name": "Phoenix Soul - M",
-    "description": "Undecoded leader skill effect (code 69; params: 3, 150)."
+    "description": "Raise ATK of Fire and Animal monsters by 1.5x."
   },
   {
     "slug": "leader-195-fenrir-soul-m",
     "id": 195,
     "category": "leader",
     "name": "Fenrir Soul - M",
-    "description": "Undecoded leader skill effect (code 69; params: 1, 5, 150)."
+    "description": "Raise ATK of Water and Deity monsters by 1.5x."
   },
   {
     "slug": "leader-196-dragon-soul-m",
     "id": 196,
     "category": "leader",
     "name": "Dragon Soul - M",
-    "description": "Undecoded leader skill effect (code 69; params: 2, 1, 150)."
+    "description": "Raise ATK of Wood and Genuine Dragon monsters by 1.5x."
   },
   {
     "slug": "leader-197-elemental-soul-m",
     "id": 197,
     "category": "leader",
     "name": "Elemental Soul - M",
-    "description": "Undecoded leader skill effect (code 69; params: 3, 2, 150)."
+    "description": "Raise ATK of Light and Phantom Dragon monsters by 1.5x."
   },
   {
     "slug": "leader-198-coatl-soul-m",
     "id": 198,
     "category": "leader",
     "name": "Coatl Soul - M",
-    "description": "Undecoded leader skill effect (code 69; params: 4, 4, 150)."
+    "description": "Raise ATK of Dark and Mutant monsters by 1.5x."
   },
   {
     "slug": "leader-199-kukulcan-soul-m",
     "id": 199,
     "category": "leader",
     "name": "Kukulcan Soul - M",
-    "description": "Undecoded leader skill effect (code 31; params: 2, 6, 150)."
+    "description": "Raise ATK of Phantom Dragon and Dragonoid monsters by 1.5x."
   },
   {
     "slug": "leader-200-giant-soul-m",
     "id": 200,
     "category": "leader",
     "name": "Giant Soul - M",
-    "description": "Undecoded leader skill effect (code 31; params: 6, 3, 150)."
+    "description": "Raise ATK of Dragonoid and Animal monsters by 1.5x."
   },
   {
     "slug": "leader-201-tyrant-soul-m",
     "id": 201,
     "category": "leader",
     "name": "Tyrant Soul - M",
-    "description": "Undecoded leader skill effect (code 31; params: 6, 1, 150)."
+    "description": "Raise ATK of Dragonoid and Genuine Dragon monsters by 1.5x."
   },
   {
     "slug": "leader-202-emperor-soul-m",
     "id": 202,
     "category": "leader",
     "name": "Emperor Soul - M",
-    "description": "Undecoded leader skill effect (code 31; params: 5, 6, 150)."
+    "description": "Raise ATK of Deity and Dragonoid monsters by 1.5x."
   },
   {
     "slug": "leader-203-bigfoot-soul-m",
     "id": 203,
     "category": "leader",
     "name": "Bigfoot Soul - M",
-    "description": "Undecoded leader skill effect (code 31; params: 3, 4, 150)."
+    "description": "Raise ATK of Animal and Mutant monsters by 1.5x."
   },
   {
     "slug": "leader-204-nirvana-soul",
     "id": 204,
     "category": "leader",
     "name": "Nirvana Soul",
-    "description": "Undecoded leader skill effect (code 57; params: 1, 2, 200)."
+    "description": "Raise ATK of Fire, Water, and Wood monsters by 2x."
   },
   {
     "slug": "leader-222-sixth-sense",
     "id": 222,
     "category": "leader",
     "name": "Sixth Sense",
-    "description": "Undecoded leader skill effect (code 66; params: 6, 200)."
+    "description": "Raise ATK of your monsters by 2x after clearing 6 Combos or more."
   },
   {
     "slug": "leader-223-fire-amulet",
     "id": 223,
     "category": "leader",
     "name": "Fire Amulet",
-    "description": "Undecoded leader skill effect (code 118; params: 130)."
+    "description": "Raise HP, ATK, and DEF of Fire monsters by 1.3x."
   },
   {
     "slug": "leader-224-water-amulet",
     "id": 224,
     "category": "leader",
     "name": "Water Amulet",
-    "description": "Undecoded leader skill effect (code 118; params: 1, 130)."
+    "description": "Raise HP, ATK, and DEF of Water monsters by 1.3x."
   },
   {
     "slug": "leader-225-wood-amulet",
     "id": 225,
     "category": "leader",
     "name": "Wood Amulet",
-    "description": "Undecoded leader skill effect (code 118; params: 2, 130)."
+    "description": "Raise HP, ATK, and DEF of Wood monsters by 1.3x."
   },
   {
     "slug": "leader-226-light-amulet",
     "id": 226,
     "category": "leader",
     "name": "Light Amulet",
-    "description": "Undecoded leader skill effect (code 118; params: 3, 130)."
+    "description": "Raise HP, ATK, and DEF of Light monsters by 1.3x."
   },
   {
     "slug": "leader-227-dark-amulet",
     "id": 227,
     "category": "leader",
     "name": "Dark Amulet",
-    "description": "Undecoded leader skill effect (code 118; params: 4, 130)."
+    "description": "Raise HP, ATK, and DEF of Dark monsters by 1.3x."
   },
   {
     "slug": "leader-233-burning-soul",
     "id": 233,
     "category": "leader",
     "name": "Burning Soul",
-    "description": "Raise HP of Fire monsters by 2x."
+    "description": "Raise ATK of Fire monsters by 2x."
   },
   {
     "slug": "leader-234-sea-god-s-soul",
     "id": 234,
     "category": "leader",
     "name": "Sea God's Soul",
-    "description": "Raise HP of Water monsters by 2x."
+    "description": "Raise ATK of Water monsters by 2x."
   },
   {
     "slug": "leader-235-earth-soul",
     "id": 235,
     "category": "leader",
     "name": "Earth Soul",
-    "description": "Raise HP of Wood monsters by 2x."
+    "description": "Raise ATK of Wood monsters by 2x."
   },
   {
     "slug": "leader-236-shining-soul",
     "id": 236,
     "category": "leader",
     "name": "Shining Soul",
-    "description": "Raise HP of Light monsters by 2x."
+    "description": "Raise ATK of Light monsters by 2x."
   },
   {
     "slug": "leader-237-dark-soul",
     "id": 237,
     "category": "leader",
     "name": "Dark Soul",
-    "description": "Raise HP of Dark monsters by 2x."
+    "description": "Raise ATK of Dark monsters by 2x."
   },
   {
     "slug": "leader-243-fire-chivalry",
     "id": 243,
     "category": "leader",
     "name": "Fire Chivalry",
-    "description": "Raise HP and ATK of Fire monsters by 1.3x."
+    "description": "Raise ATK and DEF of Fire monsters by 1.3x."
   },
   {
     "slug": "leader-246-light-chivalry",
     "id": 246,
     "category": "leader",
     "name": "Light Chivalry",
-    "description": "Raise HP and ATK of Light monsters by 1.3x."
+    "description": "Raise ATK and DEF of Light monsters by 1.3x."
   },
   {
     "slug": "leader-248-flame-chivalry",
     "id": 248,
     "category": "leader",
     "name": "Flame Chivalry",
-    "description": "Raise HP and ATK of Fire monsters by 1.5x."
+    "description": "Raise ATK and DEF of Fire monsters by 1.5x."
   },
   {
     "slug": "leader-250-forest-chivalry",
     "id": 250,
     "category": "leader",
     "name": "Forest Chivalry",
-    "description": "Raise HP and ATK of Wood monsters by 1.5x."
+    "description": "Raise ATK and DEF of Wood monsters by 1.5x."
   },
   {
     "slug": "leader-252-moon-chivalry",
     "id": 252,
     "category": "leader",
     "name": "Moon Chivalry",
-    "description": "Raise HP and ATK of Dark monsters by 1.5x."
+    "description": "Raise ATK and DEF of Dark monsters by 1.5x."
   },
   {
     "slug": "leader-253-flame-rune",
     "id": 253,
     "category": "leader",
     "name": "Flame Rune",
-    "description": "Raise DEF of Fire monsters by 1.5x."
+    "description": "Raise HP and ATK of Fire monsters by 1.5x."
   },
   {
     "slug": "leader-254-sea-rune",
     "id": 254,
     "category": "leader",
     "name": "Sea Rune",
-    "description": "Raise DEF of Water monsters by 1.5x."
+    "description": "Raise HP and ATK of Water monsters by 1.5x."
   },
   {
     "slug": "leader-255-forest-rune",
     "id": 255,
     "category": "leader",
     "name": "Forest Rune",
-    "description": "Raise DEF of Wood monsters by 1.5x."
+    "description": "Raise HP and ATK of Wood monsters by 1.5x."
   }
 ]

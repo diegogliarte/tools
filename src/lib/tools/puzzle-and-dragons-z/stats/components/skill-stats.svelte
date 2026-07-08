@@ -7,7 +7,6 @@
 	import {
 		formatPadzNumber,
 		formatPadzSkillCategory,
-		getPadzElementIcon,
 		getPadzSkillCost,
 		getPadzSkillSearchText,
 		type PadzSkill
@@ -17,35 +16,17 @@
 	let skills = $state<PadzSkill[]>([]);
 
 	let categoryFilter = $state<Record<string, boolean>>({});
-	let typeFilter = $state<Record<string, boolean>>({});
-	let damageTypeFilter = $state<Record<string, boolean>>({});
 
 	onMount(async () => {
 		skills = await loadPadzSkills();
 	});
 
 	const categoryOptions = $derived.by(() =>
-		unique(skills.map((skill) => skill.category).filter(Boolean) as string[]).sort()
-	);
-
-	const typeOptions = $derived.by(() =>
-		unique(skills.map((skill) => skill.type).filter(Boolean) as string[]).sort()
-	);
-
-	const damageTypeOptions = $derived.by(() =>
-		unique(skills.map((skill) => skill.damage_type).filter(Boolean) as string[]).sort()
+		unique(skills.map((skill) => skill.category).filter(Boolean)).sort()
 	);
 
 	$effect(() => {
 		addMissingFilterOptions(categoryFilter, categoryOptions);
-	});
-
-	$effect(() => {
-		addMissingFilterOptions(typeFilter, typeOptions);
-	});
-
-	$effect(() => {
-		addMissingFilterOptions(damageTypeFilter, damageTypeOptions);
 	});
 
 	const rows = $derived.by(() =>
@@ -53,15 +34,7 @@
 			const matchesCategory =
 				!Object.values(categoryFilter).some(Boolean) || categoryFilter[skill.category];
 
-			const matchesType =
-				!Object.values(typeFilter).some(Boolean) ||
-				(Boolean(skill.type) && typeFilter[skill.type as string]);
-
-			const matchesDamageType =
-				!Object.values(damageTypeFilter).some(Boolean) ||
-				(Boolean(skill.damage_type) && damageTypeFilter[skill.damage_type as string]);
-
-			return matchesCategory && matchesType && matchesDamageType;
+			return matchesCategory;
 		})
 	);
 
@@ -86,37 +59,9 @@
 		render: (skill) => formatPadzSkillCategory(skill.category)
 	};
 
-	const typeColumn: Column<PadzSkill> = {
-		key: 'type',
-		label: 'Element',
-		width: '130px',
-		searchValue: (skill) => skill.type ?? '',
-		render: (skill) =>
-			skill.type
-				? `
-					<div class="flex items-center gap-2">
-						<img
-							src="${getPadzElementIcon(skill.type)}"
-							alt="${skill.type}"
-							title="${skill.type}"
-							class="h-[1.5em] w-[1.5em] shrink-0"
-						/>
-						<span>${skill.type}</span>
-					</div>
-				`
-				: '—'
-	};
-
 	const columns: Column<PadzSkill>[] = [
 		skillColumn,
 		categoryColumn,
-		typeColumn,
-		{
-			key: 'damage_type',
-			label: 'Damage',
-			width: '120px',
-			render: (skill) => formatPadzNumber(skill.damage_type)
-		},
 		{
 			key: 'cost',
 			label: 'Cost',
@@ -124,27 +69,9 @@
 			render: (skill) => formatPadzNumber(getPadzSkillCost(skill))
 		},
 		{
-			key: 'power',
-			label: 'Power',
-			width: '90px',
-			render: (skill) => formatPadzNumber(skill.power)
-		},
-		{
-			key: 'accuracy',
-			label: 'Acc.',
-			width: '90px',
-			render: (skill) => formatPadzNumber(skill.accuracy)
-		},
-		{
-			key: 'hit_count',
-			label: 'Hits',
-			width: '90px',
-			render: (skill) => formatPadzNumber(skill.hit_count)
-		},
-		{
 			key: 'description',
 			label: 'Description',
-			width: '420px',
+			width: '520px',
 			searchValue: (skill) => skill.description ?? '',
 			render: (skill) => skill.description ?? '—'
 		}
@@ -159,27 +86,6 @@
 			label: formatPadzSkillCategory(category)
 		}))}
 		bind:checked={categoryFilter}
-	/>
-
-	<CheckboxChipGroup
-		label="Element"
-		options={typeOptions.map((type) => ({
-			value: type,
-			label: type
-		}))}
-		bind:checked={typeFilter}
-	/>
-
-	<CheckboxChipGroup
-		label="Damage Type"
-		options={damageTypeOptions.map((damageType) => ({
-			value: damageType,
-			label: damageType
-				.split(/[_-]+/g)
-				.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-				.join(' ')
-		}))}
-		bind:checked={damageTypeFilter}
 	/>
 </div>
 

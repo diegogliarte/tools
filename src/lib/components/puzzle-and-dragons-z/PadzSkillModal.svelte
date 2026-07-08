@@ -6,7 +6,6 @@
 	import {
 		formatPadzNumber,
 		formatPadzSkillCategory,
-		getPadzElementIcon,
 		getPadzSkillCost,
 		padzSkillMatchesRef,
 		type PadzMonster,
@@ -45,33 +44,13 @@
 
 <Modal title={skill?.name} {onClose}>
 	{#if skill}
-		<div class="mb-4 flex gap-4">
-			{#if skill.type}
-				<div class="w-16">
-					<img
-						src={getPadzElementIcon(skill.type)}
-						alt={skill.type}
-						class="aspect-square h-full w-full object-contain"
-					/>
-				</div>
+		<div class="mb-4 flex flex-col gap-1 text-xs">
+			<div>ID: #{skill.id}</div>
+			<div>Category: {formatPadzSkillCategory(skill.category)}</div>
+
+			{#if getPadzSkillCost(skill) !== null}
+				<div>Cost: {formatPadzNumber(getPadzSkillCost(skill))}</div>
 			{/if}
-
-			<div class="flex flex-col gap-1 text-xs">
-				<div>ID: #{skill.id}</div>
-				<div>Category: {formatPadzSkillCategory(skill.category)}</div>
-
-				{#if skill.type}
-					<div>Element: {skill.type}</div>
-				{/if}
-
-				{#if skill.damage_type}
-					<div>Damage Type: {skill.damage_type}</div>
-				{/if}
-
-				{#if getPadzSkillCost(skill) !== null}
-					<div>Cost: {formatPadzNumber(getPadzSkillCost(skill))}</div>
-				{/if}
-			</div>
 		</div>
 
 		{#if skill.description}
@@ -90,46 +69,9 @@
 				</tr>
 
 				<tr>
-					<th class="w-32 p-1">Element</th>
-					<td class="p-1">{formatPadzNumber(skill.type)}</td>
-				</tr>
-
-				<tr>
-					<th class="w-32 p-1">Damage Type</th>
-					<td class="p-1">{formatPadzNumber(skill.damage_type)}</td>
-				</tr>
-
-				<tr>
 					<th class="w-32 p-1">Cost</th>
 					<td class="p-1">{formatPadzNumber(getPadzSkillCost(skill))}</td>
 				</tr>
-
-				<tr>
-					<th class="w-32 p-1">Power</th>
-					<td class="p-1">{formatPadzNumber(skill.power)}</td>
-				</tr>
-
-				<tr>
-					<th class="w-32 p-1">Accuracy</th>
-					<td class="p-1">{formatPadzNumber(skill.accuracy)}</td>
-				</tr>
-
-				<tr>
-					<th class="w-32 p-1">Crit Rate</th>
-					<td class="p-1">{formatPadzNumber(skill.crit_rate)}</td>
-				</tr>
-
-				<tr>
-					<th class="w-32 p-1">Hits</th>
-					<td class="p-1">{formatPadzNumber(skill.hit_count)}</td>
-				</tr>
-
-				{#if skill.target}
-					<tr>
-						<th class="w-32 p-1">Target</th>
-						<td class="p-1">{skill.target}</td>
-					</tr>
-				{/if}
 				</tbody>
 			</table>
 		</div>
@@ -176,6 +118,8 @@
 					</div>
 				{/if}
 			</div>
+		{:else}
+			<div class="text-xs opacity-70">No monsters found for this skill.</div>
 		{/if}
 	{/if}
 </Modal>

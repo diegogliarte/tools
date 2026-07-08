@@ -38,21 +38,12 @@ export type PadzMonster = {
 };
 
 export type PadzSkill = {
-	id: number | string;
-	slug?: string;
-	category: string;
+	slug: string;
+	id: number;
+	category: 'active' | 'leader';
 	name: string;
 	description?: string;
-	type?: string | null;
-	damage_type?: string | null;
-	cost?: number | null;
-	sp_cost?: number | null;
-	accuracy?: number | null;
-	crit_rate?: number | null;
-	power?: number | null;
-	hit_count?: number | null;
-	target?: string | null;
-	[key: string]: unknown;
+	cost?: number;
 };
 
 export type PadzStatLevel = 'lv1' | 'lvmax';
@@ -143,7 +134,7 @@ export function formatPadzNumber(value: unknown) {
 }
 
 export function getPadzSkillCost(skill: PadzSkill) {
-	return skill.cost ?? skill.sp_cost ?? null;
+	return skill.cost ?? null;
 }
 
 export function getPadzStatTotal(stats: PadzStatBlock) {
@@ -151,18 +142,7 @@ export function getPadzStatTotal(stats: PadzStatBlock) {
 }
 
 export function getPadzSkillSearchText(skill: PadzSkill) {
-	return [
-		skill.id,
-		skill.slug,
-		skill.name,
-		skill.category,
-		skill.type,
-		skill.damage_type,
-		skill.target,
-		skill.description
-	]
-		.filter(Boolean)
-		.join(' ');
+	return [skill.id, skill.slug, skill.name, skill.category, skill.description].filter(Boolean).join(' ');
 }
 
 export function getPadzMonsterSearchText(monster: PadzMonster) {
@@ -196,24 +176,23 @@ export function slugifyPadz(value: string) {
 		.replace(/^-+|-+$/g, '');
 }
 
-export function padzSkillMatchesRef(skill: PadzSkill, ref: PadzSkillRef, preferredCategory?: string) {
+export function padzSkillMatchesRef(
+	skill: PadzSkill,
+	ref: PadzSkillRef,
+	preferredCategory?: 'active' | 'leader'
+) {
 	if (ref === null || ref === undefined || ref === '') return false;
 
 	const refText = String(ref);
-	const skillId = String(skill.id);
-	const skillNameSlug = slugifyPadz(skill.name);
-	const skillSlug = skill.slug ? String(skill.slug) : '';
-
-	const category = preferredCategory ?? skill.category;
 
 	const possibleRefs = new Set(
 		[
-			skillId,
-			skillSlug,
-			`${skill.category}-${skillId}`,
-			`${skill.category}-${skillId}-${skillNameSlug}`,
-			category ? `${category}-${skillId}` : '',
-			category ? `${category}-${skillId}-${skillNameSlug}` : ''
+			String(skill.id),
+			skill.slug,
+			`${skill.category}-${skill.id}`,
+			`${skill.category}-${skill.id}-${slugifyPadz(skill.name)}`,
+			preferredCategory ? `${preferredCategory}-${skill.id}` : '',
+			preferredCategory ? `${preferredCategory}-${skill.id}-${slugifyPadz(skill.name)}` : ''
 		].filter(Boolean)
 	);
 
@@ -225,13 +204,10 @@ export function findPadzSkillByRef(
 	ref: PadzSkillRef,
 	preferredCategory: 'active' | 'leader'
 ) {
-	const categoryMatch = skills.find(
-		(skill) => skill.category === preferredCategory && padzSkillMatchesRef(skill, ref, preferredCategory)
-	);
-
-	if (categoryMatch) return categoryMatch;
-
 	return (
+		skills.find(
+			(skill) => skill.category === preferredCategory && padzSkillMatchesRef(skill, ref, preferredCategory)
+		) ??
 		skills.find((skill) => padzSkillMatchesRef(skill, ref, preferredCategory)) ??
 		null
 	);
