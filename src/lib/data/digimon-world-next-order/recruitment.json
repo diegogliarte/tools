@@ -1,0 +1,1710 @@
+[
+	{
+		"id": "patamon",
+		"name": "Patamon",
+		"area": "Nigh Plains",
+		"subarea": "Vast Plateau",
+		"floatiaLocation": "Warehouse",
+		"service": "Stores and withdraws items.",
+		"method": {
+			"t": "battle",
+			"lv": 1
+		}
+	},
+	{
+		"id": "tentomon",
+		"name": "Tentomon",
+		"area": "Nigh Plains",
+		"subarea": "Vast Plateau",
+		"floatiaLocation": "Item Shop",
+		"service": "Sells recovery items.",
+		"method": {
+			"t": "buy",
+			"text": "Buy Tentomon's Recovery Disc for 100 Bits."
+		}
+	},
+	{
+		"id": "palmon",
+		"name": "Palmon",
+		"area": "Nigh Plains",
+		"subarea": "Vast Plateau",
+		"floatiaLocation": "Fields",
+		"service": "Gives daily field output.",
+		"method": {
+			"t": "give",
+			"text": "Give Cheerful Apple, Digistalk, and Salty Fruit from Vast Plateau."
+		}
+	},
+	{
+		"id": "biyomon",
+		"name": "Biyomon",
+		"area": "Nigh Plains",
+		"subarea": "Vast Plateau",
+		"floatiaLocation": "Sender",
+		"service": "Gives Auto-Pilots x5 after every five Sender uses.",
+		"method": {
+			"t": "talk",
+			"text": "Talk to Biyomon after Birdramon joins."
+		},
+		"requirements": ["recruit:birdramon"]
+	},
+	{
+		"id": "etemon",
+		"name": "Etemon",
+		"area": "Nigh Plains",
+		"subarea": "Vast Plateau",
+		"floatiaLocation": "Stock Market",
+		"service": "Sell commodities with varying prices.",
+		"method": {
+			"t": "give",
+			"text": "Give a Digi-Battery from Power Plant #2."
+		},
+		"requirements": ["chapter:2"]
+	},
+	{
+		"id": "numemon",
+		"name": "Numemon",
+		"area": "Nigh Plains",
+		"subarea": "Forest Path",
+		"floatiaLocation": "City Entrance",
+		"service": "Gives a Portable Toilet once a day.",
+		"method": {
+			"t": "battle",
+			"lv": 1,
+			"text": "Give 5 Green Digistalks, then battle Numemon Lv 1."
+		}
+	},
+	{
+		"id": "wormmon",
+		"name": "Wormmon",
+		"area": "Nigh Plains",
+		"subarea": "Forest Path",
+		"floatiaLocation": "Fields",
+		"service": "Tells your partner's favorite food.",
+		"method": {
+			"t": "give",
+			"text": "Give a Strong Branch from Forest Path."
+		}
+	},
+	{
+		"id": "renamon",
+		"name": "Renamon",
+		"area": "Nigh Plains",
+		"subarea": "Cave Entrance",
+		"floatiaLocation": "Restaurant",
+		"service": "Sells stat-enhancing consumables.",
+		"method": {
+			"t": "give",
+			"text": "Give a Digicarp from fishing."
+		},
+		"requirements": ["recruit:wormmon", "recruit:taomon"]
+	},
+	{
+		"id": "kuwagamon",
+		"name": "Kuwagamon",
+		"area": "Nigh Plains",
+		"subarea": "Power Plant #2",
+		"floatiaLocation": "Training Hall",
+		"service": "Gives a Sakura Bird Radish once a day in evening/night.",
+		"method": {
+			"t": "give",
+			"text": "Give a Royal Digijelly from Forest Path."
+		}
+	},
+	{
+		"id": "kabuterimon",
+		"name": "Kabuterimon",
+		"area": "Nigh Plains",
+		"subarea": "Old Cableway",
+		"floatiaLocation": "Training Hall",
+		"service": "Improves Training Hall gear for Bits.",
+		"method": {
+			"t": "battle",
+			"lv": 3
+		}
+	},
+	{
+		"id": "datamon",
+		"name": "Datamon",
+		"area": "Nigh Plains",
+		"subarea": "Power Plant #1",
+		"floatiaLocation": "Lab 1F",
+		"service": "Resets Tamer Skills and returns TP for Bits.",
+		"method": {
+			"t": "auto",
+			"text": "Joins automatically during Chapter 2 story."
+		},
+		"requirements": ["chapter:2"]
+	},
+	{
+		"id": "veemon",
+		"name": "Veemon",
+		"area": "Server Desert",
+		"subarea": "Noise Storm",
+		"floatiaLocation": "Builder",
+		"service": "Upgrades town buildings for materials.",
+		"method": {
+			"t": "battle",
+			"lv": 5,
+			"text": "Accept Togemon's request, then battle Veemon Lv 5."
+		}
+	},
+	{
+		"id": "greymon",
+		"name": "Greymon",
+		"area": "Server Desert",
+		"subarea": "Noise Storm",
+		"floatiaLocation": "Item Shop",
+		"service": "Repairs and sells tents.",
+		"method": {
+			"t": "give",
+			"text": "Give a Magma Lozenge from Fire Wall."
+		},
+		"requirements": ["flag:cityUpgrade"]
+	},
+	{
+		"id": "garudamon",
+		"name": "Garudamon",
+		"area": "Server Desert",
+		"subarea": "Hallowed Hall",
+		"floatiaLocation": "Treasure",
+		"service": "Searches for valuable items for Bits.",
+		"method": {
+			"t": "battle",
+			"lv": 6
+		},
+		"requirements": ["flag:cityUpgrade"]
+	},
+	{
+		"id": "grankuwagamon",
+		"name": "GranKuwagamon",
+		"area": "Server Desert",
+		"subarea": "Hallowed Hall",
+		"floatiaLocation": "Dojo",
+		"service": "Modifies weight, training failure, or discipline once a day.",
+		"method": {
+			"t": "battle",
+			"lv": 34
+		},
+		"requirements": ["facility:dojo:2", "recruit:grapleomon"]
+	},
+	{
+		"id": "togemon",
+		"name": "Togemon",
+		"area": "Server Desert",
+		"subarea": "Server Cemetery",
+		"floatiaLocation": "Training Hall",
+		"service": "Gives a Ginseng once a day in morning/day.",
+		"method": {
+			"t": "battle",
+			"lv": 5,
+			"text": "After Veemon joins, battle Togemon Lv 5."
+		},
+		"requirements": ["recruit:veemon"]
+	},
+	{
+		"id": "gotsumon",
+		"name": "Gotsumon",
+		"area": "Server Desert",
+		"subarea": "Stepstep",
+		"floatiaLocation": "Builder",
+		"service": "Exchanges materials for metal or stone by weekday.",
+		"method": {
+			"t": "auto",
+			"text": "Joins automatically during Chapter 2 story."
+		},
+		"requirements": ["chapter:2"]
+	},
+	{
+		"id": "grapleomon",
+		"name": "GrapLeomon",
+		"area": "Server Desert",
+		"subarea": "Stepstep",
+		"floatiaLocation": "Dojo",
+		"service": "Shows how close you are to Digivolution Conditions.",
+		"method": {
+			"t": "give",
+			"text": "Give Cyber Grease from Gargomon."
+		},
+		"requirements": ["chapter:2"]
+	},
+	{
+		"id": "shoutmon",
+		"name": "Shoutmon",
+		"area": "Server Desert",
+		"subarea": "Dead End Town",
+		"floatiaLocation": "City Entrance",
+		"service": "-",
+		"method": {
+			"t": "auto",
+			"text": "Joins automatically during Chapter 1 story."
+		},
+		"requirements": ["chapter:1"]
+	},
+	{
+		"id": "angemon",
+		"name": "Angemon",
+		"area": "Server Desert",
+		"subarea": "Dead End Town",
+		"floatiaLocation": "Hospital",
+		"service": "Heals injuries and sickness for Bits.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Hackmon joins."
+		},
+		"requirements": ["recruit:hackmon"]
+	},
+	{
+		"id": "seraphimon",
+		"name": "Seraphimon",
+		"area": "Server Desert",
+		"subarea": "Dead End Town",
+		"floatiaLocation": "Restaurant",
+		"service": "Sells stat-enhancing consumables.",
+		"method": {
+			"t": "steps",
+			"text": "Accept Ikkakumon's request, then talk to Seraphimon."
+		}
+	},
+	{
+		"id": "gargomon",
+		"name": "Gargomon",
+		"area": "Server Desert",
+		"subarea": "Tower Road",
+		"floatiaLocation": "Item Shop",
+		"service": "Sells battle enhancement items.",
+		"method": {
+			"t": "steps",
+			"text": "Accept GrapLeomon's request, then talk to Gargomon."
+		}
+	},
+	{
+		"id": "miragegaogamon",
+		"name": "MirageGaogamon",
+		"area": "Server Desert",
+		"subarea": "Server Tower",
+		"floatiaLocation": "Colosseum",
+		"service": "Rewards cleared Colosseum matches.",
+		"method": {
+			"t": "battle",
+			"lv": 40,
+			"text": "At night, battle MirageGaogamon Lv 40 and win within 30 seconds."
+		},
+		"requirements": ["facility:colosseum:3"]
+	},
+	{
+		"id": "paildramon",
+		"name": "Paildramon",
+		"area": "MOD Cape",
+		"subarea": "Inlet Cape",
+		"floatiaLocation": "Dojo",
+		"service": "Unlocks DNA Digivolution with Dojo Lv 3.",
+		"method": {
+			"t": "battle",
+			"lv": 37,
+			"text": "Battle Paildramon Lv 37 with both partners at 1/5 HP and MP."
+		},
+		"requirements": ["recruit:grapleomon"]
+	},
+	{
+		"id": "stingmon",
+		"name": "Stingmon",
+		"area": "MOD Cape",
+		"subarea": "Inlet Cape",
+		"floatiaLocation": "Lab 1F",
+		"service": "Rewards Tamer level milestones.",
+		"method": {
+			"t": "talk",
+			"text": "Talk to Stingmon."
+		},
+		"requirements": ["facility:lab:2"]
+	},
+	{
+		"id": "seadramon",
+		"name": "Seadramon",
+		"area": "MOD Cape",
+		"subarea": "MOD Ship 1.0",
+		"floatiaLocation": "Fishing",
+		"service": "Opens several Floatia fishing holes.",
+		"method": {
+			"t": "give",
+			"text": "Give Digifry, Digicrucian, and Digikoi from fishing."
+		},
+		"requirements": ["flag:cityUpgrade", "recruit:wormmon"]
+	},
+	{
+		"id": "megaseadramon",
+		"name": "MegaSeadramon",
+		"area": "MOD Cape",
+		"subarea": "MOD Ship 1.0",
+		"floatiaLocation": "Fishing",
+		"service": "Opens new fishing spots with fishing hole Lv 4.",
+		"method": {
+			"t": "steps",
+			"text": "Accept Gomamon's request, then talk to MegaSeadramon."
+		}
+	},
+	{
+		"id": "zudomon",
+		"name": "Zudomon",
+		"area": "MOD Cape",
+		"subarea": "MOD Ship 2.0",
+		"floatiaLocation": "Builder",
+		"service": "Searches for liquid or stone materials once a day.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Gumdramon joins."
+		},
+		"requirements": ["recruit:gumdramon"]
+	},
+	{
+		"id": "metalseadramon",
+		"name": "MetalSeadramon",
+		"area": "MOD Cape",
+		"subarea": "MOD Ship 2.0",
+		"floatiaLocation": "Lab 2F",
+		"service": "Teaches Ice or Dark skills for Bits.",
+		"method": {
+			"t": "battle",
+			"lv": 42,
+			"text": "Bring a DigiSalmon caught using a Feather Lure, then battle MetalSeadramon Lv 42."
+		},
+		"requirements": ["recruit:seadramon", "manual:Accept PlatinumNumemon's request"]
+	},
+	{
+		"id": "demidevimon",
+		"name": "DemiDevimon",
+		"area": "MOD Cape",
+		"subarea": "Ship 2.0 Cabin",
+		"floatiaLocation": "Stock Market",
+		"service": "Rewards Stock Market value milestones.",
+		"method": {
+			"t": "give",
+			"text": "Give a Holy Chalice from Vikemon."
+		}
+	},
+	{
+		"id": "aeroveedramon",
+		"name": "AeroVeedramon",
+		"area": "MOD Cape",
+		"subarea": "MOD Ship 3.0",
+		"floatiaLocation": "Lab 2F",
+		"service": "Teaches Air or Nature skills for Bits.",
+		"method": {
+			"t": "battle",
+			"lv": 40
+		},
+		"requirements": ["facility:lab:4"]
+	},
+	{
+		"id": "darkdramon",
+		"name": "Darkdramon",
+		"area": "MOD Cape",
+		"subarea": "MOD Ship 3.0",
+		"floatiaLocation": "Item Shop",
+		"service": "Sells Digivolution Cores.",
+		"method": {
+			"t": "steps",
+			"text": "Win three Lv 40 battles while meeting the punching, blade, and cape partner conditions.",
+			"lv": 40
+		},
+		"requirements": ["recruit:bancholeomon"]
+	},
+	{
+		"id": "vikemon",
+		"name": "Vikemon",
+		"area": "MOD Cape",
+		"subarea": "Captain's Cabin",
+		"floatiaLocation": "Fishing",
+		"service": "Upgrades your Fishing Rod after his challenge.",
+		"method": {
+			"t": "battle",
+			"lv": 21,
+			"text": "Accept DemiDevimon's request, then battle Vikemon Lv 21."
+		}
+	},
+	{
+		"id": "marineangemon",
+		"name": "MarineAngemon",
+		"area": "MOD Cape",
+		"subarea": "Flag MOD Ship",
+		"floatiaLocation": "Hospital",
+		"service": "Transfers six hours of one partner's life to the other once a day.",
+		"method": {
+			"t": "steps",
+			"text": "After meeting MarineAngemon in Server Cemetery, give Pretty Stone, Old Telescope, Heart Ring, and Bent Spoon."
+		},
+		"requirements": ["manual:Talk to MarineAngemon in Server Cemetery"]
+	},
+	{
+		"id": "birdramon",
+		"name": "Birdramon",
+		"area": "Logic Volcano",
+		"subarea": "Fire Wall",
+		"floatiaLocation": "Sender",
+		"service": "Offers fast travel.",
+		"method": {
+			"t": "battle",
+			"lv": 6
+		}
+	},
+	{
+		"id": "gumdramon",
+		"name": "Gumdramon",
+		"area": "Logic Volcano",
+		"subarea": "Fire Wall",
+		"floatiaLocation": "Builder",
+		"service": "Rewards fully upgraded buildings.",
+		"method": {
+			"t": "steps",
+			"text": "Accept Zudomon's request, then talk to Gumdramon."
+		}
+	},
+	{
+		"id": "meramon",
+		"name": "Meramon",
+		"area": "Logic Volcano",
+		"subarea": "Gateway",
+		"floatiaLocation": "Restaurant",
+		"service": "Sells stat-enhancing consumables.",
+		"method": {
+			"t": "auto",
+			"text": "Joins automatically during Chapter 1 story."
+		},
+		"requirements": ["chapter:1"]
+	},
+	{
+		"id": "kyubimon",
+		"name": "Kyubimon",
+		"area": "Logic Volcano",
+		"subarea": "Gateway",
+		"floatiaLocation": "Hospital",
+		"service": "Sells Bandages, Medicine, and Remedy Discs.",
+		"method": {
+			"t": "auto",
+			"text": "Joins automatically during Chapter 1 story."
+		},
+		"requirements": ["chapter:1"]
+	},
+	{
+		"id": "omnishoutmon",
+		"name": "OmniShoutmon",
+		"area": "Logic Volcano",
+		"subarea": "Gateway",
+		"floatiaLocation": "Museum",
+		"service": "Allows music playback.",
+		"method": {
+			"t": "battle",
+			"lv": 49,
+			"text": "Have had a Mega partner, then battle OmniShoutmon Lv 49."
+		},
+		"requirements": ["chapter:2", "flag:megaPartner"]
+	},
+	{
+		"id": "taomon",
+		"name": "Taomon",
+		"area": "Logic Volcano",
+		"subarea": "Taomon's Medit. Place",
+		"floatiaLocation": "Jijimon's House",
+		"service": "-",
+		"method": {
+			"t": "auto",
+			"text": "Joins automatically during Chapter 1 story."
+		},
+		"requirements": ["chapter:1"]
+	},
+	{
+		"id": "arresterdramon",
+		"name": "Arresterdramon",
+		"area": "Logic Volcano",
+		"subarea": "Flame Lands",
+		"floatiaLocation": "Research Entrance",
+		"service": "Grants training boosts on Sundays.",
+		"method": {
+			"t": "battle",
+			"lv": 48
+		}
+	},
+	{
+		"id": "hackmon",
+		"name": "Hackmon",
+		"area": "Logic Volcano",
+		"subarea": "Garbage Pile",
+		"floatiaLocation": "Hospital",
+		"service": "Informs areas your partner dislikes.",
+		"method": {
+			"t": "battle",
+			"lv": 22,
+			"text": "Accept Angemon's request, then battle Hackmon Lv 22."
+		}
+	},
+	{
+		"id": "turuiemon",
+		"name": "Turuiemon",
+		"area": "Logic Volcano",
+		"subarea": "Garbage Pile",
+		"floatiaLocation": "Treasure",
+		"service": "Improves treasure hunting results.",
+		"method": {
+			"t": "battle",
+			"lv": 23,
+			"text": "Accept Myotismon's request, then battle Turuiemon Lv 23."
+		}
+	},
+	{
+		"id": "bancholeomon",
+		"name": "BanchoLeomon",
+		"area": "Logic Volcano",
+		"subarea": "Fire Circuit",
+		"floatiaLocation": "Item Shop",
+		"service": "Sells Digivolution Cores.",
+		"method": {
+			"t": "battle",
+			"lv": 30
+		},
+		"requirements": ["facility:itemShop:3"]
+	},
+	{
+		"id": "wargreymon",
+		"name": "WarGreymon",
+		"area": "Logic Volcano",
+		"subarea": "Dragon's Trident",
+		"floatiaLocation": "Lab 3F",
+		"service": "Rewards communication milestones.",
+		"method": {
+			"t": "battle",
+			"lv": 50
+		},
+		"requirements": ["facility:lab:5"]
+	},
+	{
+		"id": "agumon",
+		"name": "Agumon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Guts Waste",
+		"floatiaLocation": "City Entrance",
+		"service": "Sells seasonal items with Square upgrade.",
+		"method": {
+			"t": "battle",
+			"lv": 23
+		}
+	},
+	{
+		"id": "gaomon",
+		"name": "Gaomon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Guts Waste",
+		"floatiaLocation": "Colosseum",
+		"service": "Lets you battle under assorted rules.",
+		"method": {
+			"t": "give",
+			"text": "Give 20 Hunks of Meat from Shamamon."
+		}
+	},
+	{
+		"id": "ogremon",
+		"name": "Ogremon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Guts Waste",
+		"floatiaLocation": "Entertainment Entrance",
+		"service": "Sells stat-enhancing consumables.",
+		"method": {
+			"t": "battle",
+			"lv": 28
+		},
+		"requirements": ["recruit:gaomon", "recruit:tyrannomon", "recruit:goblimon", "recruit:vegiemon", "recruit:lillymon"]
+	},
+	{
+		"id": "antylamon",
+		"name": "Antylamon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Guts Waste",
+		"floatiaLocation": "Dojo",
+		"service": "Reveals Digivolution Conditions after a Digivolution Core.",
+		"method": {
+			"t": "give",
+			"text": "Give Virtual Memory Foam Pillow from Rosemon's Room."
+		}
+	},
+	{
+		"id": "tyrannomon",
+		"name": "Tyrannomon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Dori Tunnel Hub 1",
+		"floatiaLocation": "Builder",
+		"service": "Exchanges materials for liquids or wood by weekday.",
+		"method": {
+			"t": "give",
+			"text": "Give 20 Best Meats from Shamamon."
+		}
+	},
+	{
+		"id": "goblimon",
+		"name": "Goblimon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Dori Tunnel Hub 2",
+		"floatiaLocation": "Business Entrance",
+		"service": "Sells various consumables.",
+		"method": {
+			"t": "give",
+			"text": "Give 20 Rotten Meats from Geremon."
+		}
+	},
+	{
+		"id": "vegiemon",
+		"name": "Vegiemon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Palace of Thorns",
+		"floatiaLocation": "Fields",
+		"service": "Searches for Meat, Veggies, Real Meat, or Real Veggies once a day.",
+		"method": {
+			"t": "battle",
+			"lv": 24,
+			"text": "Accept Lillymon's request, then battle Vegiemon Lv 24."
+		}
+	},
+	{
+		"id": "lillymon",
+		"name": "Lillymon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Palace of Thorns",
+		"floatiaLocation": "Fields",
+		"service": "Searches for fruits, mushrooms, or nuts once a day.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Vegiemon joins."
+		},
+		"requirements": ["recruit:vegiemon"]
+	},
+	{
+		"id": "garurumon",
+		"name": "Garurumon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Palace of Thorns",
+		"floatiaLocation": "City Entrance",
+		"service": "-",
+		"method": {
+			"t": "steps",
+			"text": "Accept Wizardmon's request, then talk to Garurumon."
+		}
+	},
+	{
+		"id": "woodmon",
+		"name": "Woodmon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Generator Prison Room",
+		"floatiaLocation": "Fields",
+		"service": "Sells fruits and nuts.",
+		"method": {
+			"t": "battle",
+			"lv": 25
+		},
+		"requirements": ["recruit:ogremon"]
+	},
+	{
+		"id": "herculeskabuterimon",
+		"name": "HerculesKabuterimon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Rose Palace",
+		"floatiaLocation": "Advanced Item Shop",
+		"service": "Sells Mini Chips.",
+		"method": {
+			"t": "battle",
+			"lv": 7
+		},
+		"requirements": ["recruit:woodmon"]
+	},
+	{
+		"id": "rosemon",
+		"name": "Rosemon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Rosemon's Room",
+		"floatiaLocation": "Museum",
+		"service": "Allows cutscene replay.",
+		"method": {
+			"t": "battle",
+			"lv": 20
+		},
+		"requirements": ["recruit:herculeskabuterimon"]
+	},
+	{
+		"id": "leomon",
+		"name": "Leomon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Secret Graveyard",
+		"floatiaLocation": "Colosseum",
+		"service": "Sells recovery and stat-enhancing items.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Rosemon joins."
+		},
+		"requirements": ["recruit:rosemon"]
+	},
+	{
+		"id": "metalmamemon",
+		"name": "MetalMamemon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Greenery Island",
+		"floatiaLocation": "Lab 2F",
+		"service": "Teaches Apparatus or Hand-to-Hand skills for Bits.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after MetalGreymon and MetalTyrannomon join."
+		},
+		"requirements": ["facility:lab:4", "recruit:metalgreymon", "recruit:metaltyrannomon"]
+	},
+	{
+		"id": "guardromon",
+		"name": "Guardromon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Flowerbed Island",
+		"floatiaLocation": "Lab 1F",
+		"service": "Combines items.",
+		"method": {
+			"t": "give",
+			"text": "Give a Haguru Gear from Hagurumon."
+		}
+	},
+	{
+		"id": "hagurumon",
+		"name": "Hagurumon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Control Room",
+		"floatiaLocation": "Builder",
+		"service": "Searches for metal or wood once a day.",
+		"method": {
+			"t": "steps",
+			"text": "Accept Guardromon's request, then talk to Hagurumon."
+		}
+	},
+	{
+		"id": "rapidmon",
+		"name": "Rapidmon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Pathfork Island",
+		"floatiaLocation": "Arena",
+		"service": "Exchanges prizes for Luck Coins.",
+		"method": {
+			"t": "steps",
+			"text": "Lower bridge from Control Room, then give Rapidmon's Cell Phone from Boulder Island."
+		}
+	},
+	{
+		"id": "metalgarurumon",
+		"name": "MetalGarurumon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Pathfork Island",
+		"floatiaLocation": "Lab 3F",
+		"service": "Rewards skill collection milestones.",
+		"method": {
+			"t": "battle",
+			"lv": 50
+		},
+		"requirements": ["facility:lab:5"]
+	},
+	{
+		"id": "nanimon",
+		"name": "Nanimon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Drainage Path",
+		"floatiaLocation": "Entertainment Entrance",
+		"service": "Gives random Luck Coins once a day.",
+		"method": {
+			"t": "battle",
+			"lv": 39
+		}
+	},
+	{
+		"id": "sukamon",
+		"name": "Sukamon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Drainage Path",
+		"floatiaLocation": "Fields",
+		"service": "Lowers partner curse gauge.",
+		"method": {
+			"t": "battle",
+			"lv": 50
+		},
+		"requirements": ["facility:fields:2"]
+	},
+	{
+		"id": "machgaogamon",
+		"name": "MachGaogamon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Boulder Island",
+		"floatiaLocation": "Dojo",
+		"service": "Rewards Digivolution milestones.",
+		"method": {
+			"t": "battle",
+			"lv": 40,
+			"text": "Battle MachGaogamon Lv 40 within 60 seconds."
+		}
+	},
+	{
+		"id": "metalgreymon",
+		"name": "MetalGreymon",
+		"area": "Faulty Ex Machina",
+		"subarea": "North Coast",
+		"floatiaLocation": "Colosseum",
+		"service": "Stores and withdraws items.",
+		"method": {
+			"t": "battle",
+			"lv": 39,
+			"text": "Accept MetalMamemon's request, then defeat MetalGreymon and MetalTyrannomon in the shared Lv 39 battle."
+		}
+	},
+	{
+		"id": "metaltyrannomon",
+		"name": "MetalTyrannomon",
+		"area": "Faulty Ex Machina",
+		"subarea": "North Coast",
+		"floatiaLocation": "Lab 3F",
+		"service": "Rewards potential partner age milestones.",
+		"method": {
+			"t": "battle",
+			"lv": 39,
+			"text": "Accept MetalMamemon's request, then defeat MetalGreymon and MetalTyrannomon in the shared Lv 39 battle."
+		}
+	},
+	{
+		"id": "toyagumon",
+		"name": "ToyAgumon",
+		"area": "Bony Resort",
+		"subarea": "Bony Drive",
+		"floatiaLocation": "Arena",
+		"service": "Offers Triple Roll for Luck Coins.",
+		"method": {
+			"t": "give",
+			"text": "Give ToyAgu Block from Monzaemon."
+		}
+	},
+	{
+		"id": "weregarurumon",
+		"name": "WereGarurumon",
+		"area": "Bony Resort",
+		"subarea": "Bony Drive",
+		"floatiaLocation": "Advanced Item Shop",
+		"service": "Sells Digivolution Cores.",
+		"method": {
+			"t": "give",
+			"text": "Give SkullGrey Ring from SkullGreymon."
+		}
+	},
+	{
+		"id": "wizardmon",
+		"name": "Wizardmon",
+		"area": "Bony Resort",
+		"subarea": "Bony Drive",
+		"floatiaLocation": "Sender",
+		"service": "Flies you to a destination depending on day.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Garurumon joins."
+		},
+		"requirements": ["facility:sender:2", "recruit:garurumon"]
+	},
+	{
+		"id": "boltmon",
+		"name": "Boltmon",
+		"area": "Bony Resort",
+		"subarea": "Bony Drive",
+		"floatiaLocation": "Entertainment Entrance",
+		"service": "Offers a quiz game for Luck Coins.",
+		"method": {
+			"t": "steps",
+			"text": "Complete the Youkomon/Boltmon/Myotismon conversation chain."
+		},
+		"requirements": ["recruit:weregarurumon", "recruit:myotismon", "manual:Accept Youkomon's request"]
+	},
+	{
+		"id": "terriermon",
+		"name": "Terriermon",
+		"area": "Bony Resort",
+		"subarea": "Corpseway",
+		"floatiaLocation": "Restaurant",
+		"service": "Sells stat-enhancing consumables.",
+		"method": {
+			"t": "steps",
+			"text": "Answer the quiz: Bony Resort, Four horns, Terriermon."
+		}
+	},
+	{
+		"id": "lopmon",
+		"name": "Lopmon",
+		"area": "Bony Resort",
+		"subarea": "Corpseway",
+		"floatiaLocation": "Restaurant",
+		"service": "Sells stat-enhancing consumables.",
+		"method": {
+			"t": "steps",
+			"text": "Answer the quiz: Bony Resort, Four horns, Terriermon."
+		}
+	},
+	{
+		"id": "skullgreymon",
+		"name": "SkullGreymon",
+		"area": "Bony Resort",
+		"subarea": "Graveyard",
+		"floatiaLocation": "Entertainment Entrance",
+		"service": "Boosts In-Training I and II stats.",
+		"method": {
+			"t": "battle",
+			"lv": 20,
+			"text": "Accept WereGarurumon's request, then battle SkullGreymon Lv 20."
+		}
+	},
+	{
+		"id": "mamemon",
+		"name": "Mamemon",
+		"area": "Bony Resort",
+		"subarea": "Graveyard",
+		"floatiaLocation": "Arena",
+		"service": "Offers Quiz Machine for Luck Coins.",
+		"method": {
+			"t": "talk",
+			"text": "Talk to Mamemon."
+		}
+	},
+	{
+		"id": "ophanimon",
+		"name": "Ophanimon",
+		"area": "Bony Resort",
+		"subarea": "Night Church",
+		"floatiaLocation": "Lab 2F",
+		"service": "Teaches Flame or Holy skills for Bits.",
+		"method": {
+			"t": "give",
+			"text": "Give Ophanimon 10,000 Bits."
+		},
+		"requirements": ["facility:lab:5"]
+	},
+	{
+		"id": "piedmon",
+		"name": "Piedmon",
+		"area": "Bony Resort",
+		"subarea": "Pink Stone House",
+		"floatiaLocation": "Arena",
+		"service": "Randomly modifies stats and gives Luck Coins.",
+		"method": {
+			"t": "steps",
+			"text": "Play hide and seek: Celeb Red Room area, Bony Drive tree, Night Church piano."
+		}
+	},
+	{
+		"id": "myotismon",
+		"name": "Myotismon",
+		"area": "Bony Resort",
+		"subarea": "Pink Stone House Int.",
+		"floatiaLocation": "Museum",
+		"service": "Displays collectible old cards.",
+		"method": {
+			"t": "give",
+			"text": "Give Myobrella from Turuiemon."
+		}
+	},
+	{
+		"id": "monzaemon",
+		"name": "Monzaemon",
+		"area": "Bony Resort",
+		"subarea": "Celeb Green Room",
+		"floatiaLocation": "Arena",
+		"service": "Offers Triple Roll for Luck Coins.",
+		"method": {
+			"t": "steps",
+			"text": "Accept ToyAgumon's request, then talk to Monzaemon."
+		}
+	},
+	{
+		"id": "platinumnumemon",
+		"name": "PlatinumNumemon",
+		"area": "Bony Resort",
+		"subarea": "Celeb Red Room",
+		"floatiaLocation": "Advanced Item Shop",
+		"service": "Rewards Bit collection milestones.",
+		"method": {
+			"t": "give",
+			"text": "Give Platinum Poop Medal from MetalSeadramon."
+		},
+		"requirements": ["facility:lab:4"]
+	},
+	{
+		"id": "gabumon",
+		"name": "Gabumon",
+		"area": "Absolute Zero",
+		"subarea": "Freeze Way",
+		"floatiaLocation": "Research Entrance",
+		"service": "Boosts mood at night.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Garurumon joins."
+		},
+		"requirements": ["recruit:garurumon"]
+	},
+	{
+		"id": "gomamon",
+		"name": "Gomamon",
+		"area": "Absolute Zero",
+		"subarea": "Frost Cathedral",
+		"floatiaLocation": "Fishing",
+		"service": "Exchanges fish for lures.",
+		"method": {
+			"t": "give",
+			"text": "Give MegaSea Fishy Picture from MegaSeadramon."
+		}
+	},
+	{
+		"id": "ikkakumon",
+		"name": "Ikkakumon",
+		"area": "Absolute Zero",
+		"subarea": "Frost Cathedral",
+		"floatiaLocation": "Restaurant",
+		"service": "Recommends restaurant meals when partners are hungry.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Seraphimon joins."
+		},
+		"requirements": ["facility:restaurant:2", "recruit:seraphimon"]
+	},
+	{
+		"id": "gaogamon",
+		"name": "GaoGamon",
+		"area": "Absolute Zero",
+		"subarea": "Icy Hall",
+		"floatiaLocation": "Business Entrance",
+		"service": "Increases both partners' discipline by 5 once a day.",
+		"method": {
+			"t": "battle",
+			"lv": 40,
+			"text": "Battle GaoGamon Lv 40 within 60 seconds."
+		}
+	},
+	{
+		"id": "devimon",
+		"name": "Devimon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 01",
+		"floatiaLocation": "Dimensional Entrance",
+		"service": "Runs Dimensional Dungeon entrance.",
+		"method": {
+			"t": "battle",
+			"lv": 41,
+			"text": "Battle and defeat five Lv 41 Devimon."
+		}
+	},
+	{
+		"id": "magnaangemon",
+		"name": "MagnaAngemon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 02",
+		"floatiaLocation": "Hospital",
+		"service": "Shows remaining partner life.",
+		"method": {
+			"t": "give",
+			"text": "Give a Large Double Disc made by Guardromon in Lab 1F."
+		},
+		"requirements": ["facility:hospital:2"]
+	},
+	{
+		"id": "okuwamon",
+		"name": "Okuwamon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 04",
+		"floatiaLocation": "Fields",
+		"service": "Plows the Fields.",
+		"method": {
+			"t": "battle",
+			"lv": 42
+		}
+	},
+	{
+		"id": "megakabuterimon",
+		"name": "MegaKabuterimon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 05",
+		"floatiaLocation": "Research Entrance",
+		"service": "Boosts mood during the day.",
+		"method": {
+			"t": "give",
+			"text": "Give Stingmon's Letter from Stingmon."
+		},
+		"requirements": ["manual:Accept Stingmon's request"]
+	},
+	{
+		"id": "ladydevimon",
+		"name": "LadyDevimon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 06",
+		"floatiaLocation": "Advanced Item Shop",
+		"service": "Sells Devil Chips.",
+		"method": {
+			"t": "talk",
+			"text": "Talk to LadyDevimon."
+		}
+	},
+	{
+		"id": "sakuyamon",
+		"name": "Sakuyamon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 06",
+		"floatiaLocation": "Advanced Item Shop",
+		"service": "Sells liquid consumables.",
+		"method": {
+			"t": "battle",
+			"lv": 45
+		}
+	},
+	{
+		"id": "phoenixmon",
+		"name": "Phoenixmon",
+		"area": "Infinite Cauldron",
+		"subarea": "Core 01",
+		"floatiaLocation": "Museum",
+		"service": "Rewards DigiCard collection milestones.",
+		"method": {
+			"t": "battle",
+			"lv": 50
+		}
+	},
+	{
+		"id": "meicoomon",
+		"name": "Meicoomon",
+		"area": "Nigh Plains",
+		"subarea": "Old Cableway",
+		"floatiaLocation": "Dimensional Entrance",
+		"service": "Rewards showing certain Digimon.",
+		"method": {
+			"t": "steps",
+			"text": "Complete The Crimson Claw Strikes Back EX Scenario."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "kentaurosmon",
+		"name": "Kentaurosmon",
+		"area": "Nigh Plains",
+		"subarea": "Power Plant #1",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Gives Mini Chips.",
+		"method": {
+			"t": "battle",
+			"lv": 45,
+			"text": "Talk to Kentaurosmon or Craniamon, then defeat both Digimon in the shared Lv 45 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "craniamon",
+		"name": "Craniamon",
+		"area": "Nigh Plains",
+		"subarea": "Power Plant #1",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Boosts partner HP and STA.",
+		"method": {
+			"t": "battle",
+			"lv": 45,
+			"text": "Talk to Kentaurosmon or Craniamon, then defeat both Digimon in the shared Lv 45 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "magnamon",
+		"name": "Magnamon",
+		"area": "Server Desert",
+		"subarea": "Noise Storm",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Gives 1,000 Luck Coins.",
+		"method": {
+			"t": "battle",
+			"lv": 45,
+			"text": "On Friday, battle Magnamon Lv 45."
+		},
+		"requirements": ["flag:postgame", "recruit:veedramon"]
+	},
+	{
+		"id": "leopardmon",
+		"name": "Leopardmon",
+		"area": "Server Desert",
+		"subarea": "Server Cemetery",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Gives 30,000 Bits.",
+		"method": {
+			"t": "battle",
+			"lv": 50
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "kaisergreymon",
+		"name": "KaiserGreymon",
+		"area": "Server Desert",
+		"subarea": "Server Tower",
+		"floatiaLocation": "Colosseum",
+		"service": "Exchanges Luck Coins for materials once a day.",
+		"method": {
+			"t": "give",
+			"text": "Give a Thorny Ivy and Speed Chip, submit partner HP over 8,000, find MagnaGarurumon, then deliver 10 Supermassive Machine Parts and 20 Ultramassive Dark Matter."
+		},
+		"requirements": ["flag:postgame", "flag:hp8000"]
+	},
+	{
+		"id": "exveemon",
+		"name": "ExVeemon",
+		"area": "MOD Cape",
+		"subarea": "Ship 3.0 Cabin",
+		"floatiaLocation": "Research Entrance",
+		"service": "Boosts mood in evening.",
+		"method": {
+			"t": "give",
+			"text": "Give Magnamon's Autograph from Magnamon."
+		},
+		"requirements": ["flag:postgame", "recruit:magnamon"]
+	},
+	{
+		"id": "beelzemon",
+		"name": "Beelzemon",
+		"area": "MOD Cape",
+		"subarea": "Captain's Cabin",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Rewards defeating all dimensional bosses in one day.",
+		"method": {
+			"t": "battle",
+			"lv": 60
+		},
+		"requirements": ["flag:postgame", "recruit:vikemon"]
+	},
+	{
+		"id": "alphamon",
+		"name": "Alphamon",
+		"area": "Logic Volcano",
+		"subarea": "Fire Wall",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Increases time by 60 seconds.",
+		"method": {
+			"t": "battle",
+			"lv": 65,
+			"text": "Talk to Alphamon or Omegamon, then defeat both Digimon in the shared Lv 65 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "omegamon",
+		"name": "Omegamon",
+		"area": "Logic Volcano",
+		"subarea": "Fire Wall",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Boosts all partner stats.",
+		"method": {
+			"t": "battle",
+			"lv": 65,
+			"text": "Talk to Alphamon or Omegamon, then defeat both Digimon in the shared Lv 65 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "minervamon",
+		"name": "Minervamon",
+		"area": "Logic Volcano",
+		"subarea": "Fire Wall",
+		"floatiaLocation": "Colosseum",
+		"service": "Rewards 100 discipline and 0 mood during day.",
+		"method": {
+			"t": "battle",
+			"lv": 46,
+			"text": "Complete the gift and letter exchange with Dianamon, then battle both Lv 46."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "kuzuhamon",
+		"name": "Kuzuhamon",
+		"area": "Logic Volcano",
+		"subarea": "Taomon's Medit. Place",
+		"floatiaLocation": "Business Entrance",
+		"service": "Exchanges materials depending on day and time.",
+		"method": {
+			"t": "auto",
+			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "examon",
+		"name": "Examon",
+		"area": "Logic Volcano",
+		"subarea": "Flame Lands",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Increases time by 120 seconds for Bits.",
+		"method": {
+			"t": "battle",
+			"lv": 50,
+			"text": "Accept Susanoomon's request, then battle Examon Lv 50."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "susanoomon",
+		"name": "Susanoomon",
+		"area": "Logic Volcano",
+		"subarea": "Hidden Red House",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Boosts partner mood.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Examon joins."
+		},
+		"requirements": ["flag:postgame", "recruit:kaisergreymon", "recruit:magnagarurumon", "recruit:examon"]
+	},
+	{
+		"id": "lilithmon",
+		"name": "Lilithmon",
+		"area": "Logic Volcano",
+		"subarea": "Fire Circuit",
+		"floatiaLocation": "Dimensional Entrance",
+		"service": "Rewards dimensional trips.",
+		"method": {
+			"t": "battle",
+			"lv": 50
+		},
+		"requirements": ["flag:postgame", "recruit:bancholeomon"]
+	},
+	{
+		"id": "metaletemon",
+		"name": "MetalEtemon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Palace of Thorns",
+		"floatiaLocation": "Arena",
+		"service": "Asks for Luck Coin donations.",
+		"method": {
+			"t": "auto",
+			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "shinegreymon",
+		"name": "ShineGreymon",
+		"area": "Ohguino Wastelands",
+		"subarea": "Secret Graveyard",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Gives rare materials.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after postgame story."
+		},
+		"requirements": ["flag:postgame", "recruit:leomon"]
+	},
+	{
+		"id": "samudramon",
+		"name": "Samudramon",
+		"area": "Faulty Ex Machina",
+		"subarea": "East Coast",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Gives 2,000 Tamer EXP.",
+		"method": {
+			"t": "auto",
+			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "justimon",
+		"name": "Justimon",
+		"area": "Faulty Ex Machina",
+		"subarea": "Control Island",
+		"floatiaLocation": "Research Entrance",
+		"service": "Boosts Bond and DigiFriend.",
+		"method": {
+			"t": "battle",
+			"lv": 22,
+			"text": "Follow Koromon and Justimon DigiMail chain, including a Justimon Lv 22 battle."
+		},
+		"requirements": ["flag:postgame", "manual:Receive Koromon DigiMail about a hero"]
+	},
+	{
+		"id": "venommyotismon",
+		"name": "VenomMyotismon",
+		"area": "Bony Resort",
+		"subarea": "Graveyard",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Initiates a battle.",
+		"method": {
+			"t": "battle",
+			"lv": 56
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "crusadermon",
+		"name": "Crusadermon",
+		"area": "Bony Resort",
+		"subarea": "Pink Stone House",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Increases lifespan by 12 hours for 60 seconds of time.",
+		"method": {
+			"t": "battle",
+			"lv": 57
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "barbamon",
+		"name": "Barbamon",
+		"area": "Bony Resort",
+		"subarea": "Celeb Blue Room",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Initiates a battle.",
+		"method": {
+			"t": "battle",
+			"lv": 60,
+			"text": "Talk to Barbamon, Creepymon, or Leviamon, then defeat all three Digimon in the shared Lv 60 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "creepymon",
+		"name": "Creepymon",
+		"area": "Bony Resort",
+		"subarea": "Celeb Blue Room",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Initiates a battle.",
+		"method": {
+			"t": "battle",
+			"lv": 60,
+			"text": "Talk to Barbamon, Creepymon, or Leviamon, then defeat all three Digimon in the shared Lv 60 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "leviamon",
+		"name": "Leviamon",
+		"area": "Bony Resort",
+		"subarea": "Celeb Blue Room",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Initiates a battle.",
+		"method": {
+			"t": "battle",
+			"lv": 60,
+			"text": "Talk to Barbamon, Creepymon, or Leviamon, then defeat all three Digimon in the shared Lv 60 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "veedramon",
+		"name": "Veedramon",
+		"area": "Absolute Zero",
+		"subarea": "Freeze Way",
+		"floatiaLocation": "Entertainment Entrance",
+		"service": "Rewards battle victory milestones.",
+		"method": {
+			"t": "steps",
+			"text": "Accept ExVeemon's request, then talk to Veedramon."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "titamon",
+		"name": "Titamon",
+		"area": "Absolute Zero",
+		"subarea": "Frost Cathedral",
+		"floatiaLocation": "Research Entrance",
+		"service": "Daily battle against Omegamon Zwart D and Omegamon Alter-B.",
+		"method": {
+			"t": "auto",
+			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "gankoomon",
+		"name": "Gankoomon",
+		"area": "Absolute Zero",
+		"subarea": "Ice Sculpture Room",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Boosts mood, Bond, and DigiFriend.",
+		"method": {
+			"t": "battle",
+			"lv": 62,
+			"text": "Talk to Gankoomon or Jesmon, then defeat both Digimon in the shared Lv 62 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "jesmon",
+		"name": "Jesmon",
+		"area": "Absolute Zero",
+		"subarea": "Ice Sculpture Room",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Increases time by a random amount.",
+		"method": {
+			"t": "battle",
+			"lv": 62,
+			"text": "Talk to Gankoomon or Jesmon, then defeat both Digimon in the shared Lv 62 battle."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "cherubimon",
+		"name": "Cherubimon",
+		"area": "Absolute Zero",
+		"subarea": "Icy Hall",
+		"floatiaLocation": "Item Shop",
+		"service": "Sells Digivolution Cores.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after Belphemon joins."
+		},
+		"requirements": ["flag:postgame", "recruit:belphemon"]
+	},
+	{
+		"id": "lucemon",
+		"name": "Lucemon",
+		"area": "Absolute Zero",
+		"subarea": "Frozen Divider",
+		"floatiaLocation": "Dimensional Entrance",
+		"service": "Rewards stat requirement milestones.",
+		"method": {
+			"t": "battle",
+			"lv": 58,
+			"text": "Battle Lucemon FM Lv 58, then Lucemon SM Lv 59 in Eternal Glacier.",
+			"levels": [58, 59]
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "dianamon",
+		"name": "Dianamon",
+		"area": "Absolute Zero",
+		"subarea": "Icy Way Temple",
+		"floatiaLocation": "Colosseum",
+		"service": "Rewards 100 discipline and 0 mood during night.",
+		"method": {
+			"t": "battle",
+			"lv": 46,
+			"text": "Complete the gift and letter exchange with Minervamon, then battle both Lv 46."
+		},
+		"requirements": ["flag:postgame", "manual:Accept Minervamon's request"]
+	},
+	{
+		"id": "belphemon",
+		"name": "Belphemon",
+		"area": "Absolute Zero",
+		"subarea": "Concealed Gorge",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Initiates a battle.",
+		"method": {
+			"t": "battle",
+			"lv": 48,
+			"text": "Accept Cherubimon's request, then battle Belphemon Lv 48."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "magnagarurumon",
+		"name": "MagnaGarurumon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 01",
+		"floatiaLocation": "Colosseum",
+		"service": "Exchanges materials for Luck Coins at night.",
+		"method": {
+			"t": "steps",
+			"text": "Accept KaiserGreymon's request and talk to MagnaGarurumon, then deliver 10 Supermassive Machine Parts and 20 Ultramassive Dark Matter to KaiserGreymon."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "megagargomon",
+		"name": "MegaGargomon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 02",
+		"floatiaLocation": "City Entrance",
+		"service": "Rewards Warehouse storage milestones.",
+		"method": {
+			"t": "talk",
+			"text": "Talk after RustTyranomon joins."
+		},
+		"requirements": ["flag:postgame", "facility:warehouse:2", "recruit:rusttyranomon"]
+	},
+	{
+		"id": "rusttyranomon",
+		"name": "RustTyranomon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 04",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Initiates a battle.",
+		"method": {
+			"t": "battle",
+			"lv": 54,
+			"text": "Accept MegaGargomon's request, then battle RustTyranomon Lv 54."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "chaosmon",
+		"name": "Chaosmon",
+		"area": "Infinite Cauldron",
+		"subarea": "Layer 05",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Gives a random Chip.",
+		"method": {
+			"t": "battle",
+			"lv": 60,
+			"text": "After ShineGreymon joins, talk to ShineGreymon in Layers 01, 03, and 04, then battle Chaosmon Lv 60."
+		},
+		"requirements": ["flag:postgame", "recruit:shinegreymon"]
+	},
+	{
+		"id": "megadramon",
+		"name": "Megadramon",
+		"area": "Infinite Cauldron",
+		"subarea": "Core 02",
+		"floatiaLocation": "Lab 1F",
+		"service": "Boosts In-Training I and II stats for Bits.",
+		"method": {
+			"t": "auto",
+			"text": "Joins automatically after the main story during Chapter 5."
+		},
+		"requirements": ["flag:postgame", "chapter:5"]
+	},
+	{
+		"id": "imperialdramon",
+		"name": "Imperialdramon",
+		"area": "Infinite Cauldron",
+		"subarea": "Core 02",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Initiates battles and increases lifespan by 12 hours.",
+		"method": {
+			"t": "steps",
+			"text": "Complete postgame story, then defeat Imperialdramon DM, FM, and PM Lv 70.",
+			"lv": 70
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "dynasmon",
+		"name": "Dynasmon",
+		"area": "Infinite Cauldron",
+		"subarea": "Core 01",
+		"floatiaLocation": "Dimensional Dungeon",
+		"service": "Boosts partner STR and WIS.",
+		"method": {
+			"t": "battle",
+			"lv": 60,
+			"text": "Complete postgame story, then battle Dynasmon Lv 60."
+		},
+		"requirements": ["flag:postgame"]
+	},
+	{
+		"id": "agunimon",
+		"name": "Agunimon",
+		"area": "Infinite Cauldron",
+		"subarea": "Core 00",
+		"floatiaLocation": "Colosseum",
+		"service": "Rewards Colosseum victories.",
+		"method": {
+			"t": "battle",
+			"lv": 57,
+			"text": "Complete postgame story, then battle Agunimon Lv 57."
+		},
+		"requirements": ["flag:postgame"]
+	}
+]

@@ -13,13 +13,25 @@
 		columns: DataTableColumn<RowType>[];
 		rows: RowType[];
 		pageSize?: number;
+		onRowClick?: (row: RowType) => void;
 	}
 
-	let { columns, rows, pageSize = 50 }: Props<RowType> = $props();
+	let { columns, rows, pageSize = 50, onRowClick }: Props<RowType> = $props();
 
 	let search = $state('');
 	let sortKey = $state<(keyof RowType & string) | null>(null);
 	let sortDir = $state<'asc' | 'desc' | null>(null);
+
+	const rowClickIgnoreSelector = [
+		'a',
+		'button',
+		'input',
+		'select',
+		'textarea',
+		'label',
+		'[role="button"]',
+		'[data-row-click-ignore]'
+	].join(',');
 
 	function cellText(row: RowType, col: DataTableColumn<RowType>) {
 		if (col.searchValue) {
@@ -125,6 +137,15 @@
 			sortDir = null;
 		}
 	}
+
+	function handleRowClick(event: MouseEvent, row: RowType) {
+		if (!onRowClick) return;
+
+		const target = event.target as HTMLElement | null;
+		if (target?.closest(rowClickIgnoreSelector)) return;
+
+		onRowClick(row);
+	}
 </script>
 
 <div class="flex items-center justify-between gap-2">
@@ -176,7 +197,10 @@
 				</tr>
 			{:else}
 				{#each visibleRows as row (row)}
-					<tr class="border-b border-text/25 transition hover:bg-accent-dark/20">
+					<tr
+						class="border-b border-text/25 transition hover:bg-accent-dark/20 {onRowClick ? 'cursor-pointer' : ''}"
+						onclick={(event) => handleRowClick(event, row)}
+					>
 						{#each columns as col (col)}
 							<td class="p-1">
 								{#if col.renderComponent}
