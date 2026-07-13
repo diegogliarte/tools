@@ -43,13 +43,9 @@
 
 	const monsterById = $derived(new Map(monsters.map((m) => [m.id, m])));
 
-	const activeSkill = $derived.by(() =>
-		findPadzSkillByRef(skills, monster.skills?.active, 'active')
-	);
+	const activeSkill = $derived.by(() => findPadzSkillByRef(skills, monster.skills?.active, 'active'));
 
-	const leaderSkill = $derived.by(() =>
-		findPadzSkillByRef(skills, monster.skills?.leader, 'leader')
-	);
+	const leaderSkill = $derived.by(() => findPadzSkillByRef(skills, monster.skills?.leader, 'leader'));
 
 	const evolutionRoots = $derived.by(() => {
 		if (!monster || !monsters.length) return [];
@@ -91,11 +87,7 @@
 		return visited;
 	}
 
-	function buildEvolutionNode(
-		current: PadzMonster,
-		familyIds: Set<number>,
-		path: number[] = []
-	): EvolutionNode {
+	function buildEvolutionNode(current: PadzMonster, familyIds: Set<number>, path: number[] = []): EvolutionNode {
 		if (path.includes(current.id)) {
 			return {
 				monster: current,
@@ -121,9 +113,7 @@
 	async function openSkill(skill?: PadzSkill | null) {
 		if (!skill) return;
 
-		const { default: PadzSkillModal } = await import(
-			'$lib/components/puzzle-and-dragons-z/PadzSkillModal.svelte'
-			);
+		const { default: PadzSkillModal } = await import('$lib/components/puzzle-and-dragons-z/PadzSkillModal.svelte');
 
 		openModal(PadzSkillModal, { skill });
 	}
@@ -138,11 +128,7 @@
 			"
 		>
 			{#if nodeMonster.id === monster.id}
-				<img
-					src={getPadzMonsterIcon(nodeMonster.id)}
-					alt={nodeMonster.name}
-					class="h-full w-full object-cover"
-				/>
+				<img src={getPadzMonsterIcon(nodeMonster.id)} alt={nodeMonster.name} class="h-full w-full object-cover" />
 			{:else}
 				<PadzMonsterIcon monster={nodeMonster} variant="viewer" />
 			{/if}
@@ -176,11 +162,7 @@
 	{#if monster}
 		<div class="mb-4 flex gap-4">
 			<div class="w-20">
-				<img
-					src={getPadzMonsterIcon(monster.id)}
-					alt={monster.name}
-					class="aspect-square h-full w-full object-cover"
-				/>
+				<img src={getPadzMonsterIcon(monster.id)} alt={monster.name} class="aspect-square h-full w-full object-cover" />
 			</div>
 
 			<div class="flex flex-col gap-1 text-xs">
@@ -302,31 +284,31 @@
 		<div class="border text-xs">
 			<table class="w-full text-left">
 				<thead class="bg-neutral-900">
-				<tr>
-					<th class="p-1">Level</th>
-					<th class="p-1">HP</th>
-					<th class="p-1">ATK</th>
-					<th class="p-1">DEF</th>
-					<th class="p-1">Total</th>
-				</tr>
+					<tr>
+						<th class="p-1">Level</th>
+						<th class="p-1">HP</th>
+						<th class="p-1">ATK</th>
+						<th class="p-1">DEF</th>
+						<th class="p-1">Total</th>
+					</tr>
 				</thead>
 
 				<tbody>
-				<tr>
-					<td class="p-1">Lv 1</td>
-					<td class="p-1">{monster.base_stats.lv1.HP}</td>
-					<td class="p-1">{monster.base_stats.lv1.ATK}</td>
-					<td class="p-1">{monster.base_stats.lv1.DEF}</td>
-					<td class="p-1">{getPadzStatTotal(monster.base_stats.lv1)}</td>
-				</tr>
+					<tr>
+						<td class="p-1">Lv 1</td>
+						<td class="p-1">{monster.base_stats.lv1.HP}</td>
+						<td class="p-1">{monster.base_stats.lv1.ATK}</td>
+						<td class="p-1">{monster.base_stats.lv1.DEF}</td>
+						<td class="p-1">{getPadzStatTotal(monster.base_stats.lv1)}</td>
+					</tr>
 
-				<tr>
-					<td class="p-1">Lv {formatPadzNumber(monster.level_cap ?? 'Max')}</td>
-					<td class="p-1">{monster.base_stats.lvmax.HP}</td>
-					<td class="p-1">{monster.base_stats.lvmax.ATK}</td>
-					<td class="p-1">{monster.base_stats.lvmax.DEF}</td>
-					<td class="p-1">{getPadzStatTotal(monster.base_stats.lvmax)}</td>
-				</tr>
+					<tr>
+						<td class="p-1">Lv {formatPadzNumber(monster.level_cap ?? 'Max')}</td>
+						<td class="p-1">{monster.base_stats.lvmax.HP}</td>
+						<td class="p-1">{monster.base_stats.lvmax.ATK}</td>
+						<td class="p-1">{monster.base_stats.lvmax.DEF}</td>
+						<td class="p-1">{getPadzStatTotal(monster.base_stats.lvmax)}</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

@@ -1,10 +1,6 @@
 <script lang="ts">
 	import { openModal } from '$lib/states/modal.svelte';
-	import {
-		getPadzMonsterIcon,
-		normaliseAssetKey,
-		type PadzMonster
-	} from '$lib/utils/puzzle-and-dragons-z.utils';
+	import { getPadzMonsterIcon, normaliseAssetKey, type PadzMonster } from '$lib/utils/puzzle-and-dragons-z.utils';
 
 	interface Props {
 		monster: PadzMonster;
@@ -28,9 +24,7 @@
 	async function open() {
 		if (!canOpenModal) return;
 
-		const { default: PadzMonsterModal } = await import(
-			'$lib/components/puzzle-and-dragons-z/PadzMonsterModal.svelte'
-			);
+		const { default: PadzMonsterModal } = await import('$lib/components/puzzle-and-dragons-z/PadzMonsterModal.svelte');
 
 		openModal(PadzMonsterModal, { monster });
 	}

@@ -63,15 +63,15 @@
 		<div class="mb-4 border text-xs">
 			<table class="w-full text-left">
 				<tbody>
-				<tr>
-					<th class="w-32 p-1">Category</th>
-					<td class="p-1">{formatPadzSkillCategory(skill.category)}</td>
-				</tr>
+					<tr>
+						<th class="w-32 p-1">Category</th>
+						<td class="p-1">{formatPadzSkillCategory(skill.category)}</td>
+					</tr>
 
-				<tr>
-					<th class="w-32 p-1">Cost</th>
-					<td class="p-1">{formatPadzNumber(getPadzSkillCost(skill))}</td>
-				</tr>
+					<tr>
+						<th class="w-32 p-1">Cost</th>
+						<td class="p-1">{formatPadzNumber(getPadzSkillCost(skill))}</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

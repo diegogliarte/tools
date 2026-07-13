@@ -23,10 +23,7 @@
 	}
 </script>
 
-<div
-	class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent"
-	onclick={open}
->
+<div class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent" onclick={open}>
 	<!-- Player icon -->
 	<div class="aspect-square h-14 w-14">
 		<PlayerIcon {player} openModal={false} />

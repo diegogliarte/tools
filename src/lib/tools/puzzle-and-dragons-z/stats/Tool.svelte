@@ -11,9 +11,7 @@
 		Monster Stats
 	</Button>
 
-	<Button active={displayMode === 'skill-stats'} onClick={() => (displayMode = 'skill-stats')}>
-		Skill Stats
-	</Button>
+	<Button active={displayMode === 'skill-stats'} onClick={() => (displayMode = 'skill-stats')}>Skill Stats</Button>
 </div>
 
 {#if displayMode === 'monster-stats'}

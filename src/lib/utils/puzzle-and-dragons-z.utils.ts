@@ -146,14 +146,7 @@ export function getPadzSkillSearchText(skill: PadzSkill) {
 }
 
 export function getPadzMonsterSearchText(monster: PadzMonster) {
-	return [
-		monster.id,
-		monster.name,
-		monster.slug,
-		monster.type,
-		...(monster.attributes ?? []),
-		monster.description
-	]
+	return [monster.id, monster.name, monster.slug, monster.type, ...(monster.attributes ?? []), monster.description]
 		.filter(Boolean)
 		.join(' ');
 }
@@ -176,11 +169,7 @@ export function slugifyPadz(value: string) {
 		.replace(/^-+|-+$/g, '');
 }
 
-export function padzSkillMatchesRef(
-	skill: PadzSkill,
-	ref: PadzSkillRef,
-	preferredCategory?: 'active' | 'leader'
-) {
+export function padzSkillMatchesRef(skill: PadzSkill, ref: PadzSkillRef, preferredCategory?: 'active' | 'leader') {
 	if (ref === null || ref === undefined || ref === '') return false;
 
 	const refText = String(ref);
@@ -199,11 +188,7 @@ export function padzSkillMatchesRef(
 	return possibleRefs.has(refText);
 }
 
-export function findPadzSkillByRef(
-	skills: PadzSkill[],
-	ref: PadzSkillRef,
-	preferredCategory: 'active' | 'leader'
-) {
+export function findPadzSkillByRef(skills: PadzSkill[], ref: PadzSkillRef, preferredCategory: 'active' | 'leader') {
 	return (
 		skills.find(
 			(skill) => skill.category === preferredCategory && padzSkillMatchesRef(skill, ref, preferredCategory)

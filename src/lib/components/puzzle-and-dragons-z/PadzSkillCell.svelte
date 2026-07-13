@@ -14,19 +14,13 @@
 	let { skill }: Props = $props();
 
 	async function open() {
-		const { default: PadzSkillModal } = await import(
-			'$lib/components/puzzle-and-dragons-z/PadzSkillModal.svelte'
-			);
+		const { default: PadzSkillModal } = await import('$lib/components/puzzle-and-dragons-z/PadzSkillModal.svelte');
 
 		openModal(PadzSkillModal, { skill });
 	}
 </script>
 
-<button
-	type="button"
-	class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent"
-	onclick={open}
->
+<button type="button" class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent" onclick={open}>
 	<div>
 		<div class="leading-none">{skill.name}</div>
 

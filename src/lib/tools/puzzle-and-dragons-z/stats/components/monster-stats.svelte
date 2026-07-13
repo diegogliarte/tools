@@ -41,9 +41,7 @@
 
 	const skillsById = $derived(new Map(skills.map((skill) => [String(skill.id), skill])));
 
-	const attributeOptions = $derived.by(() =>
-		unique(monsters.flatMap((monster) => monster.attributes ?? [])).sort()
-	);
+	const attributeOptions = $derived.by(() => unique(monsters.flatMap((monster) => monster.attributes ?? [])).sort());
 
 	const typeOptions = $derived.by(() =>
 		unique(monsters.map((monster) => monster.type).filter(Boolean) as string[]).sort()
@@ -64,8 +62,7 @@
 				(monster.attributes ?? []).some((attribute) => attributeFilter[attribute]);
 
 			const matchesType =
-				!Object.values(typeFilter).some(Boolean) ||
-				(Boolean(monster.type) && typeFilter[monster.type as string]);
+				!Object.values(typeFilter).some(Boolean) || (Boolean(monster.type) && typeFilter[monster.type as string]);
 
 			return matchesAttribute && matchesType;
 		})
@@ -107,8 +104,8 @@
 		render: (monster) => `
 			<div class="flex items-center gap-1">
 				${(monster.attributes ?? [])
-			.map(
-				(attribute) => `
+					.map(
+						(attribute) => `
 							<img
 								src="${getPadzElementIcon(attribute)}"
 								alt="${formatPadzElement(attribute)}"
@@ -116,8 +113,8 @@
 								class="h-[1.5em] w-[1.5em] shrink-0"
 							/>
 						`
-			)
-			.join('')}
+					)
+					.join('')}
 			</div>
 		`
 	};

@@ -21,9 +21,7 @@
 		skills = await loadPadzSkills();
 	});
 
-	const categoryOptions = $derived.by(() =>
-		unique(skills.map((skill) => skill.category).filter(Boolean)).sort()
-	);
+	const categoryOptions = $derived.by(() => unique(skills.map((skill) => skill.category).filter(Boolean)).sort());
 
 	$effect(() => {
 		addMissingFilterOptions(categoryFilter, categoryOptions);
@@ -31,8 +29,7 @@
 
 	const rows = $derived.by(() =>
 		skills.filter((skill) => {
-			const matchesCategory =
-				!Object.values(categoryFilter).some(Boolean) || categoryFilter[skill.category];
+			const matchesCategory = !Object.values(categoryFilter).some(Boolean) || categoryFilter[skill.category];
 
 			return matchesCategory;
 		})
