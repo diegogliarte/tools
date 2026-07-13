@@ -33,7 +33,7 @@
 	type Chain = number[];
 
 	const team = createLocalStorageState<Chain[]>([], {
-		fallbackKeys: ['digimon-story-ts:team-builder'],
+		fallbackKeys: ['tool-state:/digimon-story-ts/team-builder', 'digimon-story-ts:team-builder'],
 		normalize: normalizeTeamState
 	});
 

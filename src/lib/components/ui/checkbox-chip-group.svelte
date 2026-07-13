@@ -22,6 +22,7 @@
 		showActions?: boolean;
 		class?: string;
 		storageKey?: string; // Optional storage scope. If omitted, the component uses the current path + label.
+		fallbackKeys?: string[];
 		persist?: boolean; // Set to false if you do not want this group to persist.
 	}
 
@@ -32,6 +33,7 @@
 		showActions = true,
 		class: className = '',
 		storageKey = '',
+		fallbackKeys = [],
 		persist = true
 	}: Props = $props();
 
@@ -107,6 +109,7 @@
 		{},
 		{
 			name: getPersistScope,
+			fallbackKeys: () => fallbackKeys,
 			persist: () => persist,
 			normalize: normalizeCheckedState
 		}
