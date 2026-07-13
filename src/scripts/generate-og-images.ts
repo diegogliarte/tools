@@ -28,7 +28,15 @@ function outputPathForPathname(pathname: string) {
 }
 
 async function getToolPathnamesFromSitemap() {
-	const response = await fetch(`${BASE_URL}/sitemap.xml`);
+	let response: Response;
+
+	try {
+		response = await fetch(`${BASE_URL}/sitemap.xml`);
+	} catch {
+		throw new Error(
+			`Could not reach ${BASE_URL}/sitemap.xml. Start the site first with "pnpm dev", or set OG_BASE_URL to the running site URL.`
+		);
+	}
 
 	if (!response.ok) {
 		throw new Error(`Failed to fetch sitemap: ${response.status} ${response.statusText}`);
