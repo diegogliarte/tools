@@ -1,7 +1,7 @@
 import type { ToolDefinition } from '$lib/tools/types';
 
 export const tool: ToolDefinition = {
-	title: 'Team Builder',
-	description: 'Create your own Digimon team.',
+	title: 'Stats',
+	description: 'View all Story Time Stranger stats.',
 	fullscreen: true
 };

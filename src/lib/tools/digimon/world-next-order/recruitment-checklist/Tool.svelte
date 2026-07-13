@@ -339,7 +339,6 @@
 				label="Progress"
 				options={flags}
 				bind:checked={progress.flags}
-				storageKey="digimon-world-next-order:flags"
 				persist={false}
 				showActions={false}
 			/>
