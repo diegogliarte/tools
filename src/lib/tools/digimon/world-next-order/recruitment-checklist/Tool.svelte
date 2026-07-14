@@ -38,7 +38,7 @@
 		requirements?: string[];
 	};
 
-	type Status = 'Recruited' | 'Available' | 'Manual' | 'Blocked';
+	type Status = 'Recruited' | 'Available' | 'Step' | 'Blocked';
 
 	type Row = RecruitmentEntry & {
 		status: Status;
@@ -176,14 +176,14 @@
 	function status(entry: RecruitmentEntry): Status {
 		if (isRecruited(entry.id)) return 'Recruited';
 		if (hardBlockers(entry).length) return 'Blocked';
-		if (manualRequirements(entry).length) return 'Manual';
+		if (manualRequirements(entry).length) return 'Step';
 		return 'Available';
 	}
 
 	function statusClass(value: Status) {
 		if (value === 'Recruited') return 'text-green-300';
 		if (value === 'Available') return 'text-accent';
-		if (value === 'Manual') return 'text-yellow-200';
+		if (value === 'Step') return 'text-yellow-200';
 		return 'text-white/50';
 	}
 
@@ -275,7 +275,7 @@
 			key: 'status',
 			label: 'Status',
 			width: '8%',
-			sortValue: (row) => ['Available', 'Manual', 'Blocked', 'Recruited'].indexOf(row.status),
+			sortValue: (row) => ['Available', 'Step', 'Blocked', 'Recruited'].indexOf(row.status),
 			render: (row) => `<span class="${statusClass(row.status)}">${row.status}</span>`
 		},
 		{
@@ -292,11 +292,12 @@
 			searchValue: (row) => [row.how, row.requirementsText].join(' '),
 			render: (row) => {
 				const labels = row.blockerLabels.length ? row.blockerLabels : row.requirementLabels;
+				const requirementPrefix = row.blockerLabels.length ? 'Blocked by' : row.status === 'Step' ? 'Do' : 'Needs';
 
 				return [
 					accentRecruitmentText(row.how),
 					labels.length
-						? `<div class="mt-0.5 text-xs"><span class="opacity-60">${row.blockerLabels.length ? 'Blocked by' : 'Needs'}</span> ${renderRequirements(labels)}</div>`
+						? `<div class="mt-0.5 text-xs"><span class="opacity-60">${requirementPrefix}</span> ${renderRequirements(labels)}</div>`
 						: ''
 				].join('');
 			}
@@ -312,7 +313,7 @@
 	];
 
 	function toggleRow(row: Row) {
-		if (row.status === 'Blocked' || row.status === 'Manual') return;
+		if (row.status === 'Blocked') return;
 
 		setRecruited(row.id, !isRecruited(row.id));
 	}
