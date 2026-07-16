@@ -250,9 +250,9 @@
 		"service": "Heals injuries and sickness for Bits.",
 		"method": {
 			"t": "talk",
-			"text": "Talk after Hackmon joins."
+			"text": "Talk after Huckmon joins."
 		},
-		"requirements": ["recruit:hackmon"]
+		"requirements": ["recruit:huckmon"]
 	},
 	{
 		"id": "seraphimon",
@@ -526,8 +526,8 @@
 		}
 	},
 	{
-		"id": "hackmon",
-		"name": "Hackmon",
+		"id": "huckmon",
+		"name": "Huckmon",
 		"area": "Logic Volcano",
 		"subarea": "Garbage Pile",
 		"floatiaLocation": "Hospital",
@@ -535,7 +535,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 22,
-			"text": "Accept Angemon's request, then battle Hackmon Lv 22."
+			"text": "Accept Angemon's request, then battle Huckmon Lv 22."
 		}
 	},
 	{
@@ -1234,8 +1234,8 @@
 		"requirements": ["flag:postgame"]
 	},
 	{
-		"id": "kaisergreymon",
-		"name": "KaiserGreymon",
+		"id": "emperorgreymon",
+		"name": "EmperorGreymon",
 		"area": "Server Desert",
 		"subarea": "Server Tower",
 		"floatiaLocation": "Colosseum",
@@ -1282,13 +1282,13 @@
 		"method": {
 			"t": "battle",
 			"lv": 65,
-			"text": "Talk to Alphamon or Omegamon, then defeat both Digimon in the shared Lv 65 battle."
+			"text": "Talk to Alphamon or Omnimon, then defeat both Digimon in the shared Lv 65 battle."
 		},
 		"requirements": ["flag:postgame"]
 	},
 	{
-		"id": "omegamon",
-		"name": "Omegamon",
+		"id": "omnimon",
+		"name": "Omnimon",
 		"area": "Logic Volcano",
 		"subarea": "Fire Wall",
 		"floatiaLocation": "Dimensional Dungeon",
@@ -1296,7 +1296,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 65,
-			"text": "Talk to Alphamon or Omegamon, then defeat both Digimon in the shared Lv 65 battle."
+			"text": "Talk to Alphamon or Omnimon, then defeat both Digimon in the shared Lv 65 battle."
 		},
 		"requirements": ["flag:postgame"]
 	},
@@ -1337,13 +1337,13 @@
 		"method": {
 			"t": "battle",
 			"lv": 50,
-			"text": "Accept Susanoomon's request, then battle Examon Lv 50."
+			"text": "Accept Susanomon's request, then battle Examon Lv 50."
 		},
 		"requirements": ["flag:postgame"]
 	},
 	{
-		"id": "susanoomon",
-		"name": "Susanoomon",
+		"id": "susanomon",
+		"name": "Susanomon",
 		"area": "Logic Volcano",
 		"subarea": "Hidden Red House",
 		"floatiaLocation": "Dimensional Dungeon",
@@ -1352,7 +1352,7 @@
 			"t": "talk",
 			"text": "Talk after Examon joins."
 		},
-		"requirements": ["flag:postgame", "recruit:kaisergreymon", "recruit:magnagarurumon", "recruit:examon"]
+		"requirements": ["flag:postgame", "recruit:emperorgreymon", "recruit:magnagarurumon", "recruit:examon"]
 	},
 	{
 		"id": "lilithmon",
@@ -1394,8 +1394,8 @@
 		"requirements": ["flag:postgame", "recruit:leomon"]
 	},
 	{
-		"id": "samudramon",
-		"name": "Samudramon",
+		"id": "gaiomon",
+		"name": "Gaiomon",
 		"area": "Faulty Ex Machina",
 		"subarea": "East Coast",
 		"floatiaLocation": "Dimensional Dungeon",
@@ -1434,8 +1434,8 @@
 		"requirements": ["flag:postgame"]
 	},
 	{
-		"id": "crusadermon",
-		"name": "Crusadermon",
+		"id": "lordknightmon",
+		"name": "LordKnightmon",
 		"area": "Bony Resort",
 		"subarea": "Pink Stone House",
 		"floatiaLocation": "Dimensional Dungeon",
@@ -1507,7 +1507,7 @@
 		"area": "Absolute Zero",
 		"subarea": "Frost Cathedral",
 		"floatiaLocation": "Research Entrance",
-		"service": "Daily battle against Omegamon Zwart D and Omegamon Alter-B.",
+		"service": "Daily battle against Omnimon Zwart D and Omnimon Alter-B.",
 		"method": {
 			"t": "auto",
 			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
@@ -1543,17 +1543,17 @@
 		"requirements": ["flag:postgame"]
 	},
 	{
-		"id": "cherubimon",
-		"name": "Cherubimon",
+		"id": "cherubimon-black",
+		"name": "Cherubimon (Black)",
 		"area": "Absolute Zero",
 		"subarea": "Icy Hall",
 		"floatiaLocation": "Item Shop",
 		"service": "Sells Digivolution Cores.",
 		"method": {
 			"t": "talk",
-			"text": "Talk after Belphemon joins."
+			"text": "Talk after Belphemon RM joins."
 		},
-		"requirements": ["flag:postgame", "recruit:belphemon"]
+		"requirements": ["flag:postgame", "recruit:belphemon-rm"]
 	},
 	{
 		"id": "lucemon",
@@ -1585,8 +1585,8 @@
 		"requirements": ["flag:postgame", "manual:Accept Minervamon's request"]
 	},
 	{
-		"id": "belphemon",
-		"name": "Belphemon",
+		"id": "belphemon-rm",
+		"name": "Belphemon RM",
 		"area": "Absolute Zero",
 		"subarea": "Concealed Gorge",
 		"floatiaLocation": "Dimensional Dungeon",
@@ -1594,7 +1594,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 48,
-			"text": "Accept Cherubimon's request, then battle Belphemon Lv 48."
+			"text": "Accept Cherubimon (Black)'s request, then battle Belphemon RM Lv 48."
 		},
 		"requirements": ["flag:postgame"]
 	},
@@ -1607,7 +1607,7 @@
 		"service": "Exchanges materials for Luck Coins at night.",
 		"method": {
 			"t": "steps",
-			"text": "Accept KaiserGreymon's request and talk to MagnaGarurumon, then deliver 10 Supermassive Machine Parts and 20 Ultramassive Dark Matter to KaiserGreymon."
+			"text": "Accept EmperorGreymon's request and talk to MagnaGarurumon, then deliver 10 Supermassive Machine Parts and 20 Ultramassive Dark Matter to EmperorGreymon."
 		},
 		"requirements": ["flag:postgame"]
 	},
@@ -1620,13 +1620,13 @@
 		"service": "Rewards Warehouse storage milestones.",
 		"method": {
 			"t": "talk",
-			"text": "Talk after RustTyranomon joins."
+			"text": "Talk after RustTyrannomon joins."
 		},
-		"requirements": ["flag:postgame", "facility:warehouse:2", "recruit:rusttyranomon"]
+		"requirements": ["flag:postgame", "facility:warehouse:2", "recruit:rusttyrannomon"]
 	},
 	{
-		"id": "rusttyranomon",
-		"name": "RustTyranomon",
+		"id": "rusttyrannomon",
+		"name": "RustTyrannomon",
 		"area": "Infinite Cauldron",
 		"subarea": "Layer 04",
 		"floatiaLocation": "Dimensional Dungeon",
@@ -1634,7 +1634,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 54,
-			"text": "Accept MegaGargomon's request, then battle RustTyranomon Lv 54."
+			"text": "Accept MegaGargomon's request, then battle RustTyrannomon Lv 54."
 		},
 		"requirements": ["flag:postgame"]
 	},
