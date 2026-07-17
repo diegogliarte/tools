@@ -27,6 +27,10 @@ html[data-sidebar-open='true'] [data-sidebar] {
 	display: flex !important;
 }
 
+html[data-sidebar-open='true'] [data-chrono] {
+	left: var(--spacing-sidebar);
+}
+
 *::-webkit-scrollbar {
 	width: 4px;
 	height: 4px;

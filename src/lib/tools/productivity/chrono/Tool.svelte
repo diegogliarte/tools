@@ -105,7 +105,8 @@
 </script>
 
 <div
-	class="fixed inset-0 h-full w-full cursor-pointer select-none"
+	data-chrono
+	class="fixed inset-y-0 right-0 left-0 h-full cursor-pointer select-none"
 	onmousedown={onMouseDown}
 	onmouseup={onMouseUp}
 	ondblclick={onDblClick}
