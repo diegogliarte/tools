@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
+	import Cell from '$lib/components/ui/cell.svelte';
 	import { openModal } from '$lib/states/modal.svelte';
 	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
@@ -10,6 +10,13 @@
 		FW: 'bg-red-900',
 		'?': 'bg-neutral-700'
 	} satisfies Record<Player['Position'], string>;
+
+	const elementColor: Record<string, string> = {
+		Mountain: 'bg-yellow-800/75',
+		Fire: 'bg-red-800/75',
+		Forest: 'bg-green-800/75',
+		Wind: 'bg-sky-800/75'
+	};
 
 	interface Props {
 		player: Player;
@@ -23,12 +30,7 @@
 	}
 </script>
 
-<div class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent" onclick={open}>
-	<!-- Player icon -->
-	<div class="aspect-square h-14 w-14">
-		<PlayerIcon {player} openModal={false} />
-	</div>
-
+<Cell image={player.Image} imageAlt={player.Name} thumbnailClass={elementColor[player.Element] ?? 'bg-neutral-700'} onClick={open}>
 	<!-- Name + Position -->
 	<div>
 		<div class="leading-none">{player.Name}</div>
@@ -39,4 +41,4 @@
 			{player.Position}
 		</div>
 	</div>
-</div>
+</Cell>

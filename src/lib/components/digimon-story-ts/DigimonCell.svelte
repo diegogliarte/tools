@@ -1,7 +1,7 @@
 <script lang="ts">
-	import DigimonIcon from '$lib/components/digimon-story-ts/DigimonIcon.svelte';
+	import Cell from '$lib/components/ui/cell.svelte';
 	import { openModal } from '$lib/states/modal.svelte';
-	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
+	import { getDigimonIcon, type Digimon } from '$lib/utils/digimon-story-ts.utils';
 
 	interface Props {
 		digimon: Digimon;
@@ -15,9 +15,6 @@
 	}
 </script>
 
-<div class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent" onclick={open}>
-	<div class="aspect-square h-14 w-14">
-		<DigimonIcon {digimon} openModal={false} />
-	</div>
+<Cell image={getDigimonIcon(digimon)} imageAlt={digimon.name} onClick={open}>
 	<div>{digimon.name}</div>
-</div>
+</Cell>

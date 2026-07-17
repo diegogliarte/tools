@@ -6,7 +6,7 @@
 	import digimonData from '$lib/data/digimon-story-ts/digimon.json';
 	import recruitmentData from '$lib/data/digimon-world-next-order/recruitment.json';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
-	import RecruitmentDigimonCell from './components/recruitment-digimon-cell.svelte';
+	import RecruitmentDigimonCell from '$lib/components/digimon-world-next-order/RecruitmentDigimonCell.svelte';
 
 	type Facility =
 		| 'dojo'

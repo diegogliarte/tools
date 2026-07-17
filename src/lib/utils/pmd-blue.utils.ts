@@ -51,6 +51,10 @@ export type Pokemon = {
 	};
 };
 
+export function getPokemonIcon(pokemon: Pokemon): string {
+	return `/pokemon-mystery-dungeon/icons/${pokemon.icon}`;
+}
+
 // --- STATS HELPERS ---
 export function computeStatAtLevel(base: number, growth: number[], level: number): number {
 	let total = base;

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Cell from '$lib/components/ui/cell.svelte';
 	import { openModal } from '$lib/states/modal.svelte';
 	import { getMoveTypeColor, type Move } from '$lib/data/pmd-blue/data';
 
@@ -14,7 +15,7 @@
 	}
 </script>
 
-<button type="button" class="flex cursor-pointer items-center gap-2 hover:text-accent" onclick={open}>
+<Cell onClick={open}>
 	<div class="h-2.5 w-2.5 {getMoveTypeColor(move.type)}"></div>
 	<span>{move.name}</span>
-</button>
+</Cell>

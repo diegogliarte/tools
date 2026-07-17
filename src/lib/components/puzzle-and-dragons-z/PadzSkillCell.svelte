@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Cell from '$lib/components/ui/cell.svelte';
 	import { openModal } from '$lib/states/modal.svelte';
 	import {
 		formatPadzNumber,
@@ -20,7 +21,7 @@
 	}
 </script>
 
-<button type="button" class="flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent" onclick={open}>
+<Cell onClick={open}>
 	<div>
 		<div class="leading-none">{skill.name}</div>
 
@@ -31,4 +32,4 @@
 			{/if}
 		</div>
 	</div>
-</button>
+</Cell>
