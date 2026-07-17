@@ -2,6 +2,8 @@ import { json } from '@sveltejs/kit';
 import { env as privateEnv } from '$env/dynamic/private';
 import type { RequestHandler } from './$types';
 
+export const prerender = false;
+
 type FeedbackPayload = {
 	message?: string;
 	contact?: string;

@@ -10,6 +10,7 @@
 </script>
 
 <div
+	data-sidebar
 	class="
 		w-sidebar
 		min-w-sidebar

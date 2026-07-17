@@ -23,6 +23,10 @@ body {
 	letter-spacing: var(--tracking-tight);
 }
 
+html[data-sidebar-open='true'] [data-sidebar] {
+	display: flex !important;
+}
+
 *::-webkit-scrollbar {
 	width: 4px;
 	height: 4px;

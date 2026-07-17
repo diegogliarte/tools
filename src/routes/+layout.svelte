@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { LayoutProps } from './$types';
 
 	import './layout.css';
@@ -10,15 +11,24 @@
 	import Toast from '$lib/components/ui/toast.svelte';
 
 	import { modalState, closeModal } from '$lib/states/modal.svelte';
-	import { setCookies } from '$lib/utils/cookies.utils';
+	import { getCookies, setCookies } from '$lib/utils/cookies.utils';
 
-	let { children, data }: LayoutProps = $props();
+	let { children }: LayoutProps = $props();
 
 	const SIDEBAR_KEY = 'layout.sidebar';
 
-	let isSidebarOpen = $derived(data.isSidebarOpen ?? false);
+	let isSidebarOpen = $state(false);
+	let isSidebarPreferenceLoaded = $state(false);
+
+	onMount(() => {
+		isSidebarOpen = getCookies(SIDEBAR_KEY, false);
+		isSidebarPreferenceLoaded = true;
+	});
 
 	$effect(() => {
+		if (!isSidebarPreferenceLoaded) return;
+
+		document.documentElement.dataset.sidebarOpen = String(isSidebarOpen);
 		setCookies(SIDEBAR_KEY, isSidebarOpen);
 	});
 

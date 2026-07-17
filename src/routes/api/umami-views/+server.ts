@@ -3,6 +3,8 @@ import { env as privateEnv } from '$env/dynamic/private';
 import { env as publicEnv } from '$env/dynamic/public';
 import type { RequestHandler } from './$types';
 
+export const prerender = false;
+
 type UmamiStats = {
 	pageviews: number;
 	visitors: number;
