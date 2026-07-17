@@ -17,14 +17,14 @@
 		border-r
 		transition-transform
 		{visible ? '' : 'hidden'}
-		flex flex-col gap-1 overflow-y-auto p-1
+		flex flex-col overflow-y-auto p-1
 		text-xs
 		{visible ? 'block' : 'hidden'}
 	"
 >
-	<div>
+	<nav aria-label="Tool navigation">
 		{#each toolsTree as category (category.name)}
 			<CategoryNode {category} />
 		{/each}
-	</div>
+	</nav>
 </div>
