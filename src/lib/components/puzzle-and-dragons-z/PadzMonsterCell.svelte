@@ -3,9 +3,9 @@
 	import { openModal } from '$lib/states/modal.svelte';
 	import {
 		formatPadzType,
+		getPadzElementClass,
 		getPadzMonsterIcon,
 		getPadzTypeIcon,
-		normaliseAssetKey,
 		type PadzMonster
 	} from '$lib/utils/puzzle-and-dragons-z.utils';
 
@@ -14,17 +14,6 @@
 	}
 
 	let { monster }: Props = $props();
-
-	const elementColor: Record<string, string> = {
-		fire: 'bg-red-800/75',
-		water: 'bg-blue-800/75',
-		wood: 'bg-green-800/75',
-		light: 'bg-yellow-700/75',
-		dark: 'bg-purple-900/75',
-		heart: 'bg-pink-800/75'
-	};
-
-	const primaryElement = $derived(normaliseAssetKey(monster.attributes?.[0] ?? ''));
 
 	async function open() {
 		const { default: PadzMonsterModal } = await import('$lib/components/puzzle-and-dragons-z/PadzMonsterModal.svelte');
@@ -36,7 +25,7 @@
 <Cell
 	image={getPadzMonsterIcon(monster.id)}
 	imageAlt={monster.name}
-	thumbnailClass={elementColor[primaryElement] ?? 'bg-neutral-700'}
+	thumbnailClass={getPadzElementClass(monster.attributes?.[0])}
 	onClick={open}
 >
 	<div>

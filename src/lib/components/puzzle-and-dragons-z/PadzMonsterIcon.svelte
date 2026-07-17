@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { openModal } from '$lib/states/modal.svelte';
-	import { getPadzMonsterIcon, normaliseAssetKey, type PadzMonster } from '$lib/utils/puzzle-and-dragons-z.utils';
+	import { getPadzElementClass, getPadzMonsterIcon, type PadzMonster } from '$lib/utils/puzzle-and-dragons-z.utils';
 
 	interface Props {
 		monster: PadzMonster;
@@ -9,17 +9,6 @@
 	}
 
 	let { monster, variant = 'default', openModal: canOpenModal = true }: Props = $props();
-
-	const elementColor: Record<string, string> = {
-		fire: 'bg-red-800/75',
-		water: 'bg-blue-800/75',
-		wood: 'bg-green-800/75',
-		light: 'bg-yellow-700/75',
-		dark: 'bg-purple-900/75',
-		heart: 'bg-pink-800/75'
-	};
-
-	const primaryElement = $derived(normaliseAssetKey(monster.attributes?.[0] ?? ''));
 
 	async function open() {
 		if (!canOpenModal) return;
@@ -42,7 +31,7 @@
 		loading="lazy"
 		class="
 			pointer-events-none aspect-square h-full w-full border object-cover group-hover:border-accent
-			{elementColor[primaryElement] ?? 'bg-neutral-700'}
+			{getPadzElementClass(monster.attributes?.[0])}
 			{variant === 'viewer' ? 'transition-colors' : ''}
 		"
 	/>

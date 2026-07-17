@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { openModal } from '$lib/states/modal.svelte';
-	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
+	import { getPlayerElementClass, type Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	interface Props {
 		player: Player;
@@ -9,13 +9,6 @@
 	}
 
 	let { player, variant = 'default', openModal: canOpenModal = true }: Props = $props();
-
-	const elementColor: Record<string, string> = {
-		Mountain: 'bg-yellow-800/75',
-		Fire: 'bg-red-800/75',
-		Forest: 'bg-green-800/75',
-		Wind: 'bg-sky-800/75'
-	};
 
 	async function open() {
 		if (!canOpenModal) return;
@@ -32,7 +25,7 @@
 		loading="lazy"
 		class="
 			pointer-events-none aspect-square h-full w-full border object-cover group-hover:border-accent
-			{elementColor[player.Element] ?? 'bg-neutral-700'}
+			{getPlayerElementClass(player.Element)}
 			{variant === 'viewer' ? 'transform transition group-hover:z-50 group-hover:scale-300' : ''}
 		"
 	/>

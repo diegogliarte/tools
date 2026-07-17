@@ -104,6 +104,19 @@ export function getPadzElementIcon(element: string) {
 	return `${STATIC_BASE}/elements/${normaliseAssetKey(element)}.png`;
 }
 
+const PADZ_ELEMENT_CLASS: Record<string, string> = {
+	fire: 'bg-red-800/75',
+	water: 'bg-blue-800/75',
+	wood: 'bg-green-800/75',
+	light: 'bg-yellow-700/75',
+	dark: 'bg-purple-900/75',
+	heart: 'bg-pink-800/75'
+};
+
+export function getPadzElementClass(element?: string | null): string {
+	return PADZ_ELEMENT_CLASS[normaliseAssetKey(element ?? '')] ?? 'bg-neutral-700';
+}
+
 export function getPadzTypeIcon(type: string) {
 	const key = TYPE_ICON_MAP[type] ?? TYPE_ICON_MAP[normaliseAssetKey(type)] ?? normaliseAssetKey(type);
 	return `${STATIC_BASE}/types/${key}.png`;

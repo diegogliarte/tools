@@ -68,6 +68,17 @@ export interface Player {
 	HowToObtain: HowToObtain[];
 }
 
+const PLAYER_ELEMENT_CLASS: Record<string, string> = {
+	Mountain: 'bg-yellow-800/75',
+	Fire: 'bg-red-800/75',
+	Forest: 'bg-green-800/75',
+	Wind: 'bg-sky-800/75'
+};
+
+export function getPlayerElementClass(element: string): string {
+	return PLAYER_ELEMENT_CLASS[element] ?? 'bg-neutral-700';
+}
+
 export function calculateATDFStats(stats: Stats): ATDFStats {
 	return {
 		shootAT: stats.kick + stats.control,
