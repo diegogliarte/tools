@@ -10,7 +10,6 @@
 	}
 
 	let { category, depth = 0 }: Props = $props();
-
 </script>
 
 <div>

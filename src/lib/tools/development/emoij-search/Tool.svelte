@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import TextInput from '$lib/components/ui/text-input.svelte';
-	import { EMOJI_SEARCH_ITEMS, type EmojiSearchItem } from '$lib/data/emojis/emoji-search';
+	import { loadEmojiSearchItems, type EmojiSearchItem } from '$lib/data/emojis/emoji-search';
 	import { copy } from '$lib/utils/clipboard.utils';
 	import { messageToast } from '$lib/utils/toast.utils';
 
@@ -39,16 +40,18 @@
 	let query = $state('');
 	let copiedEmoji = $state<string | null>(null);
 	let variantIndexes = $state<Record<string, number>>({});
+	let emojiSearchItems = $state<EmojiSearchItem[]>([]);
+	let loading = $state(true);
 
 	const normalizedQuery = $derived(normalize(query));
 	const queryTerms = $derived(tokenizeQuery(normalizedQuery));
 
 	const results = $derived.by(() => {
 		if (!normalizedQuery || queryTerms.length === 0) {
-			return EMOJI_SEARCH_ITEMS.slice(0, DEFAULT_LIMIT);
+			return emojiSearchItems.slice(0, DEFAULT_LIMIT);
 		}
 
-		return EMOJI_SEARCH_ITEMS.map((emoji) => ({
+		return emojiSearchItems.map((emoji) => ({
 			emoji,
 			score: scoreEmoji(emoji, queryTerms, normalizedQuery)
 		}))
@@ -66,6 +69,11 @@
 			.replace(/\p{Diacritic}/gu, '')
 			.replace(/['’]/g, '');
 	}
+
+	onMount(async () => {
+		emojiSearchItems = await loadEmojiSearchItems();
+		loading = false;
+	});
 
 	function tokenizeQuery(value: string): QueryTerm[] {
 		return value
@@ -211,7 +219,9 @@
 
 <TextInput bind:value={query} label="Search emoji" placeholder="Search emoji…" />
 
-{#if results.length > 0}
+{#if loading}
+	<p class="text-center opacity-60">Loading emojis…</p>
+{:else if results.length > 0}
 	<div class="grid grid-cols-[repeat(auto-fill,3rem)] justify-between gap-2">
 		{#each results as item (item.emoji)}
 			{@const emoji = selectedEmoji(item)}

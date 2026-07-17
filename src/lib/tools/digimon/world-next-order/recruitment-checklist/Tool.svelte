@@ -1,9 +1,10 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import NumberInput from '$lib/components/ui/number-input.svelte';
+	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
 	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
-	import digimonData from '$lib/data/digimon-story-ts/digimon.json';
 	import recruitmentData from '$lib/data/digimon-world-next-order/recruitment.json';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 	import RecruitmentDigimonCell from '$lib/components/digimon-world-next-order/RecruitmentDigimonCell.svelte';
@@ -51,7 +52,7 @@
 	};
 
 	const entries = recruitmentData as RecruitmentEntry[];
-	const timeStrangerDigimon = digimonData as Digimon[];
+	let timeStrangerDigimon = $state<Digimon[]>([]);
 
 	const facilityLabels: Record<Facility, string> = {
 		dojo: 'Dojo',
@@ -91,7 +92,11 @@
 
 	const progress = createLocalStorageState(defaults);
 
-	const digimonByName = new Map(timeStrangerDigimon.map((digimon) => [digimon.name.toLowerCase(), digimon]));
+	onMount(async () => {
+		timeStrangerDigimon = await loadDigimon();
+	});
+
+	const digimonByName = $derived(new Map(timeStrangerDigimon.map((digimon) => [digimon.name.toLowerCase(), digimon])));
 	const recruitableNames = entries.map((entry) => entry.name).sort((a, b) => b.length - a.length);
 
 	const flags = Array.from(
