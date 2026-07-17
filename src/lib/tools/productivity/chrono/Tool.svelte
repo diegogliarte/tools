@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { tick } from 'svelte';
+
 	let running = $state(false);
 	let elapsed = $state(0);
 	let lastTick = $state(0);
@@ -6,6 +8,8 @@
 
 	let laps = $state<string[]>([]);
 	let pulsing = $state(false);
+	let lapsElement: HTMLDivElement;
+	let trimmingLaps = false;
 
 	let formatted = $derived.by(() => {
 		const total = elapsed / 1000;
@@ -58,8 +62,23 @@
 		setTimeout(() => (pulsing = false), 150);
 	}
 
-	function addLap() {
+	async function trimLaps() {
+		if (trimmingLaps) return;
+
+		trimmingLaps = true;
+		await tick();
+
+		while (lapsElement && lapsElement.scrollHeight > lapsElement.clientHeight && laps.length > 0) {
+			laps.shift();
+			await tick();
+		}
+
+		trimmingLaps = false;
+	}
+
+	async function addLap() {
 		laps.push(formatted);
+		await trimLaps();
 	}
 
 	async function toggleFullScreen() {
@@ -102,6 +121,15 @@
 	$effect(() => {
 		document.title = formatted;
 	});
+
+	$effect(() => {
+		if (!lapsElement) return;
+
+		const observer = new ResizeObserver(trimLaps);
+		observer.observe(lapsElement);
+
+		return () => observer.disconnect();
+	});
 </script>
 
 <div
@@ -133,7 +161,7 @@
 		</div>
 	</div>
 
-	<div class="absolute top-0 right-0 flex flex-col gap-1 p-4 text-xs">
+	<div bind:this={lapsElement} class="absolute top-10 right-0 bottom-8 flex flex-col gap-1 overflow-hidden p-4 text-xs">
 		{#each laps as lap, i (i)}
 			<div>{lap}</div>
 		{/each}
