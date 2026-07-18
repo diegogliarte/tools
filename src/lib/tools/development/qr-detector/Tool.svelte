@@ -83,13 +83,17 @@
 <div class="flex flex-col items-center gap-3">
 	<video
 		bind:this={video}
-		class="aspect-square w-full max-w-sm bg-black object-cover {result ? 'cursor-pointer' : ''}"
+		class="aspect-square w-full max-w-sm bg-black object-cover {result ? 'hidden' : ''}"
 		playsinline
 		muted
-		aria-label={result ? 'Scan another QR code' : 'Camera preview'}
-		onclick={reset}
+		aria-label="Camera preview"
 	></video>
-	<canvas bind:this={canvas} class="hidden"></canvas>
+	<canvas
+		bind:this={canvas}
+		class="aspect-square w-full max-w-sm object-cover {result ? 'cursor-pointer' : 'hidden'}"
+		aria-label="Scan another QR code"
+		onclick={reset}
+	></canvas>
 
 	{#if result}
 		<div class="flex w-full max-w-sm items-start justify-between gap-3 border p-2">
