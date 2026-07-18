@@ -51,10 +51,11 @@
 			return emojiSearchItems.slice(0, DEFAULT_LIMIT);
 		}
 
-		return emojiSearchItems.map((emoji) => ({
-			emoji,
-			score: scoreEmoji(emoji, queryTerms, normalizedQuery)
-		}))
+		return emojiSearchItems
+			.map((emoji) => ({
+				emoji,
+				score: scoreEmoji(emoji, queryTerms, normalizedQuery)
+			}))
 			.filter(({ score }) => score > 0)
 			.sort((a, b) => b.score - a.score)
 			.slice(0, SEARCH_LIMIT)
