@@ -11,6 +11,45 @@ const OUT_DIR = path.join('src', 'lib', 'data', 'digimon-story-ts');
 const DIGIMON_OUT = path.join(OUT_DIR, 'digimon.json');
 const SKILLS_OUT = path.join(OUT_DIR, 'skills.json');
 
+type SkillCategory = 'special' | 'attachment';
+
+type DigimonListEntry = {
+	id: number;
+	slug: string;
+	name: string;
+	url: string;
+	generation: string;
+	attribute: string;
+	type: string;
+	base_personality: string;
+	icon: string;
+};
+
+type Skill = {
+	slug: string;
+	url?: string;
+	category: SkillCategory;
+	type?: string;
+	name?: string;
+	damage_type?: string;
+	sp_cost?: number;
+	accuracy?: number;
+	crit_rate?: number;
+	power?: number;
+	hit_count?: number;
+	description?: string;
+};
+
+type Digimon = DigimonListEntry & {
+	ridable: boolean;
+	base_stats: { lv1: Record<string, number>; lv99: Record<string, number> };
+	possible_personalities: Record<string, { name: string; chance: number }[]>;
+	evolution_conditions: { type: 'simple' | 'stats' | 'jogress' | 'item'; requirements: Record<string, string> }[];
+	pre_evolutions: Array<string | number>;
+	evolutions: Array<string | number>;
+	skills: Record<SkillCategory, string[]>;
+};
+
 function clean(x = '') {
 	return x.replace(/\s+/g, ' ').trim();
 }
@@ -38,7 +77,7 @@ async function scrapeList() {
 	const html = await fetchPage(LIST_URL);
 	const $ = load(html);
 
-	const list: any[] = [];
+	const list: DigimonListEntry[] = [];
 
 	$('table tbody tr').each((_, tr) => {
 		const tds = $(tr).find('td');
@@ -68,10 +107,10 @@ async function scrapeList() {
 	return list;
 }
 
-function parseSkill(html: string, slug: string, category: 'special' | 'attachment') {
+function parseSkill(html: string, slug: string, category: SkillCategory): Skill {
 	const $ = load(html);
 
-	const skill: any = {
+	const skill: Skill = {
 		slug,
 		category
 	};
@@ -104,11 +143,11 @@ function parseSkill(html: string, slug: string, category: 'special' | 'attachmen
 	return skill;
 }
 
-async function parseDigimon(entry: any, skillsMap: Record<string, any>) {
+async function parseDigimon(entry: DigimonListEntry, skillsMap: Record<string, Skill>): Promise<Digimon> {
 	const html = await fetchPage(entry.url);
 	const $ = load(html);
 
-	const digimon: any = {
+	const digimon: Digimon = {
 		...entry,
 		ridable: false,
 		base_stats: { lv1: {}, lv99: {} },
@@ -285,8 +324,8 @@ async function parseDigimon(entry: any, skillsMap: Record<string, any>) {
 
 async function run() {
 	const list = await scrapeList();
-	const skills: Record<string, any> = {};
-	const bySlug: Record<string, any> = {};
+	const skills: Record<string, Skill> = {};
+	const bySlug: Record<string, Digimon> = {};
 
 	for (const entry of list) {
 		console.log(`Scraping ${entry.name}`);
@@ -296,12 +335,14 @@ async function run() {
 
 	// resolve evolutions to IDs
 	for (const d of Object.values(bySlug)) {
-		d.pre_evolutions = d.pre_evolutions.map((s: string) => bySlug[s]?.id).filter(Boolean);
+		d.pre_evolutions = d.pre_evolutions.map((s) => bySlug[String(s)]?.id).filter(Boolean);
 
-		d.evolutions = d.evolutions.map((s: string) => bySlug[s]?.id).filter(Boolean);
+		d.evolutions = d.evolutions.map((s) => bySlug[String(s)]?.id).filter(Boolean);
 	}
 
 	for (const skill of Object.values(skills)) {
+		if (!skill.url) continue;
+
 		console.log(`Scraping skill ${skill.slug}`);
 		const html = await fetchPage(skill.url);
 		Object.assign(skill, parseSkill(html, skill.slug, skill.category));

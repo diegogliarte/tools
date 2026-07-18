@@ -3,10 +3,10 @@
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 
-	import { loadEquipment } from '$lib/data/inazuma-eleven-vr/data';
+	import { loadEquipment, type EquipmentItem } from '$lib/data/inazuma-eleven-vr/data';
 	import { addMissingFilterOptions, unique } from '$lib/utils/filters.utils.svelte.js';
 
-	let raw = $state<any[]>([]);
+	let raw = $state<EquipmentItem[]>([]);
 
 	onMount(async () => {
 		const { boots, pendants, bracelets, misc } = await loadEquipment();
@@ -20,7 +20,7 @@
 
 	const rows = $derived(
 		raw.map((r) => {
-			const cleaned: any = { ...r };
+			const cleaned: EquipmentItem = { ...r };
 
 			for (const k of Object.keys(cleaned)) {
 				if (cleaned[k] === '') cleaned[k] = '';
@@ -60,8 +60,8 @@
 		{ key: 'Shop3', label: 'Shop 3' }
 	];
 
-	const types = $derived(unique(rows.map((r) => r.Category)));
-	const shops = $derived(unique(rows.flatMap((r) => [r.Shop1, r.Shop2, r.Shop3]).filter(Boolean)));
+	const types = $derived(unique(rows.map((r) => String(r.Category))));
+	const shops = $derived(unique(rows.flatMap((r) => [r.Shop1, r.Shop2, r.Shop3].map(String).filter(Boolean))));
 
 	let typeFilter = $state<Record<string, boolean>>({});
 	let shopFilter = $state<Record<string, boolean>>({});
@@ -77,8 +77,8 @@
 
 		return rows.filter(
 			(r) =>
-				(activeTypes.length ? activeTypes.includes(r.Category) : true) &&
-				(activeShops.length ? activeShops.some((s) => [r.Shop1, r.Shop2, r.Shop3].includes(s)) : true)
+				(activeTypes.length ? activeTypes.includes(String(r.Category)) : true) &&
+				(activeShops.length ? activeShops.some((s) => [r.Shop1, r.Shop2, r.Shop3].map(String).includes(s)) : true)
 		);
 	});
 </script>

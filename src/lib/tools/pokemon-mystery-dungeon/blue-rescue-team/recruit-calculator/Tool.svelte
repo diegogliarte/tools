@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 	import DataTable, { type Column } from '$lib/components/ui/data-table.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import NumberInput from '$lib/components/ui/number-input.svelte';
@@ -68,7 +69,7 @@
 		return parts;
 	}
 
-	function buildInheritedSearchParts(pokemonName: string, visited = new Set<string>()): string[] {
+	function buildInheritedSearchParts(pokemonName: string, visited = new SvelteSet<string>()): string[] {
 		if (visited.has(pokemonName)) return [];
 		visited.add(pokemonName);
 

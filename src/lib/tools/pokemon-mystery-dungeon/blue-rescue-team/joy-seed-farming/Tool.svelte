@@ -468,7 +468,7 @@
 			<div class="mb-1 font-bold">{floor.floor}F</div>
 
 			<div class="flex flex-wrap gap-4">
-				{#each floor.tokens as t}
+				{#each floor.tokens as t, i (i)}
 					{#if t.type === 'move'}
 						<span class={t.run ? 'font-bold text-accent ' : ''}>
 							<span class="text-xl">{t.dir}</span><span class="text-lg"

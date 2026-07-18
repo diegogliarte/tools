@@ -1,15 +1,15 @@
 <script module lang="ts">
-	export type { Column, SortValue } from '$lib/components/ui/data-table.types';
+	export type { Column } from '$lib/components/ui/data-table.types';
 </script>
 
-<script lang="ts" generics="RowType extends Record<string, any>">
+<script lang="ts" generics="RowType extends object">
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 	import MdiChevronUpDown from '~icons/mdi/chevron-up-down';
 	import type { Column as DataTableColumn, SortValue } from '$lib/components/ui/data-table.types';
 
-	interface Props<RowType extends Record<string, any>> {
+	interface Props<RowType extends object> {
 		columns: DataTableColumn<RowType>[];
 		rows: RowType[];
 		pageSize?: number;
@@ -84,7 +84,7 @@
 				const av = col?.sortValue ? col.sortValue(a) : a[key];
 				const bv = col?.sortValue ? col.sortValue(b) : b[key];
 
-				const result = compareValues(av, bv);
+				const result = compareValues(av as SortValue, bv as SortValue);
 
 				return dir === 'asc' ? result : -result;
 			});
@@ -93,7 +93,7 @@
 		return filtered;
 	});
 
-	let page = $state(1);
+	let page = $derived(1);
 	let visibleRows = $derived.by(() => processed.slice(0, page * pageSize));
 
 	let scrollEl: HTMLElement;
@@ -117,13 +117,12 @@
 		return () => el.removeEventListener('scroll', onScroll);
 	});
 
-	$effect(() => {
-		search;
-		sortKey;
-		sortDir;
-		rows;
+	function pageAfterChange(...dependencies: unknown[]) {
+		return dependencies.length >= 0 ? 1 : page;
+	}
 
-		page = 1;
+	$effect(() => {
+		page = pageAfterChange(search, sortKey, sortDir, rows);
 	});
 
 	function toggleSort(key: keyof RowType & string) {
@@ -208,7 +207,7 @@
 									{@const Component = rendered.component}
 									<Component {...rendered.props} />
 								{:else if col.render}
-									{@html renderHtml(col.render(row))}
+									{renderHtml(col.render(row))}
 								{:else}
 									{row[col.key] ?? ''}
 								{/if}

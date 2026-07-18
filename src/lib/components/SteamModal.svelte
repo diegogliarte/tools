@@ -161,7 +161,7 @@
 					transition: {isDragging || !isTransitioning ? 'none' : 'transform 0.3s ease'};
 				"
 			>
-				{#each slides as img}
+				{#each slides as img (img)}
 					<img src={img} alt="Vpetlings screenshot" class="aspect-video w-full flex-shrink-0 object-cover" />
 				{/each}
 			</div>
@@ -177,7 +177,7 @@
 
 			<!-- Indicators -->
 			<div class="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-4">
-				{#each images as _, i (i)}
+				{#each images as image, i (image)}
 					<button
 						type="button"
 						aria-label={`Show image ${i + 1}`}

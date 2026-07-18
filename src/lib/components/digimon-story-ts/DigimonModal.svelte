@@ -104,11 +104,11 @@
 		{#if digimon.evolution_conditions?.length}
 			<h3 class="mb-2 font-bold">Evolution Conditions</h3>
 			<div class="mb-4 flex flex-col gap-2 text-xs">
-				{#each digimon.evolution_conditions as evo}
+				{#each digimon.evolution_conditions as evo (evo.type)}
 					<div class="border p-2">
 						<div class="mb-1 font-semibold capitalize">{evo.type}</div>
 						<ul class="list-inside list-disc">
-							{#each Object.entries(evo.requirements) as [k, v]}
+							{#each Object.entries(evo.requirements) as [k, v] (k)}
 								<li>{k}: {v}</li>
 							{/each}
 						</ul>

@@ -125,12 +125,12 @@
 
 	<TextInput bind:value={url} label="URL" placeholder="https://www.youtube.com/watch?v=VIDEO_ID" />
 
-	{#each installSections as section}
+	{#each installSections as section (section.title)}
 		<section class="flex flex-col gap-1">
 			<h2 class="text-sm font-medium opacity-80">{section.title}</h2>
 
 			<div class="flex flex-col gap-1">
-				{#each section.commands as command}
+				{#each section.commands as command (command.label)}
 					<LabeledRow group="youtube-download" label={command.label} value={command.value} />
 				{/each}
 			</div>
@@ -138,12 +138,12 @@
 	{/each}
 
 	{#if hasUrl}
-		{#each commandSections as section}
+		{#each commandSections as section (section.title)}
 			<section class="flex flex-col gap-1">
 				<h2 class="text-sm font-medium opacity-80">{section.title}</h2>
 
 				<div class="flex flex-col gap-1">
-					{#each section.commands as command}
+					{#each section.commands as command (command.label)}
 						<LabeledRow group="youtube-download" label={command.label} value={command.value} />
 					{/each}
 				</div>

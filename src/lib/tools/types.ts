@@ -6,7 +6,7 @@ import type { Component } from 'svelte';
  * Keeping this broad avoids forcing every Tool.svelte file to declare
  * shared route props just to satisfy the registry type.
  */
-export type ToolComponent = Component<any, any, any>;
+export type ToolComponent = Component;
 
 export type ToolComponentModule = {
 	default: ToolComponent;

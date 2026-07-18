@@ -20,22 +20,6 @@
 	const uid = $props.id();
 
 	let lineCount = $derived(value.split('\n').length);
-	let hoveredLine = $state<number | null>(null);
-
-	function handleMouseMove(e: MouseEvent) {
-		if (!displayLines) return;
-
-		const textarea = e.currentTarget as HTMLTextAreaElement;
-		const style = getComputedStyle(textarea);
-		const lineHeight = parseFloat(style.lineHeight || '20');
-		const offset = textarea.scrollTop;
-		const y = e.offsetY + offset;
-		hoveredLine = Math.floor(y / lineHeight) + 1;
-	}
-
-	function handleMouseLeave() {
-		hoveredLine = null;
-	}
 </script>
 
 <div class="flex w-full flex-col gap-0.5">
@@ -47,9 +31,9 @@
 		{#if displayLines}
 			<!-- Line numbers (same for both modes) -->
 			<div class="flex min-w-[2.5rem] flex-col border-r p-2 text-right text-xs select-none">
-				{#each Array(lineCount) as _, i (i)}
+				{#each Array.from({ length: lineCount }, (_, i) => i + 1) as line (line)}
 					<div>
-						{i + 1}
+						{line}
 					</div>
 				{/each}
 			</div>
@@ -60,8 +44,6 @@
 			bind:value
 			{placeholder}
 			{readonly}
-			onmousemove={handleMouseMove}
-			onmouseleave={handleMouseLeave}
 			class="
 				{minHeightClass}
 				flex-1 resize-none

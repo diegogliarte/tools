@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { SvelteSet } from 'svelte/reactivity';
 	import TextArea from '$lib/components/ui/text-area.svelte';
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import SelectInput from '$lib/components/ui/select-input.svelte';
@@ -99,7 +100,7 @@
 	}
 
 	function getKeys(rows: CsvRow[]): string[] {
-		const keys = new Set<string>();
+		const keys = new SvelteSet<string>();
 
 		for (const row of rows) {
 			for (const key of Object.keys(row)) {

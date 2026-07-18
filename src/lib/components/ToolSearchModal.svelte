@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { tick } from 'svelte';
 
 	import Modal from '$lib/components/ui/modal.svelte';
@@ -13,7 +14,7 @@
 	const MAX_RESULTS = 6;
 
 	let query = $state('');
-	let activeIndex = $state(0);
+	let activeIndex = $derived(0);
 	let inputEl = $state<HTMLInputElement | null>(null);
 
 	const normalizedQuery = $derived(query.trim().toLowerCase());
@@ -47,9 +48,12 @@
 			.map(({ item }) => item);
 	});
 
+	function resetActiveIndex(currentQuery: string) {
+		return currentQuery.length >= 0 ? 0 : activeIndex;
+	}
+
 	$effect(() => {
-		query;
-		activeIndex = 0;
+		activeIndex = resetActiveIndex(query);
 	});
 
 	$effect(() => {
@@ -67,7 +71,7 @@
 
 	async function selectTool(tool: ToolSearchItem) {
 		closeSearch();
-		await goto(tool.href);
+		await goto(resolve(tool.href as `/${string}/${string}`));
 	}
 
 	function handleKeydown(event: KeyboardEvent) {

@@ -2,7 +2,7 @@ import type { Component } from 'svelte';
 
 export type SortValue = string | number | null | undefined;
 
-export interface Column<RowType extends Record<string, any> = Record<string, any>> {
+export interface Column<RowType extends object = Record<string, unknown>> {
 	key: keyof RowType & string;
 	label: string;
 	width?: string;
@@ -10,8 +10,10 @@ export interface Column<RowType extends Record<string, any> = Record<string, any
 	render?: (row: RowType) => string | number | null | undefined;
 
 	renderComponent?: (row: RowType) => {
-		component: Component<any, any, any>;
-		props?: Record<string, any>;
+		// Dynamic cell components intentionally accept heterogeneous prop shapes.
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		component: Component<any>;
+		props?: object;
 	};
 
 	searchValue?: (row: RowType) => string;

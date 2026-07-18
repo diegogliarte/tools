@@ -39,8 +39,6 @@
 	function formatHits(move: Move) {
 		const min = move.min_hits;
 		const max = move.max_hits;
-		const mode = move.hit_count_mode;
-
 		if (min != null && max != null) return min === max ? `${min}` : `${min}-${max}`;
 		if (min != null) return `${min}`;
 		if (max != null) return `${max}`;

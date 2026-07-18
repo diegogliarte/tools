@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -19,5 +20,5 @@
 		{page.error?.message ?? 'The requested page could not be loaded.'}
 	</p>
 
-	<a href="/" class="text-accent hover:underline">Back to tools</a>
+	<a href={resolve('/')} class="text-accent hover:underline">Back to tools</a>
 </div>

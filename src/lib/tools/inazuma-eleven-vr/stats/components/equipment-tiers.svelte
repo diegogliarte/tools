@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { loadEquipment } from '$lib/data/inazuma-eleven-vr/data';
+	import { loadEquipment, type EquipmentItem } from '$lib/data/inazuma-eleven-vr/data';
 
 	const gearTypes = ['Boots', 'Pendants', 'Bracelets', 'Misc'] as const;
 	type GearType = (typeof gearTypes)[number];
@@ -8,9 +8,9 @@
 	/* ------------------------------------------------
 	   MERGE AND CLEAN
 	------------------------------------------------ */
-	function cleanItems(list: any[]) {
+	function cleanItems(list: EquipmentItem[]) {
 		return list.map((r) => {
-			const c: any = { ...r };
+			const c: EquipmentItem = { ...r };
 			for (const k of Object.keys(c)) {
 				if (c[k] === '') c[k] = 0;
 			}
@@ -18,7 +18,7 @@
 		});
 	}
 
-	let gear = $state<Record<GearType, any[]>>({
+	let gear = $state<Record<GearType, EquipmentItem[]>>({
 		Boots: [],
 		Pendants: [],
 		Bracelets: [],

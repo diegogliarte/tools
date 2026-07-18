@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ToolCategory } from '$lib/tools/types';
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 	import { faviconUrl } from '$lib/utils/favicon.utils';
 	import CategoryNode from './CategoryNode.svelte';
 
@@ -25,7 +26,7 @@
 		<!-- tools -->
 		{#each category.tools as tool (tool.href)}
 			<a
-				href={tool.href}
+				href={resolve(tool.href as `/${string}/${string}`)}
 				class="truncate py-0.5 hover:text-accent {page.url.pathname === tool.href ? 'text-accent' : ''}"
 				title={tool.title}
 			>

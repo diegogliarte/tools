@@ -38,20 +38,6 @@
 		return ((clamped - min) / range) * 100;
 	});
 
-	let segmentPercents = $derived.by(() =>
-		segments.map((seg, i) => {
-			const start = i === 0 ? min : segments[i - 1].limit;
-			const end = seg.limit;
-
-			const widthPercentage = ((end - start) / range) * 100;
-
-			return {
-				widthPercentage,
-				color: seg.color
-			};
-		})
-	);
-
 	let currentColor: string = $derived.by(() => {
 		if (value === null || value === undefined || segments.length === 0) {
 			return 'text-text';
@@ -84,7 +70,7 @@
 			<div class="h-full bg-accent transition-all" style="width: {percentage}%"></div>
 
 			<div class="pointer-events-none absolute inset-0">
-				{#each segments as seg}
+				{#each segments as seg (seg.limit)}
 					<div
 						class="absolute top-0 bottom-0 border-r border-white"
 						style="left: {((seg.limit - min) / range) * 100}%"

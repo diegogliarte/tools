@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 	import Modal from '$lib/components/ui/modal.svelte';
 	import PadzMonsterIcon from '$lib/components/puzzle-and-dragons-z/PadzMonsterIcon.svelte';
 	import { loadPadzMonsters, loadPadzSkills } from '$lib/data/puzzle-and-dragons-z/data';
@@ -62,7 +63,7 @@
 	});
 
 	function getEvolutionFamilyIds(target: PadzMonster) {
-		const visited = new Set<number>();
+		const visited = new SvelteSet<number>();
 		const queue = [target.id];
 
 		while (queue.length) {
@@ -175,7 +176,7 @@
 				{#if monster.attributes?.length}
 					<div class="flex items-center gap-1">
 						Element:
-						{#each monster.attributes as attribute}
+						{#each monster.attributes as attribute (attribute)}
 							<img
 								src={getPadzElementIcon(attribute)}
 								alt={formatPadzElement(attribute)}

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { Component } from 'svelte';
+	import { resolve } from '$app/paths';
 
 	import MdiGithub from '~icons/mdi/github';
 	import MdiHome from '~icons/mdi/home';
-	import MdiCoffee from '~icons/mdi/coffee';
 	import MdiChevronLeft from '~icons/mdi/chevron-left';
 	import MdiChevronRight from '~icons/mdi/chevron-right';
 	import MdiMessageTextOutline from '~icons/mdi/message-text-outline';
@@ -19,7 +19,7 @@
 	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
 	import { openModal } from '$lib/states/modal.svelte';
 
-	type IconComponent = Component<any, any, any>;
+	type IconComponent = Component;
 
 	interface Props {
 		isSidebarOpen: boolean;
@@ -86,29 +86,10 @@
 
 <svelte:window onkeydown={handleGlobalKeydown} />
 
-{#snippet navLink(href: string, label: string, Icon: IconComponent, external = false, showTooltip = false)}
-	{#if showTooltip}
-		<a
-			{href}
-			aria-label={label}
-			class="relative text-text transition hover:text-accent"
-			use:tooltipAction={{ text: label, position: 'bottom' }}
-			target={external ? '_blank' : undefined}
-			rel={external ? 'noopener noreferrer' : undefined}
-		>
-			<Icon class="h-5 w-5" />
-		</a>
-	{:else}
-		<a
-			{href}
-			aria-label={label}
-			class="relative text-text transition hover:text-accent"
-			target={external ? '_blank' : undefined}
-			rel={external ? 'noopener noreferrer' : undefined}
-		>
-			<Icon class="h-5 w-5" />
-		</a>
-	{/if}
+{#snippet navLink(href: '/', label: string, Icon: IconComponent)}
+	<a href={resolve(href)} aria-label={label} class="relative text-text transition hover:text-accent">
+		<Icon class="h-5 w-5" />
+	</a>
 {/snippet}
 
 {#snippet navAction(label: string, Icon: IconComponent, onclick: () => void)}
@@ -175,6 +156,15 @@
 		</button>
 	</div>
 
-	<!-- {@render navLink('https://ko-fi.com/diegogliarte', 'Go to Ko-fi', MdiCoffee, true, true)} -->
-	{@render navLink('https://github.com/diegogliarte/tools', 'Go to GitHub', MdiGithub, true, true)}
+	<!-- <a href="https://ko-fi.com/diegogliarte">Ko-fi</a> -->
+	<a
+		href="https://github.com/diegogliarte/tools"
+		aria-label="Go to GitHub"
+		class="relative text-text transition hover:text-accent"
+		use:tooltipAction={{ text: 'Go to GitHub', position: 'bottom' }}
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		<MdiGithub class="h-5 w-5" />
+	</a>
 </nav>

@@ -6,7 +6,7 @@
 
 	import { loadPlayers } from '$lib/data/inazuma-eleven-vr/data';
 	import PlayerCell from '$lib/components/inazuma-eleven-vr/PlayerCell.svelte';
-	import { addMissingFilterOptions, makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { addMissingFilterOptions, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 	import { calculateATDFStats, type Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	let rawPlayers = $state<Player[]>([]);

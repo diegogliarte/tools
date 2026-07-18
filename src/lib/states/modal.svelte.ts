@@ -1,8 +1,10 @@
 import type { Component } from 'svelte';
 
 type ModalState = {
+	// Dynamic modal components intentionally accept heterogeneous prop shapes.
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	component: Component<any> | null;
-	props: Record<string, any>;
+	props: object;
 };
 
 export const modalState = $state<ModalState>({
@@ -10,7 +12,7 @@ export const modalState = $state<ModalState>({
 	props: {}
 });
 
-export function openModal(component: Component<any>, props: Record<string, any> = {}) {
+export function openModal<Props extends object>(component: Component<Props>, props: Props = {} as Props) {
 	modalState.component = component;
 	modalState.props = props;
 }

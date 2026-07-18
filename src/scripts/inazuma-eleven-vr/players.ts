@@ -12,12 +12,45 @@ const BATCH_SIZE = 5;
 const csvPath = path.join(import.meta.dirname, 'characters.csv');
 const csvRaw = fs.readFileSync(csvPath, 'utf-8');
 
-const csvRows: any[] = parse(csvRaw, {
+type CsvRow = Record<string, string>;
+
+type TeamEntry = {
+	realID: string;
+	name: string;
+	teams: string[];
+};
+
+type Player = {
+	CharaID: string;
+	Name: string;
+	Nickname: string;
+	Image: string;
+	Game: string;
+	Description: string;
+	Position: string | number;
+	Element: string | number;
+	InazugleLink: string;
+	Kick: string | number;
+	Control: string | number;
+	Technique: string | number;
+	Pressure: string | number;
+	Physical: string | number;
+	Agility: string | number;
+	Intelligence: string | number;
+	Total: number;
+	AgeGroup: string;
+	Year: string;
+	Gender: string;
+	Role: string;
+	HowToObtain: { title: string; entries: string[]; subsections: { title: string; entries: string[] }[] }[];
+};
+
+const csvRows: CsvRow[] = parse(csvRaw, {
 	columns: true,
 	skip_empty_lines: true
 });
 
-const csvMap: Record<number, any> = {};
+const csvMap: Record<number, CsvRow> = {};
 for (const row of csvRows) {
 	const id = Number(row.ID);
 	if (!isNaN(id)) csvMap[id] = row;
@@ -27,7 +60,9 @@ function clean(x: string): string {
 	return x.replace(/\s+/g, ' ').trim();
 }
 
-function stripRuby($el: any): string {
+function stripRuby($el: {
+	clone: () => { find: (selector: string) => { remove: () => void }; text: () => string };
+}): string {
 	const cloned = $el.clone();
 	cloned.find('rt').remove();
 	return clean(cloned.text());
@@ -67,7 +102,7 @@ function extractListID(raw: string): string {
 // -----------------------------------------------------
 function parsePlayers(html: string) {
 	const $ = load(html);
-	const items: any[] = [];
+	const items: Player[] = [];
 
 	$('ul.charaListBox > li').each((_, el) => {
 		const $p = $(el);
@@ -83,7 +118,7 @@ function parsePlayers(html: string) {
 		const game = clean($p.find('dl.appearedWorks dd').text());
 		const description = clean($p.find('p.description').text());
 
-		const howToObtain: any[] = [];
+		const howToObtain: Player['HowToObtain'] = [];
 
 		$p.find('dl.getTxt > dd')
 			.children('dl')
@@ -91,7 +126,7 @@ function parsePlayers(html: string) {
 				const $dl = $(dl);
 				const title = clean($dl.find('> dt').text());
 
-				const subsections: any[] = [];
+				const subsections: Player['HowToObtain'][number]['subsections'] = [];
 				const entries: string[] = [];
 
 				// Find subsection blocks (dd with p + ul)
@@ -118,7 +153,7 @@ function parsePlayers(html: string) {
 				howToObtain.push({ title, entries, subsections });
 			});
 
-		const stats: Record<string, any> = {};
+		const stats: Record<string, string | number> = {};
 		$p.find('ul.param > li dl').each((_, dl) => {
 			const key = clean($(dl).find('dt').text());
 			const dd = $(dl).find('dd');
@@ -144,7 +179,7 @@ function parsePlayers(html: string) {
 
 		const total = ['Kick', 'Control', 'Technique', 'Pressure', 'Physical', 'Agility', 'Intelligence']
 			.map((k) => stats[k] ?? 0)
-			.reduce((a, b) => a + b, 0);
+			.reduce<number>((a, b) => a + Number(b), 0);
 
 		items.push({
 			CharaID: id,
@@ -162,7 +197,7 @@ function parsePlayers(html: string) {
 			Pressure: stats.Pressure ?? 0,
 			Physical: stats.Physical ?? 0,
 			Agility: stats.Agility ?? 0,
-			Intelligence: stats.Intelligence ?? 0,
+			Intelligence: Number(stats.Intelligence ?? 0),
 			Total: total,
 			AgeGroup: basic['Age Group'] ?? '',
 			Year: basic['School Year'] ?? '',
@@ -219,7 +254,7 @@ function parseTeams(html: string) {
 // -----------------------------------------------------
 async function scrapeAllParam() {
 	let page = 1;
-	let results: any[] = [];
+	const results: Player[] = [];
 
 	while (true) {
 		const pages = Array.from({ length: BATCH_SIZE }, (_, i) => page + i);
@@ -244,7 +279,7 @@ async function scrapeAllParam() {
 
 async function scrapeAllTeams() {
 	let page = 1;
-	let results: Record<string, any> = {};
+	const results: Record<string, TeamEntry> = {};
 
 	while (true) {
 		const pages = Array.from({ length: BATCH_SIZE }, (_, i) => page + i);
@@ -296,10 +331,8 @@ async function run() {
 		const csv = csvMap[realID] ?? null;
 
 		final.push({
-			ID: realID,
-			CharaID: id,
-
 			...p,
+			ID: realID,
 
 			Teams: t.teams,
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ToolCategory } from '$lib/tools/types';
+	import { resolve } from '$app/paths';
 	import { faviconUrl } from '$lib/utils/favicon.utils';
 
 	export let category: ToolCategory;
@@ -23,7 +24,7 @@
 		<div class="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
 			{#each category.tools as tool (tool)}
 				<a
-					href={tool.href}
+					href={resolve(tool.href as `/${string}/${string}`)}
 					class="
 					border px-2 py-1
 					transition-colors hover:border-accent

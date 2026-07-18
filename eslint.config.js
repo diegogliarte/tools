@@ -11,6 +11,10 @@ import svelteConfig from './svelte.config.js';
 const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
 export default defineConfig(
+	{
+		// This is a generator template intentionally excluded from the TypeScript project.
+		ignores: ['src/lib/tools/.placeholder/**']
+	},
 	includeIgnoreFile(gitignorePath),
 	js.configs.recommended,
 	...ts.configs.recommended,

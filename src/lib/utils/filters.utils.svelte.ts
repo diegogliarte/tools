@@ -1,5 +1,7 @@
+import { SvelteSet } from 'svelte/reactivity';
+
 export function unique<T>(arr: T[]) {
-	return Array.from(new Set(arr));
+	return Array.from(new SvelteSet(arr));
 }
 
 export function sortNoneLast(list: string[]) {

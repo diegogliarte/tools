@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import Button from '$lib/components/ui/button.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
@@ -111,7 +112,7 @@
 	function findShortestPath(startId: number, endId: number, blocked: Set<number>): number[] {
 		const graph = buildGraph();
 		const queue: number[][] = [[startId]];
-		const visited = new Set([startId]);
+		const visited = new SvelteSet([startId]);
 
 		while (queue.length) {
 			const path = queue.shift()!;
@@ -149,8 +150,9 @@
 	}
 
 	function toggleBlocked(route: Route, id: number) {
-		const next = new Set(route.blocked);
-		next.has(id) ? next.delete(id) : next.add(id);
+		const next = new SvelteSet(route.blocked);
+		if (next.has(id)) next.delete(id);
+		else next.add(id);
 
 		route.blocked = next;
 	}
@@ -325,7 +327,7 @@
 
 				{#if r.blocked.size}
 					<div class="flex flex-wrap gap-2 opacity-50">
-						{#each [...r.blocked] as id}
+						{#each [...r.blocked] as id (id)}
 							{@const d = digimonById.get(id)}
 							{#if d}
 								<div class="w-10 cursor-pointer">

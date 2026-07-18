@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { SvelteMap, SvelteSet } from 'svelte/reactivity';
 	import Modal from '$lib/components/ui/modal.svelte';
 	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
 	import { loadPmdCoreData, type Ability, type Move, type PokemonMoves } from '$lib/data/pmd-blue/data';
@@ -58,7 +59,7 @@
 
 	function getAllPreEvolutionPokemons(target: Pokemon): Pokemon[] {
 		const result: Pokemon[] = [];
-		const visited = new Set<string>();
+		const visited = new SvelteSet<string>();
 
 		function walk(current: Pokemon) {
 			const pres = getDirectPreEvolutionPokemons(current);
@@ -102,7 +103,7 @@
 		const preEvos = getAllPreEvolutionPokemons(target);
 
 		const currentIds = new Set(currentMoves.map((m) => m.id));
-		const merged = new Map<number, DisplayMove>();
+		const merged = new SvelteMap<number, DisplayMove>();
 
 		for (const move of currentMoves) {
 			merged.set(move.id, {
@@ -154,7 +155,7 @@
 		const preEvos = getAllPreEvolutionPokemons(target);
 
 		const currentIds = new Set(currentMoves.map((m) => m.id));
-		const merged = new Map<number, DisplayMove>();
+		const merged = new SvelteMap<number, DisplayMove>();
 
 		for (const move of currentMoves) {
 			merged.set(move.id, {
@@ -367,8 +368,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each Array(100) as _, i}
-						{@const lvl = i + 1}
+					{#each Array.from({ length: 100 }, (_, i) => i + 1) as lvl (lvl)}
 						<tr>
 							<td class="p-1">{lvl}</td>
 							<td class="p-1">{statAt(lvl, pokemon.base_hp, pokemon.stats_growth.hp)}</td>

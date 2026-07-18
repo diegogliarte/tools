@@ -35,8 +35,7 @@
 
 <div class="flex justify-center">
 	<div class="grid w-full max-w-xl gap-1" style="grid-template-columns: repeat(7, 1fr);">
-		{#each Array(totalDays) as _, i (i)}
-			{@const day = i + 1}
+		{#each Array.from({ length: totalDays }, (_, i) => i + 1) as day (day)}
 			{@const isToday = day === passedDays}
 
 			<div

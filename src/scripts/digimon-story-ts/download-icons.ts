@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 
 const DATA_DIR = path.join('src', 'lib', 'data', 'digimon-story-ts');
 

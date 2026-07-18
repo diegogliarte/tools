@@ -93,13 +93,17 @@
 		sortValue: (d) => d.type
 	};
 
-	const totalColumn: Column<any> = {
+	function totalStats(d: Record<string, unknown>) {
+		return ['HP', 'SP', 'ATK', 'DEF', 'INT', 'SPI', 'SPD'].reduce((total, stat) => total + Number(d[stat] ?? 0), 0);
+	}
+
+	const totalColumn: Column<Record<string, unknown>> = {
 		key: 'TOTAL',
 		label: 'Total',
 
-		sortValue: (d) => d.HP + d.SP + d.ATK + d.DEF + d.INT + d.SPI + d.SPD,
+		sortValue: totalStats,
 
-		render: (d) => String(d.HP + d.SP + d.ATK + d.DEF + d.INT + d.SPI + d.SPD)
+		render: (d) => String(totalStats(d))
 	};
 
 	const ridableColumn: Column<Digimon> = {

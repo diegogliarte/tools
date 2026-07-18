@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 	import SelectInput from '$lib/components/ui/select-input.svelte';
 	import PokemonIcon from '$lib/components/pmd-blue/PokemonIcon.svelte';
 
@@ -46,7 +47,7 @@
 		new Map<string, Set<string>>(
 			pokemons.map((pokemon) => {
 				const entry = pokemonMovesById.get(String(pokemon.game_id));
-				const ids = new Set<string>();
+				const ids = new SvelteSet<string>();
 
 				for (const move of entry?.levelup_moves ?? []) ids.add(String(move.move_id));
 				for (const moveId of entry?.aux_moves ?? []) ids.add(String(moveId));
@@ -61,7 +62,7 @@
 	}
 
 	function uniqueOptions(options: Option[]) {
-		const seen = new Set<string>();
+		const seen = new SvelteSet<string>();
 		return sortOptions(
 			options.filter((opt) => {
 				if (!opt.value || seen.has(opt.value)) return false;
@@ -248,7 +249,7 @@
 	const selectedMove4Data = $derived.by(() => moveById.get(selectedMove4));
 </script>
 
-{#snippet detailCard(title: string, description?: string)}
+{#snippet detailCard(description?: string)}
 	<div class="text-xs opacity-80">
 		{description}
 	</div>
@@ -289,7 +290,7 @@
 				/>
 
 				{#if selectedAbility1Data}
-					{@render detailCard(selectedAbility1Data.name, selectedAbility1Data.description)}
+					{@render detailCard(selectedAbility1Data.description)}
 				{/if}
 			</div>
 
@@ -302,7 +303,7 @@
 				/>
 
 				{#if selectedAbility2Data}
-					{@render detailCard(selectedAbility2Data.name, selectedAbility2Data.description)}
+					{@render detailCard(selectedAbility2Data.description)}
 				{/if}
 			</div>
 		</div>

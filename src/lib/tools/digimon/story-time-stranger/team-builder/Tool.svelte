@@ -5,6 +5,7 @@
 	import DigimonIcon from '$lib/components/digimon-story-ts/DigimonIcon.svelte';
 	import { tooltipAction } from '$lib/actions/tooltip';
 	import { onMount } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
 
 	import MdiChevronRight from '~icons/mdi/chevron-right';
 	import MdiClose from '~icons/mdi/close';
@@ -170,7 +171,7 @@
 		const chain: number[] = [start.id];
 		let current = start;
 
-		const visited = new Set<number>([current.id]);
+		const visited = new SvelteSet<number>([current.id]);
 		used.add(current.id);
 
 		while (current.evolutions?.length) {

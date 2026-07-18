@@ -4,7 +4,7 @@
 	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
 	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
 	import { loadPlayers } from '$lib/data/inazuma-eleven-vr/data';
-	import { makeFilter, sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
+	import { sortNoneLast, unique } from '$lib/utils/filters.utils.svelte.js';
 	import type { Player } from '$lib/utils/inazuma-eleven-vr.utils';
 
 	let search = $state('');

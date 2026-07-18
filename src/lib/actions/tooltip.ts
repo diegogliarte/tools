@@ -271,7 +271,8 @@ export const tooltipAction: Action<HTMLElement, TooltipParams> = (node, params) 
 	function handleClick() {
 		if (open) return;
 		if (trigger === 'click' || trigger === 'both') {
-			isVisible ? hide() : show();
+			if (isVisible) hide();
+			else show();
 		}
 	}
 

@@ -45,7 +45,7 @@
 		{
 			key: 'name',
 			label: 'Name',
-			searchValue: (p) => p.name,
+			searchValue: (p) => String(p.name ?? ''),
 			renderComponent: (p) => ({
 				component: PokemonCell,
 				props: { pokemon: p }
