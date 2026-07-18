@@ -7,7 +7,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
+		"prepare": "svelte-kit sync || echo ''; husky",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
@@ -19,6 +19,13 @@
 		"scrape:pmd-blue:download-icons": "tsx src/scripts/pmd-blue/download-icons.ts",
 		"generate:emojis": "tsx src/scripts/emojis/generate.ts",
 		"generate-og-images": "tsx src/scripts/generate-og-images.ts"
+	},
+	"lint-staged": {
+		"*.{js,ts,svelte}": [
+			"prettier --write",
+			"eslint --fix"
+		],
+		"*.{json,md,css,html,yml,yaml}": "prettier --write"
 	},
 	"dependencies": {
 		"chart.js": "^4.5.1",
@@ -43,6 +50,8 @@
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-svelte": "^3.17.1",
 		"globals": "^16.5.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.1.0",
 		"playwright": "^1.60.0",
 		"prettier": "^3.6.2",
 		"prettier-plugin-svelte": "^3.4.0",
