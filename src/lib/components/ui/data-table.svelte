@@ -219,12 +219,7 @@
 									<div class="flex items-center gap-2">
 										{#each images as image, index (`${image.src}-${index}`)}
 											<span class="flex items-center gap-1">
-												<img
-													src={image.src}
-													alt={image.alt ?? ''}
-													title={image.title}
-													class="h-[1.5em] w-[1.5em] shrink-0"
-												/>
+												<img src={image.src} alt={image.alt ?? ''} title={image.title} class="size-7 shrink-0" />
 												{#if image.text}
 													<span>{image.text}</span>
 												{/if}
