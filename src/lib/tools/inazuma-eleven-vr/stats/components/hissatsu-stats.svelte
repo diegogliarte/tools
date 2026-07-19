@@ -19,18 +19,6 @@
 		Movie?: string | null;
 	};
 
-	// Element colors (optional)
-	const elementColor = {
-		Mountain: 'bg-yellow-800',
-		Fire: 'bg-red-800',
-		Forest: 'bg-green-800',
-		Wind: 'bg-sky-800'
-	} as const;
-
-	function getElementColor(element: string) {
-		return elementColor[element as keyof typeof elementColor] ?? 'bg-neutral-600';
-	}
-
 	let hissatsu = $state<HissatsuRow[]>([]);
 
 	onMount(async () => {
@@ -50,13 +38,7 @@
 		key: 'Name',
 		label: 'Name',
 		width: '260px',
-		searchValue: (h) => `${h.Name} ${h['Japanese Name']} ${h.Type} ${h.Element}`,
-		render: (h) => `
-		<div class="relative group flex items-center gap-2 cursor-pointer">
-			<div class="w-3 h-3 rounded-sm ${getElementColor(h.Element)}"></div>
-			<span>${h.Name}</span>
-		</div>
-	`
+		searchValue: (h) => `${h.Name} ${h['Japanese Name']} ${h.Type} ${h.Element}`
 	};
 
 	// ${h.Movie ? `

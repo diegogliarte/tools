@@ -31,7 +31,7 @@
 		loading="lazy"
 		class="
 			pointer-events-none aspect-square h-full w-full border object-cover group-hover:border-accent
-			{getPadzElementClass(monster.attributes?.[0])}
+			{getPadzElementClass(monster.attribute)}
 			{variant === 'viewer' ? 'transition-colors' : ''}
 		"
 	/>

@@ -173,17 +173,15 @@
 					<div>Level Cap: {monster.level_cap}</div>
 				{/if}
 
-				{#if monster.attributes?.length}
+				{#if monster.attribute}
 					<div class="flex items-center gap-1">
 						Element:
-						{#each monster.attributes as attribute (attribute)}
-							<img
-								src={getPadzElementIcon(attribute)}
-								alt={formatPadzElement(attribute)}
-								title={formatPadzElement(attribute)}
-								class="h-[1.4em] w-[1.4em]"
-							/>
-						{/each}
+						<img
+							src={getPadzElementIcon(monster.attribute)}
+							alt={formatPadzElement(monster.attribute)}
+							title={formatPadzElement(monster.attribute)}
+							class="h-[1.4em] w-[1.4em]"
+						/>
 					</div>
 				{/if}
 

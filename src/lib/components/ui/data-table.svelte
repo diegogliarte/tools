@@ -7,7 +7,7 @@
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 	import MdiChevronUpDown from '~icons/mdi/chevron-up-down';
-	import type { Column as DataTableColumn, SortValue } from '$lib/components/ui/data-table.types';
+	import type { CellImage, Column as DataTableColumn, SortValue } from '$lib/components/ui/data-table.types';
 
 	interface Props<RowType extends object> {
 		columns: DataTableColumn<RowType>[];
@@ -38,11 +38,21 @@
 			return col.searchValue(row);
 		}
 
-		if (col.render) {
-			return String(col.render(row) ?? '').replace(/<[^>]+>/g, ' ');
-		}
+		return String(cellValue(row, col) ?? '');
+	}
 
-		return String(row[col.key] ?? '');
+	function cellValue(row: RowType, col: DataTableColumn<RowType>) {
+		return col.value ? col.value(row) : row[col.key];
+	}
+
+	function cellClass(row: RowType, col: DataTableColumn<RowType>) {
+		return typeof col.class === 'function' ? col.class(row) : col.class;
+	}
+
+	function cellImages(row: RowType, col: DataTableColumn<RowType>): CellImage[] {
+		const value = typeof col.image === 'function' ? col.image(row) : col.image;
+		if (!value) return [];
+		return Array.isArray(value) ? value : [value];
 	}
 
 	function compareValues(a: SortValue, b: SortValue) {
@@ -58,10 +68,6 @@
 			numeric: true,
 			sensitivity: 'base'
 		});
-	}
-
-	function renderHtml(value: string | number | null | undefined) {
-		return String(value ?? '');
 	}
 
 	let processed = $derived.by(() => {
@@ -93,7 +99,7 @@
 		return filtered;
 	});
 
-	let page = $derived(1);
+	let page = $state(1);
 	let visibleRows = $derived.by(() => processed.slice(0, page * pageSize));
 
 	let scrollEl: HTMLElement;
@@ -117,13 +123,15 @@
 		return () => el.removeEventListener('scroll', onScroll);
 	});
 
-	function pageAfterChange(...dependencies: unknown[]) {
-		return dependencies.length >= 0 ? 1 : page;
-	}
-
 	$effect(() => {
-		page = pageAfterChange(search, sortKey, sortDir, rows);
+		resetPageOnChange(search, sortKey, sortDir, rows);
 	});
+
+	function resetPageOnChange(...dependencies: unknown[]) {
+		if (!dependencies.length) return;
+
+		page = 1;
+	}
 
 	function toggleSort(key: keyof RowType & string) {
 		if (sortKey !== key) {
@@ -201,15 +209,33 @@
 						onclick={(event) => handleRowClick(event, row)}
 					>
 						{#each columns as col (col)}
-							<td class="p-1">
+							{@const images = cellImages(row, col)}
+							<td class="p-1 {cellClass(row, col) ?? ''}">
 								{#if col.renderComponent}
 									{@const rendered = col.renderComponent(row)}
 									{@const Component = rendered.component}
 									<Component {...rendered.props} />
-								{:else if col.render}
-									{renderHtml(col.render(row))}
+								{:else if images.length}
+									<div class="flex items-center gap-2">
+										{#each images as image, index (`${image.src}-${index}`)}
+											<span class="flex items-center gap-1">
+												<img
+													src={image.src}
+													alt={image.alt ?? ''}
+													title={image.title}
+													class="h-[1.5em] w-[1.5em] shrink-0"
+												/>
+												{#if image.text}
+													<span>{image.text}</span>
+												{/if}
+											</span>
+										{/each}
+										{#if col.value}
+											<span>{cellValue(row, col) ?? ''}</span>
+										{/if}
+									</div>
 								{:else}
-									{row[col.key] ?? ''}
+									{cellValue(row, col) ?? ''}
 								{/if}
 							</td>
 						{/each}

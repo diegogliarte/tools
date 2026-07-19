@@ -70,6 +70,10 @@ export function getSkillIcon(type: string): string {
 	return `/digimon-story-ts/skills/${toKebabCase(type)}.png`;
 }
 
+export function getDigimonAttributeIcon(attribute: string): string {
+	return `/digimon-story-ts/${toKebabCase(attribute)}.png`;
+}
+
 export function getDigimonIcon(digimon: Digimon): string {
 	return `/digimon-story-ts/digimons/${digimon.id}-${digimon.slug}.webp`;
 }

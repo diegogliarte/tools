@@ -95,7 +95,7 @@
 		{ key: 'Physical', label: 'Physical' },
 		{ key: 'Agility', label: 'Agility' },
 		{ key: 'Intelligence', label: 'Intelligence' },
-		{ key: 'Total', label: 'Total', render: (p) => `<span class="font-bold">${p.Total}</span>` }
+		{ key: 'Total', label: 'Total' }
 	];
 
 	const atdfColumns: Column[] = [

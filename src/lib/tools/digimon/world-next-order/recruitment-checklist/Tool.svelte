@@ -97,8 +97,6 @@
 	});
 
 	const digimonByName = $derived(new Map(timeStrangerDigimon.map((digimon) => [digimon.name.toLowerCase(), digimon])));
-	const recruitableNames = entries.map((entry) => entry.name).sort((a, b) => b.length - a.length);
-
 	const flags = Array.from(
 		new Set(entries.flatMap((entry) => entry.requirements ?? []).filter((req) => req.startsWith('flag:')))
 	)
@@ -192,43 +190,6 @@
 		return 'text-white/50';
 	}
 
-	function escapeHtml(value: string) {
-		return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-	}
-
-	function escapeRegex(value: string) {
-		return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-	}
-
-	function accentEscaped(value: string) {
-		return `<span class="text-accent">${value}</span>`;
-	}
-
-	function accentKnownDigimonNames(value: string) {
-		let rendered = escapeHtml(value);
-
-		for (const name of recruitableNames) {
-			const escapedName = escapeHtml(name);
-			rendered = rendered.replace(new RegExp(`\\b${escapeRegex(escapedName)}\\b`, 'g'), accentEscaped(escapedName));
-		}
-
-		return rendered;
-	}
-
-	function accentRecruitmentText(value: string) {
-		return accentKnownDigimonNames(value);
-	}
-
-	function renderRequirementLabel(label: string) {
-		return accentKnownDigimonNames(label);
-	}
-
-	function renderRequirements(labels: string[]) {
-		if (!labels.length) return '—';
-
-		return labels.map(renderRequirementLabel).join('<span class="opacity-50">, </span>');
-	}
-
 	function methodText(entry: RecruitmentEntry) {
 		const { method } = entry;
 
@@ -281,30 +242,28 @@
 			label: 'Status',
 			width: '8%',
 			sortValue: (row) => ['Available', 'Step', 'Blocked', 'Recruited'].indexOf(row.status),
-			render: (row) => `<span class="${statusClass(row.status)}">${row.status}</span>`
+			class: (row) => statusClass(row.status),
+			value: (row) => row.status
 		},
 		{
 			key: 'area',
 			label: 'Area',
 			width: '15%',
 			sortValue: (row) => `${row.area} ${row.subarea}`,
-			render: (row) => `${escapeHtml(row.area)}<div class="text-xs opacity-60">${escapeHtml(row.subarea)}</div>`
+			class: 'whitespace-pre-line',
+			value: (row) => `${row.area}\n${row.subarea}`
 		},
 		{
 			key: 'how',
 			label: 'Recruitment',
 			width: '30%',
 			searchValue: (row) => [row.how, row.requirementsText].join(' '),
-			render: (row) => {
+			class: 'whitespace-pre-line',
+			value: (row) => {
 				const labels = row.blockerLabels.length ? row.blockerLabels : row.requirementLabels;
 				const requirementPrefix = row.blockerLabels.length ? 'Blocked by' : row.status === 'Step' ? 'Do' : 'Needs';
 
-				return [
-					accentRecruitmentText(row.how),
-					labels.length
-						? `<div class="mt-0.5 text-xs"><span class="opacity-60">${requirementPrefix}</span> ${renderRequirements(labels)}</div>`
-						: ''
-				].join('');
+				return [row.how, labels.length ? `${requirementPrefix} ${labels.join(', ')}` : ''].filter(Boolean).join('\n');
 			}
 		},
 		{
@@ -312,8 +271,8 @@
 			label: 'Floatia',
 			width: '25%',
 			searchValue: (row) => [row.floatiaLocation, row.service].join(' '),
-			render: (row) =>
-				`${escapeHtml(row.floatiaLocation)}<div class="mt-0.5 text-xs opacity-70">${escapeHtml(row.service)}</div>`
+			class: 'whitespace-pre-line',
+			value: (row) => `${row.floatiaLocation}\n${row.service}`
 		}
 	];
 

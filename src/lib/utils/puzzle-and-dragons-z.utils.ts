@@ -27,7 +27,7 @@ export type PadzMonster = {
 	slug: string;
 	name: string;
 	description?: string;
-	attributes: string[];
+	attribute: string;
 	type?: string;
 	level_cap?: number;
 	base_stats: PadzBaseStats;
@@ -159,7 +159,7 @@ export function getPadzSkillSearchText(skill: PadzSkill) {
 }
 
 export function getPadzMonsterSearchText(monster: PadzMonster) {
-	return [monster.id, monster.name, monster.slug, monster.type, ...(monster.attributes ?? []), monster.description]
+	return [monster.id, monster.name, monster.slug, monster.type, monster.attribute, monster.description]
 		.filter(Boolean)
 		.join(' ');
 }

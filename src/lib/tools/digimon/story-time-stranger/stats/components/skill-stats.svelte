@@ -78,16 +78,8 @@
 		label: 'Skill',
 		width: '260px',
 		searchValue: (s) => `${s.name} ${s.type} ${s.category}`,
-		render: (s) => `
-			<div class="flex items-center gap-2">
-				<img
-					src="${getSkillIcon(s.type)}"
-					alt="${s.type}"
-					class="h-[1.5em] w-[1.5em] shrink-0"
-				/>
-				<span class="font-medium">${s.name}</span>
-			</div>
-		`
+		image: (s) => ({ src: getSkillIcon(s.type), alt: s.type }),
+		value: (s) => s.name
 	};
 
 	const categoryColumn: Column<Skill> = {
@@ -100,42 +92,42 @@
 		key: 'damage_type',
 		label: 'DMG',
 		sortValue: (s) => s.damage_type ?? '',
-		render: (s) => s.damage_type ?? '—'
+		value: (s) => s.damage_type ?? '—'
 	};
 
 	const powerColumn: Column<Skill> = {
 		key: 'power',
 		label: 'Power',
 		sortValue: (s) => s.power ?? -1,
-		render: (s) => (s.power !== undefined ? String(s.power) : '—')
+		value: (s) => (s.power !== undefined ? String(s.power) : '—')
 	};
 
 	const spColumn: Column<Skill> = {
 		key: 'sp_cost',
 		label: 'SP',
 		sortValue: (s) => s.sp_cost ?? -1,
-		render: (s) => (s.sp_cost !== undefined ? String(s.sp_cost) : '—')
+		value: (s) => (s.sp_cost !== undefined ? String(s.sp_cost) : '—')
 	};
 
 	const accuracyColumn: Column<Skill> = {
 		key: 'accuracy',
 		label: 'Acc',
 		sortValue: (s) => s.accuracy ?? -1,
-		render: (s) => (s.accuracy !== undefined ? `${s.accuracy}%` : '—')
+		value: (s) => (s.accuracy !== undefined ? `${s.accuracy}%` : '—')
 	};
 
 	const targetColumn: Column<Skill> = {
 		key: 'target',
 		label: 'Target',
 		sortValue: (s) => s.target,
-		render: (s) => formatSkillTarget(s.target)
+		value: (s) => formatSkillTarget(s.target)
 	};
 
 	const hitCountColumn: Column<Skill> = {
 		key: 'hit_count',
 		label: 'Hit Count',
 		sortValue: (s) => s.hit_count,
-		render: (s) => (s.hit_count !== undefined ? s.hit_count : '—')
+		value: (s) => (s.hit_count !== undefined ? s.hit_count : '—')
 	};
 
 	const columns = $derived([

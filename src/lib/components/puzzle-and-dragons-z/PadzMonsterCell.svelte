@@ -25,7 +25,7 @@
 <Cell
 	image={getPadzMonsterIcon(monster.id)}
 	imageAlt={monster.name}
-	thumbnailClass={getPadzElementClass(monster.attributes?.[0])}
+	thumbnailClass={getPadzElementClass(monster.attribute)}
 	onClick={open}
 >
 	<div>

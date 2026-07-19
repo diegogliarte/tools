@@ -96,12 +96,9 @@
 		{
 			key: 'class',
 			label: 'Class',
-			render: (m) => {
-				const color =
-					m.class === 'Physical' ? 'text-red-400' : m.class === 'Special' ? 'text-blue-400' : 'text-yellow-400';
-
-				return `<span class="${color}">${m.class}</span>`;
-			}
+			class: (m) =>
+				m.class === 'Physical' ? 'text-red-400' : m.class === 'Special' ? 'text-blue-400' : 'text-yellow-400',
+			value: (m) => m.class
 		},
 		{ key: 'power', label: 'Power' },
 		{ key: 'maxPP', label: 'PP' },

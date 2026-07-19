@@ -3,7 +3,7 @@
 		"id": 1,
 		"slug": "flamie",
 		"name": "Flamie",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 15,
 		"base_stats": {
@@ -33,7 +33,7 @@
 		"id": 2,
 		"slug": "bubblie",
 		"name": "Bubblie",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 15,
 		"base_stats": {
@@ -63,7 +63,7 @@
 		"id": 3,
 		"slug": "woodsie",
 		"name": "Woodsie",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 15,
 		"base_stats": {
@@ -93,7 +93,7 @@
 		"id": 4,
 		"slug": "shynee",
 		"name": "Shynee",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Mutant",
 		"level_cap": 15,
 		"base_stats": {
@@ -123,7 +123,7 @@
 		"id": 5,
 		"slug": "baddie",
 		"name": "Baddie",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 15,
 		"base_stats": {
@@ -153,7 +153,7 @@
 		"id": 6,
 		"slug": "mega-flamie",
 		"name": "Mega Flamie",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 65,
 		"base_stats": {
@@ -190,7 +190,7 @@
 		"id": 7,
 		"slug": "mega-bubblie",
 		"name": "Mega Bubblie",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 65,
 		"base_stats": {
@@ -227,7 +227,7 @@
 		"id": 8,
 		"slug": "mega-woodsie",
 		"name": "Mega Woodsie",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 65,
 		"base_stats": {
@@ -264,7 +264,7 @@
 		"id": 9,
 		"slug": "mega-shynee",
 		"name": "Mega Shynee",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Mutant",
 		"level_cap": 65,
 		"base_stats": {
@@ -301,7 +301,7 @@
 		"id": 10,
 		"slug": "mega-baddie",
 		"name": "Mega Baddie",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 65,
 		"base_stats": {
@@ -338,7 +338,7 @@
 		"id": 11,
 		"slug": "giga-flamie",
 		"name": "Giga Flamie",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -380,7 +380,7 @@
 		"id": 12,
 		"slug": "giga-bubblie",
 		"name": "Giga Bubblie",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -422,7 +422,7 @@
 		"id": 13,
 		"slug": "giga-woodsie",
 		"name": "Giga Woodsie",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -464,7 +464,7 @@
 		"id": 14,
 		"slug": "giga-shynee",
 		"name": "Giga Shynee",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -506,7 +506,7 @@
 		"id": 15,
 		"slug": "giga-baddie",
 		"name": "Giga Baddie",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -548,7 +548,7 @@
 		"id": 16,
 		"slug": "melagon",
 		"name": "Melagon",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 25,
 		"base_stats": {
@@ -578,7 +578,7 @@
 		"id": 17,
 		"slug": "zabgon",
 		"name": "Zabgon",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 25,
 		"base_stats": {
@@ -608,7 +608,7 @@
 		"id": 18,
 		"slug": "morigon",
 		"name": "Morigon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 25,
 		"base_stats": {
@@ -638,7 +638,7 @@
 		"id": 19,
 		"slug": "kiragon",
 		"name": "Kiragon",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 25,
 		"base_stats": {
@@ -668,7 +668,7 @@
 		"id": 20,
 		"slug": "wargon",
 		"name": "Wargon",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 25,
 		"base_stats": {
@@ -698,7 +698,7 @@
 		"id": 21,
 		"slug": "melagios",
 		"name": "Melagios",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -740,7 +740,7 @@
 		"id": 22,
 		"slug": "zablion",
 		"name": "Zablion",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -782,7 +782,7 @@
 		"id": 23,
 		"slug": "moriett",
 		"name": "Moriett",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -824,7 +824,7 @@
 		"id": 24,
 		"slug": "kiravolt",
 		"name": "Kiravolt",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -866,7 +866,7 @@
 		"id": 25,
 		"slug": "waldu",
 		"name": "Waldu",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -908,7 +908,7 @@
 		"id": 26,
 		"slug": "melaburn",
 		"name": "Melaburn",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -950,7 +950,7 @@
 		"id": 27,
 		"slug": "zabshark",
 		"name": "Zabshark",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -992,7 +992,7 @@
 		"id": 28,
 		"slug": "morigannon",
 		"name": "Morigannon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -1034,7 +1034,7 @@
 		"id": 29,
 		"slug": "kiradith",
 		"name": "Kiradith",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -1076,7 +1076,7 @@
 		"id": 30,
 		"slug": "warzard",
 		"name": "Warzard",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -1118,7 +1118,7 @@
 		"id": 31,
 		"slug": "flame-dragon-bonfire",
 		"name": "Flame Dragon, Bonfire",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1160,7 +1160,7 @@
 		"id": 32,
 		"slug": "water-dragon-cutlass",
 		"name": "Water Dragon, Cutlass",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1202,7 +1202,7 @@
 		"id": 33,
 		"slug": "tree-dragon-ash",
 		"name": "Tree Dragon, Ash",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1244,7 +1244,7 @@
 		"id": 34,
 		"slug": "storm-dragon-thundra",
 		"name": "Storm Dragon, Thundra",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1286,7 +1286,7 @@
 		"id": 35,
 		"slug": "wicked-dragon-dorma",
 		"name": "Wicked Dragon, Dorma",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1328,7 +1328,7 @@
 		"id": 36,
 		"slug": "flame-dragon-lance",
 		"name": "Flame Dragon, Lance",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1370,7 +1370,7 @@
 		"id": 37,
 		"slug": "water-dragon-reis",
 		"name": "Water Dragon, Reis",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1412,7 +1412,7 @@
 		"id": 38,
 		"slug": "tree-dragon-kukunochi",
 		"name": "Tree Dragon, Kukunochi",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1454,7 +1454,7 @@
 		"id": 39,
 		"slug": "storm-dragon-mistrain",
 		"name": "Storm Dragon, Mistrain",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1496,7 +1496,7 @@
 		"id": 40,
 		"slug": "wicked-dragon-nemesis",
 		"name": "Wicked Dragon, Nemesis",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1538,7 +1538,7 @@
 		"id": 41,
 		"slug": "burst-dragon-blaze",
 		"name": "Burst Dragon, Blaze",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1580,7 +1580,7 @@
 		"id": 42,
 		"slug": "sea-dragon-mizuchi",
 		"name": "Sea Dragon, Mizuchi",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1622,7 +1622,7 @@
 		"id": 43,
 		"slug": "stone-dragon-agon",
 		"name": "Stone Dragon, Agon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1664,7 +1664,7 @@
 		"id": 44,
 		"slug": "light-dragon-seiver",
 		"name": "Light Dragon, Seiver",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1706,7 +1706,7 @@
 		"id": 45,
 		"slug": "shadow-dragon-shade",
 		"name": "Shadow Dragon, Shade",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 75,
 		"base_stats": {
@@ -1748,7 +1748,7 @@
 		"id": 46,
 		"slug": "burning-dragon-amanohoderi",
 		"name": "Burning Dragon, Amanohoderi",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -1795,7 +1795,7 @@
 		"id": 47,
 		"slug": "torrent-dragon-tyrfing",
 		"name": "Torrent Dragon, Tyrfing",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -1842,7 +1842,7 @@
 		"id": 48,
 		"slug": "mighty-tree-dragon-irminsul",
 		"name": "Mighty Tree Dragon, Irminsul",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -1889,7 +1889,7 @@
 		"id": 49,
 		"slug": "flashing-lightning-dragon-exophia",
 		"name": "Flashing Lightning Dragon, Exophia",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -1936,7 +1936,7 @@
 		"id": 50,
 		"slug": "nightmare-dragon-kashmar",
 		"name": "Nightmare Dragon, Kashmar",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -1983,7 +1983,7 @@
 		"id": 51,
 		"slug": "wildfire-dragon-gae-bolg",
 		"name": "Wildfire Dragon, Gae Bolg",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2030,7 +2030,7 @@
 		"id": 52,
 		"slug": "deluge-dragon-blackbeard",
 		"name": "Deluge Dragon, Blackbeard",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2077,7 +2077,7 @@
 		"id": 53,
 		"slug": "spirit-tree-dragon-oyamatsumi",
 		"name": "Spirit Tree Dragon, Oyamatsumi",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2124,7 +2124,7 @@
 		"id": 54,
 		"slug": "phantom-thunder-dragon-sagirinokami",
 		"name": "Phantom Thunder Dragon, Sagirinokami",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2171,7 +2171,7 @@
 		"id": 55,
 		"slug": "doom-dragon-diabolos",
 		"name": "Doom Dragon, Diabolos",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2218,7 +2218,7 @@
 		"id": 56,
 		"slug": "flamestreak-dragon-tempest",
 		"name": "Flamestreak Dragon, Tempest",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2265,7 +2265,7 @@
 		"id": 57,
 		"slug": "stormy-sea-dragon-levia",
 		"name": "Stormy Sea Dragon, Levia",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2312,7 +2312,7 @@
 		"id": 58,
 		"slug": "boulder-dragon-garmut",
 		"name": "Boulder Dragon, Garmut",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2359,7 +2359,7 @@
 		"id": 59,
 		"slug": "shining-dragon-shemhaza",
 		"name": "Shining Dragon, Shemhaza",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2406,7 +2406,7 @@
 		"id": 60,
 		"slug": "moon-shadow-dragon-crescent",
 		"name": "Moon Shadow Dragon, Crescent",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2453,7 +2453,7 @@
 		"id": 61,
 		"slug": "hellfire-dragon-inferno",
 		"name": "Hellfire Dragon, Inferno",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2500,7 +2500,7 @@
 		"id": 62,
 		"slug": "deep-sea-dragon-abyss",
 		"name": "Deep-Sea Dragon, Abyss",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2547,7 +2547,7 @@
 		"id": 63,
 		"slug": "rockslide-dragon-mjolnir",
 		"name": "Rockslide Dragon, Mjolnir",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2594,7 +2594,7 @@
 		"id": 64,
 		"slug": "searing-dragon-overdrive",
 		"name": "Searing Dragon, Overdrive",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2641,7 +2641,7 @@
 		"id": 65,
 		"slug": "shadowslash-dragon-eclipse",
 		"name": "Shadowslash Dragon, Eclipse",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2688,7 +2688,7 @@
 		"id": 66,
 		"slug": "agdrall",
 		"name": "Agdrall",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -2718,7 +2718,7 @@
 		"id": 67,
 		"slug": "shardran",
 		"name": "Shardran",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -2748,7 +2748,7 @@
 		"id": 68,
 		"slug": "toyceratops",
 		"name": "Toyceratops",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -2778,7 +2778,7 @@
 		"id": 69,
 		"slug": "fairlion",
 		"name": "Fairlion",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -2808,7 +2808,7 @@
 		"id": 70,
 		"slug": "pierdrawn",
 		"name": "Pierdrawn",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -2838,7 +2838,7 @@
 		"id": 71,
 		"slug": "flare-drall",
 		"name": "Flare Drall",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2890,7 +2890,7 @@
 		"id": 72,
 		"slug": "megalodran",
 		"name": "Megalodran",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2942,7 +2942,7 @@
 		"id": 73,
 		"slug": "fortoytops",
 		"name": "Fortoytops",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -2994,7 +2994,7 @@
 		"id": 74,
 		"slug": "angelion",
 		"name": "Angelion",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -3046,7 +3046,7 @@
 		"id": 75,
 		"slug": "drawn-joker",
 		"name": "Drawn Joker",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -3098,7 +3098,7 @@
 		"id": 76,
 		"slug": "tyrra",
 		"name": "Tyrra",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -3128,7 +3128,7 @@
 		"id": 77,
 		"slug": "plessie",
 		"name": "Plessie",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -3158,7 +3158,7 @@
 		"id": 78,
 		"slug": "brachy",
 		"name": "Brachy",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -3188,7 +3188,7 @@
 		"id": 79,
 		"slug": "firedragon-grand-tyrannos",
 		"name": "Firedragon Grand Tyrannos",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -3235,7 +3235,7 @@
 		"id": 80,
 		"slug": "icedragon-depth-plesios",
 		"name": "Icedragon Depth Plesios",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -3282,7 +3282,7 @@
 		"id": 81,
 		"slug": "flowerdragon-gaia-brachys",
 		"name": "Flowerdragon Gaia Brachys",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -3329,7 +3329,7 @@
 		"id": 82,
 		"slug": "dola",
 		"name": "Dola",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -3359,7 +3359,7 @@
 		"id": 83,
 		"slug": "chimera",
 		"name": "Chimera",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 30,
 		"base_stats": {
@@ -3389,7 +3389,7 @@
 		"id": 84,
 		"slug": "garam",
 		"name": "Garam",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 30,
 		"base_stats": {
@@ -3419,7 +3419,7 @@
 		"id": 85,
 		"slug": "ladon",
 		"name": "Ladon",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 30,
 		"base_stats": {
@@ -3449,7 +3449,7 @@
 		"id": 86,
 		"slug": "dragon-blade",
 		"name": "Dragon Blade",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -3479,7 +3479,7 @@
 		"id": 87,
 		"slug": "exa-hydra",
 		"name": "Exa-Hydra",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 70,
 		"base_stats": {
@@ -3526,7 +3526,7 @@
 		"id": 88,
 		"slug": "ur-chimera",
 		"name": "Ur-Chimera",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 70,
 		"base_stats": {
@@ -3583,7 +3583,7 @@
 		"id": 89,
 		"slug": "woodbahn",
 		"name": "WoodBahn",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 70,
 		"base_stats": {
@@ -3635,7 +3635,7 @@
 		"id": 90,
 		"slug": "ra-naga",
 		"name": "Ra-Naga",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 70,
 		"base_stats": {
@@ -3682,7 +3682,7 @@
 		"id": 91,
 		"slug": "dragon-samurai",
 		"name": "Dragon Samurai",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 70,
 		"base_stats": {
@@ -3734,7 +3734,7 @@
 		"id": 92,
 		"slug": "dragon-basara",
 		"name": "Dragon Basara",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 70,
 		"base_stats": {
@@ -3781,7 +3781,7 @@
 		"id": 93,
 		"slug": "shisa-chimera",
 		"name": "Shisa Chimera",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 70,
 		"base_stats": {
@@ -3833,7 +3833,7 @@
 		"id": 94,
 		"slug": "grimrock",
 		"name": "GrimRock",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 70,
 		"base_stats": {
@@ -3885,7 +3885,7 @@
 		"id": 95,
 		"slug": "radious",
 		"name": "Radious",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 70,
 		"base_stats": {
@@ -3932,7 +3932,7 @@
 		"id": 96,
 		"slug": "dragon-knight",
 		"name": "Dragon Knight",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 70,
 		"base_stats": {
@@ -3979,7 +3979,7 @@
 		"id": 97,
 		"slug": "zeta-hydra",
 		"name": "Zeta Hydra",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -4036,7 +4036,7 @@
 		"id": 98,
 		"slug": "guivre-chimera",
 		"name": "Guivre Chimera",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -4093,7 +4093,7 @@
 		"id": 99,
 		"slug": "forestbahn",
 		"name": "ForestBahn",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -4145,7 +4145,7 @@
 		"id": 100,
 		"slug": "mechid-ra-naga",
 		"name": "Mechid Ra-Naga",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -4197,7 +4197,7 @@
 		"id": 101,
 		"slug": "dragon-shogun",
 		"name": "Dragon Shogun",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -4254,7 +4254,7 @@
 		"id": 102,
 		"slug": "dragon-asura",
 		"name": "Dragon Asura",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -4316,7 +4316,7 @@
 		"id": 103,
 		"slug": "barong-chimera",
 		"name": "Barong Chimera",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -4378,7 +4378,7 @@
 		"id": 104,
 		"slug": "grimcrystal",
 		"name": "GrimCrystal",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -4430,7 +4430,7 @@
 		"id": 105,
 		"slug": "angelious",
 		"name": "Angelious",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -4482,7 +4482,7 @@
 		"id": 106,
 		"slug": "dragon-paladin",
 		"name": "Dragon Paladin",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -4539,7 +4539,7 @@
 		"id": 107,
 		"slug": "chich",
 		"name": "Chich",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Deity",
 		"level_cap": 30,
 		"base_stats": {
@@ -4569,7 +4569,7 @@
 		"id": 108,
 		"slug": "coo",
 		"name": "Coo",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 30,
 		"base_stats": {
@@ -4599,7 +4599,7 @@
 		"id": 109,
 		"slug": "taur",
 		"name": "Taur",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Animal",
 		"level_cap": 30,
 		"base_stats": {
@@ -4629,7 +4629,7 @@
 		"id": 110,
 		"slug": "kururu",
 		"name": "Kururu",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Animal",
 		"level_cap": 30,
 		"base_stats": {
@@ -4659,7 +4659,7 @@
 		"id": 111,
 		"slug": "numeri",
 		"name": "Numeri",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Animal",
 		"level_cap": 30,
 		"base_stats": {
@@ -4689,7 +4689,7 @@
 		"id": 112,
 		"slug": "horus",
 		"name": "Horus",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Deity",
 		"level_cap": 70,
 		"base_stats": {
@@ -4751,7 +4751,7 @@
 		"id": 113,
 		"slug": "slash",
 		"name": "Slash",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 70,
 		"base_stats": {
@@ -4798,7 +4798,7 @@
 		"id": 114,
 		"slug": "hellwind-taur-demon",
 		"name": "Hellwind Taur Demon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Animal",
 		"level_cap": 70,
 		"base_stats": {
@@ -4845,7 +4845,7 @@
 		"id": 115,
 		"slug": "carbuncle",
 		"name": "Carbuncle",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Animal",
 		"level_cap": 70,
 		"base_stats": {
@@ -4892,7 +4892,7 @@
 		"id": 116,
 		"slug": "namero",
 		"name": "Namero",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Animal",
 		"level_cap": 70,
 		"base_stats": {
@@ -4939,7 +4939,7 @@
 		"id": 117,
 		"slug": "garuda",
 		"name": "Garuda",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -5001,7 +5001,7 @@
 		"id": 118,
 		"slug": "beowulf",
 		"name": "Beowulf",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5048,7 +5048,7 @@
 		"id": 119,
 		"slug": "forest-god-baphomeroth",
 		"name": "Forest God, Baphomeroth",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -5105,7 +5105,7 @@
 		"id": 120,
 		"slug": "carbuknuckle",
 		"name": "Carbuknuckle",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5152,7 +5152,7 @@
 		"id": 121,
 		"slug": "numagero",
 		"name": "Numagero",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5194,7 +5194,7 @@
 		"id": 122,
 		"slug": "phoenix",
 		"name": "Phoenix",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5236,7 +5236,7 @@
 		"id": 123,
 		"slug": "fenrir",
 		"name": "Fenrir",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5283,7 +5283,7 @@
 		"id": 124,
 		"slug": "forest-king-minotaur",
 		"name": "Forest King, Minotaur",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5330,7 +5330,7 @@
 		"id": 125,
 		"slug": "lavina",
 		"name": "Lavina",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5382,7 +5382,7 @@
 		"id": 126,
 		"slug": "beronga",
 		"name": "Beronga",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -5429,7 +5429,7 @@
 		"id": 127,
 		"slug": "mystic-flame-knight",
 		"name": "Mystic Flame Knight",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Dragonoid",
 		"level_cap": 30,
 		"base_stats": {
@@ -5459,7 +5459,7 @@
 		"id": 128,
 		"slug": "mystic-ice-knight",
 		"name": "Mystic Ice Knight",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 30,
 		"base_stats": {
@@ -5489,7 +5489,7 @@
 		"id": 129,
 		"slug": "mystic-stone-knight",
 		"name": "Mystic Stone Knight",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Dragonoid",
 		"level_cap": 30,
 		"base_stats": {
@@ -5519,7 +5519,7 @@
 		"id": 130,
 		"slug": "mystic-light-knight",
 		"name": "Mystic Light Knight",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Dragonoid",
 		"level_cap": 30,
 		"base_stats": {
@@ -5549,7 +5549,7 @@
 		"id": 131,
 		"slug": "mystic-dark-knight",
 		"name": "Mystic Dark Knight",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Dragonoid",
 		"level_cap": 30,
 		"base_stats": {
@@ -5579,7 +5579,7 @@
 		"id": 132,
 		"slug": "flame-knight",
 		"name": "Flame Knight",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5621,7 +5621,7 @@
 		"id": 133,
 		"slug": "aqua-knight",
 		"name": "Aqua Knight",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5663,7 +5663,7 @@
 		"id": 134,
 		"slug": "earth-knight",
 		"name": "Earth Knight",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5705,7 +5705,7 @@
 		"id": 135,
 		"slug": "white-knight",
 		"name": "White Knight",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5747,7 +5747,7 @@
 		"id": 136,
 		"slug": "black-knight",
 		"name": "Black Knight",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5789,7 +5789,7 @@
 		"id": 137,
 		"slug": "berserker",
 		"name": "Berserker",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5836,7 +5836,7 @@
 		"id": 138,
 		"slug": "berserk",
 		"name": "Berserk",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5883,7 +5883,7 @@
 		"id": 139,
 		"slug": "highlander",
 		"name": "Highlander",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5930,7 +5930,7 @@
 		"id": 140,
 		"slug": "white-bishop",
 		"name": "White Bishop",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -5977,7 +5977,7 @@
 		"id": 141,
 		"slug": "black-wizard",
 		"name": "Black Wizard",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Dragonoid",
 		"level_cap": 70,
 		"base_stats": {
@@ -6024,7 +6024,7 @@
 		"id": 142,
 		"slug": "phoenix-knight-homura",
 		"name": "Phoenix Knight, Homura",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6081,7 +6081,7 @@
 		"id": 143,
 		"slug": "fenrir-knight-kamui",
 		"name": "Fenrir Knight, Kamui",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6133,7 +6133,7 @@
 		"id": 144,
 		"slug": "ancient-dragon-knight",
 		"name": "Ancient Dragon Knight",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6190,7 +6190,7 @@
 		"id": 145,
 		"slug": "verche-the-knight-of-the-sky",
 		"name": "Verche, the Knight of the Sky",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6252,7 +6252,7 @@
 		"id": 146,
 		"slug": "chaos-dragon-knight",
 		"name": "Chaos Dragon Knight",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6314,7 +6314,7 @@
 		"id": 147,
 		"slug": "blazing-hammer-brute-prometheus",
 		"name": "Blazing Hammer Brute, Prometheus",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6361,7 +6361,7 @@
 		"id": 148,
 		"slug": "siegfried-the-blue-champion",
 		"name": "Siegfried, the Blue Champion",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6413,7 +6413,7 @@
 		"id": 149,
 		"slug": "cu-chulainn-the-green-lancer",
 		"name": "Cu Chulainn, the Green Lancer",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6465,7 +6465,7 @@
 		"id": 150,
 		"slug": "brightwing-angel-exia",
 		"name": "Brightwing Angel, Exia",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -6522,7 +6522,7 @@
 		"id": 151,
 		"slug": "eternal-night-devil-crowley",
 		"name": "Eternal Night Devil, Crowley",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -6579,7 +6579,7 @@
 		"id": 152,
 		"slug": "kyos",
 		"name": "Kyos",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 35,
 		"base_stats": {
@@ -6609,7 +6609,7 @@
 		"id": 153,
 		"slug": "chronoturtle",
 		"name": "ChronoTurtle",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 50,
 		"base_stats": {
@@ -6639,7 +6639,7 @@
 		"id": 154,
 		"slug": "hopper",
 		"name": "Hopper",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 35,
 		"base_stats": {
@@ -6669,7 +6669,7 @@
 		"id": 155,
 		"slug": "grandis",
 		"name": "Grandis",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 70,
 		"base_stats": {
@@ -6711,7 +6711,7 @@
 		"id": 156,
 		"slug": "chronogenbu",
 		"name": "ChronoGenbu",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -6758,7 +6758,7 @@
 		"id": 157,
 		"slug": "falx",
 		"name": "Falx",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 70,
 		"base_stats": {
@@ -6800,7 +6800,7 @@
 		"id": 158,
 		"slug": "wild-oni",
 		"name": "Wild Oni",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 50,
 		"base_stats": {
@@ -6830,7 +6830,7 @@
 		"id": 159,
 		"slug": "pichorin",
 		"name": "Pichorin",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 50,
 		"base_stats": {
@@ -6860,7 +6860,7 @@
 		"id": 160,
 		"slug": "katala",
 		"name": "Katala",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 50,
 		"base_stats": {
@@ -6890,7 +6890,7 @@
 		"id": 161,
 		"slug": "annow",
 		"name": "Annow",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Mutant",
 		"level_cap": 50,
 		"base_stats": {
@@ -6920,7 +6920,7 @@
 		"id": 162,
 		"slug": "bakky",
 		"name": "Bakky",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 50,
 		"base_stats": {
@@ -6950,7 +6950,7 @@
 		"id": 163,
 		"slug": "oni-wheel",
 		"name": "Oni Wheel",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -6997,7 +6997,7 @@
 		"id": 164,
 		"slug": "aquafarena",
 		"name": "Aquafarena",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7044,7 +7044,7 @@
 		"id": 165,
 		"slug": "kachina-kuchina",
 		"name": "Kachina Kuchina",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7091,7 +7091,7 @@
 		"id": 166,
 		"slug": "ra",
 		"name": "Ra",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -7163,7 +7163,7 @@
 		"id": 167,
 		"slug": "gamble-mage",
 		"name": "Gamble Mage",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7210,7 +7210,7 @@
 		"id": 168,
 		"slug": "blazing-elder",
 		"name": "Blazing Elder",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7257,7 +7257,7 @@
 		"id": 169,
 		"slug": "abyss-guard",
 		"name": "Abyss Guard",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7304,7 +7304,7 @@
 		"id": 170,
 		"slug": "ya-gugungul",
 		"name": "Ya-Gugungul",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7351,7 +7351,7 @@
 		"id": 171,
 		"slug": "naribus",
 		"name": "Naribus",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7403,7 +7403,7 @@
 		"id": 172,
 		"slug": "dark-shaman",
 		"name": "Dark Shaman",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7450,7 +7450,7 @@
 		"id": 173,
 		"slug": "saino-nine-tails",
 		"name": "Saino Nine-Tails",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7497,7 +7497,7 @@
 		"id": 174,
 		"slug": "water-seele",
 		"name": "Water Seele",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7544,7 +7544,7 @@
 		"id": 175,
 		"slug": "totem-dragon",
 		"name": "Totem Dragon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7591,7 +7591,7 @@
 		"id": 176,
 		"slug": "mighty-moai",
 		"name": "Mighty Moai",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7643,7 +7643,7 @@
 		"id": 177,
 		"slug": "cheat-witch",
 		"name": "Cheat Witch",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -7690,7 +7690,7 @@
 		"id": 178,
 		"slug": "naga",
 		"name": "Naga",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Dragonoid",
 		"level_cap": 50,
 		"base_stats": {
@@ -7720,7 +7720,7 @@
 		"id": 179,
 		"slug": "mermaid",
 		"name": "Mermaid",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 50,
 		"base_stats": {
@@ -7750,7 +7750,7 @@
 		"id": 180,
 		"slug": "dryad",
 		"name": "Dryad",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Dragonoid",
 		"level_cap": 50,
 		"base_stats": {
@@ -7780,7 +7780,7 @@
 		"id": 181,
 		"slug": "valkyrie",
 		"name": "Valkyrie",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Dragonoid",
 		"level_cap": 50,
 		"base_stats": {
@@ -7810,7 +7810,7 @@
 		"id": 182,
 		"slug": "succubus",
 		"name": "Succubus",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Dragonoid",
 		"level_cap": 50,
 		"base_stats": {
@@ -7840,7 +7840,7 @@
 		"id": 183,
 		"slug": "empress-of-serpents-echidna",
 		"name": "Empress of Serpents, Echidna",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -7882,7 +7882,7 @@
 		"id": 184,
 		"slug": "enchantress-of-the-sea-siren",
 		"name": "Enchantress of the Sea, Siren",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -7924,7 +7924,7 @@
 		"id": 185,
 		"slug": "mystical-forest-pixie-alraune",
 		"name": "Mystical Forest Pixie, Alraune",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -7976,7 +7976,7 @@
 		"id": 186,
 		"slug": "great-valkyrie",
 		"name": "Great Valkyrie",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8023,7 +8023,7 @@
 		"id": 187,
 		"slug": "witch-of-the-night-lilith",
 		"name": "Witch of the Night, Lilith",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -8065,7 +8065,7 @@
 		"id": 188,
 		"slug": "ruby-dragon",
 		"name": "Ruby Dragon",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -8095,7 +8095,7 @@
 		"id": 189,
 		"slug": "sapphire-dragon",
 		"name": "Sapphire Dragon",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -8125,7 +8125,7 @@
 		"id": 190,
 		"slug": "emerald-dragon",
 		"name": "Emerald Dragon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -8155,7 +8155,7 @@
 		"id": 191,
 		"slug": "gold-dragon",
 		"name": "Gold Dragon",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -8185,7 +8185,7 @@
 		"id": 192,
 		"slug": "metal-dragon",
 		"name": "Metal Dragon",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -8215,7 +8215,7 @@
 		"id": 193,
 		"slug": "king-ruby-dragon",
 		"name": "King Ruby Dragon",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -8267,7 +8267,7 @@
 		"id": 194,
 		"slug": "king-sapphire-dragon",
 		"name": "King Sapphire Dragon",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -8319,7 +8319,7 @@
 		"id": 195,
 		"slug": "king-emerald-dragon",
 		"name": "King Emerald Dragon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -8371,7 +8371,7 @@
 		"id": 196,
 		"slug": "king-gold-dragon",
 		"name": "King Gold Dragon",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -8423,7 +8423,7 @@
 		"id": 197,
 		"slug": "king-metal-dragon",
 		"name": "King Metal Dragon",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -8475,7 +8475,7 @@
 		"id": 198,
 		"slug": "mythlit",
 		"name": "Mythlit",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 50,
 		"base_stats": {
@@ -8505,7 +8505,7 @@
 		"id": 199,
 		"slug": "dub-mythlit",
 		"name": "Dub-mythlit",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -8577,7 +8577,7 @@
 		"id": 200,
 		"slug": "anubisis",
 		"name": "Anubisis",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8607,7 +8607,7 @@
 		"id": 201,
 		"slug": "moh-moh",
 		"name": "Moh-Moh",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 50,
 		"base_stats": {
@@ -8637,7 +8637,7 @@
 		"id": 202,
 		"slug": "depth-faerie",
 		"name": "Depth Faerie",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -8684,7 +8684,7 @@
 		"id": 203,
 		"slug": "death-scissors",
 		"name": "Death Scissors",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -8714,7 +8714,7 @@
 		"id": 204,
 		"slug": "catoblepas",
 		"name": "Catoblepas",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -8744,7 +8744,7 @@
 		"id": 205,
 		"slug": "red-skydragon-el-dorado",
 		"name": "Red Skydragon, El Dorado",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8774,7 +8774,7 @@
 		"id": 206,
 		"slug": "blue-skydragon-nirai-kanai",
 		"name": "Blue Skydragon, Nirai Kanai",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8804,7 +8804,7 @@
 		"id": 207,
 		"slug": "wood-skydragon-horai",
 		"name": "Wood Skydragon, Horai",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8834,7 +8834,7 @@
 		"id": 208,
 		"slug": "holy-skydragon-shangri-la",
 		"name": "Holy Skydragon, Shangri-La",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8864,7 +8864,7 @@
 		"id": 209,
 		"slug": "night-skydragon-elysium",
 		"name": "Night Skydragon, Elysium",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8894,7 +8894,7 @@
 		"id": 210,
 		"slug": "dark-red-skydragon-el-dorado",
 		"name": "Dark Red Skydragon, El Dorado",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8924,7 +8924,7 @@
 		"id": 211,
 		"slug": "dark-blue-skydragon-nirai-kanai",
 		"name": "Dark Blue Skydragon, Nirai Kanai",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8954,7 +8954,7 @@
 		"id": 212,
 		"slug": "dark-wood-skydragon-horai",
 		"name": "Dark Wood Skydragon, Horai",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -8984,7 +8984,7 @@
 		"id": 213,
 		"slug": "dark-holy-skydragon-shangri-la",
 		"name": "Dark Holy Skydragon, Shangri-La",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -9014,7 +9014,7 @@
 		"id": 214,
 		"slug": "dark-night-skydragon-elysium",
 		"name": "Dark Night Skydragon, Elysium",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -9044,7 +9044,7 @@
 		"id": 215,
 		"slug": "divine-death-dragon-arkvelza",
 		"name": "Divine Death Dragon, Arkvelza",
-		"attributes": ["Dark", "Dark"],
+		"attribute": "Dark",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -9074,7 +9074,7 @@
 		"id": 216,
 		"slug": "flame-star-ifrit",
 		"name": "Flame Star, Ifrit",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9104,7 +9104,7 @@
 		"id": 217,
 		"slug": "ice-star-leviathan",
 		"name": "Ice Star, Leviathan",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9134,7 +9134,7 @@
 		"id": 218,
 		"slug": "forest-star-fafnir",
 		"name": "Forest Star, Fafnir",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9164,7 +9164,7 @@
 		"id": 219,
 		"slug": "light-star-divinegon",
 		"name": "Light Star, Divinegon",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9194,7 +9194,7 @@
 		"id": 220,
 		"slug": "dark-star-tiamat",
 		"name": "Dark Star, Tiamat",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9224,7 +9224,7 @@
 		"id": 221,
 		"slug": "green-star-ifrit",
 		"name": "Green Star, Ifrit",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9254,7 +9254,7 @@
 		"id": 222,
 		"slug": "red-star-leviathan",
 		"name": "Red Star, Leviathan",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9284,7 +9284,7 @@
 		"id": 223,
 		"slug": "blue-star-fafnir",
 		"name": "Blue Star, Fafnir",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9314,7 +9314,7 @@
 		"id": 224,
 		"slug": "dark-star-divinegon",
 		"name": "Dark Star, Divinegon",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9344,7 +9344,7 @@
 		"id": 225,
 		"slug": "shining-star-tiamat",
 		"name": "Shining Star, Tiamat",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 30,
 		"base_stats": {
@@ -9374,7 +9374,7 @@
 		"id": 226,
 		"slug": "meteor-volcano-dragon",
 		"name": "Meteor Volcano Dragon",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9404,7 +9404,7 @@
 		"id": 227,
 		"slug": "crystal-aurora-dragon",
 		"name": "Crystal Aurora Dragon",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9434,7 +9434,7 @@
 		"id": 228,
 		"slug": "graviton-earth-dragon",
 		"name": "Graviton Earth Dragon",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9464,7 +9464,7 @@
 		"id": 229,
 		"slug": "lightning-holy-dragon",
 		"name": "Lightning Holy Dragon",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9494,7 +9494,7 @@
 		"id": 230,
 		"slug": "chaos-devil-dragon",
 		"name": "Chaos Devil Dragon",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9524,7 +9524,7 @@
 		"id": 231,
 		"slug": "flamedragon-muspelheim",
 		"name": "Flamedragon Muspelheim",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Genuine Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9554,7 +9554,7 @@
 		"id": 232,
 		"slug": "viciousdragon-helheim",
 		"name": "Viciousdragon Helheim",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9584,7 +9584,7 @@
 		"id": 233,
 		"slug": "sacred-flame-dragon-formula",
 		"name": "Sacred Flame Dragon, Formula",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9614,7 +9614,7 @@
 		"id": 234,
 		"slug": "avalon-drake",
 		"name": "Avalon Drake",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -9644,7 +9644,7 @@
 		"id": 235,
 		"slug": "guardian-dragon-avalon-drake",
 		"name": "Guardian Dragon, Avalon Drake",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9706,7 +9706,7 @@
 		"id": 236,
 		"slug": "indra",
 		"name": "Indra",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -9736,7 +9736,7 @@
 		"id": 237,
 		"slug": "vritra",
 		"name": "Vritra",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -9766,7 +9766,7 @@
 		"id": 238,
 		"slug": "vampire-lord",
 		"name": "Vampire Lord",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -9796,7 +9796,7 @@
 		"id": 239,
 		"slug": "birthday-dragon",
 		"name": "Birthday Dragon",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -9826,7 +9826,7 @@
 		"id": 240,
 		"slug": "santauros",
 		"name": "Santauros",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {
@@ -9856,7 +9856,7 @@
 		"id": 241,
 		"slug": "awoken-zeus",
 		"name": "Awoken Zeus",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -9886,7 +9886,7 @@
 		"id": 242,
 		"slug": "awoken-hera",
 		"name": "Awoken Hera",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -9916,7 +9916,7 @@
 		"id": 243,
 		"slug": "anima",
 		"name": "Anima",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -9946,7 +9946,7 @@
 		"id": 244,
 		"slug": "avalanche",
 		"name": "Avalanche",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 50,
 		"base_stats": {
@@ -9976,7 +9976,7 @@
 		"id": 245,
 		"slug": "apocalypse",
 		"name": "Apocalypse",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -10006,7 +10006,7 @@
 		"id": 246,
 		"slug": "cursed-dragon",
 		"name": "Cursed Dragon",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 50,
 		"base_stats": {
@@ -10036,7 +10036,7 @@
 		"id": 247,
 		"slug": "phantom-dragon-anima",
 		"name": "Phantom Dragon, Anima",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -10093,7 +10093,7 @@
 		"id": 248,
 		"slug": "tundra-tyrant-cocytos",
 		"name": "Tundra Tyrant, Cocytos",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -10140,7 +10140,7 @@
 		"id": 249,
 		"slug": "destroyer-dragon-apocalypse",
 		"name": "Destroyer Dragon, Apocalypse",
-		"attributes": ["Light"],
+		"attribute": "Light",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -10187,7 +10187,7 @@
 		"id": 250,
 		"slug": "immortal-dragon-cursed-wyrm",
 		"name": "Immortal Dragon, Cursed Wyrm",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -10244,7 +10244,7 @@
 		"id": 251,
 		"slug": "divine-life-dragon-zerclea",
 		"name": "Divine Life Dragon, Zerclea",
-		"attributes": ["Light", "Light"],
+		"attribute": "Light",
 		"type": "Deity",
 		"level_cap": 99,
 		"base_stats": {
@@ -10274,7 +10274,7 @@
 		"id": 252,
 		"slug": "mui-mui",
 		"name": "Mui-Mui",
-		"attributes": ["Fire"],
+		"attribute": "Fire",
 		"type": "Animal",
 		"level_cap": 99,
 		"base_stats": {
@@ -10304,7 +10304,7 @@
 		"id": 253,
 		"slug": "dimensional-guardian-hellgate",
 		"name": "Dimensional Guardian, Hellgate",
-		"attributes": ["Wood"],
+		"attribute": "Wood",
 		"type": "Mutant",
 		"level_cap": 99,
 		"base_stats": {
@@ -10334,7 +10334,7 @@
 		"id": 254,
 		"slug": "kukuro",
 		"name": "Kukuro",
-		"attributes": ["Dark"],
+		"attribute": "Dark",
 		"type": "Phantom Dragon",
 		"level_cap": 99,
 		"base_stats": {
@@ -10364,7 +10364,7 @@
 		"id": 255,
 		"slug": "hecao",
 		"name": "Hecao",
-		"attributes": ["Water"],
+		"attribute": "Water",
 		"type": "Dragonoid",
 		"level_cap": 99,
 		"base_stats": {

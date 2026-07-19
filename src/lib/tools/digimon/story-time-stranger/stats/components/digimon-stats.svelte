@@ -7,7 +7,7 @@
 	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
 	import { addMissingFilterOptions, unique } from '$lib/utils/filters.utils.svelte.js';
 	import DigimonCell from '$lib/components/digimon-story-ts/DigimonCell.svelte';
-	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
+	import { getDigimonAttributeIcon, type Digimon } from '$lib/utils/digimon-story-ts.utils';
 
 	let digimon = $state<Digimon[]>([]);
 
@@ -75,16 +75,11 @@
 		key: 'attribute',
 		label: 'Attr',
 		sortValue: (d) => d.attribute,
-		render: (d) => `
-		<div class="flex items-center gap-1 leading-none">
-			<img
-				src="/digimon-story-ts/${d.attribute.toLowerCase().replace(' ', '-')}.png"
-				alt="${d.attribute}"
-				class="h-[1.5em] w-[1.5em] shrink-0"
-			/>
-			<span>${d.attribute}</span>
-		</div>
-	`
+		image: (d) => ({
+			src: getDigimonAttributeIcon(d.attribute),
+			alt: d.attribute
+		}),
+		value: (d) => d.attribute
 	};
 
 	const typeColumn: Column<Digimon> = {
@@ -103,7 +98,7 @@
 
 		sortValue: totalStats,
 
-		render: (d) => String(totalStats(d))
+		value: (d) => String(totalStats(d))
 	};
 
 	const ridableColumn: Column<Digimon> = {
@@ -111,7 +106,7 @@
 		label: 'Ridable',
 
 		sortValue: (d) => (d.ridable ? 1 : 0),
-		render: (d) => (d.ridable ? '✓' : '—')
+		value: (d) => (d.ridable ? '✓' : '—')
 	};
 
 	const columns = $derived([

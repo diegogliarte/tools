@@ -135,7 +135,7 @@
 
 		sortValue: (pokemon) => pokemon.recruit.rate,
 
-		render: (pokemon) => `${pokemon.recruit.rate}%`
+		value: (pokemon) => `${pokemon.recruit.rate}%`
 	};
 
 	const effectiveRateColumn: Column<RecruitRow> = {
@@ -144,13 +144,11 @@
 
 		sortValue: (pokemon) => pokemon.effectiveRate,
 
-		render: (pokemon) => {
+		class: (pokemon) => {
 			const r = pokemon.effectiveRate;
-
-			const color = r > 10 ? 'text-green-600' : r > 0 ? 'text-yellow-600' : 'text-red-600';
-
-			return `<span class="${color}">${r.toFixed(1)}%</span>`;
-		}
+			return r > 10 ? 'text-green-600' : r > 0 ? 'text-yellow-600' : 'text-red-600';
+		},
+		value: (pokemon) => `${pokemon.effectiveRate.toFixed(1)}%`
 	};
 
 	const friendAreaColumn: Column<RecruitRow> = {
@@ -159,32 +157,34 @@
 
 		sortValue: (pokemon) => pokemon.encounter.friendArea ?? '',
 
-		render: (pokemon) => pokemon.encounter.friendArea ?? '—'
+		value: (pokemon) => pokemon.encounter.friendArea ?? '—'
 	};
 
 	const locationsColumn: Column<RecruitRow> = {
 		key: 'name',
 		label: 'Locations',
+		class: 'whitespace-pre-line',
 
-		render: (pokemon) => {
+		value: (pokemon) => {
 			if (!pokemon.encounter.locations.length) return '—';
 
 			return pokemon.encounter.locations
 				.map((location) => (location.floors ? `${location.dungeon} (${location.floors})` : location.dungeon))
-				.join('<br>');
+				.join('\n');
 		}
 	};
 
 	const evolvesFromColumn: Column<RecruitRow> = {
 		key: 'name',
 		label: 'Evolves From',
+		class: 'whitespace-pre-line',
 
-		render: (pokemon) => {
+		value: (pokemon) => {
 			const sources = evolvesFromMap[pokemon.name];
 
 			if (!sources?.length) return '—';
 
-			return sources.map((e) => `${e.from} (${e.method})`).join('<br>');
+			return sources.map((e) => `${e.from} (${e.method})`).join('\n');
 		}
 	};
 
@@ -193,7 +193,7 @@
 		label: 'Notes',
 		width: '25%',
 
-		render: (pokemon) => pokemon.recruit.note ?? pokemon.encounter.note ?? '—'
+		value: (pokemon) => pokemon.recruit.note ?? pokemon.encounter.note ?? '—'
 	};
 
 	const columns: Column<RecruitRow>[] = [

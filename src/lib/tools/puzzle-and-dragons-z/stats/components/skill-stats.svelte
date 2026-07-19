@@ -53,7 +53,7 @@
 		label: 'Category',
 		width: '120px',
 		searchValue: (skill) => formatPadzSkillCategory(skill.category),
-		render: (skill) => formatPadzSkillCategory(skill.category)
+		value: (skill) => formatPadzSkillCategory(skill.category)
 	};
 
 	const columns: Column<PadzSkill>[] = [
@@ -63,14 +63,14 @@
 			key: 'cost',
 			label: 'Cost',
 			width: '90px',
-			render: (skill) => formatPadzNumber(getPadzSkillCost(skill))
+			value: (skill) => formatPadzNumber(getPadzSkillCost(skill))
 		},
 		{
 			key: 'description',
 			label: 'Description',
 			width: '520px',
 			searchValue: (skill) => skill.description ?? '',
-			render: (skill) => skill.description ?? '—'
+			value: (skill) => skill.description ?? '—'
 		}
 	];
 </script>

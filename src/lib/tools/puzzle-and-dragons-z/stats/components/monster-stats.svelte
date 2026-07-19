@@ -41,7 +41,7 @@
 
 	const skillsById = $derived(new Map(skills.map((skill) => [String(skill.id), skill])));
 
-	const attributeOptions = $derived.by(() => unique(monsters.flatMap((monster) => monster.attributes ?? [])).sort());
+	const attributeOptions = $derived.by(() => unique(monsters.map((monster) => monster.attribute)).sort());
 
 	const typeOptions = $derived.by(() =>
 		unique(monsters.map((monster) => monster.type).filter(Boolean) as string[]).sort()
@@ -58,8 +58,7 @@
 	const filteredRows = $derived.by(() =>
 		monsters.filter((monster) => {
 			const matchesAttribute =
-				!Object.values(attributeFilter).some(Boolean) ||
-				(monster.attributes ?? []).some((attribute) => attributeFilter[attribute]);
+				!Object.values(attributeFilter).some(Boolean) || Boolean(attributeFilter[monster.attribute]);
 
 			const matchesType =
 				!Object.values(typeFilter).some(Boolean) || (Boolean(monster.type) && typeFilter[monster.type as string]);
@@ -97,26 +96,16 @@
 	};
 
 	const attributeColumn: Column<MonsterTableRow> = {
-		key: 'attributes',
+		key: 'attribute',
 		label: 'Element',
 		width: '140px',
-		searchValue: (monster) => (monster.attributes ?? []).join(' '),
-		render: (monster) => `
-			<div class="flex items-center gap-1">
-				${(monster.attributes ?? [])
-					.map(
-						(attribute) => `
-							<img
-								src="${getPadzElementIcon(attribute)}"
-								alt="${formatPadzElement(attribute)}"
-								title="${formatPadzElement(attribute)}"
-								class="h-[1.5em] w-[1.5em] shrink-0"
-							/>
-						`
-					)
-					.join('')}
-			</div>
-		`
+		searchValue: (monster) => monster.attribute,
+		image: (monster) => ({
+			src: getPadzElementIcon(monster.attribute),
+			alt: formatPadzElement(monster.attribute),
+			title: formatPadzElement(monster.attribute),
+			text: formatPadzElement(monster.attribute)
+		})
 	};
 
 	const typeColumn: Column<MonsterTableRow> = {
@@ -124,20 +113,15 @@
 		label: 'Type',
 		width: '170px',
 		searchValue: (monster) => formatPadzType(monster.type),
-		render: (monster) =>
+		image: (monster) =>
 			monster.type
-				? `
-					<div class="flex items-center gap-2">
-						<img
-							src="${getPadzTypeIcon(monster.type)}"
-							alt="${formatPadzType(monster.type)}"
-							title="${formatPadzType(monster.type)}"
-							class="h-[1.5em] w-[1.5em] shrink-0"
-						/>
-						<span>${formatPadzType(monster.type)}</span>
-					</div>
-				`
-				: '—'
+				? {
+						src: getPadzTypeIcon(monster.type),
+						alt: formatPadzType(monster.type),
+						title: formatPadzType(monster.type)
+					}
+				: undefined,
+		value: (monster) => (monster.type ? formatPadzType(monster.type) : '—')
 	};
 
 	const columns: Column<MonsterTableRow>[] = [
