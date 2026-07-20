@@ -293,21 +293,20 @@
 	<div class="grid gap-4 lg:grid-cols-[9rem_1fr]">
 		<NumberInput label="Chapter" bind:value={progress.chapter} min={1} max={5} step={1} />
 
-		<div class="grid gap-3 xl:grid-cols-[1fr_18rem]">
-			<div class="grid grid-cols-3 gap-2 md:grid-cols-5 lg:grid-cols-9">
-				{#each Object.entries(facilityLabels) as [facility, label] (facility)}
-					<NumberInput {label} bind:value={progress.facilities[facility as Facility]} min={1} max={5} step={1} />
-				{/each}
-			</div>
-
-			<CheckboxChipGroup
-				label="Progress"
-				options={flags}
-				bind:checked={progress.flags}
-				persist={false}
-				showActions={false}
-			/>
+		<div class="grid grid-cols-3 gap-2 md:grid-cols-5 lg:grid-cols-9">
+			{#each Object.entries(facilityLabels) as [facility, label] (facility)}
+				<NumberInput {label} bind:value={progress.facilities[facility as Facility]} min={1} max={5} step={1} />
+			{/each}
 		</div>
+
+		<CheckboxChipGroup
+			class="lg:col-span-2"
+			label="Progress"
+			options={flags}
+			bind:checked={progress.flags}
+			persist={false}
+			showActions={false}
+		/>
 	</div>
 
 	<DataTable {columns} {rows} pageSize={50} onRowClick={toggleRow} />
