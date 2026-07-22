@@ -912,7 +912,7 @@
 		"service": "Offers a quiz game for Luck Coins.",
 		"method": {
 			"t": "steps",
-			"text": "Complete the Youkomon/Boltmon/Myotismon conversation chain."
+			"text": "After accepting Youkomon's request, talk to Boltmon, Youkomon, Boltmon, Myotismon in Floatia, then Boltmon again."
 		},
 		"requirements": ["recruit:weregarurumon", "recruit:myotismon", "manual:Accept Youkomon's request"]
 	},
@@ -987,7 +987,7 @@
 		"service": "Randomly modifies stats and gives Luck Coins.",
 		"method": {
 			"t": "steps",
-			"text": "Play hide and seek: Celeb Red Room area, Bony Drive tree, Night Church piano."
+			"text": "Play hide and seek the same day: Celeb Red Room area, Bony Drive tree, Night Church piano."
 		}
 	},
 	{
@@ -1416,7 +1416,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 22,
-			"text": "Follow Koromon and Justimon DigiMail chain, including a Justimon Lv 22 battle."
+			"text": "Read Koromon's hero DigiMail and talk to Justimon. After Koromon's second DigiMail, defeat Justimon Lv 22, then read his DigiMail and talk to him again."
 		},
 		"requirements": ["flag:postgame", "manual:Receive Koromon DigiMail about a hero"]
 	},
@@ -1543,17 +1543,17 @@
 		"requirements": ["flag:postgame"]
 	},
 	{
-		"id": "cherubimon-black",
-		"name": "Cherubimon (Black)",
+		"id": "cherubimon-vice",
+		"name": "Cherubimon (Vice)",
 		"area": "Absolute Zero",
 		"subarea": "Icy Hall",
 		"floatiaLocation": "Item Shop",
 		"service": "Sells Digivolution Cores.",
 		"method": {
 			"t": "talk",
-			"text": "Talk after Belphemon RM joins."
+			"text": "Talk after Belphemon SM joins."
 		},
-		"requirements": ["flag:postgame", "recruit:belphemon-rm"]
+		"requirements": ["flag:postgame", "recruit:belphemon-sm"]
 	},
 	{
 		"id": "lucemon",
@@ -1585,8 +1585,8 @@
 		"requirements": ["flag:postgame", "manual:Accept Minervamon's request"]
 	},
 	{
-		"id": "belphemon-rm",
-		"name": "Belphemon RM",
+		"id": "belphemon-sm",
+		"name": "Belphemon SM",
 		"area": "Absolute Zero",
 		"subarea": "Concealed Gorge",
 		"floatiaLocation": "Dimensional Dungeon",
@@ -1594,7 +1594,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 48,
-			"text": "Accept Cherubimon (Black)'s request, then battle Belphemon RM Lv 48."
+			"text": "Accept Cherubimon (Vice)'s request, then battle Belphemon SM Lv 48."
 		},
 		"requirements": ["flag:postgame"]
 	},
