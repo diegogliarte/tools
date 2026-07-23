@@ -1310,7 +1310,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 46,
-			"text": "Complete the gift and letter exchange with Dianamon, then battle both Lv 46."
+			"text": "Talk to Minervamon, then deliver Red and Green Gift Boxes to Dianamon. Give Minervamon Dianamon's Letter and a Blue Gift Box; when she runs to Dianamon, defeat them both Lv 46."
 		},
 		"requirements": ["flag:postgame"]
 	},
@@ -1580,7 +1580,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 46,
-			"text": "Complete the gift and letter exchange with Minervamon, then battle both Lv 46."
+			"text": "Talk to Minervamon first, then complete the gift and letter exchange before defeating Dianamon and Minervamon Lv 46."
 		},
 		"requirements": ["flag:postgame", "manual:Accept Minervamon's request"]
 	},
