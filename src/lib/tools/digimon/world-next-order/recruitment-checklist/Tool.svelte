@@ -309,5 +309,12 @@
 		/>
 	</div>
 
-	<DataTable {columns} {rows} pageSize={50} onRowClick={toggleRow} />
+	<DataTable
+		{columns}
+		{rows}
+		pageSize={50}
+		onRowClick={toggleRow}
+		rowKey={(row) => row.id}
+		resetPageOnRowsChange={false}
+	/>
 </div>

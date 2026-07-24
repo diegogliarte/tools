@@ -14,9 +14,18 @@
 		rows: RowType[];
 		pageSize?: number;
 		onRowClick?: (row: RowType) => void;
+		rowKey?: (row: RowType) => string | number;
+		resetPageOnRowsChange?: boolean;
 	}
 
-	let { columns, rows, pageSize = 50, onRowClick }: Props<RowType> = $props();
+	let {
+		columns,
+		rows,
+		pageSize = 50,
+		onRowClick,
+		rowKey = undefined,
+		resetPageOnRowsChange = true
+	}: Props<RowType> = $props();
 
 	let search = $state('');
 	let sortKey = $state<(keyof RowType & string) | null>(null);
@@ -101,6 +110,7 @@
 
 	let page = $state(1);
 	let visibleRows = $derived.by(() => processed.slice(0, page * pageSize));
+	let previousRows: RowType[] = [];
 
 	let scrollEl: HTMLElement;
 
@@ -124,7 +134,26 @@
 	});
 
 	$effect(() => {
-		resetPageOnChange(search, sortKey, sortDir, rows);
+		resetPageOnChange(search, sortKey, sortDir, resetPageOnRowsChange ? rows : undefined);
+	});
+
+	$effect(() => {
+		if (!import.meta.env.DEV) return;
+
+		const previousRowObjects = new Set(previousRows);
+		const getKey: (row: RowType) => RowType | string | number = rowKey ?? ((row: RowType) => row);
+		const previousKeys = new Set<RowType | string | number>(previousRows.map(getKey));
+		const reusedRowObjects = rows.filter((row) => previousRowObjects.has(row)).length;
+		const retainedKeys = rows.filter((row) => previousKeys.has(getKey(row))).length;
+
+		console.debug('[DataTable rows]', {
+			rows: rows.length,
+			reusedRowObjects,
+			retainedKeys,
+			usesCustomRowKey: !!rowKey
+		});
+
+		previousRows = rows;
 	});
 
 	function resetPageOnChange(...dependencies: unknown[]) {
@@ -203,7 +232,7 @@
 					<td colspan={columns.length} class="py-4 text-center opacity-70">No results</td>
 				</tr>
 			{:else}
-				{#each visibleRows as row (row)}
+				{#each visibleRows as row (rowKey ? rowKey(row) : row)}
 					<tr
 						class="border-b border-text/25 transition hover:bg-accent-dark/20 {onRowClick ? 'cursor-pointer' : ''}"
 						onclick={(event) => handleRowClick(event, row)}
