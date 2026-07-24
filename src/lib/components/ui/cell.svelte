@@ -41,18 +41,13 @@
 	{/if}
 {/snippet}
 
-{#if onClick}
-	<button
-		type="button"
-		class="group flex w-full cursor-pointer items-center gap-2 text-left hover:text-accent"
-		onclick={onClick}
-	>
-		{@render thumbnailContent()}
-		{@render children()}
-	</button>
-{:else}
-	<div class="flex w-full items-center gap-2 text-left">
-		{@render thumbnailContent()}
-		{@render children()}
-	</div>
-{/if}
+<svelte:element
+	this={onClick ? 'button' : 'div'}
+	type={onClick ? 'button' : undefined}
+	role={onClick ? 'button' : undefined}
+	class="group flex w-full items-center gap-2 text-left hover:text-accent {onClick ? 'cursor-pointer' : ''}"
+	onclick={onClick}
+>
+	{@render thumbnailContent()}
+	{@render children()}
+</svelte:element>
