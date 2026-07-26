@@ -110,7 +110,6 @@
 
 	let page = $state(1);
 	let visibleRows = $derived.by(() => processed.slice(0, page * pageSize));
-	let previousRows: RowType[] = [];
 
 	let scrollEl: HTMLElement;
 
@@ -135,25 +134,6 @@
 
 	$effect(() => {
 		resetPageOnChange(search, sortKey, sortDir, resetPageOnRowsChange ? rows : undefined);
-	});
-
-	$effect(() => {
-		if (!import.meta.env.DEV) return;
-
-		const previousRowObjects = new Set(previousRows);
-		const getKey: (row: RowType) => RowType | string | number = rowKey ?? ((row: RowType) => row);
-		const previousKeys = new Set<RowType | string | number>(previousRows.map(getKey));
-		const reusedRowObjects = rows.filter((row) => previousRowObjects.has(row)).length;
-		const retainedKeys = rows.filter((row) => previousKeys.has(getKey(row))).length;
-
-		console.debug('[DataTable rows]', {
-			rows: rows.length,
-			reusedRowObjects,
-			retainedKeys,
-			usesCustomRowKey: !!rowKey
-		});
-
-		previousRows = rows;
 	});
 
 	function resetPageOnChange(...dependencies: unknown[]) {
