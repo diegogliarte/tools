@@ -9,11 +9,13 @@
 	import MdiChevronRight from '~icons/mdi/chevron-right';
 	import MdiMessageTextOutline from '~icons/mdi/message-text-outline';
 	import MdiSteam from '~icons/mdi/steam';
+	import MdiSwapHorizontal from '~icons/mdi/swap-horizontal';
 	import SteamModal from '$lib/components/SteamModal.svelte';
 	import MdiMagnify from '~icons/mdi/magnify';
 	import ToolSearchModal from '$lib/components/ToolSearchModal.svelte';
 	import UmamiViews from '$lib/components/UmamiViews.svelte';
 	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
+	import TransferModal from '$lib/components/TransferModal.svelte';
 
 	import { tooltipAction } from '$lib/actions/tooltip';
 	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
@@ -138,6 +140,8 @@
 	</div>
 
 	{@render navAction('My steam game', MdiSteam, () => openModal(SteamModal))}
+
+	{@render navAction('Transfer local data', MdiSwapHorizontal, () => openModal(TransferModal))}
 
 	<div class="relative flex h-5 w-5 shrink-0 items-center justify-center self-center">
 		<button
