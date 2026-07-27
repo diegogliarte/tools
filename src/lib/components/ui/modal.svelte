@@ -67,7 +67,7 @@
 			border
 			border-text
 			bg-bg
-			p-2
+			p-4
 		"
 	>
 		{#if title || closable}

@@ -161,7 +161,7 @@
 					transition: {isDragging || !isTransitioning ? 'none' : 'transform 0.3s ease'};
 				"
 			>
-				{#each slides as img (img)}
+				{#each slides as img, i (i)}
 					<img src={img} alt="Vpetlings screenshot" class="aspect-video w-full flex-shrink-0 object-cover" />
 				{/each}
 			</div>
