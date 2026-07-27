@@ -6,11 +6,7 @@
 	import { onMount } from 'svelte';
 	import { closeModal } from '$lib/states/modal.svelte';
 	import { showToast } from '$lib/utils/toast.utils';
-	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
-	import { loadPokemons } from '$lib/data/pmd-blue/data';
-	import { getDigimonIcon, type Digimon } from '$lib/utils/digimon-story-ts.utils';
-	import { getPokemonIcon, type Pokemon } from '$lib/utils/pmd-blue.utils';
-	import recruitmentData from '$lib/data/digimon-world-next-order/recruitment.json';
+	import { createTransferVisualResolver, type EntityVisual } from '$lib/utils/transfer-visuals.utils';
 	import {
 		createTransferSnapshot,
 		diffTransferStorageDetailed,
@@ -21,16 +17,6 @@
 		type ValueChange
 	} from '$lib/utils/local-storage-transfer.utils';
 
-	type RecruitmentEntry = {
-		id: string;
-		name: string;
-	};
-
-	type EntityVisual = {
-		src: string;
-		alt: string;
-	};
-
 	let creating = $state(false);
 	let loading = $state(false);
 	let restoring = $state(false);
@@ -39,21 +25,14 @@
 	let createdExpiresAt = $state('');
 	let importedSnapshot = $state<TransferSnapshot | null>(null);
 	let diff = $state<DetailedStorageDiff | null>(null);
-	let pokemonByName = $state(new Map<string, Pokemon>());
-	let digimonById = $state(new Map<number, Digimon>());
-	let digimonByName = $state(new Map<string, Digimon>());
+	let resolveEntityVisual = $state<Awaited<ReturnType<typeof createTransferVisualResolver>> | null>(null);
 
 	const normalizedCode = $derived(code.trim().replace(/\s|-/g, '').toUpperCase());
 	const hasImportedChanges = $derived(!!diff && (diff.added || diff.changed || diff.deleted));
 	const visibleDiffItems = $derived(diff?.items.filter((item) => item.type !== 'unchanged') ?? []);
-	const recruitmentById = new Map((recruitmentData as RecruitmentEntry[]).map((entry) => [entry.id, entry]));
 
 	onMount(async () => {
-		const [pokemons, digimon] = await Promise.all([loadPokemons(), loadDigimon()]);
-
-		pokemonByName = new Map(pokemons.map((pokemon) => [pokemon.name, pokemon]));
-		digimonById = new Map(digimon.map((item) => [item.id, item]));
-		digimonByName = new Map(digimon.map((item) => [item.name.toLowerCase(), item]));
+		resolveEntityVisual = await createTransferVisualResolver();
 	});
 
 	function formatDate(value: string) {
@@ -130,31 +109,15 @@
 	}
 
 	function entityVisualFor(item: StorageItemDiff, change: ValueChange, side: 'before' | 'after'): EntityVisual | null {
-		const value = side === 'before' ? change.beforeValue : change.afterValue;
+		return resolveEntityVisual?.(item, change, side) ?? null;
+	}
 
-		if (item.key.includes('/pokemon-mystery-dungeon/blue-rescue-team/recruitment-checklist')) {
-			const [group, field, name] = change.pathSegments;
-			if (group !== 'collection' || !['owned', 'readyToEvolve'].includes(field) || !name) return null;
+	function isSameVisual(before: EntityVisual | null, after: EntityVisual | null) {
+		return !!before && !!after && before.src === after.src;
+	}
 
-			const pokemon = pokemonByName.get(name);
-			return pokemon ? { src: getPokemonIcon(pokemon), alt: pokemon.name } : null;
-		}
-
-		if (item.key.includes('/digimon/world-next-order/recruitment-checklist')) {
-			const [group, id] = change.pathSegments;
-			if (group !== 'recruited' || !id) return null;
-
-			const entry = recruitmentById.get(id);
-			const digimon = entry ? digimonByName.get(entry.name.toLowerCase()) : null;
-			return digimon ? { src: getDigimonIcon(digimon), alt: digimon.name } : null;
-		}
-
-		if (item.key.includes('/digimon/story-time-stranger/team-builder') && typeof value === 'number') {
-			const digimon = digimonById.get(value);
-			return digimon ? { src: getDigimonIcon(digimon), alt: digimon.name } : null;
-		}
-
-		return null;
+	function changeContext(change: ValueChange) {
+		return change.pathSegments.slice(0, -1).join(' / ') || change.path;
 	}
 </script>
 
@@ -169,6 +132,16 @@
 		"
 	>
 		{type}
+	</span>
+{/snippet}
+
+{#snippet entityLabel(visual: EntityVisual, context?: string)}
+	<span class="flex min-w-0 items-center gap-1">
+		<img src={visual.src} alt={visual.alt} title={visual.alt} class="h-7 w-7 shrink-0 object-contain" loading="lazy" />
+		<span class="break-all">{visual.alt}</span>
+		{#if context}
+			<span class="break-all opacity-60">· {context}</span>
+		{/if}
 	</span>
 {/snippet}
 
@@ -255,36 +228,43 @@
 								</div>
 
 								<ul class="flex flex-col gap-1 text-xs">
-									{#each item.changes.slice(0, 12) as change (`${item.key}:${change.path}`)}
+									{#each item.changes as change (`${item.key}:${change.path}`)}
+										{@const beforeVisual = entityVisualFor(item, change, 'before')}
+										{@const afterVisual = entityVisualFor(item, change, 'after')}
+										{@const sameVisual = isSameVisual(beforeVisual, afterVisual)}
 										<li class="grid gap-1 border-t border-text/30 pt-1 sm:grid-cols-[1fr_auto_1fr]">
-											<span class="break-all opacity-70">{change.path}</span>
-
-											{#if item.type === 'added'}
+											{#if item.type === 'changed' && sameVisual && beforeVisual}
+												<div class="sm:col-span-3">
+													<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+														{@render entityLabel(beforeVisual, changeContext(change))}
+														<span>
+															<span class="text-red-400">{change.before}</span>
+															<span class="px-1 opacity-50">→</span>
+															<span class="text-green-400">{change.after}</span>
+														</span>
+													</div>
+												</div>
+											{:else if item.type === 'added'}
+												<span class="break-all opacity-70">{change.path}</span>
 												<div class="sm:text-right">
-													{@render visualValue(entityVisualFor(item, change, 'after'), `+ ${change.after}`, 'added')}
+													{@render visualValue(afterVisual, `+ ${change.after}`, 'added')}
 												</div>
 											{:else if item.type === 'deleted'}
+												<span class="break-all opacity-70">{change.path}</span>
 												<div class="sm:text-right">
-													{@render visualValue(
-														entityVisualFor(item, change, 'before'),
-														`- ${change.before}`,
-														'deleted'
-													)}
+													{@render visualValue(beforeVisual, `- ${change.before}`, 'deleted')}
 												</div>
 											{:else}
+												<span class="break-all opacity-70">{change.path}</span>
 												<div class="sm:text-right">
-													{@render visualValue(entityVisualFor(item, change, 'before'), change.before, 'deleted')}
+													{@render visualValue(beforeVisual, change.before, 'deleted')}
 												</div>
 												<span class="hidden opacity-50 sm:block">→</span>
-												{@render visualValue(entityVisualFor(item, change, 'after'), change.after, 'added')}
+												{@render visualValue(afterVisual, change.after, 'added')}
 											{/if}
 										</li>
 									{/each}
 								</ul>
-
-								{#if item.changes.length > 12}
-									<div class="text-xs opacity-60">+ {item.changes.length - 12} more changes</div>
-								{/if}
 							</article>
 						{/each}
 					</div>
