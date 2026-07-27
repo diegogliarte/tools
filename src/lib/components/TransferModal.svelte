@@ -3,15 +3,33 @@
 	import Button from '$lib/components/ui/button.svelte';
 	import TextInput from '$lib/components/ui/text-input.svelte';
 	import CopyButton from '$lib/components/ui/copy-button.svelte';
+	import { onMount } from 'svelte';
 	import { closeModal } from '$lib/states/modal.svelte';
 	import { showToast } from '$lib/utils/toast.utils';
+	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
+	import { loadPokemons } from '$lib/data/pmd-blue/data';
+	import { getDigimonIcon, type Digimon } from '$lib/utils/digimon-story-ts.utils';
+	import { getPokemonIcon, type Pokemon } from '$lib/utils/pmd-blue.utils';
+	import recruitmentData from '$lib/data/digimon-world-next-order/recruitment.json';
 	import {
 		createTransferSnapshot,
 		diffTransferStorageDetailed,
 		restoreTransferStorage,
 		type DetailedStorageDiff,
-		type TransferSnapshot
+		type StorageItemDiff,
+		type TransferSnapshot,
+		type ValueChange
 	} from '$lib/utils/local-storage-transfer.utils';
+
+	type RecruitmentEntry = {
+		id: string;
+		name: string;
+	};
+
+	type EntityVisual = {
+		src: string;
+		alt: string;
+	};
 
 	let creating = $state(false);
 	let loading = $state(false);
@@ -21,10 +39,22 @@
 	let createdExpiresAt = $state('');
 	let importedSnapshot = $state<TransferSnapshot | null>(null);
 	let diff = $state<DetailedStorageDiff | null>(null);
+	let pokemonByName = $state(new Map<string, Pokemon>());
+	let digimonById = $state(new Map<number, Digimon>());
+	let digimonByName = $state(new Map<string, Digimon>());
 
 	const normalizedCode = $derived(code.trim().replace(/\s|-/g, '').toUpperCase());
 	const hasImportedChanges = $derived(!!diff && (diff.added || diff.changed || diff.deleted));
 	const visibleDiffItems = $derived(diff?.items.filter((item) => item.type !== 'unchanged') ?? []);
+	const recruitmentById = new Map((recruitmentData as RecruitmentEntry[]).map((entry) => [entry.id, entry]));
+
+	onMount(async () => {
+		const [pokemons, digimon] = await Promise.all([loadPokemons(), loadDigimon()]);
+
+		pokemonByName = new Map(pokemons.map((pokemon) => [pokemon.name, pokemon]));
+		digimonById = new Map(digimon.map((item) => [item.id, item]));
+		digimonByName = new Map(digimon.map((item) => [item.name.toLowerCase(), item]));
+	});
 
 	function formatDate(value: string) {
 		return new Intl.DateTimeFormat(undefined, {
@@ -98,6 +128,34 @@
 		closeModal();
 		location.reload();
 	}
+
+	function entityVisualFor(item: StorageItemDiff, change: ValueChange, side: 'before' | 'after'): EntityVisual | null {
+		const value = side === 'before' ? change.beforeValue : change.afterValue;
+
+		if (item.key.includes('/pokemon-mystery-dungeon/blue-rescue-team/recruitment-checklist')) {
+			const [group, field, name] = change.pathSegments;
+			if (group !== 'collection' || !['owned', 'readyToEvolve'].includes(field) || !name) return null;
+
+			const pokemon = pokemonByName.get(name);
+			return pokemon ? { src: getPokemonIcon(pokemon), alt: pokemon.name } : null;
+		}
+
+		if (item.key.includes('/digimon/world-next-order/recruitment-checklist')) {
+			const [group, id] = change.pathSegments;
+			if (group !== 'recruited' || !id) return null;
+
+			const entry = recruitmentById.get(id);
+			const digimon = entry ? digimonByName.get(entry.name.toLowerCase()) : null;
+			return digimon ? { src: getDigimonIcon(digimon), alt: digimon.name } : null;
+		}
+
+		if (item.key.includes('/digimon/story-time-stranger/team-builder') && typeof value === 'number') {
+			const digimon = digimonById.get(value);
+			return digimon ? { src: getDigimonIcon(digimon), alt: digimon.name } : null;
+		}
+
+		return null;
+	}
 </script>
 
 {#snippet badge(type: 'added' | 'changed' | 'deleted' | 'unchanged')}
@@ -111,6 +169,32 @@
 		"
 	>
 		{type}
+	</span>
+{/snippet}
+
+{#snippet visualValue(visual: EntityVisual | null, text: string | undefined, tone: 'added' | 'deleted' | 'neutral')}
+	<span
+		class="
+			flex items-center gap-1 break-all
+			{tone === 'added' ? 'text-green-400' : ''}
+			{tone === 'deleted' ? 'text-red-400' : ''}
+		"
+	>
+		{#if visual}
+			<img
+				src={visual.src}
+				alt={visual.alt}
+				title={visual.alt}
+				class="h-7 w-7 shrink-0 object-contain"
+				loading="lazy"
+			/>
+			<span>{visual.alt}</span>
+			{#if text && text !== visual.alt}
+				<span class="opacity-70">({text})</span>
+			{/if}
+		{:else}
+			<span>{text}</span>
+		{/if}
 	</span>
 {/snippet}
 
@@ -176,13 +260,23 @@
 											<span class="break-all opacity-70">{change.path}</span>
 
 											{#if item.type === 'added'}
-												<span class="text-green-400 sm:text-right">+ {change.after}</span>
+												<div class="sm:text-right">
+													{@render visualValue(entityVisualFor(item, change, 'after'), `+ ${change.after}`, 'added')}
+												</div>
 											{:else if item.type === 'deleted'}
-												<span class="text-red-400 sm:text-right">- {change.before}</span>
+												<div class="sm:text-right">
+													{@render visualValue(
+														entityVisualFor(item, change, 'before'),
+														`- ${change.before}`,
+														'deleted'
+													)}
+												</div>
 											{:else}
-												<span class="break-all text-red-400 sm:text-right">{change.before}</span>
+												<div class="sm:text-right">
+													{@render visualValue(entityVisualFor(item, change, 'before'), change.before, 'deleted')}
+												</div>
 												<span class="hidden opacity-50 sm:block">→</span>
-												<span class="break-all text-green-400">{change.after}</span>
+												{@render visualValue(entityVisualFor(item, change, 'after'), change.after, 'added')}
 											{/if}
 										</li>
 									{/each}

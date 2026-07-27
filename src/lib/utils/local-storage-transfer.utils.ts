@@ -7,8 +7,11 @@ export type TransferSnapshot = {
 
 export type ValueChange = {
 	path: string;
+	pathSegments: string[];
 	before?: string;
 	after?: string;
+	beforeValue?: unknown;
+	afterValue?: unknown;
 };
 
 export type StorageItemDiff = {
@@ -132,8 +135,11 @@ function diffStoredValue(before: string | undefined, after: string | undefined):
 
 		return {
 			path,
+			pathSegments: path.split(' / '),
 			before: beforeValues.has(path) ? formatValue(beforeValue) : undefined,
-			after: afterValues.has(path) ? formatValue(afterValue) : undefined
+			after: afterValues.has(path) ? formatValue(afterValue) : undefined,
+			beforeValue,
+			afterValue
 		};
 	});
 }
