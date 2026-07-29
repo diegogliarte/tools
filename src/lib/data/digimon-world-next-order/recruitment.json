@@ -851,7 +851,8 @@
 			"t": "battle",
 			"lv": 39,
 			"text": "Accept MetalMamemon's request, then defeat MetalGreymon and MetalTyrannomon in the shared Lv 39 battle."
-		}
+		},
+		"requirements": ["facility:lab:4", "manual:Accept MetalMamemon's request"]
 	},
 	{
 		"id": "metaltyrannomon",
@@ -864,7 +865,8 @@
 			"t": "battle",
 			"lv": 39,
 			"text": "Accept MetalMamemon's request, then defeat MetalGreymon and MetalTyrannomon in the shared Lv 39 battle."
-		}
+		},
+		"requirements": ["facility:lab:4", "manual:Accept MetalMamemon's request"]
 	},
 	{
 		"id": "toyagumon",
