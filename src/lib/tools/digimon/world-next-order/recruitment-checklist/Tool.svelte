@@ -79,8 +79,21 @@
 		cityUpgrade: 'City upgrade',
 		postgame: 'Postgame',
 		megaPartner: 'Mega partner',
-		hp8000: '8,000+ HP'
+		hp8000: '8,000+ HP',
+		exScenarioStruggleFates: 'Complete Struggle of the Fates EX Scenario',
+		exScenarioThreeGodsRuin: 'Complete Revival: Three Gods of Ruin EX Scenario',
+		exScenarioMeicoomonRiddle: "Complete Meicoomon's Riddle EX Scenario"
 	};
+
+	const flagOrder = [
+		'cityUpgrade',
+		'postgame',
+		'megaPartner',
+		'hp8000',
+		'exScenarioMeicoomonRiddle',
+		'exScenarioStruggleFates',
+		'exScenarioThreeGodsRuin'
+	];
 
 	const defaults = {
 		recruited: {} as Record<string, boolean>,
@@ -110,6 +123,7 @@
 		new Set(entries.flatMap((entry) => entry.requirements ?? []).filter((req) => req.startsWith('flag:')))
 	)
 		.map((req) => req.slice('flag:'.length))
+		.sort((a, b) => flagOrder.indexOf(a) - flagOrder.indexOf(b))
 		.map((flag) => ({
 			value: flag,
 			label: flagLabels[flag] ?? flag

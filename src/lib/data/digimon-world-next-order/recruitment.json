@@ -1176,7 +1176,7 @@
 			"t": "steps",
 			"text": "Complete The Crimson Claw Strikes Back EX Scenario."
 		},
-		"requirements": ["flag:postgame"]
+		"requirements": ["flag:postgame", "flag:exScenarioMeicoomonRiddle", "flag:exScenarioThreeGodsRuin"]
 	},
 	{
 		"id": "kentaurosmon",
@@ -1325,7 +1325,7 @@
 			"t": "auto",
 			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
 		},
-		"requirements": ["flag:postgame"]
+		"requirements": ["flag:postgame", "flag:exScenarioStruggleFates", "recruit:gaiomon"]
 	},
 	{
 		"id": "examon",
@@ -1378,7 +1378,7 @@
 			"t": "auto",
 			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
 		},
-		"requirements": ["flag:postgame"]
+		"requirements": ["flag:postgame", "flag:exScenarioStruggleFates", "recruit:titamon"]
 	},
 	{
 		"id": "shinegreymon",
@@ -1404,7 +1404,7 @@
 			"t": "auto",
 			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
 		},
-		"requirements": ["flag:postgame"]
+		"requirements": ["flag:postgame", "flag:exScenarioStruggleFates", "recruit:metaletemon"]
 	},
 	{
 		"id": "justimon",
@@ -1512,7 +1512,7 @@
 			"t": "auto",
 			"text": "Joins during Revival: Three Gods of Ruin EX Scenario."
 		},
-		"requirements": ["flag:postgame"]
+		"requirements": ["flag:postgame", "flag:exScenarioStruggleFates"]
 	},
 	{
 		"id": "gankoomon",
