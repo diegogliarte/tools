@@ -203,7 +203,7 @@
 		const { method } = entry;
 
 		if (method.t === 'battle') return method.text ?? `Battle Lv ${method.lv ?? '?'}`;
-		if (method.t === 'auto') return 'Joins automatically';
+		if (method.t === 'auto') return method.text;
 		return method.text;
 	}
 
