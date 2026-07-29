@@ -3785,7 +3785,7 @@
 		{
 			"id": "map_0303",
 			"zone": "Server Desert",
-			"label": "Hallowed Hall",
+			"label": "To Hallowed Hall",
 			"image": "/digimon-world-next-order/maps/map_0303-server-desert-to-hallowed-hall.png",
 			"imageSize": {
 				"width": 512,
@@ -8648,7 +8648,58 @@
 				"width": 115,
 				"height": 115
 			},
-			"spots": []
+			"spots": [
+				{
+					"id": "map_8108-spot-1",
+					"type": "metal",
+					"slots": [
+						{
+							"name": "Black Digizoit",
+							"value": 45,
+							"type": "metal"
+						},
+						{
+							"name": "Red Digizoit",
+							"value": 40,
+							"type": "metal"
+						},
+						{
+							"name": "Blue Digizoit",
+							"value": 15,
+							"type": "stone"
+						}
+					],
+					"projected": {
+						"x": 0.418821,
+						"y": 0.473924
+					}
+				},
+				{
+					"id": "map_8108-spot-2",
+					"type": "stone",
+					"slots": [
+						{
+							"name": "DigiEmerald",
+							"value": 45,
+							"type": "stone"
+						},
+						{
+							"name": "DigiRuby",
+							"value": 40,
+							"type": "stone"
+						},
+						{
+							"name": "DigiDiamond",
+							"value": 15,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.435122,
+						"y": 0.494177
+					}
+				}
+			]
 		},
 		{
 			"id": "map_8109",
@@ -8767,7 +8818,58 @@
 				"width": 101,
 				"height": 90
 			},
-			"spots": []
+			"spots": [
+				{
+					"id": "map_8205-spot-1",
+					"type": "water",
+					"slots": [
+						{
+							"name": "DigiRainbowdrop",
+							"value": 45,
+							"type": "water"
+						},
+						{
+							"name": "DigiLightningwater",
+							"value": 40,
+							"type": "water"
+						},
+						{
+							"name": "DigiHolywater",
+							"value": 15,
+							"type": "metal"
+						}
+					],
+					"projected": {
+						"x": 0.485889,
+						"y": 0.475106
+					}
+				},
+				{
+					"id": "map_8205-spot-2",
+					"type": "wood",
+					"slots": [
+						{
+							"name": "DigiFelwood",
+							"value": 45,
+							"type": "wood"
+						},
+						{
+							"name": "DigiStarwood",
+							"value": 40,
+							"type": "wood"
+						},
+						{
+							"name": "DigiGodwood",
+							"value": 15,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.485889,
+						"y": 0.52452
+					}
+				}
+			]
 		},
 		{
 			"id": "map_8206",
@@ -8954,7 +9056,58 @@
 				"width": 120,
 				"height": 120
 			},
-			"spots": []
+			"spots": [
+				{
+					"id": "map_8306-spot-1",
+					"type": "metal",
+					"slots": [
+						{
+							"name": "Black Digizoit",
+							"value": 45,
+							"type": "metal"
+						},
+						{
+							"name": "Red Digizoit",
+							"value": 40,
+							"type": "metal"
+						},
+						{
+							"name": "Blue Digizoit",
+							"value": 15,
+							"type": "stone"
+						}
+					],
+					"projected": {
+						"x": 0.559211,
+						"y": 0.503463
+					}
+				},
+				{
+					"id": "map_8306-spot-2",
+					"type": "water",
+					"slots": [
+						{
+							"name": "DigiRainbowdrop",
+							"value": 45,
+							"type": "water"
+						},
+						{
+							"name": "DigiLightningwater",
+							"value": 40,
+							"type": "water"
+						},
+						{
+							"name": "DigiHolywater",
+							"value": 15,
+							"type": "metal"
+						}
+					],
+					"projected": {
+						"x": 0.580556,
+						"y": 0.522229
+					}
+				}
+			]
 		},
 		{
 			"id": "map_8307",
@@ -9090,7 +9243,58 @@
 				"width": 90,
 				"height": 101
 			},
-			"spots": []
+			"spots": [
+				{
+					"id": "map_8404-spot-1",
+					"type": "stone",
+					"slots": [
+						{
+							"name": "DigiEmerald",
+							"value": 45,
+							"type": "stone"
+						},
+						{
+							"name": "DigiRuby",
+							"value": 40,
+							"type": "stone"
+						},
+						{
+							"name": "DigiDiamond",
+							"value": 15,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.519401,
+						"y": 0.492928
+					}
+				},
+				{
+					"id": "map_8404-spot-2",
+					"type": "wood",
+					"slots": [
+						{
+							"name": "DigiFelwood",
+							"value": 45,
+							"type": "wood"
+						},
+						{
+							"name": "DigiStarwood",
+							"value": 40,
+							"type": "wood"
+						},
+						{
+							"name": "DigiGodwood",
+							"value": 15,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.471823,
+						"y": 0.492928
+					}
+				}
+			]
 		},
 		{
 			"id": "map_8405",
@@ -9337,7 +9541,83 @@
 				"width": 90,
 				"height": 101
 			},
-			"spots": []
+			"spots": [
+				{
+					"id": "map_8507-spot-1",
+					"type": "water",
+					"slots": [
+						{
+							"name": "DigiRainbowdrop",
+							"value": 35,
+							"type": "water"
+						},
+						{
+							"name": "DigiRainbowdrop",
+							"value": 35,
+							"type": "water"
+						},
+						{
+							"name": "DigiRainbowdrop",
+							"value": 30,
+							"type": "water"
+						}
+					],
+					"projected": {
+						"x": 0.473786,
+						"y": 0.445226
+					}
+				},
+				{
+					"id": "map_8507-spot-2",
+					"type": "stone",
+					"slots": [
+						{
+							"name": "DigiEmerald",
+							"value": 35,
+							"type": "stone"
+						},
+						{
+							"name": "DigiRuby",
+							"value": 35,
+							"type": "stone"
+						},
+						{
+							"name": "DigiDiamond",
+							"value": 30,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.519684,
+						"y": 0.493664
+					}
+				},
+				{
+					"id": "map_8507-spot-3",
+					"type": "wood",
+					"slots": [
+						{
+							"name": "DigiFelwood",
+							"value": 35,
+							"type": "wood"
+						},
+						{
+							"name": "DigiStarwood",
+							"value": 35,
+							"type": "wood"
+						},
+						{
+							"name": "DigiGodwood",
+							"value": 30,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.473786,
+						"y": 0.493664
+					}
+				}
+			]
 		},
 		{
 			"id": "map_8508",
@@ -9473,7 +9753,48 @@
 				"width": 128,
 				"height": 109
 			},
-			"spots": []
+			"spots": [
+				{
+					"id": "map_8605-spot-1",
+					"type": "wood",
+					"slots": [
+						{
+							"name": "DigiStarwood",
+							"value": 80,
+							"type": "wood"
+						},
+						{
+							"name": "DigiGodwood",
+							"value": 20,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.480642,
+						"y": 0.433506
+					}
+				},
+				{
+					"id": "map_8605-spot-2",
+					"type": "metal",
+					"slots": [
+						{
+							"name": "Red Digizoit",
+							"value": 80,
+							"type": "metal"
+						},
+						{
+							"name": "Blue Digizoit",
+							"value": 20,
+							"type": "stone"
+						}
+					],
+					"projected": {
+						"x": 0.532534,
+						"y": 0.486538
+					}
+				}
+			]
 		},
 		{
 			"id": "map_8606",
@@ -9507,7 +9828,48 @@
 				"width": 128,
 				"height": 109
 			},
-			"spots": []
+			"spots": [
+				{
+					"id": "map_8607-spot-1",
+					"type": "stone",
+					"slots": [
+						{
+							"name": "DigiRuby",
+							"value": 80,
+							"type": "stone"
+						},
+						{
+							"name": "DigiDiamond",
+							"value": 20,
+							"type": "wood"
+						}
+					],
+					"projected": {
+						"x": 0.467929,
+						"y": 0.561144
+					}
+				},
+				{
+					"id": "map_8607-spot-2",
+					"type": "water",
+					"slots": [
+						{
+							"name": "DigiLightningwater",
+							"value": 80,
+							"type": "water"
+						},
+						{
+							"name": "DigiHolywater",
+							"value": 20,
+							"type": "metal"
+						}
+					],
+					"projected": {
+						"x": 0.521406,
+						"y": 0.514961
+					}
+				}
+			]
 		},
 		{
 			"id": "map_8608",
