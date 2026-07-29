@@ -162,6 +162,14 @@
 	}
 </script>
 
+{#snippet transitionNode(point: { x: number; y: number }, label: string)}
+	<div
+		class="absolute z-20 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[1px] border border-white bg-accent shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+		style={anchorStyle(point)}
+		use:tooltipAction={{ text: label, position: 'top' }}
+	></div>
+{/snippet}
+
 {#if selectedArea}
 	<div class="flex flex-col gap-4">
 		<div class="mx-auto w-full max-w-xs">
@@ -202,16 +210,9 @@
 				</svg>
 
 				{#each selectedAreaTransitions as transition (`${transition.id}-anchors`)}
-					<div
-						class="absolute z-20 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[1px] border border-white bg-accent shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
-						style={anchorStyle(transition.sourcePoint)}
-						use:tooltipAction={{ text: transitionLabel(transition), position: 'top' }}
-					></div>
-					<div
-						class="absolute z-20 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-[1px] border border-white bg-accent shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
-						style={anchorStyle(transition.targetPoint)}
-						use:tooltipAction={{ text: transitionLabel(transition), position: 'top' }}
-					></div>
+					{@const label = transitionLabel(transition)}
+					{@render transitionNode(transition.sourcePoint, label)}
+					{@render transitionNode(transition.targetPoint, label)}
 				{/each}
 
 				{#each selectedAreaExits as exit (`${exit.sourceMapId}-${exit.targetAreaId}`)}
