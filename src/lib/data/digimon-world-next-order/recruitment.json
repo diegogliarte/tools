@@ -1254,10 +1254,10 @@
 		"floatiaLocation": "Research Entrance",
 		"service": "Boosts mood in evening.",
 		"method": {
-			"t": "give",
-			"text": "Give Magnamon's Autograph from Magnamon."
+			"t": "steps",
+			"text": "Talk to ExVeemon, talk to Veedramon, defeat Magnamon, then talk to ExVeemon again."
 		},
-		"requirements": ["flag:postgame", "recruit:magnamon"]
+		"requirements": ["flag:postgame"]
 	},
 	{
 		"id": "beelzemon",
@@ -1497,9 +1497,9 @@
 		"service": "Rewards battle victory milestones.",
 		"method": {
 			"t": "steps",
-			"text": "Accept ExVeemon's request, then talk to Veedramon."
+			"text": "Talk to ExVeemon, then talk to Veedramon."
 		},
-		"requirements": ["flag:postgame"]
+		"requirements": ["flag:postgame", "manual:Talk to ExVeemon"]
 	},
 	{
 		"id": "titamon",
@@ -1543,8 +1543,8 @@
 		"requirements": ["flag:postgame"]
 	},
 	{
-		"id": "cherubimon-vice",
-		"name": "Cherubimon (Vice)",
+		"id": "cherubimon-good",
+		"name": "Cherubimon (Good)",
 		"area": "Absolute Zero",
 		"subarea": "Icy Hall",
 		"floatiaLocation": "Item Shop",
@@ -1594,7 +1594,7 @@
 		"method": {
 			"t": "battle",
 			"lv": 48,
-			"text": "Accept Cherubimon (Vice)'s request, then battle Belphemon SM Lv 48."
+			"text": "Accept Cherubimon (Good)'s request, then battle Belphemon SM Lv 48."
 		},
 		"requirements": ["flag:postgame"]
 	},
@@ -1666,8 +1666,8 @@
 		"requirements": ["flag:postgame", "chapter:5"]
 	},
 	{
-		"id": "imperialdramon",
-		"name": "Imperialdramon",
+		"id": "imperialdramon-fm",
+		"name": "Imperialdramon FM",
 		"area": "Infinite Cauldron",
 		"subarea": "Core 02",
 		"floatiaLocation": "Dimensional Dungeon",

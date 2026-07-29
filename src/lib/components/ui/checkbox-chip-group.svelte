@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tooltipAction } from '$lib/actions/tooltip';
 	import { syncLocalStorageState } from '$lib/states/local-storage.svelte';
 
 	type Option =
@@ -7,12 +8,14 @@
 				value: string;
 				label: string;
 				disabled?: boolean;
+				tooltip?: string;
 		  };
 
 	type NormalizedOption = {
 		value: string;
 		label: string;
 		disabled: boolean;
+		tooltip?: string;
 	};
 
 	interface Props {
@@ -50,7 +53,8 @@
 			return {
 				value: option.value,
 				label: option.label,
-				disabled: option.disabled ?? false
+				disabled: option.disabled ?? false,
+				tooltip: option.tooltip
 			};
 		})
 	);
@@ -141,21 +145,23 @@
 		{#each items as item (item.value)}
 			{@const selected = !!checked[item.value]}
 
-			<button
-				type="button"
-				disabled={item.disabled}
-				aria-pressed={selected}
-				class="
-					cursor-pointer border px-2 py-1 text-xs transition-all
-					disabled:pointer-events-none disabled:opacity-40
-					{selected
-					? 'border-accent bg-accent-dark text-accent shadow-sm'
-					: 'border-white/15 bg-transparent text-white/60 hover:border-white/35 hover:bg-white/5 hover:text-white/90'}
-				"
-				onclick={() => setValue(item.value, !selected)}
-			>
-				{item.label}
-			</button>
+			<div class="relative" use:tooltipAction={{ text: item.tooltip ?? '', position: 'top', disabled: !item.tooltip }}>
+				<button
+					type="button"
+					disabled={item.disabled}
+					aria-pressed={selected}
+					class="
+						cursor-pointer border px-2 py-1 text-xs transition-all
+						disabled:pointer-events-none disabled:opacity-40
+						{selected
+						? 'border-accent bg-accent-dark text-accent shadow-sm'
+						: 'border-white/15 bg-transparent text-white/60 hover:border-white/35 hover:bg-white/5 hover:text-white/90'}
+					"
+					onclick={() => setValue(item.value, !selected)}
+				>
+					{item.label}
+				</button>
+			</div>
 		{/each}
 
 		{#if items.length === 0}

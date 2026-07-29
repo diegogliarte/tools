@@ -95,6 +95,12 @@
 		'exScenarioThreeGodsRuin'
 	];
 
+	const scenarioProgressRequirements: Record<string, string[]> = {
+		exScenarioMeicoomonRiddle: ['chapter:2'],
+		exScenarioStruggleFates: ['flag:postgame', 'recruit:numemon', 'recruit:sukamon', 'recruit:platinumnumemon'],
+		exScenarioThreeGodsRuin: ['flag:exScenarioStruggleFates']
+	};
+
 	const defaults = {
 		recruited: {} as Record<string, boolean>,
 		chapter: 1,
@@ -124,10 +130,17 @@
 	)
 		.map((req) => req.slice('flag:'.length))
 		.sort((a, b) => flagOrder.indexOf(a) - flagOrder.indexOf(b))
-		.map((flag) => ({
-			value: flag,
-			label: flagLabels[flag] ?? flag
-		}));
+		.map((flag) => {
+			const requirements = scenarioProgressRequirements[flag] ?? [];
+			const disabled = !progress.flags[flag] && !requirements.every(requirementMet);
+
+			return {
+				value: flag,
+				label: flagLabels[flag] ?? flag,
+				disabled,
+				tooltip: disabled ? `Requires:\n${requirements.map(requirementLabel).join('\n')}` : undefined
+			};
+		});
 
 	function isRecruited(id: string) {
 		return !!progress.recruited[id];
@@ -154,7 +167,10 @@
 		if (req.startsWith('recruit:')) return isRecruited(req.slice('recruit:'.length));
 		if (req.startsWith('chapter:'))
 			return !!progress.flags.postgame || progress.chapter >= Number(req.slice('chapter:'.length));
-		if (req.startsWith('flag:')) return !!progress.flags[req.slice('flag:'.length)];
+		if (req.startsWith('flag:')) {
+			const flag = req.slice('flag:'.length);
+			return !!progress.flags[flag] && (scenarioProgressRequirements[flag] ?? []).every(requirementMet);
+		}
 		if (req.startsWith('facility:')) {
 			const parsed = parseFacility(req);
 			return parsed ? (progress.facilities[parsed.facility] ?? 0) >= parsed.level : false;
