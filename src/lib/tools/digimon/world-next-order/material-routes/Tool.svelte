@@ -80,9 +80,15 @@
 			];
 		});
 	});
-	const boardWidthRem = $derived(selectedArea ? selectedArea.layout.width * stepRem - gapRem + boardPaddingRem * 2 : 1);
+	const boardWidthRem = $derived(
+		selectedAreaMaps.length
+			? (Math.max(...selectedAreaMaps.map((item) => item.x)) + 1) * stepRem - gapRem + boardPaddingRem * 2
+			: 1
+	);
 	const boardHeightRem = $derived(
-		selectedArea ? selectedArea.layout.height * stepRem - gapRem + labelRem + boardPaddingRem * 2 : 1
+		selectedAreaMaps.length
+			? (Math.max(...selectedAreaMaps.map((item) => item.y)) + 1) * stepRem - gapRem + labelRem + boardPaddingRem * 2
+			: 1
 	);
 
 	function spotLabel(spot: MaterialSpot) {
@@ -96,21 +102,6 @@
 			metal: 'bg-red-500',
 			wood: 'bg-green-500'
 		}[type];
-	}
-
-	function cropFrameStyle(map: MaterialMap) {
-		const { width, height } = cropFrameSize(map);
-
-		return `width: ${width}rem; height: ${height}rem;`;
-	}
-
-	function cropFrameSize(map: MaterialMap) {
-		const crop = map.imageCropBounds;
-		const ratio = crop.width / crop.height;
-		const width = ratio >= 1 ? tileRem : tileRem * ratio;
-		const height = ratio >= 1 ? tileRem / ratio : tileRem;
-
-		return { width, height };
 	}
 
 	function mapImageStyle(map: MaterialMap) {
@@ -134,13 +125,12 @@
 
 	function mapPoint(item: (typeof selectedAreaMaps)[number], position: { x: number; y: number }) {
 		const crop = item.map.imageCropBounds;
-		const frame = cropFrameSize(item.map);
 		const x = Math.min(1, Math.max(0, (position.x * item.map.imageSize.width - crop.x) / crop.width));
 		const y = Math.min(1, Math.max(0, (position.y * item.map.imageSize.height - crop.y) / crop.height));
 
 		return {
-			x: boardPaddingRem + item.x * stepRem + (tileRem - frame.width) / 2 + x * frame.width,
-			y: boardPaddingRem + item.y * stepRem + labelRem + (tileRem - frame.height) / 2 + y * frame.height
+			x: boardPaddingRem + item.x * stepRem + x * tileRem,
+			y: boardPaddingRem + item.y * stepRem + labelRem + y * tileRem
 		};
 	}
 
@@ -149,7 +139,6 @@
 	}
 
 	function externalExitPoint(item: (typeof selectedAreaMaps)[number], nodePoint: { x: number; y: number }) {
-		const frame = cropFrameSize(item.map);
 		const center = {
 			x: boardPaddingRem + item.x * stepRem + tileRem / 2,
 			y: boardPaddingRem + item.y * stepRem + labelRem + tileRem / 2
@@ -159,8 +148,8 @@
 		const length = Math.hypot(localX, localY) || 1;
 		const unitX = localX / length;
 		const unitY = localY / length;
-		const distanceX = unitX === 0 ? Infinity : (frame.width / 2 - Math.abs(localX)) / Math.abs(unitX);
-		const distanceY = unitY === 0 ? Infinity : (frame.height / 2 - Math.abs(localY)) / Math.abs(unitY);
+		const distanceX = unitX === 0 ? Infinity : (tileRem / 2 - Math.abs(localX)) / Math.abs(unitX);
+		const distanceY = unitY === 0 ? Infinity : (tileRem / 2 - Math.abs(localY)) / Math.abs(unitY);
 		const distance = Math.max(0, Math.min(distanceX, distanceY)) + areaExitGapRem;
 		return {
 			x: nodePoint.x + unitX * distance,
@@ -179,7 +168,7 @@
 			<SelectInput label="Area" bind:value={selectedAreaId} options={areaOptions} allowEmpty={false} />
 		</div>
 
-		<div class="flex min-w-0 [justify-content:safe_center]">
+		<div class="min-w-0">
 			<div class="relative min-h-[36rem]" style={`width: ${boardWidthRem}rem; height: ${boardHeightRem}rem;`}>
 				<svg
 					class="pointer-events-none absolute inset-0 z-[15] overflow-visible"
@@ -243,9 +232,9 @@
 						aria-label={item.map.label}
 					>
 						<div class="flex w-48 items-center justify-center" style={`height: ${tileRem + labelRem}rem;`}>
-							<div style={`width: ${cropFrameSize(item.map).width}rem;`}>
+							<div class="w-48">
 								<div class="mb-1 h-4 truncate text-xs font-medium">{item.map.label}</div>
-								<div class="relative overflow-hidden" style={cropFrameStyle(item.map)}>
+								<div class="relative h-48 w-48 overflow-hidden">
 									<img
 										class="absolute block max-w-none"
 										style={mapImageStyle(item.map)}

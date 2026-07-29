@@ -121,6 +121,7 @@ function buildCategory(
 				return {
 					...tool,
 					href: `/${[...slugPath, slugify(tool.title)].join('/')}`,
+					centered: tool.centered ?? false,
 					favicon: tool.favicon ?? favicon,
 					categoryPath,
 					loadComponent

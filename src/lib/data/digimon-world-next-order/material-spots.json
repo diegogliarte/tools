@@ -3,10 +3,6 @@
 		{
 			"id": "nigh-plains",
 			"label": "Nigh Plains",
-			"layout": {
-				"width": 3,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0201",
@@ -75,8 +71,6 @@
 					"id": "map_0201-map_0202-1",
 					"sourceMapId": "map_0201",
 					"targetMapId": "map_0202",
-					"sourceDirection": "northeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.860657,
 						"y": 0.256653
@@ -90,8 +84,6 @@
 					"id": "map_0201-map_0204-1",
 					"sourceMapId": "map_0201",
 					"targetMapId": "map_0204",
-					"sourceDirection": "east",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.838989,
 						"y": 0.659668
@@ -105,8 +97,6 @@
 					"id": "map_0201-map_0206-1",
 					"sourceMapId": "map_0201",
 					"targetMapId": "map_0206",
-					"sourceDirection": "southeast",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.644871,
 						"y": 0.82112
@@ -120,8 +110,6 @@
 					"id": "map_0201-map_0207-1",
 					"sourceMapId": "map_0201",
 					"targetMapId": "map_0207",
-					"sourceDirection": "northwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.249634,
 						"y": 0.143982
@@ -135,8 +123,6 @@
 					"id": "map_0202-map_0203-1",
 					"sourceMapId": "map_0202",
 					"targetMapId": "map_0203",
-					"sourceDirection": "east",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.830739,
 						"y": 0.48818
@@ -150,8 +136,6 @@
 					"id": "map_0204-map_0205-1",
 					"sourceMapId": "map_0204",
 					"targetMapId": "map_0205",
-					"sourceDirection": "southeast",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.620911,
 						"y": 0.694244
@@ -166,10 +150,6 @@
 		{
 			"id": "server-desert",
 			"label": "Server Desert",
-			"layout": {
-				"width": 3,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_0301",
@@ -248,8 +228,6 @@
 					"id": "map_0301-map_0303-1",
 					"sourceMapId": "map_0301",
 					"targetMapId": "map_0303",
-					"sourceDirection": "south",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.499613,
 						"y": 0.663581
@@ -263,8 +241,6 @@
 					"id": "map_0301-map_0302-1",
 					"sourceMapId": "map_0301",
 					"targetMapId": "map_0302",
-					"sourceDirection": "west",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.338175,
 						"y": 0.496684
@@ -278,8 +254,6 @@
 					"id": "map_0302-map_0304-1",
 					"sourceMapId": "map_0302",
 					"targetMapId": "map_0304",
-					"sourceDirection": "northwest",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.220256,
 						"y": 0.351135
@@ -293,8 +267,6 @@
 					"id": "map_0302-map_0305-1",
 					"sourceMapId": "map_0302",
 					"targetMapId": "map_0305",
-					"sourceDirection": "west",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.175385,
 						"y": 0.514303
@@ -308,8 +280,6 @@
 					"id": "map_0302-map_0306-1",
 					"sourceMapId": "map_0302",
 					"targetMapId": "map_0306",
-					"sourceDirection": "southwest",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.220256,
 						"y": 0.710103
@@ -323,8 +293,6 @@
 					"id": "map_0306-map_0307-1",
 					"sourceMapId": "map_0306",
 					"targetMapId": "map_0307",
-					"sourceDirection": "south",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.504272,
 						"y": 0.702087
@@ -338,8 +306,6 @@
 					"id": "map_0307-map_0308-1",
 					"sourceMapId": "map_0307",
 					"targetMapId": "map_0308",
-					"sourceDirection": "west",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.422933,
 						"y": 0.538045
@@ -353,8 +319,6 @@
 					"id": "map_0308-map_0309-1",
 					"sourceMapId": "map_0308",
 					"targetMapId": "map_0309",
-					"sourceDirection": "southwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.340932,
 						"y": 0.597697
@@ -369,10 +333,6 @@
 		{
 			"id": "mod-cape",
 			"label": "MOD Cape",
-			"layout": {
-				"width": 4,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0601",
@@ -438,8 +398,6 @@
 					"id": "map_0601-map_0602-1",
 					"sourceMapId": "map_0601",
 					"targetMapId": "map_0602",
-					"sourceDirection": "southeast",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.630737,
 						"y": 0.674927
@@ -453,8 +411,6 @@
 					"id": "map_0601-map_0605-1",
 					"sourceMapId": "map_0601",
 					"targetMapId": "map_0605",
-					"sourceDirection": "northwest",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.385986,
 						"y": 0.353434
@@ -468,8 +424,6 @@
 					"id": "map_0602-map_0603-1",
 					"sourceMapId": "map_0602",
 					"targetMapId": "map_0603",
-					"sourceDirection": "northeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.666892,
 						"y": 0.362534
@@ -483,8 +437,6 @@
 					"id": "map_0603-map_0604-1",
 					"sourceMapId": "map_0603",
 					"targetMapId": "map_0604",
-					"sourceDirection": "northeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.596914,
 						"y": 0.403361
@@ -498,8 +450,6 @@
 					"id": "map_0605-map_0606-1",
 					"sourceMapId": "map_0605",
 					"targetMapId": "map_0606",
-					"sourceDirection": "east",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.586605,
 						"y": 0.461505
@@ -513,8 +463,6 @@
 					"id": "map_0606-map_0608-1",
 					"sourceMapId": "map_0606",
 					"targetMapId": "map_0608",
-					"sourceDirection": "northwest",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.471649,
 						"y": 0.447815
@@ -528,8 +476,6 @@
 					"id": "map_0607-map_0608-1",
 					"sourceMapId": "map_0607",
 					"targetMapId": "map_0608",
-					"sourceDirection": "north",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.456295,
 						"y": 0.33216
@@ -544,10 +490,6 @@
 		{
 			"id": "logic-volcano",
 			"label": "Logic Volcano",
-			"layout": {
-				"width": 4,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0501",
@@ -605,8 +547,6 @@
 					"id": "map_0501-map_0502-1",
 					"sourceMapId": "map_0501",
 					"targetMapId": "map_0502",
-					"sourceDirection": "south",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.397114,
 						"y": 0.792969
@@ -620,8 +560,6 @@
 					"id": "map_0501-map_0506-1",
 					"sourceMapId": "map_0501",
 					"targetMapId": "map_0506",
-					"sourceDirection": "northeast",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.890625,
 						"y": 0.324219
@@ -635,8 +573,6 @@
 					"id": "map_0501-map_0504-1",
 					"sourceMapId": "map_0501",
 					"targetMapId": "map_0504",
-					"sourceDirection": "west",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.12501,
 						"y": 0.476054
@@ -650,8 +586,6 @@
 					"id": "map_0502-map_0508-1",
 					"sourceMapId": "map_0502",
 					"targetMapId": "map_0508",
-					"sourceDirection": "west",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.275751,
 						"y": 0.412206
@@ -665,8 +599,6 @@
 					"id": "map_0502-map_0503-1",
 					"sourceMapId": "map_0502",
 					"targetMapId": "map_0503",
-					"sourceDirection": "south",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.53812,
 						"y": 0.704476
@@ -680,8 +612,6 @@
 					"id": "map_0504-map_0505-1",
 					"sourceMapId": "map_0504",
 					"targetMapId": "map_0505",
-					"sourceDirection": "southwest",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.323845,
 						"y": 0.792969
@@ -695,8 +625,6 @@
 					"id": "map_0506-map_0507-1",
 					"sourceMapId": "map_0506",
 					"targetMapId": "map_0507",
-					"sourceDirection": "east",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.703556,
 						"y": 0.64123
@@ -711,10 +639,6 @@
 		{
 			"id": "ohguino-wastelands",
 			"label": "Ohguino Wastelands",
-			"layout": {
-				"width": 5,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0401",
@@ -788,8 +712,6 @@
 					"id": "map_0401-map_0402-1",
 					"sourceMapId": "map_0401",
 					"targetMapId": "map_0402",
-					"sourceDirection": "northeast",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.785838,
 						"y": 0.14033
@@ -803,8 +725,6 @@
 					"id": "map_0401-map_0405-1",
 					"sourceMapId": "map_0401",
 					"targetMapId": "map_0405",
-					"sourceDirection": "west",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.109375,
 						"y": 0.34375
@@ -818,8 +738,6 @@
 					"id": "map_0405-map_0406-1",
 					"sourceMapId": "map_0405",
 					"targetMapId": "map_0406",
-					"sourceDirection": "northwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.199902,
 						"y": 0.267342
@@ -833,8 +751,6 @@
 					"id": "map_0405-map_0407-1",
 					"sourceMapId": "map_0405",
 					"targetMapId": "map_0407",
-					"sourceDirection": "west",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.244008,
 						"y": 0.503913
@@ -848,8 +764,6 @@
 					"id": "map_0407-map_0408-1",
 					"sourceMapId": "map_0407",
 					"targetMapId": "map_0408",
-					"sourceDirection": "west",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.364453,
 						"y": 0.505107
@@ -863,8 +777,6 @@
 					"id": "map_0401-map_0403-1",
 					"sourceMapId": "map_0401",
 					"targetMapId": "map_0403",
-					"sourceDirection": "north",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.384629,
 						"y": 0
@@ -878,8 +790,6 @@
 					"id": "map_0401-map_0403-2",
 					"sourceMapId": "map_0401",
 					"targetMapId": "map_0403",
-					"sourceDirection": "northeast",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.79886,
 						"y": 0
@@ -893,8 +803,6 @@
 					"id": "map_0401-map_0404-1",
 					"sourceMapId": "map_0401",
 					"targetMapId": "map_0404",
-					"sourceDirection": "east",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.874136,
 						"y": 0.562108
@@ -908,8 +816,6 @@
 					"id": "map_0404-map_0405-1",
 					"sourceMapId": "map_0404",
 					"targetMapId": "map_0405",
-					"sourceDirection": "west",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.161189,
 						"y": 0.45974
@@ -924,10 +830,6 @@
 		{
 			"id": "faulty-ex-machina",
 			"label": "Faulty Ex Machina",
-			"layout": {
-				"width": 4,
-				"height": 4
-			},
 			"maps": [
 				{
 					"mapId": "map_0801",
@@ -1016,8 +918,6 @@
 					"id": "map_0801-map_0802-1",
 					"sourceMapId": "map_0801",
 					"targetMapId": "map_0802",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.5,
 						"y": 0.304688
@@ -1031,8 +931,6 @@
 					"id": "map_0802-map_0804-1",
 					"sourceMapId": "map_0802",
 					"targetMapId": "map_0804",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.571545,
 						"y": 0.344148
@@ -1046,8 +944,6 @@
 					"id": "map_0803-map_0805-1",
 					"sourceMapId": "map_0803",
 					"targetMapId": "map_0805",
-					"sourceDirection": "southwest",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.418874,
 						"y": 0.647756
@@ -1061,8 +957,6 @@
 					"id": "map_0803-map_0809-1",
 					"sourceMapId": "map_0803",
 					"targetMapId": "map_0809",
-					"sourceDirection": "northwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.416992,
 						"y": 0.356059
@@ -1076,8 +970,6 @@
 					"id": "map_0804-map_0805-1",
 					"sourceMapId": "map_0804",
 					"targetMapId": "map_0805",
-					"sourceDirection": "east",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.661667,
 						"y": 0.561144
@@ -1091,8 +983,6 @@
 					"id": "map_0805-map_0806-1",
 					"sourceMapId": "map_0805",
 					"targetMapId": "map_0806",
-					"sourceDirection": "southeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.646042,
 						"y": 0.636754
@@ -1106,8 +996,6 @@
 					"id": "map_0806-map_0808-1",
 					"sourceMapId": "map_0806",
 					"targetMapId": "map_0808",
-					"sourceDirection": "east",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.67354,
 						"y": 0.438824
@@ -1121,8 +1009,6 @@
 					"id": "map_0806-map_0807-1",
 					"sourceMapId": "map_0806",
 					"targetMapId": "map_0807",
-					"sourceDirection": "south",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.474048,
 						"y": 0.586962
@@ -1136,8 +1022,6 @@
 					"id": "map_0810-map_0811-1",
 					"sourceMapId": "map_0810",
 					"targetMapId": "map_0811",
-					"sourceDirection": "northeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.68103,
 						"y": 0.355194
@@ -1151,8 +1035,6 @@
 					"id": "map_0805-map_0810-1",
 					"sourceMapId": "map_0805",
 					"targetMapId": "map_0810",
-					"sourceDirection": "east",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.67672,
 						"y": 0.533164
@@ -1167,10 +1049,6 @@
 		{
 			"id": "bony-resort",
 			"label": "Bony Resort",
-			"layout": {
-				"width": 4,
-				"height": 4
-			},
 			"maps": [
 				{
 					"mapId": "map_0701",
@@ -1233,8 +1111,6 @@
 					"id": "map_0701-map_0703-1",
 					"sourceMapId": "map_0701",
 					"targetMapId": "map_0703",
-					"sourceDirection": "southwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.450822,
 						"y": 0.569467
@@ -1248,8 +1124,6 @@
 					"id": "map_0701-map_0707-1",
 					"sourceMapId": "map_0701",
 					"targetMapId": "map_0707",
-					"sourceDirection": "southeast",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.515369,
 						"y": 0.525684
@@ -1263,8 +1137,6 @@
 					"id": "map_0701-map_0702-1",
 					"sourceMapId": "map_0701",
 					"targetMapId": "map_0702",
-					"sourceDirection": "southeast",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.827222,
 						"y": 0.704378
@@ -1278,8 +1150,6 @@
 					"id": "map_0701-map_0704-1",
 					"sourceMapId": "map_0701",
 					"targetMapId": "map_0704",
-					"sourceDirection": "northwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.129429,
 						"y": 0.259087
@@ -1293,8 +1163,6 @@
 					"id": "map_0701-map_0705-1",
 					"sourceMapId": "map_0701",
 					"targetMapId": "map_0705",
-					"sourceDirection": "northwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.263672,
 						"y": 0.201036
@@ -1308,8 +1176,6 @@
 					"id": "map_0705-map_0706-1",
 					"sourceMapId": "map_0705",
 					"targetMapId": "map_0706",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.500581,
 						"y": 0.319075
@@ -1323,8 +1189,6 @@
 					"id": "map_0707-map_0708-1",
 					"sourceMapId": "map_0707",
 					"targetMapId": "map_0708",
-					"sourceDirection": "west",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.148438,
 						"y": 0.519531
@@ -1338,8 +1202,6 @@
 					"id": "map_0708-map_0709-1",
 					"sourceMapId": "map_0708",
 					"targetMapId": "map_0709",
-					"sourceDirection": "southwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.368435,
 						"y": 0.596625
@@ -1354,10 +1216,6 @@
 		{
 			"id": "absolute-zero",
 			"label": "Absolute Zero",
-			"layout": {
-				"width": 5,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_0901",
@@ -1420,8 +1278,6 @@
 					"id": "map_0901-map_0902-1",
 					"sourceMapId": "map_0901",
 					"targetMapId": "map_0902",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.407376,
 						"y": 0.121869
@@ -1435,8 +1291,6 @@
 					"id": "map_0902-map_0903-1",
 					"sourceMapId": "map_0902",
 					"targetMapId": "map_0903",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.5,
 						"y": 0.265625
@@ -1450,8 +1304,6 @@
 					"id": "map_0904-map_0909-1",
 					"sourceMapId": "map_0904",
 					"targetMapId": "map_0909",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.473484,
 						"y": 0.342895
@@ -1465,8 +1317,6 @@
 					"id": "map_0906-map_0907-1",
 					"sourceMapId": "map_0906",
 					"targetMapId": "map_0907",
-					"sourceDirection": "east",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.674423,
 						"y": 0.465673
@@ -1480,8 +1330,6 @@
 					"id": "map_0903-map_0904-1",
 					"sourceMapId": "map_0903",
 					"targetMapId": "map_0904",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.509782,
 						"y": 0.316406
@@ -1495,8 +1343,6 @@
 					"id": "map_0904-map_0905-1",
 					"sourceMapId": "map_0904",
 					"targetMapId": "map_0905",
-					"sourceDirection": "southeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.61814,
 						"y": 0.681641
@@ -1510,8 +1356,6 @@
 					"id": "map_0905-map_0906-1",
 					"sourceMapId": "map_0905",
 					"targetMapId": "map_0906",
-					"sourceDirection": "east",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.727692,
 						"y": 0.446625
@@ -1525,8 +1369,6 @@
 					"id": "map_0907-map_0908-1",
 					"sourceMapId": "map_0907",
 					"targetMapId": "map_0908",
-					"sourceDirection": "northeast",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.593719,
 						"y": 0.39417
@@ -1541,10 +1383,6 @@
 		{
 			"id": "infinite-cauldron",
 			"label": "Infinite Cauldron",
-			"layout": {
-				"width": 4,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_1001",
@@ -1607,8 +1445,6 @@
 					"id": "map_1001-map_1002-1",
 					"sourceMapId": "map_1001",
 					"targetMapId": "map_1002",
-					"sourceDirection": "northeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.666016,
 						"y": 0.294922
@@ -1622,8 +1458,6 @@
 					"id": "map_1002-map_1003-1",
 					"sourceMapId": "map_1002",
 					"targetMapId": "map_1003",
-					"sourceDirection": "east",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.640289,
 						"y": 0.584242
@@ -1637,8 +1471,6 @@
 					"id": "map_1003-map_1004-1",
 					"sourceMapId": "map_1003",
 					"targetMapId": "map_1004",
-					"sourceDirection": "southwest",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.34375,
 						"y": 0.851562
@@ -1652,8 +1484,6 @@
 					"id": "map_1004-map_1005-1",
 					"sourceMapId": "map_1004",
 					"targetMapId": "map_1005",
-					"sourceDirection": "northwest",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.353516,
 						"y": 0.363281
@@ -1667,8 +1497,6 @@
 					"id": "map_1005-map_1006-1",
 					"sourceMapId": "map_1005",
 					"targetMapId": "map_1006",
-					"sourceDirection": "southeast",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.666016,
 						"y": 0.607422
@@ -1682,8 +1510,6 @@
 					"id": "map_1006-map_1007-1",
 					"sourceMapId": "map_1006",
 					"targetMapId": "map_1007",
-					"sourceDirection": "west",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.353176,
 						"y": 0.520345
@@ -1697,8 +1523,6 @@
 					"id": "map_1007-map_1008-1",
 					"sourceMapId": "map_1007",
 					"targetMapId": "map_1008",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.487305,
 						"y": 0.291321
@@ -1712,8 +1536,6 @@
 					"id": "map_1008-map_1009-1",
 					"sourceMapId": "map_1008",
 					"targetMapId": "map_1009",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.5,
 						"y": 0.304688
@@ -1728,10 +1550,6 @@
 		{
 			"id": "dimension-m",
 			"label": "Dimension M",
-			"layout": {
-				"width": 6,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_8101",
@@ -1790,8 +1608,6 @@
 					"id": "map_8101-map_8102-1",
 					"sourceMapId": "map_8101",
 					"targetMapId": "map_8102",
-					"sourceDirection": "east",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.545308,
 						"y": 0.502014
@@ -1805,8 +1621,6 @@
 					"id": "map_8102-map_8103-1",
 					"sourceMapId": "map_8102",
 					"targetMapId": "map_8103",
-					"sourceDirection": "north",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.520004,
 						"y": 0.561966
@@ -1820,8 +1634,6 @@
 					"id": "map_8102-map_8105-1",
 					"sourceMapId": "map_8102",
 					"targetMapId": "map_8105",
-					"sourceDirection": "south",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.520004,
 						"y": 0.437988
@@ -1835,8 +1647,6 @@
 					"id": "map_8103-map_8104-1",
 					"sourceMapId": "map_8103",
 					"targetMapId": "map_8104",
-					"sourceDirection": "northwest",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.559274,
 						"y": 0.540946
@@ -1850,8 +1660,6 @@
 					"id": "map_8105-map_8106-1",
 					"sourceMapId": "map_8105",
 					"targetMapId": "map_8106",
-					"sourceDirection": "west",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.602702,
 						"y": 0.475084
@@ -1865,8 +1673,6 @@
 					"id": "map_8106-map_8107-1",
 					"sourceMapId": "map_8106",
 					"targetMapId": "map_8107",
-					"sourceDirection": "west",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.627762,
 						"y": 0.508713
@@ -1880,8 +1686,6 @@
 					"id": "map_8107-map_8108-1",
 					"sourceMapId": "map_8107",
 					"targetMapId": "map_8108",
-					"sourceDirection": "north",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.52684,
 						"y": 0.617126
@@ -1895,8 +1699,6 @@
 					"id": "map_8108-map_8109-1",
 					"sourceMapId": "map_8108",
 					"targetMapId": "map_8109",
-					"sourceDirection": "southwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.521778,
 						"y": 0.48958
@@ -1910,8 +1712,6 @@
 					"id": "map_8109-map_8110-1",
 					"sourceMapId": "map_8109",
 					"targetMapId": "map_8110",
-					"sourceDirection": "southwest",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.505493,
 						"y": 0.495819
@@ -1926,10 +1726,6 @@
 		{
 			"id": "dimension-g",
 			"label": "Dimension G",
-			"layout": {
-				"width": 6,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_8201",
@@ -1988,8 +1784,6 @@
 					"id": "map_8201-map_8202-1",
 					"sourceMapId": "map_8201",
 					"targetMapId": "map_8202",
-					"sourceDirection": "east",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.42421,
 						"y": 0.510964
@@ -2003,8 +1797,6 @@
 					"id": "map_8202-map_8203-1",
 					"sourceMapId": "map_8202",
 					"targetMapId": "map_8203",
-					"sourceDirection": "northwest",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.496801,
 						"y": 0.508296
@@ -2018,8 +1810,6 @@
 					"id": "map_8203-map_8204-1",
 					"sourceMapId": "map_8203",
 					"targetMapId": "map_8204",
-					"sourceDirection": "south",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.473362,
 						"y": 0.386909
@@ -2033,8 +1823,6 @@
 					"id": "map_8204-map_8205-1",
 					"sourceMapId": "map_8204",
 					"targetMapId": "map_8205",
-					"sourceDirection": "southwest",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.570313,
 						"y": 0.460395
@@ -2048,8 +1836,6 @@
 					"id": "map_8204-map_8206-1",
 					"sourceMapId": "map_8204",
 					"targetMapId": "map_8206",
-					"sourceDirection": "southeast",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.443359,
 						"y": 0.462565
@@ -2063,8 +1849,6 @@
 					"id": "map_8206-map_8207-1",
 					"sourceMapId": "map_8206",
 					"targetMapId": "map_8207",
-					"sourceDirection": "southwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.51053,
 						"y": 0.501419
@@ -2078,8 +1862,6 @@
 					"id": "map_8206-map_8208-1",
 					"sourceMapId": "map_8206",
 					"targetMapId": "map_8208",
-					"sourceDirection": "south",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.51265,
 						"y": 0.377441
@@ -2093,8 +1875,6 @@
 					"id": "map_8206-map_8209-1",
 					"sourceMapId": "map_8206",
 					"targetMapId": "map_8209",
-					"sourceDirection": "southeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.450131,
 						"y": 0.437841
@@ -2108,8 +1888,6 @@
 					"id": "map_8209-map_8210-1",
 					"sourceMapId": "map_8209",
 					"targetMapId": "map_8210",
-					"sourceDirection": "northwest",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.503474,
 						"y": 0.50621
@@ -2124,10 +1902,6 @@
 		{
 			"id": "dimension-t",
 			"label": "Dimension T",
-			"layout": {
-				"width": 4,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_8301",
@@ -2186,8 +1960,6 @@
 					"id": "map_8301-map_8303-1",
 					"sourceMapId": "map_8301",
 					"targetMapId": "map_8303",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.497228,
 						"y": 0.568256
@@ -2201,8 +1973,6 @@
 					"id": "map_8302-map_8303-1",
 					"sourceMapId": "map_8302",
 					"targetMapId": "map_8303",
-					"sourceDirection": "southeast",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.512207,
 						"y": 0.49155
@@ -2216,8 +1986,6 @@
 					"id": "map_8303-map_8304-1",
 					"sourceMapId": "map_8303",
 					"targetMapId": "map_8304",
-					"sourceDirection": "southwest",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.574171,
 						"y": 0.475932
@@ -2231,8 +1999,6 @@
 					"id": "map_8303-map_8305-1",
 					"sourceMapId": "map_8303",
 					"targetMapId": "map_8305",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.512153,
 						"y": 0.531643
@@ -2246,8 +2012,6 @@
 					"id": "map_8305-map_8306-1",
 					"sourceMapId": "map_8305",
 					"targetMapId": "map_8306",
-					"sourceDirection": "west",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.57323,
 						"y": 0.495655
@@ -2261,8 +2025,6 @@
 					"id": "map_8306-map_8307-1",
 					"sourceMapId": "map_8306",
 					"targetMapId": "map_8307",
-					"sourceDirection": "northwest",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.575968,
 						"y": 0.60376
@@ -2276,8 +2038,6 @@
 					"id": "map_8307-map_8308-1",
 					"sourceMapId": "map_8307",
 					"targetMapId": "map_8308",
-					"sourceDirection": "northeast",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.432075,
 						"y": 0.54069
@@ -2291,8 +2051,6 @@
 					"id": "map_8307-map_8309-1",
 					"sourceMapId": "map_8307",
 					"targetMapId": "map_8309",
-					"sourceDirection": "northwest",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.554688,
 						"y": 0.54069
@@ -2306,8 +2064,6 @@
 					"id": "map_8309-map_8310-1",
 					"sourceMapId": "map_8309",
 					"targetMapId": "map_8310",
-					"sourceDirection": "north",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.527244,
 						"y": 0.610872
@@ -2322,10 +2078,6 @@
 		{
 			"id": "dimension-p",
 			"label": "Dimension P",
-			"layout": {
-				"width": 3,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_8401",
@@ -2384,8 +2136,6 @@
 					"id": "map_8401-map_8402-1",
 					"sourceMapId": "map_8401",
 					"targetMapId": "map_8402",
-					"sourceDirection": "south",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.497464,
 						"y": 0.4326
@@ -2399,8 +2149,6 @@
 					"id": "map_8402-map_8403-1",
 					"sourceMapId": "map_8402",
 					"targetMapId": "map_8403",
-					"sourceDirection": "south",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.507462,
 						"y": 0.387878
@@ -2414,8 +2162,6 @@
 					"id": "map_8403-map_8405-1",
 					"sourceMapId": "map_8403",
 					"targetMapId": "map_8405",
-					"sourceDirection": "west",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.610229,
 						"y": 0.474772
@@ -2429,8 +2175,6 @@
 					"id": "map_8404-map_8405-1",
 					"sourceMapId": "map_8404",
 					"targetMapId": "map_8405",
-					"sourceDirection": "south",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.494927,
 						"y": 0.429518
@@ -2444,8 +2188,6 @@
 					"id": "map_8405-map_8406-1",
 					"sourceMapId": "map_8405",
 					"targetMapId": "map_8406",
-					"sourceDirection": "southwest",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.534831,
 						"y": 0.436415
@@ -2459,8 +2201,6 @@
 					"id": "map_8406-map_8407-1",
 					"sourceMapId": "map_8406",
 					"targetMapId": "map_8407",
-					"sourceDirection": "south",
-					"targetDirection": "north",
 					"sourcePosition": {
 						"x": 0.513073,
 						"y": 0.381348
@@ -2474,8 +2214,6 @@
 					"id": "map_8406-map_8408-1",
 					"sourceMapId": "map_8406",
 					"targetMapId": "map_8408",
-					"sourceDirection": "southwest",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.573473,
 						"y": 0.443866
@@ -2489,8 +2227,6 @@
 					"id": "map_8406-map_8409-1",
 					"sourceMapId": "map_8406",
 					"targetMapId": "map_8409",
-					"sourceDirection": "southeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.448435,
 						"y": 0.443866
@@ -2504,8 +2240,6 @@
 					"id": "map_8409-map_8410-1",
 					"sourceMapId": "map_8409",
 					"targetMapId": "map_8410",
-					"sourceDirection": "south",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.474774,
 						"y": 0.38711
@@ -2520,10 +2254,6 @@
 		{
 			"id": "dimension-e",
 			"label": "Dimension E",
-			"layout": {
-				"width": 6,
-				"height": 4
-			},
 			"maps": [
 				{
 					"mapId": "map_8501",
@@ -2582,8 +2312,6 @@
 					"id": "map_8501-map_8502-1",
 					"sourceMapId": "map_8501",
 					"targetMapId": "map_8502",
-					"sourceDirection": "west",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.570653,
 						"y": 0.495751
@@ -2597,8 +2325,6 @@
 					"id": "map_8502-map_8503-1",
 					"sourceMapId": "map_8502",
 					"targetMapId": "map_8503",
-					"sourceDirection": "west",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.619212,
 						"y": 0.508504
@@ -2612,8 +2338,6 @@
 					"id": "map_8503-map_8504-1",
 					"sourceMapId": "map_8503",
 					"targetMapId": "map_8504",
-					"sourceDirection": "west",
-					"targetDirection": "east",
 					"sourcePosition": {
 						"x": 0.625563,
 						"y": 0.495039
@@ -2627,8 +2351,6 @@
 					"id": "map_8504-map_8505-1",
 					"sourceMapId": "map_8504",
 					"targetMapId": "map_8505",
-					"sourceDirection": "south",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.495049,
 						"y": 0.426568
@@ -2642,8 +2364,6 @@
 					"id": "map_8505-map_8506-1",
 					"sourceMapId": "map_8505",
 					"targetMapId": "map_8506",
-					"sourceDirection": "southwest",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.604167,
 						"y": 0.429932
@@ -2657,8 +2377,6 @@
 					"id": "map_8506-map_8508-1",
 					"sourceMapId": "map_8506",
 					"targetMapId": "map_8508",
-					"sourceDirection": "west",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.617544,
 						"y": 0.512049
@@ -2672,8 +2390,6 @@
 					"id": "map_8507-map_8508-1",
 					"sourceMapId": "map_8507",
 					"targetMapId": "map_8508",
-					"sourceDirection": "south",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.496265,
 						"y": 0.43123
@@ -2687,8 +2403,6 @@
 					"id": "map_8508-map_8509-1",
 					"sourceMapId": "map_8508",
 					"targetMapId": "map_8509",
-					"sourceDirection": "southwest",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.541341,
 						"y": 0.442925
@@ -2702,8 +2416,6 @@
 					"id": "map_8509-map_8510-1",
 					"sourceMapId": "map_8509",
 					"targetMapId": "map_8510",
-					"sourceDirection": "south",
-					"targetDirection": "northeast",
 					"sourcePosition": {
 						"x": 0.50913,
 						"y": 0.383499
@@ -2718,10 +2430,6 @@
 		{
 			"id": "dimension-z",
 			"label": "Dimension Z",
-			"layout": {
-				"width": 6,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_8601",
@@ -2790,8 +2498,6 @@
 					"id": "map_8601-map_8603-1",
 					"sourceMapId": "map_8601",
 					"targetMapId": "map_8603",
-					"sourceDirection": "east",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.430374,
 						"y": 0.499968
@@ -2805,8 +2511,6 @@
 					"id": "map_8602-map_8603-1",
 					"sourceMapId": "map_8602",
 					"targetMapId": "map_8603",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.52684,
 						"y": 0.60603
@@ -2820,8 +2524,6 @@
 					"id": "map_8602-map_8605-1",
 					"sourceMapId": "map_8602",
 					"targetMapId": "map_8605",
-					"sourceDirection": "east",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.426971,
 						"y": 0.508179
@@ -2835,8 +2537,6 @@
 					"id": "map_8603-map_8604-1",
 					"sourceMapId": "map_8603",
 					"targetMapId": "map_8604",
-					"sourceDirection": "southwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.512861,
 						"y": 0.4993
@@ -2850,8 +2550,6 @@
 					"id": "map_8603-map_8606-1",
 					"sourceMapId": "map_8603",
 					"targetMapId": "map_8606",
-					"sourceDirection": "southeast",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.450343,
 						"y": 0.4389
@@ -2865,8 +2563,6 @@
 					"id": "map_8604-map_8607-1",
 					"sourceMapId": "map_8604",
 					"targetMapId": "map_8607",
-					"sourceDirection": "east",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.393768,
 						"y": 0.52684
@@ -2880,8 +2576,6 @@
 					"id": "map_8605-map_8606-1",
 					"sourceMapId": "map_8605",
 					"targetMapId": "map_8606",
-					"sourceDirection": "northwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.505208,
 						"y": 0.524848
@@ -2895,8 +2589,6 @@
 					"id": "map_8605-map_8608-1",
 					"sourceMapId": "map_8605",
 					"targetMapId": "map_8608",
-					"sourceDirection": "southeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.440104,
 						"y": 0.459744
@@ -2910,8 +2602,6 @@
 					"id": "map_8606-map_8607-1",
 					"sourceMapId": "map_8606",
 					"targetMapId": "map_8607",
-					"sourceDirection": "southwest",
-					"targetDirection": "southeast",
 					"sourcePosition": {
 						"x": 0.511166,
 						"y": 0.4993
@@ -2925,8 +2615,6 @@
 					"id": "map_8606-map_8609-1",
 					"sourceMapId": "map_8606",
 					"targetMapId": "map_8609",
-					"sourceDirection": "southeast",
-					"targetDirection": "southwest",
 					"sourcePosition": {
 						"x": 0.451826,
 						"y": 0.442079
@@ -2940,8 +2628,6 @@
 					"id": "map_8607-map_8610-1",
 					"sourceMapId": "map_8607",
 					"targetMapId": "map_8610",
-					"sourceDirection": "northeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.430556,
 						"y": 0.537869
@@ -2955,8 +2641,6 @@
 					"id": "map_8608-map_8609-1",
 					"sourceMapId": "map_8608",
 					"targetMapId": "map_8609",
-					"sourceDirection": "north",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.509188,
 						"y": 0.571818
@@ -2970,8 +2654,6 @@
 					"id": "map_8609-map_8610-1",
 					"sourceMapId": "map_8609",
 					"targetMapId": "map_8610",
-					"sourceDirection": "southwest",
-					"targetDirection": "south",
 					"sourcePosition": {
 						"x": 0.51265,
 						"y": 0.496121
@@ -2985,8 +2667,6 @@
 					"id": "map_8609-map_8611-1",
 					"sourceMapId": "map_8609",
 					"targetMapId": "map_8611",
-					"sourceDirection": "southeast",
-					"targetDirection": "west",
 					"sourcePosition": {
 						"x": 0.45225,
 						"y": 0.437841
@@ -3000,8 +2680,6 @@
 					"id": "map_8611-map_8612-1",
 					"sourceMapId": "map_8611",
 					"targetMapId": "map_8612",
-					"sourceDirection": "northwest",
-					"targetDirection": "northwest",
 					"sourcePosition": {
 						"x": 0.494102,
 						"y": 0.504961
@@ -3017,7 +2695,6 @@
 	"maps": [
 		{
 			"id": "map_0201",
-			"zone": "Nigh Plains",
 			"label": "Vast Plateau",
 			"image": "/digimon-world-next-order/maps/map_0201-nigh-plains-vast-plateau.png",
 			"imageSize": {
@@ -3025,9 +2702,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 53,
+				"x": 44,
 				"y": 36,
-				"width": 407,
+				"width": 426,
 				"height": 426
 			},
 			"spots": [
@@ -3037,13 +2714,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 99,
-							"type": "water"
+							"value": 99
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 1,
-							"type": "water"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3057,8 +2732,7 @@
 					"slots": [
 						{
 							"name": "DigiSap",
-							"value": 100,
-							"type": "water"
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3072,8 +2746,7 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 100,
-							"type": "metal"
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3087,18 +2760,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 85,
-							"type": "metal"
+							"value": 85
 						},
 						{
 							"name": "DigiIron",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						},
 						{
 							"name": "DigiSilver",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3112,13 +2782,11 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 80,
-							"type": "stone"
+							"value": 80
 						},
 						{
 							"name": "DigiStone",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -3132,13 +2800,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"value": 90
 						},
 						{
 							"name": "DigiBlackwood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3150,7 +2816,6 @@
 		},
 		{
 			"id": "map_0202",
-			"zone": "Nigh Plains",
 			"label": "Forest Path",
 			"image": "/digimon-world-next-order/maps/map_0202-nigh-plains-forest-path.png",
 			"imageSize": {
@@ -3159,9 +2824,9 @@
 			},
 			"imageCropBounds": {
 				"x": 72,
-				"y": 171,
+				"y": 56,
 				"width": 379,
-				"height": 150
+				"height": 379
 			},
 			"spots": [
 				{
@@ -3170,8 +2835,7 @@
 					"slots": [
 						{
 							"name": "DigiSap",
-							"value": 100,
-							"type": "water"
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3185,18 +2849,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 85,
-							"type": "stone"
+							"value": 85
 						},
 						{
 							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3210,13 +2871,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"value": 90
 						},
 						{
 							"name": "DigiBlackwood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3228,7 +2887,6 @@
 		},
 		{
 			"id": "map_0203",
-			"zone": "Nigh Plains",
 			"label": "Cave Entrance",
 			"image": "/digimon-world-next-order/maps/map_0203-nigh-plains-cave-entrance.png",
 			"imageSize": {
@@ -3236,9 +2894,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 158,
+				"x": 156,
 				"y": 150,
-				"width": 204,
+				"width": 209,
 				"height": 209
 			},
 			"spots": [
@@ -3248,18 +2906,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 80,
-							"type": "metal"
+							"value": 80
 						},
 						{
 							"name": "DigiIron",
-							"value": 19,
-							"type": "metal"
+							"value": 19
 						},
 						{
 							"name": "DigiSilver",
-							"value": 1,
-							"type": "metal"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3273,13 +2928,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 80,
-							"type": "wood"
+							"value": 80
 						},
 						{
 							"name": "DigiBlackwood",
-							"value": 20,
-							"type": "wood"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -3291,7 +2944,6 @@
 		},
 		{
 			"id": "map_0204",
-			"zone": "Nigh Plains",
 			"label": "Old Cableway",
 			"image": "/digimon-world-next-order/maps/map_0204-nigh-plains-old-cableway.png",
 			"imageSize": {
@@ -3299,9 +2951,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 152,
+				"x": 124,
 				"y": 131,
-				"width": 199,
+				"width": 255,
 				"height": 255
 			},
 			"spots": [
@@ -3311,13 +2963,11 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 90,
-							"type": "stone"
+							"value": 90
 						},
 						{
 							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3329,7 +2979,6 @@
 		},
 		{
 			"id": "map_0205",
-			"zone": "Nigh Plains",
 			"label": "Power Plant #1",
 			"image": "/digimon-world-next-order/maps/map_0205-nigh-plains-power-plant-1.png",
 			"imageSize": {
@@ -3337,9 +2986,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 191,
+				"x": 188,
 				"y": 191,
-				"width": 137,
+				"width": 144,
 				"height": 144
 			},
 			"spots": [
@@ -3349,8 +2998,7 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 100,
-							"type": "water"
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3364,23 +3012,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 65,
-							"type": "stone"
+							"value": 65
 						},
 						{
 							"name": "DigiStone",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						},
 						{
 							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3392,7 +3036,6 @@
 		},
 		{
 			"id": "map_0206",
-			"zone": "Nigh Plains",
 			"label": "Power Plant #2",
 			"image": "/digimon-world-next-order/maps/map_0206-nigh-plains-power-plant-2.png",
 			"imageSize": {
@@ -3400,9 +3043,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 151,
+				"x": 138,
 				"y": 137,
-				"width": 210,
+				"width": 237,
 				"height": 237
 			},
 			"spots": [
@@ -3412,8 +3055,7 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 100,
-							"type": "water"
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3427,18 +3069,15 @@
 					"slots": [
 						{
 							"name": "DigiOil",
-							"value": 70,
-							"type": "water"
+							"value": 70
 						},
 						{
 							"name": "DigiLatex",
-							"value": 28,
-							"type": "water"
+							"value": 28
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 2,
-							"type": "water"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -3452,18 +3091,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 70,
-							"type": "metal"
+							"value": 70
 						},
 						{
 							"name": "DigiIron",
-							"value": 28,
-							"type": "metal"
+							"value": 28
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -3477,18 +3113,15 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiStone",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3502,13 +3135,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 97,
-							"type": "wood"
+							"value": 97
 						},
 						{
 							"name": "DigiGreatwood",
-							"value": 3,
-							"type": "wood"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3522,13 +3153,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 97,
-							"type": "wood"
+							"value": 97
 						},
 						{
 							"name": "DigiBamboo",
-							"value": 3,
-							"type": "wood"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3540,7 +3169,6 @@
 		},
 		{
 			"id": "map_0207",
-			"zone": "Nigh Plains",
 			"label": "Ruins Lake",
 			"image": "/digimon-world-next-order/maps/map_0207-nigh-plains-ruins-lake.png",
 			"imageSize": {
@@ -3549,9 +3177,9 @@
 			},
 			"imageCropBounds": {
 				"x": 154,
-				"y": 182,
+				"y": 168,
 				"width": 205,
-				"height": 177
+				"height": 205
 			},
 			"spots": [
 				{
@@ -3560,13 +3188,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 95,
-							"type": "water"
+							"value": 95
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 5,
-							"type": "water"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3580,13 +3206,11 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 95,
-							"type": "metal"
+							"value": 95
 						},
 						{
 							"name": "DigiSilver",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3600,18 +3224,15 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3625,13 +3246,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 95,
-							"type": "wood"
+							"value": 95
 						},
 						{
 							"name": "DigiGreatwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3643,7 +3262,6 @@
 		},
 		{
 			"id": "map_0301",
-			"zone": "Server Desert",
 			"label": "Noise Storm",
 			"image": "/digimon-world-next-order/maps/map_0301-server-desert-noise-storm.png",
 			"imageSize": {
@@ -3652,9 +3270,9 @@
 			},
 			"imageCropBounds": {
 				"x": 142,
-				"y": 141,
+				"y": 140,
 				"width": 230,
-				"height": 229
+				"height": 230
 			},
 			"spots": [
 				{
@@ -3663,8 +3281,7 @@
 					"slots": [
 						{
 							"name": "DigiOil",
-							"value": 100,
-							"type": "water"
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3676,7 +3293,6 @@
 		},
 		{
 			"id": "map_0302",
-			"zone": "Server Desert",
 			"label": "Server Cemetery",
 			"image": "/digimon-world-next-order/maps/map_0302-server-desert-server-cemetery.png",
 			"imageSize": {
@@ -3685,9 +3301,9 @@
 			},
 			"imageCropBounds": {
 				"x": 71,
-				"y": 145,
+				"y": 67,
 				"width": 401,
-				"height": 245
+				"height": 401
 			},
 			"spots": [
 				{
@@ -3696,18 +3312,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"value": 85
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						},
 						{
 							"name": "DigiLatex",
-							"value": 5,
-							"type": "water"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3721,13 +3334,11 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 99,
-							"type": "metal"
+							"value": 99
 						},
 						{
 							"name": "DigiGold",
-							"value": 1,
-							"type": "metal"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3741,13 +3352,11 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 99,
-							"type": "stone"
+							"value": 99
 						},
 						{
 							"name": "DigiLight",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3761,18 +3370,15 @@
 					"slots": [
 						{
 							"name": "DigiPalm",
-							"value": 89,
-							"type": "wood"
+							"value": 89
 						},
 						{
 							"name": "DigiWhitewood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						},
 						{
 							"name": "DigiFirewood",
-							"value": 1,
-							"type": "wood"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3784,7 +3390,6 @@
 		},
 		{
 			"id": "map_0303",
-			"zone": "Server Desert",
 			"label": "To Hallowed Hall",
 			"image": "/digimon-world-next-order/maps/map_0303-server-desert-to-hallowed-hall.png",
 			"imageSize": {
@@ -3792,9 +3397,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 191,
+				"x": 52,
 				"y": 37,
-				"width": 153,
+				"width": 431,
 				"height": 431
 			},
 			"spots": [
@@ -3804,13 +3409,11 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 97,
-							"type": "metal"
+							"value": 97
 						},
 						{
 							"name": "DigiGold",
-							"value": 3,
-							"type": "metal"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3824,13 +3427,11 @@
 					"slots": [
 						{
 							"name": "DigiGold",
-							"value": 95,
-							"type": "metal"
+							"value": 95
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3844,13 +3445,11 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 97,
-							"type": "stone"
+							"value": 97
 						},
 						{
 							"name": "DigiLight",
-							"value": 3,
-							"type": "stone"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3864,18 +3463,15 @@
 					"slots": [
 						{
 							"name": "DigiLight",
-							"value": 70,
-							"type": "stone"
+							"value": 70
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 29,
-							"type": "stone"
+							"value": 29
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3887,7 +3483,6 @@
 		},
 		{
 			"id": "map_0304",
-			"zone": "Server Desert",
 			"label": "Stepstep",
 			"image": "/digimon-world-next-order/maps/map_0304-server-desert-stepstep.png",
 			"imageSize": {
@@ -3896,9 +3491,9 @@
 			},
 			"imageCropBounds": {
 				"x": 122,
-				"y": 184,
+				"y": 124,
 				"width": 266,
-				"height": 145
+				"height": 266
 			},
 			"spots": [
 				{
@@ -3907,13 +3502,11 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 98,
-							"type": "metal"
+							"value": 98
 						},
 						{
 							"name": "Mithril",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -3927,18 +3520,15 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiStone",
-							"value": 49,
-							"type": "stone"
+							"value": 49
 						},
 						{
 							"name": "DigiLight",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3950,7 +3540,6 @@
 		},
 		{
 			"id": "map_0305",
-			"zone": "Server Desert",
 			"label": "Dead End Town",
 			"image": "/digimon-world-next-order/maps/map_0305-server-desert-dead-end-town.png",
 			"imageSize": {
@@ -3959,9 +3548,9 @@
 			},
 			"imageCropBounds": {
 				"x": 178,
-				"y": 184,
+				"y": 180,
 				"width": 152,
-				"height": 143
+				"height": 152
 			},
 			"spots": [
 				{
@@ -3970,18 +3559,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiOil",
-							"value": 45,
-							"type": "water"
+							"value": 45
 						},
 						{
 							"name": "DigiLatex",
-							"value": 5,
-							"type": "water"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3995,18 +3581,15 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "DigiGold",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4020,18 +3603,15 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4045,18 +3625,15 @@
 					"slots": [
 						{
 							"name": "DigiPalm",
-							"value": 95,
-							"type": "wood"
+							"value": 95
 						},
 						{
 							"name": "DigiFirewood",
-							"value": 3,
-							"type": "wood"
+							"value": 3
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4068,7 +3645,6 @@
 		},
 		{
 			"id": "map_0306",
-			"zone": "Server Desert",
 			"label": "Tower Road",
 			"image": "/digimon-world-next-order/maps/map_0306-server-desert-tower-road.png",
 			"imageSize": {
@@ -4076,9 +3652,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 183,
+				"x": 126,
 				"y": 127,
-				"width": 145,
+				"width": 258,
 				"height": 258
 			},
 			"spots": [
@@ -4088,18 +3664,15 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 93,
-							"type": "metal"
+							"value": 93
 						},
 						{
 							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						},
 						{
 							"name": "Mithril",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4113,18 +3686,15 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiStone",
-							"value": 48,
-							"type": "stone"
+							"value": 48
 						},
 						{
 							"name": "DigiLight",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4136,7 +3706,6 @@
 		},
 		{
 			"id": "map_0307",
-			"zone": "Server Desert",
 			"label": "Bus Terminal",
 			"image": "/digimon-world-next-order/maps/map_0307-server-desert-bus-terminal.png",
 			"imageSize": {
@@ -4145,9 +3714,9 @@
 			},
 			"imageCropBounds": {
 				"x": 188,
-				"y": 189,
+				"y": 187,
 				"width": 137,
-				"height": 133
+				"height": 137
 			},
 			"spots": [
 				{
@@ -4156,23 +3725,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 70,
-							"type": "stone"
+							"value": 70
 						},
 						{
 							"name": "DigiStone",
-							"value": 25,
-							"type": "stone"
+							"value": 25
 						},
 						{
 							"name": "DigiLight",
-							"value": 4,
-							"type": "stone"
+							"value": 4
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4184,7 +3749,6 @@
 		},
 		{
 			"id": "map_0308",
-			"zone": "Server Desert",
 			"label": "Server Tower",
 			"image": "/digimon-world-next-order/maps/map_0308-server-desert-server-tower.png",
 			"imageSize": {
@@ -4193,9 +3757,9 @@
 			},
 			"imageCropBounds": {
 				"x": 145,
-				"y": 144,
+				"y": 140,
 				"width": 227,
-				"height": 220
+				"height": 227
 			},
 			"spots": [
 				{
@@ -4204,18 +3768,15 @@
 					"slots": [
 						{
 							"name": "DigiOil",
-							"value": 60,
-							"type": "water"
+							"value": 60
 						},
 						{
 							"name": "DigiAcid",
-							"value": 39,
-							"type": "water"
+							"value": 39
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 1,
-							"type": "water"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4229,18 +3790,15 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 90,
-							"type": "metal"
+							"value": 90
 						},
 						{
 							"name": "DigiGold",
-							"value": 8,
-							"type": "metal"
+							"value": 8
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4254,13 +3812,11 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 97,
-							"type": "stone"
+							"value": 97
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 3,
-							"type": "stone"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -4272,7 +3828,6 @@
 		},
 		{
 			"id": "map_0309",
-			"zone": "Server Desert",
 			"label": "Server Tower Interior",
 			"image": "/digimon-world-next-order/maps/map_0309-server-desert-server-tower-interior.png",
 			"imageSize": {
@@ -4281,15 +3836,14 @@
 			},
 			"imageCropBounds": {
 				"x": 198,
-				"y": 199,
+				"y": 198,
 				"width": 115,
-				"height": 114
+				"height": 115
 			},
 			"spots": []
 		},
 		{
 			"id": "map_0401",
-			"zone": "Ohguino Wastelands",
 			"label": "Guts Wastes",
 			"image": "/digimon-world-next-order/maps/map_0401-ohguino-wastelands-guts-wastes.png",
 			"imageSize": {
@@ -4297,9 +3851,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 46,
+				"x": 20,
 				"y": 0,
-				"width": 414,
+				"width": 465,
 				"height": 465
 			},
 			"spots": [
@@ -4309,13 +3863,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 95,
-							"type": "water"
+							"value": 95
 						},
 						{
 							"name": "DigiRainbowdrop",
-							"value": 5,
-							"type": "water"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4329,18 +3881,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 48,
-							"type": "stone"
+							"value": 48
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4354,13 +3903,11 @@
 					"slots": [
 						{
 							"name": "DigiRock",
-							"value": 90,
-							"type": "stone"
+							"value": 90
 						},
 						{
 							"name": "DigiLight",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4374,23 +3921,19 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiLight",
-							"value": 29,
-							"type": "stone"
+							"value": 29
 						},
 						{
 							"name": "DigiRuby",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4404,18 +3947,15 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"value": 90
 						},
 						{
 							"name": "DigiPalm",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						},
 						{
 							"name": "DigiGreatwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4429,18 +3969,15 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"value": 90
 						},
 						{
 							"name": "DigiGreatwood",
-							"value": 8,
-							"type": "wood"
+							"value": 8
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4452,7 +3989,6 @@
 		},
 		{
 			"id": "map_0402",
-			"zone": "Ohguino Wastelands",
 			"label": "Secret Graveyard",
 			"image": "/digimon-world-next-order/maps/map_0402-ohguino-wastelands-secret-graveyard.png",
 			"imageSize": {
@@ -4460,9 +3996,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 189,
+				"x": 188,
 				"y": 189,
-				"width": 134,
+				"width": 137,
 				"height": 137
 			},
 			"spots": [
@@ -4472,23 +4008,19 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 85,
-							"type": "stone"
+							"value": 85
 						},
 						{
 							"name": "DigiLight",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 4,
-							"type": "stone"
+							"value": 4
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4500,7 +4032,6 @@
 		},
 		{
 			"id": "map_0403",
-			"zone": "Ohguino Wastelands",
 			"label": "Dori Tunnel Hub 1",
 			"image": "/digimon-world-next-order/maps/map_0403-ohguino-wastelands-dori-tunnel-hub-1.png",
 			"imageSize": {
@@ -4509,9 +4040,9 @@
 			},
 			"imageCropBounds": {
 				"x": 126,
-				"y": 137,
+				"y": 86,
 				"width": 260,
-				"height": 158
+				"height": 260
 			},
 			"spots": [
 				{
@@ -4520,18 +4051,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 80,
-							"type": "metal"
+							"value": 80
 						},
 						{
 							"name": "DigiSilver",
-							"value": 18,
-							"type": "metal"
+							"value": 18
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4545,18 +4073,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 30,
-							"type": "metal"
+							"value": 30
 						},
 						{
 							"name": "DigiIron",
-							"value": 65,
-							"type": "metal"
+							"value": 65
 						},
 						{
 							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4568,7 +4093,6 @@
 		},
 		{
 			"id": "map_0404",
-			"zone": "Ohguino Wastelands",
 			"label": "Dori Tunnel Hub 2",
 			"image": "/digimon-world-next-order/maps/map_0404-ohguino-wastelands-dori-tunnel-hub-2.png",
 			"imageSize": {
@@ -4577,9 +4101,9 @@
 			},
 			"imageCropBounds": {
 				"x": 41,
-				"y": 215,
+				"y": 79,
 				"width": 431,
-				"height": 159
+				"height": 431
 			},
 			"spots": [
 				{
@@ -4588,18 +4112,15 @@
 					"slots": [
 						{
 							"name": "DigiLatex",
-							"value": 70,
-							"type": "water"
+							"value": 70
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 29,
-							"type": "water"
+							"value": 29
 						},
 						{
 							"name": "DigiRainbowdrop",
-							"value": 1,
-							"type": "water"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4613,18 +4134,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "DigiIron",
-							"value": 45,
-							"type": "metal"
+							"value": 45
 						},
 						{
 							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4638,18 +4156,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"value": 70
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4661,7 +4176,6 @@
 		},
 		{
 			"id": "map_0405",
-			"zone": "Ohguino Wastelands",
 			"label": "Palace of Thorns",
 			"image": "/digimon-world-next-order/maps/map_0405-ohguino-wastelands-palace-of-thorns.png",
 			"imageSize": {
@@ -4669,9 +4183,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 58,
+				"x": 19,
 				"y": 33,
-				"width": 395,
+				"width": 473,
 				"height": 473
 			},
 			"spots": [
@@ -4681,18 +4195,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 60,
-							"type": "water"
+							"value": 60
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 30,
-							"type": "water"
+							"value": 30
 						},
 						{
 							"name": "DigiLatex",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4706,18 +4217,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 85,
-							"type": "metal"
+							"value": 85
 						},
 						{
 							"name": "DigiGold",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4731,18 +4239,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiRock",
-							"value": 58,
-							"type": "stone"
+							"value": 58
 						},
 						{
 							"name": "DigiLight",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4756,13 +4261,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"value": 90
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4774,7 +4277,6 @@
 		},
 		{
 			"id": "map_0406",
-			"zone": "Ohguino Wastelands",
 			"label": "Generator Prison Room",
 			"image": "/digimon-world-next-order/maps/map_0406-ohguino-wastelands-generator-prison-room.png",
 			"imageSize": {
@@ -4783,9 +4285,9 @@
 			},
 			"imageCropBounds": {
 				"x": 182,
-				"y": 201,
+				"y": 182,
 				"width": 148,
-				"height": 109
+				"height": 148
 			},
 			"spots": [
 				{
@@ -4794,18 +4296,15 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 70,
-							"type": "water"
+							"value": 70
 						},
 						{
 							"name": "DigiOil",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -4817,7 +4316,6 @@
 		},
 		{
 			"id": "map_0407",
-			"zone": "Ohguino Wastelands",
 			"label": "Rose Palace",
 			"image": "/digimon-world-next-order/maps/map_0407-ohguino-wastelands-rose-palace.png",
 			"imageSize": {
@@ -4825,9 +4323,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 162,
+				"x": 154,
 				"y": 155,
-				"width": 187,
+				"width": 203,
 				"height": 203
 			},
 			"spots": [
@@ -4837,23 +4335,19 @@
 					"slots": [
 						{
 							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiNight",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 8,
-							"type": "stone"
+							"value": 8
 						},
 						{
 							"name": "DigiRuby",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4867,23 +4361,19 @@
 					"slots": [
 						{
 							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiNight",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 8,
-							"type": "stone"
+							"value": 8
 						},
 						{
 							"name": "DigiRuby",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4895,7 +4385,6 @@
 		},
 		{
 			"id": "map_0408",
-			"zone": "Ohguino Wastelands",
 			"label": "Rosemon's Room",
 			"image": "/digimon-world-next-order/maps/map_0408-ohguino-wastelands-rosemon-s-room.png",
 			"imageSize": {
@@ -4904,15 +4393,14 @@
 			},
 			"imageCropBounds": {
 				"x": 187,
-				"y": 204,
+				"y": 188,
 				"width": 137,
-				"height": 105
+				"height": 137
 			},
 			"spots": []
 		},
 		{
 			"id": "map_0501",
-			"zone": "Logic Volcano",
 			"label": "Fire Wall",
 			"image": "/digimon-world-next-order/maps/map_0501-logic-volcano-fire-wall.png",
 			"imageSize": {
@@ -4921,9 +4409,9 @@
 			},
 			"imageCropBounds": {
 				"x": 27,
-				"y": 33,
+				"y": 20,
 				"width": 435,
-				"height": 410
+				"height": 435
 			},
 			"spots": [
 				{
@@ -4932,18 +4420,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiLight",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4957,18 +4442,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 58,
-							"type": "stone"
+							"value": 58
 						},
 						{
 							"name": "DigiRock",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4982,18 +4464,15 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 50,
-							"type": "wood"
+							"value": 50
 						},
 						{
 							"name": "DigiBamboo",
-							"value": 30,
-							"type": "wood"
+							"value": 30
 						},
 						{
 							"name": "DigiFirewood",
-							"value": 20,
-							"type": "wood"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -5005,7 +4484,6 @@
 		},
 		{
 			"id": "map_0502",
-			"zone": "Logic Volcano",
 			"label": "Gateway",
 			"image": "/digimon-world-next-order/maps/map_0502-logic-volcano-gateway.png",
 			"imageSize": {
@@ -5014,9 +4492,9 @@
 			},
 			"imageCropBounds": {
 				"x": 117,
-				"y": 108,
+				"y": 104,
 				"width": 284,
-				"height": 277
+				"height": 284
 			},
 			"spots": [
 				{
@@ -5025,18 +4503,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 49,
-							"type": "stone"
+							"value": 49
 						},
 						{
 							"name": "DigiRuby",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5050,18 +4525,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5073,7 +4545,6 @@
 		},
 		{
 			"id": "map_0503",
-			"zone": "Logic Volcano",
 			"label": "Flame Lands",
 			"image": "/digimon-world-next-order/maps/map_0503-logic-volcano-flame-lands.png",
 			"imageSize": {
@@ -5081,9 +4552,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 192,
+				"x": 144,
 				"y": 161,
-				"width": 117,
+				"width": 212,
 				"height": 212
 			},
 			"spots": [
@@ -5093,23 +4564,19 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 63,
-							"type": "metal"
+							"value": 63
 						},
 						{
 							"name": "DigiGold",
-							"value": 35,
-							"type": "metal"
+							"value": 35
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 1,
-							"type": "metal"
+							"value": 1
 						},
 						{
 							"name": "Red Digizoit",
-							"value": 1,
-							"type": "metal"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5121,7 +4588,6 @@
 		},
 		{
 			"id": "map_0504",
-			"zone": "Logic Volcano",
 			"label": "Fire Circuit",
 			"image": "/digimon-world-next-order/maps/map_0504-logic-volcano-fire-circuit.png",
 			"imageSize": {
@@ -5129,9 +4595,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 128,
+				"x": 65,
 				"y": 67,
-				"width": 259,
+				"width": 385,
 				"height": 385
 			},
 			"spots": [
@@ -5141,18 +4607,15 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiOil",
-							"value": 40,
-							"type": "water"
+							"value": 40
 						},
 						{
 							"name": "DigiRainbowdrop",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5166,23 +4629,19 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 39,
-							"type": "metal"
+							"value": 39
 						},
 						{
 							"name": "DigiIron",
-							"value": 30,
-							"type": "metal"
+							"value": 30
 						},
 						{
 							"name": "DigiGold",
-							"value": 30,
-							"type": "metal"
+							"value": 30
 						},
 						{
 							"name": "Red Digizoit",
-							"value": 1,
-							"type": "metal"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5194,7 +4653,6 @@
 		},
 		{
 			"id": "map_0505",
-			"zone": "Logic Volcano",
 			"label": "Dragon's Trident",
 			"image": "/digimon-world-next-order/maps/map_0505-logic-volcano-dragon-s-trident.png",
 			"imageSize": {
@@ -5202,9 +4660,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 153,
+				"x": 146,
 				"y": 148,
-				"width": 201,
+				"width": 216,
 				"height": 216
 			},
 			"spots": [
@@ -5214,18 +4672,15 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 90,
-							"type": "water"
+							"value": 90
 						},
 						{
 							"name": "DigiMercury",
-							"value": 7,
-							"type": "water"
+							"value": 7
 						},
 						{
 							"name": "DigiHolywater",
-							"value": 3,
-							"type": "metal"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -5239,18 +4694,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5264,18 +4716,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 90,
-							"type": "stone"
+							"value": 90
 						},
 						{
 							"name": "DigiLight",
-							"value": 7,
-							"type": "stone"
+							"value": 7
 						},
 						{
 							"name": "DigiRuby",
-							"value": 3,
-							"type": "stone"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -5287,7 +4736,6 @@
 		},
 		{
 			"id": "map_0506",
-			"zone": "Logic Volcano",
 			"label": "Garbage Pile",
 			"image": "/digimon-world-next-order/maps/map_0506-logic-volcano-garbage-pile.png",
 			"imageSize": {
@@ -5295,9 +4743,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 123,
+				"x": 115,
 				"y": 123,
-				"width": 258,
+				"width": 274,
 				"height": 274
 			},
 			"spots": [
@@ -5307,18 +4755,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiLight",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5330,7 +4775,6 @@
 		},
 		{
 			"id": "map_0507",
-			"zone": "Logic Volcano",
 			"label": "Crimson Shrine",
 			"image": "/digimon-world-next-order/maps/map_0507-logic-volcano-crimson-shrine.png",
 			"imageSize": {
@@ -5339,9 +4783,9 @@
 			},
 			"imageCropBounds": {
 				"x": 170,
-				"y": 170,
+				"y": 166,
 				"width": 180,
-				"height": 173
+				"height": 180
 			},
 			"spots": [
 				{
@@ -5350,23 +4794,19 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "DigiSilver",
-							"value": 35,
-							"type": "metal"
+							"value": 35
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 13,
-							"type": "metal"
+							"value": 13
 						},
 						{
 							"name": "Red Digizoit",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5380,18 +4820,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiRock",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiLight",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -5405,18 +4842,15 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 50,
-							"type": "wood"
+							"value": 50
 						},
 						{
 							"name": "DigiBamboo",
-							"value": 49,
-							"type": "wood"
+							"value": 49
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 1,
-							"type": "wood"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5430,13 +4864,11 @@
 					"slots": [
 						{
 							"name": "DigiFirewood",
-							"value": 80,
-							"type": "wood"
+							"value": 80
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 20,
-							"type": "wood"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -5448,7 +4880,6 @@
 		},
 		{
 			"id": "map_0508",
-			"zone": "Logic Volcano",
 			"label": "Taomon's Medit. Place",
 			"image": "/digimon-world-next-order/maps/map_0508-logic-volcano-taomon-s-medit-place.png",
 			"imageSize": {
@@ -5457,9 +4888,9 @@
 			},
 			"imageCropBounds": {
 				"x": 145,
-				"y": 185,
+				"y": 153,
 				"width": 208,
-				"height": 144
+				"height": 208
 			},
 			"spots": [
 				{
@@ -5468,13 +4899,11 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 90,
-							"type": "stone"
+							"value": 90
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5486,7 +4915,6 @@
 		},
 		{
 			"id": "map_0601",
-			"zone": "MOD Cape",
 			"label": "Inlet Cape",
 			"image": "/digimon-world-next-order/maps/map_0601-mod-cape-inlet-cape.png",
 			"imageSize": {
@@ -5494,9 +4922,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 107,
+				"x": 104,
 				"y": 162,
-				"width": 235,
+				"width": 240,
 				"height": 240
 			},
 			"spots": [
@@ -5506,13 +4934,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"value": 85
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -5526,13 +4952,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 98,
-							"type": "water"
+							"value": 98
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 2,
-							"type": "water"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5546,23 +4970,19 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "DigiIron",
-							"value": 35,
-							"type": "metal"
+							"value": 35
 						},
 						{
 							"name": "DigiSilver",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						},
 						{
 							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5576,18 +4996,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 60,
-							"type": "metal"
+							"value": 60
 						},
 						{
 							"name": "DigiIron",
-							"value": 37,
-							"type": "metal"
+							"value": 37
 						},
 						{
 							"name": "DigiSilver",
-							"value": 3,
-							"type": "metal"
+							"value": 3
 						}
 					],
 					"projected": {
@@ -5601,23 +5018,19 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiNight",
-							"value": 4,
-							"type": "stone"
+							"value": 4
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5631,13 +5044,11 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 98,
-							"type": "wood"
+							"value": 98
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5651,13 +5062,11 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 98,
-							"type": "wood"
+							"value": 98
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5669,7 +5078,6 @@
 		},
 		{
 			"id": "map_0602",
-			"zone": "MOD Cape",
 			"label": "MOD Ship 1.0",
 			"image": "/digimon-world-next-order/maps/map_0602-mod-cape-mod-ship-1-0.png",
 			"imageSize": {
@@ -5677,9 +5085,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 149,
+				"x": 112,
 				"y": 113,
-				"width": 213,
+				"width": 286,
 				"height": 286
 			},
 			"spots": [
@@ -5689,23 +5097,19 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiMercury",
-							"value": 20,
-							"type": "water"
+							"value": 20
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 20,
-							"type": "water"
+							"value": 20
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5719,23 +5123,19 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "DigiSilver",
-							"value": 30,
-							"type": "metal"
+							"value": 30
 						},
 						{
 							"name": "DigiGold",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5749,23 +5149,19 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 58,
-							"type": "stone"
+							"value": 58
 						},
 						{
 							"name": "DigiLight",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						},
 						{
 							"name": "DigiNight",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5779,18 +5175,15 @@
 					"slots": [
 						{
 							"name": "DigiPalm",
-							"value": 50,
-							"type": "wood"
+							"value": 50
 						},
 						{
 							"name": "DigiBamboo",
-							"value": 48,
-							"type": "wood"
+							"value": 48
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5802,7 +5195,6 @@
 		},
 		{
 			"id": "map_0603",
-			"zone": "MOD Cape",
 			"label": "MOD Ship 2.0",
 			"image": "/digimon-world-next-order/maps/map_0603-mod-cape-mod-ship-2-0.png",
 			"imageSize": {
@@ -5810,9 +5202,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 239,
+				"x": 224,
 				"y": 181,
-				"width": 121,
+				"width": 150,
 				"height": 150
 			},
 			"spots": [
@@ -5822,23 +5214,19 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "DigiIron",
-							"value": 30,
-							"type": "metal"
+							"value": 30
 						},
 						{
 							"name": "DigiSilver",
-							"value": 25,
-							"type": "metal"
+							"value": 25
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5852,18 +5240,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 40,
-							"type": "wood"
+							"value": 40
 						},
 						{
 							"name": "DigiSnowwood",
-							"value": 58,
-							"type": "wood"
+							"value": 58
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5875,7 +5260,6 @@
 		},
 		{
 			"id": "map_0604",
-			"zone": "MOD Cape",
 			"label": "Ship 2.0 Cabin",
 			"image": "/digimon-world-next-order/maps/map_0604-mod-cape-ship-2-0-cabin.png",
 			"imageSize": {
@@ -5895,18 +5279,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "DigiGold",
-							"value": 49,
-							"type": "metal"
+							"value": 49
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5920,18 +5301,15 @@
 					"slots": [
 						{
 							"name": "DigiBamboo",
-							"value": 95,
-							"type": "wood"
+							"value": 95
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 3,
-							"type": "wood"
+							"value": 3
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5943,7 +5321,6 @@
 		},
 		{
 			"id": "map_0605",
-			"zone": "MOD Cape",
 			"label": "MOD Ship 3.0",
 			"image": "/digimon-world-next-order/maps/map_0605-mod-cape-mod-ship-3-0.png",
 			"imageSize": {
@@ -5952,9 +5329,9 @@
 			},
 			"imageCropBounds": {
 				"x": 154,
-				"y": 156,
+				"y": 154,
 				"width": 204,
-				"height": 200
+				"height": 204
 			},
 			"spots": [
 				{
@@ -5963,13 +5340,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 90,
-							"type": "water"
+							"value": 90
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5983,23 +5358,19 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 65,
-							"type": "metal"
+							"value": 65
 						},
 						{
 							"name": "DigiSilver",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						},
 						{
 							"name": "DigiGold",
-							"value": 13,
-							"type": "metal"
+							"value": 13
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6013,18 +5384,15 @@
 					"slots": [
 						{
 							"name": "DigiRock",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						},
 						{
 							"name": "DigiLight",
-							"value": 79,
-							"type": "stone"
+							"value": 79
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 1,
-							"type": "wood"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -6036,7 +5404,6 @@
 		},
 		{
 			"id": "map_0606",
-			"zone": "MOD Cape",
 			"label": "Ship 3.0 Cabin",
 			"image": "/digimon-world-next-order/maps/map_0606-mod-cape-ship-3-0-cabin.png",
 			"imageSize": {
@@ -6056,18 +5423,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 80,
-							"type": "water"
+							"value": 80
 						},
 						{
 							"name": "DigiMercury",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6081,28 +5445,23 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						},
 						{
 							"name": "DigiPalm",
-							"value": 40,
-							"type": "wood"
+							"value": 40
 						},
 						{
 							"name": "DigiSnowwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						},
 						{
 							"name": "DigiBamboo",
-							"value": 38,
-							"type": "wood"
+							"value": 38
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6114,7 +5473,6 @@
 		},
 		{
 			"id": "map_0607",
-			"zone": "MOD Cape",
 			"label": "Flag MOD Ship",
 			"image": "/digimon-world-next-order/maps/map_0607-mod-cape-flag-mod-ship.png",
 			"imageSize": {
@@ -6122,9 +5480,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 175,
+				"x": 154,
 				"y": 136,
-				"width": 196,
+				"width": 239,
 				"height": 239
 			},
 			"spots": [
@@ -6134,18 +5492,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiIonwater",
-							"value": 40,
-							"type": "water"
+							"value": 40
 						},
 						{
 							"name": "DigiMercury",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6159,18 +5514,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 70,
-							"type": "metal"
+							"value": 70
 						},
 						{
 							"name": "DigiGold",
-							"value": 25,
-							"type": "metal"
+							"value": 25
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6184,18 +5536,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 60,
-							"type": "wood"
+							"value": 60
 						},
 						{
 							"name": "DigiSnowwood",
-							"value": 35,
-							"type": "wood"
+							"value": 35
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6207,7 +5556,6 @@
 		},
 		{
 			"id": "map_0608",
-			"zone": "MOD Cape",
 			"label": "Captain's Cabin",
 			"image": "/digimon-world-next-order/maps/map_0608-mod-cape-captain-s-cabin.png",
 			"imageSize": {
@@ -6227,18 +5575,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"value": 70
 						},
 						{
 							"name": "DigiGold",
-							"value": 28,
-							"type": "metal"
+							"value": 28
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6252,28 +5597,23 @@
 					"slots": [
 						{
 							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiNight",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 13,
-							"type": "stone"
+							"value": 13
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6287,13 +5627,11 @@
 					"slots": [
 						{
 							"name": "DigiPalm",
-							"value": 85,
-							"type": "wood"
+							"value": 85
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6305,7 +5643,6 @@
 		},
 		{
 			"id": "map_0701",
-			"zone": "Bony Resort",
 			"label": "Bony Drive",
 			"image": "/digimon-world-next-order/maps/map_0701-bony-resort-bony-drive.png",
 			"imageSize": {
@@ -6314,9 +5651,9 @@
 			},
 			"imageCropBounds": {
 				"x": 28,
-				"y": 64,
+				"y": 42,
 				"width": 428,
-				"height": 384
+				"height": 428
 			},
 			"spots": [
 				{
@@ -6325,13 +5662,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"value": 85
 						},
 						{
 							"name": "DigiRainbowdrop",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6345,13 +5680,11 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"value": 85
 						},
 						{
 							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6365,18 +5698,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"value": 70
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6390,18 +5720,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"value": 70
 						},
 						{
 							"name": "DigiGold",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						},
 						{
 							"name": "Mithril",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6415,23 +5742,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiStone",
-							"value": 35,
-							"type": "stone"
+							"value": 35
 						},
 						{
 							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6445,13 +5768,11 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 70,
-							"type": "stone"
+							"value": 70
 						},
 						{
 							"name": "DigiNight",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						}
 					],
 					"projected": {
@@ -6465,18 +5786,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 55,
-							"type": "stone"
+							"value": 55
 						},
 						{
 							"name": "DigiRock",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6490,18 +5808,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 70,
-							"type": "wood"
+							"value": 70
 						},
 						{
 							"name": "DigiGreatwood",
-							"value": 25,
-							"type": "wood"
+							"value": 25
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6515,18 +5830,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 65,
-							"type": "wood"
+							"value": 65
 						},
 						{
 							"name": "DigiGreatwood",
-							"value": 25,
-							"type": "wood"
+							"value": 25
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6540,18 +5852,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 60,
-							"type": "wood"
+							"value": 60
 						},
 						{
 							"name": "DigiGreatwood",
-							"value": 25,
-							"type": "wood"
+							"value": 25
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6563,7 +5872,6 @@
 		},
 		{
 			"id": "map_0702",
-			"zone": "Bony Resort",
 			"label": "Celeb Red Room",
 			"image": "/digimon-world-next-order/maps/map_0702-bony-resort-celeb-red-room.png",
 			"imageSize": {
@@ -6583,18 +5891,15 @@
 					"slots": [
 						{
 							"name": "DigiNight",
-							"value": 55,
-							"type": "stone"
+							"value": 55
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 44,
-							"type": "stone"
+							"value": 44
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -6606,7 +5911,6 @@
 		},
 		{
 			"id": "map_0703",
-			"zone": "Bony Resort",
 			"label": "Celeb Green Room",
 			"image": "/digimon-world-next-order/maps/map_0703-bony-resort-celeb-green-room.png",
 			"imageSize": {
@@ -6626,18 +5930,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 55,
-							"type": "wood"
+							"value": 55
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 44,
-							"type": "wood"
+							"value": 44
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 1,
-							"type": "wood"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -6649,7 +5950,6 @@
 		},
 		{
 			"id": "map_0704",
-			"zone": "Bony Resort",
 			"label": "Celeb Blue Room",
 			"image": "/digimon-world-next-order/maps/map_0704-bony-resort-celeb-blue-room.png",
 			"imageSize": {
@@ -6669,18 +5969,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 45,
-							"type": "water"
+							"value": 45
 						},
 						{
 							"name": "DigiLatex",
-							"value": 35,
-							"type": "water"
+							"value": 35
 						},
 						{
 							"name": "DigiRainbowdrop",
-							"value": 20,
-							"type": "water"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -6692,7 +5989,6 @@
 		},
 		{
 			"id": "map_0705",
-			"zone": "Bony Resort",
 			"label": "Pink Stone House",
 			"image": "/digimon-world-next-order/maps/map_0705-bony-resort-pink-stone-house.png",
 			"imageSize": {
@@ -6701,9 +5997,9 @@
 			},
 			"imageCropBounds": {
 				"x": 140,
-				"y": 141,
+				"y": 140,
 				"width": 233,
-				"height": 230
+				"height": 233
 			},
 			"spots": [
 				{
@@ -6712,23 +6008,19 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 70,
-							"type": "water"
+							"value": 70
 						},
 						{
 							"name": "DigiSap",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						},
 						{
 							"name": "DigiLatex",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						},
 						{
 							"name": "DigiMercury",
-							"value": 10,
-							"type": "water"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6742,18 +6034,15 @@
 					"slots": [
 						{
 							"name": "DigiGreatwood",
-							"value": 80,
-							"type": "wood"
+							"value": 80
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6765,7 +6054,6 @@
 		},
 		{
 			"id": "map_0706",
-			"zone": "Bony Resort",
 			"label": "Pink Stone House Int.",
 			"image": "/digimon-world-next-order/maps/map_0706-bony-resort-pink-stone-house-int.png",
 			"imageSize": {
@@ -6774,9 +6062,9 @@
 			},
 			"imageCropBounds": {
 				"x": 181,
-				"y": 181,
+				"y": 180,
 				"width": 150,
-				"height": 149
+				"height": 150
 			},
 			"spots": [
 				{
@@ -6785,23 +6073,19 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 55,
-							"type": "metal"
+							"value": 55
 						},
 						{
 							"name": "DigiGold",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 15,
-							"type": "metal"
+							"value": 15
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6813,7 +6097,6 @@
 		},
 		{
 			"id": "map_0707",
-			"zone": "Bony Resort",
 			"label": "Corpseway",
 			"image": "/digimon-world-next-order/maps/map_0707-bony-resort-corpseway.png",
 			"imageSize": {
@@ -6822,9 +6105,9 @@
 			},
 			"imageCropBounds": {
 				"x": 36,
-				"y": 188,
+				"y": 36,
 				"width": 430,
-				"height": 125
+				"height": 430
 			},
 			"spots": [
 				{
@@ -6833,23 +6116,19 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"value": 70
 						},
 						{
 							"name": "DigiGold",
-							"value": 15,
-							"type": "metal"
+							"value": 15
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						},
 						{
 							"name": "Mithril",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6863,23 +6142,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiStone",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiRock",
-							"value": 28,
-							"type": "stone"
+							"value": 28
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6891,7 +6166,6 @@
 		},
 		{
 			"id": "map_0708",
-			"zone": "Bony Resort",
 			"label": "Graveyard",
 			"image": "/digimon-world-next-order/maps/map_0708-bony-resort-graveyard.png",
 			"imageSize": {
@@ -6900,9 +6174,9 @@
 			},
 			"imageCropBounds": {
 				"x": 141,
-				"y": 150,
+				"y": 147,
 				"width": 224,
-				"height": 218
+				"height": 224
 			},
 			"spots": [
 				{
@@ -6911,23 +6185,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiStone",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6941,18 +6211,15 @@
 					"slots": [
 						{
 							"name": "DigiNight",
-							"value": 75,
-							"type": "stone"
+							"value": 75
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6966,18 +6233,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 70,
-							"type": "wood"
+							"value": 70
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 20,
-							"type": "wood"
+							"value": 20
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6989,7 +6253,6 @@
 		},
 		{
 			"id": "map_0709",
-			"zone": "Bony Resort",
 			"label": "Night Church",
 			"image": "/digimon-world-next-order/maps/map_0709-bony-resort-night-church.png",
 			"imageSize": {
@@ -6997,9 +6260,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 208,
+				"x": 206,
 				"y": 204,
-				"width": 101,
+				"width": 104,
 				"height": 104
 			},
 			"spots": [
@@ -7009,18 +6272,15 @@
 					"slots": [
 						{
 							"name": "DigiSap",
-							"value": 35,
-							"type": "water"
+							"value": 35
 						},
 						{
 							"name": "DigiLatex",
-							"value": 45,
-							"type": "water"
+							"value": 45
 						},
 						{
 							"name": "DigiHolywater",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -7032,7 +6292,6 @@
 		},
 		{
 			"id": "map_0801",
-			"zone": "Faulty Ex Machina",
 			"label": "West Coast",
 			"image": "/digimon-world-next-order/maps/map_0801-faulty-ex-machina-west-coast.png",
 			"imageSize": {
@@ -7040,9 +6299,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 163,
+				"x": 133,
 				"y": 133,
-				"width": 186,
+				"width": 246,
 				"height": 246
 			},
 			"spots": [
@@ -7052,18 +6311,15 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 45,
-							"type": "water"
+							"value": 45
 						},
 						{
 							"name": "DigiOil",
-							"value": 40,
-							"type": "water"
+							"value": 40
 						},
 						{
 							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -7077,18 +6333,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "DigiIron",
-							"value": 58,
-							"type": "metal"
+							"value": 58
 						},
 						{
 							"name": "Mithril",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -7102,23 +6355,19 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"value": 50
 						},
 						{
 							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 3,
-							"type": "stone"
+							"value": 3
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -7132,13 +6381,11 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 95,
-							"type": "wood"
+							"value": 95
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7150,7 +6397,6 @@
 		},
 		{
 			"id": "map_0802",
-			"zone": "Faulty Ex Machina",
 			"label": "Greenery Island",
 			"image": "/digimon-world-next-order/maps/map_0802-faulty-ex-machina-greenery-island.png",
 			"imageSize": {
@@ -7158,9 +6404,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 150,
+				"x": 138,
 				"y": 140,
-				"width": 208,
+				"width": 233,
 				"height": 233
 			},
 			"spots": [
@@ -7170,13 +6416,11 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 90,
-							"type": "metal"
+							"value": 90
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7188,7 +6432,6 @@
 		},
 		{
 			"id": "map_0803",
-			"zone": "Faulty Ex Machina",
 			"label": "Boulder Island",
 			"image": "/digimon-world-next-order/maps/map_0803-faulty-ex-machina-boulder-island.png",
 			"imageSize": {
@@ -7196,9 +6439,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 167,
+				"x": 158,
 				"y": 148,
-				"width": 204,
+				"width": 222,
 				"height": 222
 			},
 			"spots": [
@@ -7208,23 +6451,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 60,
-							"type": "stone"
+							"value": 60
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 15,
-							"type": "stone"
+							"value": 15
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7238,23 +6477,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						},
 						{
 							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiRock",
-							"value": 35,
-							"type": "stone"
+							"value": 35
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7266,7 +6501,6 @@
 		},
 		{
 			"id": "map_0804",
-			"zone": "Faulty Ex Machina",
 			"label": "Flowerbed Island",
 			"image": "/digimon-world-next-order/maps/map_0804-faulty-ex-machina-flowerbed-island.png",
 			"imageSize": {
@@ -7274,9 +6508,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 167,
+				"x": 154,
 				"y": 141,
-				"width": 204,
+				"width": 229,
 				"height": 229
 			},
 			"spots": [
@@ -7286,13 +6520,11 @@
 					"slots": [
 						{
 							"name": "DigiOil",
-							"value": 85,
-							"type": "water"
+							"value": 85
 						},
 						{
 							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -7304,7 +6536,6 @@
 		},
 		{
 			"id": "map_0805",
-			"zone": "Faulty Ex Machina",
 			"label": "Pathfork Island",
 			"image": "/digimon-world-next-order/maps/map_0805-faulty-ex-machina-pathfork-island.png",
 			"imageSize": {
@@ -7313,9 +6544,9 @@
 			},
 			"imageCropBounds": {
 				"x": 138,
-				"y": 165,
+				"y": 156,
 				"width": 235,
-				"height": 218
+				"height": 235
 			},
 			"spots": [
 				{
@@ -7324,18 +6555,15 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 93,
-							"type": "metal"
+							"value": 93
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 2,
-							"type": "metal"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -7347,7 +6575,6 @@
 		},
 		{
 			"id": "map_0806",
-			"zone": "Faulty Ex Machina",
 			"label": "Control Island",
 			"image": "/digimon-world-next-order/maps/map_0806-faulty-ex-machina-control-island.png",
 			"imageSize": {
@@ -7356,9 +6583,9 @@
 			},
 			"imageCropBounds": {
 				"x": 143,
-				"y": 167,
+				"y": 146,
 				"width": 233,
-				"height": 191
+				"height": 233
 			},
 			"spots": [
 				{
@@ -7367,18 +6594,15 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 55,
-							"type": "metal"
+							"value": 55
 						},
 						{
 							"name": "DigiIron",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "Mithril",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7392,23 +6616,19 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 60,
-							"type": "metal"
+							"value": 60
 						},
 						{
 							"name": "Mithril",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 15,
-							"type": "metal"
+							"value": 15
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7420,7 +6640,6 @@
 		},
 		{
 			"id": "map_0807",
-			"zone": "Faulty Ex Machina",
 			"label": "Control Room",
 			"image": "/digimon-world-next-order/maps/map_0807-faulty-ex-machina-control-room.png",
 			"imageSize": {
@@ -7429,15 +6648,14 @@
 			},
 			"imageCropBounds": {
 				"x": 204,
-				"y": 207,
+				"y": 205,
 				"width": 104,
-				"height": 100
+				"height": 104
 			},
 			"spots": []
 		},
 		{
 			"id": "map_0808",
-			"zone": "Faulty Ex Machina",
 			"label": "East Coast",
 			"image": "/digimon-world-next-order/maps/map_0808-faulty-ex-machina-east-coast.png",
 			"imageSize": {
@@ -7446,9 +6664,9 @@
 			},
 			"imageCropBounds": {
 				"x": 135,
-				"y": 149,
+				"y": 136,
 				"width": 232,
-				"height": 207
+				"height": 232
 			},
 			"spots": [
 				{
@@ -7457,18 +6675,15 @@
 					"slots": [
 						{
 							"name": "DigiOil",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiSap",
-							"value": 49,
-							"type": "water"
+							"value": 49
 						},
 						{
 							"name": "DigiLatex",
-							"value": 1,
-							"type": "water"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -7482,18 +6697,15 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiMercury",
-							"value": 30,
-							"type": "water"
+							"value": 30
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 20,
-							"type": "water"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -7507,23 +6719,19 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "DigiGold",
-							"value": 30,
-							"type": "metal"
+							"value": 30
 						},
 						{
 							"name": "DigiWhitegold",
-							"value": 25,
-							"type": "metal"
+							"value": 25
 						},
 						{
 							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7537,13 +6745,11 @@
 					"slots": [
 						{
 							"name": "DigiIron",
-							"value": 85,
-							"type": "metal"
+							"value": 85
 						},
 						{
 							"name": "Chrome Digizoit",
-							"value": 15,
-							"type": "metal"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -7557,18 +6763,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 60,
-							"type": "stone"
+							"value": 60
 						},
 						{
 							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"value": 30
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7582,23 +6785,19 @@
 					"slots": [
 						{
 							"name": "DigiSand",
-							"value": 80,
-							"type": "stone"
+							"value": 80
 						},
 						{
 							"name": "DigiQuartz",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7612,23 +6811,19 @@
 					"slots": [
 						{
 							"name": "DigiWhitewood",
-							"value": 50,
-							"type": "wood"
+							"value": 50
 						},
 						{
 							"name": "DigiPalm",
-							"value": 25,
-							"type": "wood"
+							"value": 25
 						},
 						{
 							"name": "DigiBamboo",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						},
 						{
 							"name": "DigiFirewood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7642,23 +6837,19 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 50,
-							"type": "wood"
+							"value": 50
 						},
 						{
 							"name": "DigiSnowwood",
-							"value": 25,
-							"type": "wood"
+							"value": 25
 						},
 						{
 							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 10,
-							"type": "wood"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7670,7 +6861,6 @@
 		},
 		{
 			"id": "map_0809",
-			"zone": "Faulty Ex Machina",
 			"label": "North Coast",
 			"image": "/digimon-world-next-order/maps/map_0809-faulty-ex-machina-north-coast.png",
 			"imageSize": {
@@ -7678,9 +6868,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 127,
+				"x": 102,
 				"y": 103,
-				"width": 230,
+				"width": 280,
 				"height": 280
 			},
 			"spots": [
@@ -7690,18 +6880,15 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 40,
-							"type": "water"
+							"value": 40
 						},
 						{
 							"name": "DigiOil",
-							"value": 55,
-							"type": "water"
+							"value": 55
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 5,
-							"type": "water"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7715,23 +6902,19 @@
 					"slots": [
 						{
 							"name": "DigiCopper",
-							"value": 35,
-							"type": "metal"
+							"value": 35
 						},
 						{
 							"name": "DigiIron",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "DigiSilver",
-							"value": 10,
-							"type": "metal"
+							"value": 10
 						},
 						{
 							"name": "Mithril",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7745,18 +6928,15 @@
 					"slots": [
 						{
 							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiRock",
-							"value": 55,
-							"type": "stone"
+							"value": 55
 						},
 						{
 							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7770,18 +6950,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 75,
-							"type": "wood"
+							"value": 75
 						},
 						{
 							"name": "DigiSnowwood",
-							"value": 20,
-							"type": "wood"
+							"value": 20
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 5,
-							"type": "wood"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7793,7 +6970,6 @@
 		},
 		{
 			"id": "map_0810",
-			"zone": "Faulty Ex Machina",
 			"label": "Drainage Path",
 			"image": "/digimon-world-next-order/maps/map_0810-faulty-ex-machina-drainage-path.png",
 			"imageSize": {
@@ -7801,9 +6977,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 146,
+				"x": 142,
 				"y": 139,
-				"width": 225,
+				"width": 234,
 				"height": 234
 			},
 			"spots": [
@@ -7813,23 +6989,19 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 30,
-							"type": "water"
+							"value": 30
 						},
 						{
 							"name": "DigiOil",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 5,
-							"type": "water"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7843,23 +7015,19 @@
 					"slots": [
 						{
 							"name": "DigiAcid",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiOil",
-							"value": 30,
-							"type": "water"
+							"value": 30
 						},
 						{
 							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"value": 15
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 5,
-							"type": "water"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7871,7 +7039,6 @@
 		},
 		{
 			"id": "map_0811",
-			"zone": "Faulty Ex Machina",
 			"label": "KingSukamon's Chamber",
 			"image": "/digimon-world-next-order/maps/map_0811-faulty-ex-machina-kingsukamon-s-chamber.png",
 			"imageSize": {
@@ -7880,15 +7047,14 @@
 			},
 			"imageCropBounds": {
 				"x": 195,
-				"y": 218,
+				"y": 211,
 				"width": 91,
-				"height": 77
+				"height": 91
 			},
 			"spots": []
 		},
 		{
 			"id": "map_0901",
-			"zone": "Absolute Zero",
 			"label": "Freeze Way",
 			"image": "/digimon-world-next-order/maps/map_0901-absolute-zero-freeze-way.png",
 			"imageSize": {
@@ -7896,9 +7062,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 149,
+				"x": 41,
 				"y": 45,
-				"width": 193,
+				"width": 409,
 				"height": 409
 			},
 			"spots": [
@@ -7908,18 +7074,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 59,
-							"type": "wood"
+							"value": 59
 						},
 						{
 							"name": "DigiSnowwood",
-							"value": 40,
-							"type": "wood"
+							"value": 40
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 1,
-							"type": "wood"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -7933,18 +7096,15 @@
 					"slots": [
 						{
 							"name": "DigiBlackwood",
-							"value": 40,
-							"type": "wood"
+							"value": 40
 						},
 						{
 							"name": "DigiSnowwood",
-							"value": 59,
-							"type": "wood"
+							"value": 59
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 1,
-							"type": "wood"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -7956,7 +7116,6 @@
 		},
 		{
 			"id": "map_0902",
-			"zone": "Absolute Zero",
 			"label": "Frost Cathedral",
 			"image": "/digimon-world-next-order/maps/map_0902-absolute-zero-frost-cathedral.png",
 			"imageSize": {
@@ -7965,9 +7124,9 @@
 			},
 			"imageCropBounds": {
 				"x": 89,
-				"y": 107,
+				"y": 60,
 				"width": 326,
-				"height": 233
+				"height": 326
 			},
 			"spots": [
 				{
@@ -7976,18 +7135,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 70,
-							"type": "water"
+							"value": 70
 						},
 						{
 							"name": "DigiLatex",
-							"value": 25,
-							"type": "water"
+							"value": 25
 						},
 						{
 							"name": "DigiHolywater",
-							"value": 5,
-							"type": "metal"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -8001,18 +7157,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 60,
-							"type": "metal"
+							"value": 60
 						},
 						{
 							"name": "Mithril",
-							"value": 39,
-							"type": "metal"
+							"value": 39
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						}
 					],
 					"projected": {
@@ -8026,23 +7179,19 @@
 					"slots": [
 						{
 							"name": "DigiQuartz",
-							"value": 95,
-							"type": "stone"
+							"value": 95
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						},
 						{
 							"name": "DigiRuby",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -8056,23 +7205,19 @@
 					"slots": [
 						{
 							"name": "DigiQuartz",
-							"value": 95,
-							"type": "stone"
+							"value": 95
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 1,
-							"type": "stone"
+							"value": 1
 						},
 						{
 							"name": "DigiRuby",
-							"value": 2,
-							"type": "stone"
+							"value": 2
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 2,
-							"type": "wood"
+							"value": 2
 						}
 					],
 					"projected": {
@@ -8084,7 +7229,6 @@
 		},
 		{
 			"id": "map_0903",
-			"zone": "Absolute Zero",
 			"label": "Ice Sculpture Room",
 			"image": "/digimon-world-next-order/maps/map_0903-absolute-zero-ice-sculpture-room.png",
 			"imageSize": {
@@ -8092,9 +7236,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 193,
+				"x": 192,
 				"y": 162,
-				"width": 132,
+				"width": 134,
 				"height": 134
 			},
 			"spots": [
@@ -8104,18 +7248,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "Mithril",
-							"value": 45,
-							"type": "metal"
+							"value": 45
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 5,
-							"type": "stone"
+							"value": 5
 						}
 					],
 					"projected": {
@@ -8129,13 +7270,11 @@
 					"slots": [
 						{
 							"name": "DigiQuartz",
-							"value": 80,
-							"type": "stone"
+							"value": 80
 						},
 						{
 							"name": "DigiEmerald",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -8147,7 +7286,6 @@
 		},
 		{
 			"id": "map_0904",
-			"zone": "Absolute Zero",
 			"label": "Icy Hall",
 			"image": "/digimon-world-next-order/maps/map_0904-absolute-zero-icy-hall.png",
 			"imageSize": {
@@ -8155,9 +7293,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 203,
+				"x": 161,
 				"y": 149,
-				"width": 116,
+				"width": 200,
 				"height": 200
 			},
 			"spots": [
@@ -8167,13 +7305,11 @@
 					"slots": [
 						{
 							"name": "Mithril",
-							"value": 85,
-							"type": "metal"
+							"value": 85
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8187,13 +7323,11 @@
 					"slots": [
 						{
 							"name": "DigiQuartz",
-							"value": 90,
-							"type": "stone"
+							"value": 90
 						},
 						{
 							"name": "DigiRuby",
-							"value": 10,
-							"type": "stone"
+							"value": 10
 						}
 					],
 					"projected": {
@@ -8205,7 +7339,6 @@
 		},
 		{
 			"id": "map_0905",
-			"zone": "Absolute Zero",
 			"label": "Frozen Divider",
 			"image": "/digimon-world-next-order/maps/map_0905-absolute-zero-frozen-divider.png",
 			"imageSize": {
@@ -8214,9 +7347,9 @@
 			},
 			"imageCropBounds": {
 				"x": 149,
-				"y": 183,
+				"y": 134,
 				"width": 246,
-				"height": 149
+				"height": 246
 			},
 			"spots": [
 				{
@@ -8225,18 +7358,15 @@
 					"slots": [
 						{
 							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"value": 50
 						},
 						{
 							"name": "DigiLatex",
-							"value": 30,
-							"type": "water"
+							"value": 30
 						},
 						{
 							"name": "DigiHolywater",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -8248,7 +7378,6 @@
 		},
 		{
 			"id": "map_0906",
-			"zone": "Absolute Zero",
 			"label": "Frozen Way",
 			"image": "/digimon-world-next-order/maps/map_0906-absolute-zero-frozen-way.png",
 			"imageSize": {
@@ -8257,9 +7386,9 @@
 			},
 			"imageCropBounds": {
 				"x": 119,
-				"y": 197,
+				"y": 131,
 				"width": 249,
-				"height": 117
+				"height": 249
 			},
 			"spots": [
 				{
@@ -8268,13 +7397,11 @@
 					"slots": [
 						{
 							"name": "DigiQuartz",
-							"value": 85,
-							"type": "stone"
+							"value": 85
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8286,7 +7413,6 @@
 		},
 		{
 			"id": "map_0907",
-			"zone": "Absolute Zero",
 			"label": "Icy Way Temple",
 			"image": "/digimon-world-next-order/maps/map_0907-absolute-zero-icy-way-temple.png",
 			"imageSize": {
@@ -8294,9 +7420,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 180,
+				"x": 172,
 				"y": 163,
-				"width": 150,
+				"width": 165,
 				"height": 165
 			},
 			"spots": [
@@ -8306,18 +7432,15 @@
 					"slots": [
 						{
 							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"value": 50
 						},
 						{
 							"name": "Mithril",
-							"value": 35,
-							"type": "metal"
+							"value": 35
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8329,7 +7452,6 @@
 		},
 		{
 			"id": "map_0908",
-			"zone": "Absolute Zero",
 			"label": "Eternal Glacier",
 			"image": "/digimon-world-next-order/maps/map_0908-absolute-zero-eternal-glacier.png",
 			"imageSize": {
@@ -8337,16 +7459,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 188,
+				"x": 162,
 				"y": 164,
-				"width": 133,
+				"width": 184,
 				"height": 184
 			},
 			"spots": []
 		},
 		{
 			"id": "map_0909",
-			"zone": "Absolute Zero",
 			"label": "Concealed Gorge",
 			"image": "/digimon-world-next-order/maps/map_0909-absolute-zero-concealed-gorge.png",
 			"imageSize": {
@@ -8354,16 +7475,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 202,
+				"x": 201,
 				"y": 202,
-				"width": 109,
+				"width": 111,
 				"height": 111
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1001",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 01",
 			"image": "/digimon-world-next-order/maps/map_1001-infinite-cauldron-layer-01.png",
 			"imageSize": {
@@ -8371,16 +7491,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 135,
+				"x": 131,
 				"y": 131,
-				"width": 242,
+				"width": 250,
 				"height": 250
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1002",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 02",
 			"image": "/digimon-world-next-order/maps/map_1002-infinite-cauldron-layer-02.png",
 			"imageSize": {
@@ -8389,15 +7508,14 @@
 			},
 			"imageCropBounds": {
 				"x": 199,
-				"y": 281,
+				"y": 198,
 				"width": 371,
-				"height": 204
+				"height": 371
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1003",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 03",
 			"image": "/digimon-world-next-order/maps/map_1003-infinite-cauldron-layer-03.png",
 			"imageSize": {
@@ -8405,16 +7523,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 139,
+				"x": 58,
 				"y": 58,
-				"width": 234,
+				"width": 396,
 				"height": 396
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1004",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 04",
 			"image": "/digimon-world-next-order/maps/map_1004-infinite-cauldron-layer-04.png",
 			"imageSize": {
@@ -8423,15 +7540,14 @@
 			},
 			"imageCropBounds": {
 				"x": 148,
-				"y": 156,
+				"y": 148,
 				"width": 216,
-				"height": 200
+				"height": 216
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1005",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 05",
 			"image": "/digimon-world-next-order/maps/map_1005-infinite-cauldron-layer-05.png",
 			"imageSize": {
@@ -8440,15 +7556,14 @@
 			},
 			"imageCropBounds": {
 				"x": 139,
-				"y": 164,
+				"y": 138,
 				"width": 235,
-				"height": 184
+				"height": 235
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1006",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 06",
 			"image": "/digimon-world-next-order/maps/map_1006-infinite-cauldron-layer-06.png",
 			"imageSize": {
@@ -8465,7 +7580,6 @@
 		},
 		{
 			"id": "map_1007",
-			"zone": "Infinite Cauldron",
 			"label": "Core 02",
 			"image": "/digimon-world-next-order/maps/map_1007-infinite-cauldron-core-02.png",
 			"imageSize": {
@@ -8473,16 +7587,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 181,
+				"x": 130,
 				"y": 129,
-				"width": 167,
+				"width": 270,
 				"height": 270
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1008",
-			"zone": "Infinite Cauldron",
 			"label": "Core 01",
 			"image": "/digimon-world-next-order/maps/map_1008-infinite-cauldron-core-01.png",
 			"imageSize": {
@@ -8490,16 +7603,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 194,
+				"x": 134,
 				"y": 135,
-				"width": 124,
+				"width": 243,
 				"height": 243
 			},
 			"spots": []
 		},
 		{
 			"id": "map_1009",
-			"zone": "Infinite Cauldron",
 			"label": "Core 00",
 			"image": "/digimon-world-next-order/maps/map_1009-infinite-cauldron-core-00.png",
 			"imageSize": {
@@ -8507,16 +7619,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 186,
+				"x": 80,
 				"y": 79,
-				"width": 140,
+				"width": 353,
 				"height": 353
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8101",
-			"zone": "Dimension M",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8101-dimension-m-memory-1.png",
 			"imageSize": {
@@ -8525,15 +7636,14 @@
 			},
 			"imageCropBounds": {
 				"x": 205,
-				"y": 211,
+				"y": 206,
 				"width": 102,
-				"height": 91
+				"height": 102
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8102",
-			"zone": "Dimension M",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8102-dimension-m-memory-2.png",
 			"imageSize": {
@@ -8541,16 +7651,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 202,
+				"x": 193,
 				"y": 193,
-				"width": 107,
+				"width": 125,
 				"height": 125
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8103",
-			"zone": "Dimension M",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8103-dimension-m-memory-3.png",
 			"imageSize": {
@@ -8567,7 +7676,6 @@
 		},
 		{
 			"id": "map_8104",
-			"zone": "Dimension M",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8104-dimension-m-memory-4.png",
 			"imageSize": {
@@ -8576,15 +7684,14 @@
 			},
 			"imageCropBounds": {
 				"x": 198,
-				"y": 202,
+				"y": 198,
 				"width": 117,
-				"height": 108
+				"height": 117
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8105",
-			"zone": "Dimension M",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8105-dimension-m-memory-5.png",
 			"imageSize": {
@@ -8601,7 +7708,6 @@
 		},
 		{
 			"id": "map_8106",
-			"zone": "Dimension M",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8106-dimension-m-memory-6.png",
 			"imageSize": {
@@ -8610,15 +7716,14 @@
 			},
 			"imageCropBounds": {
 				"x": 225,
-				"y": 206,
+				"y": 198,
 				"width": 123,
-				"height": 107
+				"height": 123
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8107",
-			"zone": "Dimension M",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8107-dimension-m-memory-7.png",
 			"imageSize": {
@@ -8635,7 +7740,6 @@
 		},
 		{
 			"id": "map_8108",
-			"zone": "Dimension M",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8108-dimension-m-memory-8.png",
 			"imageSize": {
@@ -8655,18 +7759,15 @@
 					"slots": [
 						{
 							"name": "Black Digizoit",
-							"value": 45,
-							"type": "metal"
+							"value": 45
 						},
 						{
 							"name": "Red Digizoit",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8680,18 +7781,15 @@
 					"slots": [
 						{
 							"name": "DigiEmerald",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiRuby",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8703,7 +7801,6 @@
 		},
 		{
 			"id": "map_8109",
-			"zone": "Dimension M",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8109-dimension-m-memory-9.png",
 			"imageSize": {
@@ -8712,15 +7809,14 @@
 			},
 			"imageCropBounds": {
 				"x": 163,
-				"y": 197,
+				"y": 189,
 				"width": 126,
-				"height": 110
+				"height": 126
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8110",
-			"zone": "Dimension M",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8110-dimension-m-memory-10.png",
 			"imageSize": {
@@ -8729,15 +7825,14 @@
 			},
 			"imageCropBounds": {
 				"x": 213,
-				"y": 199,
+				"y": 193,
 				"width": 119,
-				"height": 107
+				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8201",
-			"zone": "Dimension G",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8201-dimension-g-memory-1.png",
 			"imageSize": {
@@ -8746,15 +7841,14 @@
 			},
 			"imageCropBounds": {
 				"x": 188,
-				"y": 216,
+				"y": 210,
 				"width": 101,
-				"height": 90
+				"height": 101
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8202",
-			"zone": "Dimension G",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8202-dimension-g-memory-2.png",
 			"imageSize": {
@@ -8763,15 +7857,14 @@
 			},
 			"imageCropBounds": {
 				"x": 225,
-				"y": 206,
+				"y": 198,
 				"width": 123,
-				"height": 107
+				"height": 123
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8203",
-			"zone": "Dimension G",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8203-dimension-g-memory-3.png",
 			"imageSize": {
@@ -8788,7 +7881,6 @@
 		},
 		{
 			"id": "map_8204",
-			"zone": "Dimension G",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8204-dimension-g-memory-4.png",
 			"imageSize": {
@@ -8797,15 +7889,14 @@
 			},
 			"imageCropBounds": {
 				"x": 195,
-				"y": 191,
+				"y": 182,
 				"width": 128,
-				"height": 109
+				"height": 128
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8205",
-			"zone": "Dimension G",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8205-dimension-g-memory-5.png",
 			"imageSize": {
@@ -8814,9 +7905,9 @@
 			},
 			"imageCropBounds": {
 				"x": 188,
-				"y": 213,
+				"y": 208,
 				"width": 101,
-				"height": 90
+				"height": 101
 			},
 			"spots": [
 				{
@@ -8825,18 +7916,15 @@
 					"slots": [
 						{
 							"name": "DigiRainbowdrop",
-							"value": 45,
-							"type": "water"
+							"value": 45
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 40,
-							"type": "water"
+							"value": 40
 						},
 						{
 							"name": "DigiHolywater",
-							"value": 15,
-							"type": "metal"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8850,18 +7938,15 @@
 					"slots": [
 						{
 							"name": "DigiFelwood",
-							"value": 45,
-							"type": "wood"
+							"value": 45
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 40,
-							"type": "wood"
+							"value": 40
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8873,7 +7958,6 @@
 		},
 		{
 			"id": "map_8206",
-			"zone": "Dimension G",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8206-dimension-g-memory-6.png",
 			"imageSize": {
@@ -8890,7 +7974,6 @@
 		},
 		{
 			"id": "map_8207",
-			"zone": "Dimension G",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8207-dimension-g-memory-7.png",
 			"imageSize": {
@@ -8898,16 +7981,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 208,
+				"x": 202,
 				"y": 189,
-				"width": 90,
+				"width": 101,
 				"height": 101
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8208",
-			"zone": "Dimension G",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8208-dimension-g-memory-8.png",
 			"imageSize": {
@@ -8915,16 +7997,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 208,
+				"x": 202,
 				"y": 172,
-				"width": 107,
+				"width": 119,
 				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8209",
-			"zone": "Dimension G",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8209-dimension-g-memory-9.png",
 			"imageSize": {
@@ -8933,15 +8014,14 @@
 			},
 			"imageCropBounds": {
 				"x": 225,
-				"y": 206,
+				"y": 198,
 				"width": 123,
-				"height": 107
+				"height": 123
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8210",
-			"zone": "Dimension G",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8210-dimension-g-memory-10.png",
 			"imageSize": {
@@ -8950,15 +8030,14 @@
 			},
 			"imageCropBounds": {
 				"x": 179,
-				"y": 207,
+				"y": 201,
 				"width": 119,
-				"height": 107
+				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8301",
-			"zone": "Dimension T",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8301-dimension-t-memory-1.png",
 			"imageSize": {
@@ -8966,16 +8045,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 213,
+				"x": 208,
 				"y": 223,
-				"width": 90,
+				"width": 101,
 				"height": 101
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8302",
-			"zone": "Dimension T",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8302-dimension-t-memory-2.png",
 			"imageSize": {
@@ -8984,15 +8062,14 @@
 			},
 			"imageCropBounds": {
 				"x": 173,
-				"y": 199,
+				"y": 193,
 				"width": 119,
-				"height": 107
+				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8303",
-			"zone": "Dimension T",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8303-dimension-t-memory-3.png",
 			"imageSize": {
@@ -9000,16 +8077,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 199,
+				"x": 198,
 				"y": 182,
-				"width": 123,
+				"width": 124,
 				"height": 124
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8304",
-			"zone": "Dimension T",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8304-dimension-t-memory-4.png",
 			"imageSize": {
@@ -9018,15 +8094,14 @@
 			},
 			"imageCropBounds": {
 				"x": 219,
-				"y": 206,
+				"y": 200,
 				"width": 119,
-				"height": 107
+				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8305",
-			"zone": "Dimension T",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8305-dimension-t-memory-5.png",
 			"imageSize": {
@@ -9043,7 +8118,6 @@
 		},
 		{
 			"id": "map_8306",
-			"zone": "Dimension T",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8306-dimension-t-memory-6.png",
 			"imageSize": {
@@ -9063,18 +8137,15 @@
 					"slots": [
 						{
 							"name": "Black Digizoit",
-							"value": 45,
-							"type": "metal"
+							"value": 45
 						},
 						{
 							"name": "Red Digizoit",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9088,18 +8159,15 @@
 					"slots": [
 						{
 							"name": "DigiRainbowdrop",
-							"value": 45,
-							"type": "water"
+							"value": 45
 						},
 						{
 							"name": "DigiLightningwater",
-							"value": 40,
-							"type": "water"
+							"value": 40
 						},
 						{
 							"name": "DigiHolywater",
-							"value": 15,
-							"type": "metal"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9111,7 +8179,6 @@
 		},
 		{
 			"id": "map_8307",
-			"zone": "Dimension T",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8307-dimension-t-memory-7.png",
 			"imageSize": {
@@ -9120,15 +8187,14 @@
 			},
 			"imageCropBounds": {
 				"x": 189,
-				"y": 212,
+				"y": 202,
 				"width": 128,
-				"height": 109
+				"height": 128
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8308",
-			"zone": "Dimension T",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8308-dimension-t-memory-8.png",
 			"imageSize": {
@@ -9137,15 +8203,14 @@
 			},
 			"imageCropBounds": {
 				"x": 173,
-				"y": 199,
+				"y": 193,
 				"width": 119,
-				"height": 107
+				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8309",
-			"zone": "Dimension T",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8309-dimension-t-memory-9.png",
 			"imageSize": {
@@ -9162,7 +8227,6 @@
 		},
 		{
 			"id": "map_8310",
-			"zone": "Dimension T",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8310-dimension-t-memory-10.png",
 			"imageSize": {
@@ -9170,16 +8234,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 207,
+				"x": 201,
 				"y": 220,
-				"width": 107,
+				"width": 119,
 				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8401",
-			"zone": "Dimension P",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8401-dimension-p-memory-1.png",
 			"imageSize": {
@@ -9187,16 +8250,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 209,
+				"x": 204,
 				"y": 188,
-				"width": 90,
+				"width": 101,
 				"height": 101
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8402",
-			"zone": "Dimension P",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8402-dimension-p-memory-2.png",
 			"imageSize": {
@@ -9204,16 +8266,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 206,
+				"x": 198,
 				"y": 164,
-				"width": 107,
+				"width": 123,
 				"height": 123
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8403",
-			"zone": "Dimension P",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8403-dimension-p-memory-3.png",
 			"imageSize": {
@@ -9230,7 +8291,6 @@
 		},
 		{
 			"id": "map_8404",
-			"zone": "Dimension P",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8404-dimension-p-memory-4.png",
 			"imageSize": {
@@ -9238,9 +8298,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 207,
+				"x": 202,
 				"y": 188,
-				"width": 90,
+				"width": 101,
 				"height": 101
 			},
 			"spots": [
@@ -9250,18 +8310,15 @@
 					"slots": [
 						{
 							"name": "DigiEmerald",
-							"value": 45,
-							"type": "stone"
+							"value": 45
 						},
 						{
 							"name": "DigiRuby",
-							"value": 40,
-							"type": "stone"
+							"value": 40
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9275,18 +8332,15 @@
 					"slots": [
 						{
 							"name": "DigiFelwood",
-							"value": 45,
-							"type": "wood"
+							"value": 45
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 40,
-							"type": "wood"
+							"value": 40
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 15,
-							"type": "wood"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9298,7 +8352,6 @@
 		},
 		{
 			"id": "map_8405",
-			"zone": "Dimension P",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8405-dimension-p-memory-5.png",
 			"imageSize": {
@@ -9306,16 +8359,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 212,
+				"x": 202,
 				"y": 195,
-				"width": 109,
+				"width": 128,
 				"height": 128
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8406",
-			"zone": "Dimension P",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8406-dimension-p-memory-6.png",
 			"imageSize": {
@@ -9332,7 +8384,6 @@
 		},
 		{
 			"id": "map_8407",
-			"zone": "Dimension P",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8407-dimension-p-memory-7.png",
 			"imageSize": {
@@ -9340,16 +8391,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 213,
+				"x": 208,
 				"y": 223,
-				"width": 90,
+				"width": 101,
 				"height": 101
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8408",
-			"zone": "Dimension P",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8408-dimension-p-memory-8.png",
 			"imageSize": {
@@ -9358,15 +8408,14 @@
 			},
 			"imageCropBounds": {
 				"x": 220,
-				"y": 206,
+				"y": 200,
 				"width": 119,
-				"height": 107
+				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8409",
-			"zone": "Dimension P",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8409-dimension-p-memory-9.png",
 			"imageSize": {
@@ -9383,7 +8432,6 @@
 		},
 		{
 			"id": "map_8410",
-			"zone": "Dimension P",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8410-dimension-p-memory-10.png",
 			"imageSize": {
@@ -9391,16 +8439,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 199,
+				"x": 193,
 				"y": 180,
-				"width": 107,
+				"width": 119,
 				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8501",
-			"zone": "Dimension E",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8501-dimension-e-memory-1.png",
 			"imageSize": {
@@ -9409,15 +8456,14 @@
 			},
 			"imageCropBounds": {
 				"x": 223,
-				"y": 209,
+				"y": 204,
 				"width": 101,
-				"height": 90
+				"height": 101
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8502",
-			"zone": "Dimension E",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8502-dimension-e-memory-2.png",
 			"imageSize": {
@@ -9426,15 +8472,14 @@
 			},
 			"imageCropBounds": {
 				"x": 225,
-				"y": 206,
+				"y": 198,
 				"width": 123,
-				"height": 107
+				"height": 123
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8503",
-			"zone": "Dimension E",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8503-dimension-e-memory-3.png",
 			"imageSize": {
@@ -9443,15 +8488,14 @@
 			},
 			"imageCropBounds": {
 				"x": 221,
-				"y": 216,
+				"y": 190,
 				"width": 133,
-				"height": 80
+				"height": 133
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8504",
-			"zone": "Dimension E",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8504-dimension-e-memory-4.png",
 			"imageSize": {
@@ -9468,7 +8512,6 @@
 		},
 		{
 			"id": "map_8505",
-			"zone": "Dimension E",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8505-dimension-e-memory-5.png",
 			"imageSize": {
@@ -9488,18 +8531,15 @@
 					"slots": [
 						{
 							"name": "Black Digizoit",
-							"value": 45,
-							"type": "metal"
+							"value": 45
 						},
 						{
 							"name": "Red Digizoit",
-							"value": 40,
-							"type": "metal"
+							"value": 40
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9511,7 +8551,6 @@
 		},
 		{
 			"id": "map_8506",
-			"zone": "Dimension E",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8506-dimension-e-memory-6.png",
 			"imageSize": {
@@ -9520,15 +8559,14 @@
 			},
 			"imageCropBounds": {
 				"x": 225,
-				"y": 206,
+				"y": 198,
 				"width": 123,
-				"height": 107
+				"height": 123
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8507",
-			"zone": "Dimension E",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8507-dimension-e-memory-7.png",
 			"imageSize": {
@@ -9536,9 +8574,9 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 209,
+				"x": 204,
 				"y": 188,
-				"width": 90,
+				"width": 101,
 				"height": 101
 			},
 			"spots": [
@@ -9548,18 +8586,15 @@
 					"slots": [
 						{
 							"name": "DigiRainbowdrop",
-							"value": 35,
-							"type": "water"
+							"value": 35
 						},
 						{
 							"name": "DigiRainbowdrop",
-							"value": 35,
-							"type": "water"
+							"value": 35
 						},
 						{
 							"name": "DigiRainbowdrop",
-							"value": 30,
-							"type": "water"
+							"value": 30
 						}
 					],
 					"projected": {
@@ -9573,18 +8608,15 @@
 					"slots": [
 						{
 							"name": "DigiEmerald",
-							"value": 35,
-							"type": "stone"
+							"value": 35
 						},
 						{
 							"name": "DigiRuby",
-							"value": 35,
-							"type": "stone"
+							"value": 35
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 30,
-							"type": "wood"
+							"value": 30
 						}
 					],
 					"projected": {
@@ -9598,18 +8630,15 @@
 					"slots": [
 						{
 							"name": "DigiFelwood",
-							"value": 35,
-							"type": "wood"
+							"value": 35
 						},
 						{
 							"name": "DigiStarwood",
-							"value": 35,
-							"type": "wood"
+							"value": 35
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 30,
-							"type": "wood"
+							"value": 30
 						}
 					],
 					"projected": {
@@ -9621,7 +8650,6 @@
 		},
 		{
 			"id": "map_8508",
-			"zone": "Dimension E",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8508-dimension-e-memory-8.png",
 			"imageSize": {
@@ -9629,16 +8657,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 212,
+				"x": 202,
 				"y": 195,
-				"width": 109,
+				"width": 128,
 				"height": 128
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8509",
-			"zone": "Dimension E",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8509-dimension-e-memory-9.png",
 			"imageSize": {
@@ -9646,16 +8673,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 206,
+				"x": 198,
 				"y": 164,
-				"width": 107,
+				"width": 123,
 				"height": 123
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8510",
-			"zone": "Dimension E",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8510-dimension-e-memory-10.png",
 			"imageSize": {
@@ -9663,16 +8689,15 @@
 				"height": 512
 			},
 			"imageCropBounds": {
-				"x": 199,
+				"x": 193,
 				"y": 180,
-				"width": 107,
+				"width": 119,
 				"height": 119
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8601",
-			"zone": "Dimension Z",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8601-dimension-z-memory-1.png",
 			"imageSize": {
@@ -9681,15 +8706,14 @@
 			},
 			"imageCropBounds": {
 				"x": 188,
-				"y": 213,
+				"y": 208,
 				"width": 101,
-				"height": 90
+				"height": 101
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8602",
-			"zone": "Dimension Z",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8602-dimension-z-memory-2.png",
 			"imageSize": {
@@ -9706,7 +8730,6 @@
 		},
 		{
 			"id": "map_8603",
-			"zone": "Dimension Z",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8603-dimension-z-memory-3.png",
 			"imageSize": {
@@ -9723,7 +8746,6 @@
 		},
 		{
 			"id": "map_8604",
-			"zone": "Dimension Z",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8604-dimension-z-memory-4.png",
 			"imageSize": {
@@ -9740,7 +8762,6 @@
 		},
 		{
 			"id": "map_8605",
-			"zone": "Dimension Z",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8605-dimension-z-memory-5.png",
 			"imageSize": {
@@ -9749,9 +8770,9 @@
 			},
 			"imageCropBounds": {
 				"x": 195,
-				"y": 191,
+				"y": 182,
 				"width": 128,
-				"height": 109
+				"height": 128
 			},
 			"spots": [
 				{
@@ -9760,13 +8781,11 @@
 					"slots": [
 						{
 							"name": "DigiStarwood",
-							"value": 80,
-							"type": "wood"
+							"value": 80
 						},
 						{
 							"name": "DigiGodwood",
-							"value": 20,
-							"type": "wood"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9780,13 +8799,11 @@
 					"slots": [
 						{
 							"name": "Red Digizoit",
-							"value": 80,
-							"type": "metal"
+							"value": 80
 						},
 						{
 							"name": "Blue Digizoit",
-							"value": 20,
-							"type": "stone"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9798,7 +8815,6 @@
 		},
 		{
 			"id": "map_8606",
-			"zone": "Dimension Z",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8606-dimension-z-memory-6.png",
 			"imageSize": {
@@ -9815,7 +8831,6 @@
 		},
 		{
 			"id": "map_8607",
-			"zone": "Dimension Z",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8607-dimension-z-memory-7.png",
 			"imageSize": {
@@ -9824,9 +8839,9 @@
 			},
 			"imageCropBounds": {
 				"x": 189,
-				"y": 212,
+				"y": 202,
 				"width": 128,
-				"height": 109
+				"height": 128
 			},
 			"spots": [
 				{
@@ -9835,13 +8850,11 @@
 					"slots": [
 						{
 							"name": "DigiRuby",
-							"value": 80,
-							"type": "stone"
+							"value": 80
 						},
 						{
 							"name": "DigiDiamond",
-							"value": 20,
-							"type": "wood"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9855,13 +8868,11 @@
 					"slots": [
 						{
 							"name": "DigiLightningwater",
-							"value": 80,
-							"type": "water"
+							"value": 80
 						},
 						{
 							"name": "DigiHolywater",
-							"value": 20,
-							"type": "metal"
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9873,7 +8884,6 @@
 		},
 		{
 			"id": "map_8608",
-			"zone": "Dimension Z",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8608-dimension-z-memory-8.png",
 			"imageSize": {
@@ -9890,7 +8900,6 @@
 		},
 		{
 			"id": "map_8609",
-			"zone": "Dimension Z",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8609-dimension-z-memory-9.png",
 			"imageSize": {
@@ -9907,7 +8916,6 @@
 		},
 		{
 			"id": "map_8610",
-			"zone": "Dimension Z",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8610-dimension-z-memory-10.png",
 			"imageSize": {
@@ -9924,7 +8932,6 @@
 		},
 		{
 			"id": "map_8611",
-			"zone": "Dimension Z",
 			"label": "Memory 11",
 			"image": "/digimon-world-next-order/maps/map_8611-dimension-z-memory-11.png",
 			"imageSize": {
@@ -9933,15 +8940,14 @@
 			},
 			"imageCropBounds": {
 				"x": 221,
-				"y": 216,
+				"y": 190,
 				"width": 133,
-				"height": 80
+				"height": 133
 			},
 			"spots": []
 		},
 		{
 			"id": "map_8612",
-			"zone": "Dimension Z",
 			"label": "Memory 12",
 			"image": "/digimon-world-next-order/maps/map_8612-dimension-z-memory-12.png",
 			"imageSize": {
@@ -9950,9 +8956,9 @@
 			},
 			"imageCropBounds": {
 				"x": 180,
-				"y": 203,
+				"y": 197,
 				"width": 119,
-				"height": 107
+				"height": 119
 			},
 			"spots": []
 		}

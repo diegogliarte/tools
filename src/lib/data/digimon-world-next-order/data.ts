@@ -6,7 +6,6 @@ export type MaterialType = 'water' | 'stone' | 'metal' | 'wood';
 export type MaterialSlot = {
 	name: string;
 	value: number;
-	type: MaterialType;
 };
 
 export type MaterialSpot = {
@@ -21,7 +20,6 @@ export type MaterialSpot = {
 
 export type MaterialMap = {
 	id: string;
-	zone: string;
 	label: string;
 	image: string;
 	imageSize: {
@@ -40,10 +38,6 @@ export type MaterialMap = {
 export type MaterialArea = {
 	id: string;
 	label: string;
-	layout: {
-		width: number;
-		height: number;
-	};
 	maps: {
 		mapId: string;
 		x: number;
@@ -61,8 +55,6 @@ export type MaterialArea = {
 		id: string;
 		sourceMapId: string;
 		targetMapId: string;
-		sourceDirection: string;
-		targetDirection: string;
 		sourcePosition: {
 			x: number;
 			y: number;

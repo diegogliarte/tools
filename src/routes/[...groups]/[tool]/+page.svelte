@@ -46,7 +46,11 @@
 <h1 class="text-center text-large">{tool.title}</h1>
 <h2 class="text-center">{tool.description}</h2>
 
-<div class="mt-12 flex flex-col gap-8 {!tool.fullscreen ? 'mx-auto w-full max-w-3xl' : 'w-fit min-w-full'}">
+<div
+	class="mt-12 flex flex-col gap-8
+		{!tool.fullscreen ? 'mx-auto w-full max-w-3xl' : 'w-fit min-w-full'}
+		{tool.centered ? 'items-center' : ''}"
+>
 	{#await componentPromise}
 		<p class="text-center opacity-60">Loading tool…</p>
 	{:then module}
