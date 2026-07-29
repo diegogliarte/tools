@@ -39,7 +39,14 @@
 		requirements?: string[];
 	};
 
-	type Status = 'Recruited' | 'Available' | 'Step' | 'Blocked';
+	const STATUS = {
+		recruited: 'Recruited',
+		available: 'Available',
+		step: 'Step',
+		blocked: 'Blocked'
+	} as const;
+
+	type Status = (typeof STATUS)[keyof typeof STATUS];
 
 	type Row = RecruitmentEntry & {
 		status: Status;
@@ -51,8 +58,10 @@
 		digimon?: Digimon;
 	};
 
+	const statusOptions: Status[] = [STATUS.available, STATUS.step, STATUS.blocked, STATUS.recruited];
 	const entries = recruitmentData as RecruitmentEntry[];
 	let timeStrangerDigimon = $state<Digimon[]>([]);
+	let statusFilter = $state<Record<string, boolean>>({});
 
 	const facilityLabels: Record<Facility, string> = {
 		dojo: 'Dojo',
@@ -176,17 +185,17 @@
 		return (entry.requirements ?? []).filter(isManualRequirement);
 	}
 
-	function status(entry: RecruitmentEntry): Status {
-		if (isRecruited(entry.id)) return 'Recruited';
-		if (hardBlockers(entry).length) return 'Blocked';
-		if (manualRequirements(entry).length) return 'Step';
-		return 'Available';
+	function recruitmentStatus(entry: RecruitmentEntry): Status {
+		if (isRecruited(entry.id)) return STATUS.recruited;
+		if (hardBlockers(entry).length) return STATUS.blocked;
+		if (manualRequirements(entry).length) return STATUS.step;
+		return STATUS.available;
 	}
 
 	function statusClass(value: Status) {
-		if (value === 'Recruited') return 'text-green-300';
-		if (value === 'Available') return 'text-accent';
-		if (value === 'Step') return 'text-yellow-200';
+		if (value === STATUS.recruited) return 'text-green-300';
+		if (value === STATUS.available) return 'text-accent';
+		if (value === STATUS.step) return 'text-yellow-200';
 		return 'text-white/50';
 	}
 
@@ -206,7 +215,7 @@
 
 			return {
 				...entry,
-				status: status(entry),
+				status: recruitmentStatus(entry),
 				how: methodText(entry),
 				requirementLabels,
 				requirementsText: requirementLabels.join(', '),
@@ -220,7 +229,14 @@
 	const recruitedCount = $derived(entries.filter((entry) => isRecruited(entry.id)).length);
 	const mainEntries = $derived(entries.filter((entry) => !(entry.requirements ?? []).includes('flag:postgame')));
 	const mainRecruitedCount = $derived(mainEntries.filter((entry) => isRecruited(entry.id)).length);
-	const availableCount = $derived(rows.filter((row) => row.status === 'Available').length);
+	const availableCount = $derived(rows.filter((row) => row.status === STATUS.available).length);
+	const filteredRows = $derived.by(() => {
+		const selectedStatuses = Object.keys(statusFilter).filter((key) => statusFilter[key]);
+
+		if (!selectedStatuses.length) return rows;
+
+		return rows.filter((row) => selectedStatuses.includes(row.status));
+	});
 
 	const columns: Column<Row>[] = [
 		{
@@ -241,7 +257,7 @@
 			key: 'status',
 			label: 'Status',
 			width: '8%',
-			sortValue: (row) => ['Available', 'Step', 'Blocked', 'Recruited'].indexOf(row.status),
+			sortValue: (row) => statusOptions.indexOf(row.status),
 			class: (row) => statusClass(row.status),
 			value: (row) => row.status
 		},
@@ -261,7 +277,7 @@
 			class: 'whitespace-pre-line',
 			value: (row) => {
 				const labels = row.blockerLabels.length ? row.blockerLabels : row.requirementLabels;
-				const requirementPrefix = row.blockerLabels.length ? 'Blocked by' : row.status === 'Step' ? 'Do' : 'Needs';
+				const requirementPrefix = row.blockerLabels.length ? 'Blocked by' : row.status === STATUS.step ? 'Do' : 'Needs';
 
 				return [row.how, labels.length ? `${requirementPrefix} ${labels.join(', ')}` : ''].filter(Boolean).join('\n');
 			}
@@ -277,7 +293,7 @@
 	];
 
 	function toggleRow(row: Row) {
-		if (row.status === 'Blocked') return;
+		if (row.status === STATUS.blocked) return;
 
 		setRecruited(row.id, !isRecruited(row.id));
 	}
@@ -307,11 +323,13 @@
 			persist={false}
 			showActions={false}
 		/>
+
+		<CheckboxChipGroup class="lg:col-span-2" label="Status" options={statusOptions} bind:checked={statusFilter} />
 	</div>
 
 	<DataTable
 		{columns}
-		{rows}
+		rows={filteredRows}
 		pageSize={50}
 		onRowClick={toggleRow}
 		rowKey={(row) => row.id}
