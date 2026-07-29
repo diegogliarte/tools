@@ -125,22 +125,22 @@
 	});
 
 	const digimonByName = $derived(new Map(timeStrangerDigimon.map((digimon) => [digimon.name.toLowerCase(), digimon])));
-	const flags = Array.from(
-		new Set(entries.flatMap((entry) => entry.requirements ?? []).filter((req) => req.startsWith('flag:')))
-	)
-		.map((req) => req.slice('flag:'.length))
-		.sort((a, b) => flagOrder.indexOf(a) - flagOrder.indexOf(b))
-		.map((flag) => {
-			const requirements = scenarioProgressRequirements[flag] ?? [];
-			const disabled = !progress.flags[flag] && !requirements.every(requirementMet);
+	const flags = $derived.by(() =>
+		Array.from(new Set(entries.flatMap((entry) => entry.requirements ?? []).filter((req) => req.startsWith('flag:'))))
+			.map((req) => req.slice('flag:'.length))
+			.sort((a, b) => flagOrder.indexOf(a) - flagOrder.indexOf(b))
+			.map((flag) => {
+				const requirements = scenarioProgressRequirements[flag] ?? [];
+				const disabled = !progress.flags[flag] && !requirements.every(requirementMet);
 
-			return {
-				value: flag,
-				label: flagLabels[flag] ?? flag,
-				disabled,
-				tooltip: disabled ? `Requires:\n${requirements.map(requirementLabel).join('\n')}` : undefined
-			};
-		});
+				return {
+					value: flag,
+					label: flagLabels[flag] ?? flag,
+					disabled,
+					tooltip: disabled ? `Requires:\n${requirements.map(requirementLabel).join('\n')}` : undefined
+				};
+			})
+	);
 
 	function isRecruited(id: string) {
 		return !!progress.recruited[id];
