@@ -336,8 +336,7 @@
 							class="text-accent hover:underline"
 						>
 							Shnickerman
-						</a>
-						)
+						</a>)
 					</span>
 				</div>
 			</div>
