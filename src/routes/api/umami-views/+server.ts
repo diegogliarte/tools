@@ -19,7 +19,7 @@ export const GET: RequestHandler = async ({ fetch }) => {
 	const token = privateEnv.UMAMI_TOKEN;
 
 	if (!baseUrl || !websiteId || !token) {
-		return json({ error: 'Umami environment variables are missing.' }, { status: 500 });
+		return new Response(null, { status: 204 });
 	}
 
 	const startAt = 0;

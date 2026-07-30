@@ -3,7 +3,6 @@
 	import type { LayoutProps } from './$types';
 
 	import './layout.css';
-	import '$lib/css/fonts.css';
 
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';

@@ -4,18 +4,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
-		<link rel="preload" href="/fonts/clockicons.ttf" as="font" type="font/ttf" crossorigin />
 		<script>
 			if (/(?:^|; )layout\.sidebar=true(?:;|$)/.test(document.cookie)) {
 				document.documentElement.dataset.sidebarOpen = 'true';
 			}
 		</script>
-
-		<script
-			defer
-			src="%sveltekit.env.PUBLIC_UMAMI_BASE_URL%/script.js"
-			data-website-id="%sveltekit.env.PUBLIC_UMAMI_WEBSITE_ID%"
-		></script>
 	</head>
 
 	<body>
