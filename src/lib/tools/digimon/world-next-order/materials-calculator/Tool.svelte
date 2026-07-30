@@ -143,13 +143,15 @@
 
 		<div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 			{#each data.buildings as building (building.id)}
-				<NumberInput
-					label={building.name}
-					bind:value={calculator.levels[building.id]}
-					min={1}
-					max={building.maxLevel}
-					step={1}
-				/>
+				<div class={(calculator.levels[building.id] ?? 1) >= building.maxLevel ? '[&_label]:text-accent' : ''}>
+					<NumberInput
+						label={building.name}
+						bind:value={calculator.levels[building.id]}
+						min={1}
+						max={building.maxLevel}
+						step={1}
+					/>
+				</div>
 			{/each}
 		</div>
 	</section>
