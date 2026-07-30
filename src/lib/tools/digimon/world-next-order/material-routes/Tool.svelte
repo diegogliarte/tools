@@ -119,13 +119,16 @@
 	const boardPaddingTopRem = $derived.by(() => {
 		if (!selectedArea) return 1.5;
 
-		const positionedMaps = new Map(selectedArea.maps.map((item) => [item.mapId, item]));
+		const positionedMaps = new Map(selectedAreaMaps.map((item) => [item.mapId, item]));
 		const hasTopExit = selectedArea.areaExits.some((exit) => {
 			const source = positionedMaps.get(exit.sourceMapId);
 			if (!source || source.y !== 0) return false;
 
-			const offsetX = exit.position.x - 0.5;
-			const offsetY = exit.position.y - 0.5;
+			const crop = source.map.imageCropBounds;
+			const x = (exit.position.x * source.map.imageSize.width - crop.x) / crop.width;
+			const y = (exit.position.y * source.map.imageSize.height - crop.y) / crop.height;
+			const offsetX = Math.min(1, Math.max(0, x)) - 0.5;
+			const offsetY = Math.min(1, Math.max(0, y)) - 0.5;
 			return offsetY < 0 && Math.abs(offsetY) >= Math.abs(offsetX);
 		});
 
