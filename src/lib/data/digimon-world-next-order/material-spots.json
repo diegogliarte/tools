@@ -3,10 +3,6 @@
 		{
 			"id": "nigh-plains",
 			"label": "Nigh Plains",
-			"layout": {
-				"width": 3,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0201",
@@ -166,10 +162,6 @@
 		{
 			"id": "server-desert",
 			"label": "Server Desert",
-			"layout": {
-				"width": 3,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_0301",
@@ -369,10 +361,6 @@
 		{
 			"id": "mod-cape",
 			"label": "MOD Cape",
-			"layout": {
-				"width": 4,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0601",
@@ -544,10 +532,6 @@
 		{
 			"id": "logic-volcano",
 			"label": "Logic Volcano",
-			"layout": {
-				"width": 4,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0501",
@@ -711,10 +695,6 @@
 		{
 			"id": "ohguino-wastelands",
 			"label": "Ohguino Wastelands",
-			"layout": {
-				"width": 5,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_0401",
@@ -924,10 +904,6 @@
 		{
 			"id": "faulty-ex-machina",
 			"label": "Faulty Ex Machina",
-			"layout": {
-				"width": 4,
-				"height": 4
-			},
 			"maps": [
 				{
 					"mapId": "map_0801",
@@ -1167,10 +1143,6 @@
 		{
 			"id": "bony-resort",
 			"label": "Bony Resort",
-			"layout": {
-				"width": 4,
-				"height": 4
-			},
 			"maps": [
 				{
 					"mapId": "map_0701",
@@ -1354,10 +1326,6 @@
 		{
 			"id": "absolute-zero",
 			"label": "Absolute Zero",
-			"layout": {
-				"width": 5,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_0901",
@@ -1541,10 +1509,6 @@
 		{
 			"id": "infinite-cauldron",
 			"label": "Infinite Cauldron",
-			"layout": {
-				"width": 4,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_1001",
@@ -1728,10 +1692,6 @@
 		{
 			"id": "dimension-m",
 			"label": "Dimension M",
-			"layout": {
-				"width": 6,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_8101",
@@ -1926,10 +1886,6 @@
 		{
 			"id": "dimension-g",
 			"label": "Dimension G",
-			"layout": {
-				"width": 6,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_8201",
@@ -2124,10 +2080,6 @@
 		{
 			"id": "dimension-t",
 			"label": "Dimension T",
-			"layout": {
-				"width": 4,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_8301",
@@ -2322,10 +2274,6 @@
 		{
 			"id": "dimension-p",
 			"label": "Dimension P",
-			"layout": {
-				"width": 3,
-				"height": 5
-			},
 			"maps": [
 				{
 					"mapId": "map_8401",
@@ -2520,10 +2468,6 @@
 		{
 			"id": "dimension-e",
 			"label": "Dimension E",
-			"layout": {
-				"width": 6,
-				"height": 4
-			},
 			"maps": [
 				{
 					"mapId": "map_8501",
@@ -2718,10 +2662,6 @@
 		{
 			"id": "dimension-z",
 			"label": "Dimension Z",
-			"layout": {
-				"width": 6,
-				"height": 3
-			},
 			"maps": [
 				{
 					"mapId": "map_8601",
@@ -3017,7 +2957,6 @@
 	"maps": [
 		{
 			"id": "map_0201",
-			"zone": "Nigh Plains",
 			"label": "Vast Plateau",
 			"image": "/digimon-world-next-order/maps/map_0201-nigh-plains-vast-plateau.png",
 			"imageSize": {
@@ -3033,17 +2972,14 @@
 			"spots": [
 				{
 					"id": "map_0201-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 99,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 99
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 1,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3053,12 +2989,10 @@
 				},
 				{
 					"id": "map_0201-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiSap",
-							"value": 100,
-							"type": "water"
+							"materialId": "digi-sap",
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3068,12 +3002,10 @@
 				},
 				{
 					"id": "map_0201-spot-3",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 100,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3083,22 +3015,18 @@
 				},
 				{
 					"id": "map_0201-spot-4",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 85,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 85
 						},
 						{
-							"name": "DigiIron",
-							"value": 10,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 10
 						},
 						{
-							"name": "DigiSilver",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3108,17 +3036,14 @@
 				},
 				{
 					"id": "map_0201-spot-5",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 80,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 80
 						},
 						{
-							"name": "DigiStone",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -3128,17 +3053,14 @@
 				},
 				{
 					"id": "map_0201-spot-6",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 90
 						},
 						{
-							"name": "DigiBlackwood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3150,7 +3072,6 @@
 		},
 		{
 			"id": "map_0202",
-			"zone": "Nigh Plains",
 			"label": "Forest Path",
 			"image": "/digimon-world-next-order/maps/map_0202-nigh-plains-forest-path.png",
 			"imageSize": {
@@ -3166,12 +3087,10 @@
 			"spots": [
 				{
 					"id": "map_0202-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiSap",
-							"value": 100,
-							"type": "water"
+							"materialId": "digi-sap",
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3181,22 +3100,18 @@
 				},
 				{
 					"id": "map_0202-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 85,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 85
 						},
 						{
-							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 10
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3206,17 +3121,14 @@
 				},
 				{
 					"id": "map_0202-spot-3",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 90
 						},
 						{
-							"name": "DigiBlackwood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3228,7 +3140,6 @@
 		},
 		{
 			"id": "map_0203",
-			"zone": "Nigh Plains",
 			"label": "Cave Entrance",
 			"image": "/digimon-world-next-order/maps/map_0203-nigh-plains-cave-entrance.png",
 			"imageSize": {
@@ -3244,22 +3155,18 @@
 			"spots": [
 				{
 					"id": "map_0203-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 80,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 80
 						},
 						{
-							"name": "DigiIron",
-							"value": 19,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 19
 						},
 						{
-							"name": "DigiSilver",
-							"value": 1,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3269,17 +3176,14 @@
 				},
 				{
 					"id": "map_0203-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 80,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 80
 						},
 						{
-							"name": "DigiBlackwood",
-							"value": 20,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -3291,7 +3195,6 @@
 		},
 		{
 			"id": "map_0204",
-			"zone": "Nigh Plains",
 			"label": "Old Cableway",
 			"image": "/digimon-world-next-order/maps/map_0204-nigh-plains-old-cableway.png",
 			"imageSize": {
@@ -3307,17 +3210,14 @@
 			"spots": [
 				{
 					"id": "map_0204-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 90,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 90
 						},
 						{
-							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3329,7 +3229,6 @@
 		},
 		{
 			"id": "map_0205",
-			"zone": "Nigh Plains",
 			"label": "Power Plant #1",
 			"image": "/digimon-world-next-order/maps/map_0205-nigh-plains-power-plant-1.png",
 			"imageSize": {
@@ -3345,12 +3244,10 @@
 			"spots": [
 				{
 					"id": "map_0205-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 100,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3360,27 +3257,22 @@
 				},
 				{
 					"id": "map_0205-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 65,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 65
 						},
 						{
-							"name": "DigiStone",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 20
 						},
 						{
-							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 10
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3399,7 +3291,6 @@
 		},
 		{
 			"id": "map_0206",
-			"zone": "Nigh Plains",
 			"label": "Power Plant #2",
 			"image": "/digimon-world-next-order/maps/map_0206-nigh-plains-power-plant-2.png",
 			"imageSize": {
@@ -3415,12 +3306,10 @@
 			"spots": [
 				{
 					"id": "map_0206-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 100,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3430,22 +3319,18 @@
 				},
 				{
 					"id": "map_0206-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiOil",
-							"value": 70,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 70
 						},
 						{
-							"name": "DigiLatex",
-							"value": 28,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 28
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 2,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -3455,22 +3340,18 @@
 				},
 				{
 					"id": "map_0206-spot-3",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 70,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 70
 						},
 						{
-							"name": "DigiIron",
-							"value": 28,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 28
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 2,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -3480,22 +3361,18 @@
 				},
 				{
 					"id": "map_0206-spot-4",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 50
 						},
 						{
-							"name": "DigiStone",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 45
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3505,17 +3382,14 @@
 				},
 				{
 					"id": "map_0206-spot-5",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 97,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 97
 						},
 						{
-							"name": "DigiGreatwood",
-							"value": 3,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3525,17 +3399,14 @@
 				},
 				{
 					"id": "map_0206-spot-6",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 97,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 97
 						},
 						{
-							"name": "DigiBamboo",
-							"value": 3,
-							"type": "wood"
+							"materialId": "digi-bamboo",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3547,7 +3418,6 @@
 		},
 		{
 			"id": "map_0207",
-			"zone": "Nigh Plains",
 			"label": "Ruins Lake",
 			"image": "/digimon-world-next-order/maps/map_0207-nigh-plains-ruins-lake.png",
 			"imageSize": {
@@ -3563,17 +3433,14 @@
 			"spots": [
 				{
 					"id": "map_0207-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 95,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 95
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 5,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3583,17 +3450,14 @@
 				},
 				{
 					"id": "map_0207-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 95,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 95
 						},
 						{
-							"name": "DigiSilver",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3603,22 +3467,18 @@
 				},
 				{
 					"id": "map_0207-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 40
 						},
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -3628,17 +3488,14 @@
 				},
 				{
 					"id": "map_0207-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 95,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 95
 						},
 						{
-							"name": "DigiGreatwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3650,7 +3507,6 @@
 		},
 		{
 			"id": "map_0301",
-			"zone": "Server Desert",
 			"label": "Noise Storm",
 			"image": "/digimon-world-next-order/maps/map_0301-server-desert-noise-storm.png",
 			"imageSize": {
@@ -3666,12 +3522,10 @@
 			"spots": [
 				{
 					"id": "map_0301-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiOil",
-							"value": 100,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 100
 						}
 					],
 					"projected": {
@@ -3690,7 +3544,6 @@
 		},
 		{
 			"id": "map_0302",
-			"zone": "Server Desert",
 			"label": "Server Cemetery",
 			"image": "/digimon-world-next-order/maps/map_0302-server-desert-server-cemetery.png",
 			"imageSize": {
@@ -3706,22 +3559,18 @@
 			"spots": [
 				{
 					"id": "map_0302-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 85
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 10
 						},
 						{
-							"name": "DigiLatex",
-							"value": 5,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3731,17 +3580,14 @@
 				},
 				{
 					"id": "map_0302-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 99,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 99
 						},
 						{
-							"name": "DigiGold",
-							"value": 1,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3751,17 +3597,14 @@
 				},
 				{
 					"id": "map_0302-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 99,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 99
 						},
 						{
-							"name": "DigiLight",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3771,22 +3614,18 @@
 				},
 				{
 					"id": "map_0302-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiPalm",
-							"value": 89,
-							"type": "wood"
+							"materialId": "digi-palm",
+							"value": 89
 						},
 						{
-							"name": "DigiWhitewood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 10
 						},
 						{
-							"name": "DigiFirewood",
-							"value": 1,
-							"type": "wood"
+							"materialId": "digi-firewood",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3798,7 +3637,6 @@
 		},
 		{
 			"id": "map_0303",
-			"zone": "Server Desert",
 			"label": "To Hallowed Hall",
 			"image": "/digimon-world-next-order/maps/map_0303-server-desert-to-hallowed-hall.png",
 			"imageSize": {
@@ -3814,17 +3652,14 @@
 			"spots": [
 				{
 					"id": "map_0303-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 97,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 97
 						},
 						{
-							"name": "DigiGold",
-							"value": 3,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3834,17 +3669,14 @@
 				},
 				{
 					"id": "map_0303-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiGold",
-							"value": 95,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 95
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -3854,17 +3686,14 @@
 				},
 				{
 					"id": "map_0303-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 97,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 97
 						},
 						{
-							"name": "DigiLight",
-							"value": 3,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -3874,22 +3703,18 @@
 				},
 				{
 					"id": "map_0303-spot-4",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiLight",
-							"value": 70,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 70
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 29,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 29
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3901,7 +3726,6 @@
 		},
 		{
 			"id": "map_0304",
-			"zone": "Server Desert",
 			"label": "Stepstep",
 			"image": "/digimon-world-next-order/maps/map_0304-server-desert-stepstep.png",
 			"imageSize": {
@@ -3917,17 +3741,14 @@
 			"spots": [
 				{
 					"id": "map_0304-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 98,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 98
 						},
 						{
-							"name": "Mithril",
-							"value": 2,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -3937,22 +3758,18 @@
 				},
 				{
 					"id": "map_0304-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 50
 						},
 						{
-							"name": "DigiStone",
-							"value": 49,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 49
 						},
 						{
-							"name": "DigiLight",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -3964,7 +3781,6 @@
 		},
 		{
 			"id": "map_0305",
-			"zone": "Server Desert",
 			"label": "Dead End Town",
 			"image": "/digimon-world-next-order/maps/map_0305-server-desert-dead-end-town.png",
 			"imageSize": {
@@ -3980,22 +3796,18 @@
 			"spots": [
 				{
 					"id": "map_0305-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 50
 						},
 						{
-							"name": "DigiOil",
-							"value": 45,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 45
 						},
 						{
-							"name": "DigiLatex",
-							"value": 5,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4005,22 +3817,18 @@
 				},
 				{
 					"id": "map_0305-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 50
 						},
 						{
-							"name": "DigiGold",
-							"value": 40,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 40
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 10,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4030,22 +3838,18 @@
 				},
 				{
 					"id": "map_0305-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 50
 						},
 						{
-							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 40
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4055,22 +3859,18 @@
 				},
 				{
 					"id": "map_0305-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiPalm",
-							"value": 95,
-							"type": "wood"
+							"materialId": "digi-palm",
+							"value": 95
 						},
 						{
-							"name": "DigiFirewood",
-							"value": 3,
-							"type": "wood"
+							"materialId": "digi-firewood",
+							"value": 3
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4082,7 +3882,6 @@
 		},
 		{
 			"id": "map_0306",
-			"zone": "Server Desert",
 			"label": "Tower Road",
 			"image": "/digimon-world-next-order/maps/map_0306-server-desert-tower-road.png",
 			"imageSize": {
@@ -4098,22 +3897,18 @@
 			"spots": [
 				{
 					"id": "map_0306-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 93,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 93
 						},
 						{
-							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 5
 						},
 						{
-							"name": "Mithril",
-							"value": 2,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4123,22 +3918,18 @@
 				},
 				{
 					"id": "map_0306-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 50
 						},
 						{
-							"name": "DigiStone",
-							"value": 48,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 48
 						},
 						{
-							"name": "DigiLight",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4157,7 +3948,6 @@
 		},
 		{
 			"id": "map_0307",
-			"zone": "Server Desert",
 			"label": "Bus Terminal",
 			"image": "/digimon-world-next-order/maps/map_0307-server-desert-bus-terminal.png",
 			"imageSize": {
@@ -4173,27 +3963,22 @@
 			"spots": [
 				{
 					"id": "map_0307-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 70,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 70
 						},
 						{
-							"name": "DigiStone",
-							"value": 25,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 25
 						},
 						{
-							"name": "DigiLight",
-							"value": 4,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 4
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4205,7 +3990,6 @@
 		},
 		{
 			"id": "map_0308",
-			"zone": "Server Desert",
 			"label": "Server Tower",
 			"image": "/digimon-world-next-order/maps/map_0308-server-desert-server-tower.png",
 			"imageSize": {
@@ -4221,22 +4005,18 @@
 			"spots": [
 				{
 					"id": "map_0308-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiOil",
-							"value": 60,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 60
 						},
 						{
-							"name": "DigiAcid",
-							"value": 39,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 39
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 1,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4246,22 +4026,18 @@
 				},
 				{
 					"id": "map_0308-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 90,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 90
 						},
 						{
-							"name": "DigiGold",
-							"value": 8,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 8
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 2,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4271,17 +4047,14 @@
 				},
 				{
 					"id": "map_0308-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 97,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 97
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 3,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -4293,7 +4066,6 @@
 		},
 		{
 			"id": "map_0309",
-			"zone": "Server Desert",
 			"label": "Server Tower Interior",
 			"image": "/digimon-world-next-order/maps/map_0309-server-desert-server-tower-interior.png",
 			"imageSize": {
@@ -4310,7 +4082,6 @@
 		},
 		{
 			"id": "map_0401",
-			"zone": "Ohguino Wastelands",
 			"label": "Guts Wastes",
 			"image": "/digimon-world-next-order/maps/map_0401-ohguino-wastelands-guts-wastes.png",
 			"imageSize": {
@@ -4326,17 +4097,14 @@
 			"spots": [
 				{
 					"id": "map_0401-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 95,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 95
 						},
 						{
-							"name": "DigiRainbowdrop",
-							"value": 5,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4346,22 +4114,18 @@
 				},
 				{
 					"id": "map_0401-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 48,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 48
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4371,17 +4135,14 @@
 				},
 				{
 					"id": "map_0401-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiRock",
-							"value": 90,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 90
 						},
 						{
-							"name": "DigiLight",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4391,27 +4152,22 @@
 				},
 				{
 					"id": "map_0401-spot-4",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 40
 						},
 						{
-							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 30
 						},
 						{
-							"name": "DigiLight",
-							"value": 29,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 29
 						},
 						{
-							"name": "DigiRuby",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4421,22 +4177,18 @@
 				},
 				{
 					"id": "map_0401-spot-5",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 90
 						},
 						{
-							"name": "DigiPalm",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-palm",
+							"value": 5
 						},
 						{
-							"name": "DigiGreatwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4446,22 +4198,18 @@
 				},
 				{
 					"id": "map_0401-spot-6",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 90
 						},
 						{
-							"name": "DigiGreatwood",
-							"value": 8,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 8
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4480,7 +4228,6 @@
 		},
 		{
 			"id": "map_0402",
-			"zone": "Ohguino Wastelands",
 			"label": "Secret Graveyard",
 			"image": "/digimon-world-next-order/maps/map_0402-ohguino-wastelands-secret-graveyard.png",
 			"imageSize": {
@@ -4496,27 +4243,22 @@
 			"spots": [
 				{
 					"id": "map_0402-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 85,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 85
 						},
 						{
-							"name": "DigiLight",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 10
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 4,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 4
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4528,7 +4270,6 @@
 		},
 		{
 			"id": "map_0403",
-			"zone": "Ohguino Wastelands",
 			"label": "Dori Tunnel Hub 1",
 			"image": "/digimon-world-next-order/maps/map_0403-ohguino-wastelands-dori-tunnel-hub-1.png",
 			"imageSize": {
@@ -4544,22 +4285,18 @@
 			"spots": [
 				{
 					"id": "map_0403-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 80,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 80
 						},
 						{
-							"name": "DigiSilver",
-							"value": 18,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 18
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 2,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4569,22 +4306,18 @@
 				},
 				{
 					"id": "map_0403-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 30,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 30
 						},
 						{
-							"name": "DigiIron",
-							"value": 65,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 65
 						},
 						{
-							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4596,7 +4329,6 @@
 		},
 		{
 			"id": "map_0404",
-			"zone": "Ohguino Wastelands",
 			"label": "Dori Tunnel Hub 2",
 			"image": "/digimon-world-next-order/maps/map_0404-ohguino-wastelands-dori-tunnel-hub-2.png",
 			"imageSize": {
@@ -4612,22 +4344,18 @@
 			"spots": [
 				{
 					"id": "map_0404-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiLatex",
-							"value": 70,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 70
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 29,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 29
 						},
 						{
-							"name": "DigiRainbowdrop",
-							"value": 1,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -4637,22 +4365,18 @@
 				},
 				{
 					"id": "map_0404-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 50
 						},
 						{
-							"name": "DigiIron",
-							"value": 45,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 45
 						},
 						{
-							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4662,22 +4386,18 @@
 				},
 				{
 					"id": "map_0404-spot-3",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 70
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 20
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 10,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4689,7 +4409,6 @@
 		},
 		{
 			"id": "map_0405",
-			"zone": "Ohguino Wastelands",
 			"label": "Palace of Thorns",
 			"image": "/digimon-world-next-order/maps/map_0405-ohguino-wastelands-palace-of-thorns.png",
 			"imageSize": {
@@ -4705,22 +4424,18 @@
 			"spots": [
 				{
 					"id": "map_0405-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 60,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 60
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 30,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 30
 						},
 						{
-							"name": "DigiLatex",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4730,22 +4445,18 @@
 				},
 				{
 					"id": "map_0405-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 85,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 85
 						},
 						{
-							"name": "DigiGold",
-							"value": 10,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 10
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4755,22 +4466,18 @@
 				},
 				{
 					"id": "map_0405-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 40
 						},
 						{
-							"name": "DigiRock",
-							"value": 58,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 58
 						},
 						{
-							"name": "DigiLight",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4780,17 +4487,14 @@
 				},
 				{
 					"id": "map_0405-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 90,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 90
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -4802,7 +4506,6 @@
 		},
 		{
 			"id": "map_0406",
-			"zone": "Ohguino Wastelands",
 			"label": "Generator Prison Room",
 			"image": "/digimon-world-next-order/maps/map_0406-ohguino-wastelands-generator-prison-room.png",
 			"imageSize": {
@@ -4818,22 +4521,18 @@
 			"spots": [
 				{
 					"id": "map_0406-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 70,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 70
 						},
 						{
-							"name": "DigiOil",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 15
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -4845,7 +4544,6 @@
 		},
 		{
 			"id": "map_0407",
-			"zone": "Ohguino Wastelands",
 			"label": "Rose Palace",
 			"image": "/digimon-world-next-order/maps/map_0407-ohguino-wastelands-rose-palace.png",
 			"imageSize": {
@@ -4861,27 +4559,22 @@
 			"spots": [
 				{
 					"id": "map_0407-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 40
 						},
 						{
-							"name": "DigiNight",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 50
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 8,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 8
 						},
 						{
-							"name": "DigiRuby",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4891,27 +4584,22 @@
 				},
 				{
 					"id": "map_0407-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 40
 						},
 						{
-							"name": "DigiNight",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 50
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 8,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 8
 						},
 						{
-							"name": "DigiRuby",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -4930,7 +4618,6 @@
 		},
 		{
 			"id": "map_0408",
-			"zone": "Ohguino Wastelands",
 			"label": "Rosemon's Room",
 			"image": "/digimon-world-next-order/maps/map_0408-ohguino-wastelands-rosemon-s-room.png",
 			"imageSize": {
@@ -4947,7 +4634,6 @@
 		},
 		{
 			"id": "map_0501",
-			"zone": "Logic Volcano",
 			"label": "Fire Wall",
 			"image": "/digimon-world-next-order/maps/map_0501-logic-volcano-fire-wall.png",
 			"imageSize": {
@@ -4963,22 +4649,18 @@
 			"spots": [
 				{
 					"id": "map_0501-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 45
 						},
 						{
-							"name": "DigiLight",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -4988,22 +4670,18 @@
 				},
 				{
 					"id": "map_0501-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 58,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 58
 						},
 						{
-							"name": "DigiRock",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 40
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5013,22 +4691,18 @@
 				},
 				{
 					"id": "map_0501-spot-3",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 50,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 50
 						},
 						{
-							"name": "DigiBamboo",
-							"value": 30,
-							"type": "wood"
+							"materialId": "digi-bamboo",
+							"value": 30
 						},
 						{
-							"name": "DigiFirewood",
-							"value": 20,
-							"type": "wood"
+							"materialId": "digi-firewood",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -5047,7 +4721,6 @@
 		},
 		{
 			"id": "map_0502",
-			"zone": "Logic Volcano",
 			"label": "Gateway",
 			"image": "/digimon-world-next-order/maps/map_0502-logic-volcano-gateway.png",
 			"imageSize": {
@@ -5063,22 +4736,18 @@
 			"spots": [
 				{
 					"id": "map_0502-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 49,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 49
 						},
 						{
-							"name": "DigiRuby",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5088,22 +4757,18 @@
 				},
 				{
 					"id": "map_0502-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 45
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5115,7 +4780,6 @@
 		},
 		{
 			"id": "map_0503",
-			"zone": "Logic Volcano",
 			"label": "Flame Lands",
 			"image": "/digimon-world-next-order/maps/map_0503-logic-volcano-flame-lands.png",
 			"imageSize": {
@@ -5131,27 +4795,22 @@
 			"spots": [
 				{
 					"id": "map_0503-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 63,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 63
 						},
 						{
-							"name": "DigiGold",
-							"value": 35,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 35
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 1,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 1
 						},
 						{
-							"name": "Red Digizoit",
-							"value": 1,
-							"type": "metal"
+							"materialId": "red-digizoit",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5163,7 +4822,6 @@
 		},
 		{
 			"id": "map_0504",
-			"zone": "Logic Volcano",
 			"label": "Fire Circuit",
 			"image": "/digimon-world-next-order/maps/map_0504-logic-volcano-fire-circuit.png",
 			"imageSize": {
@@ -5179,22 +4837,18 @@
 			"spots": [
 				{
 					"id": "map_0504-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 50
 						},
 						{
-							"name": "DigiOil",
-							"value": 40,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 40
 						},
 						{
-							"name": "DigiRainbowdrop",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5204,27 +4858,22 @@
 				},
 				{
 					"id": "map_0504-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 39,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 39
 						},
 						{
-							"name": "DigiIron",
-							"value": 30,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 30
 						},
 						{
-							"name": "DigiGold",
-							"value": 30,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 30
 						},
 						{
-							"name": "Red Digizoit",
-							"value": 1,
-							"type": "metal"
+							"materialId": "red-digizoit",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5236,7 +4885,6 @@
 		},
 		{
 			"id": "map_0505",
-			"zone": "Logic Volcano",
 			"label": "Dragon's Trident",
 			"image": "/digimon-world-next-order/maps/map_0505-logic-volcano-dragon-s-trident.png",
 			"imageSize": {
@@ -5252,22 +4900,18 @@
 			"spots": [
 				{
 					"id": "map_0505-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 90,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 90
 						},
 						{
-							"name": "DigiMercury",
-							"value": 7,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 7
 						},
 						{
-							"name": "DigiHolywater",
-							"value": 3,
-							"type": "metal"
+							"materialId": "digi-holywater",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -5277,22 +4921,18 @@
 				},
 				{
 					"id": "map_0505-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 40,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 40
 						},
 						{
-							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 50
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 10,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5302,22 +4942,18 @@
 				},
 				{
 					"id": "map_0505-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 90,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 90
 						},
 						{
-							"name": "DigiLight",
-							"value": 7,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 7
 						},
 						{
-							"name": "DigiRuby",
-							"value": 3,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -5329,7 +4965,6 @@
 		},
 		{
 			"id": "map_0506",
-			"zone": "Logic Volcano",
 			"label": "Garbage Pile",
 			"image": "/digimon-world-next-order/maps/map_0506-logic-volcano-garbage-pile.png",
 			"imageSize": {
@@ -5345,22 +4980,18 @@
 			"spots": [
 				{
 					"id": "map_0506-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 45
 						},
 						{
-							"name": "DigiLight",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5372,7 +5003,6 @@
 		},
 		{
 			"id": "map_0507",
-			"zone": "Logic Volcano",
 			"label": "Crimson Shrine",
 			"image": "/digimon-world-next-order/maps/map_0507-logic-volcano-crimson-shrine.png",
 			"imageSize": {
@@ -5388,27 +5018,22 @@
 			"spots": [
 				{
 					"id": "map_0507-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 50
 						},
 						{
-							"name": "DigiSilver",
-							"value": 35,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 35
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 13,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 13
 						},
 						{
-							"name": "Red Digizoit",
-							"value": 2,
-							"type": "metal"
+							"materialId": "red-digizoit",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5418,22 +5043,18 @@
 				},
 				{
 					"id": "map_0507-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 40
 						},
 						{
-							"name": "DigiRock",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 40
 						},
 						{
-							"name": "DigiLight",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -5443,22 +5064,18 @@
 				},
 				{
 					"id": "map_0507-spot-3",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 50,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 50
 						},
 						{
-							"name": "DigiBamboo",
-							"value": 49,
-							"type": "wood"
+							"materialId": "digi-bamboo",
+							"value": 49
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 1,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5468,17 +5085,14 @@
 				},
 				{
 					"id": "map_0507-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiFirewood",
-							"value": 80,
-							"type": "wood"
+							"materialId": "digi-firewood",
+							"value": 80
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 20,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -5490,7 +5104,6 @@
 		},
 		{
 			"id": "map_0508",
-			"zone": "Logic Volcano",
 			"label": "Taomon's Medit. Place",
 			"image": "/digimon-world-next-order/maps/map_0508-logic-volcano-taomon-s-medit-place.png",
 			"imageSize": {
@@ -5506,17 +5119,14 @@
 			"spots": [
 				{
 					"id": "map_0508-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 90,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 90
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5535,7 +5145,6 @@
 		},
 		{
 			"id": "map_0601",
-			"zone": "MOD Cape",
 			"label": "Inlet Cape",
 			"image": "/digimon-world-next-order/maps/map_0601-mod-cape-inlet-cape.png",
 			"imageSize": {
@@ -5551,17 +5160,14 @@
 			"spots": [
 				{
 					"id": "map_0601-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 85
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -5571,17 +5177,14 @@
 				},
 				{
 					"id": "map_0601-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 98,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 98
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 2,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5591,27 +5194,22 @@
 				},
 				{
 					"id": "map_0601-spot-3",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 50
 						},
 						{
-							"name": "DigiIron",
-							"value": 35,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 35
 						},
 						{
-							"name": "DigiSilver",
-							"value": 10,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 10
 						},
 						{
-							"name": "DigiGold",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5621,22 +5219,18 @@
 				},
 				{
 					"id": "map_0601-spot-4",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 60,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 60
 						},
 						{
-							"name": "DigiIron",
-							"value": 37,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 37
 						},
 						{
-							"name": "DigiSilver",
-							"value": 3,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 3
 						}
 					],
 					"projected": {
@@ -5646,27 +5240,22 @@
 				},
 				{
 					"id": "map_0601-spot-5",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 45
 						},
 						{
-							"name": "DigiNight",
-							"value": 4,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 4
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5676,17 +5265,14 @@
 				},
 				{
 					"id": "map_0601-spot-6",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 98,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 98
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5696,17 +5282,14 @@
 				},
 				{
 					"id": "map_0601-spot-7",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 98,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 98
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5725,7 +5308,6 @@
 		},
 		{
 			"id": "map_0602",
-			"zone": "MOD Cape",
 			"label": "MOD Ship 1.0",
 			"image": "/digimon-world-next-order/maps/map_0602-mod-cape-mod-ship-1-0.png",
 			"imageSize": {
@@ -5741,27 +5323,22 @@
 			"spots": [
 				{
 					"id": "map_0602-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 50
 						},
 						{
-							"name": "DigiMercury",
-							"value": 20,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 20
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 20,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 20
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5771,27 +5348,22 @@
 				},
 				{
 					"id": "map_0602-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 50
 						},
 						{
-							"name": "DigiSilver",
-							"value": 30,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 30
 						},
 						{
-							"name": "DigiGold",
-							"value": 10,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 10
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 10,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -5801,27 +5373,22 @@
 				},
 				{
 					"id": "map_0602-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 58,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 58
 						},
 						{
-							"name": "DigiLight",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 20
 						},
 						{
-							"name": "DigiNight",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 20
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5831,22 +5398,18 @@
 				},
 				{
 					"id": "map_0602-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiPalm",
-							"value": 50,
-							"type": "wood"
+							"materialId": "digi-palm",
+							"value": 50
 						},
 						{
-							"name": "DigiBamboo",
-							"value": 48,
-							"type": "wood"
+							"materialId": "digi-bamboo",
+							"value": 48
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5858,7 +5421,6 @@
 		},
 		{
 			"id": "map_0603",
-			"zone": "MOD Cape",
 			"label": "MOD Ship 2.0",
 			"image": "/digimon-world-next-order/maps/map_0603-mod-cape-mod-ship-2-0.png",
 			"imageSize": {
@@ -5874,27 +5436,22 @@
 			"spots": [
 				{
 					"id": "map_0603-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 40,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 40
 						},
 						{
-							"name": "DigiIron",
-							"value": 30,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 30
 						},
 						{
-							"name": "DigiSilver",
-							"value": 25,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 25
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -5904,22 +5461,18 @@
 				},
 				{
 					"id": "map_0603-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 40,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 40
 						},
 						{
-							"name": "DigiSnowwood",
-							"value": 58,
-							"type": "wood"
+							"materialId": "digi-snowwood",
+							"value": 58
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -5938,7 +5491,6 @@
 		},
 		{
 			"id": "map_0604",
-			"zone": "MOD Cape",
 			"label": "Ship 2.0 Cabin",
 			"image": "/digimon-world-next-order/maps/map_0604-mod-cape-ship-2-0-cabin.png",
 			"imageSize": {
@@ -5954,22 +5506,18 @@
 			"spots": [
 				{
 					"id": "map_0604-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 50
 						},
 						{
-							"name": "DigiGold",
-							"value": 49,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 49
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 1,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -5979,22 +5527,18 @@
 				},
 				{
 					"id": "map_0604-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBamboo",
-							"value": 95,
-							"type": "wood"
+							"materialId": "digi-bamboo",
+							"value": 95
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 3,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 3
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6006,7 +5550,6 @@
 		},
 		{
 			"id": "map_0605",
-			"zone": "MOD Cape",
 			"label": "MOD Ship 3.0",
 			"image": "/digimon-world-next-order/maps/map_0605-mod-cape-mod-ship-3-0.png",
 			"imageSize": {
@@ -6022,17 +5565,14 @@
 			"spots": [
 				{
 					"id": "map_0605-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 90,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 90
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6042,27 +5582,22 @@
 				},
 				{
 					"id": "map_0605-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 65,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 65
 						},
 						{
-							"name": "DigiSilver",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 20
 						},
 						{
-							"name": "DigiGold",
-							"value": 13,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 13
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 2,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6072,22 +5607,18 @@
 				},
 				{
 					"id": "map_0605-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiRock",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 20
 						},
 						{
-							"name": "DigiLight",
-							"value": 79,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 79
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 1,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -6099,7 +5630,6 @@
 		},
 		{
 			"id": "map_0606",
-			"zone": "MOD Cape",
 			"label": "Ship 3.0 Cabin",
 			"image": "/digimon-world-next-order/maps/map_0606-mod-cape-ship-3-0-cabin.png",
 			"imageSize": {
@@ -6115,22 +5645,18 @@
 			"spots": [
 				{
 					"id": "map_0606-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 80,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 80
 						},
 						{
-							"name": "DigiMercury",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 10
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6140,32 +5666,26 @@
 				},
 				{
 					"id": "map_0606-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 15
 						},
 						{
-							"name": "DigiPalm",
-							"value": 40,
-							"type": "wood"
+							"materialId": "digi-palm",
+							"value": 40
 						},
 						{
-							"name": "DigiSnowwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-snowwood",
+							"value": 5
 						},
 						{
-							"name": "DigiBamboo",
-							"value": 38,
-							"type": "wood"
+							"materialId": "digi-bamboo",
+							"value": 38
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6177,7 +5697,6 @@
 		},
 		{
 			"id": "map_0607",
-			"zone": "MOD Cape",
 			"label": "Flag MOD Ship",
 			"image": "/digimon-world-next-order/maps/map_0607-mod-cape-flag-mod-ship.png",
 			"imageSize": {
@@ -6193,22 +5712,18 @@
 			"spots": [
 				{
 					"id": "map_0607-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 50
 						},
 						{
-							"name": "DigiIonwater",
-							"value": 40,
-							"type": "water"
+							"materialId": "digi-ionwater",
+							"value": 40
 						},
 						{
-							"name": "DigiMercury",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6218,22 +5733,18 @@
 				},
 				{
 					"id": "map_0607-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 70,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 70
 						},
 						{
-							"name": "DigiGold",
-							"value": 25,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 25
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6243,22 +5754,18 @@
 				},
 				{
 					"id": "map_0607-spot-3",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 60,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 60
 						},
 						{
-							"name": "DigiSnowwood",
-							"value": 35,
-							"type": "wood"
+							"materialId": "digi-snowwood",
+							"value": 35
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6270,7 +5777,6 @@
 		},
 		{
 			"id": "map_0608",
-			"zone": "MOD Cape",
 			"label": "Captain's Cabin",
 			"image": "/digimon-world-next-order/maps/map_0608-mod-cape-captain-s-cabin.png",
 			"imageSize": {
@@ -6286,22 +5792,18 @@
 			"spots": [
 				{
 					"id": "map_0608-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 70
 						},
 						{
-							"name": "DigiGold",
-							"value": 28,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 28
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 2,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6311,32 +5813,26 @@
 				},
 				{
 					"id": "map_0608-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiLight",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-light",
+							"value": 40
 						},
 						{
-							"name": "DigiNight",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 40
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 13,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 13
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 5
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6346,17 +5842,14 @@
 				},
 				{
 					"id": "map_0608-spot-3",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiPalm",
-							"value": 85,
-							"type": "wood"
+							"materialId": "digi-palm",
+							"value": 85
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6368,7 +5861,6 @@
 		},
 		{
 			"id": "map_0701",
-			"zone": "Bony Resort",
 			"label": "Bony Drive",
 			"image": "/digimon-world-next-order/maps/map_0701-bony-resort-bony-drive.png",
 			"imageSize": {
@@ -6384,17 +5876,14 @@
 			"spots": [
 				{
 					"id": "map_0701-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 85
 						},
 						{
-							"name": "DigiRainbowdrop",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6404,17 +5893,14 @@
 				},
 				{
 					"id": "map_0701-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 85,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 85
 						},
 						{
-							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6424,22 +5910,18 @@
 				},
 				{
 					"id": "map_0701-spot-3",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 70
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 20
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 10,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6449,22 +5931,18 @@
 				},
 				{
 					"id": "map_0701-spot-4",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 70
 						},
 						{
-							"name": "DigiGold",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 20
 						},
 						{
-							"name": "Mithril",
-							"value": 10,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6474,27 +5952,22 @@
 				},
 				{
 					"id": "map_0701-spot-5",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 30
 						},
 						{
-							"name": "DigiStone",
-							"value": 35,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 35
 						},
 						{
-							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 30
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6504,17 +5977,14 @@
 				},
 				{
 					"id": "map_0701-spot-6",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 70,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 70
 						},
 						{
-							"name": "DigiNight",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 30
 						}
 					],
 					"projected": {
@@ -6524,22 +5994,18 @@
 				},
 				{
 					"id": "map_0701-spot-7",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 55,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 55
 						},
 						{
-							"name": "DigiRock",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 40
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6549,22 +6015,18 @@
 				},
 				{
 					"id": "map_0701-spot-8",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 70,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 70
 						},
 						{
-							"name": "DigiGreatwood",
-							"value": 25,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 25
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6574,22 +6036,18 @@
 				},
 				{
 					"id": "map_0701-spot-9",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 65,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 65
 						},
 						{
-							"name": "DigiGreatwood",
-							"value": 25,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 25
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6599,22 +6057,18 @@
 				},
 				{
 					"id": "map_0701-spot-10",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 60,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 60
 						},
 						{
-							"name": "DigiGreatwood",
-							"value": 25,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 25
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -6633,7 +6087,6 @@
 		},
 		{
 			"id": "map_0702",
-			"zone": "Bony Resort",
 			"label": "Celeb Red Room",
 			"image": "/digimon-world-next-order/maps/map_0702-bony-resort-celeb-red-room.png",
 			"imageSize": {
@@ -6649,22 +6102,18 @@
 			"spots": [
 				{
 					"id": "map_0702-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiNight",
-							"value": 55,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 55
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 44,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 44
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -6676,7 +6125,6 @@
 		},
 		{
 			"id": "map_0703",
-			"zone": "Bony Resort",
 			"label": "Celeb Green Room",
 			"image": "/digimon-world-next-order/maps/map_0703-bony-resort-celeb-green-room.png",
 			"imageSize": {
@@ -6692,22 +6140,18 @@
 			"spots": [
 				{
 					"id": "map_0703-spot-1",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 55,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 55
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 44,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 44
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 1,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -6719,7 +6163,6 @@
 		},
 		{
 			"id": "map_0704",
-			"zone": "Bony Resort",
 			"label": "Celeb Blue Room",
 			"image": "/digimon-world-next-order/maps/map_0704-bony-resort-celeb-blue-room.png",
 			"imageSize": {
@@ -6735,22 +6178,18 @@
 			"spots": [
 				{
 					"id": "map_0704-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 45,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 45
 						},
 						{
-							"name": "DigiLatex",
-							"value": 35,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 35
 						},
 						{
-							"name": "DigiRainbowdrop",
-							"value": 20,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -6762,7 +6201,6 @@
 		},
 		{
 			"id": "map_0705",
-			"zone": "Bony Resort",
 			"label": "Pink Stone House",
 			"image": "/digimon-world-next-order/maps/map_0705-bony-resort-pink-stone-house.png",
 			"imageSize": {
@@ -6778,27 +6216,22 @@
 			"spots": [
 				{
 					"id": "map_0705-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 70,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 70
 						},
 						{
-							"name": "DigiSap",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-sap",
+							"value": 10
 						},
 						{
-							"name": "DigiLatex",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 10
 						},
 						{
-							"name": "DigiMercury",
-							"value": 10,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6808,22 +6241,18 @@
 				},
 				{
 					"id": "map_0705-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiGreatwood",
-							"value": 80,
-							"type": "wood"
+							"materialId": "digi-greatwood",
+							"value": 80
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 15
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6835,7 +6264,6 @@
 		},
 		{
 			"id": "map_0706",
-			"zone": "Bony Resort",
 			"label": "Pink Stone House Int.",
 			"image": "/digimon-world-next-order/maps/map_0706-bony-resort-pink-stone-house-int.png",
 			"imageSize": {
@@ -6851,27 +6279,22 @@
 			"spots": [
 				{
 					"id": "map_0706-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 55,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 55
 						},
 						{
-							"name": "DigiGold",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 20
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 15,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 15
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 10,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -6883,7 +6306,6 @@
 		},
 		{
 			"id": "map_0707",
-			"zone": "Bony Resort",
 			"label": "Corpseway",
 			"image": "/digimon-world-next-order/maps/map_0707-bony-resort-corpseway.png",
 			"imageSize": {
@@ -6899,27 +6321,22 @@
 			"spots": [
 				{
 					"id": "map_0707-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 70,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 70
 						},
 						{
-							"name": "DigiGold",
-							"value": 15,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 15
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 10,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 10
 						},
 						{
-							"name": "Mithril",
-							"value": 5,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -6929,27 +6346,22 @@
 				},
 				{
 					"id": "map_0707-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 40
 						},
 						{
-							"name": "DigiStone",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 30
 						},
 						{
-							"name": "DigiRock",
-							"value": 28,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 28
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -6961,7 +6373,6 @@
 		},
 		{
 			"id": "map_0708",
-			"zone": "Bony Resort",
 			"label": "Graveyard",
 			"image": "/digimon-world-next-order/maps/map_0708-bony-resort-graveyard.png",
 			"imageSize": {
@@ -6977,27 +6388,22 @@
 			"spots": [
 				{
 					"id": "map_0708-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 30
 						},
 						{
-							"name": "DigiStone",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 30
 						},
 						{
-							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 30
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7007,22 +6413,18 @@
 				},
 				{
 					"id": "map_0708-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiNight",
-							"value": 75,
-							"type": "stone"
+							"materialId": "digi-night",
+							"value": 75
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 20
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7032,22 +6434,18 @@
 				},
 				{
 					"id": "map_0708-spot-3",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 70,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 70
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 20,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 20
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7066,7 +6464,6 @@
 		},
 		{
 			"id": "map_0709",
-			"zone": "Bony Resort",
 			"label": "Night Church",
 			"image": "/digimon-world-next-order/maps/map_0709-bony-resort-night-church.png",
 			"imageSize": {
@@ -7082,22 +6479,18 @@
 			"spots": [
 				{
 					"id": "map_0709-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiSap",
-							"value": 35,
-							"type": "water"
+							"materialId": "digi-sap",
+							"value": 35
 						},
 						{
-							"name": "DigiLatex",
-							"value": 45,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 45
 						},
 						{
-							"name": "DigiHolywater",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-holywater",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -7109,7 +6502,6 @@
 		},
 		{
 			"id": "map_0801",
-			"zone": "Faulty Ex Machina",
 			"label": "West Coast",
 			"image": "/digimon-world-next-order/maps/map_0801-faulty-ex-machina-west-coast.png",
 			"imageSize": {
@@ -7125,22 +6517,18 @@
 			"spots": [
 				{
 					"id": "map_0801-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 45,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 45
 						},
 						{
-							"name": "DigiOil",
-							"value": 40,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 40
 						},
 						{
-							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -7150,22 +6538,18 @@
 				},
 				{
 					"id": "map_0801-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 40,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 40
 						},
 						{
-							"name": "DigiIron",
-							"value": 58,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 58
 						},
 						{
-							"name": "Mithril",
-							"value": 2,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -7175,27 +6559,22 @@
 				},
 				{
 					"id": "map_0801-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 50,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 50
 						},
 						{
-							"name": "DigiRock",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 45
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 3,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 3
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -7205,17 +6584,14 @@
 				},
 				{
 					"id": "map_0801-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 95,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 95
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7234,7 +6610,6 @@
 		},
 		{
 			"id": "map_0802",
-			"zone": "Faulty Ex Machina",
 			"label": "Greenery Island",
 			"image": "/digimon-world-next-order/maps/map_0802-faulty-ex-machina-greenery-island.png",
 			"imageSize": {
@@ -7250,17 +6625,14 @@
 			"spots": [
 				{
 					"id": "map_0802-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 90,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 90
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 10,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7272,7 +6644,6 @@
 		},
 		{
 			"id": "map_0803",
-			"zone": "Faulty Ex Machina",
 			"label": "Boulder Island",
 			"image": "/digimon-world-next-order/maps/map_0803-faulty-ex-machina-boulder-island.png",
 			"imageSize": {
@@ -7288,27 +6659,22 @@
 			"spots": [
 				{
 					"id": "map_0803-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 60,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 60
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 20
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 15,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 15
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7318,27 +6684,22 @@
 				},
 				{
 					"id": "map_0803-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 20
 						},
 						{
-							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 40
 						},
 						{
-							"name": "DigiRock",
-							"value": 35,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 35
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7350,7 +6711,6 @@
 		},
 		{
 			"id": "map_0804",
-			"zone": "Faulty Ex Machina",
 			"label": "Flowerbed Island",
 			"image": "/digimon-world-next-order/maps/map_0804-faulty-ex-machina-flowerbed-island.png",
 			"imageSize": {
@@ -7366,17 +6726,14 @@
 			"spots": [
 				{
 					"id": "map_0804-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiOil",
-							"value": 85,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 85
 						},
 						{
-							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -7388,7 +6745,6 @@
 		},
 		{
 			"id": "map_0805",
-			"zone": "Faulty Ex Machina",
 			"label": "Pathfork Island",
 			"image": "/digimon-world-next-order/maps/map_0805-faulty-ex-machina-pathfork-island.png",
 			"imageSize": {
@@ -7404,22 +6760,18 @@
 			"spots": [
 				{
 					"id": "map_0805-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 93,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 93
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 5,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 5
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 2,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -7431,7 +6783,6 @@
 		},
 		{
 			"id": "map_0806",
-			"zone": "Faulty Ex Machina",
 			"label": "Control Island",
 			"image": "/digimon-world-next-order/maps/map_0806-faulty-ex-machina-control-island.png",
 			"imageSize": {
@@ -7447,22 +6798,18 @@
 			"spots": [
 				{
 					"id": "map_0806-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 55,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 55
 						},
 						{
-							"name": "DigiIron",
-							"value": 40,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 40
 						},
 						{
-							"name": "Mithril",
-							"value": 5,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7472,27 +6819,22 @@
 				},
 				{
 					"id": "map_0806-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 60,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 60
 						},
 						{
-							"name": "Mithril",
-							"value": 20,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 20
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 15,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 15
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7511,7 +6853,6 @@
 		},
 		{
 			"id": "map_0807",
-			"zone": "Faulty Ex Machina",
 			"label": "Control Room",
 			"image": "/digimon-world-next-order/maps/map_0807-faulty-ex-machina-control-room.png",
 			"imageSize": {
@@ -7528,7 +6869,6 @@
 		},
 		{
 			"id": "map_0808",
-			"zone": "Faulty Ex Machina",
 			"label": "East Coast",
 			"image": "/digimon-world-next-order/maps/map_0808-faulty-ex-machina-east-coast.png",
 			"imageSize": {
@@ -7544,22 +6884,18 @@
 			"spots": [
 				{
 					"id": "map_0808-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiOil",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 50
 						},
 						{
-							"name": "DigiSap",
-							"value": 49,
-							"type": "water"
+							"materialId": "digi-sap",
+							"value": 49
 						},
 						{
-							"name": "DigiLatex",
-							"value": 1,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -7569,22 +6905,18 @@
 				},
 				{
 					"id": "map_0808-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 50
 						},
 						{
-							"name": "DigiMercury",
-							"value": 30,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 30
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 20,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -7594,27 +6926,22 @@
 				},
 				{
 					"id": "map_0808-spot-3",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 40,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 40
 						},
 						{
-							"name": "DigiGold",
-							"value": 30,
-							"type": "metal"
+							"materialId": "digi-gold",
+							"value": 30
 						},
 						{
-							"name": "DigiWhitegold",
-							"value": 25,
-							"type": "metal"
+							"materialId": "digi-white-gold",
+							"value": 25
 						},
 						{
-							"name": "Black Digizoit",
-							"value": 5,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7624,17 +6951,14 @@
 				},
 				{
 					"id": "map_0808-spot-4",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiIron",
-							"value": 85,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 85
 						},
 						{
-							"name": "Chrome Digizoit",
-							"value": 15,
-							"type": "metal"
+							"materialId": "chrome-digizoit",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -7644,22 +6968,18 @@
 				},
 				{
 					"id": "map_0808-spot-5",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 60,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 60
 						},
 						{
-							"name": "DigiRock",
-							"value": 30,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 30
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7669,27 +6989,22 @@
 				},
 				{
 					"id": "map_0808-spot-6",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiSand",
-							"value": 80,
-							"type": "stone"
+							"materialId": "digi-sand",
+							"value": 80
 						},
 						{
-							"name": "DigiQuartz",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 10
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 5
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7699,27 +7014,22 @@
 				},
 				{
 					"id": "map_0808-spot-7",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiWhitewood",
-							"value": 50,
-							"type": "wood"
+							"materialId": "digi-whitewood",
+							"value": 50
 						},
 						{
-							"name": "DigiPalm",
-							"value": 25,
-							"type": "wood"
+							"materialId": "digi-palm",
+							"value": 25
 						},
 						{
-							"name": "DigiBamboo",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-bamboo",
+							"value": 15
 						},
 						{
-							"name": "DigiFirewood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-firewood",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7729,27 +7039,22 @@
 				},
 				{
 					"id": "map_0808-spot-8",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 50,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 50
 						},
 						{
-							"name": "DigiSnowwood",
-							"value": 25,
-							"type": "wood"
+							"materialId": "digi-snowwood",
+							"value": 25
 						},
 						{
-							"name": "DigiFelwood",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 15
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 10,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -7761,7 +7066,6 @@
 		},
 		{
 			"id": "map_0809",
-			"zone": "Faulty Ex Machina",
 			"label": "North Coast",
 			"image": "/digimon-world-next-order/maps/map_0809-faulty-ex-machina-north-coast.png",
 			"imageSize": {
@@ -7777,22 +7081,18 @@
 			"spots": [
 				{
 					"id": "map_0809-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 40,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 40
 						},
 						{
-							"name": "DigiOil",
-							"value": 55,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 55
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 5,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7802,27 +7102,22 @@
 				},
 				{
 					"id": "map_0809-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiCopper",
-							"value": 35,
-							"type": "metal"
+							"materialId": "digi-copper",
+							"value": 35
 						},
 						{
-							"name": "DigiIron",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-iron",
+							"value": 50
 						},
 						{
-							"name": "DigiSilver",
-							"value": 10,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 10
 						},
 						{
-							"name": "Mithril",
-							"value": 5,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7832,22 +7127,18 @@
 				},
 				{
 					"id": "map_0809-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiStone",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-stone",
+							"value": 40
 						},
 						{
-							"name": "DigiRock",
-							"value": 55,
-							"type": "stone"
+							"materialId": "digi-rock",
+							"value": 55
 						},
 						{
-							"name": "DigiOnyx",
-							"value": 5,
-							"type": "stone"
+							"materialId": "digi-onyx",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7857,22 +7148,18 @@
 				},
 				{
 					"id": "map_0809-spot-4",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 75,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 75
 						},
 						{
-							"name": "DigiSnowwood",
-							"value": 20,
-							"type": "wood"
+							"materialId": "digi-snowwood",
+							"value": 20
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 5,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7884,7 +7171,6 @@
 		},
 		{
 			"id": "map_0810",
-			"zone": "Faulty Ex Machina",
 			"label": "Drainage Path",
 			"image": "/digimon-world-next-order/maps/map_0810-faulty-ex-machina-drainage-path.png",
 			"imageSize": {
@@ -7900,27 +7186,22 @@
 			"spots": [
 				{
 					"id": "map_0810-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 30,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 30
 						},
 						{
-							"name": "DigiOil",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 50
 						},
 						{
-							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 15
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 5,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7930,27 +7211,22 @@
 				},
 				{
 					"id": "map_0810-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiAcid",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-acid",
+							"value": 50
 						},
 						{
-							"name": "DigiOil",
-							"value": 30,
-							"type": "water"
+							"materialId": "digi-oil",
+							"value": 30
 						},
 						{
-							"name": "DigiMercury",
-							"value": 15,
-							"type": "water"
+							"materialId": "digi-mercury",
+							"value": 15
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 5,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -7962,7 +7238,6 @@
 		},
 		{
 			"id": "map_0811",
-			"zone": "Faulty Ex Machina",
 			"label": "KingSukamon's Chamber",
 			"image": "/digimon-world-next-order/maps/map_0811-faulty-ex-machina-kingsukamon-s-chamber.png",
 			"imageSize": {
@@ -7979,7 +7254,6 @@
 		},
 		{
 			"id": "map_0901",
-			"zone": "Absolute Zero",
 			"label": "Freeze Way",
 			"image": "/digimon-world-next-order/maps/map_0901-absolute-zero-freeze-way.png",
 			"imageSize": {
@@ -7995,22 +7269,18 @@
 			"spots": [
 				{
 					"id": "map_0901-spot-1",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 59,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 59
 						},
 						{
-							"name": "DigiSnowwood",
-							"value": 40,
-							"type": "wood"
+							"materialId": "digi-snowwood",
+							"value": 40
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 1,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -8020,22 +7290,18 @@
 				},
 				{
 					"id": "map_0901-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiBlackwood",
-							"value": 40,
-							"type": "wood"
+							"materialId": "digi-blackwood",
+							"value": 40
 						},
 						{
-							"name": "DigiSnowwood",
-							"value": 59,
-							"type": "wood"
+							"materialId": "digi-snowwood",
+							"value": 59
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 1,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -8054,7 +7320,6 @@
 		},
 		{
 			"id": "map_0902",
-			"zone": "Absolute Zero",
 			"label": "Frost Cathedral",
 			"image": "/digimon-world-next-order/maps/map_0902-absolute-zero-frost-cathedral.png",
 			"imageSize": {
@@ -8070,22 +7335,18 @@
 			"spots": [
 				{
 					"id": "map_0902-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 70,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 70
 						},
 						{
-							"name": "DigiLatex",
-							"value": 25,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 25
 						},
 						{
-							"name": "DigiHolywater",
-							"value": 5,
-							"type": "metal"
+							"materialId": "digi-holywater",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -8095,22 +7356,18 @@
 				},
 				{
 					"id": "map_0902-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 60,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 60
 						},
 						{
-							"name": "Mithril",
-							"value": 39,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 39
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 1,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 1
 						}
 					],
 					"projected": {
@@ -8120,27 +7377,22 @@
 				},
 				{
 					"id": "map_0902-spot-3",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiQuartz",
-							"value": 95,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 95
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 2
 						},
 						{
-							"name": "DigiRuby",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 1
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -8150,27 +7402,22 @@
 				},
 				{
 					"id": "map_0902-spot-4",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiQuartz",
-							"value": 95,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 95
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 1,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 1
 						},
 						{
-							"name": "DigiRuby",
-							"value": 2,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 2
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 2,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 2
 						}
 					],
 					"projected": {
@@ -8182,7 +7429,6 @@
 		},
 		{
 			"id": "map_0903",
-			"zone": "Absolute Zero",
 			"label": "Ice Sculpture Room",
 			"image": "/digimon-world-next-order/maps/map_0903-absolute-zero-ice-sculpture-room.png",
 			"imageSize": {
@@ -8198,22 +7444,18 @@
 			"spots": [
 				{
 					"id": "map_0903-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 50
 						},
 						{
-							"name": "Mithril",
-							"value": 45,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 45
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 5,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 5
 						}
 					],
 					"projected": {
@@ -8223,17 +7465,14 @@
 				},
 				{
 					"id": "map_0903-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiQuartz",
-							"value": 80,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 80
 						},
 						{
-							"name": "DigiEmerald",
-							"value": 20,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -8245,7 +7484,6 @@
 		},
 		{
 			"id": "map_0904",
-			"zone": "Absolute Zero",
 			"label": "Icy Hall",
 			"image": "/digimon-world-next-order/maps/map_0904-absolute-zero-icy-hall.png",
 			"imageSize": {
@@ -8261,17 +7499,14 @@
 			"spots": [
 				{
 					"id": "map_0904-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "Mithril",
-							"value": 85,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 85
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8281,17 +7516,14 @@
 				},
 				{
 					"id": "map_0904-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiQuartz",
-							"value": 90,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 90
 						},
 						{
-							"name": "DigiRuby",
-							"value": 10,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 10
 						}
 					],
 					"projected": {
@@ -8303,7 +7535,6 @@
 		},
 		{
 			"id": "map_0905",
-			"zone": "Absolute Zero",
 			"label": "Frozen Divider",
 			"image": "/digimon-world-next-order/maps/map_0905-absolute-zero-frozen-divider.png",
 			"imageSize": {
@@ -8319,22 +7550,18 @@
 			"spots": [
 				{
 					"id": "map_0905-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiDeepwater",
-							"value": 50,
-							"type": "water"
+							"materialId": "digi-deepwater",
+							"value": 50
 						},
 						{
-							"name": "DigiLatex",
-							"value": 30,
-							"type": "water"
+							"materialId": "digi-latex",
+							"value": 30
 						},
 						{
-							"name": "DigiHolywater",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-holywater",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -8346,7 +7573,6 @@
 		},
 		{
 			"id": "map_0906",
-			"zone": "Absolute Zero",
 			"label": "Frozen Way",
 			"image": "/digimon-world-next-order/maps/map_0906-absolute-zero-frozen-way.png",
 			"imageSize": {
@@ -8362,17 +7588,14 @@
 			"spots": [
 				{
 					"id": "map_0906-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiQuartz",
-							"value": 85,
-							"type": "stone"
+							"materialId": "digi-quartz",
+							"value": 85
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8391,7 +7614,6 @@
 		},
 		{
 			"id": "map_0907",
-			"zone": "Absolute Zero",
 			"label": "Icy Way Temple",
 			"image": "/digimon-world-next-order/maps/map_0907-absolute-zero-icy-way-temple.png",
 			"imageSize": {
@@ -8407,22 +7629,18 @@
 			"spots": [
 				{
 					"id": "map_0907-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "DigiSilver",
-							"value": 50,
-							"type": "metal"
+							"materialId": "digi-silver",
+							"value": 50
 						},
 						{
-							"name": "Mithril",
-							"value": 35,
-							"type": "metal"
+							"materialId": "mithril",
+							"value": 35
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8434,7 +7652,6 @@
 		},
 		{
 			"id": "map_0908",
-			"zone": "Absolute Zero",
 			"label": "Eternal Glacier",
 			"image": "/digimon-world-next-order/maps/map_0908-absolute-zero-eternal-glacier.png",
 			"imageSize": {
@@ -8451,7 +7668,6 @@
 		},
 		{
 			"id": "map_0909",
-			"zone": "Absolute Zero",
 			"label": "Concealed Gorge",
 			"image": "/digimon-world-next-order/maps/map_0909-absolute-zero-concealed-gorge.png",
 			"imageSize": {
@@ -8468,7 +7684,6 @@
 		},
 		{
 			"id": "map_1001",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 01",
 			"image": "/digimon-world-next-order/maps/map_1001-infinite-cauldron-layer-01.png",
 			"imageSize": {
@@ -8485,7 +7700,6 @@
 		},
 		{
 			"id": "map_1002",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 02",
 			"image": "/digimon-world-next-order/maps/map_1002-infinite-cauldron-layer-02.png",
 			"imageSize": {
@@ -8502,7 +7716,6 @@
 		},
 		{
 			"id": "map_1003",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 03",
 			"image": "/digimon-world-next-order/maps/map_1003-infinite-cauldron-layer-03.png",
 			"imageSize": {
@@ -8519,7 +7732,6 @@
 		},
 		{
 			"id": "map_1004",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 04",
 			"image": "/digimon-world-next-order/maps/map_1004-infinite-cauldron-layer-04.png",
 			"imageSize": {
@@ -8536,7 +7748,6 @@
 		},
 		{
 			"id": "map_1005",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 05",
 			"image": "/digimon-world-next-order/maps/map_1005-infinite-cauldron-layer-05.png",
 			"imageSize": {
@@ -8553,7 +7764,6 @@
 		},
 		{
 			"id": "map_1006",
-			"zone": "Infinite Cauldron",
 			"label": "Layer 06",
 			"image": "/digimon-world-next-order/maps/map_1006-infinite-cauldron-layer-06.png",
 			"imageSize": {
@@ -8570,7 +7780,6 @@
 		},
 		{
 			"id": "map_1007",
-			"zone": "Infinite Cauldron",
 			"label": "Core 02",
 			"image": "/digimon-world-next-order/maps/map_1007-infinite-cauldron-core-02.png",
 			"imageSize": {
@@ -8594,7 +7803,6 @@
 		},
 		{
 			"id": "map_1008",
-			"zone": "Infinite Cauldron",
 			"label": "Core 01",
 			"image": "/digimon-world-next-order/maps/map_1008-infinite-cauldron-core-01.png",
 			"imageSize": {
@@ -8611,7 +7819,6 @@
 		},
 		{
 			"id": "map_1009",
-			"zone": "Infinite Cauldron",
 			"label": "Core 00",
 			"image": "/digimon-world-next-order/maps/map_1009-infinite-cauldron-core-00.png",
 			"imageSize": {
@@ -8628,7 +7835,6 @@
 		},
 		{
 			"id": "map_8101",
-			"zone": "Dimension M",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8101-dimension-m-memory-1.png",
 			"imageSize": {
@@ -8645,7 +7851,6 @@
 		},
 		{
 			"id": "map_8102",
-			"zone": "Dimension M",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8102-dimension-m-memory-2.png",
 			"imageSize": {
@@ -8662,7 +7867,6 @@
 		},
 		{
 			"id": "map_8103",
-			"zone": "Dimension M",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8103-dimension-m-memory-3.png",
 			"imageSize": {
@@ -8679,7 +7883,6 @@
 		},
 		{
 			"id": "map_8104",
-			"zone": "Dimension M",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8104-dimension-m-memory-4.png",
 			"imageSize": {
@@ -8696,7 +7899,6 @@
 		},
 		{
 			"id": "map_8105",
-			"zone": "Dimension M",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8105-dimension-m-memory-5.png",
 			"imageSize": {
@@ -8713,7 +7915,6 @@
 		},
 		{
 			"id": "map_8106",
-			"zone": "Dimension M",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8106-dimension-m-memory-6.png",
 			"imageSize": {
@@ -8730,7 +7931,6 @@
 		},
 		{
 			"id": "map_8107",
-			"zone": "Dimension M",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8107-dimension-m-memory-7.png",
 			"imageSize": {
@@ -8747,7 +7947,6 @@
 		},
 		{
 			"id": "map_8108",
-			"zone": "Dimension M",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8108-dimension-m-memory-8.png",
 			"imageSize": {
@@ -8763,22 +7962,18 @@
 			"spots": [
 				{
 					"id": "map_8108-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "Black Digizoit",
-							"value": 45,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 45
 						},
 						{
-							"name": "Red Digizoit",
-							"value": 40,
-							"type": "metal"
+							"materialId": "red-digizoit",
+							"value": 40
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8788,22 +7983,18 @@
 				},
 				{
 					"id": "map_8108-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiEmerald",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 45
 						},
 						{
-							"name": "DigiRuby",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 40
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8815,7 +8006,6 @@
 		},
 		{
 			"id": "map_8109",
-			"zone": "Dimension M",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8109-dimension-m-memory-9.png",
 			"imageSize": {
@@ -8832,7 +8022,6 @@
 		},
 		{
 			"id": "map_8110",
-			"zone": "Dimension M",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8110-dimension-m-memory-10.png",
 			"imageSize": {
@@ -8849,7 +8038,6 @@
 		},
 		{
 			"id": "map_8201",
-			"zone": "Dimension G",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8201-dimension-g-memory-1.png",
 			"imageSize": {
@@ -8866,7 +8054,6 @@
 		},
 		{
 			"id": "map_8202",
-			"zone": "Dimension G",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8202-dimension-g-memory-2.png",
 			"imageSize": {
@@ -8883,7 +8070,6 @@
 		},
 		{
 			"id": "map_8203",
-			"zone": "Dimension G",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8203-dimension-g-memory-3.png",
 			"imageSize": {
@@ -8900,7 +8086,6 @@
 		},
 		{
 			"id": "map_8204",
-			"zone": "Dimension G",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8204-dimension-g-memory-4.png",
 			"imageSize": {
@@ -8917,7 +8102,6 @@
 		},
 		{
 			"id": "map_8205",
-			"zone": "Dimension G",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8205-dimension-g-memory-5.png",
 			"imageSize": {
@@ -8933,22 +8117,18 @@
 			"spots": [
 				{
 					"id": "map_8205-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiRainbowdrop",
-							"value": 45,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 45
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 40,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 40
 						},
 						{
-							"name": "DigiHolywater",
-							"value": 15,
-							"type": "metal"
+							"materialId": "digi-holywater",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8958,22 +8138,18 @@
 				},
 				{
 					"id": "map_8205-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiFelwood",
-							"value": 45,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 45
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 40,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 40
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -8985,7 +8161,6 @@
 		},
 		{
 			"id": "map_8206",
-			"zone": "Dimension G",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8206-dimension-g-memory-6.png",
 			"imageSize": {
@@ -9002,7 +8177,6 @@
 		},
 		{
 			"id": "map_8207",
-			"zone": "Dimension G",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8207-dimension-g-memory-7.png",
 			"imageSize": {
@@ -9019,7 +8193,6 @@
 		},
 		{
 			"id": "map_8208",
-			"zone": "Dimension G",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8208-dimension-g-memory-8.png",
 			"imageSize": {
@@ -9036,7 +8209,6 @@
 		},
 		{
 			"id": "map_8209",
-			"zone": "Dimension G",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8209-dimension-g-memory-9.png",
 			"imageSize": {
@@ -9053,7 +8225,6 @@
 		},
 		{
 			"id": "map_8210",
-			"zone": "Dimension G",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8210-dimension-g-memory-10.png",
 			"imageSize": {
@@ -9070,7 +8241,6 @@
 		},
 		{
 			"id": "map_8301",
-			"zone": "Dimension T",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8301-dimension-t-memory-1.png",
 			"imageSize": {
@@ -9087,7 +8257,6 @@
 		},
 		{
 			"id": "map_8302",
-			"zone": "Dimension T",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8302-dimension-t-memory-2.png",
 			"imageSize": {
@@ -9104,7 +8273,6 @@
 		},
 		{
 			"id": "map_8303",
-			"zone": "Dimension T",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8303-dimension-t-memory-3.png",
 			"imageSize": {
@@ -9121,7 +8289,6 @@
 		},
 		{
 			"id": "map_8304",
-			"zone": "Dimension T",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8304-dimension-t-memory-4.png",
 			"imageSize": {
@@ -9138,7 +8305,6 @@
 		},
 		{
 			"id": "map_8305",
-			"zone": "Dimension T",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8305-dimension-t-memory-5.png",
 			"imageSize": {
@@ -9155,7 +8321,6 @@
 		},
 		{
 			"id": "map_8306",
-			"zone": "Dimension T",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8306-dimension-t-memory-6.png",
 			"imageSize": {
@@ -9171,22 +8336,18 @@
 			"spots": [
 				{
 					"id": "map_8306-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "Black Digizoit",
-							"value": 45,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 45
 						},
 						{
-							"name": "Red Digizoit",
-							"value": 40,
-							"type": "metal"
+							"materialId": "red-digizoit",
+							"value": 40
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9196,22 +8357,18 @@
 				},
 				{
 					"id": "map_8306-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiRainbowdrop",
-							"value": 45,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 45
 						},
 						{
-							"name": "DigiLightningwater",
-							"value": 40,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 40
 						},
 						{
-							"name": "DigiHolywater",
-							"value": 15,
-							"type": "metal"
+							"materialId": "digi-holywater",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9223,7 +8380,6 @@
 		},
 		{
 			"id": "map_8307",
-			"zone": "Dimension T",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8307-dimension-t-memory-7.png",
 			"imageSize": {
@@ -9240,7 +8396,6 @@
 		},
 		{
 			"id": "map_8308",
-			"zone": "Dimension T",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8308-dimension-t-memory-8.png",
 			"imageSize": {
@@ -9257,7 +8412,6 @@
 		},
 		{
 			"id": "map_8309",
-			"zone": "Dimension T",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8309-dimension-t-memory-9.png",
 			"imageSize": {
@@ -9274,7 +8428,6 @@
 		},
 		{
 			"id": "map_8310",
-			"zone": "Dimension T",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8310-dimension-t-memory-10.png",
 			"imageSize": {
@@ -9291,7 +8444,6 @@
 		},
 		{
 			"id": "map_8401",
-			"zone": "Dimension P",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8401-dimension-p-memory-1.png",
 			"imageSize": {
@@ -9308,7 +8460,6 @@
 		},
 		{
 			"id": "map_8402",
-			"zone": "Dimension P",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8402-dimension-p-memory-2.png",
 			"imageSize": {
@@ -9325,7 +8476,6 @@
 		},
 		{
 			"id": "map_8403",
-			"zone": "Dimension P",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8403-dimension-p-memory-3.png",
 			"imageSize": {
@@ -9342,7 +8492,6 @@
 		},
 		{
 			"id": "map_8404",
-			"zone": "Dimension P",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8404-dimension-p-memory-4.png",
 			"imageSize": {
@@ -9358,22 +8507,18 @@
 			"spots": [
 				{
 					"id": "map_8404-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiEmerald",
-							"value": 45,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 45
 						},
 						{
-							"name": "DigiRuby",
-							"value": 40,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 40
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9383,22 +8528,18 @@
 				},
 				{
 					"id": "map_8404-spot-2",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiFelwood",
-							"value": 45,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 45
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 40,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 40
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 15,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9410,7 +8551,6 @@
 		},
 		{
 			"id": "map_8405",
-			"zone": "Dimension P",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8405-dimension-p-memory-5.png",
 			"imageSize": {
@@ -9427,7 +8567,6 @@
 		},
 		{
 			"id": "map_8406",
-			"zone": "Dimension P",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8406-dimension-p-memory-6.png",
 			"imageSize": {
@@ -9444,7 +8583,6 @@
 		},
 		{
 			"id": "map_8407",
-			"zone": "Dimension P",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8407-dimension-p-memory-7.png",
 			"imageSize": {
@@ -9461,7 +8599,6 @@
 		},
 		{
 			"id": "map_8408",
-			"zone": "Dimension P",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8408-dimension-p-memory-8.png",
 			"imageSize": {
@@ -9478,7 +8615,6 @@
 		},
 		{
 			"id": "map_8409",
-			"zone": "Dimension P",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8409-dimension-p-memory-9.png",
 			"imageSize": {
@@ -9495,7 +8631,6 @@
 		},
 		{
 			"id": "map_8410",
-			"zone": "Dimension P",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8410-dimension-p-memory-10.png",
 			"imageSize": {
@@ -9512,7 +8647,6 @@
 		},
 		{
 			"id": "map_8501",
-			"zone": "Dimension E",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8501-dimension-e-memory-1.png",
 			"imageSize": {
@@ -9529,7 +8663,6 @@
 		},
 		{
 			"id": "map_8502",
-			"zone": "Dimension E",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8502-dimension-e-memory-2.png",
 			"imageSize": {
@@ -9546,7 +8679,6 @@
 		},
 		{
 			"id": "map_8503",
-			"zone": "Dimension E",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8503-dimension-e-memory-3.png",
 			"imageSize": {
@@ -9563,7 +8695,6 @@
 		},
 		{
 			"id": "map_8504",
-			"zone": "Dimension E",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8504-dimension-e-memory-4.png",
 			"imageSize": {
@@ -9580,7 +8711,6 @@
 		},
 		{
 			"id": "map_8505",
-			"zone": "Dimension E",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8505-dimension-e-memory-5.png",
 			"imageSize": {
@@ -9596,22 +8726,18 @@
 			"spots": [
 				{
 					"id": "map_8505-spot-1",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "Black Digizoit",
-							"value": 45,
-							"type": "metal"
+							"materialId": "black-digizoit",
+							"value": 45
 						},
 						{
-							"name": "Red Digizoit",
-							"value": 40,
-							"type": "metal"
+							"materialId": "red-digizoit",
+							"value": 40
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 15,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 15
 						}
 					],
 					"projected": {
@@ -9623,7 +8749,6 @@
 		},
 		{
 			"id": "map_8506",
-			"zone": "Dimension E",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8506-dimension-e-memory-6.png",
 			"imageSize": {
@@ -9640,7 +8765,6 @@
 		},
 		{
 			"id": "map_8507",
-			"zone": "Dimension E",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8507-dimension-e-memory-7.png",
 			"imageSize": {
@@ -9656,22 +8780,18 @@
 			"spots": [
 				{
 					"id": "map_8507-spot-1",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiRainbowdrop",
-							"value": 35,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 35
 						},
 						{
-							"name": "DigiRainbowdrop",
-							"value": 35,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 35
 						},
 						{
-							"name": "DigiRainbowdrop",
-							"value": 30,
-							"type": "water"
+							"materialId": "digi-rainbowdrop",
+							"value": 30
 						}
 					],
 					"projected": {
@@ -9681,22 +8801,18 @@
 				},
 				{
 					"id": "map_8507-spot-2",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiEmerald",
-							"value": 35,
-							"type": "stone"
+							"materialId": "digi-emerald",
+							"value": 35
 						},
 						{
-							"name": "DigiRuby",
-							"value": 35,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 35
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 30,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 30
 						}
 					],
 					"projected": {
@@ -9706,22 +8822,18 @@
 				},
 				{
 					"id": "map_8507-spot-3",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiFelwood",
-							"value": 35,
-							"type": "wood"
+							"materialId": "digi-felwood",
+							"value": 35
 						},
 						{
-							"name": "DigiStarwood",
-							"value": 35,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 35
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 30,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 30
 						}
 					],
 					"projected": {
@@ -9733,7 +8845,6 @@
 		},
 		{
 			"id": "map_8508",
-			"zone": "Dimension E",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8508-dimension-e-memory-8.png",
 			"imageSize": {
@@ -9750,7 +8861,6 @@
 		},
 		{
 			"id": "map_8509",
-			"zone": "Dimension E",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8509-dimension-e-memory-9.png",
 			"imageSize": {
@@ -9767,7 +8877,6 @@
 		},
 		{
 			"id": "map_8510",
-			"zone": "Dimension E",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8510-dimension-e-memory-10.png",
 			"imageSize": {
@@ -9784,7 +8893,6 @@
 		},
 		{
 			"id": "map_8601",
-			"zone": "Dimension Z",
 			"label": "Memory 1",
 			"image": "/digimon-world-next-order/maps/map_8601-dimension-z-memory-1.png",
 			"imageSize": {
@@ -9801,7 +8909,6 @@
 		},
 		{
 			"id": "map_8602",
-			"zone": "Dimension Z",
 			"label": "Memory 2",
 			"image": "/digimon-world-next-order/maps/map_8602-dimension-z-memory-2.png",
 			"imageSize": {
@@ -9818,7 +8925,6 @@
 		},
 		{
 			"id": "map_8603",
-			"zone": "Dimension Z",
 			"label": "Memory 3",
 			"image": "/digimon-world-next-order/maps/map_8603-dimension-z-memory-3.png",
 			"imageSize": {
@@ -9835,7 +8941,6 @@
 		},
 		{
 			"id": "map_8604",
-			"zone": "Dimension Z",
 			"label": "Memory 4",
 			"image": "/digimon-world-next-order/maps/map_8604-dimension-z-memory-4.png",
 			"imageSize": {
@@ -9852,7 +8957,6 @@
 		},
 		{
 			"id": "map_8605",
-			"zone": "Dimension Z",
 			"label": "Memory 5",
 			"image": "/digimon-world-next-order/maps/map_8605-dimension-z-memory-5.png",
 			"imageSize": {
@@ -9868,17 +8972,14 @@
 			"spots": [
 				{
 					"id": "map_8605-spot-1",
-					"type": "wood",
 					"slots": [
 						{
-							"name": "DigiStarwood",
-							"value": 80,
-							"type": "wood"
+							"materialId": "digi-starwood",
+							"value": 80
 						},
 						{
-							"name": "DigiGodwood",
-							"value": 20,
-							"type": "wood"
+							"materialId": "digi-godwood",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9888,17 +8989,14 @@
 				},
 				{
 					"id": "map_8605-spot-2",
-					"type": "metal",
 					"slots": [
 						{
-							"name": "Red Digizoit",
-							"value": 80,
-							"type": "metal"
+							"materialId": "red-digizoit",
+							"value": 80
 						},
 						{
-							"name": "Blue Digizoit",
-							"value": 20,
-							"type": "stone"
+							"materialId": "blue-digizoit",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9910,7 +9008,6 @@
 		},
 		{
 			"id": "map_8606",
-			"zone": "Dimension Z",
 			"label": "Memory 6",
 			"image": "/digimon-world-next-order/maps/map_8606-dimension-z-memory-6.png",
 			"imageSize": {
@@ -9927,7 +9024,6 @@
 		},
 		{
 			"id": "map_8607",
-			"zone": "Dimension Z",
 			"label": "Memory 7",
 			"image": "/digimon-world-next-order/maps/map_8607-dimension-z-memory-7.png",
 			"imageSize": {
@@ -9943,17 +9039,14 @@
 			"spots": [
 				{
 					"id": "map_8607-spot-1",
-					"type": "stone",
 					"slots": [
 						{
-							"name": "DigiRuby",
-							"value": 80,
-							"type": "stone"
+							"materialId": "digi-ruby",
+							"value": 80
 						},
 						{
-							"name": "DigiDiamond",
-							"value": 20,
-							"type": "wood"
+							"materialId": "digi-diamond",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9963,17 +9056,14 @@
 				},
 				{
 					"id": "map_8607-spot-2",
-					"type": "water",
 					"slots": [
 						{
-							"name": "DigiLightningwater",
-							"value": 80,
-							"type": "water"
+							"materialId": "digi-lightningwater",
+							"value": 80
 						},
 						{
-							"name": "DigiHolywater",
-							"value": 20,
-							"type": "metal"
+							"materialId": "digi-holywater",
+							"value": 20
 						}
 					],
 					"projected": {
@@ -9985,7 +9075,6 @@
 		},
 		{
 			"id": "map_8608",
-			"zone": "Dimension Z",
 			"label": "Memory 8",
 			"image": "/digimon-world-next-order/maps/map_8608-dimension-z-memory-8.png",
 			"imageSize": {
@@ -10002,7 +9091,6 @@
 		},
 		{
 			"id": "map_8609",
-			"zone": "Dimension Z",
 			"label": "Memory 9",
 			"image": "/digimon-world-next-order/maps/map_8609-dimension-z-memory-9.png",
 			"imageSize": {
@@ -10019,7 +9107,6 @@
 		},
 		{
 			"id": "map_8610",
-			"zone": "Dimension Z",
 			"label": "Memory 10",
 			"image": "/digimon-world-next-order/maps/map_8610-dimension-z-memory-10.png",
 			"imageSize": {
@@ -10036,7 +9123,6 @@
 		},
 		{
 			"id": "map_8611",
-			"zone": "Dimension Z",
 			"label": "Memory 11",
 			"image": "/digimon-world-next-order/maps/map_8611-dimension-z-memory-11.png",
 			"imageSize": {
@@ -10053,7 +9139,6 @@
 		},
 		{
 			"id": "map_8612",
-			"zone": "Dimension Z",
 			"label": "Memory 12",
 			"image": "/digimon-world-next-order/maps/map_8612-dimension-z-memory-12.png",
 			"imageSize": {

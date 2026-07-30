@@ -10,6 +10,7 @@
 		loadSuggestedMaterialRoutes,
 		type MaterialArea,
 		type MaterialMap,
+		type Material,
 		type MaterialSpot,
 		type MaterialType,
 		type SuggestedMaterialRoute
@@ -18,6 +19,7 @@
 
 	let areas = $state<MaterialArea[]>([]);
 	let maps = $state<MaterialMap[]>([]);
+	let materials = $state<Material[]>([]);
 	let suggestedRoutes = $state<SuggestedMaterialRoute[]>([]);
 	let selectedAreaId = $state('');
 	let showRoute = $state(true);
@@ -25,12 +27,13 @@
 	const tileRem = 12;
 	const gapRem = 1.25;
 	const labelRem = 1.25;
-	const boardPaddingRem = 6;
+	const boardPaddingInlineRem = 6;
+	const boardPaddingBottomRem = 6;
 	const areaExitGapRem = 4.25;
 	const routeArrowMinLengthRem = 1.5;
 	const stepRem = tileRem + gapRem;
 	const materialTypes: Record<MaterialType, { label: string; spotClass: string; filterClass: string }> = {
-		water: {
+		liquid: {
 			label: 'Liquid',
 			spotClass: 'bg-blue-400',
 			filterClass: '!bg-blue-400/5 hover:!bg-blue-400/25 aria-pressed:!bg-blue-400/30'
@@ -51,84 +54,44 @@
 			filterClass: '!bg-green-500/5 hover:!bg-green-500/25 aria-pressed:!bg-green-500/30'
 		}
 	};
-	const materialOrder = [
-		'DigiDeepwater',
-		'DigiAcid',
-		'DigiOil',
-		'DigiSap',
-		'DigiLatex',
-		'DigiMercury',
-		'DigiIonwater',
-		'DigiRainbowdrop',
-		'DigiLightningwater',
-		'DigiHolywater',
-		'DigiCopper',
-		'DigiIron',
-		'DigiSilver',
-		'DigiGold',
-		'DigiWhiteGold',
-		'Mithril',
-		'Chrome Digizoit',
-		'Black Digizoit',
-		'Red Digizoit',
-		'Blue Digizoit',
-		'DigiSand',
-		'DigiStone',
-		'DigiRock',
-		'DigiLight',
-		'DigiNight',
-		'DigiQuartz',
-		'DigiOnyx',
-		'DigiEmerald',
-		'DigiRuby',
-		'DigiDiamond',
-		'DigiWhitewood',
-		'DigiBlackwood',
-		'DigiPalm',
-		'DigiSnowwood',
-		'DigiGreatwood',
-		'DigiBamboo',
-		'DigiFirewood',
-		'DigiFelwood',
-		'DigiStarwood',
-		'DigiGodwood'
-	] as const;
-	const materialOrderIndex = new Map<string, number>(materialOrder.map((material, index) => [material, index]));
-
 	onMount(async () => {
 		const [data, routes] = await Promise.all([loadMaterialSpots(), loadSuggestedMaterialRoutes()]);
 		areas = data.areas;
 		maps = data.maps;
+		materials = data.materials;
 		suggestedRoutes = routes;
 		selectedAreaId = data.areas[0]?.id ?? '';
+
+		for (const material of materials) {
+			if (materialFilter[material.name]) materialFilter[material.id] = true;
+			delete materialFilter[material.name];
+		}
 	});
 
 	const materialOptions = $derived.by(() => {
-		const availableMaterials = new SvelteMap<string, { type: MaterialType; count: number }>();
+		const spotCounts = new SvelteMap<string, number>();
 
 		for (const map of maps) {
 			for (const spot of map.spots) {
-				for (const material of new Set(spot.slots.map((slot) => slot.name))) {
-					const existing = availableMaterials.get(material);
-
-					if (existing) existing.count += 1;
-					else availableMaterials.set(material, { type: spot.type, count: 1 });
+				for (const materialId of new Set(spot.slots.map((slot) => slot.materialId))) {
+					spotCounts.set(materialId, (spotCounts.get(materialId) ?? 0) + 1);
 				}
 			}
 		}
 
-		return [...availableMaterials]
-			.sort(
-				([a], [b]) =>
-					(materialOrderIndex.get(a) ?? Number.MAX_SAFE_INTEGER) -
-						(materialOrderIndex.get(b) ?? Number.MAX_SAFE_INTEGER) || a.localeCompare(b)
-			)
-			.map(([material, { type, count }]) => ({
-				value: material,
-				label: `${material} (${count})`,
-				class: materialTypes[type].filterClass,
-				group: materialTypes[type].label
-			}));
+		return materials.flatMap((material) => {
+			const count = spotCounts.get(material.id);
+			return count
+				? [
+						{
+							value: material.id,
+							label: `${material.name} (${count})`,
+							class: materialTypes[material.type].filterClass,
+							group: materialTypes[material.type].label
+						}
+					]
+				: [];
+		});
 	});
 	const selectedMaterials = $derived(
 		new Set(Object.keys(materialFilter).filter((material) => materialFilter[material]))
@@ -152,6 +115,21 @@
 			const map = mapsById.get(item.mapId);
 			return map ? [{ ...item, map }] : [];
 		});
+	});
+	const boardPaddingTopRem = $derived.by(() => {
+		if (!selectedArea) return 1.5;
+
+		const positionedMaps = new Map(selectedArea.maps.map((item) => [item.mapId, item]));
+		const hasTopExit = selectedArea.areaExits.some((exit) => {
+			const source = positionedMaps.get(exit.sourceMapId);
+			if (!source || source.y !== 0) return false;
+
+			const offsetX = exit.position.x - 0.5;
+			const offsetY = exit.position.y - 0.5;
+			return offsetY < 0 && Math.abs(offsetY) >= Math.abs(offsetX);
+		});
+
+		return hasTopExit ? areaExitGapRem + 1.5 : 1.5;
 	});
 	const selectedAreaTransitions = $derived.by(() => {
 		if (!selectedArea) return [];
@@ -235,24 +213,28 @@
 	});
 	const boardWidthRem = $derived(
 		selectedAreaMaps.length
-			? (Math.max(...selectedAreaMaps.map((item) => item.x)) + 1) * stepRem - gapRem + boardPaddingRem * 2
+			? (Math.max(...selectedAreaMaps.map((item) => item.x)) + 1) * stepRem - gapRem + boardPaddingInlineRem * 2
 			: 1
 	);
 	const boardHeightRem = $derived(
 		selectedAreaMaps.length
-			? (Math.max(...selectedAreaMaps.map((item) => item.y)) + 1) * stepRem - gapRem + labelRem + boardPaddingRem * 2
+			? (Math.max(...selectedAreaMaps.map((item) => item.y)) + 1) * stepRem -
+					gapRem +
+					labelRem +
+					boardPaddingTopRem +
+					boardPaddingBottomRem
 			: 1
 	);
 
 	function spotLabel(spot: MaterialSpot) {
-		const matchingSlots = spot.slots.filter((slot) => selectedMaterials.has(slot.name));
+		const matchingSlots = spot.slots.filter((slot) => selectedMaterials.has(slot.materialId));
 		const slots = selectedMaterials.size > 0 && matchingSlots.length > 0 ? matchingSlots : spot.slots;
 
 		return slots.map((slot) => `${slot.name} ${slot.value}%`).join('\n');
 	}
 
 	function matchesMaterialFilter(spot: MaterialSpot) {
-		return selectedMaterials.size === 0 || spot.slots.some((slot) => selectedMaterials.has(slot.name));
+		return selectedMaterials.size === 0 || spot.slots.some((slot) => selectedMaterials.has(slot.materialId));
 	}
 
 	function spotClass(type: MaterialType) {
@@ -284,8 +266,8 @@
 		const y = Math.min(1, Math.max(0, (position.y * item.map.imageSize.height - crop.y) / crop.height));
 
 		return {
-			x: boardPaddingRem + item.x * stepRem + x * tileRem,
-			y: boardPaddingRem + item.y * stepRem + labelRem + y * tileRem
+			x: boardPaddingInlineRem + item.x * stepRem + x * tileRem,
+			y: boardPaddingTopRem + item.y * stepRem + labelRem + y * tileRem
 		};
 	}
 
@@ -295,8 +277,8 @@
 
 	function externalExitPoint(item: (typeof selectedAreaMaps)[number], nodePoint: { x: number; y: number }) {
 		const center = {
-			x: boardPaddingRem + item.x * stepRem + tileRem / 2,
-			y: boardPaddingRem + item.y * stepRem + labelRem + tileRem / 2
+			x: boardPaddingInlineRem + item.x * stepRem + tileRem / 2,
+			y: boardPaddingTopRem + item.y * stepRem + labelRem + tileRem / 2
 		};
 		const localX = nodePoint.x - center.x;
 		const localY = nodePoint.y - center.y;
@@ -406,7 +388,7 @@
 								id="route-arrow"
 								markerWidth="4"
 								markerHeight="4"
-								refX="2"
+								refX="4"
 								refY="2"
 								orient="auto"
 								markerUnits="strokeWidth"
@@ -450,7 +432,7 @@
 				{#each selectedAreaMaps as item (item.mapId)}
 					<section
 						class="absolute w-48"
-						style={`left: ${boardPaddingRem + item.x * stepRem}rem; top: ${boardPaddingRem + item.y * stepRem}rem;`}
+						style={`left: ${boardPaddingInlineRem + item.x * stepRem}rem; top: ${boardPaddingTopRem + item.y * stepRem}rem;`}
 						aria-label={item.map.label}
 					>
 						<div class="flex w-48 items-center justify-center" style={`height: ${tileRem + labelRem}rem;`}>

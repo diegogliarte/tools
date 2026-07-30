@@ -1,0 +1,1132 @@
+{
+	"buildings": [
+		{
+			"id": "jijimon-s-house",
+			"name": "Jijimon's House",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-deepwater",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-sand",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-bamboo",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-sap",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-ionwater",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-rock",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-godwood",
+							"amount": 50
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "square",
+			"name": "Square",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-lightningwater",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-gold",
+							"amount": 50
+						},
+						{
+							"materialId": "chrome-digizoit",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-emerald",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-starwood",
+							"amount": 25
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-deepwater",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-rainbowdrop",
+							"amount": 25
+						},
+						{
+							"materialId": "blue-digizoit",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-diamond",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-palm",
+							"amount": 25
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-latex",
+							"amount": 25
+						},
+						{
+							"materialId": "black-digizoit",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-night",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-onyx",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-bamboo",
+							"amount": 25
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "digi-holywater",
+							"amount": 25
+						},
+						{
+							"materialId": "red-digizoit",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-ruby",
+							"amount": 25
+						},
+						{
+							"materialId": "digi-snowwood",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-starwood",
+							"amount": 25
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "warehouse",
+			"name": "Warehouse",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-whitewood",
+							"amount": 50
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-blackwood",
+							"amount": 50
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-greatwood",
+							"amount": 50
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "digi-starwood",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-godwood",
+							"amount": 50
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "sender",
+			"name": "Sender",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-copper",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-whitewood",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-palm",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "black-digizoit",
+							"amount": 5
+						},
+						{
+							"materialId": "red-digizoit",
+							"amount": 10
+						},
+						{
+							"materialId": "blue-digizoit",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-blackwood",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-greatwood",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "builder",
+			"name": "Builder",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-copper",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-sand",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-whitewood",
+							"amount": 50
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "mithril",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-night",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-felwood",
+							"amount": 50
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "item-shop",
+			"name": "Item Shop",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-copper",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-stone",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-whitewood",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-silver",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-light",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-blackwood",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-gold",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-quartz",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-starwood",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "black-digizoit",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-diamond",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-godwood",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "hospital",
+			"name": "Hospital",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-latex",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-quartz",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-holywater",
+							"amount": 20
+						},
+						{
+							"materialId": "blue-digizoit",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-diamond",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "restaurant",
+			"name": "Restaurant",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-deepwater",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-whitewood",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-acid",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-palm",
+							"amount": 30
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-oil",
+							"amount": 40
+						},
+						{
+							"materialId": "digi-bamboo",
+							"amount": 40
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "digi-latex",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-firewood",
+							"amount": 50
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "stock-market",
+			"name": "Stock Market",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-light",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-night",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-whitewood",
+							"amount": 30
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-onyx",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-palm",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "advanced-item-shop",
+			"name": "Advanced Item Shop",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-gold",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-night",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-quartz",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-onyx",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-white-gold",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-emerald",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-ruby",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-diamond",
+							"amount": 10
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "field",
+			"name": "Field",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-deepwater",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-acid",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-sand",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-whitewood",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-oil",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-sap",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-stone",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-greatwood",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-sap",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-latex",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-rock",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-bamboo",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "digi-ionwater",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-rainbowdrop",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-light",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-godwood",
+							"amount": 10
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "lab",
+			"name": "Lab",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-acid",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-iron",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-stone",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-blackwood",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-oil",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-silver",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-rock",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-felwood",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-mercury",
+							"amount": 10
+						},
+						{
+							"materialId": "mithril",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-light",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-starwood",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "digi-lightningwater",
+							"amount": 10
+						},
+						{
+							"materialId": "chrome-digizoit",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-night",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-godwood",
+							"amount": 10
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "digivolution-dojo",
+			"name": "Digivolution Dojo",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-stone",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-rock",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-whitewood",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-greatwood",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-light",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-firewood",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-felwood",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "training-hall",
+			"name": "Training Hall",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-copper",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-iron",
+							"amount": 20
+						},
+						{
+							"materialId": "mithril",
+							"amount": 20
+						},
+						{
+							"materialId": "chrome-digizoit",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-snowwood",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-white-gold",
+							"amount": 50
+						},
+						{
+							"materialId": "black-digizoit",
+							"amount": 20
+						},
+						{
+							"materialId": "red-digizoit",
+							"amount": 20
+						},
+						{
+							"materialId": "blue-digizoit",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-firewood",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "fishing-hole",
+			"name": "Fishing Hole",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-deepwater",
+							"amount": 70
+						},
+						{
+							"materialId": "digi-sand",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-palm",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-ionwater",
+							"amount": 70
+						},
+						{
+							"materialId": "digi-stone",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-snowwood",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-rainbowdrop",
+							"amount": 70
+						},
+						{
+							"materialId": "digi-rock",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-bamboo",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "digi-holywater",
+							"amount": 70
+						},
+						{
+							"materialId": "digi-quartz",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-felwood",
+							"amount": 10
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "colosseum",
+			"name": "Colosseum",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-iron",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-silver",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-sand",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-gold",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-white-gold",
+							"amount": 20
+						},
+						{
+							"materialId": "red-digizoit",
+							"amount": 10
+						},
+						{
+							"materialId": "digi-stone",
+							"amount": 30
+						},
+						{
+							"materialId": "digi-diamond",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "arena",
+			"name": "Arena",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-oil",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-mercury",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-silver",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-emerald",
+							"amount": 10
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-lightningwater",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-gold",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-ruby",
+							"amount": 20
+						},
+						{
+							"materialId": "digi-diamond",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "museum",
+			"name": "Museum",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-quartz",
+							"amount": 40
+						},
+						{
+							"materialId": "digi-onyx",
+							"amount": 30
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-emerald",
+							"amount": 40
+						},
+						{
+							"materialId": "digi-ruby",
+							"amount": 30
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "treasure-hunter",
+			"name": "Treasure Hunter",
+			"maxLevel": 3,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-copper",
+							"amount": 50
+						},
+						{
+							"materialId": "black-digizoit",
+							"amount": 20
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-iron",
+							"amount": 50
+						},
+						{
+							"materialId": "red-digizoit",
+							"amount": 20
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "spacetime-transporter",
+			"name": "Spacetime Transporter",
+			"maxLevel": 5,
+			"upgrades": [
+				{
+					"toLevel": 2,
+					"materials": [
+						{
+							"materialId": "digi-acid",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-iron",
+							"amount": 30
+						}
+					]
+				},
+				{
+					"toLevel": 3,
+					"materials": [
+						{
+							"materialId": "digi-oil",
+							"amount": 50
+						},
+						{
+							"materialId": "digi-silver",
+							"amount": 30
+						}
+					]
+				},
+				{
+					"toLevel": 4,
+					"materials": [
+						{
+							"materialId": "digi-mercury",
+							"amount": 50
+						},
+						{
+							"materialId": "mithril",
+							"amount": 30
+						}
+					]
+				},
+				{
+					"toLevel": 5,
+					"materials": [
+						{
+							"materialId": "digi-lightningwater",
+							"amount": 50
+						},
+						{
+							"materialId": "chrome-digizoit",
+							"amount": 30
+						}
+					]
+				}
+			]
+		}
+	]
+}
