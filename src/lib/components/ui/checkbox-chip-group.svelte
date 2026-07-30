@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { tooltipAction } from '$lib/actions/tooltip';
 	import { syncLocalStorageState } from '$lib/states/local-storage.svelte';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	type Option =
 		| string
@@ -9,6 +10,8 @@
 				label: string;
 				disabled?: boolean;
 				tooltip?: string;
+				class?: string;
+				group?: string;
 		  };
 
 	type NormalizedOption = {
@@ -16,6 +19,8 @@
 		label: string;
 		disabled: boolean;
 		tooltip?: string;
+		class?: string;
+		group?: string;
 	};
 
 	interface Props {
@@ -54,11 +59,23 @@
 				value: option.value,
 				label: option.label,
 				disabled: option.disabled ?? false,
-				tooltip: option.tooltip
+				tooltip: option.tooltip,
+				class: option.class,
+				group: option.group
 			};
 		})
 	);
 
+	const itemGroups = $derived.by(() => {
+		const groups = new SvelteMap<string, NormalizedOption[]>();
+
+		for (const item of items) {
+			const group = item.group ?? '';
+			groups.set(group, [...(groups.get(group) ?? []), item]);
+		}
+
+		return [...groups].map(([label, groupItems]) => ({ label, items: groupItems }));
+	});
 	const enabledItems = $derived(items.filter((item) => !item.disabled));
 	const selectedCount = $derived(items.filter((item) => checked[item.value]).length);
 
@@ -120,6 +137,29 @@
 	);
 </script>
 
+{#snippet chip(item: NormalizedOption)}
+	{@const selected = !!checked[item.value]}
+
+	<div class="relative" use:tooltipAction={{ text: item.tooltip ?? '', position: 'top', disabled: !item.tooltip }}>
+		<button
+			type="button"
+			disabled={item.disabled}
+			aria-pressed={selected}
+			class="
+				cursor-pointer border px-2 py-1 text-xs transition-all
+				disabled:pointer-events-none disabled:opacity-40
+				{selected
+				? 'border-accent bg-accent-dark text-accent shadow-sm'
+				: 'border-white/15 bg-transparent text-white/60 hover:border-white/35 hover:bg-white/5 hover:text-white/90'}
+				{item.class ?? ''}
+			"
+			onclick={() => setValue(item.value, !selected)}
+		>
+			{item.label}
+		</button>
+	</div>
+{/snippet}
+
 <div class="flex flex-col gap-1.5 {className || 'w-full'}">
 	<div class="flex items-center justify-start gap-3">
 		{#if label}
@@ -141,26 +181,18 @@
 		{/if}
 	</div>
 
-	<div class="flex flex-wrap gap-1.5">
-		{#each items as item (item.value)}
-			{@const selected = !!checked[item.value]}
+	<div class="flex flex-col gap-1.5">
+		{#each itemGroups as group (group.label)}
+			<div class={group.label ? 'grid grid-cols-[4rem_minmax(0,1fr)] items-start gap-2' : ''}>
+				{#if group.label}
+					<div class="pt-1 text-xs opacity-60">{group.label}</div>
+				{/if}
 
-			<div class="relative" use:tooltipAction={{ text: item.tooltip ?? '', position: 'top', disabled: !item.tooltip }}>
-				<button
-					type="button"
-					disabled={item.disabled}
-					aria-pressed={selected}
-					class="
-						cursor-pointer border px-2 py-1 text-xs transition-all
-						disabled:pointer-events-none disabled:opacity-40
-						{selected
-						? 'border-accent bg-accent-dark text-accent shadow-sm'
-						: 'border-white/15 bg-transparent text-white/60 hover:border-white/35 hover:bg-white/5 hover:text-white/90'}
-					"
-					onclick={() => setValue(item.value, !selected)}
-				>
-					{item.label}
-				</button>
+				<div class="flex flex-wrap gap-1.5">
+					{#each group.items as item (item.value)}
+						{@render chip(item)}
+					{/each}
+				</div>
 			</div>
 		{/each}
 

@@ -1,0 +1,144 @@
+[
+	{
+		"id": "server-desert",
+		"label": "Noise Storm to Dead End Town",
+		"areaId": "server-desert",
+		"segments": [
+			{
+				"mapId": "map_0301",
+				"spotIds": ["map_0301-spot-1"]
+			},
+			{
+				"mapId": "map_0302",
+				"spotIds": ["map_0302-spot-2", "map_0302-spot-3", "map_0302-spot-1", "map_0302-spot-4"]
+			},
+			{
+				"mapId": "map_0305",
+				"spotIds": ["map_0305-spot-4", "map_0305-spot-3", "map_0305-spot-2", "map_0305-spot-1"]
+			}
+		]
+	},
+	{
+		"id": "absolute-zero",
+		"label": "Freeze Way to Ice Sculpture Room",
+		"areaId": "absolute-zero",
+		"segments": [
+			{
+				"mapId": "map_0901",
+				"spotIds": ["map_0901-spot-1", "map_0901-spot-2"]
+			},
+			{
+				"mapId": "map_0902",
+				"spotIds": ["map_0902-spot-4", "map_0902-spot-1", "map_0902-spot-3", "map_0902-spot-2"]
+			},
+			{
+				"mapId": "map_0903",
+				"spotIds": ["map_0903-spot-1", "map_0903-spot-2"]
+			}
+		]
+	},
+	{
+		"id": "faulty-ex-machina",
+		"label": "West Coast to Greenery Island",
+		"areaId": "faulty-ex-machina",
+		"segments": [
+			{
+				"mapId": "map_0801",
+				"spotIds": ["map_0801-spot-3", "map_0801-spot-2", "map_0801-spot-4", "map_0801-spot-1"]
+			},
+			{
+				"mapId": "map_0802",
+				"spotIds": ["map_0802-spot-1"]
+			}
+		]
+	},
+	{
+		"id": "mod-cape",
+		"label": "Inlet Cape to Captain's Cabin",
+		"areaId": "mod-cape",
+		"segments": [
+			{
+				"mapId": "map_0601",
+				"spotIds": [
+					"map_0601-spot-1",
+					"map_0601-spot-4",
+					"map_0601-spot-5",
+					"map_0601-spot-7",
+					"map_0601-spot-2",
+					"map_0601-spot-6",
+					"map_0601-spot-3"
+				]
+			},
+			{
+				"mapId": "map_0605",
+				"spotIds": ["map_0605-spot-3", "map_0605-spot-2"]
+			},
+			{
+				"mapId": "map_0606",
+				"spotIds": ["map_0606-spot-2", "map_0606-spot-1"]
+			},
+			{
+				"mapId": "map_0608",
+				"spotIds": ["map_0608-spot-1", "map_0608-spot-2", "map_0608-spot-3"]
+			}
+		]
+	},
+	{
+		"id": "bony-resort",
+		"label": "Graveyard to Night Church",
+		"areaId": "bony-resort",
+		"segments": [
+			{
+				"mapId": "map_0708",
+				"spotIds": ["map_0708-spot-1", "map_0708-spot-2", "map_0708-spot-3"]
+			},
+			{
+				"mapId": "map_0709",
+				"spotIds": ["map_0709-spot-1"]
+			}
+		]
+	},
+	{
+		"id": "faulty-ex-machina-hinterland",
+		"label": "Control Island to East Coast",
+		"areaId": "faulty-ex-machina",
+		"segments": [
+			{
+				"mapId": "map_0806",
+				"spotIds": ["map_0806-spot-1"]
+			},
+			{
+				"mapId": "map_0808",
+				"spotIds": [
+					"map_0808-spot-6",
+					"map_0808-spot-8",
+					"map_0808-spot-1",
+					"map_0808-spot-2",
+					"map_0808-spot-4",
+					"map_0808-spot-5",
+					"map_0808-spot-3",
+					"map_0808-spot-7"
+				]
+			}
+		]
+	},
+	{
+		"id": "logic-volcano",
+		"label": "Fire Wall to Crimson Shrine",
+		"areaId": "logic-volcano",
+		"segments": [
+			{
+				"mapId": "map_0501",
+				"spotIds": []
+			},
+			{
+				"mapId": "map_0506",
+				"spotIds": ["map_0506-spot-1"]
+			},
+			{
+				"mapId": "map_0507",
+				"spotIds": ["map_0507-spot-3", "map_0507-spot-4", "map_0507-spot-1", "map_0507-spot-2"]
+			}
+		]
+	}
+]

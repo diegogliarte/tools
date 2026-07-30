@@ -1,8 +1,8 @@
 import type { ToolDefinition } from '$lib/tools/types';
 
 export const tool: ToolDefinition = {
-	title: 'Material Routes',
-	description: 'View material pickup spots on extracted area maps.',
+	title: 'Materials Map',
+	description: 'View material spots and suggested gathering routes.',
 	fullscreen: true,
 	centered: true
 };

@@ -1,36 +1,150 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import SelectInput from '$lib/components/ui/select-input.svelte';
 	import Button from '$lib/components/ui/button.svelte';
+	import CheckboxChipGroup from '$lib/components/ui/checkbox-chip-group.svelte';
+	import CheckboxInput from '$lib/components/ui/checkbox-input.svelte';
+	import SelectInput from '$lib/components/ui/select-input.svelte';
 	import { tooltipAction } from '$lib/actions/tooltip';
 	import {
 		loadMaterialSpots,
+		loadSuggestedMaterialRoutes,
 		type MaterialArea,
 		type MaterialMap,
 		type MaterialSpot,
-		type MaterialType
+		type MaterialType,
+		type SuggestedMaterialRoute
 	} from '$lib/data/digimon-world-next-order/data';
+	import { SvelteMap } from 'svelte/reactivity';
 
 	let areas = $state<MaterialArea[]>([]);
 	let maps = $state<MaterialMap[]>([]);
+	let suggestedRoutes = $state<SuggestedMaterialRoute[]>([]);
 	let selectedAreaId = $state('');
+	let showRoute = $state(true);
+	let materialFilter = $state<Record<string, boolean>>({});
 	const tileRem = 12;
 	const gapRem = 1.25;
 	const labelRem = 1.25;
 	const boardPaddingRem = 6;
 	const areaExitGapRem = 4.25;
+	const routeArrowMinLengthRem = 1.5;
 	const stepRem = tileRem + gapRem;
+	const materialTypes: Record<MaterialType, { label: string; spotClass: string; filterClass: string }> = {
+		water: {
+			label: 'Liquid',
+			spotClass: 'bg-blue-400',
+			filterClass: '!bg-blue-400/5 hover:!bg-blue-400/25 aria-pressed:!bg-blue-400/30'
+		},
+		stone: {
+			label: 'Stone',
+			spotClass: 'bg-yellow-300',
+			filterClass: '!bg-yellow-300/5 hover:!bg-yellow-300/25 aria-pressed:!bg-yellow-300/30'
+		},
+		metal: {
+			label: 'Metal',
+			spotClass: 'bg-red-500',
+			filterClass: '!bg-red-500/5 hover:!bg-red-500/25 aria-pressed:!bg-red-500/30'
+		},
+		wood: {
+			label: 'Wood',
+			spotClass: 'bg-green-500',
+			filterClass: '!bg-green-500/5 hover:!bg-green-500/25 aria-pressed:!bg-green-500/30'
+		}
+	};
+	const materialOrder = [
+		'DigiDeepwater',
+		'DigiAcid',
+		'DigiOil',
+		'DigiSap',
+		'DigiLatex',
+		'DigiMercury',
+		'DigiIonwater',
+		'DigiRainbowdrop',
+		'DigiLightningwater',
+		'DigiHolywater',
+		'DigiCopper',
+		'DigiIron',
+		'DigiSilver',
+		'DigiGold',
+		'DigiWhiteGold',
+		'Mithril',
+		'Chrome Digizoit',
+		'Black Digizoit',
+		'Red Digizoit',
+		'Blue Digizoit',
+		'DigiSand',
+		'DigiStone',
+		'DigiRock',
+		'DigiLight',
+		'DigiNight',
+		'DigiQuartz',
+		'DigiOnyx',
+		'DigiEmerald',
+		'DigiRuby',
+		'DigiDiamond',
+		'DigiWhitewood',
+		'DigiBlackwood',
+		'DigiPalm',
+		'DigiSnowwood',
+		'DigiGreatwood',
+		'DigiBamboo',
+		'DigiFirewood',
+		'DigiFelwood',
+		'DigiStarwood',
+		'DigiGodwood'
+	] as const;
+	const materialOrderIndex = new Map<string, number>(materialOrder.map((material, index) => [material, index]));
 
 	onMount(async () => {
-		const data = await loadMaterialSpots();
+		const [data, routes] = await Promise.all([loadMaterialSpots(), loadSuggestedMaterialRoutes()]);
 		areas = data.areas;
 		maps = data.maps;
+		suggestedRoutes = routes;
 		selectedAreaId = data.areas[0]?.id ?? '';
 	});
 
-	const areaOptions = $derived(areas.map((area) => ({ value: area.id, label: area.label })));
-	const selectedArea = $derived(areas.find((area) => area.id === selectedAreaId) ?? areas[0]);
+	const materialOptions = $derived.by(() => {
+		const availableMaterials = new SvelteMap<string, { type: MaterialType; count: number }>();
+
+		for (const map of maps) {
+			for (const spot of map.spots) {
+				for (const material of new Set(spot.slots.map((slot) => slot.name))) {
+					const existing = availableMaterials.get(material);
+
+					if (existing) existing.count += 1;
+					else availableMaterials.set(material, { type: spot.type, count: 1 });
+				}
+			}
+		}
+
+		return [...availableMaterials]
+			.sort(
+				([a], [b]) =>
+					(materialOrderIndex.get(a) ?? Number.MAX_SAFE_INTEGER) -
+						(materialOrderIndex.get(b) ?? Number.MAX_SAFE_INTEGER) || a.localeCompare(b)
+			)
+			.map(([material, { type, count }]) => ({
+				value: material,
+				label: `${material} (${count})`,
+				class: materialTypes[type].filterClass,
+				group: materialTypes[type].label
+			}));
+	});
+	const selectedMaterials = $derived(
+		new Set(Object.keys(materialFilter).filter((material) => materialFilter[material]))
+	);
 	const mapsById = $derived(new Map(maps.map((map) => [map.id, map])));
+	const areaOptions = $derived(
+		areas.map((area) => ({
+			value: area.id,
+			label: `${area.label} (${area.maps.reduce(
+				(total, item) => total + (mapsById.get(item.mapId)?.spots.filter(matchesMaterialFilter).length ?? 0),
+				0
+			)})${suggestedRoutes.some((route) => route.areaId === area.id) ? ' · Route' : ''}`
+		}))
+	);
+	const selectedArea = $derived(areas.find((area) => area.id === selectedAreaId) ?? areas[0]);
+	const selectedRoutes = $derived(suggestedRoutes.filter((route) => route.areaId === selectedArea?.id));
 	const selectedAreaMaps = $derived.by(() => {
 		if (!selectedArea) return [];
 
@@ -80,6 +194,45 @@
 			];
 		});
 	});
+	const selectedRouteLines = $derived.by(() => {
+		if (!showRoute) return [];
+
+		const positionedMaps = new Map(selectedAreaMaps.map((item) => [item.mapId, item]));
+		return selectedRoutes.flatMap((route) => {
+			const points: { x: number; y: number }[] = [];
+
+			for (const [index, segment] of route.segments.entries()) {
+				const item = positionedMaps.get(segment.mapId);
+				if (!item) continue;
+
+				if (index === 0 && item.map.sender) {
+					points.push(mapPoint(item, item.map.sender.projected));
+				} else if (index > 0) {
+					const previousMapId = route.segments[index - 1].mapId;
+					const transition = selectedAreaTransitions.find(
+						(item) =>
+							(item.sourceMapId === previousMapId && item.targetMapId === segment.mapId) ||
+							(item.targetMapId === previousMapId && item.sourceMapId === segment.mapId)
+					);
+
+					if (transition) {
+						points.push(
+							transition.sourceMapId === previousMapId ? transition.sourcePoint : transition.targetPoint,
+							transition.sourceMapId === segment.mapId ? transition.sourcePoint : transition.targetPoint
+						);
+					}
+				}
+
+				const spotsById = new Map(item.map.spots.map((spot) => [spot.id, spot]));
+				for (const spotId of segment.spotIds) {
+					const spot = spotsById.get(spotId);
+					if (spot) points.push(mapPoint(item, spot.projected));
+				}
+			}
+
+			return points.length > 1 ? [{ id: route.id, points }] : [];
+		});
+	});
 	const boardWidthRem = $derived(
 		selectedAreaMaps.length
 			? (Math.max(...selectedAreaMaps.map((item) => item.x)) + 1) * stepRem - gapRem + boardPaddingRem * 2
@@ -92,16 +245,18 @@
 	);
 
 	function spotLabel(spot: MaterialSpot) {
-		return spot.slots.map((slot) => `${slot.name} ${slot.value}%`).join('\n');
+		const matchingSlots = spot.slots.filter((slot) => selectedMaterials.has(slot.name));
+		const slots = selectedMaterials.size > 0 && matchingSlots.length > 0 ? matchingSlots : spot.slots;
+
+		return slots.map((slot) => `${slot.name} ${slot.value}%`).join('\n');
+	}
+
+	function matchesMaterialFilter(spot: MaterialSpot) {
+		return selectedMaterials.size === 0 || spot.slots.some((slot) => selectedMaterials.has(slot.name));
 	}
 
 	function spotClass(type: MaterialType) {
-		return {
-			water: 'bg-blue-400',
-			stone: 'bg-yellow-300',
-			metal: 'bg-red-500',
-			wood: 'bg-green-500'
-		}[type];
+		return materialTypes[type].spotClass;
 	}
 
 	function mapImageStyle(map: MaterialMap) {
@@ -115,7 +270,7 @@
 		].join('; ');
 	}
 
-	function spotStyle(map: MaterialMap, spot: MaterialSpot) {
+	function spotStyle(map: MaterialMap, spot: Pick<MaterialSpot, 'projected'>) {
 		const crop = map.imageCropBounds;
 		const x = (spot.projected.x * map.imageSize.width - crop.x) / crop.width;
 		const y = (spot.projected.y * map.imageSize.height - crop.y) / crop.height;
@@ -160,6 +315,14 @@
 	function anchorStyle(point: { x: number; y: number }) {
 		return `left: ${point.x}rem; top: ${point.y}rem;`;
 	}
+
+	function routeSegmentPoints(start: { x: number; y: number }, end: { x: number; y: number }) {
+		return `${start.x},${start.y} ${(start.x + end.x) / 2},${(start.y + end.y) / 2} ${end.x},${end.y}`;
+	}
+
+	function showRouteArrow(start: { x: number; y: number }, end: { x: number; y: number }, index: number) {
+		return index % 2 === 1 && Math.hypot(end.x - start.x, end.y - start.y) >= routeArrowMinLengthRem;
+	}
 </script>
 
 {#snippet transitionNode(point: { x: number; y: number }, label: string)}
@@ -172,8 +335,29 @@
 
 {#if selectedArea}
 	<div class="flex flex-col gap-4">
-		<div class="mx-auto w-full max-w-xs">
-			<SelectInput label="Area" bind:value={selectedAreaId} options={areaOptions} allowEmpty={false} />
+		<div class="mx-auto flex w-full max-w-5xl flex-col gap-3">
+			<div class="flex flex-wrap justify-center gap-3">
+				<div class="w-full max-w-xs">
+					<SelectInput label="Area" bind:value={selectedAreaId} options={areaOptions} allowEmpty={false} />
+				</div>
+				<div class="flex items-end gap-1 pb-2">
+					<CheckboxInput label="Show routes" bind:checked={showRoute} storageKey="digimon-material-route" />
+					<span class="text-xs whitespace-nowrap">
+						(credit to
+						<a
+							href="https://www.youtube.com/watch?v=60uC8hlwoUY"
+							target="_blank"
+							rel="noreferrer"
+							class="text-accent hover:underline"
+						>
+							Shnickerman
+						</a>
+						)
+					</span>
+				</div>
+			</div>
+
+			<CheckboxChipGroup label="Materials" options={materialOptions} bind:checked={materialFilter} />
 		</div>
 
 		<div class="min-w-0">
@@ -191,7 +375,7 @@
 							y1={transition.sourcePoint.y}
 							x2={transition.targetPoint.x}
 							y2={transition.targetPoint.y}
-							class="stroke-slate-400/70"
+							class="stroke-slate-400/30"
 							stroke-width="0.08"
 							stroke-linecap="round"
 						/>
@@ -202,12 +386,49 @@
 							y1={exit.nodePoint.y}
 							x2={exit.point.x}
 							y2={exit.point.y}
-							class="stroke-accent"
+							class="stroke-slate-400/30"
 							stroke-width="0.1"
 							stroke-linecap="round"
 						/>
 					{/each}
 				</svg>
+
+				{#if selectedRouteLines.length > 0}
+					<svg
+						class="pointer-events-none absolute inset-0 z-[25] overflow-visible"
+						width={`${boardWidthRem}rem`}
+						height={`${boardHeightRem}rem`}
+						viewBox={`0 0 ${boardWidthRem} ${boardHeightRem}`}
+						aria-hidden="true"
+					>
+						<defs>
+							<marker
+								id="route-arrow"
+								markerWidth="4"
+								markerHeight="4"
+								refX="2"
+								refY="2"
+								orient="auto"
+								markerUnits="strokeWidth"
+							>
+								<path d="M 0 0 L 4 2 L 0 4 Z" class="fill-accent" />
+							</marker>
+						</defs>
+						{#each selectedRouteLines as route (route.id)}
+							{#each route.points.slice(1) as point, index (`${route.id}-${index}`)}
+								<polyline
+									points={routeSegmentPoints(route.points[index], point)}
+									class="stroke-accent"
+									fill="none"
+									stroke-width="0.18"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									marker-mid={showRouteArrow(route.points[index], point, index) ? 'url(#route-arrow)' : undefined}
+								/>
+							{/each}
+						{/each}
+					</svg>
+				{/if}
 
 				{#each selectedAreaTransitions as transition (`${transition.id}-anchors`)}
 					{@const label = transitionLabel(transition)}
@@ -228,7 +449,7 @@
 
 				{#each selectedAreaMaps as item (item.mapId)}
 					<section
-						class="absolute z-10 w-48"
+						class="absolute w-48"
 						style={`left: ${boardPaddingRem + item.x * stepRem}rem; top: ${boardPaddingRem + item.y * stepRem}rem;`}
 						aria-label={item.map.label}
 					>
@@ -244,16 +465,31 @@
 									/>
 
 									{#each item.map.spots as spot (spot.id)}
+										{#if matchesMaterialFilter(spot)}
+											<button
+												type="button"
+												class="absolute z-30 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full {spotClass(
+													spot.type
+												)} shadow-[0_1px_4px_rgba(0,0,0,0.55)] transition hover:scale-125"
+												style={spotStyle(item.map, spot)}
+												use:tooltipAction={{ text: spotLabel(spot), position: 'top' }}
+												aria-label={spotLabel(spot)}
+											></button>
+										{/if}
+									{/each}
+
+									{#if item.map.sender}
 										<button
 											type="button"
-											class="absolute h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full {spotClass(
-												spot.type
-											)} shadow-[0_1px_4px_rgba(0,0,0,0.55)] transition hover:z-30 hover:scale-125"
-											style={spotStyle(item.map, spot)}
-											use:tooltipAction={{ text: spotLabel(spot), position: 'top' }}
-											aria-label={spotLabel(spot)}
+											class="absolute z-[26] h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-300 shadow-[0_1px_4px_rgba(0,0,0,0.7)] transition hover:scale-125 dark:bg-zinc-200"
+											style={spotStyle(item.map, item.map.sender)}
+											use:tooltipAction={{
+												text: item.map.sender.variant === 'hinterland' ? 'Sender: Hinterland' : 'Sender',
+												position: 'top'
+											}}
+											aria-label="Sender landing point"
 										></button>
-									{/each}
+									{/if}
 								</div>
 							</div>
 						</div>

@@ -1,5 +1,6 @@
 import { createJsonLoader } from '$lib/data/json-loader';
 import materialSpotsUrl from './material-spots.json?url';
+import suggestedRoutesUrl from './suggested-routes.json?url';
 
 export type MaterialType = 'water' | 'stone' | 'metal' | 'wood';
 
@@ -33,6 +34,13 @@ export type MaterialMap = {
 		height: number;
 	};
 	spots: MaterialSpot[];
+	sender?: {
+		variant: 'standard' | 'hinterland';
+		projected: {
+			x: number;
+			y: number;
+		};
+	};
 };
 
 export type MaterialArea = {
@@ -71,4 +79,15 @@ export type MaterialSpotsData = {
 	maps: MaterialMap[];
 };
 
+export type SuggestedMaterialRoute = {
+	id: string;
+	label: string;
+	areaId: string;
+	segments: {
+		mapId: string;
+		spotIds: string[];
+	}[];
+};
+
 export const loadMaterialSpots = createJsonLoader<MaterialSpotsData>(materialSpotsUrl);
+export const loadSuggestedMaterialRoutes = createJsonLoader<SuggestedMaterialRoute[]>(suggestedRoutesUrl);

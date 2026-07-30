@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { syncLocalStorageState } from '$lib/states/local-storage.svelte';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
 
 	interface Option {
@@ -12,15 +13,45 @@
 		label?: string;
 		placeholder?: string;
 		allowEmpty?: boolean;
+		storageKey?: string;
+		persist?: boolean;
 	}
 
-	let { value = $bindable(''), options, label = '', placeholder = '—', allowEmpty = true }: Props = $props();
+	let {
+		value = $bindable(''),
+		options,
+		label = '',
+		placeholder = '—',
+		allowEmpty = true,
+		storageKey = '',
+		persist = true
+	}: Props = $props();
 
 	const uid = $props.id();
+
+	function normalizeValue(value: unknown): { value: string | boolean | null } | null {
+		if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+
+		const saved = (value as Record<string, unknown>).value;
+		return typeof saved === 'string' || typeof saved === 'boolean' || saved === null ? { value: saved } : null;
+	}
 
 	function handleChange(event: Event) {
 		value = (event.currentTarget as HTMLSelectElement).value;
 	}
+
+	syncLocalStorageState(
+		() => ({ value }),
+		(next) => {
+			value = next.value;
+		},
+		{ value },
+		{
+			name: () => `select-input:${storageKey || label || uid}`,
+			persist: () => persist,
+			normalize: normalizeValue
+		}
+	);
 </script>
 
 <div class="flex flex-col gap-0.5">

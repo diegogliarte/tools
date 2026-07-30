@@ -427,7 +427,14 @@
 </script>
 
 {#if plusle && alakazam && raikou}
-	<div class="flex flex-col gap-6 border px-3 py-2">
+	<div class="flex flex-col gap-6 px-3 py-2">
+		<div class="text-center">
+			Credit to
+			<a href="https://youtu.be/jImNyd4X-WE" target="_blank" rel="noreferrer" class="text-accent hover:underline">
+				Mystaldi
+			</a>
+		</div>
+
 		<div class="flex items-center gap-2">
 			If <div class="aspect-square min-w-8"><PokemonIcon pokemon={plusle} /></div>
 			not recruited:
@@ -445,13 +452,6 @@
 			Use <div class="aspect-square min-w-8"><PokemonIcon pokemon={alakazam} /></div>
 			Teleport, Frustration ×3 (linked)
 		</div>
-
-		<div class="">
-			Credits to
-			<a href="https://youtu.be/jImNyd4X-WE" target="_blank" rel="noreferrer" class="text-accent hover:underline">
-				Mystaldi
-			</a>
-		</div>
 	</div>
 {:else}
 	<p class="text-center opacity-60">Loading PokÃ©mon...</p>
@@ -461,7 +461,7 @@
 	{#each floors as floor, i (i)}
 		<button
 			type="button"
-			class={`cursor-pointer border px-3 py-2 ${i === current ? 'text-white' : 'opacity-30'}`}
+			class={`cursor-pointer border px-3 py-2 ${i === current ? 'text-white' : 'border-dotted opacity-30'}`}
 			aria-current={i === current ? 'true' : undefined}
 			onclick={() => selectFloor(i)}
 		>
