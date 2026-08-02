@@ -40,13 +40,13 @@
 		},
 		stone: {
 			label: 'Stone',
-			spotClass: 'bg-yellow-300',
-			filterClass: '!bg-yellow-300/5 hover:!bg-yellow-300/25 aria-pressed:!bg-yellow-300/30'
+			spotClass: 'bg-red-500',
+			filterClass: '!bg-red-500/5 hover:!bg-red-500/25 aria-pressed:!bg-red-500/30'
 		},
 		metal: {
 			label: 'Metal',
-			spotClass: 'bg-red-500',
-			filterClass: '!bg-red-500/5 hover:!bg-red-500/25 aria-pressed:!bg-red-500/30'
+			spotClass: 'bg-yellow-300',
+			filterClass: '!bg-yellow-300/5 hover:!bg-yellow-300/25 aria-pressed:!bg-yellow-300/30'
 		},
 		wood: {
 			label: 'Wood',
