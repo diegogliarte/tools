@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { SvelteSet } from 'svelte/reactivity';
 	import Modal from '$lib/components/ui/modal.svelte';
+	import ModalPortrait from '$lib/components/ui/modal-portrait.svelte';
 	import PadzMonsterIcon from '$lib/components/puzzle-and-dragons-z/PadzMonsterIcon.svelte';
 	import { loadPadzMonsters, loadPadzSkills } from '$lib/data/puzzle-and-dragons-z/data';
 	import { openModal } from '$lib/states/modal.svelte';
@@ -162,9 +163,7 @@
 <Modal title={monster?.name} {onClose}>
 	{#if monster}
 		<div class="mb-4 flex gap-4">
-			<div class="w-20">
-				<img src={getPadzMonsterIcon(monster.id)} alt={monster.name} class="aspect-square h-full w-full object-cover" />
-			</div>
+			<ModalPortrait src={getPadzMonsterIcon(monster.id)} alt={`${monster.name} portrait`} />
 
 			<div class="flex flex-col gap-1 text-xs">
 				<div>ID: #{monster.id}</div>

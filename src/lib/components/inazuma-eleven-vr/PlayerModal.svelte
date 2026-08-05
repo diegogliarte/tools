@@ -1,10 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Modal from '$lib/components/ui/modal.svelte';
-	import PlayerIcon from '$lib/components/inazuma-eleven-vr/PlayerIcon.svelte';
+	import ModalPortrait from '$lib/components/ui/modal-portrait.svelte';
 	import { loadPlayers } from '$lib/data/inazuma-eleven-vr/data';
 
-	import { calculateATDFStats, type Player, computePlayerTier } from '$lib/utils/inazuma-eleven-vr.utils';
+	import {
+		calculateATDFStats,
+		type Player,
+		computePlayerTier,
+		getPlayerElementClass
+	} from '$lib/utils/inazuma-eleven-vr.utils';
 
 	interface Props {
 		player: Player;
@@ -38,9 +43,11 @@
 <Modal title={player?.Name} {onClose}>
 	{#if player}
 		<div class="mb-4 flex gap-4">
-			<div class="h-26 w-26">
-				<PlayerIcon {player} openModal={false} />
-			</div>
+			<ModalPortrait
+				src={player.Image}
+				alt={`${player.Name} portrait`}
+				backgroundClass={getPlayerElementClass(player.Element)}
+			/>
 
 			<div class="flex flex-col justify-between text-xs">
 				<div>{player.Name}</div>

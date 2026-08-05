@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Modal from '$lib/components/ui/modal.svelte';
+	import ModalPortrait from '$lib/components/ui/modal-portrait.svelte';
 	import DigimonIcon from '$lib/components/digimon-story-ts/DigimonIcon.svelte';
 	import { loadDigimon, loadSkills } from '$lib/data/digimon-story-ts/data';
 
-	import { type Digimon, type Skill, getSkillIcon } from '$lib/utils/digimon-story-ts.utils';
+	import { type Digimon, type Skill, getDigimonIcon, getSkillIcon } from '$lib/utils/digimon-story-ts.utils';
 
 	interface Props {
 		digimon: Digimon;
@@ -62,9 +63,7 @@
 <Modal title={digimon?.name} {onClose}>
 	{#if digimon}
 		<div class="mb-4 flex gap-4">
-			<div class="h-26 w-26">
-				<DigimonIcon {digimon} openModal={false} />
-			</div>
+			<ModalPortrait src={getDigimonIcon(digimon)} alt={`${digimon.name} portrait`} />
 
 			<div class="flex flex-col justify-between text-xs">
 				<div class="font-bold">{digimon.name}</div>
