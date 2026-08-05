@@ -322,7 +322,7 @@
 		<div class="absolute top-1 right-1 flex gap-1">
 			<button
 				type="button"
-				class="cursor-pointer opacity-50 transition hover:text-accent hover:opacity-100"
+				class="cursor-pointer opacity-100 transition hover:text-accent"
 				aria-label={chain.locked ? 'Unlock evolution line' : 'Lock evolution line'}
 				use:tooltipAction={{ text: chain.locked ? 'Unlock evolution line' : 'Lock evolution line', position: 'top' }}
 				onclick={() => toggleChainLock(i)}
