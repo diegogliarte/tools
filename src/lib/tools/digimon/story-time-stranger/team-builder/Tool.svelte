@@ -12,26 +12,52 @@
 	import MdiDiceMultiple from '~icons/mdi/dice-multiple';
 	import MdiChevronUp from '~icons/mdi/chevron-up';
 	import MdiChevronDown from '~icons/mdi/chevron-down';
+	import MdiLock from '~icons/mdi/lock';
+	import MdiLockOpenVariant from '~icons/mdi/lock-open-variant';
 
 	import { loadDigimon } from '$lib/data/digimon-story-ts/data';
 	import type { Digimon } from '$lib/utils/digimon-story-ts.utils';
 	import { getEvolutions, getPreEvolutions, indexDigimonById } from '$lib/utils/digimon-story-ts.utils';
 	import { createLocalStorageState } from '$lib/states/local-storage.svelte';
 
-	function normalizeTeamState(value: unknown): Chain[] | null {
-		if (Array.isArray(value)) return value;
+	type Chain = {
+		ids: number[];
+		locked: boolean;
+	};
 
-		if (value && typeof value === 'object') {
-			const arr = Object.values(value);
-			if (arr.every((v) => Array.isArray(v))) {
-				return arr as Chain[];
-			}
+	function normalizeChain(value: unknown): Chain | null {
+		if (Array.isArray(value) && value.every((id) => typeof id === 'number')) {
+			return { ids: value, locked: false };
 		}
 
-		return null;
+		if (!value || typeof value !== 'object') return null;
+
+		const chain = value as Partial<Chain>;
+		if (!Array.isArray(chain.ids) || !chain.ids.every((id) => typeof id === 'number')) return null;
+
+		const boundaryState = chain as Partial<Chain> & { leftLocked?: boolean; rightLocked?: boolean };
+		return {
+			ids: chain.ids,
+			locked: Boolean(chain.locked || (boundaryState.leftLocked && boundaryState.rightLocked))
+		};
 	}
 
-	type Chain = number[];
+	function normalizeTeamState(value: unknown): Chain[] | null {
+		let values: unknown[];
+
+		if (Array.isArray(value)) {
+			values = value;
+		} else if (value && typeof value === 'object') {
+			values = Object.values(value);
+		} else {
+			return null;
+		}
+
+		const chains = values.map(normalizeChain);
+		if (chains.some((chain) => chain === null)) return null;
+
+		return chains as Chain[];
+	}
 
 	const team = createLocalStorageState<Chain[]>([], {
 		fallbackKeys: ['tool-state:/digimon-story-ts/team-builder', 'digimon-story-ts:team-builder'],
@@ -57,10 +83,10 @@
 		return btoa(JSON.stringify(snapshot)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 	}
 
-	function decodeTeam(raw: string): number[][] | null {
+	function decodeTeam(raw: string): Chain[] | null {
 		try {
-			const parsed = JSON.parse(atob(raw));
-			return Array.isArray(parsed) ? parsed : null;
+			const base64 = raw.replace(/-/g, '+').replace(/_/g, '/');
+			return normalizeTeamState(JSON.parse(atob(base64)));
 		} catch {
 			return null;
 		}
@@ -102,7 +128,7 @@
 	});
 
 	function startChain(d: Digimon) {
-		setTeam([...team, [d.id]]);
+		setTeam([...team, { ids: [d.id], locked: false }]);
 		search = '';
 	}
 
@@ -112,35 +138,39 @@
 			return;
 		}
 
-		setTeam(team.map((c, i) => (i === index ? next : c)));
+		setTeam(team.map((chain, i) => (i === index ? { ...chain, ids: next } : chain)));
 	}
 
 	function extendLeft(index: number, d: Digimon) {
-		updateChain(index, [d.id, ...team[index]]);
+		updateChain(index, [d.id, ...team[index].ids]);
 	}
 
 	function extendRight(index: number, d: Digimon) {
-		updateChain(index, [...team[index], d.id]);
+		updateChain(index, [...team[index].ids, d.id]);
 	}
 
-	function trimChain(chain: number[], d: Digimon) {
+	function trimChain(chain: Chain, d: Digimon) {
 		const index = team.indexOf(chain);
 		if (index === -1) return;
 
-		const idx = chain.indexOf(d.id);
+		const idx = chain.ids.indexOf(d.id);
 		if (idx === -1) return;
 
 		if (idx === 0) {
-			updateChain(index, chain.slice(1));
+			updateChain(index, chain.ids.slice(1));
 			return;
 		}
 
-		if (idx === chain.length - 1) {
-			updateChain(index, chain.slice(0, -1));
+		if (idx === chain.ids.length - 1) {
+			updateChain(index, chain.ids.slice(0, -1));
 			return;
 		}
 
-		updateChain(index, chain.slice(0, idx));
+		updateChain(index, chain.ids.slice(0, idx));
+	}
+
+	function toggleChainLock(index: number) {
+		setTeam(team.map((chain, i) => (i === index ? { ...chain, locked: !chain.locked } : chain)));
 	}
 
 	function deleteChain(index: number) {
@@ -200,7 +230,7 @@
 
 		const TEAM_SIZE = 6;
 		const used = new Set<number>();
-		const chains: number[][] = [];
+		const chains: Chain[] = [];
 
 		while (chains.length < TEAM_SIZE && starters.length) {
 			const availableStarters = starters.filter((d) => !used.has(d.id));
@@ -209,7 +239,7 @@
 			const start = randomItem(availableStarters);
 			const chain = buildRandomChain(start, used);
 
-			chains.push(chain);
+			chains.push({ ids: chain, locked: false });
 		}
 
 		setTeam(chains);
@@ -254,7 +284,8 @@
 	</div>
 {/if}
 
-{#each team as c, i (i)}
+{#each team as chain, i (i)}
+	{@const c = chain.ids}
 	{@const leftEdge = digimonById.get(c[0])}
 	{@const rightEdge = digimonById.get(c[c.length - 1])}
 
@@ -262,6 +293,8 @@
 	{@const evos = rightEdge ? getEvolutions(rightEdge, digimonById) : []}
 
 	{@const notInChain = (d: Digimon) => !c.includes(d.id)}
+	{@const preEvoOptions = preEvos.filter(notInChain)}
+	{@const evoOptions = evos.filter(notInChain)}
 
 	<div class="relative flex border">
 		<div class="flex flex-col justify-start px-2 py-2">
@@ -286,39 +319,64 @@
 			{/if}
 		</div>
 
-		<button
-			type="button"
-			class="absolute top-1 right-1 cursor-pointer opacity-50 transition hover:text-accent hover:opacity-100"
-			onclick={(e) => {
-				e.stopPropagation();
-				deleteChain(i);
-			}}
-		>
-			<MdiClose />
-		</button>
+		<div class="absolute top-1 right-1 flex gap-1">
+			<button
+				type="button"
+				class="cursor-pointer opacity-50 transition hover:text-accent hover:opacity-100"
+				aria-label={chain.locked ? 'Unlock evolution line' : 'Lock evolution line'}
+				use:tooltipAction={{ text: chain.locked ? 'Unlock evolution line' : 'Lock evolution line', position: 'top' }}
+				onclick={() => toggleChainLock(i)}
+			>
+				{#if chain.locked}
+					<MdiLock />
+				{:else}
+					<MdiLockOpenVariant />
+				{/if}
+			</button>
+
+			<button
+				type="button"
+				class="cursor-pointer opacity-50 transition hover:text-accent hover:opacity-100"
+				aria-label="Delete evolution line"
+				title="Delete evolution line"
+				onclick={(e) => {
+					e.stopPropagation();
+					deleteChain(i);
+				}}
+			>
+				<MdiClose />
+			</button>
+		</div>
 
 		<div class="flex w-full items-center justify-center gap-6 p-2">
 			<!-- Pre-evolutions -->
-			<div class="flex flex-col gap-2">
-				{#each preEvos.filter(notInChain) as d (d.id)}
-					<div class="w-14">
-						<DigimonIcon digimon={d} variant="viewer" onClick={() => extendLeft(i, d)} />
-					</div>
-				{/each}
-			</div>
+			{#if !chain.locked}
+				<div class="flex flex-col gap-2">
+					{#each preEvoOptions as d (d.id)}
+						<div class="w-14">
+							<DigimonIcon digimon={d} variant="viewer" onClick={() => extendLeft(i, d)} />
+						</div>
+					{/each}
+				</div>
+			{/if}
 
 			<!-- Chain -->
 			<div class="flex items-center gap-4">
-				{#each c as id, i (id)}
+				{#each c as id, position (id)}
 					{@const d = digimonById.get(id)}
 					{#if d}
 						<div class="w-14">
-							<DigimonIcon digimon={d} variant="viewer" selected onClick={() => trimChain(c, d)} />
+							<DigimonIcon
+								digimon={d}
+								variant="viewer"
+								selected
+								onClick={chain.locked ? undefined : () => trimChain(chain, d)}
+							/>
 						</div>
 					{/if}
 
-					{#if i < c.length - 1}
-						{@const next = digimonById.get(c[i + 1])}
+					{#if position < c.length - 1}
+						{@const next = digimonById.get(c[position + 1])}
 
 						{@const evoRequirements =
 							next?.evolution_conditions
@@ -336,13 +394,15 @@
 			</div>
 
 			<!-- Evolutions -->
-			<div class="flex flex-col gap-2">
-				{#each evos.filter(notInChain) as d (d.id)}
-					<div class="w-14">
-						<DigimonIcon digimon={d} variant="viewer" onClick={() => extendRight(i, d)} />
-					</div>
-				{/each}
-			</div>
+			{#if !chain.locked}
+				<div class="flex flex-col gap-2">
+					{#each evoOptions as d (d.id)}
+						<div class="w-14">
+							<DigimonIcon digimon={d} variant="viewer" onClick={() => extendRight(i, d)} />
+						</div>
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</div>
 {/each}

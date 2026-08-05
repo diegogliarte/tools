@@ -60,8 +60,9 @@
 			type="button"
 			class="
 				relative
-				cursor-pointer border
-				{selected ? 'border-accent hover:border-red-400' : 'hover:border-accent'}
+				border
+				{onClick ? 'cursor-pointer' : 'cursor-default'}
+				{selected ? `border-accent ${onClick ? 'hover:border-red-400' : ''}` : 'hover:border-accent'}
 				transition
 			"
 			onclick={() => onClick?.(digimon)}
@@ -91,7 +92,7 @@
 
 		<button
 			type="button"
-			class="w-18 cursor-pointer truncate text-center text-xs transition hover:text-accent"
+			class="w-18 cursor-help truncate text-center text-xs transition hover:text-accent"
 			onclick={open}
 		>
 			{digimon.name}
