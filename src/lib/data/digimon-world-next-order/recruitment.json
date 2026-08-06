@@ -1244,7 +1244,7 @@
 		"service": "Exchanges Luck Coins for materials once a day.",
 		"method": {
 			"t": "give",
-			"text": "Give a Thorny Ivy and Speed Chip, submit partner HP over 8,000, find MagnaGarurumon, then deliver 10 Supermassive Machine Parts and 20 Ultramassive Dark Matter."
+			"text": "Give a Thorny Ivy and Speed Chip and submit partner HP over 8,000. Talk to MagnaGarurumon with 10 free inventory slots, then return to EmperorGreymon. Talk to MagnaGarurumon again with 20 free inventory slots, return to EmperorGreymon, then talk to both Digimon there."
 		},
 		"requirements": ["flag:postgame", "flag:hp8000"]
 	},
@@ -1337,11 +1337,11 @@
 		"floatiaLocation": "Dimensional Dungeon",
 		"service": "Increases time by 120 seconds for Bits.",
 		"method": {
-			"t": "battle",
+			"t": "steps",
 			"lv": 50,
 			"text": "Accept Susanomon's request, then battle Examon Lv 50."
 		},
-		"requirements": ["flag:postgame"]
+		"requirements": ["flag:postgame", "recruit:emperorgreymon", "recruit:magnagarurumon"]
 	},
 	{
 		"id": "susanomon",
@@ -1354,7 +1354,7 @@
 			"t": "talk",
 			"text": "Talk after Examon joins."
 		},
-		"requirements": ["flag:postgame", "recruit:emperorgreymon", "recruit:magnagarurumon", "recruit:examon"]
+		"requirements": ["flag:postgame", "recruit:emperorgreymon", "recruit:magnagarurumon"]
 	},
 	{
 		"id": "lilithmon",
@@ -1609,7 +1609,7 @@
 		"service": "Exchanges materials for Luck Coins at night.",
 		"method": {
 			"t": "steps",
-			"text": "Accept EmperorGreymon's request and talk to MagnaGarurumon, then deliver 10 Supermassive Machine Parts and 20 Ultramassive Dark Matter to EmperorGreymon."
+			"text": "Accept EmperorGreymon's request. Talk to MagnaGarurumon with 10 free inventory slots, then return to EmperorGreymon. Talk to MagnaGarurumon again with 20 free inventory slots, return to EmperorGreymon, then talk to both Digimon there."
 		},
 		"requirements": ["flag:postgame"]
 	},
